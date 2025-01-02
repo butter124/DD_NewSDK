@@ -32,16 +32,10 @@ DWORD WINAPI MainThread_Initialize(LPVOID param) {
   while (Continue) {
     KEYBIND(VK_F2, config.bShowMenu, keyDownMenu);
     KEYBIND(VK_END, Continue, keyDownEnd);
-    // if (GetAsyncKeyState(VK_F2) & 0x8000) {
-    //   config.bShowMenu = !config.bShowMenu;
-    // }
-
-    // if (GetAsyncKeyState(VK_END) & 0x8000) {
-    //   Continue = false;
-    // }
     Sleep(10);
   }
 
+  config.Cleanup();
   menu.Cleanup();
 
   FreeLibraryAndExitThread(static_cast<HMODULE>(param), 0);
