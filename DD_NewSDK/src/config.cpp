@@ -81,9 +81,19 @@ void Config::PostRender(PROCESS_EVENT_ARGS) {
   if (config.bKillAllEnemys) {
     config.KillAllEnemyPawns();
   }
+  if (config.bKillOneToAdvance) {
+    auto main = config.GetGameInfo();
+    if (main && main->CurrentKillCountUI &&
+        main->CurrentKillCountUI->KillCountRemaining > 1)
+      main->CurrentKillCountUI->KillCountRemaining = 1;
+  }
+  if (config.bLootShower)
+    config.SpawnItemsfromPawns();
 }
 
 void Config::WaveSkip(PROCESS_EVENT_ARGS) {
+  if (!bSkipWave)
+    return;
   auto wave = (Classes::UDunDef_SeqAct_SetWaveNumber *)(obj);
 
   if (obj)
@@ -105,7 +115,7 @@ Classes::UObject *Config::GetInstanceByName(Classes::UClass *Class,
                                             std::string name) {
   static Classes::UObject *ObjectInstance = NULL;
 
-  for (int i = 0; i < Classes::UObject::GetGlobalObjects().Num(); ++i) {
+  for (size_t i = 0; i < Classes::UObject::GetGlobalObjects().Num(); ++i) {
     Classes::UObject *CheckObject = Classes::UObject::GetGlobalObjects()[i];
     if (CheckObject && CheckObject->IsA(Class)) {
       std::string newname = CheckObject->GetFullName();
@@ -124,7 +134,7 @@ Classes::UObject *Config::GetInstanceOf(Classes::UClass *Class) {
 
   static Classes::UObject *ObjectInstance = NULL;
 
-  for (int i = 0; i < Classes::UObject::GetGlobalObjects().Num(); ++i) {
+  for (size_t i = 0; i < Classes::UObject::GetGlobalObjects().Num(); ++i) {
     Classes::UObject *CheckObject = Classes::UObject::GetGlobalObjects()[i];
 
     if (!CheckObject)
@@ -145,7 +155,7 @@ Config::GetAllInstanceOf(Classes::UClass *Class) {
   std::vector<Classes::UObject *> ret;
   static Classes::UObject *ObjectInstance = NULL;
 
-  for (int i = 0; i < Classes::UObject::GetGlobalObjects().Num(); ++i) {
+  for (size_t i = 0; i < Classes::UObject::GetGlobalObjects().Num(); ++i) {
     Classes::UObject *CheckObject = Classes::UObject::GetGlobalObjects()[i];
     if (CheckObject && CheckObject->IsA(Class)) {
       if (!strstr(CheckObject->GetFullName().c_str(), "Default")) {
@@ -278,6 +288,12 @@ void Config::MovePawn(Classes::ADunDefPawn *pawn, Classes::FVector pos) {
 void Config::MoveEnemyPawns(Classes::FVector pos) {
   PawnLoop([this, pos](Classes::ADunDefPawn *pawn) { MovePawn(pawn, pos); },
            true, false);
+}
+
+void Config::SpawnItemsfromPawns() {
+  PawnLoop([](Classes::ADunDefPawn *pawn) {
+    ((Classes::ADunDefEnemy *)pawn)->SpawnDroppedEquipment();
+  });
 }
 
 void Config::SetVacPos(Classes::FVector pos) {

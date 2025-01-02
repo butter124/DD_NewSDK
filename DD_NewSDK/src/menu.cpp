@@ -120,7 +120,7 @@ bool Menu::Init() {
   ProcEventHook.UpdateHookAddr((void *)ProcessEventAddress);
   ProcEventHook.HookFunction();
 
-#ifdef LOGGING == 1
+#ifdef LOGGING // 1
   AttachConsole();
 #endif
 
@@ -137,7 +137,7 @@ bool Menu::Cleanup() {
 
   ProcEventHook.UnHookFunction();
 
-#ifdef LOGGING == 1
+#ifdef LOGGING //== 1
   DettachConsole();
 #endif
   return true;
@@ -192,6 +192,8 @@ void Menu::ImGuiMenu() {
   main.Render();
   // item.Render();
 }
+
+void Menu::ImGuiCheats() {}
 
 void Menu::AttachConsole() {
   AllocConsole();
