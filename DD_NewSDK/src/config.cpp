@@ -2,7 +2,6 @@
 // clang-format off
 #include "pch.h"
 #include "includes/config.h"
-
 // clang-format on
 
 bool Config::TogglePlayerGodMode() {
@@ -29,18 +28,36 @@ bool Config::ToggleCrystalGodMode() {
   return gameInfo->bCrystalCoreInvincible;
 }
 
+bool Config::TurnOffPlayerGodMod() {
+  Classes::ADunDefPlayerController *playerController =
+      GetADunDefPlayerController();
+  if (!playerController)
+    return false;
+
+  playerController->bGodMode = false;
+
+  return bPlayerGodMode;
+}
+
 bool Config::Init() {
   gameHWND = FindWindow(NULL, "Dungeon Defenders");
 
   // clang-format off
+  // graphics
   REGISTER_HOOKED_FUNCTION("Function Engine.Interaction.PostRender",
                            PostRender);
+  // waveskipping
   REGISTER_HOOKED_FUNCTION("Function UDKGame.DunDef_SeqAct_SetWaveNumber.Activated",
                            WaveSkip);
   // clang-format on
 
   RegisterBlockedFunction("UIState_Pressed", bBlockInput);
 
+  return true;
+}
+
+bool Config::Cleanup() {
+  TurnOffPlayerGodMod();
   return true;
 }
 
@@ -71,6 +88,8 @@ void Config::WaveSkip(PROCESS_EVENT_ARGS) {
 
   if (obj)
     wave->waveNumber = waveToSkipTo;
+  if (!bLockWave)
+    bSkipWave = false;
 }
 
 std::string Config::FStringToString(Classes::FString s) {
@@ -261,9 +280,15 @@ void Config::MoveEnemyPawns(Classes::FVector pos) {
            true, false);
 }
 
-void Config::SetVacPos(Classes::FVector pos) { vacPos = pos; }
+void Config::SetVacPos(Classes::FVector pos) {
+  vacPos = pos;
+  return;
+}
 
-Classes::FVector Config::GetVacPos() { return vacPos; }
+Classes::FVector Config::GetVacPos() {
+  // returns the vacuum position
+  return vacPos;
+}
 
 Classes::FVector Config::GetPlayerPos() {
   auto playerPawn = GetPlayerPawn();

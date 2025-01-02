@@ -19,6 +19,9 @@
 class Config {
 private:
 public:
+  bool Init();
+  bool Cleanup();
+
   HWND gameHWND;
   bool bShowMenu = true;
   bool bBlockInput = true;
@@ -29,6 +32,7 @@ public:
   bool bShowVacuumPos = false;
   bool bVacHack = false;
   bool bSkipWave = false;
+  bool bLockWave = false;
   int waveToSkipTo = 0;
 
   Classes::FVector vacPos = {0, 0, 0};
@@ -43,8 +47,8 @@ public:
   void RegisterBlockedFunction(const std::string &key, bool &flag);
 
   bool TogglePlayerGodMode();
+  bool TurnOffPlayerGodMod();
   bool ToggleCrystalGodMode();
-  bool Init();
   Classes::UEngine *GetEngine();
   Classes::ADunDefPlayerController *GetADunDefPlayerController();
   Classes::ADunDefPawn *GetPlayerPawn();
