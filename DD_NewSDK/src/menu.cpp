@@ -112,8 +112,7 @@ bool Menu::Init() {
   AttachConsole();
 #endif
 
-
-  item.SetItem(config.GetADunDefPlayerController()->myHero->HeroEquipments[0]);
+  // item.SetItem(config.GetADunDefPlayerController()->myHero->HeroEquipments[0]);
   return true;
 }
 
@@ -177,7 +176,7 @@ bool Menu::GetDevicePointer(void **pTable, size_t size) {
 
 void Menu::ImGuiMenu() {
   main.Render();
-  item.Render();
+  // item.Render();
 }
 
 void Menu::AttachConsole() {
