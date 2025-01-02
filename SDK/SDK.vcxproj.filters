@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\SDK">
+      <UniqueIdentifier>{f1c60229-1f7f-4952-9579-b3f92859c353}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\DD_NewSDK\pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_Basic.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT3_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT3_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT3_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT4_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT4_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT4_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT7_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT7_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT7_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT8_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT8_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_CDT8_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_Core_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_Core_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_Core_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefArabia_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefArabia_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefArabia_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefAtlantis_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefAtlantis_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefAtlantis_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefBuff_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefBuff_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefBuff_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefMiscNoMedia_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefMiscNoMedia_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefMiscNoMedia_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefPortal_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefPortal_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefPortal_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefSkyCity_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefSkyCity_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefSkyCity_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefSpecial_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefSpecial_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefSpecial_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefSpider_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefSpider_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_DunDefSpider_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_Engine_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_Engine_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_Engine_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_GameFramework_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_GameFramework_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_GameFramework_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_IpDrv_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_IpDrv_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_IpDrv_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_Leaderboards_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_Leaderboards_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_Leaderboards_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_OnlineSubsystemSteamworks_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_OnlineSubsystemSteamworks_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_OnlineSubsystemSteamworks_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_UDKGame_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_UDKGame_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_UDKGame_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_WinDrv_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_WinDrv_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_WinDrv_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_XAudio2_classes.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_XAudio2_parameters.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK\DD_XAudio2_structs.hpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DD_NewSDK\SDK.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\DD_NewSDK\pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_Basic.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_CDT_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_CDT3_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_CDT4_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_CDT7_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_CDT8_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_Core_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_DunDefArabia_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_DunDefAtlantis_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_DunDefBuff_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_DunDefMiscNoMedia_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_DunDefPortal_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_DunDefSkyCity_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_DunDefSpecial_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_DunDefSpider_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_Engine_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_GameFramework_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_IpDrv_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_Leaderboards_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_OnlineSubsystemSteamworks_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_UDKGame_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_WinDrv_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\SDK\DD_XAudio2_functions.cpp">
+      <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
