@@ -1,38 +1,49 @@
 #pragma once
 
-#define REGISTER_FUNCTION(key, func)                                           \
-  RegisterFunction(key, [this](Classes::UObject *obj, void *edx,               \
-                               Classes::UFunction *pFunction, void *pParms,    \
-                               void *pResult) {                                \
+#include "SDK.hpp"
+#include <functional>
+#include <string>
+#include <unordered_map>
+#include <windows.h>
+
+#define PROCESS_EVENT_ARGS                                                     \
+  Classes::UObject *obj, void *edx, Classes::UFunction *pFunction,             \
+      void *pParms, void *pResult
+#define REGISTER_HOOKED_FUNCTION(key, func)                                    \
+  RegisterHookedFunction(key, [this](Classes::UObject *obj, void *edx,         \
+                                     Classes::UFunction *pFunction,            \
+                                     void *pParms, void *pResult) {            \
     func(obj, edx, pFunction, pParms, pResult);                                \
   })
 
 class Config {
+private:
 public:
+  HWND gameHWND;
   bool bShowMenu = true;
+  bool bBlockInput = true;
   bool bPlayerGodMode = false;
   bool bCrystalGodMode = false;
   bool bKillAllEnemys = false;
   bool bKillOneToAdvance = false;
   bool bShowVacuumPos = false;
-
   bool bVacHack = false;
+  bool bSkipWave = false;
+  int waveToSkipTo = 0;
+
   Classes::FVector vacPos = {0, 0, 0};
 
-  std::unordered_map<std::string,
-                     std::function<void(Classes::UObject *, void *,
-                                        Classes::UFunction *, void *, void *)>>
-      funcMap;
-  void
-  RegisterFunction(const std::string &key,
-                   std::function<void(Classes::UObject *, void *,
-                                      Classes::UFunction *, void *, void *)>
-                       func);
+  // register a function to be hooked in process events
+  std::unordered_map<std::string, std::function<void(PROCESS_EVENT_ARGS)>>
+      hookedFuncMap;
+  void RegisterHookedFunction(const std::string &key,
+                              std::function<void(PROCESS_EVENT_ARGS)> func);
+  // block functions from running in process event
+  std::unordered_map<std::string, bool> blockedFuncMap;
+  void RegisterBlockedFunction(const std::string &key, bool &flag);
 
   bool TogglePlayerGodMode();
   bool ToggleCrystalGodMode();
-
-  HWND gameHWND;
   bool Init();
   Classes::UEngine *GetEngine();
   Classes::ADunDefPlayerController *GetADunDefPlayerController();
@@ -61,5 +72,7 @@ public:
 
   void PostRender(Classes::UObject *obj, void *edx,
                   Classes::UFunction *pFunction, void *pParms, void *pResult);
+  void WaveSkip(Classes::UObject *obj, void *edx, Classes::UFunction *pFunction,
+                void *pParms, void *pResult);
 };
 extern Config config;

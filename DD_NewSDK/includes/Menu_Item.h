@@ -1,11 +1,10 @@
 #pragma once
-#include "menu_template.h"
 
 #include "SDK.hpp"
-#include "includes/config.h"
+#include "config.h"
+#include "menu_template.h"
 
 class MenuItem : public Menu_template {
-private:
 protected:
   void OnBegin() override;
   void RenderUI() override;

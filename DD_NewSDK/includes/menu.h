@@ -1,4 +1,5 @@
 #pragma once
+#include <d3d9.h>
 #define LOGGING 1
 
 #include <format>
