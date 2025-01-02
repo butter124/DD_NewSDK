@@ -29,16 +29,14 @@ void MenuMain::BasicCheats() {
   ImGui::Checkbox("Auto Kill", &config.bKillAllEnemys);
 
   ImGui::Checkbox("One kill to advance", &config.bKillOneToAdvance);
-  if (config.bKillOneToAdvance) {
-    auto main = config.GetGameInfo();
-    if (main && main->CurrentKillCountUI &&
-        main->CurrentKillCountUI->KillCountRemaining > 1)
-      main->CurrentKillCountUI->KillCountRemaining = 1;
-  }
 
+  ImGui::PushItemWidth(75);
   ImGui::InputInt("##waveskip", &config.waveToSkipTo);
   ImGui::SameLine();
   ImGui::Checkbox("Level skip", &config.bSkipWave);
+  ImGui::PopItemWidth();
+
+  ImGui::Checkbox("Enemys drop items", &config.bLootShower);
 }
 
 void MenuMain::VacuumCheats() {
@@ -58,4 +56,5 @@ void MenuMain::AddItem(Classes::UHeroEquipment *item) {
   menu.SetItem(item);
   itemsVec.push_back(menu);
 }
+
 void MenuMain::RemoveItem(Classes::UHeroEquipment *item) {}

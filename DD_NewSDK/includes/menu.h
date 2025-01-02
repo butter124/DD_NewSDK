@@ -49,6 +49,7 @@ public:
   bool GetDevicePointer(void **pTable, size_t size);
 
   void ImGuiMenu();
+  void ImGuiCheats();
 
   void AttachConsole();
   void DettachConsole();

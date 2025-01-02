@@ -34,6 +34,7 @@ public:
   bool bSkipWave = false;
   bool bLockWave = false;
   int waveToSkipTo = 0;
+  bool bLootShower = false;
 
   Classes::FVector vacPos = {0, 0, 0};
 
@@ -62,6 +63,7 @@ public:
   void KillAllEnemyPawns();
   void MovePawn(Classes::ADunDefPawn *pawn, Classes::FVector pos);
   void MoveEnemyPawns(Classes::FVector pos);
+  void SpawnItemsfromPawns();
   void SetVacPos(Classes::FVector pos);
   Classes::FVector GetVacPos();
   Classes::FVector GetPlayerPos();
