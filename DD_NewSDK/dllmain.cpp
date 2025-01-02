@@ -5,8 +5,15 @@
 #include <memory>
 // clang-format on
 
-// TArray<class UObject*>* GObjects = (TArray<class UObject*>*)0x0114B22C;
-// TArray<class FNameEntry*>* GNames = (TArray<class FNameEntry*>*)0x01138F14;
+#define KEYBIND(key, var, bkey)                                                \
+  if (GetAsyncKeyState(key) & 0x8000) {                                        \
+    if (!bkey) {                                                               \
+      var = !var;                                                              \
+      bkey = true;                                                             \
+    }                                                                          \
+  } else {                                                                     \
+    bkey = false;                                                              \
+  }
 
 Config config;
 Menu menu;
@@ -18,11 +25,20 @@ DWORD WINAPI MainThread_Initialize(LPVOID param) {
   config.Init();
   menu.Init();
 
+  bool keyDownMenu = false;
+  bool keyDownEnd = false;
+
   bool Continue = true;
   while (Continue) {
-    if (GetAsyncKeyState(VK_F2) & 0x8000) {
-      Continue = false; // Break the loop if Escape is pressed
-    }
+    KEYBIND(VK_F2, config.bShowMenu, keyDownMenu);
+    KEYBIND(VK_END, Continue, keyDownEnd);
+    // if (GetAsyncKeyState(VK_F2) & 0x8000) {
+    //   config.bShowMenu = !config.bShowMenu;
+    // }
+
+    // if (GetAsyncKeyState(VK_END) & 0x8000) {
+    //   Continue = false;
+    // }
     Sleep(10);
   }
 

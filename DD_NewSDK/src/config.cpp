@@ -2,9 +2,6 @@
 // clang-format off
 #include "pch.h"
 #include "includes/config.h"
-#include "SDK.hpp"
-#include <unordered_map>
-#include "includes/menu.h"
 
 // clang-format on
 
@@ -35,22 +32,31 @@ bool Config::ToggleCrystalGodMode() {
 bool Config::Init() {
   gameHWND = FindWindow(NULL, "Dungeon Defenders");
 
-  REGISTER_FUNCTION("Function Engine.Interaction.PostRender", PostRender);
+  // clang-format off
+  REGISTER_HOOKED_FUNCTION("Function Engine.Interaction.PostRender",
+                           PostRender);
+  REGISTER_HOOKED_FUNCTION("Function UDKGame.DunDef_SeqAct_SetWaveNumber.Activated",
+                           WaveSkip);
+  // clang-format on
+
+  RegisterBlockedFunction("UIState_Pressed", bBlockInput);
 
   return true;
 }
 
-void Config::RegisterFunction(
+void Config::RegisterHookedFunction(
     const std::string &key,
     std::function<void(Classes::UObject *, void *, Classes::UFunction *, void *,
                        void *)>
         func) {
-  funcMap[key] = func;
+  hookedFuncMap[key] = func;
 }
 
-void Config::PostRender(Classes::UObject *obj, void *edx,
-                        Classes::UFunction *pFunction, void *pParms,
-                        void *pResult) {
+void Config::RegisterBlockedFunction(const std::string &key, bool &flag) {
+  blockedFuncMap[key] = flag;
+}
+
+void Config::PostRender(PROCESS_EVENT_ARGS) {
   if (config.bShowVacuumPos) {
     Classes::FString v(L"V");
     FloatingTextinWorld(v, config.GetVacPos());
@@ -58,11 +64,13 @@ void Config::PostRender(Classes::UObject *obj, void *edx,
   if (config.bKillAllEnemys) {
     config.KillAllEnemyPawns();
   }
+}
 
-  // Classes::FString v(L"V");
-  // auto GRI = config.GetGRI();
-  // GRI->AddCustomFloatingText(L"v", config.vacPos, 0, 0.1f, 2, TRUE,
-  // {0,1,0,1});
+void Config::WaveSkip(PROCESS_EVENT_ARGS) {
+  auto wave = (Classes::UDunDef_SeqAct_SetWaveNumber *)(obj);
+
+  if (obj)
+    wave->waveNumber = waveToSkipTo;
 }
 
 std::string Config::FStringToString(Classes::FString s) {
@@ -152,12 +160,10 @@ Classes::ADunDefPawn *Config::GetPlayerPawn() {
       GetADunDefPlayerController();
 
   if (playerController == nullptr) {
-    Menu::PrintToConsole("Failed to get player->Controller");
     return nullptr;
   }
 
   if (playerController->Pawn == nullptr) {
-    Menu::PrintToConsole("Failed to get playerController->Pawn");
     return nullptr;
   }
 
@@ -262,7 +268,6 @@ Classes::FVector Config::GetVacPos() { return vacPos; }
 Classes::FVector Config::GetPlayerPos() {
   auto playerPawn = GetPlayerPawn();
   if (!playerPawn) {
-    Menu::PrintToConsole("Tried to move playerPawn with nullptr");
     return {0, 0, 0};
   }
 

@@ -8,6 +8,7 @@
 #include "includes/Hooking.h"
 #include "includes/config.h"
 #include "includes/menu.h"
+#include <string.h>
 // clang-format on
 
 tEndScene oScene = nullptr;
@@ -30,9 +31,20 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
   if (strcmp(szName.c_str(), "Function UDKGame.Main.HandleCheater") == 0) {
     return;
   }
-
-  if (config.funcMap.find(szName) != config.funcMap.end()) {
-    config.funcMap[szName](pObject, edx, pFunction, pParms, pResult);
+  // hooked functions
+  if (config.hookedFuncMap.find(szName) != config.hookedFuncMap.end()) {
+    config.hookedFuncMap[szName](pObject, edx, pFunction, pParms, pResult);
+  }
+  // blocked functions
+  if (config.blockedFuncMap.find(szName) == config.blockedFuncMap.end()) {
+    if (config.blockedFuncMap[szName] == true)
+      return;
+  }
+  // block input when menu is shown
+  if (config.bShowMenu) {
+    if (strcmp(objectName.c_str(), "UIState_Pressed") == 0) {
+      return;
+    }
   }
 
   // Call Original PE
@@ -175,6 +187,8 @@ bool Menu::GetDevicePointer(void **pTable, size_t size) {
 }
 
 void Menu::ImGuiMenu() {
+  if (!config.bShowMenu)
+    return;
   main.Render();
   // item.Render();
 }

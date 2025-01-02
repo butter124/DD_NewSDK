@@ -2,7 +2,6 @@
 // clang-format off
 #include "pch.h"
 #include "includes/menu_main.h"
-#include "includes/menu_item.h"
 // clang-format on
 
 void MenuMain::Init() {
@@ -12,7 +11,7 @@ void MenuMain::Init() {
 void MenuMain::OnBegin() {
   ImGui::Begin("MainMenu");
 
-  for (auto item : items) {
+  for (auto item : itemsVec) {
     item.Render();
   }
 }
@@ -36,6 +35,10 @@ void MenuMain::BasicCheats() {
         main->CurrentKillCountUI->KillCountRemaining > 1)
       main->CurrentKillCountUI->KillCountRemaining = 1;
   }
+
+  ImGui::InputInt("##waveskip", &config.waveToSkipTo);
+  ImGui::SameLine();
+  ImGui::Checkbox("Level skip", &config.bSkipWave);
 }
 
 void MenuMain::VacuumCheats() {
@@ -53,6 +56,6 @@ void MenuMain::VacuumCheats() {
 void MenuMain::AddItem(Classes::UHeroEquipment *item) {
   MenuItem menu;
   menu.SetItem(item);
-  items.push_back(menu);
+  itemsVec.push_back(menu);
 }
 void MenuMain::RemoveItem(Classes::UHeroEquipment *item) {}

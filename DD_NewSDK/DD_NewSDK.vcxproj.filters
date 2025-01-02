@@ -78,8 +78,8 @@
     <ClInclude Include="includes\menu_main.h">
       <Filter>Header Files\includes</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Menu_Item.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="includes\menu_item.h">
+      <Filter>Header Files\includes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

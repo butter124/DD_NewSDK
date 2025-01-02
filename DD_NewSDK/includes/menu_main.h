@@ -1,15 +1,12 @@
 #pragma once
 
-#include "includes/ImGui/imgui.h"
-#include "includes/menu_template.h"
-
-#include "includes/Menu_Item.h"
-#include "includes/config.h"
+#include "menu_item.h"
+#include "menu_template.h"
 #include <vector>
 
 class MenuMain : public Menu_template {
-private:
-  std::vector<MenuItem> items;
+public:
+  std::vector<MenuItem> itemsVec;
 
 protected:
   void Init() override;
