@@ -1,6 +1,7 @@
 // clang-format off
 #include "pch.h"
 #include "includes/config.h"
+#include <fstream>
 // clang-format on
 
 bool Config::TogglePlayerGodMode() {
@@ -360,7 +361,7 @@ void Config::FloatingTextinWorld(const Classes::FString &string,
   GRI->AddCustomFloatingText(string, pos, 0, 0.1f, 2, TRUE, dColor);
 }
 
-std::string Config::GetItemQuality(Classes::UHeroEquipment *item) {
+std::string Config::GetItemQualityString(Classes::UHeroEquipment *item) {
   if (!item)
     return std::string("Unknown item");
 
@@ -368,6 +369,26 @@ std::string Config::GetItemQuality(Classes::UHeroEquipment *item) {
       std::string(item->QualityDescriptorRealNames
                       .GetByIndex(item->NameIndex_QualityDescriptor)
                       .StringValue.ToString());
-
   return itemname;
+}
+
+void Config::GetKeybinds() {
+  std::ifstream SettingsFile("d.txt");
+  SettingsFile >> ToggleKey;
+  SettingsFile >> EndKey;
+  SettingsFile >> TeleportPlayerKey;
+  SettingsFile >> NewTeleportKey;
+  SettingsFile.close();
+}
+
+void Config::SaveKeybinds() {
+  std::ofstream SettingsFile("d.txt");
+  SettingsFile << ToggleKey;
+  SettingsFile << "\n";
+  SettingsFile << EndKey;
+  SettingsFile << "\n";
+  SettingsFile << TeleportPlayerKey;
+  SettingsFile << "\n";
+  SettingsFile << NewTeleportKey;
+  SettingsFile.close();
 }

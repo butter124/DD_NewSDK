@@ -30,10 +30,6 @@ enum Stats {
   eTRange
 };
 
-// const char *ItemQualitys[] = {"None",      "Mythical",  "Transcendent",
-//"Supreme",   "Ultimate",  "Ultimate93",
-//"Ultimate+", "Ultimate++"};
-
 class Config {
 private:
 public:
@@ -53,6 +49,9 @@ public:
   bool bLockWave = false;
   int waveToSkipTo = 0;
   bool bLootShower = false;
+  bool bAutoLoot = false;
+  int itemsLooted = false;
+  int itemsChecked = false;
   int lootFilter[0xB] = {};
   int itemFilterQuality;
 
@@ -96,12 +95,29 @@ public:
   Classes::FVector SetPlayerPos(Classes::FVector pos);
   void FloatingTextinWorld(const Classes::FString &string, Classes::FVector pos,
                            Classes::FLinearColor dColor = {0, 1, 0, 1});
-  std::string GetItemQuality(Classes::UHeroEquipment *item);
-
+  std::string GetItemQualityString(Classes::UHeroEquipment *item);
   Classes::UObject *GetInstanceByName(Classes::UClass *Class, std::string name);
   Classes::UObject *GetInstanceOf(Classes::UClass *Class);
   std::vector<Classes::UObject *> GetAllInstanceOf(Classes::UClass *Class);
   std::string FStringToString(Classes::FString s);
   Classes::FString StringToFString(std::string s);
+
+  // keybinds
+  int ToggleKey = VK_INSERT;
+  bool bToggleKeyChangeRequest = FALSE;
+
+  int EndKey = VK_END;
+  bool bEndKeyKeyChangeRequest = FALSE;
+
+  bool bGetNewTeleportLocation = FALSE;
+  bool bTeleportPlayer = FALSE;
+
+  int NewTeleportKey = VK_F3;
+  bool NewTeleportKeyKeyChangeRequest = FALSE;
+
+  int TeleportPlayerKey = VK_F4;
+  bool TeleportPlayerKeyKeyChangeRequest = FALSE;
+  void GetKeybinds();
+  void SaveKeybinds();
 };
 extern Config config;

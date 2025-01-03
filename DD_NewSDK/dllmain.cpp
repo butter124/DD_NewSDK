@@ -27,11 +27,15 @@ DWORD WINAPI MainThread_Initialize(LPVOID param) {
 
   bool keyDownMenu = false;
   bool keyDownEnd = false;
+  bool keyDownTeleport = false;
 
   bool Continue = true;
   while (Continue) {
-    KEYBIND(VK_F2, config.bShowMenu, keyDownMenu);
-    KEYBIND(VK_END, Continue, keyDownEnd);
+    KEYBIND(config.ToggleKey, config.bShowMenu, keyDownMenu);
+    KEYBIND(config.EndKey, Continue, keyDownEnd);
+    // KEYBIND(config.TeleportPlayerKey, config.bTeleportPlayer,
+    // keyDownTeleport); KEYBIND(config.NewTeleportKey, config.bTeleportPlayer,
+    // keyDownTeleport);
     Sleep(10);
   }
 

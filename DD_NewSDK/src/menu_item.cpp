@@ -48,7 +48,7 @@ void MenuItem::RenderItem() {
 }
 
 void MenuItem::FeaturesAndRequirements() {
-  std::string itemQuality = config.GetItemQuality(uHeroEquipment);
+  std::string itemQuality = config.GetItemQualityString(uHeroEquipment);
   ImGui::Text("item quality: %s", itemQuality.c_str());
   // clang-format off
   ImGui::InputInt("HHealth   ", &uHeroEquipment->StatModifiers[eHHealth]);
