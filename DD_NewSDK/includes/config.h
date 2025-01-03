@@ -16,6 +16,24 @@
     func(obj, edx, pFunction, pParms, pResult);                                \
   })
 
+enum Stats {
+  eUnknown,
+  eHHealth,
+  eHSpeed,
+  eHDamage,
+  eHCast,
+  Ability1,
+  Ability2,
+  eTHealth,
+  eTSpeed,
+  eTDamage,
+  eTRange
+};
+
+// const char *ItemQualitys[] = {"None",      "Mythical",  "Transcendent",
+//"Supreme",   "Ultimate",  "Ultimate93",
+//"Ultimate+", "Ultimate++"};
+
 class Config {
 private:
 public:
@@ -35,9 +53,11 @@ public:
   bool bLockWave = false;
   int waveToSkipTo = 0;
   bool bLootShower = false;
+  int lootFilter[0xB] = {};
+  int itemFilterQuality;
 
   Classes::FVector vacPos = {0, 0, 0};
-
+  /* useful functions */
   // register a function to be hooked in process events
   std::unordered_map<std::string, std::function<void(PROCESS_EVENT_ARGS)>>
       hookedFuncMap;
@@ -46,6 +66,12 @@ public:
   // block functions from running in process event
   std::unordered_map<std::string, bool> blockedFuncMap;
   void RegisterBlockedFunction(const std::string &key, bool &flag);
+  bool ShouldLootItem(Classes::ADunDefDroppedEquipment *item);
+
+  /* sdk funcs */
+  void PostRenderHookFunc(PROCESS_EVENT_ARGS);
+  void WaveSkipHookFunc(PROCESS_EVENT_ARGS);
+  void AutoLootHookFunc(PROCESS_EVENT_ARGS);
 
   bool TogglePlayerGodMode();
   bool TurnOffPlayerGodMod();
@@ -70,15 +96,12 @@ public:
   Classes::FVector SetPlayerPos(Classes::FVector pos);
   void FloatingTextinWorld(const Classes::FString &string, Classes::FVector pos,
                            Classes::FLinearColor dColor = {0, 1, 0, 1});
+  std::string GetItemQuality(Classes::UHeroEquipment *item);
+
   Classes::UObject *GetInstanceByName(Classes::UClass *Class, std::string name);
   Classes::UObject *GetInstanceOf(Classes::UClass *Class);
   std::vector<Classes::UObject *> GetAllInstanceOf(Classes::UClass *Class);
   std::string FStringToString(Classes::FString s);
   Classes::FString StringToFString(std::string s);
-
-  void PostRender(Classes::UObject *obj, void *edx,
-                  Classes::UFunction *pFunction, void *pParms, void *pResult);
-  void WaveSkip(Classes::UObject *obj, void *edx, Classes::UFunction *pFunction,
-                void *pParms, void *pResult);
 };
 extern Config config;
