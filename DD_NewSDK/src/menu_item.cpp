@@ -11,26 +11,15 @@
     }                                                                          \
   }
 
-enum Stats {
-  eUnknown,
-  eHHealth,
-  eHSpeed,
-  eHDamage,
-  eHCast,
-  Ability1,
-  Ability2,
-  eTHealth,
-  eTSpeed,
-  eTDamage,
-  eTRange
-};
-
 void MenuItem::OnBegin() { ImGui::Begin("Item"); }
 
 void MenuItem::RenderUI() {
   if (!uHeroEquipment)
     return;
+
+  ImGui::PushItemWidth(200);
   RenderItem();
+  ImGui::PopItemWidth();
 }
 
 void MenuItem::RenderItem() {
@@ -59,6 +48,8 @@ void MenuItem::RenderItem() {
 }
 
 void MenuItem::FeaturesAndRequirements() {
+  std::string itemQuality = config.GetItemQuality(uHeroEquipment);
+  ImGui::Text("item quality: %s", itemQuality.c_str());
   // clang-format off
   ImGui::InputInt("HHealth   ", &uHeroEquipment->StatModifiers[eHHealth]);
   ImGui::InputInt("HSpeed    ", &uHeroEquipment->StatModifiers[eHSpeed]);

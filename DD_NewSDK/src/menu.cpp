@@ -124,6 +124,7 @@ bool Menu::Init() {
   AttachConsole();
 #endif
 
+  main.Init();
   // item.SetItem(config.GetADunDefPlayerController()->myHero->HeroEquipments[0]);
   return true;
 }

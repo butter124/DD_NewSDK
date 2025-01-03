@@ -1,4 +1,3 @@
-
 // clang-format off
 #include "pch.h"
 #include "includes/config.h"
@@ -45,10 +44,12 @@ bool Config::Init() {
   // clang-format off
   // graphics
   REGISTER_HOOKED_FUNCTION("Function Engine.Interaction.PostRender",
-                           PostRender);
+                           PostRenderHookFunc);
   // waveskipping
   REGISTER_HOOKED_FUNCTION("Function UDKGame.DunDef_SeqAct_SetWaveNumber.Activated",
-                           WaveSkip);
+                           WaveSkipHookFunc);
+  REGISTER_HOOKED_FUNCTION("Function UDKGame.DunDefDroppedEquipment.ReportEquipmentToStats",
+                           AutoLootHookFunc);
   // clang-format on
 
   RegisterBlockedFunction("UIState_Pressed", bBlockInput);
@@ -73,7 +74,7 @@ void Config::RegisterBlockedFunction(const std::string &key, bool &flag) {
   blockedFuncMap[key] = flag;
 }
 
-void Config::PostRender(PROCESS_EVENT_ARGS) {
+void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   if (config.bShowVacuumPos) {
     Classes::FString v(L"V");
     FloatingTextinWorld(v, config.GetVacPos());
@@ -91,7 +92,7 @@ void Config::PostRender(PROCESS_EVENT_ARGS) {
     config.SpawnItemsfromPawns();
 }
 
-void Config::WaveSkip(PROCESS_EVENT_ARGS) {
+void Config::WaveSkipHookFunc(PROCESS_EVENT_ARGS) {
   if (!bSkipWave)
     return;
   auto wave = (Classes::UDunDef_SeqAct_SetWaveNumber *)(obj);
@@ -100,6 +101,32 @@ void Config::WaveSkip(PROCESS_EVENT_ARGS) {
     wave->waveNumber = waveToSkipTo;
   if (!bLockWave)
     bSkipWave = false;
+}
+
+void Config::AutoLootHookFunc(PROCESS_EVENT_ARGS) {
+  Classes::UHeroEquipment *tempweap =
+      ((Classes::ADunDefDroppedEquipment *)(obj))->MyEquipmentObject;
+  if (!tempweap)
+    return;
+}
+
+bool Config::ShouldLootItem(Classes::ADunDefDroppedEquipment *item) {
+  if (!item)
+    return false;
+
+  // if any of the stats are below the filter and the filter is valid
+  for (int i = 0; i < 0xB; i++) {
+    int curstat = item->MyEquipmentObject->StatModifiers[i];
+    if (lootFilter[i] > 0 && curstat < lootFilter[i])
+      return false;
+  }
+
+  // check for item filter
+  if (item->MyEquipmentObject->NameIndex_QualityDescriptor <
+      itemFilterQuality + 12)
+    return false;
+
+  return true;
 }
 
 std::string Config::FStringToString(Classes::FString s) {
@@ -331,4 +358,16 @@ void Config::FloatingTextinWorld(const Classes::FString &string,
     return;
 
   GRI->AddCustomFloatingText(string, pos, 0, 0.1f, 2, TRUE, dColor);
+}
+
+std::string Config::GetItemQuality(Classes::UHeroEquipment *item) {
+  if (!item)
+    return std::string("Unknown item");
+
+  std::string itemname =
+      std::string(item->QualityDescriptorRealNames
+                      .GetByIndex(item->NameIndex_QualityDescriptor)
+                      .StringValue.ToString());
+
+  return itemname;
 }
