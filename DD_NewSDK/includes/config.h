@@ -65,7 +65,7 @@ public:
   // block functions from running in process event
   std::unordered_map<std::string, bool> blockedFuncMap;
   void RegisterBlockedFunction(const std::string &key, bool &flag);
-  bool ShouldLootItem(Classes::ADunDefDroppedEquipment *item);
+  bool ShouldLootItem(Classes::UHeroEquipment *item);
 
   /* sdk funcs */
   void PostRenderHookFunc(PROCESS_EVENT_ARGS);
@@ -82,6 +82,7 @@ public:
   Classes::AWorldInfo *GetWorldInfo();
   Classes::AMain *GetGameInfo();
   Classes::ADunDefGameReplicationInfo *GetGRI();
+  Classes::UDunDefHeroManager *GetHeroManager();
   void PawnLoop(const std::function<void(Classes::ADunDefPawn *)> &func,
                 bool applyToEnemy, bool applyToPlayer);
   void KillPawn(Classes::ADunDefPawn *pawn);

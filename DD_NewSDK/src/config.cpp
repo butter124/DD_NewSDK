@@ -4,41 +4,6 @@
 #include <fstream>
 // clang-format on
 
-bool Config::TogglePlayerGodMode() {
-  Classes::ADunDefPlayerController *playerController =
-      GetADunDefPlayerController();
-  if (!playerController)
-    return false;
-
-  playerController->bGodMode = bPlayerGodMode;
-
-  return bPlayerGodMode;
-}
-
-bool Config::ToggleCrystalGodMode() {
-  // This function is not needed because TogglePlayerGodMode()
-  // applys both to the player and the crystal
-  Classes::AMain *gameInfo = GetGameInfo();
-
-  if (!gameInfo)
-    return false;
-
-  gameInfo->bCrystalCoreInvincible = bCrystalGodMode;
-
-  return gameInfo->bCrystalCoreInvincible;
-}
-
-bool Config::TurnOffPlayerGodMod() {
-  Classes::ADunDefPlayerController *playerController =
-      GetADunDefPlayerController();
-  if (!playerController)
-    return false;
-
-  playerController->bGodMode = false;
-
-  return bPlayerGodMode;
-}
-
 bool Config::Init() {
   gameHWND = FindWindow(NULL, "Dungeon Defenders");
 
@@ -107,24 +72,64 @@ void Config::WaveSkipHookFunc(PROCESS_EVENT_ARGS) {
 void Config::AutoLootHookFunc(PROCESS_EVENT_ARGS) {
   Classes::UHeroEquipment *tempweap =
       ((Classes::ADunDefDroppedEquipment *)(obj))->MyEquipmentObject;
-  if (!tempweap)
+  if (!bAutoLoot || !tempweap)
     return;
+
+  bool isValid = ShouldLootItem(tempweap);
+  if (!isValid)
+    return;
+
+  config->get
 }
 
-bool Config::ShouldLootItem(Classes::ADunDefDroppedEquipment *item) {
+bool Config::TogglePlayerGodMode() {
+  Classes::ADunDefPlayerController *playerController =
+      GetADunDefPlayerController();
+  if (!playerController)
+    return false;
+
+  playerController->bGodMode = bPlayerGodMode;
+
+  return bPlayerGodMode;
+}
+
+bool Config::ToggleCrystalGodMode() {
+  // This function is not needed because TogglePlayerGodMode()
+  // applys both to the player and the crystal
+  Classes::AMain *gameInfo = GetGameInfo();
+
+  if (!gameInfo)
+    return false;
+
+  gameInfo->bCrystalCoreInvincible = bCrystalGodMode;
+
+  return gameInfo->bCrystalCoreInvincible;
+}
+
+bool Config::TurnOffPlayerGodMod() {
+  Classes::ADunDefPlayerController *playerController =
+      GetADunDefPlayerController();
+  if (!playerController)
+    return false;
+
+  playerController->bGodMode = false;
+
+  return bPlayerGodMode;
+}
+
+bool Config::ShouldLootItem(Classes::UHeroEquipment *item) {
   if (!item)
     return false;
 
   // if any of the stats are below the filter and the filter is valid
   for (int i = 0; i < 0xB; i++) {
-    int curstat = item->MyEquipmentObject->StatModifiers[i];
+    int curstat = item->StatModifiers[i];
     if (lootFilter[i] > 0 && curstat < lootFilter[i])
       return false;
   }
 
   // check for item filter
-  if (item->MyEquipmentObject->NameIndex_QualityDescriptor <
-      itemFilterQuality + 12)
+  if (item->NameIndex_QualityDescriptor < itemFilterQuality + 12)
     return false;
 
   return true;
@@ -271,6 +276,20 @@ Classes::ADunDefGameReplicationInfo *Config::GetGRI() {
   GRI = playerController->GetGRI();
 
   return GRI;
+}
+
+Classes::UDunDefHeroManager *Config::GetHeroManager() {
+  Classes::ADunDefPlayerController *pController = GetADunDefPlayerController();
+
+  if (!pController)
+    return nullptr;
+
+  Classes::UDunDefHeroManager *pManager = pController->GetHeroManager();
+
+  if (!pManager)
+    return nullptr;
+
+  return pManager;
 }
 
 void Config::PawnLoop(const std::function<void(Classes::ADunDefPawn *)> &func,
