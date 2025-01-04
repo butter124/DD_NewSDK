@@ -69,6 +69,10 @@ void MenuMain::RenderUI() {
         "Config Cheats", [this]() { selectedMenu = Menus::MenuConfig; },
         selectedMenu == 1);
 
+    RenderMenuButton(
+        "Player Cheats", [this]() { selectedMenu = Menus::MenuPlayer; },
+        selectedMenu == 2);
+
     ImGui::EndChild();
   }
   ImGui::SameLine();
@@ -86,6 +90,10 @@ void MenuMain::RenderUI() {
 
     case Menus::MenuConfig:
       Config();
+      break;
+
+    case Menus::MenuPlayer:
+      PlayerCheats();
       break;
 
     default:
@@ -110,7 +118,9 @@ void MenuMain::BasicCheats() {
 
   // basic cheats
   {
-    if (ImGui::Checkbox("Player Godmode", &config.bPlayerGodMode)) {
+    ImGui::Text("Basic cheats");
+    ImGui::Separator();
+    if (ImGui::Checkbox("Godmode", &config.bPlayerGodMode)) {
       config.TogglePlayerGodMode();
     }
     ImGui::Checkbox("Auto Kill", &config.bKillAllEnemys);
@@ -146,6 +156,106 @@ void MenuMain::BasicCheats() {
     // teleport point is done in postrender
     ImGui::Checkbox("Show teleport pos", &config.bShowPlayerTeleportPos);
     ImGui::Checkbox("Teleport players", &config.bTeleportPlayers);
+  }
+}
+
+void MenuMain::PlayerCheats() {
+  Classes::ADunDefPlayerController *pController =
+      config.GetADunDefPlayerController();
+  if (!pController)
+    return;
+
+  // player controller
+  {
+    ImGui::InputInt("Player mana", &pController->ManaPower);
+    float vec[3] = {pController->CurrentPawnLocation.X,
+                    pController->CurrentPawnLocation.Y,
+                    pController->CurrentPawnLocation.Z};
+    ImGui::InputFloat3("Player pos", vec);
+    ImGui::InputInt("Score", &pController->Score);
+
+    if (ImGui::Button("Repair all towers")) {
+      pController->RepairAllTowers();
+    }
+    if (ImGui::Button("Max all towers")) {
+      pController->UpgradeAllTowers(5);
+    }
+  }
+
+  // class UDunDefHero*                                 myHero; //
+  // 0x0970(0x0004)
+  {
+    if (!pController->myHero)
+      return;
+
+    ImGui::InputInt("Hero level", &pController->myHero->HeroLevel);
+    ImGui::InputInt("Hero Experience", &pController->myHero->HeroExperience);
+    ImGui::InputInt("Mana power", &pController->myHero->ManaPower);
+    static float c1[4] = {0, 0, 0, 0};
+    static float c2[4] = {0, 0, 0, 0};
+    static float c3[4] = {0, 0, 0, 0};
+
+    ImGui::InputFloat4("C1", c1);
+    ImGui::InputFloat4("C2", c2);
+    ImGui::InputFloat4("C3", c3);
+
+    Classes::FLinearColor cLiner1 = {c1[0], c1[1], c1[2], c1[3]};
+    Classes::FLinearColor cLiner2 = {c2[0], c2[1], c2[2], c2[3]};
+    Classes::FLinearColor cLiner3 = {c3[0], c3[1], c3[2], c3[3]};
+
+    if (ImGui::Button("Set color")) {
+      pController->myHero->SetColors(cLiner1, cLiner2, cLiner3);
+    }
+
+    // TArray<class UHeroEquipment*>                      HeroEquipments; //
+    // 0x056C(0x000C) (NeedCtorLink)
+    // player hero
+    //	unsigned long                                      bHasCompleteArmorSet
+    //: 1;                                 // 0x004C(0x0004) 	int
+    // CurrentCostumeIndex;                                      //
+    // 0x0114(0x0004) (Edit) 	TArray<struct FHeroCostumeTemplate>
+    // HeroCostumes; // 0x0214(0x000C) (Edit, NeedCtorLink) 	int
+    // HeroHealthModifier; // 0x04C0(0x0004) 	int HeroSpeedModifier; //
+    // 0x04C4(0x0004) 	int HeroDamageModifier; // 0x04C8(0x0004) 	int
+    // HeroCastingModifier; // 0x04CC(0x0004) 	int HeroAbilityOneModifier; //
+    // 0x04D0(0x0004) 	int HeroAbilityTwoModifier; // 0x04D4(0x0004) 	int
+    // HeroDefenseHealthModifier;                                //
+    // 0x04D8(0x0004) 	int HeroDefenseAttackRateModifier; // 0x04DC(0x0004)
+    // int HeroDefenseDamageModifier;                                //
+    // 0x04E0(0x0004) 	int HeroDefenseAreaOfEffectModifier; // 0x04E4(0x0004)
+    //	TArray<class ADunDefTower*>                        HeroTowers; //
+    // 0x0578(0x000C) (NeedCtorLink) 	class UHeroEquipment*
+    // HeroWeaponEquipment;
+    //// 0x0584(0x0004) 	bool IsHeroUnlocked(class ULocalPlayer*
+    /// ForPlayer, int*
+    // lockedByDemo); 	bool IsCostumeUnlocked(class ULocalPlayer* ForPlayer,
+    // int costumeIndex); 	int GetNextUnlockedCostumeIndex(class
+    // ULocalPlayer* ForPlayer, int CurrentIndex); 	int
+    // GetNumberOfUnlockedCostumes(class ULocalPlayer* ForPlayer); 	void
+    // SetName(const struct FString& NewName);
+    //	void DoLevelUp(int NumLevelsToAdd, bool dontSaveHero);
+    //	void AddExperience(int experience);
+    //	bool HeroLevelUp();
+    //	bool ReachedLevelCap();
+  }
+
+  {
+    // TArray<class ADunDefPlayerAbility*>                PlayerAbilities; //
+    // 0x097C(0x000C) (NeedCtorLink) TArray<int> statsData; // 0x0654(0x000C)
+    // (NeedCtorLink) TArray<int> playerStatsData; // 0x0660(0x000C)
+    // (NeedCtorLink) TArray<int> myStatsData; // 0x066C(0x000C) (NeedCtorLink)
+    ////
+    // void SkipToWave(int Wave);
+    // void UpgradeAllTowers(int numLevels);
+    // void DowngradeAllTowers(int numLevels);
+    // void DropAllMana();
+    // void STATIC_DistributeManaAmongPlayers(float ManaAmount, int
+    // numRecursions, bool bAllowBanking, bool bOnlyPutInBank); void
+    // ClientDoUnlockAchievment(TEnumAsByte<EAchievement> Achievement); void
+    // ClientAddManaToBank(float ManaAmount, bool bIgnoreBankLimit); bool
+    // AddBankMana(float mana, bool bIgnoreBankLimit, bool bAddFromHeroMana);
+    // void StopHovering(); void StartHovering(); void
+    // ClientSetUserNickname(const struct FString& NickName);
   }
 }
 

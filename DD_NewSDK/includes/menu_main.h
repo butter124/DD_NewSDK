@@ -7,7 +7,7 @@
 class MenuMain : public Menu_template {
 
 public:
-  enum Menus { MenuBasic, MenuConfig };
+  enum Menus { MenuBasic, MenuConfig, MenuPlayer };
   void Init() override;
   void OnBegin() override;
   void RenderUI() override;
@@ -32,4 +32,5 @@ private:
 protected:
   void BasicCheats();
   void Config();
+  void PlayerCheats();
 };
