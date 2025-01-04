@@ -106,6 +106,7 @@ public:
   Classes::AMain *GetGameInfo();
   Classes::ADunDefGameReplicationInfo *GetGRI();
   Classes::UDunDefHeroManager *GetHeroManager();
+  Classes::UDunDefSceneClient *GetClientManager();
   void PawnLoop(const std::function<void(Classes::ADunDefPawn *)> &func,
                 bool applyToEnemy, bool applyToPlayer);
   void KillPawn(Classes::ADunDefPawn *pawn);
@@ -116,12 +117,12 @@ public:
   void SetVacPos(Classes::FVector pos);
   void SetTeleportPos(Classes::FVector pos);
   void MovePlayerPawns(Classes::FVector pos);
+  void FloatingTextinWorld(const Classes::FString &string, Classes::FVector pos,
+                           Classes::FLinearColor dColor = {0, 1, 0, 1});
   Classes::FVector GetTeleportPos();
   Classes::FVector GetVacPos();
   Classes::FVector GetPlayerPos();
   Classes::FVector SetPlayerPos(Classes::FVector pos);
-  void FloatingTextinWorld(const Classes::FString &string, Classes::FVector pos,
-                           Classes::FLinearColor dColor = {0, 1, 0, 1});
   std::string GetItemQualityString(Classes::UHeroEquipment *item);
   Classes::UObject *GetInstanceByName(Classes::UClass *Class, std::string name);
   Classes::UObject *GetInstanceOf(Classes::UClass *Class);

@@ -168,10 +168,14 @@ void MenuMain::PlayerCheats() {
   // player controller
   {
     ImGui::InputInt("Player mana", &pController->ManaPower);
-    float vec[3] = {pController->CurrentPawnLocation.X,
-                    pController->CurrentPawnLocation.Y,
-                    pController->CurrentPawnLocation.Z};
-    ImGui::InputFloat3("Player pos", vec);
+    float vec[3] = {pController->Pawn->Location.X,
+                    pController->Pawn->Location.Y,
+                    pController->Pawn->Location.Z};
+    if (ImGui::InputFloat3("Player pos", vec)) {
+      pController->Pawn->Location.X = vec[0];
+      pController->Pawn->Location.Y = vec[1];
+      pController->Pawn->Location.Z = vec[2];
+    }
     ImGui::InputInt("Score", &pController->Score);
 
     if (ImGui::Button("Repair all towers")) {
@@ -180,13 +184,29 @@ void MenuMain::PlayerCheats() {
     if (ImGui::Button("Max all towers")) {
       pController->UpgradeAllTowers(5);
     }
+
+    // TArray<class ADunDefPlayerAbility*>                PlayerAbilities; //
+    // 0x097C(0x000C) (NeedCtorLink) TArray<int> statsData; // 0x0654(0x000C)
+    // (NeedCtorLink) TArray<int> playerStatsData; // 0x0660(0x000C)
+    // (NeedCtorLink) TArray<int> myStatsData; // 0x066C(0x000C) (NeedCtorLink)
+    ////
+    // void SkipToWave(int Wave);
+    // void UpgradeAllTowers(int numLevels);
+    // void DowngradeAllTowers(int numLevels);
+    // void DropAllMana();
+    // void STATIC_DistributeManaAmongPlayers(float ManaAmount, int
+    // numRecursions, bool bAllowBanking, bool bOnlyPutInBank); void
+    // ClientDoUnlockAchievment(TEnumAsByte<EAchievement> Achievement); void
+    // ClientAddManaToBank(float ManaAmount, bool bIgnoreBankLimit); bool
+    // AddBankMana(float mana, bool bIgnoreBankLimit, bool bAddFromHeroMana);
+    // void StopHovering(); void StartHovering(); void
+    // ClientSetUserNickname(const struct FString& NickName);
   }
 
-  // class UDunDefHero*                                 myHero; //
-  // 0x0970(0x0004)
+  if (!pController->myHero)
+    return;
+  // player hero
   {
-    if (!pController->myHero)
-      return;
 
     ImGui::InputInt("Hero level", &pController->myHero->HeroLevel);
     ImGui::InputInt("Hero Experience", &pController->myHero->HeroExperience);
@@ -239,23 +259,34 @@ void MenuMain::PlayerCheats() {
     //	bool ReachedLevelCap();
   }
 
+  if (!pController->Pawn)
+    return;
+  // player pawn
   {
-    // TArray<class ADunDefPlayerAbility*>                PlayerAbilities; //
-    // 0x097C(0x000C) (NeedCtorLink) TArray<int> statsData; // 0x0654(0x000C)
-    // (NeedCtorLink) TArray<int> playerStatsData; // 0x0660(0x000C)
-    // (NeedCtorLink) TArray<int> myStatsData; // 0x066C(0x000C) (NeedCtorLink)
-    ////
-    // void SkipToWave(int Wave);
-    // void UpgradeAllTowers(int numLevels);
-    // void DowngradeAllTowers(int numLevels);
-    // void DropAllMana();
-    // void STATIC_DistributeManaAmongPlayers(float ManaAmount, int
-    // numRecursions, bool bAllowBanking, bool bOnlyPutInBank); void
-    // ClientDoUnlockAchievment(TEnumAsByte<EAchievement> Achievement); void
-    // ClientAddManaToBank(float ManaAmount, bool bIgnoreBankLimit); bool
-    // AddBankMana(float mana, bool bIgnoreBankLimit, bool bAddFromHeroMana);
-    // void StopHovering(); void StartHovering(); void
-    // ClientSetUserNickname(const struct FString& NickName);
+    ImGui::InputInt("Health", &pController->Pawn->Health);
+    ImGui::InputInt("Max Health", &pController->Pawn->HealthMax);
+
+    static float loc[3] = {0, 0, 0};
+    ImGui::InputFloat3("Position", loc);
+    if (ImGui::Button("Update position")) {
+      pController->Pawn->Location = Classes::FVector(*loc);
+    }
+
+    static float drawScale[3] = {0, 0, 0};
+    ImGui::InputFloat3("Position", drawScale);
+    if (ImGui::Button("Update 3d draw scale")) {
+      pController->Pawn->Location = Classes::FVector(*loc);
+    }
+    ImGui::InputFloat("Draw scale", &pController->DrawScale);
+    ImGui::InputFloat("Tick frequency", &pController->TickFrequency);
+    ImGui::InputFloat("Gravity", &pController->Pawn->GravityZMultiplier);
+    ImGui::InputFloat("Jump height", &pController->Pawn->JumpZ);
+    ImGui::InputFloat("Ground speed", &pController->Pawn->GroundSpeed);
+
+    bool tempCollideActors = pController->Pawn->bCollideActors != 0;
+    ImGui::Checkbox("Collide actors", &tempCollideActors);
+    bool tempCollideWorld = pController->Pawn->bCollideWorld != 0;
+    ImGui::Checkbox("Collide world", &tempCollideWorld);
   }
 }
 
