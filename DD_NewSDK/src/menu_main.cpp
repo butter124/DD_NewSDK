@@ -117,28 +117,35 @@ void MenuMain::BasicCheats() {
     ImGui::Checkbox("Auto Loot", &config.bAutoLoot);
     ImGui::Checkbox("One kill to advance", &config.bKillOneToAdvance);
     ImGui::Checkbox("Enemys drop items", &config.bLootShower);
-  }
 
-  // vacuum cheats
-  {
-    if (ImGui::Button("Update vacuum pos")) {
-      config.SetVacPos(config.GetPlayerPos());
-    }
-    ImGui::Checkbox("Vacuum hack", &config.bVacHack);
-    if (config.bVacHack) {
-      config.MoveEnemyPawns(config.vacPos);
-    }
-    // Vacuum point is done in postrender
-    ImGui::Checkbox("Show vacuum point", &config.bShowVacuumPos);
-  }
-
-  // level cheats
-  {
+    // level cheats
     ImGui::PushItemWidth(75);
     ImGui::InputInt("##waveskip", &config.waveToSkipTo);
     ImGui::SameLine();
     ImGui::Checkbox("Level skip", &config.bSkipWave);
     ImGui::PopItemWidth();
+  }
+
+  // teleport cheats
+  {
+    ImGui::Separator();
+    /* Vacuum cheats */
+    if (ImGui::Button("Update vacuum pos")) {
+      config.SetVacPos(config.GetPlayerPos());
+    }
+
+    // Vacuum point is done in postrender
+    ImGui::Checkbox("Show vacuum point", &config.bShowVacuumPos);
+    ImGui::Checkbox("Vacuum hack", &config.bVacHack);
+    ImGui::Separator();
+
+    /* teleport cheats */
+    if (ImGui::Button("Update teleport pos")) {
+      config.SetTeleportPos(config.GetPlayerPos());
+    }
+    // teleport point is done in postrender
+    ImGui::Checkbox("Show teleport pos", &config.bShowPlayerTeleportPos);
+    ImGui::Checkbox("Teleport players", &config.bTeleportPlayers);
   }
 }
 
@@ -155,8 +162,8 @@ void MenuMain::Config() {
                                        "Ultimate+", "Ultimate++"};
   ImGui::Text("Configs");
   ImGui::Separator();
-  ImVec2 settingsbuttonProperty = ImVec2(275, 20);
-
+  ImVec2 contentRegion = ImGui::GetContentRegionAvail();
+  ImVec2 settingsbuttonProperty = ImVec2(contentRegion.x * .5f, 20);
   if (ImGui::TreeNode("Menu Settings")) {
 
     for (auto &key : config.keyBindsmap) {
@@ -181,7 +188,7 @@ void MenuMain::Config() {
   }
 
   if (ImGui::TreeNode("AutoLoot Settings")) {
-    int FilterMax = 500;
+    // int FilterMax = 500;
     ImGui::InputInt("Hero Health", &config.lootFilter[eHHealth]);
     ImGui::InputInt("Hero Speed", &config.lootFilter[eHSpeed]);
     ImGui::InputInt("Hero Damage", &config.lootFilter[eHDamage]);
@@ -195,9 +202,6 @@ void MenuMain::Config() {
 
     ImGui::Combo("Quality", &config.itemFilterQuality, itemQualitys,
                  IM_ARRAYSIZE(itemQualitys));
-
-    // ImGui::Combo("combo 3 (array)", &item_current_3, items,
-    // IM_ARRAYSIZE(items));
 
     ImGui::Text("Items Added : %d   |  Items Filtered : %d", config.itemsLooted,
                 config.itemsChecked);
