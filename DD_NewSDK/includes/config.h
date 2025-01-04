@@ -52,18 +52,23 @@ public:
   bool bKillAllEnemys = false;
   bool bKillOneToAdvance = false;
   bool bShowVacuumPos = false;
+  bool bUpdateVacuumPos = false;
   bool bVacHack = false;
   bool bSkipWave = false;
   bool bLockWave = false;
   int waveToSkipTo = 0;
   bool bLootShower = false;
   bool bAutoLoot = false;
-  int itemsLooted = false;
-  int itemsChecked = false;
+  int itemsLooted = 0;
+  int itemsChecked = 0;
   int lootFilter[0xB] = {};
   int itemFilterQuality;
+  bool bTeleportPlayers = false;
+  bool bShowPlayerTeleportPos = false;
 
   Classes::FVector vacPos = {0, 0, 0};
+  Classes::FVector playerTeleportPos = {0, 0, 0};
+
   /* useful functions */
   // register a function to be hooked in process events
   std::unordered_map<std::string, std::function<void(PROCESS_EVENT_ARGS)>>
@@ -77,10 +82,13 @@ public:
   bool ShouldLootItem(Classes::UHeroEquipment *item);
 
   // handle key presses
-  enum KeyBinds { ToggleKey, EndKey };
+  enum KeyBinds { ToggleKey, EndKey, TeleportPlayers, UpdateVacuumPos };
   std::unordered_map<KeyBinds, KeybindsStruct> keyBindsmap;
   void RegisterKeybind(std::string name, KeyBinds keyBindName, int keyCode,
                        std::function<void()> func);
+
+  void GetKeybinds();
+  void SaveKeybinds();
 
   /* sdk funcs */
   void PostRenderHookFunc(PROCESS_EVENT_ARGS);
@@ -106,6 +114,9 @@ public:
   void MoveEnemyPawns(Classes::FVector pos);
   void SpawnItemsfromPawns();
   void SetVacPos(Classes::FVector pos);
+  void SetTeleportPos(Classes::FVector pos);
+  void MovePlayerPawns(Classes::FVector pos);
+  Classes::FVector GetTeleportPos();
   Classes::FVector GetVacPos();
   Classes::FVector GetPlayerPos();
   Classes::FVector SetPlayerPos(Classes::FVector pos);
@@ -117,7 +128,5 @@ public:
   std::vector<Classes::UObject *> GetAllInstanceOf(Classes::UClass *Class);
   std::string FStringToString(Classes::FString s);
   Classes::FString StringToFString(std::string s);
-
-  // keybinds
 };
 extern Config config;

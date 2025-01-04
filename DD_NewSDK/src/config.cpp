@@ -19,9 +19,13 @@ bool Config::Init() {
                            AutoLootHookFunc);
 
   RegisterKeybind("Toggle menu",Config::KeyBinds::ToggleKey,519,[this](){bShowMenu = !bShowMenu;});
-  RegisterKeybind("End menu",Config::KeyBinds::EndKey,518,[this](){bEndMenu = true;});
+  RegisterKeybind("End menu",Config::KeyBinds::EndKey,520,[this](){bEndMenu = true;});
+  RegisterKeybind("Teleport players",Config::KeyBinds::TeleportPlayers,521,[this](){bTeleportPlayers = !bTeleportPlayers;});
+  RegisterKeybind("Vacuum pos",Config::KeyBinds::UpdateVacuumPos,522,[this](){SetVacPos(GetPlayerPos());});
 
   // clang-format on
+
+  GetKeybinds();
 
   RegisterBlockedFunction("UIState_Pressed", bBlockInput);
 
@@ -30,6 +34,7 @@ bool Config::Init() {
 
 bool Config::Cleanup() {
   TurnOffPlayerGodMod();
+  SaveKeybinds();
   return true;
 }
 
@@ -56,21 +61,43 @@ void Config::RegisterKeybind(std::string name, Config::KeyBinds keyBindName,
 }
 
 void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
+  // player pos
+  if (config.bShowPlayerTeleportPos) {
+    Classes::FString v(L"V");
+    FloatingTextinWorld(v, config.GetTeleportPos(), {0, 1, 0, 1});
+  }
+
+  // vacuum hack
   if (config.bShowVacuumPos) {
     Classes::FString v(L"V");
-    FloatingTextinWorld(v, config.GetVacPos());
+    FloatingTextinWorld(v, config.GetVacPos(), {1, 0, 0, 1});
   }
+  if (config.bVacHack) {
+    config.MoveEnemyPawns(config.vacPos);
+  }
+
+  // kill all enemys
   if (config.bKillAllEnemys) {
     config.KillAllEnemyPawns();
   }
+
+  // kill one to advance
   if (config.bKillOneToAdvance) {
     auto main = config.GetGameInfo();
     if (main && main->CurrentKillCountUI &&
         main->CurrentKillCountUI->KillCountRemaining > 1)
       main->CurrentKillCountUI->KillCountRemaining = 1;
   }
-  if (config.bLootShower)
+
+  // loot shower
+  if (config.bLootShower) {
     config.SpawnItemsfromPawns();
+  }
+
+  // teleport players
+  if (config.bTeleportPlayers) {
+    config.MovePlayerPawns(config.playerTeleportPos);
+  }
 }
 
 void Config::WaveSkipHookFunc(PROCESS_EVENT_ARGS) {
@@ -90,6 +117,7 @@ void Config::AutoLootHookFunc(PROCESS_EVENT_ARGS) {
   if (!bAutoLoot || !tempweap)
     return;
 
+  itemsChecked += 1;
   bool isValid = ShouldLootItem(tempweap);
   if (!isValid)
     return;
@@ -97,9 +125,10 @@ void Config::AutoLootHookFunc(PROCESS_EVENT_ARGS) {
   auto pPawn = config.GetPlayerPawn();
   auto pHeroManager = config.GetHeroManager();
   if (!pHeroManager || !pPawn ||
-      ((Classes::ADunDefPlayer *)pPawn)->MyPlayerHero)
+      !((Classes::ADunDefPlayer *)pPawn)->MyPlayerHero)
     return;
 
+  itemsLooted += 1;
   pHeroManager->AddEquipmentObjectToItemBox(
       ((Classes::ADunDefPlayer *)pPawn)->MyPlayerHero, tempweap, true);
 }
@@ -317,7 +346,6 @@ Classes::UDunDefHeroManager *Config::GetHeroManager() {
 void Config::PawnLoop(const std::function<void(Classes::ADunDefPawn *)> &func,
                       bool applyToEnemy = true, bool applyToPlayer = false) {
   Classes::APawn *curPawn = GetFirstPawnInList();
-  // Classes::ADunDefPawn* player = curPawn;
 
   while (curPawn != nullptr) {
     if (!curPawn->IsA(Classes::ADunDefPawn::StaticClass())) {
@@ -326,7 +354,6 @@ void Config::PawnLoop(const std::function<void(Classes::ADunDefPawn *)> &func,
     }
 
     Classes::ADunDefPawn *curDunDefPawn = (Classes::ADunDefPawn *)curPawn;
-
     bool isPlayer = curPawn->IsPlayerPawn();
 
     if (isPlayer && applyToPlayer) {
@@ -359,6 +386,11 @@ void Config::MoveEnemyPawns(Classes::FVector pos) {
            true, false);
 }
 
+void Config::MovePlayerPawns(Classes::FVector pos) {
+  PawnLoop([this, pos](Classes::ADunDefPawn *pawn) { MovePawn(pawn, pos); },
+           false, true);
+}
+
 void Config::SpawnItemsfromPawns() {
   PawnLoop([](Classes::ADunDefPawn *pawn) {
     ((Classes::ADunDefEnemy *)pawn)->SpawnDroppedEquipment();
@@ -373,6 +405,16 @@ void Config::SetVacPos(Classes::FVector pos) {
 Classes::FVector Config::GetVacPos() {
   // returns the vacuum position
   return vacPos;
+}
+
+Classes::FVector Config::GetTeleportPos() {
+  // returns the player position
+  return playerTeleportPos;
+}
+
+void Config::SetTeleportPos(Classes::FVector pos) {
+  playerTeleportPos = pos;
+  return;
 }
 
 Classes::FVector Config::GetPlayerPos() {
@@ -411,4 +453,27 @@ std::string Config::GetItemQualityString(Classes::UHeroEquipment *item) {
                       .GetByIndex(item->NameIndex_QualityDescriptor)
                       .StringValue.ToString());
   return itemname;
+}
+
+void Config::GetKeybinds() {
+  std::ifstream SettingsFile("data");
+  if (!SettingsFile.is_open())
+    return;
+  SettingsFile >> keyBindsmap[KeyBinds::ToggleKey].key;
+  SettingsFile >> keyBindsmap[KeyBinds::EndKey].key;
+  SettingsFile >> keyBindsmap[KeyBinds::TeleportPlayers].key;
+  SettingsFile >> keyBindsmap[KeyBinds::UpdateVacuumPos].key;
+  SettingsFile.close();
+}
+
+void Config::SaveKeybinds() {
+  std::ofstream SettingsFile("data");
+  SettingsFile << keyBindsmap[KeyBinds::ToggleKey].key;
+  SettingsFile << "\n";
+  SettingsFile << keyBindsmap[KeyBinds::EndKey].key;
+  SettingsFile << "\n";
+  SettingsFile << keyBindsmap[KeyBinds::TeleportPlayers].key;
+  SettingsFile << "\n";
+  SettingsFile << keyBindsmap[KeyBinds::UpdateVacuumPos].key;
+  SettingsFile.close();
 }
