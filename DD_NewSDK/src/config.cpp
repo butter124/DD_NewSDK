@@ -5,6 +5,7 @@
 // clang-format on
 
 bool Config::Init() {
+
   gameHWND = FindWindow(NULL, "Dungeon Defenders");
 
   // clang-format off
@@ -16,6 +17,10 @@ bool Config::Init() {
                            WaveSkipHookFunc);
   REGISTER_HOOKED_FUNCTION("Function UDKGame.DunDefDroppedEquipment.ReportEquipmentToStats",
                            AutoLootHookFunc);
+
+  RegisterKeybind("Toggle menu",Config::KeyBinds::ToggleKey,519,[this](){bShowMenu = !bShowMenu;});
+  RegisterKeybind("End menu",Config::KeyBinds::EndKey,518,[this](){bEndMenu = false;});
+
   // clang-format on
 
   RegisterBlockedFunction("UIState_Pressed", bBlockInput);
@@ -38,6 +43,16 @@ void Config::RegisterHookedFunction(
 
 void Config::RegisterBlockedFunction(const std::string &key, bool &flag) {
   blockedFuncMap[key] = flag;
+}
+
+void Config::RegisterKeybind(std::string name, Config::KeyBinds keyBindName,
+                             int keyCode, std::function<void()> func) {
+  KeybindsStruct key;
+  key.name = name;
+  key.key = keyCode;
+  key.func = func;
+  key.bShouldChange = false;
+  keyBindsmap[keyBindName] = key;
 }
 
 void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
@@ -79,7 +94,14 @@ void Config::AutoLootHookFunc(PROCESS_EVENT_ARGS) {
   if (!isValid)
     return;
 
-  config->get
+  auto pPawn = config.GetPlayerPawn();
+  auto pHeroManager = config.GetHeroManager();
+  if (!pHeroManager || !pPawn ||
+      ((Classes::ADunDefPlayer *)pPawn)->MyPlayerHero)
+    return;
+
+  pHeroManager->AddEquipmentObjectToItemBox(
+      ((Classes::ADunDefPlayer *)pPawn)->MyPlayerHero, tempweap, true);
 }
 
 bool Config::TogglePlayerGodMode() {
@@ -389,25 +411,4 @@ std::string Config::GetItemQualityString(Classes::UHeroEquipment *item) {
                       .GetByIndex(item->NameIndex_QualityDescriptor)
                       .StringValue.ToString());
   return itemname;
-}
-
-void Config::GetKeybinds() {
-  std::ifstream SettingsFile("d.txt");
-  SettingsFile >> ToggleKey;
-  SettingsFile >> EndKey;
-  SettingsFile >> TeleportPlayerKey;
-  SettingsFile >> NewTeleportKey;
-  SettingsFile.close();
-}
-
-void Config::SaveKeybinds() {
-  std::ofstream SettingsFile("d.txt");
-  SettingsFile << ToggleKey;
-  SettingsFile << "\n";
-  SettingsFile << EndKey;
-  SettingsFile << "\n";
-  SettingsFile << TeleportPlayerKey;
-  SettingsFile << "\n";
-  SettingsFile << NewTeleportKey;
-  SettingsFile.close();
 }

@@ -5,7 +5,7 @@
 // clang-format on
 
 void MenuMain::Init() {
-  AddItem(config.GetADunDefPlayerController()->myHero->HeroEquipments[0]);
+  // AddItem(config.GetADunDefPlayerController()->myHero->HeroEquipments[0]);
 }
 
 void MenuMain::OnBegin() {
@@ -31,43 +31,28 @@ void MenuMain::RenderMenuButton(std::string name, std::function<void()> func,
   ImGui::PopStyleColor();
 }
 
-bool MenuMain::ChangeKeybindRequest(bool &_bKeyChangeRequest, int &_Key) {
+int MenuMain::GetKeydown() {
   ImGuiIO &io = ImGui::GetIO();
-
-  static bool localKeyGrabbed = false; // Changed to 'false' for C++ standard
-  static int KeyChangeWindow = 0;
-  static int KeyPressed = -1; // Initialized to -1 (invalid key)
-
-  if (_bKeyChangeRequest) {
-    // If we have a key change request, handle key grab
-    if (!localKeyGrabbed) {
-      ImGui::Text("Press a key to set a keybind");
-
-      // Loop through all keys and check if any are pressed
-      for (int i = 0; i < IM_ARRAYSIZE(io.KeysData); i++) {
-        if (io.KeysData[i].Down) { // Check if the key is pressed
-          KeyPressed = i;
-          localKeyGrabbed = true;
-          break; // Exit loop once the key is pressed
-        }
-      }
-    } else {
-      // If key is grabbed, wait for 6 frames to complete key selection
-      if (KeyChangeWindow > 5) {
-        KeyChangeWindow = 0;
-        localKeyGrabbed = false;
-        _Key = KeyPressed;          // Set the new keybind
-        config.SaveKeybinds();      // Save the new keybinding
-        _bKeyChangeRequest = false; // Reset the change request flag
-      } else {
-        KeyChangeWindow++;
-        ImGui::Text("Press key: Waiting for %d frames",
-                    6 - KeyChangeWindow); // Inform user of remaining wait time
-        return false; // Return false while waiting for window to finish
-      }
-    }
+  ImGuiKey start_key = ImGuiKey_NamedKey_BEGIN;
+  for (ImGuiKey key = start_key; key < ImGuiKey_NamedKey_END;
+       key = (ImGuiKey)(key + 1)) {
+    if (!ImGui::IsKeyPressed(key))
+      continue;
+    // ImGui::Text((key < ImGuiKey_NamedKey_BEGIN) ? "\"%s\"" : "\"%s\" %d",
+    //            ImGui::GetKeyName(key), key);
+    return key;
   }
-  return true; // Return true if key change is either not requested or completed
+
+  return -1;
+}
+
+bool MenuMain::ChangeKeybindRequest(int &keyToChange, int changeTo) {
+  if (changeTo >= ImGuiKey_NamedKey_BEGIN &&
+      changeTo <= ImGuiKey_NamedKey_END) {
+    keyToChange = changeTo;
+    return true;
+  }
+  return false;
 }
 
 void MenuMain::RenderUI() {
@@ -112,13 +97,24 @@ void MenuMain::RenderUI() {
   }
 }
 
+void MenuMain::Thread() {
+  for (auto &pair : config.keyBindsmap) {
+    if (ImGui::IsKeyPressed((ImGuiKey)pair.second.key, false) &&
+        !pair.second.bShouldChange) {
+      pair.second.func();
+    }
+  }
+}
+
 void MenuMain::BasicCheats() {
+
   // basic cheats
   {
     if (ImGui::Checkbox("Player Godmode", &config.bPlayerGodMode)) {
       config.TogglePlayerGodMode();
     }
     ImGui::Checkbox("Auto Kill", &config.bKillAllEnemys);
+    ImGui::Checkbox("Auto Loot", &config.bAutoLoot);
     ImGui::Checkbox("One kill to advance", &config.bKillOneToAdvance);
     ImGui::Checkbox("Enemys drop items", &config.bLootShower);
   }
@@ -163,56 +159,27 @@ void MenuMain::Config() {
 
   if (ImGui::TreeNode("Menu Settings")) {
 
-    if (ImGui::Button("Set Menu Toggle Keybind", settingsbuttonProperty)) {
-      config.bToggleKeyChangeRequest = TRUE;
+    for (auto &key : config.keyBindsmap) {
+      if (ImGui::Button(("Set " + key.second.name + " Key").c_str(),
+                        settingsbuttonProperty)) {
+        key.second.bShouldChange = true;
+      }
+      ImGui::SameLine();
+
+      HandleKeyChange(key.second.key, key.second.bShouldChange);
     }
-    ImGui::SameLine();
-
-    std::string tmpString =
-        "Current : " + VirtualKeyCodeToString(config.ToggleKey);
-    ImGui::Text(tmpString.c_str(), config.ToggleKey, config.ToggleKey);
-
-    if (ImGui::Button("Set Menu End Keybind", settingsbuttonProperty)) {
-      config.bEndKeyKeyChangeRequest = TRUE;
-    }
-    ImGui::SameLine();
-    tmpString = "Current : " + VirtualKeyCodeToString(config.EndKey);
-    ImGui::Text(tmpString.c_str(), config.EndKey, config.EndKey);
-
-    if (ImGui::Button("Set Get Teleport Keybind", settingsbuttonProperty)) {
-      config.NewTeleportKeyKeyChangeRequest = TRUE;
-    }
-    ImGui::SameLine();
-    tmpString = "Current : " + VirtualKeyCodeToString(config.NewTeleportKey);
-    ImGui::Text(tmpString.c_str(), config.NewTeleportKey,
-                config.NewTeleportKey);
-
-    if (ImGui::Button("Set Teleport Keybind", settingsbuttonProperty)) {
-      config.TeleportPlayerKeyKeyChangeRequest = TRUE;
-    }
-    ImGui::SameLine();
-    tmpString = "Current : " + VirtualKeyCodeToString(config.TeleportPlayerKey);
-    ImGui::Text(tmpString.c_str(), config.TeleportPlayerKey,
-                config.TeleportPlayerKey);
-
-    if (config.bToggleKeyChangeRequest)
-      ChangeKeybindRequest(config.bToggleKeyChangeRequest, config.ToggleKey);
-    if (config.bEndKeyKeyChangeRequest)
-      ChangeKeybindRequest(config.bEndKeyKeyChangeRequest, config.EndKey);
-    if (config.NewTeleportKeyKeyChangeRequest)
-      ChangeKeybindRequest(config.NewTeleportKeyKeyChangeRequest,
-                           config.NewTeleportKey);
-    if (config.TeleportPlayerKeyKeyChangeRequest)
-      ChangeKeybindRequest(config.TeleportPlayerKeyKeyChangeRequest,
-                           config.TeleportPlayerKey);
 
     ImGui::TreePop();
   }
-  // if (ImGui::TreeNode("Cheat Settings")) {
-  //   ImGui::InputInt("Multiply By", &MultiplyRewardsBy);
-  //   // ImGui::SliderInt("Reward Multiply", &MultiplyRewardsBy, 0, 10000);
-  //   ImGui::TreePop();
-  // }
+
+  {
+    // if (ImGui::TreeNode("Cheat Settings")) {
+    //   ImGui::InputInt("Multiply By", &MultiplyRewardsBy);
+    //   // ImGui::SliderInt("Reward Multiply", &MultiplyRewardsBy, 0, 10000);
+    //   ImGui::TreePop();
+    // }
+  }
+
   if (ImGui::TreeNode("AutoLoot Settings")) {
     int FilterMax = 500;
     ImGui::InputInt("Hero Health", &config.lootFilter[eHHealth]);
@@ -243,38 +210,24 @@ void MenuMain::Config() {
   }
 }
 
-std::string MenuMain::VirtualKeyCodeToString(UCHAR virtualKey) {
-  UINT scanCode = MapVirtualKey(virtualKey, MAPVK_VK_TO_VSC);
-
-  CHAR szName[128];
-  int result = 0;
-  switch (virtualKey) {
-  case VK_LEFT:
-  case VK_UP:
-  case VK_RIGHT:
-  case VK_DOWN:
-  case VK_RCONTROL:
-  case VK_RMENU:
-  case VK_LWIN:
-  case VK_RWIN:
-  case VK_APPS:
-  case VK_PRIOR:
-  case VK_NEXT:
-  case VK_END:
-  case VK_HOME:
-  case VK_INSERT:
-  case VK_DELETE:
-  case VK_DIVIDE:
-  case VK_NUMLOCK:
-    scanCode |= KF_EXTENDED;
-  default:
-    result = GetKeyNameTextA(scanCode << 16, szName, 128);
+bool MenuMain::HandleKeyChange(int &key, bool &shouldChange) {
+  if (!shouldChange) {
+    std::string tmpString =
+        "Current : " + std::string(ImGui::GetKeyName((ImGuiKey)key));
+    ImGui::Text(tmpString.c_str(), config.ToggleKey, config.ToggleKey);
+    return true;
+  } else {
+    int keyDown = GetKeydown();
+    if (keyDown == -1) {
+      ImGui::Text("Press any key.");
+      return false;
+    } else {
+      shouldChange = false;
+      key = keyDown;
+      return true;
+    }
   }
-  if (result == 0)
-    throw std::system_error(
-        std::error_code(GetLastError(), std::system_category()),
-        "WinAPI Error occured.");
-  return szName;
+  return false;
 }
 
 void MenuMain::RemoveItem(Classes::UHeroEquipment *item) {}
