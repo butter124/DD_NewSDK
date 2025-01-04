@@ -19,7 +19,7 @@ bool Config::Init() {
                            AutoLootHookFunc);
 
   RegisterKeybind("Toggle menu",Config::KeyBinds::ToggleKey,519,[this](){bShowMenu = !bShowMenu;});
-  RegisterKeybind("End menu",Config::KeyBinds::EndKey,518,[this](){bEndMenu = false;});
+  RegisterKeybind("End menu",Config::KeyBinds::EndKey,518,[this](){bEndMenu = true;});
 
   // clang-format on
 
@@ -151,8 +151,8 @@ bool Config::ShouldLootItem(Classes::UHeroEquipment *item) {
   }
 
   // check for item filter
-  if (item->NameIndex_QualityDescriptor < itemFilterQuality + 12)
-    return false;
+  // if (item->NameIndex_QualityDescriptor < itemFilterQuality + 12)
+  // return false;
 
   return true;
 }
