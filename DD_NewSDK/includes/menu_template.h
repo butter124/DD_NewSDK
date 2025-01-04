@@ -21,4 +21,6 @@ protected:
   virtual void OnEnd() { ImGui::End(); }
 
   virtual void RenderUI() { ImGui::Text("Default UI"); }
+
+  virtual void Thread() {}
 };

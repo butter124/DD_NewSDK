@@ -30,6 +30,13 @@ enum Stats {
   eTRange
 };
 
+struct KeybindsStruct {
+  int key;
+  bool bShouldChange;
+  std::function<void()> func;
+  std::string name;
+};
+
 class Config {
 private:
 public:
@@ -37,6 +44,7 @@ public:
   bool Cleanup();
 
   HWND gameHWND;
+  bool bEndMenu = false;
   bool bShowMenu = true;
   bool bBlockInput = true;
   bool bPlayerGodMode = false;
@@ -62,10 +70,17 @@ public:
       hookedFuncMap;
   void RegisterHookedFunction(const std::string &key,
                               std::function<void(PROCESS_EVENT_ARGS)> func);
+
   // block functions from running in process event
   std::unordered_map<std::string, bool> blockedFuncMap;
   void RegisterBlockedFunction(const std::string &key, bool &flag);
   bool ShouldLootItem(Classes::UHeroEquipment *item);
+
+  // handle key presses
+  enum KeyBinds { ToggleKey, EndKey };
+  std::unordered_map<KeyBinds, KeybindsStruct> keyBindsmap;
+  void RegisterKeybind(std::string name, KeyBinds keyBindName, int keyCode,
+                       std::function<void()> func);
 
   /* sdk funcs */
   void PostRenderHookFunc(PROCESS_EVENT_ARGS);
@@ -104,21 +119,5 @@ public:
   Classes::FString StringToFString(std::string s);
 
   // keybinds
-  int ToggleKey = VK_INSERT;
-  bool bToggleKeyChangeRequest = FALSE;
-
-  int EndKey = VK_END;
-  bool bEndKeyKeyChangeRequest = FALSE;
-
-  bool bGetNewTeleportLocation = FALSE;
-  bool bTeleportPlayer = FALSE;
-
-  int NewTeleportKey = VK_F3;
-  bool NewTeleportKeyKeyChangeRequest = FALSE;
-
-  int TeleportPlayerKey = VK_F4;
-  bool TeleportPlayerKeyKeyChangeRequest = FALSE;
-  void GetKeybinds();
-  void SaveKeybinds();
 };
 extern Config config;

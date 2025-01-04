@@ -11,6 +11,7 @@ public:
   void Init() override;
   void OnBegin() override;
   void RenderUI() override;
+  void Thread() override;
 
   void AddItem(Classes::UHeroEquipment *item);
   void RemoveItem(Classes::UHeroEquipment *item);
@@ -21,8 +22,12 @@ private:
 
   void RenderMenuButton(std::string name, std::function<void()> func,
                         bool isSelected);
-  bool ChangeKeybindRequest(bool &_bKeyChangeRequest, int &_Key);
+
+  int GetKeydown();
+
+  bool ChangeKeybindRequest(int &keyToChange, int changeTo);
   std::string VirtualKeyCodeToString(UCHAR virtualKey);
+  bool HandleKeyChange(int &key, bool &shouldChange);
 
 protected:
   void BasicCheats();

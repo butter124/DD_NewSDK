@@ -55,7 +55,6 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
 LRESULT __stdcall WndProc(const HWND hwnd, UINT uMsg, WPARAM wParam,
                           LPARAM lparam) {
 
-  if (config.bShowMenu)
     if (ImGui_ImplWin32_WndProcHandler(hwnd, uMsg, wParam, lparam))
       return TRUE;
 
@@ -63,7 +62,6 @@ LRESULT __stdcall WndProc(const HWND hwnd, UINT uMsg, WPARAM wParam,
 }
 
 HRESULT APIENTRY hkEndScene(LPDIRECT3DDEVICE9 pDevice) {
-  // Your hook logic here
 
   static bool init = false;
   if (!init) {
@@ -115,7 +113,7 @@ bool Menu::Init() {
       (unsigned char *)ProcessEvent_Pattern, (char *)ProcessEvent_Mask));
 
   DWORD ProcessEventAddress = BaseProcessEventAddress - 0xe8;
-  tProcessEvent ProcessEvent = (tProcessEvent)ProcessEventAddress;
+  // tProcessEvent ProcessEvent = (tProcessEvent)ProcessEventAddress;
 
   ProcEventHook.UpdateHookAddr((void *)ProcessEventAddress);
   ProcEventHook.HookFunction();
@@ -188,10 +186,10 @@ bool Menu::GetDevicePointer(void **pTable, size_t size) {
 }
 
 void Menu::ImGuiMenu() {
+  main.Thread();
   if (!config.bShowMenu)
     return;
   main.Render();
-  // item.Render();
 }
 
 void Menu::ImGuiCheats() {}
