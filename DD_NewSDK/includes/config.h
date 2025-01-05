@@ -133,8 +133,6 @@ public:
   std::string FStringToString(Classes::FString s);
   Classes::FString StringToFString(std::string s);
   Classes::FVector GetForward(float yaw, float pitch);
-  Classes::FRotator GetRight(Classes::FRotator rot);
-  Classes::FRotator GetLeft(Classes::FRotator rot);
   Classes::FVector AddFVector(Classes::FVector vec1, Classes::FVector vec2);
 };
 extern Config config;

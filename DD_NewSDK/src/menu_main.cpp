@@ -192,12 +192,6 @@ void MenuMain::NoClipHandleInput() {
 }
 
 void MenuMain::BasicCheats() {
-
-  // auto pPlayerPawn = config.GetPlayerPawn();
-  // if (pPlayerPawn)
-  // ImGui::Text("pPlayerPawn : %p", (void *)pPlayerPawn);
-
-  // basic cheats
   {
     ImGui::Text("Basic cheats");
     ImGui::Separator();
@@ -256,7 +250,7 @@ void MenuMain::BasicCheats() {
   }
 
   // debugging
-  Debug();
+  //Debug();
 }
 
 void MenuMain::PlayerCheats() {
