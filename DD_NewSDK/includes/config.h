@@ -65,6 +65,8 @@ public:
   int itemFilterQuality;
   bool bTeleportPlayers = false;
   bool bShowPlayerTeleportPos = false;
+  bool bNoClip = false;
+  float fNoClipSpeed = 10;
 
   Classes::FVector vacPos = {0, 0, 0};
   Classes::FVector playerTeleportPos = {0, 0, 0};
@@ -94,6 +96,7 @@ public:
   void PostRenderHookFunc(PROCESS_EVENT_ARGS);
   void WaveSkipHookFunc(PROCESS_EVENT_ARGS);
   void AutoLootHookFunc(PROCESS_EVENT_ARGS);
+  void NoClip();
 
   bool TogglePlayerGodMode();
   bool TurnOffPlayerGodMod();
@@ -129,5 +132,9 @@ public:
   std::vector<Classes::UObject *> GetAllInstanceOf(Classes::UClass *Class);
   std::string FStringToString(Classes::FString s);
   Classes::FString StringToFString(std::string s);
+  Classes::FVector GetForward(float yaw, float pitch);
+  Classes::FRotator GetRight(Classes::FRotator rot);
+  Classes::FRotator GetLeft(Classes::FRotator rot);
+  Classes::FVector AddFVector(Classes::FVector vec1, Classes::FVector vec2);
 };
 extern Config config;

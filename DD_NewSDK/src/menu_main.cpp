@@ -106,15 +106,96 @@ void MenuMain::RenderUI() {
 }
 
 void MenuMain::Thread() {
+  // any thing in this function will be handled in proc events
   for (auto &pair : config.keyBindsmap) {
     if (ImGui::IsKeyPressed((ImGuiKey)pair.second.key, false) &&
         !pair.second.bShouldChange) {
       pair.second.func();
     }
   }
+  NoClipHandleInput();
+}
+
+void MenuMain::NoClipHandleInput() {
+  if (!config.bNoClip)
+    return;
+
+  auto pController = config.GetADunDefPlayerController();
+  auto pPlayerPawn = config.GetPlayerPawn();
+
+  if (pController == nullptr || pPlayerPawn == nullptr)
+    return;
+
+  if (!pController || !pController->PlayerCamera)
+    return;
+
+  auto rot = pController->PlayerCamera->CameraCache.POV.Rotation;
+
+  pPlayerPawn->Velocity = {0, 0, 0};
+  pPlayerPawn->Acceleration = {0, 0, 0};
+
+  if (ImGui::IsKeyDown(ImGuiKey_W)) {
+    auto forward = config.GetForward(rot.Yaw, rot.Pitch);
+    float t[3] = {forward.X * config.fNoClipSpeed,
+                  forward.Y * config.fNoClipSpeed,
+                  forward.Z * config.fNoClipSpeed};
+    pPlayerPawn->Location =
+        config.AddFVector(pPlayerPawn->Location, {t[0], t[1], t[2]});
+  }
+
+  if (ImGui::IsKeyDown(ImGuiKey_S)) {
+    auto forward = config.GetForward(rot.Yaw, rot.Pitch);
+    float t[3] = {forward.X * config.fNoClipSpeed,
+                  forward.Y * config.fNoClipSpeed,
+                  forward.Z * config.fNoClipSpeed};
+    pPlayerPawn->Location =
+        config.AddFVector(pPlayerPawn->Location, {-t[0], -t[1], -t[2]});
+  }
+  if (ImGui::IsKeyDown(ImGuiKey_D)) {
+
+    auto forward = config.GetForward(rot.Yaw, rot.Pitch);
+    // Define the up vector (assuming Z is up)
+    Classes::FVector up = {0.0f, 0.0f, 1.0f};
+
+    // Calculate the right direction using cross product
+    Classes::FVector right = {forward.Y * up.Z - forward.Z * up.Y,
+                              forward.Z * up.X - forward.X * up.Z,
+                              forward.X * up.Y - forward.Y * up.X};
+
+    // Normalize the right vector (if needed) and scale it
+    float tRight[3] = {right.X * config.fNoClipSpeed,
+                       right.Y * config.fNoClipSpeed,
+                       right.Z * config.fNoClipSpeed};
+
+    pPlayerPawn->Location = config.AddFVector(
+        pPlayerPawn->Location, {-tRight[0], -tRight[1], -tRight[2]});
+  }
+
+  if (ImGui::IsKeyDown(ImGuiKey_A)) {
+    auto forward = config.GetForward(rot.Yaw, rot.Pitch);
+    // Define the up vector (assuming Z is up)
+    Classes::FVector up = {0.0f, 0.0f, 1.0f};
+
+    // Calculate the right direction using cross product
+    Classes::FVector left = {forward.Y * up.Z - forward.Z * up.Y,
+                             forward.Z * up.X - forward.X * up.Z,
+                             forward.X * up.Y - forward.Y * up.X};
+
+    // Normalize the left vector (if needed) and scale it
+    float tLeft[3] = {left.X * config.fNoClipSpeed,
+                      left.Y * config.fNoClipSpeed,
+                      left.Z * config.fNoClipSpeed};
+
+    pPlayerPawn->Location = config.AddFVector(pPlayerPawn->Location,
+                                              {tLeft[0], tLeft[1], tLeft[2]});
+  }
 }
 
 void MenuMain::BasicCheats() {
+
+  // auto pPlayerPawn = config.GetPlayerPawn();
+  // if (pPlayerPawn)
+  // ImGui::Text("pPlayerPawn : %p", (void *)pPlayerPawn);
 
   // basic cheats
   {
@@ -127,6 +208,22 @@ void MenuMain::BasicCheats() {
     ImGui::Checkbox("Auto Loot", &config.bAutoLoot);
     ImGui::Checkbox("One kill to advance", &config.bKillOneToAdvance);
     ImGui::Checkbox("Enemys drop items", &config.bLootShower);
+    if (ImGui::Checkbox("NoClip", &config.bNoClip)) {
+      auto pPlayerPawn = config.GetADunDefPlayerController();
+      if (config.bNoClip) {
+        pPlayerPawn->Pawn->bCollideWorld = false;
+        pPlayerPawn->Pawn->bCollideActors = false;
+        pPlayerPawn->Pawn->bCollideComplex = false;
+      } else {
+
+        pPlayerPawn->Pawn->bCollideWorld = true;
+        pPlayerPawn->Pawn->bCollideActors = true;
+        pPlayerPawn->Pawn->bCollideComplex = true;
+      }
+    }
+
+    if (config.bNoClip)
+      NoClipHandleInput();
 
     // level cheats
     ImGui::PushItemWidth(75);
@@ -157,6 +254,9 @@ void MenuMain::BasicCheats() {
     ImGui::Checkbox("Show teleport pos", &config.bShowPlayerTeleportPos);
     ImGui::Checkbox("Teleport players", &config.bTeleportPlayers);
   }
+
+  // debugging
+  Debug();
 }
 
 void MenuMain::PlayerCheats() {
@@ -167,15 +267,15 @@ void MenuMain::PlayerCheats() {
 
   // player controller
   {
-    ImGui::InputInt("Player mana", &pController->ManaPower);
-    float vec[3] = {pController->Pawn->Location.X,
-                    pController->Pawn->Location.Y,
-                    pController->Pawn->Location.Z};
-    if (ImGui::InputFloat3("Player pos", vec)) {
-      pController->Pawn->Location.X = vec[0];
-      pController->Pawn->Location.Y = vec[1];
-      pController->Pawn->Location.Z = vec[2];
-    }
+    // ImGui::InputInt("Player mana", &pController->ManaPower);
+    // float vec[3] = {pController->Pawn->Location.X,
+    //                 pController->Pawn->Location.Y,
+    //                 pController->Pawn->Location.Z};
+    // if (ImGui::InputFloat3("Player pos", vec)) {
+    //   pController->Pawn->Location.X = vec[0];
+    //   pController->Pawn->Location.Y = vec[1];
+    //   pController->Pawn->Location.Z = vec[2];
+    // }
     ImGui::InputInt("Score", &pController->Score);
 
     if (ImGui::Button("Repair all towers")) {
@@ -269,25 +369,106 @@ void MenuMain::PlayerCheats() {
     static float loc[3] = {0, 0, 0};
     ImGui::InputFloat3("Position", loc);
     if (ImGui::Button("Update position")) {
-      pController->Pawn->Location = Classes::FVector(*loc);
+      Classes::FVector temp = {loc[0], loc[1], loc[2]};
+      pController->Pawn->Location = temp;
     }
 
     static float drawScale[3] = {0, 0, 0};
-    ImGui::InputFloat3("Position", drawScale);
+    ImGui::InputFloat3("Draw scale", drawScale);
     if (ImGui::Button("Update 3d draw scale")) {
-      pController->Pawn->Location = Classes::FVector(*loc);
+      Classes::FVector temp = {drawScale[0], drawScale[1], drawScale[2]};
+      pController->Pawn->DrawScale3D = temp;
     }
     ImGui::InputFloat("Draw scale", &pController->DrawScale);
-    ImGui::InputFloat("Tick frequency", &pController->TickFrequency);
+    // ImGui::InputFloat("Tick frequency", &pController->TickFrequency);
     ImGui::InputFloat("Gravity", &pController->Pawn->GravityZMultiplier);
     ImGui::InputFloat("Jump height", &pController->Pawn->JumpZ);
     ImGui::InputFloat("Ground speed", &pController->Pawn->GroundSpeed);
 
-    bool tempCollideActors = pController->Pawn->bCollideActors != 0;
-    ImGui::Checkbox("Collide actors", &tempCollideActors);
-    bool tempCollideWorld = pController->Pawn->bCollideWorld != 0;
-    ImGui::Checkbox("Collide world", &tempCollideWorld);
+    bool tempCollideActors = pController->Pawn->bCollideActors;
+
+    if (ImGui::Checkbox("Collide actors", &tempCollideActors)) {
+      pController->Pawn->bCollideActors = tempCollideActors;
+    }
+
+    bool tempCollideWorld = pController->Pawn->bCollideWorld;
+    if (ImGui::Checkbox("Collide world", &tempCollideWorld)) {
+      pController->Pawn->bCollideWorld = tempCollideWorld;
+    }
   }
+
+  return;
+}
+
+void MenuMain::Debug() {
+
+  ImGui::Separator();
+  auto pPlayerPawn = config.GetPlayerPawn();
+  auto pController = config.GetADunDefPlayerController();
+  auto pEngine = config.GetEngine();
+
+  if (!pPlayerPawn || !pController || !pEngine)
+    return;
+  {
+    ImGui::Text("PlayerLoc %f %f %f", pPlayerPawn->Location.X,
+                pPlayerPawn->Location.Y, pPlayerPawn->Location.Z);
+
+    ImGui::Text("PlayerRot %d %d %d", pPlayerPawn->Rotation.Yaw,
+                pPlayerPawn->Rotation.Pitch, pPlayerPawn->Rotation.Roll);
+
+    ImGui::Text("Controller x:%f y:%f z:%f", pController->Location.X,
+                pController->Location.Y, pController->Location.Z);
+    ImGui::Text("Controller %d %d %d", pController->Rotation.Yaw,
+                pController->Rotation.Pitch, pController->Rotation.Roll);
+
+    if (pController->PlayerCamera) {
+      ImGui::Text(
+          "Camera x:%f y:%f z:%f", pController->PlayerCamera->Location.X,
+          pController->PlayerCamera->Location.Y, pController->Location.Z);
+      ImGui::Text("Camera %d %d %d", pController->PlayerCamera->Rotation.Yaw,
+                  pController->PlayerCamera->Rotation.Pitch,
+                  pController->PlayerCamera->Rotation.Roll);
+    }
+
+    if (pController->myHUD) {
+      ImGui::Text("Hud x:%f y:%f z:%f", pController->myHUD->Location.X,
+                  pController->myHUD->Location.Y, pController->Location.Z);
+      ImGui::Text("Hud %d %d %d", pController->myHUD->Rotation.Yaw,
+                  pController->myHUD->Rotation.Pitch,
+                  pController->myHUD->Rotation.Roll);
+    }
+
+    ImGui::Text("Controller->TargetViewRotation %d %d %d",
+                pController->TargetViewRotation.Yaw,
+                pController->TargetViewRotation.Pitch,
+                pController->TargetViewRotation.Roll);
+    ImGui::Text("Controller->CurrentPawnRotation %d %d %d",
+                pController->CurrentPawnRotation.Yaw,
+                pController->CurrentPawnRotation.Pitch,
+                pController->CurrentPawnRotation.Roll);
+
+    ImGui::Text("pPlayerPawn->DesiredRotation %d %d %d",
+                pPlayerPawn->DesiredRotation.Yaw,
+                pPlayerPawn->DesiredRotation.Pitch,
+                pPlayerPawn->DesiredRotation.Roll);
+
+    ImGui::Text("pPlayerPawn->RelativeRotation %d %d %d",
+                pPlayerPawn->RelativeRotation.Yaw,
+                pPlayerPawn->RelativeRotation.Pitch,
+                pPlayerPawn->RelativeRotation.Roll);
+
+    ImGui::Text("pController->PlayerCamera->CameraCache.POV.Rotation %d %d %d",
+                pController->PlayerCamera->CameraCache.POV.Rotation.Yaw,
+                pController->PlayerCamera->CameraCache.POV.Rotation.Pitch,
+                pController->PlayerCamera->CameraCache.POV.Rotation.Roll);
+  }
+
+  //  Classes::FVector outLoc;
+  //  Classes::FRotator outRot;
+  //  pController->GetPlayerViewPoint(&outLoc, &outRot);
+  //  ImGui::Text("outRot %d %d %d", outRot.Yaw, outRot.Pitch, outRot.Roll);
+
+  return;
 }
 
 void MenuMain::AddItem(Classes::UHeroEquipment *item) {

@@ -35,6 +35,13 @@ bool Config::Init() {
 bool Config::Cleanup() {
   TurnOffPlayerGodMod();
   SaveKeybinds();
+
+  auto pPlayerPawn = GetPlayerPawn();
+  if (pPlayerPawn) {
+    pPlayerPawn->bCollideWorld = 1;
+    pPlayerPawn->bCollideActors = 1;
+  }
+
   return true;
 }
 
@@ -61,17 +68,34 @@ void Config::RegisterKeybind(std::string name, Config::KeyBinds keyBindName,
 }
 
 void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
+  // noclip
+  if (bNoClip) {
+    NoClip();
+  }
+
+  Classes::FVector outLoc;
+  Classes::FRotator outRot;
+  auto pController = config.GetADunDefPlayerController();
+  pController->GetPlayerViewPoint(&outLoc, &outRot);
+
+  // show mouse cursor
+  if (bShowMenu) {
+    GetClientManager()->bRenderCursor = 1;
+  }
+
   // player pos
   if (config.bShowPlayerTeleportPos) {
     Classes::FString v(L"V");
     FloatingTextinWorld(v, config.GetTeleportPos(), {0, 1, 0, 1});
   }
 
-  // vacuum hack
+  // show vacuum hack
   if (config.bShowVacuumPos) {
     Classes::FString v(L"V");
     FloatingTextinWorld(v, config.GetVacPos(), {1, 0, 0, 1});
   }
+
+  // vacuum hack
   if (config.bVacHack) {
     config.MoveEnemyPawns(config.vacPos);
   }
@@ -97,6 +121,28 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   // teleport players
   if (config.bTeleportPlayers) {
     config.MovePlayerPawns(config.playerTeleportPos);
+  }
+}
+
+void Config::NoClip() {
+  auto pPlayerPawn = GetPlayerPawn();
+
+  if (!pPlayerPawn)
+    return;
+
+  if (bNoClip) {
+    pPlayerPawn->bCollideWorld = 0;
+    pPlayerPawn->bCollideActors = 0;
+    pPlayerPawn->bSimulateGravity = 0;
+    pPlayerPawn->bSimGravityDisabled = 1;
+
+    // pPlayerPawn->Velocity = {0, 0, 0};
+    // pPlayerPawn->Acceleration = {0, 0, 0};
+  } else {
+    pPlayerPawn->bSimGravityDisabled = 0;
+    pPlayerPawn->bSimulateGravity = 1;
+    pPlayerPawn->bCollideWorld = 1;
+    pPlayerPawn->bCollideActors = 1;
   }
 }
 
@@ -343,6 +389,18 @@ Classes::UDunDefHeroManager *Config::GetHeroManager() {
   return pManager;
 }
 
+Classes::UDunDefSceneClient *Config::GetClientManager() {
+
+  static Classes::UDunDefSceneClient *client =
+      (Classes::UDunDefSceneClient *)GetInstanceOf(
+          Classes::UDunDefSceneClient::StaticClass());
+
+  if (!client)
+    return nullptr;
+
+  return client;
+}
+
 void Config::PawnLoop(const std::function<void(Classes::ADunDefPawn *)> &func,
                       bool applyToEnemy = true, bool applyToPlayer = false) {
   Classes::APawn *curPawn = GetFirstPawnInList();
@@ -476,4 +534,50 @@ void Config::SaveKeybinds() {
   SettingsFile << "\n";
   SettingsFile << keyBindsmap[KeyBinds::UpdateVacuumPos].key;
   SettingsFile.close();
+}
+
+Classes::FVector Config::GetForward(float yaw, float pitch) {
+  // Convert to radians (assuming 360 degrees = 65536 range)
+  float radPitch = pitch * (3.14159 / 32768.0f);
+  float radYaw = yaw * (3.14159 / 32768.0f);
+
+  // Calculate forward direction
+  float outX = cos(radYaw) * cos(radPitch);
+  float outY = sin(radYaw) * cos(radPitch);
+  float outZ = sin(radPitch);
+
+  return {outX, outY, outZ};
+}
+
+Classes::FRotator Config::GetRight(Classes::FRotator rot) {
+  // Convert Yaw from degrees (assuming 360 degrees = 65536 range) to radians
+  float radYaw = rot.Yaw * (3.14159f / 32768.0f);
+
+  // Calculate right direction
+  int rightX = sin(radYaw) * 32768;
+  int rightY = -cos(radYaw) * 32768;
+  int rightZ = 0; // Assuming right direction lies in the horizontal plane
+
+  return {rightX, rightY, rightZ};
+}
+
+Classes::FRotator Config::GetLeft(Classes::FRotator rot) {
+  // Convert Yaw from degrees (assuming 360 degrees = 65536 range) to radians
+  float radYaw = rot.Yaw * (3.14159 / 32768.0f);
+
+  // Calculate left direction (opposite of right)
+  int leftX = -sin(radYaw) * 32768;
+  int leftY = cos(radYaw) * 32768;
+  int leftZ = 0; // Assuming left direction lies in the horizontal plane
+
+  return {leftX, leftY, leftZ};
+}
+
+Classes::FVector Config::AddFVector(Classes::FVector vec1,
+                                    Classes::FVector vec2) {
+  Classes::FVector temp;
+  temp.X = vec1.X + vec2.X;
+  temp.Y = vec1.Y + vec2.Y;
+  temp.Z = vec1.Z + vec2.Z;
+  return temp;
 }

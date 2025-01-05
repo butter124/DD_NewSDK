@@ -11,6 +11,73 @@
 #include <string.h>
 // clang-format on
 
+std::string filterarray[]{
+    "Function Engine.Camera.UpdateCamera",
+    "Function Engine.Canvas.Reset",
+    "Function Engine.GameInfo.Timer",
+    "Function Engine.GameReplicationInfo.Timer",
+    "Function Engine.GameViewportClient.GetSubtitleRegion",
+    "Function Engine.GameViewportClient.LayoutPlayers",
+    "Function Engine.Interaction.PostRender",
+    "Function Engine.Interaction.Tick",
+    "Function Engine.LocalPlayer.PreHUDRender",
+    "Function Engine.PlayerController.ClientHearSound",
+    "Function Engine.PlayerController.GetFOVAngle",
+    "Function Engine.PlayerController.HearSoundFinished",
+    "Function Engine.PlayerController.PreRender",
+    "Function Engine.SequenceOp.Activated",
+    "Function Engine.SequenceOp.Deactivated",
+    "Function Engine.UIScene.GetFocusHint",
+    "Function Engine.UIScreenObject.ActivateKeyFrameCompletedDelegates",
+    "Function Engine.UIScreenObject.UIAnimationEnded",
+    "Function Engine.UIScreenObject.UIAnimationStarted",
+    "Function Engine.UIState.ActivateState",
+    "Function Engine.UIState.DeactivateState",
+    "Function Engine.UIState.IsStateAllowed",
+    "Function Engine.UIState.OnActivate",
+    "Function Engine.UIState.OnDeactivate",
+    "Function Engine.UIState_Focused.ActivateState",
+    "Function UDKGame.DunDefBuffManager.Tick",
+    "Function UDKGame.DunDefCagedPet.Tick",
+    "Function UDKGame.DunDefDroppedEquipment.RotateSkelMesh",
+    "Function UDKGame.DunDefForge.Tick",
+    "Function UDKGame.DunDefGameReplicationInfo.Tick",
+    "Function UDKGame.DunDefHUD.PostRender",
+    "Function UDKGame.DunDefLocalPlayer.PostHUDRender",
+    "Function UDKGame.DunDefNPC_BarKeep.Tick",
+    "Function UDKGame.DunDefNativeUIScene.IsKeyboardOwned",
+    "Function UDKGame.DunDefPlayer.Tick",
+    "Function UDKGame.DunDefPlayerCamera.OverTheShoulder.Tick",
+    "Function UDKGame.DunDefPlayerController.GetPlayerViewPoint",
+    "Function UDKGame.DunDefPlayerController.PlayerWalking.PlayerTick",
+    "Function UDKGame.DunDefPlayerReplicationInfo.Timer",
+    "Function UDKGame.DunDefUIScene.RenderGamepadKey",
+    "Function UDKGame.DunDefViewportClient.PostRender",
+    "Function UDKGame.DunDefViewportClient.Tick",
+    "Function UDKGame.DunDefWeapon_MagicStaff.Active.Tick",
+    "Function UDKGame.DunDef_SeqAct_AppPurchased.Activated",
+    "Function UDKGame.DunDef_SeqAct_LockContent.Activated",
+    "Function UDKGame.DunDef_SeqAct_SetNightmareUnlocked.Activated",
+    "Function UDKGame.DunDef_SeqAct_UnlockCostumes.Activated",
+    "Function UDKGame.DunDef_SeqAct_UnlockMission.Activated",
+    "Function UDKGame.DunDef_SeqCond_GetMultiplayerMode.Activated",
+    "Function UDKGame.DunDef_SeqCond_IsAchievementUnlocked.Activated",
+    "Function UDKGame.DunDef_SeqCond_IsInVolume.Activated",
+    "Function UDKGame.HUDWidgetScene.UIPostRender",
+    "Function UDKGame.Main.Tick",
+    "Function UDKGame.PlayerShopManager.Tick",
+    "Function UDKGame.UIScriptWidget_Button.RenderGame",
+    "Function UDKGame.UIScript_ActionWheelHotkey.RenderGame",
+    "Function UDKGame.UI_GameSetup.UIPostRender",
+    "Function UDKGame.Main.RunAntiCheat",
+    "Function UDKGame.UIScript_ActionWheelHotkey.RenderGame",
+    "Function UDKGame.UI_GameSetup.UIPostRender",
+    "Function Engine.Console.InputKey",
+    "Function Engine.UIObject.AllowInputAlias",
+    "Function UDKGame.DunDefUIController.InputKey",
+    "Function UDKGame.DunDefUIScene.OnInterceptedInputKey",
+    "Function UDKGame.DunDefViewportClient.OnInputAxis"};
+
 tEndScene oScene = nullptr;
 Hooking EndSceneHook;
 
@@ -23,6 +90,18 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
                          void *pResult) {
   std::string szName = pFunction->GetFullName().c_str();
   std::string objectName = pObject->Name.GetName();
+
+#ifdef LOGGING
+  bool print = true;
+  for (auto s : filterarray) {
+    if (szName == s) {
+      print = false;
+      break;
+    }
+  }
+  if (print)
+    std::cout << szName.c_str() << "\n";
+#endif
 
   // anti cheat
   if (strcmp(szName.c_str(), "Function UDKGame.Main.RunAntiCheat") == 0) {
@@ -55,8 +134,8 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
 LRESULT __stdcall WndProc(const HWND hwnd, UINT uMsg, WPARAM wParam,
                           LPARAM lparam) {
 
-    if (ImGui_ImplWin32_WndProcHandler(hwnd, uMsg, wParam, lparam))
-      return TRUE;
+  if (ImGui_ImplWin32_WndProcHandler(hwnd, uMsg, wParam, lparam))
+    return TRUE;
 
   return CallWindowProc(oWndProc, hwnd, uMsg, wParam, lparam);
 }

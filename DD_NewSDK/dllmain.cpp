@@ -25,11 +25,6 @@ DWORD WINAPI MainThread_Initialize(LPVOID param) {
   config.Init();
   menu.Init();
 
-  bool keyDownMenu = false;
-  bool keyDownEnd = false;
-  bool keyDownTeleport = false;
-
-  bool Continue = true;
   while (!config.bEndMenu) {
     // KEYBIND(config.ToggleKey, config.bShowMenu, keyDownMenu);
     // KEYBIND(VK_F2, config.bEndMenu, keyDownEnd);

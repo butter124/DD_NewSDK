@@ -33,4 +33,6 @@ protected:
   void BasicCheats();
   void Config();
   void PlayerCheats();
+  void Debug();
+  void NoClipHandleInput();
 };
