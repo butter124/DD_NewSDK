@@ -73,11 +73,6 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
     NoClip();
   }
 
-  Classes::FVector outLoc;
-  Classes::FRotator outRot;
-  auto pController = config.GetADunDefPlayerController();
-  pController->GetPlayerViewPoint(&outLoc, &outRot);
-
   // show mouse cursor
   if (bShowMenu) {
     GetClientManager()->bRenderCursor = 1;
@@ -547,30 +542,6 @@ Classes::FVector Config::GetForward(float yaw, float pitch) {
   float outZ = sin(radPitch);
 
   return {outX, outY, outZ};
-}
-
-Classes::FRotator Config::GetRight(Classes::FRotator rot) {
-  // Convert Yaw from degrees (assuming 360 degrees = 65536 range) to radians
-  float radYaw = rot.Yaw * (3.14159f / 32768.0f);
-
-  // Calculate right direction
-  int rightX = sin(radYaw) * 32768;
-  int rightY = -cos(radYaw) * 32768;
-  int rightZ = 0; // Assuming right direction lies in the horizontal plane
-
-  return {rightX, rightY, rightZ};
-}
-
-Classes::FRotator Config::GetLeft(Classes::FRotator rot) {
-  // Convert Yaw from degrees (assuming 360 degrees = 65536 range) to radians
-  float radYaw = rot.Yaw * (3.14159 / 32768.0f);
-
-  // Calculate left direction (opposite of right)
-  int leftX = -sin(radYaw) * 32768;
-  int leftY = cos(radYaw) * 32768;
-  int leftZ = 0; // Assuming left direction lies in the horizontal plane
-
-  return {leftX, leftY, leftZ};
 }
 
 Classes::FVector Config::AddFVector(Classes::FVector vec1,
