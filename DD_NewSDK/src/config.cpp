@@ -12,16 +12,18 @@ bool Config::Init() {
   // graphics
   REGISTER_HOOKED_FUNCTION("Function Engine.Interaction.PostRender",
                            PostRenderHookFunc);
-  // waveskipping
   REGISTER_HOOKED_FUNCTION("Function UDKGame.DunDef_SeqAct_SetWaveNumber.Activated",
                            WaveSkipHookFunc);
   REGISTER_HOOKED_FUNCTION("Function UDKGame.DunDefDroppedEquipment.ReportEquipmentToStats",
                            AutoLootHookFunc);
+  REGISTER_HOOKED_FUNCTION("Function UDKGame.DunDef_SeqAct_GiveEquipmentToPlayers.Activated",
+                           PlayerRewardHookFunc);
 
   RegisterKeybind("Toggle menu",Config::KeyBinds::ToggleKey,519,[this](){bShowMenu = !bShowMenu;});
   RegisterKeybind("End menu",Config::KeyBinds::EndKey,520,[this](){bEndMenu = true;});
   RegisterKeybind("Teleport players",Config::KeyBinds::TeleportPlayers,521,[this](){bTeleportPlayers = !bTeleportPlayers;});
   RegisterKeybind("Vacuum pos",Config::KeyBinds::UpdateVacuumPos,522,[this](){SetVacPos(GetPlayerPos());});
+  RegisterKeybind("No clip",Config::KeyBinds::ToggleNoClipKeybind,523,[this](){bNoClip = !bNoClip;});
 
   // clang-format on
 
@@ -40,6 +42,7 @@ bool Config::Cleanup() {
   if (pPlayerPawn) {
     pPlayerPawn->bCollideWorld = 1;
     pPlayerPawn->bCollideActors = 1;
+    pPlayerPawn->GravityZMultiplier = 1;
   }
 
   return true;
@@ -69,9 +72,7 @@ void Config::RegisterKeybind(std::string name, Config::KeyBinds keyBindName,
 
 void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   // noclip
-  if (bNoClip) {
-    NoClip();
-  }
+  NoClip();
 
   // show mouse cursor
   if (bShowMenu) {
@@ -128,14 +129,9 @@ void Config::NoClip() {
   if (bNoClip) {
     pPlayerPawn->bCollideWorld = 0;
     pPlayerPawn->bCollideActors = 0;
-    pPlayerPawn->bSimulateGravity = 0;
-    pPlayerPawn->bSimGravityDisabled = 1;
-
-    // pPlayerPawn->Velocity = {0, 0, 0};
-    // pPlayerPawn->Acceleration = {0, 0, 0};
+    pPlayerPawn->GravityZMultiplier = 0;
   } else {
-    pPlayerPawn->bSimGravityDisabled = 0;
-    pPlayerPawn->bSimulateGravity = 1;
+    pPlayerPawn->GravityZMultiplier = 1;
     pPlayerPawn->bCollideWorld = 1;
     pPlayerPawn->bCollideActors = 1;
   }
@@ -150,6 +146,20 @@ void Config::WaveSkipHookFunc(PROCESS_EVENT_ARGS) {
     wave->waveNumber = waveToSkipTo;
   if (!bLockWave)
     bSkipWave = false;
+}
+
+void Config::PlayerRewardHookFunc(PROCESS_EVENT_ARGS) {
+
+  Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *rewarditems =
+      ((Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *)(obj));
+  static int currentRewardInteration = 0;
+  if (currentRewardInteration < config.MultiplyRewardsBy) {
+    currentRewardInteration++;
+    rewarditems->Activated();
+    // tmpItemEntry = rewarditems->GiveEquipmentEntries;
+  } else {
+    currentRewardInteration = 0;
+  }
 }
 
 void Config::AutoLootHookFunc(PROCESS_EVENT_ARGS) {
@@ -516,6 +526,7 @@ void Config::GetKeybinds() {
   SettingsFile >> keyBindsmap[KeyBinds::EndKey].key;
   SettingsFile >> keyBindsmap[KeyBinds::TeleportPlayers].key;
   SettingsFile >> keyBindsmap[KeyBinds::UpdateVacuumPos].key;
+  SettingsFile >> keyBindsmap[KeyBinds::ToggleNoClipKeybind].key;
   SettingsFile.close();
 }
 
@@ -528,6 +539,8 @@ void Config::SaveKeybinds() {
   SettingsFile << keyBindsmap[KeyBinds::TeleportPlayers].key;
   SettingsFile << "\n";
   SettingsFile << keyBindsmap[KeyBinds::UpdateVacuumPos].key;
+  SettingsFile << "\n";
+  SettingsFile << keyBindsmap[KeyBinds::ToggleNoClipKeybind].key;
   SettingsFile.close();
 }
 

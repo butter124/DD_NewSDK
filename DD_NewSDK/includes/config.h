@@ -67,6 +67,8 @@ public:
   bool bShowPlayerTeleportPos = false;
   bool bNoClip = false;
   float fNoClipSpeed = 10;
+  bool bMultiplyReward = false;
+  int MultiplyRewardsBy = 10;
 
   Classes::FVector vacPos = {0, 0, 0};
   Classes::FVector playerTeleportPos = {0, 0, 0};
@@ -84,7 +86,13 @@ public:
   bool ShouldLootItem(Classes::UHeroEquipment *item);
 
   // handle key presses
-  enum KeyBinds { ToggleKey, EndKey, TeleportPlayers, UpdateVacuumPos };
+  enum KeyBinds {
+    ToggleKey,
+    EndKey,
+    TeleportPlayers,
+    UpdateVacuumPos,
+    ToggleNoClipKeybind
+  };
   std::unordered_map<KeyBinds, KeybindsStruct> keyBindsmap;
   void RegisterKeybind(std::string name, KeyBinds keyBindName, int keyCode,
                        std::function<void()> func);
@@ -96,7 +104,9 @@ public:
   void PostRenderHookFunc(PROCESS_EVENT_ARGS);
   void WaveSkipHookFunc(PROCESS_EVENT_ARGS);
   void AutoLootHookFunc(PROCESS_EVENT_ARGS);
+  void PlayerRewardHookFunc(PROCESS_EVENT_ARGS);
   void NoClip();
+  void ToggleNoClip();
 
   bool TogglePlayerGodMode();
   bool TurnOffPlayerGodMod();

@@ -11,9 +11,9 @@ void MenuMain::Init() {
 void MenuMain::OnBegin() {
   ImGui::Begin("MainMenu");
 
-  for (auto item : itemsVec) {
-    item.Render();
-  }
+  // for (auto item : itemsVec) {
+  // item.Render();
+  //}
 }
 
 void MenuMain::RenderMenuButton(std::string name, std::function<void()> func,
@@ -151,6 +151,7 @@ void MenuMain::NoClipHandleInput() {
     pPlayerPawn->Location =
         config.AddFVector(pPlayerPawn->Location, {-t[0], -t[1], -t[2]});
   }
+
   if (ImGui::IsKeyDown(ImGuiKey_D)) {
 
     auto forward = config.GetForward(rot.Yaw, rot.Pitch);
@@ -189,10 +190,19 @@ void MenuMain::NoClipHandleInput() {
     pPlayerPawn->Location = config.AddFVector(pPlayerPawn->Location,
                                               {tLeft[0], tLeft[1], tLeft[2]});
   }
+
+  if (ImGui::IsKeyDown(ImGuiKey_Space)) {
+    pPlayerPawn->Location.Z += config.fNoClipSpeed;
+  }
+
+  if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) {
+    pPlayerPawn->Location.Z -= config.fNoClipSpeed;
+  }
 }
 
 void MenuMain::BasicCheats() {
   {
+    ImGui::PushItemWidth(75);
     ImGui::Text("Basic cheats");
     ImGui::Separator();
     if (ImGui::Checkbox("Godmode", &config.bPlayerGodMode)) {
@@ -205,27 +215,36 @@ void MenuMain::BasicCheats() {
     if (ImGui::Checkbox("NoClip", &config.bNoClip)) {
       auto pPlayerPawn = config.GetADunDefPlayerController();
       if (config.bNoClip) {
-        pPlayerPawn->Pawn->bCollideWorld = false;
-        pPlayerPawn->Pawn->bCollideActors = false;
-        pPlayerPawn->Pawn->bCollideComplex = false;
+        if (pPlayerPawn) {
+          pPlayerPawn->Pawn->bCollideWorld = false;
+          pPlayerPawn->Pawn->bCollideActors = false;
+          pPlayerPawn->Pawn->bCollideComplex = false;
+          pPlayerPawn->Pawn->GravityZMultiplier = 0;
+        }
       } else {
-
-        pPlayerPawn->Pawn->bCollideWorld = true;
-        pPlayerPawn->Pawn->bCollideActors = true;
-        pPlayerPawn->Pawn->bCollideComplex = true;
+        if (pPlayerPawn) {
+          pPlayerPawn->Pawn->GravityZMultiplier = 1;
+          pPlayerPawn->Pawn->bCollideWorld = true;
+          pPlayerPawn->Pawn->bCollideActors = true;
+          pPlayerPawn->Pawn->bCollideComplex = true;
+        }
       }
     }
 
-    if (config.bNoClip)
-      NoClipHandleInput();
+    ImGui::InputFloat("No clip speed", &config.fNoClipSpeed);
 
     // level cheats
-    ImGui::PushItemWidth(75);
     ImGui::InputInt("##waveskip", &config.waveToSkipTo);
     ImGui::SameLine();
     ImGui::Checkbox("Level skip", &config.bSkipWave);
-    ImGui::PopItemWidth();
+    ImGui::SameLine();
+    ImGui::Checkbox("lock level", &config.bLockWave);
   }
+
+  // multiply rewards
+  ImGui::InputInt("##reward count", &config.MultiplyRewardsBy);
+  ImGui::SameLine();
+  ImGui::Checkbox("Multiply Wave rewards", &config.bMultiplyReward);
 
   // teleport cheats
   {
@@ -250,7 +269,8 @@ void MenuMain::BasicCheats() {
   }
 
   // debugging
-  //Debug();
+  // Debug();
+  ImGui::PopItemWidth();
 }
 
 void MenuMain::PlayerCheats() {
@@ -270,15 +290,20 @@ void MenuMain::PlayerCheats() {
     //   pController->Pawn->Location.Y = vec[1];
     //   pController->Pawn->Location.Z = vec[2];
     // }
-    ImGui::InputInt("Score", &pController->Score);
+    // ImGui::InputInt("Score", &pController->Score);
 
-    if (ImGui::Button("Repair all towers")) {
-      pController->RepairAllTowers();
-    }
     if (ImGui::Button("Max all towers")) {
       pController->UpgradeAllTowers(5);
     }
+    ImGui::SameLine();
+    if (ImGui::Button("Repair all towers")) {
+      pController->RepairAllTowers();
+    }
 
+    if (ImGui::Button("Max shop mana")) {
+      Classes::FHighDigitInt tmp = {1, 1, 1, 1};
+      pController->SetBankedMana(tmp, 0, 1);
+    }
     // TArray<class ADunDefPlayerAbility*>                PlayerAbilities; //
     // 0x097C(0x000C) (NeedCtorLink) TArray<int> statsData; // 0x0654(0x000C)
     // (NeedCtorLink) TArray<int> playerStatsData; // 0x0660(0x000C)
