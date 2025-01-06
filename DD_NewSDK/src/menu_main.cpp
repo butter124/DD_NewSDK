@@ -73,6 +73,10 @@ void MenuMain::RenderUI() {
         "Player Cheats", [this]() { selectedMenu = Menus::MenuPlayer; },
         selectedMenu == 2);
 
+    RenderMenuButton(
+        "Item Modding", [this]() { selectedMenu = Menus::MenuModding; },
+        selectedMenu == 3);
+
     ImGui::EndChild();
   }
   ImGui::SameLine();
@@ -96,12 +100,46 @@ void MenuMain::RenderUI() {
       PlayerCheats();
       break;
 
+    case Menus::MenuModding:
+      ItemModding();
+      break;
+
     default:
       BasicCheats();
       break;
     }
     ImGui::EndChild();
     ImGui::EndGroup();
+  }
+}
+
+void MenuMain::ItemModding() {
+  ImGui::Text("Item modding");
+  ImGui::Separator();
+
+  auto pPlayerController = config.GetADunDefPlayerController();
+  if (!pPlayerController)
+    return;
+
+  // TODO: this looks fucken awful refactor this its a pain to read
+  if (pPlayerController->myHero &&
+      pPlayerController->myHero->HeroEquipments.Num()) {
+    if (ImGui::TreeNode("Hero equipment")) {
+      for (size_t i = 0; i < pPlayerController->myHero->HeroEquipments.Num();
+           i++) {
+        auto item = pPlayerController->myHero->HeroEquipments[i];
+        if (ImGui::TreeNode(
+                (item->ObjectArchetype->GetName() + "##" + std::to_string(i))
+                    .c_str())) {
+          ImGuiItem(item);
+
+          ImGui::TreePop();
+        }
+      }
+      ImGui::TreePop();
+    }
+  } else {
+    ImGui::Text("No equipped items");
   }
 }
 
@@ -274,6 +312,8 @@ void MenuMain::BasicCheats() {
 }
 
 void MenuMain::PlayerCheats() {
+  ImGui::Text("Player Cheats");
+  ImGui::Separator();
   Classes::ADunDefPlayerController *pController =
       config.GetADunDefPlayerController();
   if (!pController)
@@ -346,6 +386,9 @@ void MenuMain::PlayerCheats() {
       pController->myHero->SetColors(cLiner1, cLiner2, cLiner3);
     }
 
+    for (int i = 0; i > pController->myHero->HeroEquipments.Num(); i++) {
+    }
+
     // TArray<class UHeroEquipment*>                      HeroEquipments; //
     // 0x056C(0x000C) (NeedCtorLink)
     // player hero
@@ -404,16 +447,15 @@ void MenuMain::PlayerCheats() {
     ImGui::InputFloat("Jump height", &pController->Pawn->JumpZ);
     ImGui::InputFloat("Ground speed", &pController->Pawn->GroundSpeed);
 
-    bool tempCollideActors = pController->Pawn->bCollideActors;
+    // bool tempCollideActors = pController->Pawn->bCollideActors;
+    // if (ImGui::Checkbox("Collide actors", &tempCollideActors)) {
+    //   pController->Pawn->bCollideActors = tempCollideActors;
+    // }
 
-    if (ImGui::Checkbox("Collide actors", &tempCollideActors)) {
-      pController->Pawn->bCollideActors = tempCollideActors;
-    }
-
-    bool tempCollideWorld = pController->Pawn->bCollideWorld;
-    if (ImGui::Checkbox("Collide world", &tempCollideWorld)) {
-      pController->Pawn->bCollideWorld = tempCollideWorld;
-    }
+    // bool tempCollideWorld = pController->Pawn->bCollideWorld;
+    // if (ImGui::Checkbox("Collide world", &tempCollideWorld)) {
+    //   pController->Pawn->bCollideWorld = tempCollideWorld;
+    // }
   }
 
   return;
@@ -488,6 +530,212 @@ void MenuMain::Debug() {
   //  ImGui::Text("outRot %d %d %d", outRot.Yaw, outRot.Pitch, outRot.Roll);
 
   return;
+}
+
+void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
+  ImGui::Text("InternalName : %s", item->GetName().c_str());
+
+  if (item->EquipmentName.Data) {
+    ImGui::Text("EquipmentName     :  %ls", item->EquipmentName.c_str());
+  } else {
+    ImGui::Text("EquipmentName     :  ");
+  }
+
+  ImGui::Text("ItemAddr          :  0x%p", item);
+  ImGui::SameLine();
+
+  // Reduce padding for the button
+  ImGui::PushStyleVar(ImGuiStyleVar_FramePadding,
+                      ImVec2(0, 0)); // Set padding to 0 for both axes
+  if (ImGui::Button("copy to clipboard", ImVec2(0, 0))) {
+    ImGui::LogToClipboard();
+    ImGui::LogText("%p", item);
+    ImGui::LogFinish();
+  }
+  ImGui::PopStyleVar(); // Restore previous style
+
+  // item name
+  if (item->UserEquipmentName.Data) {
+    // change item name
+    ImGui::Text("UserEquipmentName :  %ls", item->UserEquipmentName.c_str());
+    static char charBuff[32];
+    ImGui::PushItemWidth(ImGui::GetWindowWidth() * .25f);
+    ImGui::InputText("Name  ", charBuff, sizeof(charBuff),
+                     IM_ARRAYSIZE(charBuff));
+    ImGui::PopItemWidth();
+    ImGui::SameLine();
+
+    if (ImGui::Button("Change Name")) {
+      ChangeFString(item->UserEquipmentName, charBuff);
+    }
+  } else {
+    ImGui::Text("UserEquipmentName :");
+  }
+
+  // forger name
+  if (item->UserForgerName.Data) {
+    ImGui::Text("UserForgerName    :  %ls", item->UserForgerName.c_str());
+
+    // change forger name
+    ImGui::PushItemWidth(ImGui::GetWindowWidth() * .25f);
+    static char ncharBuff[32];
+    ImGui::InputText("Forger", ncharBuff, sizeof(ncharBuff),
+                     IM_ARRAYSIZE(ncharBuff));
+    ImGui::PopItemWidth();
+    ImGui::SameLine();
+
+    if (ImGui::Button("Change Forger Name")) {
+      ChangeFString(item->UserForgerName, ncharBuff);
+    } else {
+      ImGui::Text("UserForgerName    :");
+    }
+  }
+
+  if (ImGui::TreeNode("___Main___")) {
+    ImGui::Text("___Name___");
+
+    ImGui::PushItemWidth(ImGui::GetWindowWidth() * .25f);
+    if (item->RandomBaseNames.Data)
+      ShowCombo(item->RandomBaseNames,
+                item->RandomBaseNames.Data[item->NameIndex_Base].StringValue,
+                item->NameIndex_Base, "Base");
+    else
+      ImGui::Text("No RandomBaseNames found");
+
+    if (item->DamageReductionNames.Data)
+      ShowCombo(item->DamageReductionNames,
+                item->DamageReductionNames.Data[item->NameIndex_DamageReduction]
+                    .StringValue,
+                item->NameIndex_DamageReduction, "DamageReduction");
+    else
+      ImGui::Text("No DamageReductionNames found");
+    if (item->QualityDescriptorRealNames.Data)
+      ShowCombo(item->QualityDescriptorRealNames,
+                item->QualityDescriptorRealNames
+                    .Data[item->NameIndex_QualityDescriptor]
+                    .StringValue,
+                item->NameIndex_QualityDescriptor, "Quality");
+    else
+      ImGui::Text("No QualityDescriptorRealNames found");
+
+    ImGui::InputFloat("WeaponDrawScaleMultiplier",
+                      &item->WeaponDrawScaleMultiplier, 1, 100, "%.3f");
+    ImGui::PopItemWidth();
+
+    ImGui::Text("___Color___");
+    ImGui::PushItemWidth(ImGui::GetWindowWidth() * .25f);
+    // ImGui::InputFloat("R1", &item->PrimaryColorOverride.R, 1, 100, "%.3f");
+    // ImGui::SameLine(); ImGui::InputFloat("G1",
+    // &item->PrimaryColorOverride.G, 1, 100, "%.3f"); ImGui::SameLine();
+    // ImGui::InputFloat("B1", &item->PrimaryColorOverride.B, 1, 100, "%.3f");
+
+    // ImGui::InputFloat("R2", &item->SecondaryColorOverride.R, 1, 100,
+    // "%.3f"); ImGui::SameLine(); ImGui::InputFloat("G2",
+    // &item->SecondaryColorOverride.G, 1, 100, "%.3f"); ImGui::SameLine();
+    // ImGui::InputFloat("B2", &item->SecondaryColorOverride.B, 1, 100,
+    // "%.3f");
+
+    ImGui::ColorPicker4("Primary", &(*(float *)&item->PrimaryColorOverride.R));
+    ImGui::SameLine();
+    ImGui::ColorPicker4("Secondary",
+                        &(*(float *)&item->SecondaryColorOverride.R));
+
+    ImGui::PopItemWidth();
+
+    ImGui::TreePop();
+  }
+
+  if (ImGui::TreeNode("___Stats___")) {
+    ImGui::InputInt("HHealth   ", &item->StatModifiers[eHHealth]);
+    ImGui::InputInt("HSpeed    ", &item->StatModifiers[eHSpeed]);
+    ImGui::InputInt("HDamage   ", &item->StatModifiers[eHDamage]);
+    ImGui::InputInt("HCast     ", &item->StatModifiers[eHCast]);
+    ImGui::InputInt("Ability1  ", &item->StatModifiers[Ability1]);
+    ImGui::InputInt("Ability2  ", &item->StatModifiers[Ability2]);
+    ImGui::InputInt("THealth   ", &item->StatModifiers[eTHealth]);
+    ImGui::InputInt("TSpeed    ", &item->StatModifiers[eTSpeed]);
+    ImGui::InputInt("TDamage   ", &item->StatModifiers[eTDamage]);
+    ImGui::InputInt("TRange    ", &item->StatModifiers[eTRange]);
+    ImGui::TreePop();
+  }
+
+  if (ImGui::TreeNode("___Other___")) {
+
+    ImGui::PushItemWidth(ImGui::GetWindowWidth() * .25f);
+    ImGui::InputInt("MaxEquipmentLevel    ", &(item->MaxEquipmentLevel));
+    ImGui::InputInt("DamageReductions1    ",
+                    &(item->DamageReductions[0].PercentageReduction));
+    ImGui::InputInt("DamageReductions2    ",
+                    &(item->DamageReductions[1].PercentageReduction));
+    ImGui::InputInt("DamageReductions3    ",
+                    &(item->DamageReductions[2].PercentageReduction));
+    ImGui::InputInt("DamageReductions4    ",
+                    &(item->DamageReductions[3].PercentageReduction));
+
+    ImGui::InputInt("DamageBonus    ", &(item->WeaponDamageBonus));
+    ImGui::InputInt("NumberOfProjectilesBonus    ",
+                    &(item->WeaponNumberOfProjectilesBonus));
+    ImGui::InputInt("SpeedOfProjectilesBonus    ",
+                    &(item->WeaponSpeedOfProjectilesBonus));
+    ImGui::InputInt("WeaponAdditionalDamageAmount    ",
+                    &(item->WeaponAdditionalDamageAmount));
+
+    ImGui::InputFloat("MaxRandomElementalDamageMultiplier",
+                      &item->MaxRandomElementalDamageMultiplier, 1, 100,
+                      "%.3f");
+    ImGui::InputFloat("WeaponSwingSpeedMultiplier",
+                      &item->WeaponSwingSpeedMultiplier, 1, 100, "%.3f");
+
+    ImGui::InputInt("WeaponReloadSpeedBonus                       ",
+                    &(item->WeaponReloadSpeedBonus));
+    ImGui::InputInt("WeaponKnockbackBonus                         ",
+                    &(item->WeaponKnockbackBonus));
+    ImGui::InputInt("WeaponAltDamageBonus                         ",
+                    &(item->WeaponAltDamageBonus));
+    ImGui::InputInt("WeaponBlockingBonus                          ",
+                    &(item->WeaponBlockingBonus));
+    ImGui::InputInt("WeaponClipAmmoBonus                          ",
+                    &(item->WeaponClipAmmoBonus));
+    ImGui::InputInt("AdditionalAllowedUpgradeResistancePoints     ",
+                    &(item->AdditionalAllowedUpgradeResistancePoints));
+    ImGui::InputInt("RequirementLevelOverride                     ",
+                    &(item->RequirementLevelOverride));
+    ImGui::InputInt("WeaponChargeSpeedBonus                       ",
+                    &(item->WeaponChargeSpeedBonus));
+    ImGui::InputInt("WeaponShotsPerSecondBonus                    ",
+                    &(item->WeaponShotsPerSecondBonus));
+
+    ImGui::InputInt("MaximumSellWorth", &item->MaximumSellWorth);
+    ImGui::InputInt("MinimumSellWorth", &item->MinimumSellWorth);
+    ImGui::InputInt("ShopMinimumSellWorth", &item->ShopMinimumSellWorth);
+    ImGui::InputInt("MaxEquipmentLevel", &item->MaxEquipmentLevel);
+    ImGui::InputInt("Level", &item->Level);
+    ImGui::InputInt("StoredMana", &item->StoredMana);
+    ImGui::InputInt("UserID", &item->UserID);
+    ImGui::InputFloat("MyRatingPercent", &item->MyRatingPercent, 1.0f);
+    ImGui::InputFloat("MyRating", &item->MyRating, 1.0f);
+    ImGui::InputInt("EquipmentID1", &item->EquipmentID1);
+    ImGui::InputInt("EquipmentID2", &item->EquipmentID2);
+
+    ImGui::PopItemWidth();
+    ImGui::TreePop();
+  }
+  item->bIsNameOnlineVerified = 1;
+  item->bIsForgerNameOnlineVerified = 1;
+}
+
+void MenuMain::ChangeFString(Classes::FString &str, char *to) {
+  if (!str.IsValid())
+    return;
+
+  std::wstring wideStr(to, to + std::strlen(to));
+
+  str.Data = new wchar_t[wideStr.length() + 1];
+  memset(str.Data, 0, wideStr.length() + 1);
+  std::wmemcpy(str.Data, wideStr.c_str(), wideStr.length() + 1);
+
+  str.Max = wideStr.length() + 1;
+  str.Count = wideStr.length() + 1;
 }
 
 void MenuMain::AddItem(Classes::UHeroEquipment *item) {
@@ -573,6 +821,54 @@ bool MenuMain::HandleKeyChange(int &key, bool &shouldChange) {
     }
   }
   return false;
+}
+
+void MenuMain::ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
+                         Classes::FString _CurrentSelected,
+                         unsigned char &_changeChar, std::string comboName) {
+  std::string CurrentSelected;
+
+  // Convert the selected value to string if it's valid
+  if (_CurrentSelected.IsValid())
+    CurrentSelected = _CurrentSelected.ToString();
+
+  // Initialize CurrentSelectedIndex based on the current selection
+  static int CurrentSelectedIndex = -1; // -1 means no selection at first
+
+  // Update the CurrentSelectedIndex when the combo is opened with a new
+  // selection
+  if (CurrentSelectedIndex == -1 && !CurrentSelected.empty()) {
+    for (int i = 0; i < names.Count; i++) {
+      if (names.Data[i].StringValue.ToString() == CurrentSelected) {
+        CurrentSelectedIndex = i;
+        break;
+      }
+    }
+  }
+
+  // Begin the combo box
+  if (ImGui::BeginCombo((comboName).c_str(), CurrentSelected.c_str())) {
+    for (int i = 0; i < names.Count; i++) {
+      if (!(names.Data[i].StringValue.Data))
+        continue;
+
+      std::string ComboName = names.Data[i].StringValue.ToString();
+      const bool is_selected = (CurrentSelectedIndex == i);
+
+      if (ImGui::Selectable((ComboName + "##" + std::to_string(i)).c_str(),
+                            is_selected)) {
+        CurrentSelectedIndex = i;
+        _changeChar =
+            static_cast<unsigned char>(i); // Ensure it's assigned correctly
+      }
+
+      // Set the initial focus when opening the combo (scrolling + keyboard
+      // navigation focus)
+      if (is_selected)
+        ImGui::SetItemDefaultFocus();
+    }
+    ImGui::EndCombo();
+  }
 }
 
 void MenuMain::RemoveItem(Classes::UHeroEquipment *item) {}

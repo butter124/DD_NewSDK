@@ -7,7 +7,7 @@
 class MenuMain : public Menu_template {
 
 public:
-  enum Menus { MenuBasic, MenuConfig, MenuPlayer };
+  enum Menus { MenuBasic, MenuConfig, MenuPlayer, MenuModding };
   void Init() override;
   void OnBegin() override;
   void RenderUI() override;
@@ -35,4 +35,11 @@ protected:
   void PlayerCheats();
   void Debug();
   void NoClipHandleInput();
+  void ImGuiItem(Classes::UHeroEquipment *item);
+  void ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
+                 Classes::FString CurrentSelected, unsigned char &_changeChar,
+                 std::string comboName);
+
+  void ChangeFString(Classes::FString &str, char *to);
+  void ItemModding();
 };
