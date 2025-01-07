@@ -1,6 +1,7 @@
 #pragma once
 #include <d3d9.h>
 // #define LOGGING 1
+// #define IMGUIDEMO
 
 #include <format>
 #include <iostream>

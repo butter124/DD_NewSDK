@@ -149,6 +149,8 @@ void Config::WaveSkipHookFunc(PROCESS_EVENT_ARGS) {
 }
 
 void Config::PlayerRewardHookFunc(PROCESS_EVENT_ARGS) {
+  if (!bMultiplyReward)
+    return;
 
   Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *rewarditems =
       ((Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *)(obj));
