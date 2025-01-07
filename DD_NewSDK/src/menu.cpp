@@ -158,8 +158,10 @@ HRESULT APIENTRY hkEndScene(LPDIRECT3DDEVICE9 pDevice) {
   ImGui_ImplWin32_NewFrame();
   ImGui::NewFrame();
 
+#ifdef IMGUIDEMO
   bool tmp = TRUE;
   ImGui::ShowDemoWindow(&tmp);
+#endif // IMGUIDEMO
   menu.ImGuiMenu();
 
   ImGui::EndFrame();
