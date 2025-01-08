@@ -62,20 +62,19 @@ void MenuMain::RenderUI() {
     ImGui::BeginChild("left pane", ImVec2(150, 0),
                       ImGuiChildFlags_Borders | ImGuiChildFlags_ResizeX);
 
+    // the order the button is registered with determine the order in the menu
     RenderMenuButton(
         "Basic Cheats", [this]() { selectedMenu = Menus::MenuBasic; },
-        selectedMenu == 0);
-    RenderMenuButton(
-        "Config Cheats", [this]() { selectedMenu = Menus::MenuConfig; },
-        selectedMenu == 1);
-
+        selectedMenu == Menus::MenuBasic);
     RenderMenuButton(
         "Player Cheats", [this]() { selectedMenu = Menus::MenuPlayer; },
-        selectedMenu == 2);
-
+        selectedMenu == Menus::MenuPlayer);
     RenderMenuButton(
         "Item Modding", [this]() { selectedMenu = Menus::MenuModding; },
-        selectedMenu == 3);
+        selectedMenu == Menus::MenuModding);
+    RenderMenuButton(
+        "Config", [this]() { selectedMenu = Menus::MenuConfig; },
+        selectedMenu == Menus::MenuConfig);
 
     ImGui::EndChild();
   }
@@ -316,9 +315,9 @@ void MenuMain::PlayerCheats() {
   ImGui::Separator();
   Classes::ADunDefPlayerController *pController =
       config.GetADunDefPlayerController();
+
   if (!pController)
     return;
-
   // player controller
   {
     // ImGui::InputInt("Player mana", &pController->ManaPower);
@@ -533,6 +532,9 @@ void MenuMain::Debug() {
 }
 
 void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
+  if (ImGui::Button(("Give##%ls" + item->GetName()).c_str())) {
+    config.PushItemToQueue(item);
+  }
   ImGui::Text("InternalName : %s", item->GetName().c_str());
 
   if (item->EquipmentName.Data) {
@@ -738,12 +740,6 @@ void MenuMain::ChangeFString(Classes::FString &str, char *to) {
   str.Count = wideStr.length() + 1;
 }
 
-void MenuMain::AddItem(Classes::UHeroEquipment *item) {
-  MenuItem menu;
-  menu.SetItem(item);
-  itemsVec.push_back(menu);
-}
-
 void MenuMain::Config() {
 
   static const char *itemQualitys[] = {"None",      "Mythical",  "Transcendent",
@@ -870,5 +866,3 @@ void MenuMain::ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
     ImGui::EndCombo();
   }
 }
-
-void MenuMain::RemoveItem(Classes::UHeroEquipment *item) {}

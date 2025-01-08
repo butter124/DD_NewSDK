@@ -118,6 +118,12 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   if (config.bTeleportPlayers) {
     config.MovePlayerPawns(config.playerTeleportPos);
   }
+
+  // give item
+  if (!qItemsToGive.empty()) {
+    auto item = PopItemFromQueue();
+    GiveItem(item);
+  }
 }
 
 void Config::NoClip() {
@@ -233,8 +239,8 @@ bool Config::ShouldLootItem(Classes::UHeroEquipment *item) {
   }
 
   // check for item filter
-  // if (item->NameIndex_QualityDescriptor < itemFilterQuality + 12)
-  // return false;
+  if (item->NameIndex_QualityDescriptor < itemFilterQuality + 12)
+    return false;
 
   return true;
 }
@@ -566,4 +572,70 @@ Classes::FVector Config::AddFVector(Classes::FVector vec1,
   temp.Y = vec1.Y + vec2.Y;
   temp.Z = vec1.Z + vec2.Z;
   return temp;
+}
+
+bool Config::GiveItem(Classes::UHeroEquipment *item) {
+  Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *pItemGiver =
+      GetEquipmentGiver();
+  Classes::ADunDefPlayerController *pController = GetADunDefPlayerController();
+
+  if (!pItemGiver || !pController)
+    return false;
+
+  // save old template
+  Classes::FGiveEquipmentEntry oldtemp;
+  oldtemp = pItemGiver->GiveEquipmentEntries.Data[0];
+
+  // setup new template
+  Classes::FGiveEquipmentEntry newtemp = oldtemp;
+
+  newtemp.ForHeroArchetype = NULL;
+  newtemp.EquipmentArchetype = (Classes::UHeroEquipment *)item->ObjectArchetype;
+  // newtemp.EquipmentArchetypesRandom;
+  newtemp.BaseForceRandomizationQuality = 1.5f;
+  newtemp.MaxRandomizationQuality = 1.5f;
+  newtemp.RandomizerMultiplierOverride = 9.0f;
+  newtemp.bUseEquipmentArchetypeAsTemplate = 1;
+  newtemp.bRandomGlobalDontUseAdditionalItemEntries = 0;
+  newtemp.ForceHeroArchetypeExactMatch = 0;
+  newtemp.bDontIgnoreEquipmentMinUpgradeLevels = 0;
+  newtemp.bGetRandomGlobalEquipmentDrop = 0;
+  newtemp.bRandomGlobalDontUseShopDrops = 0;
+  newtemp.RandomGlobalEquipmentDropExtraRarityWeighting = 0;
+  newtemp.RandomGlobalEquipmentDropValueMin = 0;
+  newtemp.RandomGlobalEquipmentDropValueMax = 0;
+  newtemp.bUsed = 0;
+
+  // change the itemGiver to my items
+  pItemGiver->GiveEquipmentEntries.Data[0] = newtemp;
+
+  pItemGiver->GiveEquipment(pController);
+
+  // cleanup templates
+  pItemGiver->GiveEquipmentEntries.Data[0] = oldtemp;
+
+  return true;
+}
+
+Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *Config::GetEquipmentGiver() {
+  static Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *obj;
+  if (!obj)
+    obj = (Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *)GetInstanceOf(
+        Classes::UDunDef_SeqAct_GiveEquipmentToPlayers::StaticClass());
+  return obj;
+}
+
+void Config::PushItemToQueue(Classes::UHeroEquipment *item) {
+  std::lock_guard<std::mutex> lock(queueMutex);
+  qItemsToGive.push(item);
+}
+
+Classes::UHeroEquipment *Config::PopItemFromQueue() {
+  std::lock_guard<std::mutex> lock(queueMutex);
+  if (!qItemsToGive.empty()) {
+    auto item = qItemsToGive.front();
+    qItemsToGive.pop();
+    return item;
+  }
+  return nullptr;
 }

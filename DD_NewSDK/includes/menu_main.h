@@ -7,14 +7,16 @@
 class MenuMain : public Menu_template {
 
 public:
-  enum Menus { MenuBasic, MenuConfig, MenuPlayer, MenuModding };
+  enum Menus {
+    MenuBasic,
+    MenuPlayer,
+    MenuModding,
+    MenuConfig,
+  };
   void Init() override;
   void OnBegin() override;
   void RenderUI() override;
   void Thread() override;
-
-  void AddItem(Classes::UHeroEquipment *item);
-  void RemoveItem(Classes::UHeroEquipment *item);
 
 private:
   Menus selectedMenu = Menus::MenuBasic;
