@@ -2,6 +2,8 @@
 
 #include "SDK.hpp"
 #include <functional>
+#include <mutex>
+#include <queue>
 #include <string>
 #include <unordered_map>
 #include <windows.h>
@@ -85,6 +87,12 @@ public:
   void RegisterBlockedFunction(const std::string &key, bool &flag);
   bool ShouldLootItem(Classes::UHeroEquipment *item);
 
+  // item giving
+  std::queue<Classes::UHeroEquipment *> qItemsToGive;
+  std::mutex queueMutex;
+  void PushItemToQueue(Classes::UHeroEquipment *item);
+  Classes::UHeroEquipment *PopItemFromQueue();
+  bool GiveItem(Classes::UHeroEquipment *item);
   // handle key presses
   enum KeyBinds {
     ToggleKey,
@@ -120,6 +128,8 @@ public:
   Classes::ADunDefGameReplicationInfo *GetGRI();
   Classes::UDunDefHeroManager *GetHeroManager();
   Classes::UDunDefSceneClient *GetClientManager();
+  Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *GetEquipmentGiver();
+
   void PawnLoop(const std::function<void(Classes::ADunDefPawn *)> &func,
                 bool applyToEnemy, bool applyToPlayer);
   void KillPawn(Classes::ADunDefPawn *pawn);

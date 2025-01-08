@@ -19,9 +19,6 @@ Config config;
 Menu menu;
 
 DWORD WINAPI MainThread_Initialize(LPVOID param) {
-  config = Config();
-  menu = Menu();
-
   config.Init();
   menu.Init();
 
