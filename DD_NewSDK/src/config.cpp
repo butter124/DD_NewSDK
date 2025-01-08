@@ -121,6 +121,8 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
 
   // give item
   if (!qItemsToGive.empty()) {
+    // doing this in post render stops a crash from happening
+    // doing this one at a time should give a better user experience
     auto item = PopItemFromQueue();
     GiveItem(item);
   }
