@@ -80,43 +80,43 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   }
 
   // player pos
-  if (config.bShowPlayerTeleportPos) {
+  if (bShowPlayerTeleportPos) {
     Classes::FString v(L"V");
-    FloatingTextinWorld(v, config.GetTeleportPos(), {0, 1, 0, 1});
+    FloatingTextinWorld(v, GetTeleportPos(), {0, 1, 0, 1});
   }
 
   // show vacuum hack
-  if (config.bShowVacuumPos) {
+  if (bShowVacuumPos) {
     Classes::FString v(L"V");
-    FloatingTextinWorld(v, config.GetVacPos(), {1, 0, 0, 1});
+    FloatingTextinWorld(v, GetVacPos(), {1, 0, 0, 1});
   }
 
   // vacuum hack
-  if (config.bVacHack) {
-    config.MoveEnemyPawns(config.vacPos);
+  if (bVacHack) {
+    MoveEnemyPawns(vacPos);
   }
 
   // kill all enemys
-  if (config.bKillAllEnemys) {
-    config.KillAllEnemyPawns();
+  if (bKillAllEnemys) {
+    KillAllEnemyPawns();
   }
 
   // kill one to advance
-  if (config.bKillOneToAdvance) {
-    auto main = config.GetGameInfo();
+  if (bKillOneToAdvance) {
+    auto main = GetGameInfo();
     if (main && main->CurrentKillCountUI &&
         main->CurrentKillCountUI->KillCountRemaining > 1)
       main->CurrentKillCountUI->KillCountRemaining = 1;
   }
 
   // loot shower
-  if (config.bLootShower) {
-    config.SpawnItemsfromPawns();
+  if (bLootShower) {
+    SpawnItemsfromPawns();
   }
 
   // teleport players
-  if (config.bTeleportPlayers) {
-    config.MovePlayerPawns(config.playerTeleportPos);
+  if (bTeleportPlayers) {
+    MovePlayerPawns(playerTeleportPos);
   }
 
   // give item
