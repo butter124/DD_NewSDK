@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SDK.hpp"
+#include <algorithm>
 #include <functional>
 #include <mutex>
 #include <queue>
@@ -88,11 +89,14 @@ public:
   bool ShouldLootItem(Classes::UHeroEquipment *item);
 
   // item giving
+  // handling item giving stops a crash from happening
   std::queue<Classes::UHeroEquipment *> qItemsToGive;
   std::mutex queueMutex;
   void PushItemToQueue(Classes::UHeroEquipment *item);
   Classes::UHeroEquipment *PopItemFromQueue();
   bool GiveItem(Classes::UHeroEquipment *item);
+  void PushItemToQueueWithString(std::string s);
+
   // handle key presses
   enum KeyBinds {
     ToggleKey,
@@ -154,5 +158,6 @@ public:
   Classes::FString StringToFString(std::string s);
   Classes::FVector GetForward(float yaw, float pitch);
   Classes::FVector AddFVector(Classes::FVector vec1, Classes::FVector vec2);
+  std::vector<std::string> ScanForAllItems();
 };
 extern Config config;

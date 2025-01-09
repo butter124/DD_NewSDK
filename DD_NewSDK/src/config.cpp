@@ -592,7 +592,7 @@ bool Config::GiveItem(Classes::UHeroEquipment *item) {
   Classes::FGiveEquipmentEntry newtemp = oldtemp;
 
   newtemp.ForHeroArchetype = NULL;
-  newtemp.EquipmentArchetype = (Classes::UHeroEquipment *)item->ObjectArchetype;
+  newtemp.EquipmentArchetype = (Classes::UHeroEquipment *)item;
   // newtemp.EquipmentArchetypesRandom;
   newtemp.BaseForceRandomizationQuality = 1.5f;
   newtemp.MaxRandomizationQuality = 1.5f;
@@ -620,10 +620,9 @@ bool Config::GiveItem(Classes::UHeroEquipment *item) {
 }
 
 Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *Config::GetEquipmentGiver() {
-  static Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *obj;
-  if (!obj)
-    obj = (Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *)GetInstanceOf(
-        Classes::UDunDef_SeqAct_GiveEquipmentToPlayers::StaticClass());
+  Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *obj;
+  obj = (Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *)GetInstanceOf(
+      Classes::UDunDef_SeqAct_GiveEquipmentToPlayers::StaticClass());
   return obj;
 }
 
@@ -640,4 +639,35 @@ Classes::UHeroEquipment *Config::PopItemFromQueue() {
     return item;
   }
   return nullptr;
+}
+
+void Config::PushItemToQueueWithString(std::string s) {
+  Classes::UHeroEquipment *instance =
+      (Classes::UHeroEquipment *)GetInstanceByName(
+          Classes::UHeroEquipmentNative::StaticClass(), s);
+  if (!instance)
+    return;
+  std::lock_guard<std::mutex> lock(queueMutex);
+  qItemsToGive.push(instance);
+}
+
+std::vector<std::string> Config::ScanForAllItems() {
+  std::vector<std::string> retVec;
+  auto equipVector = GetAllInstanceOf(Classes::UHeroEquipment::StaticClass());
+
+  for (auto v : equipVector) {
+    Classes::UHeroEquipment *item = (Classes::UHeroEquipment *)v;
+
+    if(item->RandomBaseNames.Data)
+    if (item->RandomBaseNames.Data[0].StringValue.ToString().find(
+            "Generic Random") != std::string::npos)
+      continue;
+
+    std::string name = item->GetName();
+
+    if (std::find(retVec.begin(), retVec.end(), name) == retVec.end()) {
+      retVec.push_back(name);
+    }
+  }
+  return retVec;
 }

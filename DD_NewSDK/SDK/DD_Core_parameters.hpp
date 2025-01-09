@@ -373,7 +373,7 @@ struct UObject_Add_IntHighDigitInt_Params
 // Function Core.Object.IsTemplate
 struct UObject_IsTemplate_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                               ReturnValue:1;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function Core.Object.IsDefaultObject
@@ -769,7 +769,7 @@ struct UObject_GetPackageName_Params
 // Function Core.Object.IsPendingKill
 struct UObject_IsPendingKill_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                               ReturnValue : 1;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function Core.Object.ByteToFloat

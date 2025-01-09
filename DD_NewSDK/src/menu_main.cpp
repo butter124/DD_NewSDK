@@ -112,36 +112,6 @@ void MenuMain::RenderUI() {
   }
 }
 
-void MenuMain::ItemModding() {
-  ImGui::Text("Item modding");
-  ImGui::Separator();
-
-  auto pPlayerController = config.GetADunDefPlayerController();
-  if (!pPlayerController)
-    return;
-
-  // TODO: this looks fucken awful refactor this its a pain to read
-  if (pPlayerController->myHero &&
-      pPlayerController->myHero->HeroEquipments.Num()) {
-    if (ImGui::TreeNode("Hero equipment")) {
-      for (size_t i = 0; i < pPlayerController->myHero->HeroEquipments.Num();
-           i++) {
-        auto item = pPlayerController->myHero->HeroEquipments[i];
-        if (ImGui::TreeNode(
-                (item->ObjectArchetype->GetName() + "##" + std::to_string(i))
-                    .c_str())) {
-          ImGuiItem(item);
-
-          ImGui::TreePop();
-        }
-      }
-      ImGui::TreePop();
-    }
-  } else {
-    ImGui::Text("No equipped items");
-  }
-}
-
 void MenuMain::Thread() {
   // any thing in this function will be handled in proc events
   for (auto &pair : config.keyBindsmap) {
@@ -306,7 +276,10 @@ void MenuMain::BasicCheats() {
   }
 
   // debugging
-  // Debug();
+#ifdef _DEBUG
+  Debug();
+#endif
+
   ImGui::PopItemWidth();
 }
 
@@ -460,6 +433,62 @@ void MenuMain::PlayerCheats() {
   return;
 }
 
+void MenuMain::ItemModding() {
+  ImGui::Text("Item modding");
+  ImGui::Separator();
+
+  auto pPlayerController = config.GetADunDefPlayerController();
+  if (!pPlayerController)
+    return;
+
+  // TODO: this looks fucken awful refactor this its a pain to read
+  if (pPlayerController->myHero &&
+      pPlayerController->myHero->HeroEquipments.Num()) {
+    if (ImGui::TreeNode("Hero equipment")) {
+      for (size_t i = 0; i < pPlayerController->myHero->HeroEquipments.Num();
+           i++) {
+        auto item = pPlayerController->myHero->HeroEquipments[i];
+        if (ImGui::TreeNode(
+                (item->ObjectArchetype->GetName() + "##" + std::to_string(i))
+                    .c_str())) {
+          ImGuiItem(item);
+
+          ImGui::TreePop();
+        }
+      }
+      ImGui::TreePop();
+    }
+  } else {
+    ImGui::Text("No equipped items");
+  }
+
+  {
+    auto itembox = pPlayerController->GetHeroManager()->ItemBoxEquipments;
+
+    if (ImGui::TreeNode("Forge")) {
+
+      if (itembox.Num())
+        for (int i = 0; i < itembox.Num(); i++) {
+          auto item = itembox[i];
+
+          if (ImGui::TreeNode((item->GetName() + "##" +
+                               std::to_string(item->equipmentTemplateUniqueID))
+                                  .c_str())) {
+            ImGuiItem(item);
+
+            ImGui::TreePop();
+          }
+        }
+      else
+        ImGui::Text("No items in box");
+
+      ImGui::TreePop();
+    }
+  }
+
+  return;
+}
+
 void MenuMain::Debug() {
 
   ImGui::Separator();
@@ -469,64 +498,26 @@ void MenuMain::Debug() {
 
   if (!pPlayerPawn || !pController || !pEngine)
     return;
-  {
-    ImGui::Text("PlayerLoc %f %f %f", pPlayerPawn->Location.X,
-                pPlayerPawn->Location.Y, pPlayerPawn->Location.Z);
 
-    ImGui::Text("PlayerRot %d %d %d", pPlayerPawn->Rotation.Yaw,
-                pPlayerPawn->Rotation.Pitch, pPlayerPawn->Rotation.Roll);
+  static std::vector<std::string> equipVector;
 
-    ImGui::Text("Controller x:%f y:%f z:%f", pController->Location.X,
-                pController->Location.Y, pController->Location.Z);
-    ImGui::Text("Controller %d %d %d", pController->Rotation.Yaw,
-                pController->Rotation.Pitch, pController->Rotation.Roll);
+  if (ImGui::Button("Scan for items"))
+    equipVector = config.ScanForAllItems();
 
-    if (pController->PlayerCamera) {
-      ImGui::Text(
-          "Camera x:%f y:%f z:%f", pController->PlayerCamera->Location.X,
-          pController->PlayerCamera->Location.Y, pController->Location.Z);
-      ImGui::Text("Camera %d %d %d", pController->PlayerCamera->Rotation.Yaw,
-                  pController->PlayerCamera->Rotation.Pitch,
-                  pController->PlayerCamera->Rotation.Roll);
+  static ImGuiTableFlags flags =
+      ImGuiTableFlags_SizingStretchSame | ImGuiTableFlags_Resizable |
+      ImGuiTableFlags_BordersOuter | ImGuiTableFlags_BordersV |
+      ImGuiTableFlags_ContextMenuInBody;
+  for (auto item : equipVector) {
+
+    if (ImGui::Button(("Give##" + item).c_str())) {
+      config.PushItemToQueueWithString(item.c_str());
     }
-
-    if (pController->myHUD) {
-      ImGui::Text("Hud x:%f y:%f z:%f", pController->myHUD->Location.X,
-                  pController->myHUD->Location.Y, pController->Location.Z);
-      ImGui::Text("Hud %d %d %d", pController->myHUD->Rotation.Yaw,
-                  pController->myHUD->Rotation.Pitch,
-                  pController->myHUD->Rotation.Roll);
-    }
-
-    ImGui::Text("Controller->TargetViewRotation %d %d %d",
-                pController->TargetViewRotation.Yaw,
-                pController->TargetViewRotation.Pitch,
-                pController->TargetViewRotation.Roll);
-    ImGui::Text("Controller->CurrentPawnRotation %d %d %d",
-                pController->CurrentPawnRotation.Yaw,
-                pController->CurrentPawnRotation.Pitch,
-                pController->CurrentPawnRotation.Roll);
-
-    ImGui::Text("pPlayerPawn->DesiredRotation %d %d %d",
-                pPlayerPawn->DesiredRotation.Yaw,
-                pPlayerPawn->DesiredRotation.Pitch,
-                pPlayerPawn->DesiredRotation.Roll);
-
-    ImGui::Text("pPlayerPawn->RelativeRotation %d %d %d",
-                pPlayerPawn->RelativeRotation.Yaw,
-                pPlayerPawn->RelativeRotation.Pitch,
-                pPlayerPawn->RelativeRotation.Roll);
-
-    ImGui::Text("pController->PlayerCamera->CameraCache.POV.Rotation %d %d %d",
-                pController->PlayerCamera->CameraCache.POV.Rotation.Yaw,
-                pController->PlayerCamera->CameraCache.POV.Rotation.Pitch,
-                pController->PlayerCamera->CameraCache.POV.Rotation.Roll);
+    ImGui::SameLine();
+    char fullnameBuff[255];
+    sprintf_s(fullnameBuff, "%s", item.c_str());
+    ImGui::TextUnformatted(fullnameBuff);
   }
-
-  //  Classes::FVector outLoc;
-  //  Classes::FRotator outRot;
-  //  pController->GetPlayerViewPoint(&outLoc, &outRot);
-  //  ImGui::Text("outRot %d %d %d", outRot.Yaw, outRot.Pitch, outRot.Roll);
 
   return;
 }
