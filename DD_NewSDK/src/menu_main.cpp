@@ -83,9 +83,8 @@ void MenuMain::RenderUI() {
   // right
   {
     ImGui::BeginGroup();
-    ImGui::BeginChild(
-        "item view",
-        ImVec2(0, -ImGui::GetFrameHeightWithSpacing())); // Leave room for 1
+    ImGui::BeginChild("item view");
+    // ImVec2(0, -ImGui::GetWindowHeight())); // Leave room for 1
     switch (selectedMenu) {
     case Menus::MenuBasic:
       BasicCheats();
@@ -142,57 +141,62 @@ void MenuMain::NoClipHandleInput() {
   pPlayerPawn->Acceleration = {0, 0, 0};
 
   if (ImGui::IsKeyDown(ImGuiKey_W)) {
-    auto forward = config.GetForward(rot.Yaw, rot.Pitch);
-    float t[3] = {forward.X * config.fNoClipSpeed,
-                  forward.Y * config.fNoClipSpeed,
-                  forward.Z * config.fNoClipSpeed};
+    auto forward = config.GetForward(static_cast<float>(rot.Yaw),
+                                     static_cast<float>(rot.Pitch));
+    float t[3] = {static_cast<float>(forward.X) * config.fNoClipSpeed,
+                  static_cast<float>(forward.Y) * config.fNoClipSpeed,
+                  static_cast<float>(forward.Z) * config.fNoClipSpeed};
     pPlayerPawn->Location =
         config.AddFVector(pPlayerPawn->Location, {t[0], t[1], t[2]});
   }
 
   if (ImGui::IsKeyDown(ImGuiKey_S)) {
-    auto forward = config.GetForward(rot.Yaw, rot.Pitch);
-    float t[3] = {forward.X * config.fNoClipSpeed,
-                  forward.Y * config.fNoClipSpeed,
-                  forward.Z * config.fNoClipSpeed};
+    auto forward = config.GetForward(static_cast<float>(rot.Yaw),
+                                     static_cast<float>(rot.Pitch));
+    float t[3] = {static_cast<float>(forward.X) * config.fNoClipSpeed,
+                  static_cast<float>(forward.Y) * config.fNoClipSpeed,
+                  static_cast<float>(forward.Z) * config.fNoClipSpeed};
     pPlayerPawn->Location =
         config.AddFVector(pPlayerPawn->Location, {-t[0], -t[1], -t[2]});
   }
 
   if (ImGui::IsKeyDown(ImGuiKey_D)) {
-
-    auto forward = config.GetForward(rot.Yaw, rot.Pitch);
+    auto forward = config.GetForward(static_cast<float>(rot.Yaw),
+                                     static_cast<float>(rot.Pitch));
     // Define the up vector (assuming Z is up)
     Classes::FVector up = {0.0f, 0.0f, 1.0f};
 
     // Calculate the right direction using cross product
-    Classes::FVector right = {forward.Y * up.Z - forward.Z * up.Y,
-                              forward.Z * up.X - forward.X * up.Z,
-                              forward.X * up.Y - forward.Y * up.X};
+    Classes::FVector right = {
+        static_cast<float>(forward.Y) * up.Z - forward.Z * up.Y,
+        static_cast<float>(forward.Z) * up.X - forward.X * up.Z,
+        static_cast<float>(forward.X) * up.Y - forward.Y * up.X};
 
     // Normalize the right vector (if needed) and scale it
-    float tRight[3] = {right.X * config.fNoClipSpeed,
-                       right.Y * config.fNoClipSpeed,
-                       right.Z * config.fNoClipSpeed};
+    float tRight[3] = {static_cast<float>(right.X) * config.fNoClipSpeed,
+                       static_cast<float>(right.Y) * config.fNoClipSpeed,
+                       static_cast<float>(right.Z) * config.fNoClipSpeed};
 
     pPlayerPawn->Location = config.AddFVector(
         pPlayerPawn->Location, {-tRight[0], -tRight[1], -tRight[2]});
   }
 
   if (ImGui::IsKeyDown(ImGuiKey_A)) {
-    auto forward = config.GetForward(rot.Yaw, rot.Pitch);
+    auto forward = config.GetForward(static_cast<float>(rot.Yaw),
+                                     static_cast<float>(rot.Pitch));
     // Define the up vector (assuming Z is up)
     Classes::FVector up = {0.0f, 0.0f, 1.0f};
 
     // Calculate the right direction using cross product
-    Classes::FVector left = {forward.Y * up.Z - forward.Z * up.Y,
-                             forward.Z * up.X - forward.X * up.Z,
-                             forward.X * up.Y - forward.Y * up.X};
+    Classes::FVector left = {
+        static_cast<float>(forward.Y) * up.Z - forward.Z * up.Y,
+        static_cast<float>(forward.Z) * up.X - forward.X * up.Z,
+        static_cast<float>(forward.X) * up.Y - forward.Y * up.X};
 
     // Normalize the left vector (if needed) and scale it
-    float tLeft[3] = {left.X * config.fNoClipSpeed,
-                      left.Y * config.fNoClipSpeed,
-                      left.Z * config.fNoClipSpeed};
+    float tLeft[3] = {static_cast<float>(left.X) * config.fNoClipSpeed,
+                      static_cast<float>(left.Y) * config.fNoClipSpeed,
+                      static_cast<float>(left.Z) * config.fNoClipSpeed};
 
     pPlayerPawn->Location = config.AddFVector(pPlayerPawn->Location,
                                               {tLeft[0], tLeft[1], tLeft[2]});
@@ -358,9 +362,6 @@ void MenuMain::PlayerCheats() {
       pController->myHero->SetColors(cLiner1, cLiner2, cLiner3);
     }
 
-    for (int i = 0; i > pController->myHero->HeroEquipments.Num(); i++) {
-    }
-
     // TArray<class UHeroEquipment*>                      HeroEquipments; //
     // 0x056C(0x000C) (NeedCtorLink)
     // player hero
@@ -449,8 +450,7 @@ void MenuMain::ItemModding() {
            i++) {
         auto item = pPlayerController->myHero->HeroEquipments[i];
         if (ImGui::TreeNode(
-                (item->ObjectArchetype->GetName() + "##" + std::to_string(i))
-                    .c_str())) {
+                (item->GetName() + "##" + std::to_string(i)).c_str())) {
           ImGuiItem(item);
 
           ImGui::TreePop();
@@ -462,25 +462,75 @@ void MenuMain::ItemModding() {
     ImGui::Text("No equipped items");
   }
 
+  // Item box
+  //  auto pHeroManager = config.GetHeroManager();
+  //  if (pHeroManager) {
+  //    auto itembox = pHeroManager->ItemBoxEquipments;
+  //    if (ImGui::TreeNode("Forge")) {
+  //      if (itembox.Num() >= 0)
+  //        for (size_t i = 0; i < itembox.Num(); i++) {
+  //          auto item = itembox[i];
+  //          if (ImGui::TreeNode((item->GetName() + "##" +
+  //                               std::to_string(item->equipmentTemplateUniqueID))
+  //                                  .c_str())) {
+  //            ImGuiItem(item);
+  //            ImGui::TreePop();
+  //          }
+  //        }
+  //      else
+  //        ImGui::Text("No items in box");
+  //      ImGui::TreePop();
+  //    }
+  //  }
+
   {
-    auto itembox = pPlayerController->GetHeroManager()->ItemBoxEquipments;
 
-    if (ImGui::TreeNode("Forge")) {
+    if (ImGui::TreeNode("Spawn items")) {
+      if (ImGui::Button("Scan for items"))
+        config.vHeroEquipmentStrings = config.ScanForAllItems();
+      if (ImGui::Button("Add selected items"))
+        config.GiveSelectedItems();
 
-      if (itembox.Num())
-        for (int i = 0; i < itembox.Num(); i++) {
-          auto item = itembox[i];
+      static char FilterItemsBuffer[255];
+      ImGui::InputText("##Filter Items", FilterItemsBuffer,
+                       sizeof(FilterItemsBuffer));
 
-          if (ImGui::TreeNode((item->GetName() + "##" +
-                               std::to_string(item->equipmentTemplateUniqueID))
-                                  .c_str())) {
-            ImGuiItem(item);
+      ImGui::Text("Items Found %d", config.vHeroEquipmentStrings.size());
+      ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f),
+                         "Hold Ctrl to select multiple.");
+      ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 5.0f);
+      ImGui::BeginChild("Items", ImVec2(0, 0), true);
 
-            ImGui::TreePop();
+      ImGui::Columns(3, NULL, false);
+      int MAX_ITEMS = 25; // Maximum number of items to render
+      int itemCount = config.vHeroEquipmentStrings.size();
+      int renderCount = 0;
+      for (int n = 0; n < itemCount; ++n) {
+        std::string itemLower = config.vHeroEquipmentStrings[n];
+        std::transform(itemLower.begin(), itemLower.end(), itemLower.begin(),
+                       [](unsigned char c) { return std::tolower(c); });
+
+        // Check if the item matches the filter
+        if (itemLower.find(FilterItemsBuffer) != std::string::npos) {
+          // Render items only if within the maximum limit
+          if (renderCount < MAX_ITEMS) {
+            if (ImGui::Selectable(config.vHeroEquipmentStrings[n].c_str(),
+                                  config.pItemSelectable[n])) {
+              if (!ImGui::GetIO().KeyCtrl) {
+                memset(config.pItemSelectable, 0,
+                       config.vHeroEquipmentStrings.size());
+              }
+              config.pItemSelectable[n] ^= 1;
+            }
           }
+
+          ImGui::NextColumn();
         }
-      else
-        ImGui::Text("No items in box");
+      }
+
+      ImGui::Columns(1);
+      ImGui::EndChild();
+      ImGui::PopStyleVar();
 
       ImGui::TreePop();
     }
@@ -498,26 +548,6 @@ void MenuMain::Debug() {
 
   if (!pPlayerPawn || !pController || !pEngine)
     return;
-
-  static std::vector<std::string> equipVector;
-
-  if (ImGui::Button("Scan for items"))
-    equipVector = config.ScanForAllItems();
-
-  static ImGuiTableFlags flags =
-      ImGuiTableFlags_SizingStretchSame | ImGuiTableFlags_Resizable |
-      ImGuiTableFlags_BordersOuter | ImGuiTableFlags_BordersV |
-      ImGuiTableFlags_ContextMenuInBody;
-  for (auto item : equipVector) {
-
-    if (ImGui::Button(("Give##" + item).c_str())) {
-      config.PushItemToQueueWithString(item.c_str());
-    }
-    ImGui::SameLine();
-    char fullnameBuff[255];
-    sprintf_s(fullnameBuff, "%s", item.c_str());
-    ImGui::TextUnformatted(fullnameBuff);
-  }
 
   return;
 }
@@ -755,14 +785,6 @@ void MenuMain::Config() {
     ImGui::TreePop();
   }
 
-  {
-    // if (ImGui::TreeNode("Cheat Settings")) {
-    //   ImGui::InputInt("Multiply By", &MultiplyRewardsBy);
-    //   // ImGui::SliderInt("Reward Multiply", &MultiplyRewardsBy, 0, 10000);
-    //   ImGui::TreePop();
-    // }
-  }
-
   if (ImGui::TreeNode("AutoLoot Settings")) {
     // int FilterMax = 500;
     ImGui::InputInt("Hero Health", &config.lootFilter[eHHealth]);
@@ -786,6 +808,11 @@ void MenuMain::Config() {
       config.itemsLooted = 0;
       config.itemsChecked = 0;
     }
+
+    ImGui::Checkbox("Always loot?", &config.bAutoLootULT);
+    ImGui::Combo("Always loot Quality", &config.itemFilterQualityULT,
+                 itemQualitys, IM_ARRAYSIZE(itemQualitys));
+
     ImGui::TreePop();
   }
 }
@@ -856,4 +883,10 @@ void MenuMain::ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
     }
     ImGui::EndCombo();
   }
+}
+
+std::string MenuMain::ToLower(const std::string &str) {
+  std::string lowerStr = str;
+  std::transform(lowerStr.begin(), lowerStr.end(), lowerStr.begin(), ::tolower);
+  return lowerStr;
 }

@@ -44,4 +44,6 @@ protected:
 
   void ChangeFString(Classes::FString &str, char *to);
   void ItemModding();
+
+  std::string ToLower(const std::string &str);
 };

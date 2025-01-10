@@ -66,6 +66,8 @@ public:
   int itemsChecked = 0;
   int lootFilter[0xB] = {};
   int itemFilterQuality;
+  int itemFilterQualityULT;
+  bool bAutoLootULT = false;
   bool bTeleportPlayers = false;
   bool bShowPlayerTeleportPos = false;
   bool bNoClip = false;
@@ -90,11 +92,14 @@ public:
 
   // item giving
   // handling item giving stops a crash from happening
+  std::vector<std::string> vHeroEquipmentStrings;
   std::queue<Classes::UHeroEquipment *> qItemsToGive;
   std::mutex queueMutex;
+  bool *pItemSelectable = nullptr;
   void PushItemToQueue(Classes::UHeroEquipment *item);
   Classes::UHeroEquipment *PopItemFromQueue();
   bool GiveItem(Classes::UHeroEquipment *item);
+  bool GiveSelectedItems();
   void PushItemToQueueWithString(std::string s);
 
   // handle key presses
