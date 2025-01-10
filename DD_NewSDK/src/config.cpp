@@ -37,13 +37,15 @@ bool Config::Init() {
 bool Config::Cleanup() {
   TurnOffPlayerGodMod();
   SaveKeybinds();
-
+  // turn off no clip
   auto pPlayerPawn = GetPlayerPawn();
   if (pPlayerPawn) {
     pPlayerPawn->bCollideWorld = 1;
     pPlayerPawn->bCollideActors = 1;
     pPlayerPawn->GravityZMultiplier = 1;
   }
+  // cleanup the equipment vector before closing
+  vHeroEquipmentStrings.clear();
 
   return true;
 }
@@ -232,6 +234,10 @@ bool Config::TurnOffPlayerGodMod() {
 bool Config::ShouldLootItem(Classes::UHeroEquipment *item) {
   if (!item)
     return false;
+
+  // always loot above a certain quality
+  if (item->NameIndex_QualityDescriptor >= itemFilterQualityULT + 12)
+    return true;
 
   // if any of the stats are below the filter and the filter is valid
   for (int i = 0; i < 0xB; i++) {
@@ -651,6 +657,7 @@ void Config::PushItemToQueueWithString(std::string s) {
   qItemsToGive.push(instance);
 }
 
+// this function could be done better
 std::vector<std::string> Config::ScanForAllItems() {
   std::vector<std::string> retVec;
   auto equipVector = GetAllInstanceOf(Classes::UHeroEquipment::StaticClass());
@@ -658,10 +665,10 @@ std::vector<std::string> Config::ScanForAllItems() {
   for (auto v : equipVector) {
     Classes::UHeroEquipment *item = (Classes::UHeroEquipment *)v;
 
-    if(item->RandomBaseNames.Data)
-    if (item->RandomBaseNames.Data[0].StringValue.ToString().find(
-            "Generic Random") != std::string::npos)
-      continue;
+    if (item->RandomBaseNames.Data)
+      if (item->RandomBaseNames.Data[0].StringValue.ToString().find(
+              "Generic Random") != std::string::npos)
+        continue;
 
     std::string name = item->GetName();
 
@@ -669,5 +676,26 @@ std::vector<std::string> Config::ScanForAllItems() {
       retVec.push_back(name);
     }
   }
+
+  // setup bool array for imgui menu
+  bool *newItemSelectable = new bool[retVec.size()];
+  // delete old one
+  if (pItemSelectable)
+    delete[] pItemSelectable;
+  // make new one the correct one
+  pItemSelectable = newItemSelectable;
+  // make sure the memeory is zeroed
+  for (int i = 0; i < retVec.size(); i++)
+    pItemSelectable[i] = false;
+
   return retVec;
+}
+
+bool Config::GiveSelectedItems() {
+  for (int i = 0; i < vHeroEquipmentStrings.size(); i++) {
+    if (!pItemSelectable[i])
+      continue;
+    PushItemToQueueWithString(vHeroEquipmentStrings[i]);
+  }
+  return true;
 }
