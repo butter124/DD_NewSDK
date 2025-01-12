@@ -225,6 +225,7 @@ bool Config::ToggleCrystalGodMode() {
 bool Config::TurnOffPlayerGodMod() {
   Classes::ADunDefPlayerController *playerController =
       GetADunDefPlayerController();
+
   if (!playerController)
     return false;
 
