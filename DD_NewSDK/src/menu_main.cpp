@@ -4,6 +4,13 @@
 #include "includes/menu_main.h"
 // clang-format on
 
+#define IMGUI_BITFIELD(s, item)                                                \
+  {                                                                            \
+    bool bs = item->s;                                                         \
+    if (ImGui::Checkbox(#s, &bs))                                              \
+      item->s = bs;                                                            \
+  }
+
 void MenuMain::Init() {
   // AddItem(config.GetADunDefPlayerController()->myHero->HeroEquipments[0]);
 }
@@ -442,55 +449,24 @@ void MenuMain::ItemModding() {
   if (!pPlayerController)
     return;
 
-  // TODO: this looks fucken awful refactor this its a pain to read
-  if (pPlayerController->myHero &&
-      pPlayerController->myHero->HeroEquipments.Num()) {
-    if (ImGui::TreeNode("Hero equipment")) {
-      for (size_t i = 0; i < pPlayerController->myHero->HeroEquipments.Num();
-           i++) {
-        auto item = pPlayerController->myHero->HeroEquipments[i];
-        if (ImGui::TreeNode(
-                (item->GetName() + "##" + std::to_string(i)).c_str())) {
-          ImGuiItem(item);
-
-          ImGui::TreePop();
-        }
-      }
-      ImGui::TreePop();
-    }
-  } else {
-    ImGui::Text("No equipped items");
-  }
+  if (pPlayerController->myHero)
+    ImGuiTArrayOfItems(pPlayerController->myHero->HeroEquipments, "Equipment");
 
   // Item box
-  //  auto pHeroManager = config.GetHeroManager();
-  //  if (pHeroManager) {
-  //    auto itembox = pHeroManager->ItemBoxEquipments;
-  //    if (ImGui::TreeNode("Forge")) {
-  //      if (itembox.Num() >= 0)
-  //        for (size_t i = 0; i < itembox.Num(); i++) {
-  //          auto item = itembox[i];
-  //          if (ImGui::TreeNode((item->GetName() + "##" +
-  //                               std::to_string(item->equipmentTemplateUniqueID))
-  //                                  .c_str())) {
-  //            ImGuiItem(item);
-  //            ImGui::TreePop();
-  //          }
-  //        }
-  //      else
-  //        ImGui::Text("No items in box");
-  //      ImGui::TreePop();
-  //    }
-  //  }
+  auto pHeroManager = config.GetHeroManager();
+  if (pHeroManager)
+    ImGuiTArrayOfItems(pHeroManager->ItemBoxEquipments, "Forge");
 
   {
 
     if (ImGui::TreeNode("Spawn items")) {
       if (ImGui::Button("Scan for items"))
         config.vHeroEquipmentStrings = config.ScanForAllItems();
+      ImGui::SameLine();
       if (ImGui::Button("Add selected items"))
         config.GiveSelectedItems();
 
+      ImGui::SameLine();
       static char FilterItemsBuffer[255];
       ImGui::InputText("##Filter Items", FilterItemsBuffer,
                        sizeof(FilterItemsBuffer));
@@ -682,6 +658,77 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
     ImGui::TreePop();
   }
 
+  if (ImGui::TreeNode("___Bools___")) {
+    ImGui::Columns(3);
+    IMGUI_BITFIELD(WeaponReloadSpeedBonusUse, item);
+    IMGUI_BITFIELD(bIgnoreLevelRequirement, item);
+    IMGUI_BITFIELD(WeaponKnockbackBonusUse, item);
+    IMGUI_BITFIELD(bCanBeUpgraded, item);
+    IMGUI_BITFIELD(AllowRenamingAtMaxUpgrade, item);
+    IMGUI_BITFIELD(bForceUseParentTemplate, item);
+    IMGUI_BITFIELD(WeaponAltDamageBonusUse, item);
+    IMGUI_BITFIELD(bDisableTheRandomization, item);
+    IMGUI_BITFIELD(WeaponBlockingBonusUse, item);
+    IMGUI_BITFIELD(bDontCalculateLevelRequirement, item);
+    IMGUI_BITFIELD(WeaponClipAmmoBonusUse, item);
+    IMGUI_BITFIELD(bDontUseLevelName, item);
+    IMGUI_BITFIELD(WeaponChargeSpeedBonusUse, item);
+    IMGUI_BITFIELD(WeaponShotsPerSecondBonusUse, item);
+    IMGUI_BITFIELD(UseWeaponCoreStats, item);
+    IMGUI_BITFIELD(bIsLocked, item);
+    IMGUI_BITFIELD(bWasAttached, item);
+    IMGUI_BITFIELD(bIsShopEquipment, item);
+    IMGUI_BITFIELD(bIsSecondary, item);
+    IMGUI_BITFIELD(bIsNameOnlineVerified, item);
+    IMGUI_BITFIELD(bIsForgerNameOnlineVerified, item);
+    ImGui::NextColumn();
+    IMGUI_BITFIELD(bWasAddedToDefenderStore, item);
+    IMGUI_BITFIELD(bForceAllowDropping, item);
+    IMGUI_BITFIELD(bForceRandomDLCColor, item);
+    IMGUI_BITFIELD(bUseShotsPerSecondRandomizerMult, item);
+    IMGUI_BITFIELD(bForceAllowSelling, item);
+    IMGUI_BITFIELD(bDoTranscendentLevelBoost, item);
+    IMGUI_BITFIELD(bUseLevelRequirementOverrides, item);
+    IMGUI_BITFIELD(bForceRandomizerWithMinEquipmentLevel, item);
+    IMGUI_BITFIELD(bAllowSellingToExceedSoftManaCap, item);
+    IMGUI_BITFIELD(bCanBeEquipped, item);
+    IMGUI_BITFIELD(bForceUseEquipmentDrawScale, item);
+    IMGUI_BITFIELD(bDistributeManaUponDroppedDestruction, item);
+    IMGUI_BITFIELD(bAllowDroppedDestruction, item);
+    IMGUI_BITFIELD(bDontHideEquipmentAttachmentInFPV, item);
+    IMGUI_BITFIELD(bEncumberHero, item);
+    IMGUI_BITFIELD(bIconUseEquipmentRating, item);
+    IMGUI_BITFIELD(bPlayerShopForceToMinimumSellWorth, item);
+    IMGUI_BITFIELD(bMaxEquipLevelUseAltCalc, item);
+    IMGUI_BITFIELD(bUseExtraQualityDamage, item);
+    IMGUI_BITFIELD(bUseSecondExtraQualityDamage, item);
+    IMGUI_BITFIELD(AllowNameRandomization, item);
+    ImGui::NextColumn();
+    IMGUI_BITFIELD(OnlyRandomizeBaseName, item);
+    IMGUI_BITFIELD(bNoNegativeRandomizations, item);
+    IMGUI_BITFIELD(WeaponAdditionalDamageTypeNotPoison, item);
+    IMGUI_BITFIELD(UsesEquipmentAttachments, item);
+    IMGUI_BITFIELD(UseColorSets, item);
+    IMGUI_BITFIELD(RandomizeColorSets, item);
+    IMGUI_BITFIELD(ForceQualityBeam, item);
+    IMGUI_BITFIELD(bUsePreviewZOffsetting, item);
+    IMGUI_BITFIELD(bUseSelectionPreviewScale, item);
+    IMGUI_BITFIELD(bUsePawnWeaponDamageCallback, item);
+    IMGUI_BITFIELD(bUsePawnDamageCallback, item);
+    IMGUI_BITFIELD(bCantSave, item);
+    IMGUI_BITFIELD(bCantPutInItemBox, item);
+    IMGUI_BITFIELD(ProvideHealOnBlock, item);
+    IMGUI_BITFIELD(bSetRandomizerMultipliers, item);
+    IMGUI_BITFIELD(bPlayerShopPurchasePending, item);
+    IMGUI_BITFIELD(bEnchantmentsInitalized, item);
+    IMGUI_BITFIELD(bDontDisplayPetSize, item);
+    IMGUI_BITFIELD(bCanModifyParticleColour, item);
+    IMGUI_BITFIELD(bUseHighDigitManaTokenValue, item);
+    ImGui::Columns(1);
+    ImGui::Separator();
+    ImGui::TreePop();
+  }
+
   if (ImGui::TreeNode("___Other___")) {
 
     ImGui::PushItemWidth(ImGui::GetWindowWidth() * .25f);
@@ -745,6 +792,36 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
   }
   item->bIsNameOnlineVerified = 1;
   item->bIsForgerNameOnlineVerified = 1;
+}
+
+void MenuMain::ImGuiTArrayOfItems(
+    Classes::TArray<Classes::UHeroEquipment *> items, std::string foldName) {
+
+  if (!items.Data) {
+    ImGui::Text("%s", (foldName + " is empty").c_str());
+    return;
+  }
+
+  if (ImGui::TreeNode(foldName.c_str())) {
+    for (int i = 0; i < items.Num(); i++) {
+      if (!items.IsValidIndex(i))
+        continue;
+
+      auto item = items[i];
+
+      if (!item)
+        continue;
+
+      auto itemName = item->GetName() + " | " + item->EquipmentName.ToString() +
+                      " | " + item->UserEquipmentName.ToString();
+
+      if ((ImGui::TreeNode((itemName + "##" + std::to_string(i)).c_str()))) {
+        ImGuiItem(item);
+        ImGui::TreePop();
+      }
+    }
+    ImGui::TreePop();
+  }
 }
 
 void MenuMain::ChangeFString(Classes::FString &str, char *to) {

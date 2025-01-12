@@ -103,6 +103,13 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
     std::cout << szName.c_str() << "\n";
 #endif
 
+  // block input when menu is shown
+  if (config.bShowMenu) {
+    if (strcmp(objectName.c_str(), "UIState_Pressed") == 0) {
+      return;
+    }
+  }
+
   // anti cheat
   if (strcmp(szName.c_str(), "Function UDKGame.Main.RunAntiCheat") == 0) {
     return;
@@ -118,12 +125,6 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
   if (config.blockedFuncMap.find(szName) == config.blockedFuncMap.end()) {
     if (config.blockedFuncMap[szName] == true)
       return;
-  }
-  // block input when menu is shown
-  if (config.bShowMenu) {
-    if (strcmp(objectName.c_str(), "UIState_Pressed") == 0) {
-      return;
-    }
   }
 
   // Call Original PE

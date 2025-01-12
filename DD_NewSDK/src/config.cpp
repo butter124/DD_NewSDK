@@ -25,11 +25,12 @@ bool Config::Init() {
   RegisterKeybind("Vacuum pos",Config::KeyBinds::UpdateVacuumPos,522,[this](){SetVacPos(GetPlayerPos());});
   RegisterKeybind("No clip",Config::KeyBinds::ToggleNoClipKeybind,523,[this](){bNoClip = !bNoClip;});
 
+  RegisterBlockedFunction("UIState_Pressed", bBlockInput);
+  bool invert= !bPlayerGodMode;
+  RegisterBlockedFunction("Function DunDefPlayerController.Dead.BeginState", invert);
   // clang-format on
 
   GetKeybinds();
-
-  RegisterBlockedFunction("UIState_Pressed", bBlockInput);
 
   return true;
 }
@@ -203,6 +204,7 @@ bool Config::TogglePlayerGodMode() {
     return false;
 
   playerController->bGodMode = bPlayerGodMode;
+  ToggleCrystalGodMode();
 
   return bPlayerGodMode;
 }
