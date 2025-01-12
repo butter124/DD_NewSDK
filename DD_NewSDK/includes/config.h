@@ -138,6 +138,7 @@ public:
   Classes::UDunDefHeroManager *GetHeroManager();
   Classes::UDunDefSceneClient *GetClientManager();
   Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *GetEquipmentGiver();
+  Classes::ADunDefForge *GetForge();
 
   void PawnLoop(const std::function<void(Classes::ADunDefPawn *)> &func,
                 bool applyToEnemy, bool applyToPlayer);

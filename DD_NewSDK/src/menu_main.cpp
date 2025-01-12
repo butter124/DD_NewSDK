@@ -442,6 +442,7 @@ void MenuMain::PlayerCheats() {
 }
 
 void MenuMain::ItemModding() {
+
   ImGui::Text("Item modding");
   ImGui::Separator();
 
