@@ -181,16 +181,19 @@ void Config::PlayerRewardHookFunc(PROCESS_EVENT_ARGS) {
 void Config::AutoLootHookFunc(PROCESS_EVENT_ARGS) {
   Classes::UHeroEquipment *tempweap =
       ((Classes::ADunDefDroppedEquipment *)(obj))->MyEquipmentObject;
+
   if (!bAutoLoot || !tempweap)
     return;
 
   itemsChecked += 1;
   bool isValid = ShouldLootItem(tempweap);
+
   if (!isValid)
     return;
 
   auto pPawn = config.GetPlayerPawn();
   auto pHeroManager = config.GetHeroManager();
+
   if (!pHeroManager || !pPawn ||
       !((Classes::ADunDefPlayer *)pPawn)->MyPlayerHero)
     return;
