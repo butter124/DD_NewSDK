@@ -151,6 +151,7 @@ void Config::NoClip() {
 void Config::WaveSkipHookFunc(PROCESS_EVENT_ARGS) {
   if (!bSkipWave)
     return;
+
   auto wave = (Classes::UDunDef_SeqAct_SetWaveNumber *)(obj);
 
   if (obj)
@@ -165,7 +166,9 @@ void Config::PlayerRewardHookFunc(PROCESS_EVENT_ARGS) {
 
   Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *rewarditems =
       ((Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *)(obj));
+
   static int currentRewardInteration = 0;
+
   if (currentRewardInteration < config.MultiplyRewardsBy) {
     currentRewardInteration++;
     rewarditems->Activated();
