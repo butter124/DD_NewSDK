@@ -634,6 +634,19 @@ Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *Config::GetEquipmentGiver() {
   return obj;
 }
 
+Classes::ADunDefForge *Config::GetForge() {
+  return ((Classes::ADunDefForge *)(Classes::ADunDefForge::StaticClass()))
+      ->STATIC_GetAForge();
+
+  auto obj = (Classes::ADunDefForge *)GetInstanceOf(
+      Classes::ADunDefForge::StaticClass());
+
+  if (!obj)
+    return nullptr;
+
+  return obj;
+}
+
 void Config::PushItemToQueue(Classes::UHeroEquipment *item) {
   std::lock_guard<std::mutex> lock(queueMutex);
   qItemsToGive.push(item);
