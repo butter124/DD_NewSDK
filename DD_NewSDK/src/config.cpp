@@ -657,8 +657,8 @@ void Config::PushItemToQueueWithString(std::string s) {
   qItemsToGive.push(instance);
 }
 
-// this function could be done better
 std::vector<std::string> Config::ScanForAllItems() {
+  // this function could be done better
   std::vector<std::string> retVec;
   auto equipVector = GetAllInstanceOf(Classes::UHeroEquipment::StaticClass());
 
