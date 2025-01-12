@@ -41,6 +41,8 @@ protected:
   void ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
                  Classes::FString CurrentSelected, unsigned char &_changeChar,
                  std::string comboName);
+  void ImGuiTArrayOfItems(Classes::TArray<Classes::UHeroEquipment *> items,
+                          std::string foldname);
 
   void ChangeFString(Classes::FString &str, char *to);
   void ItemModding();
