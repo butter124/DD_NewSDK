@@ -121,9 +121,9 @@ public:
   void WaveSkipHookFunc(PROCESS_EVENT_ARGS);
   void AutoLootHookFunc(PROCESS_EVENT_ARGS);
   void PlayerRewardHookFunc(PROCESS_EVENT_ARGS);
+
   void NoClip();
   void ToggleNoClip();
-
   bool TogglePlayerGodMode();
   bool TurnOffPlayerGodMod();
   bool ToggleCrystalGodMode();
@@ -138,7 +138,6 @@ public:
   Classes::UDunDefSceneClient *GetClientManager();
   Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *GetEquipmentGiver();
   Classes::ADunDefForge *GetForge();
-
   void PawnLoop(const std::function<void(Classes::ADunDefPawn *)> &func,
                 bool applyToEnemy, bool applyToPlayer);
   void KillPawn(Classes::ADunDefPawn *pawn);
