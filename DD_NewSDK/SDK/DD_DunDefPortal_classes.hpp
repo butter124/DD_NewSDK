@@ -62,10 +62,10 @@ public:
 
 	void PostBeginPlay();
 	void Tick(float DeltaTime);
-	bool STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot);
+	unsigned long STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot);
 	void FadeOut(float theLightFadeOutTime);
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 
@@ -111,29 +111,29 @@ public:
 	}
 
 
-	bool HitBlockingVolume(const struct FVector& Start, const struct FVector& End);
-	bool IsInAnyPortalBlockingVolume(const struct FVector& aPoint);
+	unsigned long HitBlockingVolume(const struct FVector& Start, const struct FVector& End);
+	unsigned long IsInAnyPortalBlockingVolume(const struct FVector& aPoint);
 	void Tick(float DeltaTime);
-	bool GetReloadingColors(struct FLinearColor* BarColor, struct FLinearColor* TextColor);
-	bool HasBothPortals();
+	unsigned long GetReloadingColors(struct FLinearColor* BarColor, struct FLinearColor* TextColor);
+	unsigned long HasBothPortals();
 	void ClearPortal(int portalIndex);
 	void Destroyed();
 	void DetachWeapon();
 	void HolderDied();
 	void CustomFire(int theFireMode);
 	void ShootProjectiles(int theFireMode);
-	bool HasAnyAmmo();
+	unsigned long HasAnyAmmo();
 	void BeginFire(unsigned char FireModeNum);
 	class ADunDefPortalNode* GetSiblingPortal(class ADunDefPortalNode* aPortal, class ADunDefPortalNode** aSibling, class UTextureRenderTarget2D** portalTextureTarget);
 	void PostBeginPlay();
-	void PlayCancelAnimation(bool bIsPrimary);
-	void PlayedShootAnimation(bool isBigShot);
+	void PlayCancelAnimation(unsigned long bIsPrimary);
+	void PlayedShootAnimation(unsigned long isBigShot);
 	int GetTotalAmmo();
 	int GetMaxAmmo();
 	int GetAmmo();
 	float GetAmmoPercent();
-	bool UsesAmmo();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	unsigned long UsesAmmo();
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 

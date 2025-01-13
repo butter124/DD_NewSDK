@@ -110,8 +110,8 @@ public:
 	void SpawnDefaultBuffs();
 	void ClientDisableMovementReplication(const struct FVector& endedLoc);
 	void TransferTowerOwnership(class APawn* toPawn);
-	bool ForceSingleMove(const struct FVector& NewLoc, const struct FRotator& NewRot, bool bShouldCollideWorld);
-	bool ForceMoveActor(class AActor* Mover, const struct FVector& NewLoc);
+	unsigned long ForceSingleMove(const struct FVector& NewLoc, const struct FRotator& NewRot, unsigned long bShouldCollideWorld);
+	unsigned long ForceMoveActor(class AActor* Mover, const struct FVector& NewLoc);
 	void GetAlternateAggroActor(TScriptInterface<class UDunDefTargetableInterface>* AltActor);
 	float GetPlayerTargetingDesirability(class ADunDefPlayerController* forController, class ADunDefPlayer* ForPlayer);
 	float GetTowerTargetingDesirability(class ADunDefTower* forTower);
@@ -123,33 +123,33 @@ public:
 	void NotifyOfBoostedRemoval(class APawn* removedBoostee);
 	float GetToolTipStatValue(TEnumAsByte<EPawnBoostType> boostType);
 	float GetPawnBoostAmount(TEnumAsByte<EPawnBoostType> boostType);
-	bool HasPawnBoostingType(TEnumAsByte<EPawnBoostType> boostType);
+	unsigned long HasPawnBoostingType(TEnumAsByte<EPawnBoostType> boostType);
 	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	class AActor* GetAlternateActor();
-	int GetHealth(bool bGetMax);
-	bool HealDamage(int Amount, class AController* Healer, class UClass* DamageType);
-	void AddHealth(int howMuch, bool bDontDisplayFloatingNumber);
+	int GetHealth(unsigned long bGetMax);
+	unsigned long HealDamage(int Amount, class AController* Healer, class UClass* DamageType);
+	void AddHealth(int howMuch, unsigned long bDontDisplayFloatingNumber);
 	float GetHealthPercent();
 	void StartRepair();
 	struct FString GetToolTipText();
-	void ScaleForHeroModifiers(bool IsFirstTime);
-	bool DrawMyHUD(class ADunDefHUD* H);
+	void ScaleForHeroModifiers(unsigned long IsFirstTime);
+	unsigned long DrawMyHUD(class ADunDefHUD* H);
 	void UpdateCommand();
-	bool HandleCommand(class AActor* Target, TEnumAsByte<ESummonedCommand> NewCommand, const struct FVector& commandPoint);
-	bool SetCommand(const struct FVector& commandPoint, TEnumAsByte<ESummonedCommand> NewCommand, class AActor* commandInstigator, class AActor* targetedActor);
-	void SetSelected(bool bWantsSelected, class AActor* selectingActor);
-	void SetPendingSelection(bool bIsPending);
+	unsigned long HandleCommand(class AActor* Target, TEnumAsByte<ESummonedCommand> NewCommand, const struct FVector& commandPoint);
+	unsigned long SetCommand(const struct FVector& commandPoint, TEnumAsByte<ESummonedCommand> NewCommand, class AActor* commandInstigator, class AActor* targetedActor);
+	void SetSelected(unsigned long bWantsSelected, class AActor* selectingActor);
+	void SetPendingSelection(unsigned long bIsPending);
 	void CleanUpSummon();
 	void Destroyed();
 	void BaseChange();
-	void SetUpEnemyValues(bool bInitialSetup);
+	void SetUpEnemyValues(unsigned long bInitialSetup);
 	void SpawnMyEnemy();
 	void InitializeForInstigator(class APawn* Pawn);
 	float GetLastDamageTime();
-	bool HasBeenRendered();
+	unsigned long HasBeenRendered();
 	void UpdateEnemyCollisionValues();
 	void UpdateReplicatedStatValues();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 
@@ -192,12 +192,12 @@ public:
 
 
 	class AActor* GetDamageCauser();
-	bool CheckValidAngle(class AActor* Victim, const struct FVector& Origin);
+	unsigned long CheckValidAngle(class AActor* Victim, const struct FVector& Origin);
 	TScriptInterface<class UIActorModifierInterface> GetStatModifierObject();
-	float GetStatValueByTag(float initalValue, const struct FString& StatTag, const TScriptInterface<class UIActorModifierInterface>& TagActor, TEnumAsByte<ELevelUpValueType> statType, bool bBaseValueOnly);
-	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly);
-	bool STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot);
-	bool HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, bool bDoFullDamage);
+	float GetStatValueByTag(float initalValue, const struct FString& StatTag, const TScriptInterface<class UIActorModifierInterface>& TagActor, TEnumAsByte<ELevelUpValueType> statType, unsigned long bBaseValueOnly);
+	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly);
+	unsigned long STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot);
+	unsigned long HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, unsigned long bDoFullDamage);
 	void DoDamage();
 	void InitDamageEmitter(int BaseDamage, float BaseRange, const TScriptInterface<class UIActorModifierInterface>& aActorStatModifier);
 	void PostBeginPlay();
@@ -277,41 +277,41 @@ public:
 	}
 
 
-	void SetAtBase(bool bIsAtBase);
+	void SetAtBase(unsigned long bIsAtBase);
 	void SetDroppedParticleColor();
 	void SetTeam(int NewTeam);
 	void InitFlag(int NewTeam, class ACTF_FlagBase* NewBase);
 	void AutoTeleport();
 	void AdjustDamage(int* Damage);
-	bool PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius);
-	bool AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point);
-	bool CheckAllowance();
+	unsigned long PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius);
+	unsigned long AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point);
+	unsigned long CheckAllowance();
 	void PhysicsVolumeChange(class APhysicsVolume* NewVolume);
 	void FellOutOfWorld(class UClass* dmgType);
 	void ResetCollision();
 	void DisableCollision();
-	bool IsInAuraOrTrap(const struct FVector& Loc);
+	unsigned long IsInAuraOrTrap(const struct FVector& Loc);
 	void CaptureFlag();
 	void ReturnToBase();
-	void DropFlag(bool bForceRandomizedPosition, bool bForceDroppedMessage);
+	void DropFlag(unsigned long bForceRandomizedPosition, unsigned long bForceDroppedMessage);
 	void PickUpFlag(class ADunDefPlayer* newHolder);
 	void BeginBeingPickedUp(class ADunDefPlayerController* newHolder);
-	bool CanBePickedUp(class ADunDefPlayerController* PC);
+	unsigned long CanBePickedUp(class ADunDefPlayerController* PC);
 	void DrawMiniMapIcon(class UCanvas* Canvas, class ADunDefMiniMap* MiniMap);
 	float GetActivationOffset();
 	float GetActivationWeighting();
 	void Client_Activate(class ADunDefPlayerController* PC, int activationType);
-	void Server_Activate(class ADunDefPlayerController* PC, bool forceActivation, int activationType);
+	void Server_Activate(class ADunDefPlayerController* PC, unsigned long forceActivation, int activationType);
 	int AllowActivation(class ADunDefPlayerController* PC, int activationType);
 	int GetToolTipPriority();
-	bool TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip);
-	bool ContinueDrawingToolTip(bool ContinueDrawing);
+	unsigned long TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip);
+	unsigned long ContinueDrawingToolTip(unsigned long ContinueDrawing);
 	void DrawToolTip(class UCanvas* C, int PosX, int PosY, class ULocalPlayer* ForPlayer);
 	void Destroyed();
 	void PostBeginPlay();
-	bool DrawMyHUD(class ADunDefHUD* H);
-	bool OnlyDrawHUDForOwner();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	unsigned long DrawMyHUD(class ADunDefHUD* H);
+	unsigned long OnlyDrawHUDForOwner();
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 
@@ -366,10 +366,10 @@ public:
 	}
 
 
-	bool IsFriendlyToLocal();
+	unsigned long IsFriendlyToLocal();
 	void PrintHeroLevelUpMessage();
 	void PrintNewHeroMessage();
-	void SetReadyToSpawn(bool bIsReady);
+	void SetReadyToSpawn(unsigned long bIsReady);
 	struct FString GetTeamName();
 	struct FColor GetTeamColor();
 	void Destroyed();
@@ -412,31 +412,31 @@ public:
 	}
 
 
-	bool AllowedToTeleport(class APawn* Teleportee);
+	unsigned long AllowedToTeleport(class APawn* Teleportee);
 	void DoDeathNotification(class ADunDefPlayerReplicationInfo* Killer, class ADunDefPlayerReplicationInfo* Victim, int damageTypeIndex);
 	float GetJumpZMultiplier(class ADunDefPawn* aPawn);
 	void ExtraDrawHUDInterface(class ADunDefHUD* H, const TScriptInterface<class UDunDefHUDInterface>& hudint);
 	void CustomUpdatePlayerScoreLabel(class ULocalPlayer* ForPlayer, class UUILabel_ScoreIndicator* ScoreLabel);
-	bool AllowDeathSpectatorMode(class ADunDefPlayerController* PC);
+	unsigned long AllowDeathSpectatorMode(class ADunDefPlayerController* PC);
 	float ModifyPlayerGroundSpeed(class ADunDefPlayer* aPlayer, float theGroundSpeed);
 	struct FColor GetGameOverLabelColor();
 	struct FColor GetVictoryLabelColor();
 	struct FString GetGameOverLabelString(class APlayerReplicationInfo* myPlayer);
 	struct FString GetVictoryLabelString(class APlayerReplicationInfo* myPlayer);
-	bool OverrideEndGameLabel();
+	unsigned long OverrideEndGameLabel();
 	class ADunDefPlayerReplicationInfo* GetWinningPRI();
 	TArray<TScriptInterface<class UDataListEntryInterface>> GetDataListEntries(int dataSetType, int PlayerIndex, int FolderID);
 	void GetTeamIcon(int TeamIndex, class USurface** theTeamIcon, struct FColor* theTeamColor);
-	bool IsTeamCompetitive();
-	bool AllowChatBetween(class APlayerReplicationInfo* myPlayer, class APlayerReplicationInfo* TheirPlayer);
+	unsigned long IsTeamCompetitive();
+	unsigned long AllowChatBetween(class APlayerReplicationInfo* myPlayer, class APlayerReplicationInfo* TheirPlayer);
 	int GetTeamThatHasFlag();
 	void DoLevelVictory();
 	void GiveWinningBonus();
 	void WonGame(class ADunDefPlayerReplicationInfo* theWinningPlayer, int WinningTeamIndex);
 	void CheckAllReady();
-	bool CheckReadyPlayers();
-	void SetAllowCountDown(bool setAllow);
-	bool AllowGameCountDown();
+	unsigned long CheckReadyPlayers();
+	void SetAllowCountDown(unsigned long setAllow);
+	unsigned long AllowGameCountDown();
 	void SetGameReady();
 	void SetGameTime(float NewTime);
 	void UpdateGameTime();
@@ -453,20 +453,20 @@ public:
 	struct FString GetTeamScores();
 	void Server_AddGRIHeroAbilities(class ADunDefPlayerController* PC);
 	struct FString GetColorString(const struct FColor& aColor);
-	struct FString GetTeamLists(int TeamOnlyCheck, bool bWantsReadyCheck);
+	struct FString GetTeamLists(int TeamOnlyCheck, unsigned long bWantsReadyCheck);
 	struct FString GetCompetitivePlayerList();
-	bool DestroyTowerOnOwnerLeft(class ADunDefTower* aTower);
+	unsigned long DestroyTowerOnOwnerLeft(class ADunDefTower* aTower);
 	int GetMaxTowerUnits(class ADunDefPlayerReplicationInfo* ddPRI);
 	int GetAltCurrentTowerUnits(class ADunDefPlayerReplicationInfo* ddPRI);
 	int GetCurrentTowerUnits(class ADunDefPlayerReplicationInfo* ddPRI);
-	bool CanPlaceTowerUnitCost(int Cost, class ADunDefPlayerController* ForPlayer, class ADunDefTower* Tower);
+	unsigned long CanPlaceTowerUnitCost(int Cost, class ADunDefPlayerController* ForPlayer, class ADunDefTower* Tower);
 	void RemovedTower(class ADunDefTower* Tower);
 	void AddedTower(class ADunDefTower* Tower);
 	void RemovePlayerFromTeam(class ACTF_DDPRI* aPRI, int TeamIndex);
 	void AddPlayerToTeam(class ACTF_DDPRI* aPRI, int TeamIndex);
 	void RemoveFromAnyTeams(class ACTF_DDPRI* aPRI);
 	int GetSmallestTeam();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -488,7 +488,7 @@ public:
 	void AdjustDamage(class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class UObject* WhatHitMe, int* inDamage, struct FVector* Momentum);
 	void PawnDied(class APawn* inPawn);
 	void GiveFlag(class ACTF_Flag* newFlag);
-	void SetIsReady(bool bIsReady);
+	void SetIsReady(unsigned long bIsReady);
 	void SetDesiredTeam(int desiredTeam);
 	void CreateHUD();
 	void LocalAttemptSpawn();
@@ -511,14 +511,14 @@ public:
 	}
 
 
-	bool AllowedToTeleport(class APawn* Teleportee);
+	unsigned long AllowedToTeleport(class APawn* Teleportee);
 	void DoLevelVictory();
 	void Tick(float DeltaTime);
 	struct FString GetSkipBuildPhaseString();
 	void DrawExtraPlayerFloatingHUD(class ADunDefPlayer* aPlayer, class ADunDefHUD* H);
 	void Server_AddGRIHeroAbilities(class ADunDefPlayerController* PC);
-	bool DestroyTowerOnOwnerLeft(class ADunDefTower* aTower);
-	bool AllowActivatingCrystal();
+	unsigned long DestroyTowerOnOwnerLeft(class ADunDefTower* aTower);
+	unsigned long AllowActivatingCrystal();
 	void SetGameReady();
 };
 
@@ -547,10 +547,10 @@ public:
 	}
 
 
-	bool OnInterceptedInputKey(struct FInputEventParameters* EventParms);
-	bool NotifyWidgetClicked(class UUIObject* Widget);
+	unsigned long OnInterceptedInputKey(struct FInputEventParameters* EventParms);
+	unsigned long NotifyWidgetClicked(class UUIObject* Widget);
 	void Update(float DeltaTime);
-	void SceneActivated(bool bInitialActivation);
+	void SceneActivated(unsigned long bInitialActivation);
 };
 
 
@@ -572,12 +572,12 @@ public:
 	void AdjustDTDamage(class ADunDefDamageableTarget* forDT, class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, int* inDamage, struct FVector* Momentum);
 	void AdjustPawnDamage(class ADunDefPawn* forPawn, class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, int* inDamage, struct FVector* Momentum);
 	unsigned char GetPlayerTeamForStart(class AController* Player, unsigned char InTeam);
-	bool CheckScore(class APlayerReplicationInfo* Scorer);
+	unsigned long CheckScore(class APlayerReplicationInfo* Scorer);
 	void ScoreKill(class AController* Killer, class AController* Other);
 	void ScoreObjective(class APlayerReplicationInfo* Scorer, int Score);
 	void AddObjectiveScore(class APlayerReplicationInfo* Scorer, int Score);
 	void PlayerReplicationInfoInitialized(class ADunDefPlayerController* PC);
-	void DoPlayerLeaving(class ADunDefPlayerController* PC, bool bForceLocal);
+	void DoPlayerLeaving(class ADunDefPlayerController* PC, unsigned long bForceLocal);
 	class APlayerController* SpawnPlayerController(const struct FVector& SpawnLocation, const struct FRotator& SpawnRotation);
 };
 
@@ -631,9 +631,9 @@ public:
 	}
 
 
-	bool PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius);
-	bool AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point);
-	bool CheckAllowance();
+	unsigned long PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius);
+	unsigned long AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point);
+	unsigned long CheckAllowance();
 	void DrawMiniMapIcon(class UCanvas* Canvas, class ADunDefMiniMap* MiniMap);
 	void SpawnFlag();
 	void FlagTaken();
@@ -644,7 +644,7 @@ public:
 	void InitBase();
 	void SetTeamIndex(int NewTeam);
 	void PostBeginPlay();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 
@@ -685,10 +685,10 @@ public:
 	void SetMyTeam(int NewTeam);
 	void Destroyed();
 	void PostBeginPlay();
-	bool AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point);
-	bool PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius);
-	bool CheckAllowance();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	unsigned long AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point);
+	unsigned long PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius);
+	unsigned long CheckAllowance();
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -926,32 +926,32 @@ public:
 
 
 	float STATIC_StaticGetTowerScale(class UDunDefHero* hero, class ADunDefTower* Tower, float TowerRangeScaler);
-	bool AllowAbilityMove();
+	unsigned long AllowAbilityMove();
 	void TransferTowerOwnership(class APawn* toPawn);
 	void CheckAssociateWithHero(class UDunDefHero* hero, class ADunDefPawn* pawnInstigator, class ADunDefPlayerController* PC);
-	bool CanDetonate();
-	bool HasCharges();
+	unsigned long CanDetonate();
+	unsigned long HasCharges();
 	float GetSellWorth();
 	float GetEnemyTargetingDesirability(class AEngineNativeDunDefAIController* forController);
 	void DrawMiniMapIcon(class UCanvas* Canvas, class ADunDefMiniMap* MiniMap);
-	void HealDetonationStyle(int HealAmt, class AController* Healer, class UClass* DamageType, bool bShowFloatingNumbers);
+	void HealDetonationStyle(int HealAmt, class AController* Healer, class UClass* DamageType, unsigned long bShowFloatingNumbers);
 	class AActor* GetAlternateActor();
-	bool IsMultiActorTower();
+	unsigned long IsMultiActorTower();
 	void DrawUpgradeOverlay(class ADunDefHUD* H, float Opacity, const struct FColor& upgradeOverlayColor);
 	float GetGlobalTowerHealthMultiplier();
 	void PerformFullHeal();
 	void SetRadiusScale(float theRadiusScale);
 	void DrawTowerToolTipStats(class UCanvas* C, float Opacity, class ULocalPlayer* ForPlayer, float canvasScale, float* PosX, float* PosY);
 	struct FString GetToolTipText();
-	void ScaleForHeroModifiers(bool IsFirstTime);
+	void ScaleForHeroModifiers(unsigned long IsFirstTime);
 	void ScaleHealthMultiplier();
 	void ReportSummoned();
 	void UpdateTowerRatingMaterial();
-	bool NeedsRepair(bool requireFullHealth);
+	unsigned long NeedsRepair(unsigned long requireFullHealth);
 	float GetHealthPercent();
-	bool HealDamage(int Amount, class AController* Healer, class UClass* DamageType);
-	void HealPctOfMaxHealth(float HealPct, class AController* Healer, class UClass* DamageType, bool bShowFloatingNumbers);
-	int GetHealth(bool bGetMax);
+	unsigned long HealDamage(int Amount, class AController* Healer, class UClass* DamageType);
+	void HealPctOfMaxHealth(float HealPct, class AController* Healer, class UClass* DamageType, unsigned long bShowFloatingNumbers);
+	int GetHealth(unsigned long bGetMax);
 	float IncrementRepair(float CurrentMana, float DeltaTime);
 	float IncrementDetonationRepair(float CurrentMana, float DeltaTime);
 	float GetCurrentRepairPercentage(float StartRepairTime, float RepairSpeed);
@@ -963,23 +963,23 @@ public:
 	void ReportedDeath();
 	void ReportDeath();
 	void DecreaseLifeEnergy(float X);
-	bool ContinueDrawingToolTip(bool ContinueDrawing);
+	unsigned long ContinueDrawingToolTip(unsigned long ContinueDrawing);
 	void DrawToolTip(class UCanvas* C, int PosX, int PosY, class ULocalPlayer* ForPlayer);
-	bool Sell(class ADunDefPlayerController* PC);
+	unsigned long Sell(class ADunDefPlayerController* PC);
 	void Destroyed();
 	void PlaySellFX();
 	void Detonate(int SetDetonationsNumber);
 	void ChildEndDetonate();
 	void ChildDetonate();
-	void RemoveStunnedActor(class AActor* stunRemoval, int removalIndex, bool bDontReplicate);
-	bool CanStun(class ADunDefEnemy* stunTest);
+	void RemoveStunnedActor(class AActor* stunRemoval, int removalIndex, unsigned long bDontReplicate);
+	unsigned long CanStun(class ADunDefEnemy* stunTest);
 	struct FBeamTrippers AddStunnedActor(class ADunDefEnemy* newStun);
-	void ClearBeamTrippers(bool bFullClear);
+	void ClearBeamTrippers(unsigned long bFullClear);
 	float GetAttackDuration();
 	void ResetTrip();
-	void DeactivateTrip(bool bShutDownEffects);
+	void DeactivateTrip(unsigned long bShutDownEffects);
 	void ActivateTrip();
-	bool DrawMyHUD(class ADunDefHUD* H);
+	unsigned long DrawMyHUD(class ADunDefHUD* H);
 	float GetTrapDamageMultiplier();
 	float GetDamageMultiplier();
 	float GetAttackDamage();
@@ -988,7 +988,7 @@ public:
 	void AddTowerBooster(const TScriptInterface<class UTowerBoosterInterface>& aBooster);
 	void UpdateStuns();
 	float GetAttackRate();
-	void DoTracing(float dt, bool bForceDamage);
+	void DoTracing(float dt, unsigned long bForceDamage);
 	void UnTouch(class AActor* Other);
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
 	void SetDetonateTimer();
@@ -996,14 +996,14 @@ public:
 	struct FVector GetBeamStartLoc();
 	void UpdateMovementBeams();
 	void Tick(float DeltaTime);
-	void ClientSingleSetMovement(const struct FVector& endLoc, const struct FRotator& endRot, bool bShouldCollideWorld);
-	bool ForceSingleMove(const struct FVector& NewLoc, const struct FRotator& NewRot, bool bShouldCollideWorld);
+	void ClientSingleSetMovement(const struct FVector& endLoc, const struct FRotator& endRot, unsigned long bShouldCollideWorld);
+	unsigned long ForceSingleMove(const struct FVector& NewLoc, const struct FRotator& NewRot, unsigned long bShouldCollideWorld);
 	void DisableSingleMovementReplication();
 	void EnableSingleMovementReplicationTimer(float Time);
 	void DisableMovementReplication();
 	void EnableMovementReplicationTimer(float Time);
 	void SetDUCost(int newDUCost);
-	int GetNextUpgradeLevel(bool bForceBeyondMaxUpgrade);
+	int GetNextUpgradeLevel(unsigned long bForceBeyondMaxUpgrade);
 	int GetTimeToUpgradeTower();
 	int GetCostToUpgradeTower();
 	int GetTowerUpgradeLevelStatModifier(TEnumAsByte<ELevelUpValueType> valueType);
@@ -1011,9 +1011,9 @@ public:
 	void ChildDoDowngrade();
 	void DoDowngrade();
 	void DoUpgrade();
-	bool CanBeUpgraded();
+	unsigned long CanBeUpgraded();
 	void ShutDownBeamEffects();
-	void ActivateBeamEffects(bool bActive);
+	void ActivateBeamEffects(unsigned long bActive);
 	void ActivateBeam();
 	struct FVector GetBeamPoint();
 	struct FVector GetCollisionPoint();
@@ -1025,7 +1025,7 @@ public:
 	void OnPostBeginPlay_AddToTargetableList();
 	void PostBeginPlay();
 	void SetUseHealthBarMat();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 
@@ -1078,18 +1078,18 @@ public:
 
 
 	void DisableAbilityMove();
-	bool AllowAbilityMove();
+	unsigned long AllowAbilityMove();
 	void ClientDisableMovementReplication(const struct FVector& endedLoc);
 	void BaseChange();
-	bool ForceMoveActor(class AActor* Mover, const struct FVector& NewLoc);
+	unsigned long ForceMoveActor(class AActor* Mover, const struct FVector& NewLoc);
 	void GetSelectionLocation(class AActor* wantsLocation, struct FVector* bestLoc);
-	bool IsPhysicalTower();
+	unsigned long IsPhysicalTower();
 	void DrawMiniMapIcon(class UCanvas* Canvas, class ADunDefMiniMap* MiniMap);
 	void UpdateMovementBeams();
-	bool IsPreviousToolTipActor(class ADunDefPlayerController* ownerCheck);
+	unsigned long IsPreviousToolTipActor(class ADunDefPlayerController* ownerCheck);
 	void UpdateDamageFlashing();
 	void PerformFullHeal();
-	bool HealDamage(int Amount, class AController* Healer, class UClass* DamageType);
+	unsigned long HealDamage(int Amount, class AController* Healer, class UClass* DamageType);
 	float IncrementRepair(float CurrentMana, float DeltaTime);
 	float GetCurrentRepairPercentage(float StartRepairTime, float RepairSpeed);
 	void StartRepair();
@@ -1102,13 +1102,13 @@ public:
 	class UPrimitiveComponent* GetOverrideTargetComponent();
 	void DrawToolTip(class UCanvas* C, int PosX, int PosY, class ULocalPlayer* ForPlayer);
 	float GetHealthPercent();
-	int GetHealth(bool bGetMax);
-	void AddHealth(int howMuch, bool bDontDisplayFloatingNumber);
-	void ActivateBeamEffects(bool bActive);
+	int GetHealth(unsigned long bGetMax);
+	void AddHealth(int howMuch, unsigned long bDontDisplayFloatingNumber);
+	void ActivateBeamEffects(unsigned long bActive);
 	void ShutDownBeamEffects();
 	void ActivateTrip();
-	bool DrawMyHUD(class ADunDefHUD* H);
-	bool NeedsRepair(bool requireFullHealth);
+	unsigned long DrawMyHUD(class ADunDefHUD* H);
+	unsigned long NeedsRepair(unsigned long requireFullHealth);
 	void SubtractHealth(int DamageAmount);
 	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	float GetAttackRangeOffset();
@@ -1116,7 +1116,7 @@ public:
 	float GetPhysicalTowerDamageMultiplier();
 	float GetPhysicalTowerHealthMultiplier();
 	float GetAuraDamageMultiplier();
-	bool UseForTowerSelectionPassThrough();
+	unsigned long UseForTowerSelectionPassThrough();
 	float GetTowerTargetingDesirability(class ADunDefTower* forTower);
 	float GetPlayerTargetingDesirability(class ADunDefPlayerController* forController, class ADunDefPlayer* ForPlayer);
 	void ActivatePlaneBeam();
@@ -1158,7 +1158,7 @@ public:
 	void PostBeginPlay();
 	void StopHovering();
 	void StartHovering();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -1211,20 +1211,20 @@ public:
 	class ADunDefEmitterSpawnable* GetHealingWeaponEmitter();
 	class ADunDefEmitterSpawnable* GetSummoningTowerEmitter();
 	void StopSpellEmitter();
-	void StartSpellEmitter(class ADunDefEmitterSpawnable* Template, bool DontSetAsPrimaryEffect, bool IsSpawnEffect, bool bForceSpawnOnWeapon);
-	bool AllowDropPickups();
-	void SetOwnerNoSee(bool ownerNoSee, bool ownerNoSeeWeapon);
-	bool Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	void StartSpellEmitter(class ADunDefEmitterSpawnable* Template, unsigned long DontSetAsPrimaryEffect, unsigned long IsSpawnEffect, unsigned long bForceSpawnOnWeapon);
+	unsigned long AllowDropPickups();
+	void SetOwnerNoSee(unsigned long ownerNoSee, unsigned long ownerNoSeeWeapon);
+	unsigned long Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
 	float GetEnemyTargetingDesirability(class AEngineNativeDunDefAIController* forController);
 	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	void PhaseScaleDown();
 	void UsedAbility(class ADunDefPlayerAbility* ability);
 	void CheckForTokens();
-	bool AllowFamiliarAbilities(class UHeroEquipment_Familiar* askingFamiliar);
+	unsigned long AllowFamiliarAbilities(class UHeroEquipment_Familiar* askingFamiliar);
 	void AttachAllEquipment();
 	void DetachAllEquipment();
-	void SetPhased(bool bNewPhaseState);
-	bool AllowEquipmentAttachment();
+	void SetPhased(unsigned long bNewPhaseState);
+	unsigned long AllowEquipmentAttachment();
 	void Destroyed();
 	void StopFire(unsigned char FireModeNum);
 	void StartFire(unsigned char FireModeNum);
@@ -1232,14 +1232,14 @@ public:
 	void RemoveSelectedTower(class ADunDefTower_SummonEnemy* RemoveTower);
 	void ServerRemoveSelectedTower(class ADunDefTower_SummonEnemy* RemoveTower);
 	void RemoveAllSelectedTowers();
-	bool HasSelectedTower(class ADunDefTower_SummonEnemy* chkTower);
+	unsigned long HasSelectedTower(class ADunDefTower_SummonEnemy* chkTower);
 	void AddSelectedTowerGroup(TArray<class ADunDefTower_SummonEnemy*> newTowers);
 	void ServerAddSelectedTower(class ADunDefTower_SummonEnemy* newTower);
 	void AddSelectedTower(class ADunDefTower_SummonEnemy* newTower);
 	void ClientSetupColors();
 	void SetMyCustomColors(class ADunDefPlayerController* aController, class UDunDefHero* usingHero);
 	void PostBeginPlay();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 
@@ -1295,15 +1295,15 @@ public:
 
 
 	float DTGetEnemyTargetingDesirability(class ADunDefEnemyController* forController);
-	bool DrawMyHUD(class ADunDefHUD* H);
+	unsigned long DrawMyHUD(class ADunDefHUD* H);
 	void PlayDeath();
-	bool AllowHeroGUID(int GUID1, int GUID2, int GUID3, int GUID4);
-	bool CanDetonate();
+	unsigned long AllowHeroGUID(int GUID1, int GUID2, int GUID3, int GUID4);
+	unsigned long CanDetonate();
 	void Detonate(int SetDetonationsNumber);
 	void SelfDestruct();
-	void ScaleForHeroModifiers(bool IsFirstTime);
-	bool IsClassOnIgnoreList(class UClass* ActorClass);
-	bool SetMaxNumberOfAttackers();
+	void ScaleForHeroModifiers(unsigned long IsFirstTime);
+	unsigned long IsClassOnIgnoreList(class UClass* ActorClass);
+	unsigned long SetMaxNumberOfAttackers();
 	void SetActiveTime();
 	void DoPoke();
 	void SetDesirability();
@@ -1413,9 +1413,9 @@ public:
 	}
 
 
-	bool PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius);
-	bool AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point);
-	bool CheckAllowance();
+	unsigned long PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius);
+	unsigned long AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point);
+	unsigned long CheckAllowance();
 	float DTGetEnemyTargetingDesirability(class ADunDefEnemyController* forController);
 	void PostBeginPlay();
 	void NotifyPackageDestroyed();
@@ -1423,10 +1423,10 @@ public:
 	void NotifyHealthChange();
 	void PlayHitEffect(class UClass* DamageType, const struct FVector& HitLocation);
 	void AdjustDamage(class UClass* DamageType, class AController* InstigatedBy, const struct FVector& HitLocation, const struct FTraceHitInfo& HitInfo, int* DamageAmount, struct FVector* Momentum);
-	bool OnlyDrawHUDForOwner();
+	unsigned long OnlyDrawHUDForOwner();
 	void DrawMiniMapIcon(class UCanvas* Canvas, class ADunDefMiniMap* MiniMap);
-	void DrawActiveDisplay(class UCanvas* C, const struct FVector& ScreenPos, float Scale, float Opacity, bool bIsMiniMap);
-	bool DrawMyHUD(class ADunDefHUD* H);
+	void DrawActiveDisplay(class UCanvas* C, const struct FVector& ScreenPos, float Scale, float Opacity, unsigned long bIsMiniMap);
+	unsigned long DrawMyHUD(class ADunDefHUD* H);
 	void DeactivatePoint();
 	void TurnOffActiveEffects();
 	void TurnOnActiveEffects();
@@ -1435,7 +1435,7 @@ public:
 	void SetDropOffActor(class ADunDefPlayer* DoA);
 	void NotifyPackageDropOff(class ADunDefPlayer* theDropper);
 	void PlaceNewItem(class ADunDefPickupableItem* NewItem);
-	bool IsFull();
+	unsigned long IsFull();
 	void RemoveDropOffItem(class ADunDefPickupableItem* RemoveItem);
 	void DropOffUnFilled();
 	void DropOffFilled();
@@ -1444,7 +1444,7 @@ public:
 	void Tick(float DeltaTime);
 	void UnTouch(class AActor* Other);
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 
@@ -1498,38 +1498,38 @@ public:
 	}
 
 
-	void SetDroppingOff(bool IsDroppingOff, class ADunDefDropOffPoint* newDP);
+	void SetDroppingOff(unsigned long IsDroppingOff, class ADunDefDropOffPoint* newDP);
 	void Destroyed();
 	void NotifyHolderLost(class ADunDefPlayer* lostHolder);
 	void DoDestroyEffects();
-	void DestroyPickUp(bool bFromDamage);
+	void DestroyPickUp(unsigned long bFromDamage);
 	void PlaceAtPoint(const struct FVector& NewLoc);
 	void DropOffItem(class ADunDefDropOffPoint* DropOffPoint);
 	void DrawWaypointToMe(class ADunDefHUD* H);
 	void GetDropOffWayPt();
-	bool OnlyDrawHUDForOwner();
-	bool DrawMyHUD(class ADunDefHUD* H);
-	bool CanBePickedUp(class ADunDefPlayerController* PC);
+	unsigned long OnlyDrawHUDForOwner();
+	unsigned long DrawMyHUD(class ADunDefHUD* H);
+	unsigned long CanBePickedUp(class ADunDefPlayerController* PC);
 	void PickupItem(class ADunDefPlayer* newHolder);
 	void BeginBeingPickedUp(class ADunDefPlayerController* newHolder);
 	void AttachToSpawner();
 	void InitMesh(class ADunDefPickupableSpawner* MySpawner);
 	int GetToolTipPriority();
-	bool TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip);
-	bool ContinueDrawingToolTip(bool ContinueDrawing);
+	unsigned long TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip);
+	unsigned long ContinueDrawingToolTip(unsigned long ContinueDrawing);
 	void DrawToolTip(class UCanvas* C, int PosX, int PosY, class ULocalPlayer* ForPlayer);
-	bool AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point);
-	bool CheckAllowance();
-	bool PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius);
+	unsigned long AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point);
+	unsigned long CheckAllowance();
+	unsigned long PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius);
 	void DrawMiniMapIcon(class UCanvas* Canvas, class ADunDefMiniMap* MiniMap);
 	float GetActivationOffset();
 	float GetActivationWeighting();
 	void Client_Activate(class ADunDefPlayerController* PC, int activationType);
-	void Server_Activate(class ADunDefPlayerController* PC, bool forceActivation, int activationType);
+	void Server_Activate(class ADunDefPlayerController* PC, unsigned long forceActivation, int activationType);
 	int AllowActivation(class ADunDefPlayerController* PC, int activationType);
 	void SetMyActiveMesh(int MeshIndex);
 	void PostBeginPlay();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 
@@ -1609,13 +1609,13 @@ public:
 	}
 
 
-	bool AllowedToTeleport(class APawn* Teleportee);
+	unsigned long AllowedToTeleport(class APawn* Teleportee);
 	void SetCurrentDeliveryItem(class ADunDefPickupableItem* NewItem);
 	void RemovePackageHolder(class ADunDefPlayer* aPlayer);
 	void AddPackageHolder(class ADunDefPlayer* aPlayer);
 	float ModifyPlayerGroundSpeed(class ADunDefPlayer* aPlayer, float theGroundSpeed);
-	bool AllowPackageSpawn();
-	void SetInCombatPhase(bool inCombatPhase);
+	unsigned long AllowPackageSpawn();
+	void SetInCombatPhase(unsigned long inCombatPhase);
 	void DrawMyHUD(class ADunDefHUD* H);
 	void ClearDropPoints();
 	void NotifyLostDropOffPoint(class ADunDefDropOffPoint* lostPoint);
@@ -1684,7 +1684,7 @@ public:
 
 
 	void SpawnHealEmitter(class AActor* HealedActor);
-	bool STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot);
+	unsigned long STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot);
 	void FlashHeal();
 	void PostBeginPlay();
 };
@@ -1717,7 +1717,7 @@ public:
 	}
 
 
-	bool AllowedToTeleport(class APawn* Teleportee);
+	unsigned long AllowedToTeleport(class APawn* Teleportee);
 	float GetEnemyLifeSpanMultiplier(class ADunDefEnemy* anEnemy);
 	float ModifyPlayerGroundSpeed(class ADunDefPlayer* aPlayer, float theGroundSpeed);
 	float GetTrapRangeMultiplier(class ADunDefTower_DetonationType* aTrap);
@@ -1733,8 +1733,8 @@ public:
 	int GetNumberOfEnemyCoresRemaining();
 	void DrawMyHUD(class ADunDefHUD* H);
 	void RestartedPlayer(class ADunDefPlayerController* NewPlayer);
-	bool CanEnterSpectatorMode(class ADunDefPlayerController* thePlayerController);
-	bool CanRespawnPlayer(class ADunDefPlayerController* thePlayerController);
+	unsigned long CanEnterSpectatorMode(class ADunDefPlayerController* thePlayerController);
+	unsigned long CanRespawnPlayer(class ADunDefPlayerController* thePlayerController);
 };
 
 
@@ -1779,16 +1779,16 @@ public:
 	void PostBeginPlay();
 	struct FString GetSpectatorWaitString();
 	void RestartedPlayer(class ADunDefPlayerController* NewPlayer);
-	bool CanEnterSpectatorMode(class ADunDefPlayerController* thePlayerController);
-	bool CanRespawnPlayer(class ADunDefPlayerController* thePlayerController);
+	unsigned long CanEnterSpectatorMode(class ADunDefPlayerController* thePlayerController);
+	unsigned long CanRespawnPlayer(class ADunDefPlayerController* thePlayerController);
 	void DrawMyHUD(class ADunDefHUD* H);
 	void BeganCombatPhase();
 	void SetChickenPlayer(class ADunDefPlayer* theNewChickenPlayer);
 	class ADunDefPlayer* GetRandomPlayer();
 	void Tick(float DeltaTime);
-	void SetInCombatPhase(bool inCombatPhase);
+	void SetInCombatPhase(unsigned long inCombatPhase);
 	void NotifyOfChicken(class ADunDefPlayerController* PC);
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 
@@ -1890,7 +1890,7 @@ public:
 
 
 	void DrawMyHUD(class ADunDefHUD* H);
-	void SetInCombatPhase(bool inCombatPhase);
+	void SetInCombatPhase(unsigned long inCombatPhase);
 	void CollectedGoldenToken();
 	void PawnDied(class APawn* KilledPawn);
 	void SetGoldenEnemy(class ADunDefEnemy* Enemy);
@@ -1923,11 +1923,11 @@ public:
 
 	struct FString GetSpectatorWaitString();
 	void RestartedPlayer(class ADunDefPlayerController* NewPlayer);
-	bool CanEnterSpectatorMode(class ADunDefPlayerController* thePlayerController);
-	bool CanRespawnPlayer(class ADunDefPlayerController* thePlayerController);
+	unsigned long CanEnterSpectatorMode(class ADunDefPlayerController* thePlayerController);
+	unsigned long CanRespawnPlayer(class ADunDefPlayerController* thePlayerController);
 	void DrawMyHUD(class ADunDefHUD* H);
 	void ReceivedGameClass();
-	void SetInCombatPhase(bool inCombatPhase);
+	void SetInCombatPhase(unsigned long inCombatPhase);
 	void PostBeginPlay();
 	void Tick(float DeltaTime);
 };
@@ -1999,12 +1999,12 @@ public:
 
 
 	void Tick(float DeltaTime);
-	bool ReadToShowStats();
+	unsigned long ReadToShowStats();
 	struct FColor GetGameOverLabelColor();
 	struct FColor GetVictoryLabelColor();
 	struct FString GetGameOverLabelString(class APlayerReplicationInfo* myPlayer);
 	struct FString GetVictoryLabelString(class APlayerReplicationInfo* myPlayer);
-	bool OverrideEndGameLabel();
+	unsigned long OverrideEndGameLabel();
 	class ADunDefPlayerReplicationInfo* GetMVP();
 	void DoLevelVictory();
 };
@@ -2024,7 +2024,7 @@ public:
 
 
 	void ReceivedGameClass();
-	void SetInCombatPhase(bool inCombatPhase);
+	void SetInCombatPhase(unsigned long inCombatPhase);
 	void PostBeginPlay();
 };
 
@@ -2088,7 +2088,7 @@ public:
 	struct FString GetGameOverString(int GameOverType, int gameOverNumberAppend);
 	void DrawExtraEnemyMinimapIcon(class UCanvas* Canvas, class ADunDefMiniMap* MiniMap, class ADunDefEnemy* Enemy);
 	void PrintPairMatch(class ADunDefEnemy* aPairMatch1, class ADunDefEnemy* aPairMatch2);
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -2133,13 +2133,13 @@ public:
 	void FireAttackBegin();
 	void PostBeginPlay();
 	void GetProjectileSpawnTransformation(const struct FName& socketToUse, struct FVector* Position, struct FRotator* Orientation);
-	bool IsCurrentlyPlayingAttackAnimation();
+	unsigned long IsCurrentlyPlayingAttackAnimation();
 	float PlayShootFireAnimation();
-	bool IsCurrentlyPlayingChargeAnimation();
+	unsigned long IsCurrentlyPlayingChargeAnimation();
 	float PlayChargeFireAnimation();
 	void PlayHurtAnimation(class UClass* DamageType, const struct FVector& HitLocation);
 	void PlayJumpAnimation();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -2214,25 +2214,25 @@ public:
 
 
 	void AdjustDamage(class UClass* DamageType, class AController* InstigatedBy, const struct FVector& HitLocation, const struct FTraceHitInfo& HitInfo, int* DamageAmount, struct FVector* Momentum);
-	bool OnlyDrawHUDForOwner();
-	bool DrawMyHUD(class ADunDefHUD* H);
+	unsigned long OnlyDrawHUDForOwner();
+	unsigned long DrawMyHUD(class ADunDefHUD* H);
 	void DrawToolTip(class UCanvas* C, int PosX, int PosY, class ULocalPlayer* ForPlayer);
-	void ChangedGamePhases(bool IsCombatPhase);
+	void ChangedGamePhases(unsigned long IsCombatPhase);
 	void NotifyPickUp(class ADunDefPickupableItem* pickedupItem, class ADunDefPlayer* playerPickUp);
 	void NotifyDestroyed(class ADunDefPickupableItem* droppedItem);
 	void NotifyDrop(class ADunDefPickupableItem* droppedItem);
 	void GetSpawnLocandRot(struct FVector* sLoc, struct FRotator* sRot);
-	void ActivateEffects(bool bTurnOn);
-	void SpawnPickUpItem(bool bForceSpawn);
+	void ActivateEffects(unsigned long bTurnOn);
+	void SpawnPickUpItem(unsigned long bForceSpawn);
 	void PostBeginPlay();
-	bool AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point);
-	bool CheckAllowance();
-	bool PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius);
+	unsigned long AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point);
+	unsigned long CheckAllowance();
+	unsigned long PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius);
 	void DrawMiniMapIcon(class UCanvas* Canvas, class ADunDefMiniMap* MiniMap);
 	void Client_Activate(class ADunDefPlayerController* PC, int activationType);
 	float GetActivationOffset();
 	float GetActivationWeighting();
-	void Server_Activate(class ADunDefPlayerController* PC, bool forceActivation, int activationType);
+	void Server_Activate(class ADunDefPlayerController* PC, unsigned long forceActivation, int activationType);
 	int AllowActivation(class ADunDefPlayerController* PC, int activationType);
 	void ReplicatedEvent(const struct FName& VarName);
 };
@@ -2272,14 +2272,14 @@ public:
 	}
 
 
-	void SetOwnerNoSee(bool ownerNoSee, bool ownerNoSeeWeapon);
-	bool AutoActivateSecondaryWeapon();
-	bool AllowNegativeStatusAffecting();
+	void SetOwnerNoSee(unsigned long ownerNoSee, unsigned long ownerNoSeeWeapon);
+	unsigned long AutoActivateSecondaryWeapon();
+	unsigned long AllowNegativeStatusAffecting();
 	class ADunDefPlayerAbility_StanceBase* GetAlternateStance(class ADunDefPlayerAbility_StanceBase* askingStance);
 	void SetWeaponSpeedMultiplier(float newMult);
 	struct FName GetOverrideSocketName(class ADunDefWeapon* theWeapon);
 	void JumpOffPawn();
-	bool ShouldPlayHurtAnimation(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, int* Result);
+	unsigned long ShouldPlayHurtAnimation(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, int* Result);
 	void AnimNotify_ResetOffhandWeaponSwingDamage();
 	void AnimNotify_StopOffhandWeaponSwingDamage();
 	void AnimNotify_StartOffhandWeaponSwingDamage();
@@ -2288,30 +2288,30 @@ public:
 	void AnimNotify_StartWeaponSwingDamage();
 	void Destroyed();
 	void AdjustDamage(class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class UObject* WhatHitMe, int* inDamage, struct FVector* Momentum);
-	void GivePlayerHitInfo(class AActor* HitActor, int dealtDamage, bool bAllowMomentumOverride, struct FVector* appliedMomentum);
+	void GivePlayerHitInfo(class AActor* HitActor, int dealtDamage, unsigned long bAllowMomentumOverride, struct FVector* appliedMomentum);
 	void Tick(float DeltaTime);
 	void AnimNotify_CurrentAbility_Off();
 	void AnimNotify_CurrentAbility_On();
 	void DoStanceBlend();
 	void DeActivateStance(class ADunDefPlayerAbility_StanceBase* oldStance);
 	void ActivateStance(class ADunDefPlayerAbility_StanceBase* newStance);
-	bool GetMeleeSwingInfoOverride(class ADunDefWeapon_MeleeSword* overrideForWeap, int* currentMeleeSwingIndex, struct FMeleeSwingInfo* OverrideInfo);
-	bool OverrideMeleeSwingInfo(class ADunDefWeapon_MeleeSword* askingWeapon);
-	bool CheckAllowMelee(class ADunDefWeapon_MeleeSword* weaponCheck, bool checkAnimDuration);
-	bool CheckPlayingCustomAnim(const struct FName& inAnim, float TimeFromEndToConsiderFinished);
+	unsigned long GetMeleeSwingInfoOverride(class ADunDefWeapon_MeleeSword* overrideForWeap, int* currentMeleeSwingIndex, struct FMeleeSwingInfo* OverrideInfo);
+	unsigned long OverrideMeleeSwingInfo(class ADunDefWeapon_MeleeSword* askingWeapon);
+	unsigned long CheckAllowMelee(class ADunDefWeapon_MeleeSword* weaponCheck, unsigned long checkAnimDuration);
+	unsigned long CheckPlayingCustomAnim(const struct FName& inAnim, float TimeFromEndToConsiderFinished);
 	void StopFire(unsigned char FireModeNum);
 	void ServerStopFire(unsigned char FireModeNum);
-	void SetComboInfo(class ADunDefWeapon_MeleeSword* comboWeapon, bool bMainHand);
-	bool DoStanceCheck();
+	void SetComboInfo(class ADunDefWeapon_MeleeSword* comboWeapon, unsigned long bMainHand);
+	unsigned long DoStanceCheck();
 	void StartFire(unsigned char FireModeNum);
 	void ServerStartFire(unsigned char FireModeNum);
 	struct FName STATIC_GetOffHandSocketName();
-	bool STATIC_AllowDualWeapon();
-	class AInventory* CreateContainedInventoryFromTemplate(class AActor* InventoryActorTemplate, bool bDoNotActivate);
+	unsigned long STATIC_AllowDualWeapon();
+	class AInventory* CreateContainedInventoryFromTemplate(class AActor* InventoryActorTemplate, unsigned long bDoNotActivate);
 	void SetOffHandWeapon(class ADunDefWeapon_MeleeSword* newOffHandWeap);
 	class ADunDefWeapon* SwapOffHandWeaponFor(class ADunDefWeapon* weaponTemplate, class UHeroEquipment* equipmentRef);
 	class ADunDefWeapon* SwapWeaponFor(class ADunDefWeapon* weaponTemplate, class UHeroEquipment* equipmentRef);
-	bool HasLightningStance();
+	unsigned long HasLightningStance();
 	void PostBeginPlay();
 };
 
@@ -2357,22 +2357,22 @@ public:
 	}
 
 
-	bool AllowNegativeStatusAffecting();
+	unsigned long AllowNegativeStatusAffecting();
 	void ResetWeaponDamage();
-	bool StopOffHandWeaponDamage();
-	bool StopWeaponDamage();
-	bool StartOffHandWeaponDamage();
-	bool StartWeaponDamage();
-	void GivePlayerHitInfo(class AActor* HitActor, int dealtDamage, bool bAllowMomentumOverride, struct FVector* appliedMomentum);
+	unsigned long StopOffHandWeaponDamage();
+	unsigned long StopWeaponDamage();
+	unsigned long StartOffHandWeaponDamage();
+	unsigned long StartWeaponDamage();
+	void GivePlayerHitInfo(class AActor* HitActor, int dealtDamage, unsigned long bAllowMomentumOverride, struct FVector* appliedMomentum);
 	void AnimNotify_CurrentAbility_Off();
 	void AnimNotify_CurrentAbility_On();
-	bool AllowStanceCancel();
-	bool CheckDoStanceAttack();
-	float GetMultiplierValue(const struct FStatMultipliers& multiplierCheck, bool bDoLog);
-	bool CheckStatus();
+	unsigned long AllowStanceCancel();
+	unsigned long CheckDoStanceAttack();
+	float GetMultiplierValue(const struct FStatMultipliers& multiplierCheck, unsigned long bDoLog);
+	unsigned long CheckStatus();
 	TEnumAsByte<EPlayerAbilityStatus> GetAbilityStatus(int* ExtraStatusFlag);
 	void OnActivate();
-	bool AllowStepTowards();
+	unsigned long AllowStepTowards();
 	float GetPlayerMomentumMultiplier();
 	float GetPlayerAttackKnockbackMultiplier();
 	float GetPlayerAttackSpeedMultiplier();
@@ -2429,24 +2429,24 @@ public:
 
 
 	void OnActivate();
-	int GetCostToActivate(bool returnTrueValue);
-	bool RequestActivation(bool bHeld);
-	bool HasNoAutoAim();
+	int GetCostToActivate(unsigned long returnTrueValue);
+	unsigned long RequestActivation(unsigned long bHeld);
+	unsigned long HasNoAutoAim();
 	TEnumAsByte<EPlayerAbilityStatus> GetAbilityStatus(int* ExtraStatusFlag);
 	float GetMomentum();
 	float GetElementalDamage();
 	float GetDamage(class ADunDefWeapon_MeleeSword* weaponCheck);
 	void AnimNotify_CurrentAbility_Off();
 	void AnimNotify_CurrentAbility_On();
-	bool ConsumesInputWhenActive();
+	unsigned long ConsumesInputWhenActive();
 	void DoTimeOut();
-	bool GetLeapVelocity(const struct FVector& End, const struct FVector& Start, struct FVector* JumpVelocity);
+	unsigned long GetLeapVelocity(const struct FVector& End, const struct FVector& Start, struct FVector* JumpVelocity);
 	void CancelAbility();
 	void PlayStopAnim();
 	void ShutOffVFX();
 	void ActivateHandVFX();
 	void PushCheck();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 
@@ -2496,22 +2496,22 @@ public:
 	struct FName GetOverrideSocketName(class ADunDefWeapon* theWeapon);
 	void SwapAnimSets(class ADunDefWeapon* NewWeapon);
 	void WeaponSet(class AWeapon* NewWeapon);
-	bool DrawMyHUD(class ADunDefHUD* H);
+	unsigned long DrawMyHUD(class ADunDefHUD* H);
 	void Tick(float DeltaTime);
-	class UMaterialInstanceConstant* GetWeaponIcon(bool bOffHand);
-	void DrawWeaponIcons(class UCanvas* C, class ADunDefWeapon* weapDraw, float weapOpacity, int paddingIndex, bool bSelected, float hudScale, class ADunDefPlayerController* PC);
+	class UMaterialInstanceConstant* GetWeaponIcon(unsigned long bOffHand);
+	void DrawWeaponIcons(class UCanvas* C, class ADunDefWeapon* weapDraw, float weapOpacity, int paddingIndex, unsigned long bSelected, float hudScale, class ADunDefPlayerController* PC);
 	void Destroyed();
-	class AInventory* CreateContainedInventoryFromTemplate(class AActor* InventoryActorTemplate, bool bDoNotActivate);
+	class AInventory* CreateContainedInventoryFromTemplate(class AActor* InventoryActorTemplate, unsigned long bDoNotActivate);
 	class ADunDefWeapon* SwapOffHandWeaponFor(class ADunDefWeapon* weaponTemplate, class UHeroEquipment* equipmentRef);
-	void DoWeaponSwap(bool bForceSwap);
-	void ServerDoSwap(bool bForceSwap);
-	void SetNewMainWeapon(class AWeapon* theNewWeapon, bool bRemoveExisting, class UHeroEquipment* equipRef);
+	void DoWeaponSwap(unsigned long bForceSwap);
+	void ServerDoSwap(unsigned long bForceSwap);
+	void SetNewMainWeapon(class AWeapon* theNewWeapon, unsigned long bRemoveExisting, class UHeroEquipment* equipRef);
 	void SetStoredWeapon(class AWeapon* newStoredWeapon, class UHeroEquipment* equipRef);
 	struct FName GetShootAnim();
-	bool ForceWeaponActivationOverride();
+	unsigned long ForceWeaponActivationOverride();
 	class ADunDefWeapon* SwapWeaponFor(class ADunDefWeapon* weaponTemplate, class UHeroEquipment* equipmentRef);
-	bool STATIC_AllowDualWeapon();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	unsigned long STATIC_AllowDualWeapon();
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -2578,33 +2578,33 @@ public:
 	void UsedAbility(class ADunDefPlayerAbility* ability);
 	void SetActiveChargeAbility(class ADunDefPlayerAbility_ManaCharge* newCharge);
 	float GetManaTokenAttractionRadius();
-	bool HasMaxManaPower();
+	unsigned long HasMaxManaPower();
 	void TryTokenCollection(class ADunDefManaToken* Token);
-	bool IsCurrentlyPlayingHurtAnimation();
+	unsigned long IsCurrentlyPlayingHurtAnimation();
 	void PlayHurtAnimation(class UClass* DamageType, const struct FVector& HitLocation);
-	bool ShouldOverrideWeaponElementalEffects(class ADunDefWeapon* weaponCheck);
+	unsigned long ShouldOverrideWeaponElementalEffects(class ADunDefWeapon* weaponCheck);
 	void StopFire(unsigned char FireModeNum);
 	void PlayJumpAnimation();
 	void StartFire(unsigned char FireModeNum);
 	void PutArmDown();
-	void PlayShootAnimation(bool isBigShoot, bool Replicate, bool bDontPlayAnim);
-	bool ForceUseInstigatorForMuzzle();
-	bool CanReload();
-	class UMaterialInstanceConstant* GetWeaponIcon(bool bOffHand);
-	void DrawWeaponIcons(class UCanvas* C, class ADunDefWeapon* weapDraw, float weapOpacity, int paddingIndex, bool bSelected, float hudScale, class ADunDefPlayerController* PC);
-	bool DrawMyHUD(class ADunDefHUD* H);
+	void PlayShootAnimation(unsigned long isBigShoot, unsigned long Replicate, unsigned long bDontPlayAnim);
+	unsigned long ForceUseInstigatorForMuzzle();
+	unsigned long CanReload();
+	class UMaterialInstanceConstant* GetWeaponIcon(unsigned long bOffHand);
+	void DrawWeaponIcons(class UCanvas* C, class ADunDefWeapon* weapDraw, float weapOpacity, int paddingIndex, unsigned long bSelected, float hudScale, class ADunDefPlayerController* PC);
+	unsigned long DrawMyHUD(class ADunDefHUD* H);
 	void Destroyed();
-	class AInventory* CreateContainedInventoryFromTemplate(class AActor* InventoryActorTemplate, bool bDoNotActivate);
+	class AInventory* CreateContainedInventoryFromTemplate(class AActor* InventoryActorTemplate, unsigned long bDoNotActivate);
 	class ADunDefWeapon* SwapOffHandWeaponFor(class ADunDefWeapon* weaponTemplate, class UHeroEquipment* equipmentRef);
-	void DoWeaponSwap(bool bForceSwap);
-	void ServerDoSwap(bool bForceSwap);
-	void SetNewMainWeapon(class AWeapon* theNewWeapon, bool bRemoveExisting, class UHeroEquipment* equipRef);
+	void DoWeaponSwap(unsigned long bForceSwap);
+	void ServerDoSwap(unsigned long bForceSwap);
+	void SetNewMainWeapon(class AWeapon* theNewWeapon, unsigned long bRemoveExisting, class UHeroEquipment* equipRef);
 	void SetStoredWeapon(class AWeapon* newStoredWeapon, class UHeroEquipment* equipRef);
 	class ADunDefWeapon* SwapWeaponFor(class ADunDefWeapon* weaponTemplate, class UHeroEquipment* equipmentRef);
 	struct FName STATIC_GetOffHandSocketName();
-	bool OverrideWeaponAttach(class ADunDefWeapon* weaponCheck);
-	bool STATIC_AllowDualWeapon();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	unsigned long OverrideWeaponAttach(class ADunDefWeapon* weaponCheck);
+	unsigned long STATIC_AllowDualWeapon();
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -2677,10 +2677,10 @@ public:
 
 
 	TEnumAsByte<EPlayerAbilityStatus> GetAbilityStatus(int* ExtraStatusFlag);
-	bool AllowUsageDuringCastingStates();
+	unsigned long AllowUsageDuringCastingStates();
 	void DrawChargeBar(class ADunDefHUD* H);
 	float GetCooldownStartTime();
-	bool ShouldDrawManaBar();
+	unsigned long ShouldDrawManaBar();
 	void StopEffects();
 	void NotifyStopFire();
 	void ServerStartDamage();
@@ -2693,17 +2693,17 @@ public:
 	void AddManaCharge(int addedMana);
 	void SpawnManaEffect();
 	void ServerCollectManaToken(class ADunDefManaToken* Token);
-	bool InCylinderFwd(const struct FVector& Origin, const struct FVector& VDir, float RadiusSq, const struct FVector& A);
+	unsigned long InCylinderFwd(const struct FVector& Origin, const struct FVector& VDir, float RadiusSq, const struct FVector& A);
 	void DoDamage();
 	void CheckForFire();
 	float GetTimeBasedOnCharge();
 	void StartDamage();
 	void StartDamageEffects();
-	bool CanHoldMoreCharge();
+	unsigned long CanHoldMoreCharge();
 	void CancelAbility();
 	void OnActivate();
 	void PostBeginPlay();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -2743,12 +2743,12 @@ public:
 	}
 
 
-	bool AllowUsageDuringCastingStates();
+	unsigned long AllowUsageDuringCastingStates();
 	struct FName GetCastingStateNamePC();
 	void CancelAbility();
 	void ClientForceCancel();
 	void ForceCancel();
-	void SetPhaseMaterials(bool bPhasedMaterials);
+	void SetPhaseMaterials(unsigned long bPhasedMaterials);
 	void StartScaleUp();
 	void SetMaterialColors(const struct FLinearColor& C1, const struct FLinearColor& c2, const struct FLinearColor& C3);
 	void OnActivate();
@@ -2759,7 +2759,7 @@ public:
 	void FinishScaleUp();
 	void InitializeForPlayer(class ADunDefPlayer* myPlayer);
 	void PostBeginPlay();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 
@@ -2792,11 +2792,11 @@ public:
 
 	void PostBeginPlay();
 	void CancelAbility();
-	bool AllowTowerPlacementPosition(const struct FVector& placementPos, bool bOnlyCheckVolumes, int* PlacementDeniedReason);
+	unsigned long AllowTowerPlacementPosition(const struct FVector& placementPos, unsigned long bOnlyCheckVolumes, int* PlacementDeniedReason);
 	struct FVector GetCenterLocation();
-	bool CanPlaceTowerUnitCost();
-	int GetDUCost(bool bUseCustomEndLoc, const struct FVector& endLoc);
-	bool DrawCastingHUD(class ADunDefHUD* H);
+	unsigned long CanPlaceTowerUnitCost();
+	int GetDUCost(unsigned long bUseCustomEndLoc, const struct FVector& endLoc);
+	unsigned long DrawCastingHUD(class ADunDefHUD* H);
 	void CreateNewPreviewPoint(const struct FVector& previewLoc);
 	void ClearPreviewPoints();
 	void ServerAddPlacementPoint(const struct FVector& tPlacementLocation);
@@ -2807,8 +2807,8 @@ public:
 	void StopAltSummonTowerFXCompleted();
 	void StopAltSummonTowerFX();
 	void UpdateAltSummonTowerFX(float Percent);
-	void BeginAltSummonTowerFX(class ADunDefEmitterSpawnable* spellEffect, const struct FVector& thePlacementLocation, const struct FRotator& thePlacementRotation, float scaleMult, bool bUsesDecal);
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void BeginAltSummonTowerFX(class ADunDefEmitterSpawnable* spellEffect, const struct FVector& thePlacementLocation, const struct FRotator& thePlacementRotation, float scaleMult, unsigned long bUsesDecal);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -2844,7 +2844,7 @@ public:
 	void AddEffect(class AActor* theAct);
 	void RemoveEffect(int Index);
 	float GetTowerBoostAmount(TEnumAsByte<ETowerBoostType> boostType);
-	bool HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType);
+	unsigned long HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType);
 	TScriptInterface<class UDunDefTargetableInterface> GetTowerBoostingTarget();
 };
 
@@ -2872,7 +2872,7 @@ public:
 	float GetPawnResistanceMultiplier();
 	float GetSpeedMultiplier();
 	float GetDamageMultiplier();
-	bool CanAffect(class AActor* theAct);
+	unsigned long CanAffect(class AActor* theAct);
 	void AddEffect(class AActor* theAct);
 	void RemoveEffect(int Index);
 };
@@ -2915,8 +2915,8 @@ public:
 	TEnumAsByte<EPlayerAbilityStatus> GetAbilityStatus(int* ExtraStatusFlag);
 	void DoEffect();
 	int GetTowerCost(class ADunDefTower* UpgradeTower);
-	void ScaleForHeroModifiers(bool IsFirstTime);
-	bool IsValidUpgradeTower(class ADunDefTower* Tower, bool bDontCountMana, int* theNextUpgradeLevel);
+	void ScaleForHeroModifiers(unsigned long IsFirstTime);
+	unsigned long IsValidUpgradeTower(class ADunDefTower* Tower, unsigned long bDontCountMana, int* theNextUpgradeLevel);
 };
 
 
@@ -3022,7 +3022,7 @@ public:
 	}
 
 
-	int GetCostToActivate(bool returnTrueValue);
+	int GetCostToActivate(unsigned long returnTrueValue);
 	TEnumAsByte<EPlayerAbilityStatus> GetAbilityStatus(int* ExtraStatusFlag);
 	void ClientReset();
 	void ServerMoveTower(const struct FVector& towerPlacementLocation, const struct FRotator& towerPlacementRotation);
@@ -3030,19 +3030,19 @@ public:
 	void ServerRequestGrabTower(class ADunDefTower* Tower);
 	void StartMovingState(class ADunDefTower* Tower);
 	void ClientStartMovingState(class ADunDefTower* Tower);
-	void ServerReceivePlacementState(bool bIsValidPlacement, const struct FVector& tPlacementLocation, const struct FRotator& tPlacementRotation);
+	void ServerReceivePlacementState(unsigned long bIsValidPlacement, const struct FVector& tPlacementLocation, const struct FRotator& tPlacementRotation);
 	void PostPlacementUpdate(float DeltaTime);
 	void UpdateDecalPlacement(float DeltaTime);
-	bool AllowTowerPlacementPosition(const struct FVector& placementPos, bool bOnlyCheckVolumes, int* PlacementDeniedReason);
+	unsigned long AllowTowerPlacementPosition(const struct FVector& placementPos, unsigned long bOnlyCheckVolumes, int* PlacementDeniedReason);
 	float GetOtherMoveAbilityTowerRadius();
-	bool IsInPlacingTowerState();
-	bool IsTowerPhysical();
+	unsigned long IsInPlacingTowerState();
+	unsigned long IsTowerPhysical();
 	void OnActivate();
 	void UpdateClientInterpolations(float DeltaTime);
 	void ServerGotoRotationState();
 	class ADunDefEmitterSpawnable* GetPlacementWeaponEffect();
 	void PostBeginPlay();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 
@@ -3096,10 +3096,10 @@ public:
 
 
 	TEnumAsByte<EPlayerAbilityStatus> GetAbilityStatus(int* ExtraStatusFlag);
-	bool RequestActivation(bool bHeld);
+	unsigned long RequestActivation(unsigned long bHeld);
 	void StopTowerPlacingAnimation();
 	void StartTowerPlacingAnimation();
-	bool AllowCastingCancelOnDamage();
+	unsigned long AllowCastingCancelOnDamage();
 	void PostPlacementUpdate(float DeltaTime);
 	void UpdateDecalPlacement(float DeltaTime);
 	void ServerRequestSetCommand(const struct FVector& pLoc, class AActor* targActor);
@@ -3166,10 +3166,10 @@ public:
 	struct FName GetCastingStateNamePC();
 	void ServerRequestSetCommand(const struct FVector& pLoc, class AActor* targActor, TEnumAsByte<ESummonedCommand> myCommand);
 	void DoMovementCommand(TArray<class ADunDefTower_SummonEnemy*> selectedTowers, const struct FVector& pLoc, TEnumAsByte<ESummonedCommand> myCommand);
-	bool DrawCastingHUD(class ADunDefHUD* H);
-	bool RequestActivation(bool bHeld);
+	unsigned long DrawCastingHUD(class ADunDefHUD* H);
+	unsigned long RequestActivation(unsigned long bHeld);
 	TEnumAsByte<EPlayerAbilityStatus> GetAbilityStatus(int* ExtraStatusFlag);
-	bool RequestCancellation(bool bForce);
+	unsigned long RequestCancellation(unsigned long bForce);
 	void HandleConfirmation();
 	void HandleAltCancellation();
 	void HandleAltConfirmation();
@@ -3210,7 +3210,7 @@ public:
 
 	void StopTowerPlacingAnimation();
 	void StartTowerPlacingAnimation();
-	bool AllowCastingCancelOnDamage();
+	unsigned long AllowCastingCancelOnDamage();
 	void DeSelectUnits();
 	void SelectAllTowers();
 	void OnActivate();
@@ -3273,14 +3273,14 @@ public:
 
 
 	TEnumAsByte<EPlayerAbilityStatus> GetAbilityStatus(int* ExtraStatusFlag);
-	bool ConsumesInputWhenActive();
-	bool AllowUsageDuringCastingStates();
+	unsigned long ConsumesInputWhenActive();
+	unsigned long AllowUsageDuringCastingStates();
 	void CheckStuck();
 	void PlayStopAnim();
 	void ShutOffVFX();
 	void ActivateHandVFX();
 	void PushCheck();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 
@@ -3317,10 +3317,10 @@ public:
 	TEnumAsByte<EPlayerAbilityStatus> GetAbilityStatus(int* ExtraStatusFlag);
 	void SetMaxHealAmountPerAttack();
 	void ResetWeaponDamage();
-	bool StopOffHandWeaponDamage();
-	bool StopWeaponDamage();
-	bool StartOffHandWeaponDamage();
-	bool StartWeaponDamage();
+	unsigned long StopOffHandWeaponDamage();
+	unsigned long StopWeaponDamage();
+	unsigned long StartOffHandWeaponDamage();
+	unsigned long StartWeaponDamage();
 	void DoAddHealth(int dmgAmount);
 };
 
@@ -3357,14 +3357,14 @@ public:
 	float GetStunTime();
 	void ClearChainedList();
 	void ClearStunnedList();
-	void RemoveStunnedActor(class ADunDefEnemy* stunRemoval, bool bDontReplicate);
+	void RemoveStunnedActor(class ADunDefEnemy* stunRemoval, unsigned long bDontReplicate);
 	void AddStunnedActor(class ADunDefEnemy* newStun);
 	float GetChainRange();
 	void FadeOutChain();
 	int GetNumberOfChains();
 	struct FVector GetLastChainPos();
-	bool CanStun(class ADunDefEnemy* stunTest);
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	unsigned long CanStun(class ADunDefEnemy* stunTest);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -3408,10 +3408,10 @@ public:
 
 
 	TEnumAsByte<EPlayerAbilityStatus> GetAbilityStatus(int* ExtraStatusFlag);
-	bool StopOffHandWeaponDamage();
-	bool StopWeaponDamage();
-	bool StartOffHandWeaponDamage();
-	bool StartWeaponDamage();
+	unsigned long StopOffHandWeaponDamage();
+	unsigned long StopWeaponDamage();
+	unsigned long StartOffHandWeaponDamage();
+	unsigned long StartWeaponDamage();
 	float GetMomentum();
 	float GetDamage(class ADunDefWeapon_MeleeSword* dmgWeapon);
 	void ClearStanceStun();
@@ -3497,7 +3497,7 @@ public:
 
 
 	TEnumAsByte<EPlayerAbilityStatus> GetAbilityStatus(int* ExtraStatusFlag);
-	int GetCostToActivate(bool returnTrueValue);
+	int GetCostToActivate(unsigned long returnTrueValue);
 	void StopLoopingAnims();
 	struct FName GetCastingCharacterAnimation();
 	void Destroyed();
@@ -3505,7 +3505,7 @@ public:
 	void DoTimeDilation(const struct FGlyphPattern& thePattern);
 	void SpawnManaTokens();
 	void GoldEnemy(class ADunDefEnemy* Enemy);
-	bool DoGolding(const struct FGlyphPattern& thePattern);
+	unsigned long DoGolding(const struct FGlyphPattern& thePattern);
 	void EndEffect();
 	void ClearOutBoosters();
 	void HandleEnemyAffects(const struct FGlyphPattern& thePattern);
@@ -3518,16 +3518,16 @@ public:
 	void CancelAbility();
 	void SetDoFadeOut();
 	void FinishSelection();
-	bool CheckPattern(const struct FGlyphPattern& CheckPattern);
+	unsigned long CheckPattern(const struct FGlyphPattern& CheckPattern);
 	void GetBoostedTargets(TArray<class APawn*>* boostedTargets);
 	void NotifyOfBoostedRemoval(class APawn* removedBoostee);
 	float GetPawnBoostAmount(TEnumAsByte<EPawnBoostType> boostType);
-	bool HasPawnBoostingType(TEnumAsByte<EPawnBoostType> boostType);
+	unsigned long HasPawnBoostingType(TEnumAsByte<EPawnBoostType> boostType);
 	void UpdateStuns();
 	void AbilityTick(float DeltaTime);
 	void ForceSelections();
 	void PostBeginPlay();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -3561,12 +3561,12 @@ public:
 	}
 
 
-	bool ConsumesInputWhenActive();
-	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly);
-	bool CanAffect(class AActor* theAct);
+	unsigned long ConsumesInputWhenActive();
+	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly);
+	unsigned long CanAffect(class AActor* theAct);
 	void SetElementalVFX(TEnumAsByte<EElementTrait> aElementalTrait);
-	bool AbilityReleased();
-	bool AbilityPressed();
+	unsigned long AbilityReleased();
+	unsigned long AbilityPressed();
 	void CancelEffect();
 	class UClass* GetElementalDamageType();
 	class UClass* GetDamageType();
@@ -3636,11 +3636,11 @@ public:
 	}
 
 
-	void DoPulse(bool bForce);
+	void DoPulse(unsigned long bForce);
 	void Expire();
 	void InitProjectile(const struct FVector& Direction, class APawn* MyInstigator, float baseDamageForScaling, class AActor* myHomingTarget, const TScriptInterface<class UIActorModifierInterface>& MyActorModifier);
-	bool IsImpactAllowed(class AActor* Other);
-	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly);
+	unsigned long IsImpactAllowed(class AActor* Other);
+	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly);
 };
 
 
@@ -3664,11 +3664,11 @@ public:
 
 
 	void Destroyed();
-	void DoPulse(bool bForce);
-	bool IsTargetsInRange();
+	void DoPulse(unsigned long bForce);
+	unsigned long IsTargetsInRange();
 	void ChangeSpeed(float spd, const struct FVector& Dir);
 	void CheckGround();
-	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly);
+	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly);
 	void PostBeginPlay();
 };
 
@@ -3687,7 +3687,7 @@ public:
 	}
 
 
-	bool HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, bool bDoFullDamage);
+	unsigned long HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, unsigned long bDoFullDamage);
 };
 
 
@@ -3710,25 +3710,25 @@ public:
 
 
 	float GetTowerBoostAmount(TEnumAsByte<ETowerBoostType> boostType);
-	bool HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType);
+	unsigned long HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType);
 	TScriptInterface<class UDunDefTargetableInterface> GetTowerBoostingTarget();
 	void SetBoostMultiplier(int Idx);
 	void RefreshBoosts();
 	float GetAttackInterval();
 	float GetAttackDamage();
-	void ScaleForHeroModifiers(bool IsFirstTime);
+	void ScaleForHeroModifiers(unsigned long IsFirstTime);
 	struct FString GetToolTipText();
 	void DrawTowerToolTipStats(class UCanvas* C, float Opacity, class ULocalPlayer* ForPlayer, float canvasScale, float* PosX, float* PosY);
 	void ExitEffectDT(class ADunDefDamageableTarget* dt);
 	void EntryEffectDT(class ADunDefDamageableTarget* dt);
-	bool AttacksDT(class ADunDefDamageableTarget* dt);
+	unsigned long AttacksDT(class ADunDefDamageableTarget* dt);
 	void EnteredRadiusDT(class ADunDefDamageableTarget* dt);
 	void UnTouch(class AActor* Other);
-	bool CanTargetInvisibleTarget(const TScriptInterface<class UDunDefTargetableInterface>& aTarget);
+	unsigned long CanTargetInvisibleTarget(const TScriptInterface<class UDunDefTargetableInterface>& aTarget);
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
 	void CheckForDamagableTargets();
 	void Timer();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -3759,11 +3759,11 @@ public:
 
 	void SetBoostMultiplier(int Idx);
 	void RefreshBoosts();
-	void ScaleForHeroModifiers(bool IsFirstTime);
+	void ScaleForHeroModifiers(unsigned long IsFirstTime);
 	void DrawTowerToolTipStats(class UCanvas* C, float Opacity, class ULocalPlayer* ForPlayer, float canvasScale, float* PosX, float* PosY);
 	void SetUseHealthBarMat();
 	struct FString GetToolTipText();
-	bool NeedsRepair(bool requireFullHealth);
+	unsigned long NeedsRepair(unsigned long requireFullHealth);
 	void RemoveTowerEffectIndex(int Idx);
 	void RemoveTowerEffect(class ADunDefTower* theTower);
 	void AddTowerEffect(class ADunDefTower* theTower);
@@ -3773,12 +3773,12 @@ public:
 	void PostBeginPlay();
 	void ClearDeletedTowers();
 	void CheckTowers();
-	bool CanAffectTower(class ADunDefTower* towerCheck);
-	void DoTracing(float dt, bool bForceDamage);
+	unsigned long CanAffectTower(class ADunDefTower* towerCheck);
+	void DoTracing(float dt, unsigned long bForceDamage);
 	float GetTowerBoostAmount(TEnumAsByte<ETowerBoostType> boostType);
-	bool HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType);
+	unsigned long HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType);
 	TScriptInterface<class UDunDefTargetableInterface> GetTowerBoostingTarget();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -3804,28 +3804,28 @@ public:
 	}
 
 
-	void ChangedGamePhases(bool IsCombatPhase);
-	bool AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point);
-	bool CheckAllowance();
-	bool PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius);
-	bool IsPhysicalTower();
+	void ChangedGamePhases(unsigned long IsCombatPhase);
+	unsigned long AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point);
+	unsigned long CheckAllowance();
+	unsigned long PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius);
+	unsigned long IsPhysicalTower();
 	float GetTowerTargetingDesirability(class ADunDefTower* forTower);
 	float GetPlayerTargetingDesirability(class ADunDefPlayerController* forController, class ADunDefPlayer* ForPlayer);
 	void DrawTowerToolTipStats(class UCanvas* C, float Opacity, class ULocalPlayer* ForPlayer, float canvasScale, float* PosX, float* PosY);
 	float GetAttackInterval();
 	float GetAttackDamage();
-	void ScaleForHeroModifiers(bool IsFirstTime);
+	void ScaleForHeroModifiers(unsigned long IsFirstTime);
 	void RemoveAllBuffTargets();
 	void RemoveBuffsFromTarget(class AActor* Other);
 	void AddBuffsToTarget(class AActor* Other);
-	bool CanAffectTarget(class AActor* Other);
+	unsigned long CanAffectTarget(class AActor* Other);
 	void Tick(float DeltaTime);
 	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	void Destroyed();
 	void UnTouch(class AActor* Other);
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
 	void PostBeginPlay();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -3903,15 +3903,15 @@ public:
 	void SpawnDroppedEquipment();
 	void SpawnManaTokens();
 	void DrawTowerToolTipStats(class UCanvas* C, float Opacity, class ULocalPlayer* ForPlayer, float canvasScale, float* PosX, float* PosY);
-	bool AllowTowerSpawnAtLoc(class ADunDefTower* TowerArchetype, const struct FVector& placementPos, bool bOnlyCheckVolumes);
+	unsigned long AllowTowerSpawnAtLoc(class ADunDefTower* TowerArchetype, const struct FVector& placementPos, unsigned long bOnlyCheckVolumes);
 	void DoActorSpawn(const struct FspawnChances& spawnChance);
 	void DoEnemySpawn(const struct FspawnChances& spawnChance);
-	bool DoTowerSpawn(const struct FspawnChances& spawnChance, const struct FVector& HitLoc);
-	void DoPresentSpawn(const struct FVector& HitLocation, bool bSpawnOgresInLobby);
-	bool PickActor(int Idx, struct FspawnChances* spawnChance);
+	unsigned long DoTowerSpawn(const struct FspawnChances& spawnChance, const struct FVector& HitLoc);
+	void DoPresentSpawn(const struct FVector& HitLocation, unsigned long bSpawnOgresInLobby);
+	unsigned long PickActor(int Idx, struct FspawnChances* spawnChance);
 	void PickSpawnGroup();
 	void Died(class AController* EventInstigator, const struct FVector& HitLocation, class UClass* DamageType, class AActor* DamageCauser);
-	void ChangedGamePhases(bool IsCombatPhase);
+	void ChangedGamePhases(unsigned long IsCombatPhase);
 };
 
 
@@ -3935,7 +3935,7 @@ public:
 	}
 
 
-	bool IsPhysicalTower();
+	unsigned long IsPhysicalTower();
 	int GetCostPerReflect();
 	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	float GetAttackDamage();
@@ -3962,14 +3962,14 @@ public:
 	}
 
 
-	void ScaleForHeroModifiers(bool IsFirstTime);
+	void ScaleForHeroModifiers(unsigned long IsFirstTime);
 	void DrawTowerToolTipActorStats(class UCanvas* C, float Opacity, class ULocalPlayer* ForPlayer, float canvasScale, float* PosX, float* PosY);
 	void DrawTowerToolTipStats(class UCanvas* C, float Opacity, class ULocalPlayer* ForPlayer, float canvasScale, float* PosX, float* PosY);
-	bool CheckTouchingActor(class AActor* Other);
+	unsigned long CheckTouchingActor(class AActor* Other);
 	float GetAttackDamage();
 	int GetCostPerWeb();
 	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
-	bool IsPhysicalTower();
+	unsigned long IsPhysicalTower();
 	void KilledTarget(const TScriptInterface<class UDunDefTargetableInterface>& aTarget);
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
 	void UpdateBuffTargets();
@@ -3993,13 +3993,13 @@ public:
 	}
 
 
-	void UpdateDifficultyValues(bool UpdateMaterial, bool onlyDynamicValues);
+	void UpdateDifficultyValues(unsigned long UpdateMaterial, unsigned long onlyDynamicValues);
 	void Bump(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitNormal);
 	void StopFlee();
 	void PlayFleeSound();
 	void StartFlee();
-	void SetGroundSpeed(float NewSpeed, bool bUseDifficultyMult);
-	bool Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	void SetGroundSpeed(float NewSpeed, unsigned long bUseDifficultyMult);
+	unsigned long Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
 	void Destroyed();
 	void ReplicatedEvent(const struct FName& VarName);
 };
@@ -4028,11 +4028,11 @@ public:
 	}
 
 
-	bool WantsHurtAnimation();
+	unsigned long WantsHurtAnimation();
 	void NotifyTakeHitEX(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum, class AActor* DamageCauser);
 	struct FVector GetWanderPoint();
-	bool DoFlee(class ADunDefPlayer* fleeFrom);
-	bool CheckPlayers();
+	unsigned long DoFlee(class ADunDefPlayer* fleeFrom);
+	unsigned long CheckPlayers();
 	void TimeOutFlee();
 };
 
@@ -4051,7 +4051,7 @@ public:
 
 
 	void InitGameReplicationInfo();
-	void DoWaveSkipping(bool bAllowArbritraryWaveSkipping);
+	void DoWaveSkipping(unsigned long bAllowArbritraryWaveSkipping);
 };
 
 
@@ -4069,7 +4069,7 @@ public:
 
 
 	void InitGameReplicationInfo();
-	void DoWaveSkipping(bool bAllowArbritraryWaveSkipping);
+	void DoWaveSkipping(unsigned long bAllowArbritraryWaveSkipping);
 	void PostBeginPlay();
 	void RestartPlayer(class AController* NewPlayer);
 };
@@ -4138,7 +4138,7 @@ public:
 
 
 	void RestartPlayer(class AController* NewPlayer);
-	void DoWaveSkipping(bool bAllowArbritraryWaveSkipping);
+	void DoWaveSkipping(unsigned long bAllowArbritraryWaveSkipping);
 };
 
 
@@ -4343,7 +4343,7 @@ public:
 
 	void StartMovement();
 	void StopMovement();
-	bool Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	unsigned long Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
 	void Destroyed();
 	void DoStompDamage();
 	void DoStomp();
@@ -4352,7 +4352,7 @@ public:
 	void SnowBallRight();
 	void SnowBallLeft();
 	void SpawnSnowShootEffect(const struct FVector& SpawnLoc, const struct FRotator& SpawnRot);
-	void GetProjectileSpawnLoc(bool bIsLeftSocket, struct FVector* Loc, struct FRotator* Rot);
+	void GetProjectileSpawnLoc(unsigned long bIsLeftSocket, struct FVector* Loc, struct FRotator* Rot);
 	float PlayStomp();
 	float PlaySnowShoot();
 	float PlayPeckAttack();
@@ -4402,13 +4402,13 @@ public:
 
 
 	void CheckForCustomAttacks();
-	bool WantsHurtAnimation();
+	unsigned long WantsHurtAnimation();
 	void NotifyTakeHitEX(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum, class AActor* DamageCauser);
-	bool CheckStomp();
+	unsigned long CheckStomp();
 	void ChooseAttack();
 	void DoPeck();
 	void DoStomp();
-	void SpawnSnowProjectile(bool bIsLeftSocket);
+	void SpawnSnowProjectile(unsigned long bIsLeftSocket);
 };
 
 
@@ -4435,7 +4435,7 @@ public:
 	}
 
 
-	bool Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	unsigned long Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
 	void Destroyed();
 	void DoStompDamage();
 	void DoStomp();
@@ -4490,9 +4490,9 @@ public:
 	}
 
 
-	bool WantsHurtAnimation();
+	unsigned long WantsHurtAnimation();
 	void NotifyTakeHitEX(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum, class AActor* DamageCauser);
-	bool CheckStomp();
+	unsigned long CheckStomp();
 	void ChooseAttack();
 	void DoPeck();
 	void DoStomp();

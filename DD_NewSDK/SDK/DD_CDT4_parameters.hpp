@@ -18,11 +18,11 @@ namespace Classes
 struct UHeroEquipment_Familiar_CoreHealer_AddRandomizeValues_Params
 {
 	float                                              equipmentQuality;                                         // (Parm)
-	bool                                               doResetStatsToTemplate;                                   // (OptionalParm, Parm)
-	bool                                               bDontUseMissionRandomizerMultiplier;                      // (OptionalParm, Parm)
+	unsigned long                                      doResetStatsToTemplate;                                   // (OptionalParm, Parm)
+	unsigned long                                      bDontUseMissionRandomizerMultiplier;                      // (OptionalParm, Parm)
 	float                                              RandomizerMultiplierOverride;                             // (OptionalParm, Parm)
-	bool                                               bIsForShop;                                               // (OptionalParm, Parm)
-	bool                                               bAllowTranscendentGear;                                   // (OptionalParm, Parm)
+	unsigned long                                      bIsForShop;                                               // (OptionalParm, Parm)
+	unsigned long                                      bAllowTranscendentGear;                                   // (OptionalParm, Parm)
 };
 
 // Function CDT4.HeroEquipment_Familiar_CoreHealer.GetStatLevelUpAmountIterations
@@ -39,7 +39,7 @@ struct UHeroEquipment_Familiar_CoreHealer_GetNextStatLevelUpValue_Params
 {
 	TEnumAsByte<EEquipmentStatType>                    EQS;                                                      // (Parm)
 	int                                                statSubIndex;                                             // (OptionalParm, Parm)
-	bool                                               SetAsValue;                                               // (OptionalParm, Parm)
+	unsigned long                                      SetAsValue;                                               // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -57,7 +57,7 @@ struct UHeroEquipment_Familiar_CoreHealer_CheckStatLevelUpIterations_Params
 	int                                                statSubIndex;                                             // (Parm)
 	int                                                EquipmentLevelToCheck;                                    // (Parm)
 	float                                              Value;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function CDT4.HeroEquipment_Familiar_CoreHealer.AllowStatLevelUp
@@ -65,9 +65,9 @@ struct UHeroEquipment_Familiar_CoreHealer_AllowStatLevelUp_Params
 {
 	TEnumAsByte<EEquipmentStatType>                    EQS;                                                      // (Parm)
 	int                                                statSubIndex;                                             // (OptionalParm, Parm)
-	bool                                               IsInForgeUI;                                              // (OptionalParm, Parm)
-	bool                                               bIgnoreManaRequirement;                                   // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      IsInForgeUI;                                              // (OptionalParm, Parm)
+	unsigned long                                      bIgnoreManaRequirement;                                   // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function CDT4.HeroEquipment_Familiar_CoreHealer.GetWeaponDamage
@@ -86,8 +86,8 @@ struct UHeroEquipment_Familiar_CoreHealer_ApplyPrimaryDamageMultiplierDisplay_Pa
 struct UHeroEquipment_Familiar_CoreHealer_GetEquipmentStatValue_Params
 {
 	TEnumAsByte<EEquipmentStatType>                    equipmentStatType;                                        // (Parm)
-	bool                                               returnFinalAddedValue;                                    // (OptionalParm, Parm)
-	bool                                               includeStatLevelUp;                                       // (OptionalParm, Parm)
+	unsigned long                                      returnFinalAddedValue;                                    // (OptionalParm, Parm)
+	unsigned long                                      includeStatLevelUp;                                       // (OptionalParm, Parm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -168,7 +168,7 @@ struct UHeroEquipment_Familiar_CoreHealer_UpdateRotation_Params
 // Function CDT4.HeroEquipment_Familiar_CoreHealer.ShutDown
 struct UHeroEquipment_Familiar_CoreHealer_ShutDown_Params
 {
-	bool                                               isDestruction;                                            // (OptionalParm, Parm)
+	unsigned long                                      isDestruction;                                            // (OptionalParm, Parm)
 };
 
 // Function CDT4.HeroEquipment_Familiar_CoreHealer.AttachedComponent
@@ -197,7 +197,7 @@ struct UHeroEquipment_Familiar_MiniQueen_BeginMeleeAttack_Params
 struct UHeroEquipment_Familiar_MiniQueen_CanWebTarget_Params
 {
 	TScriptInterface<class UDunDefTargetableInterface> Target;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function CDT4.HeroEquipment_Familiar_MiniQueen.UpdateAI

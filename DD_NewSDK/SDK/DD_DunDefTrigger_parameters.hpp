@@ -42,7 +42,7 @@ struct ADunDefTrigger_UpdateActivationTime_Params
 struct ADunDefTrigger_Server_Activate_Params
 {
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
-	bool                                               forceActivation;                                          // (OptionalParm, Parm)
+	unsigned long                                      forceActivation;                                          // (OptionalParm, Parm)
 	int                                                activationType;                                           // (OptionalParm, Parm)
 };
 
@@ -64,7 +64,7 @@ struct ADunDefTrigger_GetToolTipPriority_Params
 struct ADunDefTrigger_TakesToolTipPriority_Params
 {
 	TScriptInterface<class UDunDefToolTipInterface>    otherToolTip;                                             // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefTrigger.DunDefTrigger.DrawToolTip
@@ -79,8 +79,8 @@ struct ADunDefTrigger_DrawToolTip_Params
 // Function DunDefTrigger.DunDefTrigger.ContinueDrawingToolTip
 struct ADunDefTrigger_ContinueDrawingToolTip_Params
 {
-	bool                                               ContinueDrawing;                                          // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ContinueDrawing;                                          // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefTrigger.DunDefTrigger.PostBeginPlay

@@ -62,10 +62,10 @@ float ADunDefWeapon_MagicStaff_WithOribitingEffect::GetTotalKnockbackMomentum()
 // Function CDT8.DunDefWeapon_MagicStaff_WithOribitingEffect.GetTotalKnockbackRange
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           IgnoreChargePercent            (OptionalParm, Parm)
+// unsigned long                  IgnoreChargePercent            (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float ADunDefWeapon_MagicStaff_WithOribitingEffect::GetTotalKnockbackRange(bool IgnoreChargePercent)
+float ADunDefWeapon_MagicStaff_WithOribitingEffect::GetTotalKnockbackRange(unsigned long IgnoreChargePercent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT8.DunDefWeapon_MagicStaff_WithOribitingEffect.GetTotalKnockbackRange");
 
@@ -142,13 +142,13 @@ void UHeroEquipment_Familiar_AoeBuffer::TickedByPawn(class ADunDefPlayer* Player
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // float                          equipmentQuality               (Parm)
-// bool                           doResetStatsToTemplate         (OptionalParm, Parm)
-// bool                           bDontUseMissionRandomizerMultiplier (OptionalParm, Parm)
+// unsigned long                  doResetStatsToTemplate         (OptionalParm, Parm)
+// unsigned long                  bDontUseMissionRandomizerMultiplier (OptionalParm, Parm)
 // float                          RandomizerMultiplierOverride   (OptionalParm, Parm)
-// bool                           bIsForShop                     (OptionalParm, Parm)
-// bool                           bAllowTranscendentGear         (OptionalParm, Parm)
+// unsigned long                  bIsForShop                     (OptionalParm, Parm)
+// unsigned long                  bAllowTranscendentGear         (OptionalParm, Parm)
 
-void UHeroEquipment_Familiar_AoeBuffer::AddRandomizeValues(float equipmentQuality, bool doResetStatsToTemplate, bool bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, bool bIsForShop, bool bAllowTranscendentGear)
+void UHeroEquipment_Familiar_AoeBuffer::AddRandomizeValues(float equipmentQuality, unsigned long doResetStatsToTemplate, unsigned long bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, unsigned long bIsForShop, unsigned long bAllowTranscendentGear)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT8.HeroEquipment_Familiar_AoeBuffer.AddRandomizeValues");
 
@@ -237,10 +237,10 @@ void UHeroEquipment_Familiar_AoeBuffer::AttachedComponent(class UPrimitiveCompon
 // int                            statSubIndex                   (OptionalParm, Parm)
 // struct FString                 setUserEquipmentName           (OptionalParm, Parm, NeedCtorLink)
 // struct FString                 setUserForgerName              (OptionalParm, Parm, NeedCtorLink)
-// bool                           refresh                        (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  refresh                        (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UHeroEquipment_Familiar_AoeBuffer::ApplyLevelUp(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, const struct FString& setUserEquipmentName, const struct FString& setUserForgerName, bool refresh)
+unsigned long UHeroEquipment_Familiar_AoeBuffer::ApplyLevelUp(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, const struct FString& setUserEquipmentName, const struct FString& setUserForgerName, unsigned long refresh)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT8.HeroEquipment_Familiar_AoeBuffer.ApplyLevelUp");
 
@@ -290,9 +290,9 @@ void UHeroEquipment_Familiar_AoeBuffer::InitFromNetInfo(const struct FEquipmentN
 // int                            statSubIndex                   (Parm)
 // int                            EquipmentLevelToCheck          (Parm)
 // float                          Value                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UHeroEquipment_Familiar_AoeBuffer::CheckStatLevelUpIterations(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, int EquipmentLevelToCheck, float Value)
+unsigned long UHeroEquipment_Familiar_AoeBuffer::CheckStatLevelUpIterations(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, int EquipmentLevelToCheck, float Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT8.HeroEquipment_Familiar_AoeBuffer.CheckStatLevelUpIterations");
 
@@ -317,11 +317,11 @@ bool UHeroEquipment_Familiar_AoeBuffer::CheckStatLevelUpIterations(TEnumAsByte<E
 // Parameters:
 // TEnumAsByte<EEquipmentStatType> EQS                            (Parm)
 // int                            statSubIndex                   (OptionalParm, Parm)
-// bool                           IsInForgeUI                    (OptionalParm, Parm)
-// bool                           bIgnoreManaRequirement         (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  IsInForgeUI                    (OptionalParm, Parm)
+// unsigned long                  bIgnoreManaRequirement         (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UHeroEquipment_Familiar_AoeBuffer::AllowStatLevelUp(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, bool IsInForgeUI, bool bIgnoreManaRequirement)
+unsigned long UHeroEquipment_Familiar_AoeBuffer::AllowStatLevelUp(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, unsigned long IsInForgeUI, unsigned long bIgnoreManaRequirement)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT8.HeroEquipment_Familiar_AoeBuffer.AllowStatLevelUp");
 
@@ -346,10 +346,10 @@ bool UHeroEquipment_Familiar_AoeBuffer::AllowStatLevelUp(TEnumAsByte<EEquipmentS
 // Parameters:
 // TEnumAsByte<EEquipmentStatType> EQS                            (Parm)
 // int                            statSubIndex                   (OptionalParm, Parm)
-// bool                           SetAsValue                     (OptionalParm, Parm)
+// unsigned long                  SetAsValue                     (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UHeroEquipment_Familiar_AoeBuffer::GetNextStatLevelUpValue(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, bool SetAsValue)
+int UHeroEquipment_Familiar_AoeBuffer::GetNextStatLevelUpValue(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, unsigned long SetAsValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT8.HeroEquipment_Familiar_AoeBuffer.GetNextStatLevelUpValue");
 

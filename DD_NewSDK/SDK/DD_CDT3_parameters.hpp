@@ -47,7 +47,7 @@ struct AMultiZoneMinimap_IsTouching_Params
 {
 	class APawn*                                       PlayerPawn;                                               // (Parm)
 	struct FTexVolumeMap                               Vmap;                                                     // (Parm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function CDT3.MultiZoneMinimap.SetMapIndex

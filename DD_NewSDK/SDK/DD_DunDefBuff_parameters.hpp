@@ -24,7 +24,7 @@ struct ABuffVolume_OnToggle_Params
 struct ABuffVolume_CanBuff_Params
 {
 	class AActor*                                      Target;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefBuff.BuffVolume.UnTouch
@@ -75,7 +75,7 @@ struct UDunDefBuff_Boost_GetPawnBoostAmount_Params
 struct UDunDefBuff_Boost_HasPawnBoostingType_Params
 {
 	TEnumAsByte<EPawnBoostType>                        boostType;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefBuff.DunDefBuff_Boost.GetTowerBoostAmount
@@ -89,7 +89,7 @@ struct UDunDefBuff_Boost_GetTowerBoostAmount_Params
 struct UDunDefBuff_Boost_HasTowerBoostingType_Params
 {
 	TEnumAsByte<ETowerBoostType>                       boostType;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefBuff.DunDefBuff_Boost.GetTowerBoostingTarget
@@ -104,7 +104,7 @@ struct UDunDefBuff_Boost_InitalizeActorStats_Params
 	TScriptInterface<class UIActorModifierInterface>   ActorStatObject;                                          // (Parm)
 	class UObject*                                     CallingObject;                                            // (OptionalParm, Parm)
 	int                                                Tier;                                                     // (OptionalParm, Parm)
-	bool                                               bBaseValueOnly;                                           // (OptionalParm, Parm)
+	unsigned long                                      bBaseValueOnly;                                           // (OptionalParm, Parm)
 };
 
 // Function DunDefBuff.DunDefBuff_Boost.DeactivateBuff
@@ -121,7 +121,7 @@ struct UDunDefBuff_Boost_ActivateBuff_Params
 struct UDunDefBuff_Contagion_CanAffectTarget_Params
 {
 	class AActor*                                      Target;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefBuff.DunDefBuff_Contagion.GetNearestTarget
@@ -146,14 +146,14 @@ struct UDunDefBuff_Damage_InitalizeActorStats_Params
 	TScriptInterface<class UIActorModifierInterface>   ActorStatObject;                                          // (Parm)
 	class UObject*                                     CallingObject;                                            // (OptionalParm, Parm)
 	int                                                Tier;                                                     // (OptionalParm, Parm)
-	bool                                               bBaseValueOnly;                                           // (OptionalParm, Parm)
+	unsigned long                                      bBaseValueOnly;                                           // (OptionalParm, Parm)
 };
 
 // Function DunDefBuff.DunDefBuff_Damage.CanDamage
 struct UDunDefBuff_Damage_CanDamage_Params
 {
 	class AActor*                                      Target;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefBuff.DunDefBuff_Damage.GetBuffDamage
@@ -178,7 +178,7 @@ struct UDunDefBuff_DamageAdjuster_IsBetween_Params
 	float                                              Value;                                                    // (Parm)
 	float                                              X;                                                        // (Parm)
 	float                                              Y;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefBuff.DunDefBuff_DamageAdjuster.InitalizeActorStats
@@ -187,7 +187,7 @@ struct UDunDefBuff_DamageAdjuster_InitalizeActorStats_Params
 	TScriptInterface<class UIActorModifierInterface>   ActorStatObject;                                          // (Parm)
 	class UObject*                                     CallingObject;                                            // (OptionalParm, Parm)
 	int                                                Tier;                                                     // (OptionalParm, Parm)
-	bool                                               bBaseValueOnly;                                           // (OptionalParm, Parm)
+	unsigned long                                      bBaseValueOnly;                                           // (OptionalParm, Parm)
 };
 
 // Function DunDefBuff.DunDefBuff_DamageAdjuster.GetDamageMultiplier
@@ -202,7 +202,7 @@ struct UDunDefBuff_DamageAdjuster_IsAdjustAllowed_Params
 {
 	class UObject*                                     Target;                                                   // (Parm)
 	struct FsLastDamageInfo                            TheDamageInfo;                                            // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefBuff.DunDefBuff_DamageAdjuster.AdjustDealtDamage
@@ -238,7 +238,7 @@ struct UDunDefBuff_EnemyBuff_InitalizeActorStats_Params
 	TScriptInterface<class UIActorModifierInterface>   ActorStatObject;                                          // (Parm)
 	class UObject*                                     CallingObject;                                            // (OptionalParm, Parm)
 	int                                                Tier;                                                     // (OptionalParm, Parm)
-	bool                                               bBaseValueOnly;                                           // (OptionalParm, Parm)
+	unsigned long                                      bBaseValueOnly;                                           // (OptionalParm, Parm)
 };
 
 // Function DunDefBuff.DunDefBuff_EnemyBuff.BuffEffect
@@ -252,7 +252,7 @@ struct UDunDefBuff_EnemyBuff_IsValidTarget_Params
 	class AActor*                                      Target;                                                   // (Parm)
 	class AActor*                                      BuffOwner;                                                // (Parm)
 	class UDunDefBuff*                                 aBuffTemplate;                                            // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefBuff.DunDefBuff_EnemyBuff.DeactivateBuff
@@ -301,7 +301,7 @@ struct UDunDefBuff_ExtraLife_ActivateBuff_Params
 struct UDunDefBuff_ExtraLife_CanProc_Params
 {
 	class AActor*                                      aActor;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefBuff.DunDefBuff_ExtraLife.InitalizeActorStats
@@ -310,7 +310,7 @@ struct UDunDefBuff_ExtraLife_InitalizeActorStats_Params
 	TScriptInterface<class UIActorModifierInterface>   ActorStatObject;                                          // (Parm)
 	class UObject*                                     CallingObject;                                            // (OptionalParm, Parm)
 	int                                                Tier;                                                     // (OptionalParm, Parm)
-	bool                                               bBaseValueOnly;                                           // (OptionalParm, Parm)
+	unsigned long                                      bBaseValueOnly;                                           // (OptionalParm, Parm)
 };
 
 // Function DunDefBuff.DunDefBuff_OnHit.InitalizeActorStats
@@ -319,7 +319,7 @@ struct UDunDefBuff_OnHit_InitalizeActorStats_Params
 	TScriptInterface<class UIActorModifierInterface>   ActorStatObject;                                          // (Parm)
 	class UObject*                                     CallingObject;                                            // (OptionalParm, Parm)
 	int                                                Tier;                                                     // (OptionalParm, Parm)
-	bool                                               bBaseValueOnly;                                           // (OptionalParm, Parm)
+	unsigned long                                      bBaseValueOnly;                                           // (OptionalParm, Parm)
 };
 
 // Function DunDefBuff.DunDefBuff_OnHit.GetExtraDamageAmount
@@ -337,7 +337,7 @@ struct UDunDefBuff_OnHit_IsValidHitTarget_Params
 	class AController*                                 DamageInstigator;                                         // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
 	class UObject*                                     whatDidDamage;                                            // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefBuff.DunDefBuff_OnHit.ReportActorDealtDamage
@@ -397,7 +397,7 @@ struct UDunDefBuff_Shield_InitalizeActorStats_Params
 	TScriptInterface<class UIActorModifierInterface>   ActorStatObject;                                          // (Parm)
 	class UObject*                                     CallingObject;                                            // (OptionalParm, Parm)
 	int                                                Tier;                                                     // (OptionalParm, Parm)
-	bool                                               bBaseValueOnly;                                           // (OptionalParm, Parm)
+	unsigned long                                      bBaseValueOnly;                                           // (OptionalParm, Parm)
 };
 
 // Function DunDefBuff.DunDefBuff_Shield.ExecReplicatedFunction
@@ -414,9 +414,9 @@ struct UDunDefBuff_Shield_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -427,7 +427,7 @@ struct UDunDefBuff_Spawn_CanSpawn_Params
 	class UObject*                                     EventCauser;                                              // (OptionalParm, Parm)
 	class UObject*                                     EventOwner;                                               // (OptionalParm, Parm)
 	class UObject*                                     whatDidDamage;                                            // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefBuff.DunDefBuff_Spawn.DestroySpawn
@@ -445,7 +445,7 @@ struct UDunDefBuff_Spawn_EnforceSpawnLimit_Params
 // Function DunDefBuff.DunDefBuff_Spawn.CheckSpawnCount
 struct UDunDefBuff_Spawn_CheckSpawnCount_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefBuff.DunDefBuff_Spawn.GetSpawnCount
@@ -561,7 +561,7 @@ struct UDunDefBuff_Web_InitalizeActorStats_Params
 	TScriptInterface<class UIActorModifierInterface>   ActorStatObject;                                          // (Parm)
 	class UObject*                                     CallingObject;                                            // (OptionalParm, Parm)
 	int                                                Tier;                                                     // (OptionalParm, Parm)
-	bool                                               bBaseValueOnly;                                           // (OptionalParm, Parm)
+	unsigned long                                      bBaseValueOnly;                                           // (OptionalParm, Parm)
 };
 
 // Function DunDefBuff.DunDefBuff_Web.BuffEffect
@@ -575,7 +575,7 @@ struct UDunDefBuff_Web_IsValidTarget_Params
 	class AActor*                                      Target;                                                   // (Parm)
 	class AActor*                                      BuffOwner;                                                // (Parm)
 	class UDunDefBuff*                                 aBuffTemplate;                                            // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefBuff.DunDefBuff_Web.DeactivateBuff

@@ -77,9 +77,9 @@ void AInternetLink::GetLocalIP(struct FIpAddr* Arg)
 // Parameters:
 // struct FString                 Str                            (Parm, NeedCtorLink)
 // struct FIpAddr                 Addr                           (Parm, OutParm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AInternetLink::StringToIpAddr(const struct FString& Str, struct FIpAddr* Addr)
+unsigned long AInternetLink::StringToIpAddr(const struct FString& Str, struct FIpAddr* Addr)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.InternetLink.StringToIpAddr");
 
@@ -175,9 +175,9 @@ void AInternetLink::Resolve(const struct FString& Domain)
 // int                            PortNum                        (Parm, OutParm)
 // struct FString                 LevelName                      (Parm, OutParm, NeedCtorLink)
 // struct FString                 EntryName                      (Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AInternetLink::ParseURL(const struct FString& URL, struct FString* Addr, int* PortNum, struct FString* LevelName, struct FString* EntryName)
+unsigned long AInternetLink::ParseURL(const struct FString& URL, struct FString* Addr, int* PortNum, struct FString* LevelName, struct FString* EntryName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.InternetLink.ParseURL");
 
@@ -207,9 +207,9 @@ bool AInternetLink::ParseURL(const struct FString& URL, struct FString* Addr, in
 // Function IpDrv.InternetLink.IsDataPending
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AInternetLink::IsDataPending()
+unsigned long AInternetLink::IsDataPending()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.InternetLink.IsDataPending");
 
@@ -446,9 +446,9 @@ int ATcpLink::SendText(const struct FString& Str)
 // Function IpDrv.TcpLink.IsConnected
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ATcpLink::IsConnected()
+unsigned long ATcpLink::IsConnected()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.IsConnected");
 
@@ -468,9 +468,9 @@ bool ATcpLink::IsConnected()
 // Function IpDrv.TcpLink.Close
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ATcpLink::Close()
+unsigned long ATcpLink::Close()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.Close");
 
@@ -491,9 +491,9 @@ bool ATcpLink::Close()
 // (Native, Public)
 // Parameters:
 // struct FIpAddr                 Addr                           (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ATcpLink::Open(const struct FIpAddr& Addr)
+unsigned long ATcpLink::Open(const struct FIpAddr& Addr)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.Open");
 
@@ -514,9 +514,9 @@ bool ATcpLink::Open(const struct FIpAddr& Addr)
 // Function IpDrv.TcpLink.Listen
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ATcpLink::Listen()
+unsigned long ATcpLink::Listen()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.Listen");
 
@@ -537,10 +537,10 @@ bool ATcpLink::Listen()
 // (Native, HasOptionalParms, Public)
 // Parameters:
 // int                            PortNum                        (OptionalParm, Parm)
-// bool                           bUseNextAvailable              (OptionalParm, Parm)
+// unsigned long                  bUseNextAvailable              (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int ATcpLink::BindPort(int PortNum, bool bUseNextAvailable)
+int ATcpLink::BindPort(int PortNum, unsigned long bUseNextAvailable)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.BindPort");
 
@@ -564,9 +564,9 @@ int ATcpLink::BindPort(int PortNum, bool bUseNextAvailable)
 // Parameters:
 // struct FUniqueNetId            UniqueId                       (Parm)
 // struct FString                 PlayerNick                     (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineEventsInterfaceMcp::UploadHardwareData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick)
+unsigned long UOnlineEventsInterfaceMcp::UploadHardwareData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineEventsInterfaceMcp.UploadHardwareData");
 
@@ -588,9 +588,9 @@ bool UOnlineEventsInterfaceMcp::UploadHardwareData(const struct FUniqueNetId& Un
 // (Native, Public)
 // Parameters:
 // class UOnlineGameplayEvents*   Events                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineEventsInterfaceMcp::UploadGameplayEventsData(class UOnlineGameplayEvents* Events)
+unsigned long UOnlineEventsInterfaceMcp::UploadGameplayEventsData(class UOnlineGameplayEvents* Events)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineEventsInterfaceMcp.UploadGameplayEventsData");
 
@@ -614,9 +614,9 @@ bool UOnlineEventsInterfaceMcp::UploadGameplayEventsData(class UOnlineGameplayEv
 // struct FUniqueNetId            UniqueId                       (Parm)
 // struct FString                 PlayerNick                     (Parm, NeedCtorLink)
 // class UOnlineProfileSettings*  ProfileSettings                (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineEventsInterfaceMcp::UploadProfileData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick, class UOnlineProfileSettings* ProfileSettings)
+unsigned long UOnlineEventsInterfaceMcp::UploadProfileData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick, class UOnlineProfileSettings* ProfileSettings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineEventsInterfaceMcp.UploadProfileData");
 
@@ -704,10 +704,10 @@ void UOnlineNewsInterfaceMcp::AddReadNewsCompletedDelegate(const struct FScriptD
 // Function IpDrv.OnlineNewsInterfaceMcp.OnReadNewsCompleted
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 // TEnumAsByte<EOnlineNewsType>   NewsType                       (Parm)
 
-void UOnlineNewsInterfaceMcp::OnReadNewsCompleted(bool bWasSuccessful, TEnumAsByte<EOnlineNewsType> NewsType)
+void UOnlineNewsInterfaceMcp::OnReadNewsCompleted(unsigned long bWasSuccessful, TEnumAsByte<EOnlineNewsType> NewsType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineNewsInterfaceMcp.OnReadNewsCompleted");
 
@@ -728,9 +728,9 @@ void UOnlineNewsInterfaceMcp::OnReadNewsCompleted(bool bWasSuccessful, TEnumAsBy
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EOnlineNewsType>   NewsType                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineNewsInterfaceMcp::ReadNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType)
+unsigned long UOnlineNewsInterfaceMcp::ReadNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineNewsInterfaceMcp.ReadNews");
 
@@ -752,9 +752,9 @@ bool UOnlineNewsInterfaceMcp::ReadNews(unsigned char LocalUserNum, TEnumAsByte<E
 // Function IpDrv.OnlineTitleFileDownloadMcp.ClearDownloadedFiles
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineTitleFileDownloadMcp::ClearDownloadedFiles()
+unsigned long UOnlineTitleFileDownloadMcp::ClearDownloadedFiles()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadMcp.ClearDownloadedFiles");
 
@@ -799,9 +799,9 @@ TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileDownloadMcp::GetTitleFi
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // TArray<unsigned char>          FileContents                   (Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineTitleFileDownloadMcp::GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents)
+unsigned long UOnlineTitleFileDownloadMcp::GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadMcp.GetTitleFileContents");
 
@@ -866,9 +866,9 @@ void UOnlineTitleFileDownloadMcp::AddReadTitleFileCompleteDelegate(const struct 
 // (Native, Public)
 // Parameters:
 // struct FString                 FileToRead                     (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineTitleFileDownloadMcp::ReadTitleFile(const struct FString& FileToRead)
+unsigned long UOnlineTitleFileDownloadMcp::ReadTitleFile(const struct FString& FileToRead)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadMcp.ReadTitleFile");
 
@@ -889,10 +889,10 @@ bool UOnlineTitleFileDownloadMcp::ReadTitleFile(const struct FString& FileToRead
 // Function IpDrv.OnlineTitleFileDownloadMcp.OnReadTitleFileComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 
-void UOnlineTitleFileDownloadMcp::OnReadTitleFileComplete(bool bWasSuccessful, const struct FString& Filename)
+void UOnlineTitleFileDownloadMcp::OnReadTitleFileComplete(unsigned long bWasSuccessful, const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadMcp.OnReadTitleFileComplete");
 
@@ -929,13 +929,13 @@ void UMeshBeacon::DestroyBeacon()
 // Function IpDrv.MeshBeaconClient.SendHostNewGameSessionResponse
 // (Native, Public, HasOutParms)
 // Parameters:
-// bool                           bSuccess                       (Parm)
+// unsigned long                  bSuccess                       (Parm)
 // struct FName                   SessionName                    (Parm)
 // class UClass*                  SearchClass                    (Parm)
 // unsigned char                  PlatformSpecificInfo           (Const, Parm, OutParm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMeshBeaconClient::SendHostNewGameSessionResponse(bool bSuccess, const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo)
+unsigned long UMeshBeaconClient::SendHostNewGameSessionResponse(unsigned long bSuccess, const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.SendHostNewGameSessionResponse");
 
@@ -1081,9 +1081,9 @@ void UMeshBeaconClient::OnConnectionRequestResult(TEnumAsByte<EMeshBeaconConnect
 // Parameters:
 // TEnumAsByte<EMeshBeaconBandwidthTestType> TestType                       (Parm)
 // int                            TestBufferSize                 (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMeshBeaconClient::BeginBandwidthTest(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize)
+unsigned long UMeshBeaconClient::BeginBandwidthTest(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.BeginBandwidthTest");
 
@@ -1107,10 +1107,10 @@ bool UMeshBeaconClient::BeginBandwidthTest(TEnumAsByte<EMeshBeaconBandwidthTestT
 // Parameters:
 // struct FOnlineGameSearchResult DesiredHost                    (Const, Parm, OutParm)
 // struct FClientConnectionRequest ClientRequest                  (Const, Parm, OutParm, NeedCtorLink)
-// bool                           bRegisterSecureAddress         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bRegisterSecureAddress         (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMeshBeaconClient::RequestConnection(bool bRegisterSecureAddress, struct FOnlineGameSearchResult* DesiredHost, struct FClientConnectionRequest* ClientRequest)
+unsigned long UMeshBeaconClient::RequestConnection(unsigned long bRegisterSecureAddress, struct FOnlineGameSearchResult* DesiredHost, struct FClientConnectionRequest* ClientRequest)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.RequestConnection");
 
@@ -1154,12 +1154,12 @@ void UMeshBeaconClient::DestroyBeacon()
 // Function IpDrv.MeshBeaconHost.OnReceivedClientCreateNewSessionResult
 // (Public, Delegate, HasOutParms)
 // Parameters:
-// bool                           bSucceeded                     (Parm)
+// unsigned long                  bSucceeded                     (Parm)
 // struct FName                   SessionName                    (Parm)
 // class UClass*                  SearchClass                    (Parm)
 // unsigned char                  PlatformSpecificInfo           (Const, Parm, OutParm)
 
-void UMeshBeaconHost::OnReceivedClientCreateNewSessionResult(bool bSucceeded, const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo)
+void UMeshBeaconHost::OnReceivedClientCreateNewSessionResult(unsigned long bSucceeded, const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.OnReceivedClientCreateNewSessionResult");
 
@@ -1186,9 +1186,9 @@ void UMeshBeaconHost::OnReceivedClientCreateNewSessionResult(bool bSucceeded, co
 // struct FName                   SessionName                    (Parm)
 // class UClass*                  SearchClass                    (Parm)
 // TArray<struct FPlayerMember>   Players                        (Const, Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMeshBeaconHost::RequestClientCreateNewSession(const struct FUniqueNetId& PlayerNetId, const struct FName& SessionName, class UClass* SearchClass, TArray<struct FPlayerMember>* Players)
+unsigned long UMeshBeaconHost::RequestClientCreateNewSession(const struct FUniqueNetId& PlayerNetId, const struct FName& SessionName, class UClass* SearchClass, TArray<struct FPlayerMember>* Players)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.RequestClientCreateNewSession");
 
@@ -1259,9 +1259,9 @@ void UMeshBeaconHost::OnAllPendingPlayersConnected()
 // (Native, Public, HasOutParms)
 // Parameters:
 // TArray<struct FUniqueNetId>    Players                        (Const, Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMeshBeaconHost::AllPlayersConnected(TArray<struct FUniqueNetId>* Players)
+unsigned long UMeshBeaconHost::AllPlayersConnected(TArray<struct FUniqueNetId>* Players)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.AllPlayersConnected");
 
@@ -1402,9 +1402,9 @@ void UMeshBeaconHost::OnReceivedClientConnectionRequest(struct FClientMeshBeacon
 // Function IpDrv.MeshBeaconHost.AllowBandwidthTesting
 // (Defined, Public)
 // Parameters:
-// bool                           bEnabled                       (Parm)
+// unsigned long                  bEnabled                       (Parm)
 
-void UMeshBeaconHost::AllowBandwidthTesting(bool bEnabled)
+void UMeshBeaconHost::AllowBandwidthTesting(unsigned long bEnabled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.AllowBandwidthTesting");
 
@@ -1440,9 +1440,9 @@ void UMeshBeaconHost::CancelPendingBandwidthTests()
 // Function IpDrv.MeshBeaconHost.HasPendingBandwidthTest
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMeshBeaconHost::HasPendingBandwidthTest()
+unsigned long UMeshBeaconHost::HasPendingBandwidthTest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.HasPendingBandwidthTest");
 
@@ -1480,9 +1480,9 @@ void UMeshBeaconHost::CancelInProgressBandwidthTests()
 // Function IpDrv.MeshBeaconHost.HasInProgressBandwidthTest
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMeshBeaconHost::HasInProgressBandwidthTest()
+unsigned long UMeshBeaconHost::HasInProgressBandwidthTest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.HasInProgressBandwidthTest");
 
@@ -1505,9 +1505,9 @@ bool UMeshBeaconHost::HasInProgressBandwidthTest()
 // struct FUniqueNetId            PlayerNetId                    (Parm)
 // TEnumAsByte<EMeshBeaconBandwidthTestType> TestType                       (Parm)
 // int                            TestBufferSize                 (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMeshBeaconHost::RequestClientBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize)
+unsigned long UMeshBeaconHost::RequestClientBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.RequestClientBandwidthTest");
 
@@ -1549,9 +1549,9 @@ void UMeshBeaconHost::DestroyBeacon()
 // (Native, Public)
 // Parameters:
 // struct FUniqueNetId            InOwningPlayerId               (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMeshBeaconHost::InitHostBeacon(const struct FUniqueNetId& InOwningPlayerId)
+unsigned long UMeshBeaconHost::InitHostBeacon(const struct FUniqueNetId& InOwningPlayerId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.InitHostBeacon");
 
@@ -1574,9 +1574,9 @@ bool UMeshBeaconHost::InitHostBeacon(const struct FUniqueNetId& InOwningPlayerId
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemCommonImpl::IsPlayerInSession(const struct FName& SessionName, const struct FUniqueNetId& PlayerID)
+unsigned long UOnlineSubsystemCommonImpl::IsPlayerInSession(const struct FName& SessionName, const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineSubsystemCommonImpl.IsPlayerInSession");
 
@@ -1664,9 +1664,9 @@ void UOnlineGameInterfaceImpl::CancelPendingAsyncTasks()
 // unsigned char                  SearchingPlayerNum             (Parm)
 // class UOnlineGameSearch*       SearchSettings                 (Parm)
 // unsigned char                  PlatformSpecificInfo           (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::BindPlatformSpecificSessionToSearch(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, unsigned char PlatformSpecificInfo)
+unsigned long UOnlineGameInterfaceImpl::BindPlatformSpecificSessionToSearch(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, unsigned char PlatformSpecificInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.BindPlatformSpecificSessionToSearch");
 
@@ -1691,9 +1691,9 @@ bool UOnlineGameInterfaceImpl::BindPlatformSpecificSessionToSearch(unsigned char
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // unsigned char                  PlatformSpecificInfo           (Parm, OutParm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::ReadPlatformSpecificSessionInfoBySessionName(const struct FName& SessionName, unsigned char* PlatformSpecificInfo)
+unsigned long UOnlineGameInterfaceImpl::ReadPlatformSpecificSessionInfoBySessionName(const struct FName& SessionName, unsigned char* PlatformSpecificInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ReadPlatformSpecificSessionInfoBySessionName");
 
@@ -1718,9 +1718,9 @@ bool UOnlineGameInterfaceImpl::ReadPlatformSpecificSessionInfoBySessionName(cons
 // Parameters:
 // struct FOnlineGameSearchResult DesiredGame                    (Const, Parm, OutParm)
 // unsigned char                  PlatformSpecificInfo           (Parm, OutParm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::ReadPlatformSpecificSessionInfo(struct FOnlineGameSearchResult* DesiredGame, unsigned char* PlatformSpecificInfo)
+unsigned long UOnlineGameInterfaceImpl::ReadPlatformSpecificSessionInfo(struct FOnlineGameSearchResult* DesiredGame, unsigned char* PlatformSpecificInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ReadPlatformSpecificSessionInfo");
 
@@ -1747,9 +1747,9 @@ bool UOnlineGameInterfaceImpl::ReadPlatformSpecificSessionInfo(struct FOnlineGam
 // Parameters:
 // int                            StartAt                        (Parm)
 // int                            NumberToQuery                  (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::QueryNonAdvertisedData(int StartAt, int NumberToQuery)
+unsigned long UOnlineGameInterfaceImpl::QueryNonAdvertisedData(int StartAt, int NumberToQuery)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.QueryNonAdvertisedData");
 
@@ -1772,9 +1772,9 @@ bool UOnlineGameInterfaceImpl::QueryNonAdvertisedData(int StartAt, int NumberToQ
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // TArray<struct FUniqueNetId>    Players                        (Const, Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::RecalculateSkillRating(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players)
+unsigned long UOnlineGameInterfaceImpl::RecalculateSkillRating(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.RecalculateSkillRating");
 
@@ -1800,9 +1800,9 @@ bool UOnlineGameInterfaceImpl::RecalculateSkillRating(const struct FName& Sessio
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FName                   SessionName                    (Parm)
 // TArray<int>                    participatingPlayerControllerIds (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::AcceptGameInvite(unsigned char LocalUserNum, const struct FName& SessionName, TArray<int> participatingPlayerControllerIds)
+unsigned long UOnlineGameInterfaceImpl::AcceptGameInvite(unsigned char LocalUserNum, const struct FName& SessionName, TArray<int> participatingPlayerControllerIds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AcceptGameInvite");
 
@@ -1954,9 +1954,9 @@ void UOnlineGameInterfaceImpl::AddArbitrationRegistrationCompleteDelegate(const 
 // (Public, Delegate)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineGameInterfaceImpl::OnArbitrationRegistrationComplete(const struct FName& SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnArbitrationRegistrationComplete(const struct FName& SessionName, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnArbitrationRegistrationComplete");
 
@@ -1976,9 +1976,9 @@ void UOnlineGameInterfaceImpl::OnArbitrationRegistrationComplete(const struct FN
 // (Public)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::RegisterForArbitration(const struct FName& SessionName)
+unsigned long UOnlineGameInterfaceImpl::RegisterForArbitration(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.RegisterForArbitration");
 
@@ -2039,9 +2039,9 @@ void UOnlineGameInterfaceImpl::AddEndOnlineGameCompleteDelegate(const struct FSc
 // (Public, Delegate)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineGameInterfaceImpl::OnEndOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnEndOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnEndOnlineGameComplete");
 
@@ -2061,9 +2061,9 @@ void UOnlineGameInterfaceImpl::OnEndOnlineGameComplete(const struct FName& Sessi
 // (Native, Public)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::EndOnlineGame(const struct FName& SessionName)
+unsigned long UOnlineGameInterfaceImpl::EndOnlineGame(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.EndOnlineGame");
 
@@ -2125,9 +2125,9 @@ void UOnlineGameInterfaceImpl::AddStartOnlineGameCompleteDelegate(const struct F
 // (Public, Delegate)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineGameInterfaceImpl::OnStartOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnStartOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnStartOnlineGameComplete");
 
@@ -2147,9 +2147,9 @@ void UOnlineGameInterfaceImpl::OnStartOnlineGameComplete(const struct FName& Ses
 // (Native, Public)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::StartOnlineGame(const struct FName& SessionName)
+unsigned long UOnlineGameInterfaceImpl::StartOnlineGame(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.StartOnlineGame");
 
@@ -2212,9 +2212,9 @@ void UOnlineGameInterfaceImpl::AddUnregisterPlayerCompleteDelegate(const struct 
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineGameInterfaceImpl::OnUnregisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnUnregisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnUnregisterPlayerComplete");
 
@@ -2236,9 +2236,9 @@ void UOnlineGameInterfaceImpl::OnUnregisterPlayerComplete(const struct FName& Se
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::UnregisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID)
+unsigned long UOnlineGameInterfaceImpl::UnregisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.UnregisterPlayer");
 
@@ -2301,9 +2301,9 @@ void UOnlineGameInterfaceImpl::AddRegisterPlayerCompleteDelegate(const struct FS
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineGameInterfaceImpl::OnRegisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnRegisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnRegisterPlayerComplete");
 
@@ -2325,10 +2325,10 @@ void UOnlineGameInterfaceImpl::OnRegisterPlayerComplete(const struct FName& Sess
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           bWasInvited                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bWasInvited                    (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::RegisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasInvited)
+unsigned long UOnlineGameInterfaceImpl::RegisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, unsigned long bWasInvited)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.RegisterPlayer");
 
@@ -2352,9 +2352,9 @@ bool UOnlineGameInterfaceImpl::RegisterPlayer(const struct FName& SessionName, c
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FString                 ConnectInfo                    (Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::GetResolvedConnectString(const struct FName& SessionName, struct FString* ConnectInfo)
+unsigned long UOnlineGameInterfaceImpl::GetResolvedConnectString(const struct FName& SessionName, struct FString* ConnectInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetResolvedConnectString");
 
@@ -2419,9 +2419,9 @@ void UOnlineGameInterfaceImpl::AddJoinOnlineGameCompleteDelegate(const struct FS
 // (Public, Delegate)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineGameInterfaceImpl::OnJoinOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnJoinOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnJoinOnlineGameComplete");
 
@@ -2444,9 +2444,9 @@ void UOnlineGameInterfaceImpl::OnJoinOnlineGameComplete(const struct FName& Sess
 // struct FName                   SessionName                    (Parm)
 // struct FOnlineGameSearchResult DesiredGame                    (Const, Parm, OutParm)
 // TArray<int>                    participatingPlayerControllerIds (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::JoinOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, TArray<int> participatingPlayerControllerIds, struct FOnlineGameSearchResult* DesiredGame)
+unsigned long UOnlineGameInterfaceImpl::JoinOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, TArray<int> participatingPlayerControllerIds, struct FOnlineGameSearchResult* DesiredGame)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.JoinOnlineGame");
 
@@ -2473,9 +2473,9 @@ bool UOnlineGameInterfaceImpl::JoinOnlineGame(unsigned char PlayerNum, const str
 // (Native, Public)
 // Parameters:
 // class UOnlineGameSearch*       Search                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::FreeSearchResults(class UOnlineGameSearch* Search)
+unsigned long UOnlineGameInterfaceImpl::FreeSearchResults(class UOnlineGameSearch* Search)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.FreeSearchResults");
 
@@ -2536,9 +2536,9 @@ void UOnlineGameInterfaceImpl::AddCancelFindOnlineGamesCompleteDelegate(const st
 // Function IpDrv.OnlineGameInterfaceImpl.OnCancelFindOnlineGamesComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineGameInterfaceImpl::OnCancelFindOnlineGamesComplete(bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnCancelFindOnlineGamesComplete(unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnCancelFindOnlineGamesComplete");
 
@@ -2556,9 +2556,9 @@ void UOnlineGameInterfaceImpl::OnCancelFindOnlineGamesComplete(bool bWasSuccessf
 // Function IpDrv.OnlineGameInterfaceImpl.CancelFindOnlineGames
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::CancelFindOnlineGames()
+unsigned long UOnlineGameInterfaceImpl::CancelFindOnlineGames()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.CancelFindOnlineGames");
 
@@ -2621,9 +2621,9 @@ void UOnlineGameInterfaceImpl::AddFindOnlineGamesCompleteDelegate(const struct F
 // unsigned char                  SearchingPlayerNum             (Parm)
 // class UOnlineGameSearch*       SearchSettings                 (Parm)
 // int                            numParticipatingLocalPlayers   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::FindOnlineGames(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, int numParticipatingLocalPlayers)
+unsigned long UOnlineGameInterfaceImpl::FindOnlineGames(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, int numParticipatingLocalPlayers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.FindOnlineGames");
 
@@ -2687,9 +2687,9 @@ void UOnlineGameInterfaceImpl::AddDestroyOnlineGameCompleteDelegate(const struct
 // (Public, Delegate)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineGameInterfaceImpl::OnDestroyOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnDestroyOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnDestroyOnlineGameComplete");
 
@@ -2709,10 +2709,10 @@ void UOnlineGameInterfaceImpl::OnDestroyOnlineGameComplete(const struct FName& S
 // (Native, HasOptionalParms, Public)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
-// bool                           bShouldCleanupTasks            (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bShouldCleanupTasks            (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::DestroyOnlineGame(const struct FName& SessionName, bool bShouldCleanupTasks)
+unsigned long UOnlineGameInterfaceImpl::DestroyOnlineGame(const struct FName& SessionName, unsigned long bShouldCleanupTasks)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.DestroyOnlineGame");
 
@@ -2775,9 +2775,9 @@ void UOnlineGameInterfaceImpl::AddUpdateOnlineGameCompleteDelegate(const struct 
 // (Public, Delegate)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineGameInterfaceImpl::OnUpdateOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnUpdateOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnUpdateOnlineGameComplete");
 
@@ -2798,10 +2798,10 @@ void UOnlineGameInterfaceImpl::OnUpdateOnlineGameComplete(const struct FName& Se
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // class UOnlineGameSettings*     UpdatedGameSettings            (Parm)
-// bool                           bShouldRefreshOnlineData       (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bShouldRefreshOnlineData       (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::UpdateOnlineGame(const struct FName& SessionName, class UOnlineGameSettings* UpdatedGameSettings, bool bShouldRefreshOnlineData)
+unsigned long UOnlineGameInterfaceImpl::UpdateOnlineGame(const struct FName& SessionName, class UOnlineGameSettings* UpdatedGameSettings, unsigned long bShouldRefreshOnlineData)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.UpdateOnlineGame");
 
@@ -2864,9 +2864,9 @@ void UOnlineGameInterfaceImpl::AddCreateOnlineGameCompleteDelegate(const struct 
 // (Public, Delegate)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineGameInterfaceImpl::OnCreateOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnCreateOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnCreateOnlineGameComplete");
 
@@ -2910,9 +2910,9 @@ int UOnlineGameInterfaceImpl::CreateOnlineGameFailureID()
 // struct FName                   SessionName                    (Parm)
 // class UOnlineGameSettings*     NewGameSettings                (Parm)
 // TArray<int>                    participatingPlayerControllerIds (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::CreateOnlineGame(unsigned char HostingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings, TArray<int> participatingPlayerControllerIds)
+unsigned long UOnlineGameInterfaceImpl::CreateOnlineGame(unsigned char HostingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings, TArray<int> participatingPlayerControllerIds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.CreateOnlineGame");
 
@@ -2980,9 +2980,9 @@ class UOnlineGameSettings* UOnlineGameInterfaceImpl::GetGameSettings(const struc
 // Function IpDrv.OnlineGameInterfaceImpl.OnFindOnlineGamesComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineGameInterfaceImpl::OnFindOnlineGamesComplete(bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnFindOnlineGamesComplete(unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnFindOnlineGamesComplete");
 
@@ -3037,9 +3037,9 @@ void UPartyBeaconClient::DestroyBeacon()
 // (Native, Public)
 // Parameters:
 // struct FUniqueNetId            CancellingPartyLeader          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UPartyBeaconClient::CancelReservation(const struct FUniqueNetId& CancellingPartyLeader)
+unsigned long UPartyBeaconClient::CancelReservation(const struct FUniqueNetId& CancellingPartyLeader)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconClient.CancelReservation");
 
@@ -3063,9 +3063,9 @@ bool UPartyBeaconClient::CancelReservation(const struct FUniqueNetId& Cancelling
 // struct FOnlineGameSearchResult DesiredHost                    (Const, Parm, OutParm)
 // struct FUniqueNetId            RequestingPartyLeader          (Parm)
 // TArray<struct FPlayerReservation> PlayersToAdd                   (Const, Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UPartyBeaconClient::RequestReservationUpdate(const struct FUniqueNetId& RequestingPartyLeader, struct FOnlineGameSearchResult* DesiredHost, TArray<struct FPlayerReservation>* PlayersToAdd)
+unsigned long UPartyBeaconClient::RequestReservationUpdate(const struct FUniqueNetId& RequestingPartyLeader, struct FOnlineGameSearchResult* DesiredHost, TArray<struct FPlayerReservation>* PlayersToAdd)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconClient.RequestReservationUpdate");
 
@@ -3094,9 +3094,9 @@ bool UPartyBeaconClient::RequestReservationUpdate(const struct FUniqueNetId& Req
 // struct FOnlineGameSearchResult DesiredHost                    (Const, Parm, OutParm)
 // struct FUniqueNetId            RequestingPartyLeader          (Parm)
 // TArray<struct FPlayerReservation> Players                        (Const, Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UPartyBeaconClient::RequestReservation(const struct FUniqueNetId& RequestingPartyLeader, struct FOnlineGameSearchResult* DesiredHost, TArray<struct FPlayerReservation>* Players)
+unsigned long UPartyBeaconClient::RequestReservation(const struct FUniqueNetId& RequestingPartyLeader, struct FOnlineGameSearchResult* DesiredHost, TArray<struct FPlayerReservation>* Players)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconClient.RequestReservation");
 
@@ -3381,9 +3381,9 @@ void UPartyBeaconHost::RegisterPartyMembers()
 // Function IpDrv.PartyBeaconHost.AreReservationsFull
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UPartyBeaconHost::AreReservationsFull()
+unsigned long UPartyBeaconHost::AreReservationsFull()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.AreReservationsFull");
 
@@ -3536,9 +3536,9 @@ void UPartyBeaconHost::OnReservationChange()
 // (Native, Public)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           bMaintainParty                 (Parm)
+// unsigned long                  bMaintainParty                 (Parm)
 
-void UPartyBeaconHost::HandlePlayerLogout(const struct FUniqueNetId& PlayerID, bool bMaintainParty)
+void UPartyBeaconHost::HandlePlayerLogout(const struct FUniqueNetId& PlayerID, unsigned long bMaintainParty)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.HandlePlayerLogout");
 
@@ -3589,10 +3589,10 @@ TEnumAsByte<EPartyReservationResult> UPartyBeaconHost::UpdatePartyReservationEnt
 // struct FUniqueNetId            PartyLeader                    (Parm)
 // TArray<struct FPlayerReservation> PlayerMembers                  (Const, Parm, OutParm, NeedCtorLink)
 // int                            TeamNum                        (Parm)
-// bool                           bIsHost                        (Parm)
+// unsigned long                  bIsHost                        (Parm)
 // TEnumAsByte<EPartyReservationResult> ReturnValue                    (Parm, OutParm, ReturnParm)
 
-TEnumAsByte<EPartyReservationResult> UPartyBeaconHost::AddPartyReservationEntry(const struct FUniqueNetId& PartyLeader, int TeamNum, bool bIsHost, TArray<struct FPlayerReservation>* PlayerMembers)
+TEnumAsByte<EPartyReservationResult> UPartyBeaconHost::AddPartyReservationEntry(const struct FUniqueNetId& PartyLeader, int TeamNum, unsigned long bIsHost, TArray<struct FPlayerReservation>* PlayerMembers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.AddPartyReservationEntry");
 
@@ -3622,9 +3622,9 @@ TEnumAsByte<EPartyReservationResult> UPartyBeaconHost::AddPartyReservationEntry(
 // int                            InNumPlayersPerTeam            (Parm)
 // int                            InNumReservations              (Parm)
 // struct FName                   InSessionName                  (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UPartyBeaconHost::InitHostBeacon(int InNumTeams, int InNumPlayersPerTeam, int InNumReservations, const struct FName& InSessionName)
+unsigned long UPartyBeaconHost::InitHostBeacon(int InNumTeams, int InNumPlayersPerTeam, int InNumReservations, const struct FName& InSessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.InitHostBeacon");
 
@@ -3973,9 +3973,9 @@ struct FString UWebRequest::DecodeBase64(const struct FString& Encoded)
 // Function IpDrv.WebResponse.SentResponse
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UWebResponse::SentResponse()
+unsigned long UWebResponse::SentResponse()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SentResponse");
 
@@ -3994,9 +3994,9 @@ bool UWebResponse::SentResponse()
 // Function IpDrv.WebResponse.SentText
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UWebResponse::SentText()
+unsigned long UWebResponse::SentText()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SentText");
 
@@ -4036,9 +4036,9 @@ void UWebResponse::Redirect(const struct FString& URL)
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // struct FString                 ContentType                    (OptionalParm, Parm, NeedCtorLink)
-// bool                           bCache                         (OptionalParm, Parm)
+// unsigned long                  bCache                         (OptionalParm, Parm)
 
-void UWebResponse::SendStandardHeaders(const struct FString& ContentType, bool bCache)
+void UWebResponse::SendStandardHeaders(const struct FString& ContentType, unsigned long bCache)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SendStandardHeaders");
 
@@ -4097,9 +4097,9 @@ void UWebResponse::SendHeaders()
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // struct FString                 Header                         (Parm, NeedCtorLink)
-// bool                           bReplace                       (OptionalParm, Parm)
+// unsigned long                  bReplace                       (OptionalParm, Parm)
 
-void UWebResponse::AddHeader(const struct FString& Header, bool bReplace)
+void UWebResponse::AddHeader(const struct FString& Header, unsigned long bReplace)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.AddHeader");
 
@@ -4180,9 +4180,9 @@ void UWebResponse::FailAuthentication(const struct FString& Realm)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // struct FString                 ContentType                    (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UWebResponse::SendCachedFile(const struct FString& Filename, const struct FString& ContentType)
+unsigned long UWebResponse::SendCachedFile(const struct FString& Filename, const struct FString& ContentType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SendCachedFile");
 
@@ -4226,9 +4226,9 @@ void UWebResponse::SendBinary(int Count, unsigned char B)
 // (Defined, Event, HasOptionalParms, Public)
 // Parameters:
 // struct FString                 Text                           (Parm, NeedCtorLink)
-// bool                           bNoCRLF                        (OptionalParm, Parm)
+// unsigned long                  bNoCRLF                        (OptionalParm, Parm)
 
-void UWebResponse::SendText(const struct FString& Text, bool bNoCRLF)
+void UWebResponse::SendText(const struct FString& Text, unsigned long bNoCRLF)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SendText");
 
@@ -4314,9 +4314,9 @@ struct FString UWebResponse::LoadParsedUHTM(const struct FString& Filename)
 // (Final, Native, Public)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UWebResponse::IncludeBinaryFile(const struct FString& Filename)
+unsigned long UWebResponse::IncludeBinaryFile(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.IncludeBinaryFile");
 
@@ -4338,9 +4338,9 @@ bool UWebResponse::IncludeBinaryFile(const struct FString& Filename)
 // (Final, Native, Public)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UWebResponse::IncludeUHTM(const struct FString& Filename)
+unsigned long UWebResponse::IncludeUHTM(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.IncludeUHTM");
 
@@ -4381,9 +4381,9 @@ void UWebResponse::ClearSubst()
 // Parameters:
 // struct FString                 Variable                       (Parm, NeedCtorLink)
 // struct FString                 Value                          (Parm, CoerceParm, NeedCtorLink)
-// bool                           bClear                         (OptionalParm, Parm)
+// unsigned long                  bClear                         (OptionalParm, Parm)
 
-void UWebResponse::Subst(const struct FString& Variable, const struct FString& Value, bool bClear)
+void UWebResponse::Subst(const struct FString& Variable, const struct FString& Value, unsigned long bClear)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.Subst");
 
@@ -4405,9 +4405,9 @@ void UWebResponse::Subst(const struct FString& Variable, const struct FString& V
 // (Final, Native, Public)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UWebResponse::FileExists(const struct FString& Filename)
+unsigned long UWebResponse::FileExists(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.FileExists");
 
@@ -4474,9 +4474,9 @@ void UWebApplication::Query(class UWebRequest* Request, class UWebResponse* Resp
 // Parameters:
 // class UWebRequest*             Request                        (Parm)
 // class UWebResponse*            Response                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UWebApplication::PreQuery(class UWebRequest* Request, class UWebResponse* Response)
+unsigned long UWebApplication::PreQuery(class UWebRequest* Request, class UWebResponse* Response)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebApplication.PreQuery");
 
@@ -4767,10 +4767,10 @@ void UIniLocPatcherMcp::AddReadFileDelegate(const struct FScriptDelegate& ReadTi
 // Function IpDrv.IniLocPatcherMcp.OnReadFileComplete
 // (Defined, Public)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 
-void UIniLocPatcherMcp::OnReadFileComplete(bool bWasSuccessful, const struct FString& Filename)
+void UIniLocPatcherMcp::OnReadFileComplete(unsigned long bWasSuccessful, const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.IniLocPatcherMcp.OnReadFileComplete");
 
@@ -4823,9 +4823,9 @@ void UIniLocPatcherMcp::Init()
 // Function IpDrv.WebConnection.IsHanging
 // (Final, Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AWebConnection::IsHanging()
+unsigned long AWebConnection::IsHanging()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.IsHanging");
 

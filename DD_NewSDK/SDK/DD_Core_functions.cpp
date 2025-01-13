@@ -364,9 +364,9 @@ void UObject::STATIC_SetHighIntValue(int val1, int val2, int val3, int val4, str
 // Parameters:
 // struct FHighDigitInt           A                              (Parm)
 // struct FHighDigitInt           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_NotEqual_HighDigitIntHighDigitInt(const struct FHighDigitInt& A, const struct FHighDigitInt& B)
+unsigned long UObject::STATIC_NotEqual_HighDigitIntHighDigitInt(const struct FHighDigitInt& A, const struct FHighDigitInt& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_HighDigitIntHighDigitInt");
 
@@ -389,9 +389,9 @@ bool UObject::STATIC_NotEqual_HighDigitIntHighDigitInt(const struct FHighDigitIn
 // Parameters:
 // struct FHighDigitInt           A                              (Parm)
 // struct FHighDigitInt           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_EqualEqual_HighDigitIntHighDigitInt(const struct FHighDigitInt& A, const struct FHighDigitInt& B)
+unsigned long UObject::STATIC_EqualEqual_HighDigitIntHighDigitInt(const struct FHighDigitInt& A, const struct FHighDigitInt& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_HighDigitIntHighDigitInt");
 
@@ -414,9 +414,9 @@ bool UObject::STATIC_EqualEqual_HighDigitIntHighDigitInt(const struct FHighDigit
 // Parameters:
 // struct FHighDigitInt           A                              (Parm)
 // struct FHighDigitInt           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_GreaterEqual_HighDigitIntHighDigitInt(const struct FHighDigitInt& A, const struct FHighDigitInt& B)
+unsigned long UObject::STATIC_GreaterEqual_HighDigitIntHighDigitInt(const struct FHighDigitInt& A, const struct FHighDigitInt& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterEqual_HighDigitIntHighDigitInt");
 
@@ -439,9 +439,9 @@ bool UObject::STATIC_GreaterEqual_HighDigitIntHighDigitInt(const struct FHighDig
 // Parameters:
 // struct FHighDigitInt           A                              (Parm)
 // struct FHighDigitInt           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_LessEqual_HighDigitIntHighDigitInt(const struct FHighDigitInt& A, const struct FHighDigitInt& B)
+unsigned long UObject::STATIC_LessEqual_HighDigitIntHighDigitInt(const struct FHighDigitInt& A, const struct FHighDigitInt& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessEqual_HighDigitIntHighDigitInt");
 
@@ -464,9 +464,9 @@ bool UObject::STATIC_LessEqual_HighDigitIntHighDigitInt(const struct FHighDigitI
 // Parameters:
 // struct FHighDigitInt           A                              (Parm)
 // struct FHighDigitInt           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_Less_HighDigitIntHighDigitInt(const struct FHighDigitInt& A, const struct FHighDigitInt& B)
+unsigned long UObject::STATIC_Less_HighDigitIntHighDigitInt(const struct FHighDigitInt& A, const struct FHighDigitInt& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Less_HighDigitIntHighDigitInt");
 
@@ -489,9 +489,9 @@ bool UObject::STATIC_Less_HighDigitIntHighDigitInt(const struct FHighDigitInt& A
 // Parameters:
 // struct FHighDigitInt           A                              (Parm)
 // struct FHighDigitInt           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_Greater_HighDigitIntHighDigitInt(const struct FHighDigitInt& A, const struct FHighDigitInt& B)
+unsigned long UObject::STATIC_Greater_HighDigitIntHighDigitInt(const struct FHighDigitInt& A, const struct FHighDigitInt& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Greater_HighDigitIntHighDigitInt");
 
@@ -668,9 +668,9 @@ struct FHighDigitInt UObject::STATIC_Divide_HighDigitIntInt(const struct FHighDi
 // Parameters:
 // struct FHighDigitInt           A                              (Parm)
 // int                            B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_LessEqual_HighDigitIntInt(const struct FHighDigitInt& A, int B)
+unsigned long UObject::STATIC_LessEqual_HighDigitIntInt(const struct FHighDigitInt& A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessEqual_HighDigitIntInt");
 
@@ -693,9 +693,9 @@ bool UObject::STATIC_LessEqual_HighDigitIntInt(const struct FHighDigitInt& A, in
 // Parameters:
 // int                            A                              (Parm)
 // struct FHighDigitInt           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_GreaterEqual_IntHighDigitInt(int A, const struct FHighDigitInt& B)
+unsigned long UObject::STATIC_GreaterEqual_IntHighDigitInt(int A, const struct FHighDigitInt& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterEqual_IntHighDigitInt");
 
@@ -718,9 +718,9 @@ bool UObject::STATIC_GreaterEqual_IntHighDigitInt(int A, const struct FHighDigit
 // Parameters:
 // struct FHighDigitInt           A                              (Parm)
 // int                            B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_GreaterEqual_HighDigitIntInt(const struct FHighDigitInt& A, int B)
+unsigned long UObject::STATIC_GreaterEqual_HighDigitIntInt(const struct FHighDigitInt& A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterEqual_HighDigitIntInt");
 
@@ -743,9 +743,9 @@ bool UObject::STATIC_GreaterEqual_HighDigitIntInt(const struct FHighDigitInt& A,
 // Parameters:
 // int                            A                              (Parm)
 // struct FHighDigitInt           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_LessEqual_IntHighDigitInt(int A, const struct FHighDigitInt& B)
+unsigned long UObject::STATIC_LessEqual_IntHighDigitInt(int A, const struct FHighDigitInt& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessEqual_IntHighDigitInt");
 
@@ -768,9 +768,9 @@ bool UObject::STATIC_LessEqual_IntHighDigitInt(int A, const struct FHighDigitInt
 // Parameters:
 // struct FHighDigitInt           A                              (Parm)
 // int                            B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_Less_HighDigitIntInt(const struct FHighDigitInt& A, int B)
+unsigned long UObject::STATIC_Less_HighDigitIntInt(const struct FHighDigitInt& A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Less_HighDigitIntInt");
 
@@ -793,9 +793,9 @@ bool UObject::STATIC_Less_HighDigitIntInt(const struct FHighDigitInt& A, int B)
 // Parameters:
 // int                            A                              (Parm)
 // struct FHighDigitInt           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_Greater_IntHighDigitInt(int A, const struct FHighDigitInt& B)
+unsigned long UObject::STATIC_Greater_IntHighDigitInt(int A, const struct FHighDigitInt& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Greater_IntHighDigitInt");
 
@@ -818,9 +818,9 @@ bool UObject::STATIC_Greater_IntHighDigitInt(int A, const struct FHighDigitInt& 
 // Parameters:
 // struct FHighDigitInt           A                              (Parm)
 // int                            B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_Greater_HighDigitIntInt(const struct FHighDigitInt& A, int B)
+unsigned long UObject::STATIC_Greater_HighDigitIntInt(const struct FHighDigitInt& A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Greater_HighDigitIntInt");
 
@@ -843,9 +843,9 @@ bool UObject::STATIC_Greater_HighDigitIntInt(const struct FHighDigitInt& A, int 
 // Parameters:
 // int                            A                              (Parm)
 // struct FHighDigitInt           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_Less_IntHighDigitInt(int A, const struct FHighDigitInt& B)
+unsigned long UObject::STATIC_Less_IntHighDigitInt(int A, const struct FHighDigitInt& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Less_IntHighDigitInt");
 
@@ -868,9 +868,9 @@ bool UObject::STATIC_Less_IntHighDigitInt(int A, const struct FHighDigitInt& B)
 // Parameters:
 // int                            A                              (Parm)
 // struct FHighDigitInt           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_NotEqual_IntHighDigitInt(int A, const struct FHighDigitInt& B)
+unsigned long UObject::STATIC_NotEqual_IntHighDigitInt(int A, const struct FHighDigitInt& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_IntHighDigitInt");
 
@@ -893,9 +893,9 @@ bool UObject::STATIC_NotEqual_IntHighDigitInt(int A, const struct FHighDigitInt&
 // Parameters:
 // struct FHighDigitInt           A                              (Parm)
 // int                            B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_NotEqual_HighDigitIntInt(const struct FHighDigitInt& A, int B)
+unsigned long UObject::STATIC_NotEqual_HighDigitIntInt(const struct FHighDigitInt& A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_HighDigitIntInt");
 
@@ -918,9 +918,9 @@ bool UObject::STATIC_NotEqual_HighDigitIntInt(const struct FHighDigitInt& A, int
 // Parameters:
 // int                            A                              (Parm)
 // struct FHighDigitInt           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_EqualEqual_IntHighDigitInt(int A, const struct FHighDigitInt& B)
+unsigned long UObject::STATIC_EqualEqual_IntHighDigitInt(int A, const struct FHighDigitInt& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_IntHighDigitInt");
 
@@ -943,9 +943,9 @@ bool UObject::STATIC_EqualEqual_IntHighDigitInt(int A, const struct FHighDigitIn
 // Parameters:
 // struct FHighDigitInt           A                              (Parm)
 // int                            B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_EqualEqual_HighDigitIntInt(const struct FHighDigitInt& A, int B)
+unsigned long UObject::STATIC_EqualEqual_HighDigitIntInt(const struct FHighDigitInt& A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_HighDigitIntInt");
 
@@ -1174,9 +1174,9 @@ struct FHighDigitInt UObject::STATIC_Add_IntHighDigitInt(int A, const struct FHi
 // Function Core.Object.IsTemplate
 // (Final, Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::IsTemplate()
+unsigned long UObject::IsTemplate()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsTemplate");
 
@@ -1197,9 +1197,9 @@ bool UObject::IsTemplate()
 // (Final, Native, Static, Public)
 // Parameters:
 // class UObject*                 anObject                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_IsDefaultObject(class UObject* anObject)
+unsigned long UObject::STATIC_IsDefaultObject(class UObject* anObject)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsDefaultObject");
 
@@ -1242,9 +1242,9 @@ class UObject* UObject::GetBaseArchetype()
 // (Defined, Static, Public)
 // Parameters:
 // float                          val                            (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_IsInteger(float val)
+unsigned long UObject::STATIC_IsInteger(float val)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsInteger");
 
@@ -1580,12 +1580,12 @@ struct FString UObject::STATIC_GetSignedString(int Value)
 // (Defined, Simulated, Static, Public, HasDefaults)
 // Parameters:
 // struct FVector                 V                              (Parm)
-// bool                           includeX                       (Parm)
-// bool                           includeY                       (Parm)
-// bool                           includeZ                       (Parm)
+// unsigned long                  includeX                       (Parm)
+// unsigned long                  includeY                       (Parm)
+// unsigned long                  includeZ                       (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::STATIC_ChooseVectorComponents(const struct FVector& V, bool includeX, bool includeY, bool includeZ)
+struct FVector UObject::STATIC_ChooseVectorComponents(const struct FVector& V, unsigned long includeX, unsigned long includeY, unsigned long includeZ)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ChooseVectorComponents");
 
@@ -1682,11 +1682,11 @@ float UObject::STATIC_FRandSigned()
 // float                          Min                            (Parm)
 // float                          Max                            (Parm)
 // float                          Percent                        (Parm)
-// bool                           ClampToMin                     (OptionalParm, Parm)
-// bool                           ClampToMax                     (OptionalParm, Parm)
+// unsigned long                  ClampToMin                     (OptionalParm, Parm)
+// unsigned long                  ClampToMax                     (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::STATIC_FLerp(float Min, float Max, float Percent, bool ClampToMin, bool ClampToMax)
+float UObject::STATIC_FLerp(float Min, float Max, float Percent, unsigned long ClampToMin, unsigned long ClampToMax)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FLerp");
 
@@ -1931,10 +1931,10 @@ struct FVector UObject::STATIC_ToVector(float X, float Y, float Z)
 // Parameters:
 // struct FColor                  col                            (Parm)
 // float                          Scale                          (Parm)
-// bool                           ScaleAlpha                     (OptionalParm, Parm)
+// unsigned long                  ScaleAlpha                     (OptionalParm, Parm)
 // struct FColor                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FColor UObject::STATIC_ColorScale(const struct FColor& col, float Scale, bool ScaleAlpha)
+struct FColor UObject::STATIC_ColorScale(const struct FColor& col, float Scale, unsigned long ScaleAlpha)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ColorScale");
 
@@ -2389,10 +2389,10 @@ struct FString UObject::TimeStamp()
 // Parameters:
 // struct FRotator                SourceRotation                 (Parm)
 // struct FVector                 SourceVector                   (Parm)
-// bool                           bInverse                       (OptionalParm, Parm)
+// unsigned long                  bInverse                       (OptionalParm, Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::TransformVectorByRotation(const struct FRotator& SourceRotation, const struct FVector& SourceVector, bool bInverse)
+struct FVector UObject::TransformVectorByRotation(const struct FRotator& SourceRotation, const struct FVector& SourceVector, unsigned long bInverse)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.TransformVectorByRotation");
 
@@ -2436,9 +2436,9 @@ struct FName UObject::GetPackageName()
 // Function Core.Object.IsPendingKill
 // (Final, Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::IsPendingKill()
+unsigned long UObject::IsPendingKill()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsPendingKill");
 
@@ -2459,10 +2459,10 @@ bool UObject::IsPendingKill()
 // (Final, Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
 // unsigned char                  inputByte                      (Parm)
-// bool                           bSigned                        (OptionalParm, Parm)
+// unsigned long                  bSigned                        (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::ByteToFloat(unsigned char inputByte, bool bSigned)
+float UObject::ByteToFloat(unsigned char inputByte, unsigned long bSigned)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ByteToFloat");
 
@@ -2484,10 +2484,10 @@ float UObject::ByteToFloat(unsigned char inputByte, bool bSigned)
 // (Final, Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
 // float                          inputFloat                     (Parm)
-// bool                           bSigned                        (OptionalParm, Parm)
+// unsigned long                  bSigned                        (OptionalParm, Parm)
 // unsigned char                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-unsigned char UObject::FloatToByte(float inputFloat, bool bSigned)
+unsigned char UObject::FloatToByte(float inputFloat, unsigned long bSigned)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FloatToByte");
 
@@ -2631,9 +2631,9 @@ void UObject::STATIC_GetAngularFromDotDist(const struct FVector2D& DotDist, stru
 // struct FVector                 AxisX                          (Parm)
 // struct FVector                 AxisY                          (Parm)
 // struct FVector                 AxisZ                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_GetAngularDistance(const struct FVector& Direction, const struct FVector& AxisX, const struct FVector& AxisY, const struct FVector& AxisZ, struct FVector2D* OutAngularDist)
+unsigned long UObject::STATIC_GetAngularDistance(const struct FVector& Direction, const struct FVector& AxisX, const struct FVector& AxisY, const struct FVector& AxisZ, struct FVector2D* OutAngularDist)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetAngularDistance");
 
@@ -2665,9 +2665,9 @@ bool UObject::STATIC_GetAngularDistance(const struct FVector& Direction, const s
 // struct FVector                 AxisX                          (Parm)
 // struct FVector                 AxisY                          (Parm)
 // struct FVector                 AxisZ                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_GetDotDistance(const struct FVector& Direction, const struct FVector& AxisX, const struct FVector& AxisY, const struct FVector& AxisZ, struct FVector2D* OutDotDist)
+unsigned long UObject::STATIC_GetDotDistance(const struct FVector& Direction, const struct FVector& AxisX, const struct FVector& AxisY, const struct FVector& AxisZ, struct FVector2D* OutDotDist)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetDotDistance");
 
@@ -2823,9 +2823,9 @@ float UObject::PointDistToLine(const struct FVector& Point, const struct FVector
 // TArray<struct FString>         out_SectionNames               (Parm, OutParm, NeedCtorLink)
 // class UObject*                 ObjectOuter                    (OptionalParm, Parm)
 // int                            MaxResults                     (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_GetPerObjectConfigSections(class UClass* SearchClass, class UObject* ObjectOuter, int MaxResults, TArray<struct FString>* out_SectionNames)
+unsigned long UObject::STATIC_GetPerObjectConfigSections(class UClass* SearchClass, class UObject* ObjectOuter, int MaxResults, TArray<struct FString>* out_SectionNames)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetPerObjectConfigSections");
 
@@ -2915,10 +2915,10 @@ class UObject* UObject::STATIC_FindObject(const struct FString& ObjectName, clas
 // Parameters:
 // struct FString                 ObjectName                     (Parm, NeedCtorLink)
 // class UClass*                  ObjectClass                    (Parm)
-// bool                           MayFail                        (OptionalParm, Parm)
+// unsigned long                  MayFail                        (OptionalParm, Parm)
 // class UObject*                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UObject* UObject::STATIC_DynamicLoadObject(const struct FString& ObjectName, class UClass* ObjectClass, bool MayFail)
+class UObject* UObject::STATIC_DynamicLoadObject(const struct FString& ObjectName, class UClass* ObjectClass, unsigned long MayFail)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DynamicLoadObject");
 
@@ -3135,9 +3135,9 @@ void UObject::DumpStateStack()
 // Function Core.Object.PopState
 // (Final, Native, HasOptionalParms, Public)
 // Parameters:
-// bool                           bPopAll                        (OptionalParm, Parm)
+// unsigned long                  bPopAll                        (OptionalParm, Parm)
 
-void UObject::PopState(bool bPopAll)
+void UObject::PopState(unsigned long bPopAll)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PopState");
 
@@ -3203,9 +3203,9 @@ struct FName UObject::GetStateName()
 // Parameters:
 // struct FName                   TestState                      (Parm)
 // struct FName                   TestParentState                (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::IsChildState(const struct FName& TestState, const struct FName& TestParentState)
+unsigned long UObject::IsChildState(const struct FName& TestState, const struct FName& TestParentState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsChildState");
 
@@ -3228,10 +3228,10 @@ bool UObject::IsChildState(const struct FName& TestState, const struct FName& Te
 // (Final, Native, HasOptionalParms, Public)
 // Parameters:
 // struct FName                   TestState                      (Parm)
-// bool                           bTestStateStack                (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bTestStateStack                (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::IsInState(const struct FName& TestState, bool bTestStateStack)
+unsigned long UObject::IsInState(const struct FName& TestState, unsigned long bTestStateStack)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsInState");
 
@@ -3255,10 +3255,10 @@ bool UObject::IsInState(const struct FName& TestState, bool bTestStateStack)
 // Parameters:
 // struct FName                   NewState                       (OptionalParm, Parm)
 // struct FName                   Label                          (OptionalParm, Parm)
-// bool                           bForceEvents                   (OptionalParm, Parm)
-// bool                           bKeepStack                     (OptionalParm, Parm)
+// unsigned long                  bForceEvents                   (OptionalParm, Parm)
+// unsigned long                  bKeepStack                     (OptionalParm, Parm)
 
-void UObject::GotoState(const struct FName& NewState, const struct FName& Label, bool bForceEvents, bool bKeepStack)
+void UObject::GotoState(const struct FName& NewState, const struct FName& Label, unsigned long bForceEvents, unsigned long bKeepStack)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GotoState");
 
@@ -3280,9 +3280,9 @@ void UObject::GotoState(const struct FName& NewState, const struct FName& Label,
 // Function Core.Object.IsUTracing
 // (Final, Native, Static, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_IsUTracing()
+unsigned long UObject::STATIC_IsUTracing()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsUTracing");
 
@@ -3302,9 +3302,9 @@ bool UObject::STATIC_IsUTracing()
 // Function Core.Object.SetUTracing
 // (Final, Native, Static, Public)
 // Parameters:
-// bool                           bShouldUTrace                  (Parm)
+// unsigned long                  bShouldUTrace                  (Parm)
 
-void UObject::STATIC_SetUTracing(bool bShouldUTrace)
+void UObject::STATIC_SetUTracing(unsigned long bShouldUTrace)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SetUTracing");
 
@@ -4027,10 +4027,10 @@ struct FQuat UObject::STATIC_Add_QuatQuat(const struct FQuat& A, const struct FQ
 // struct FQuat                   A                              (Parm)
 // struct FQuat                   B                              (Parm)
 // float                          Alpha                          (Parm)
-// bool                           bShortestPath                  (OptionalParm, Parm)
+// unsigned long                  bShortestPath                  (OptionalParm, Parm)
 // struct FQuat                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FQuat UObject::STATIC_QuatSlerp(const struct FQuat& A, const struct FQuat& B, float Alpha, bool bShortestPath)
+struct FQuat UObject::STATIC_QuatSlerp(const struct FQuat& A, const struct FQuat& B, float Alpha, unsigned long bShortestPath)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatSlerp");
 
@@ -4512,9 +4512,9 @@ struct FMatrix UObject::STATIC_Multiply_MatrixMatrix(const struct FMatrix& A, co
 // Parameters:
 // struct FName                   A                              (Parm)
 // struct FName                   B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_NotEqual_NameName(const struct FName& A, const struct FName& B)
+unsigned long UObject::STATIC_NotEqual_NameName(const struct FName& A, const struct FName& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_NameName");
 
@@ -4538,9 +4538,9 @@ bool UObject::STATIC_NotEqual_NameName(const struct FName& A, const struct FName
 // Parameters:
 // struct FName                   A                              (Parm)
 // struct FName                   B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_EqualEqual_NameName(const struct FName& A, const struct FName& B)
+unsigned long UObject::STATIC_EqualEqual_NameName(const struct FName& A, const struct FName& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_NameName");
 
@@ -4563,9 +4563,9 @@ bool UObject::STATIC_EqualEqual_NameName(const struct FName& A, const struct FNa
 // (Final, Native, Public)
 // Parameters:
 // struct FName                   ClassName                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::IsA(const struct FName& ClassName)
+unsigned long UObject::IsA(const struct FName& ClassName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsA");
 
@@ -4588,9 +4588,9 @@ bool UObject::IsA(const struct FName& ClassName)
 // Parameters:
 // class UClass*                  TestClass                      (Parm)
 // class UClass*                  ParentClass                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_ClassIsChildOf(class UClass* TestClass, class UClass* ParentClass)
+unsigned long UObject::STATIC_ClassIsChildOf(class UClass* TestClass, class UClass* ParentClass)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ClassIsChildOf");
 
@@ -4614,9 +4614,9 @@ bool UObject::STATIC_ClassIsChildOf(class UClass* TestClass, class UClass* Paren
 // Parameters:
 // TScriptInterface<class UInterface> A                              (Parm)
 // TScriptInterface<class UInterface> B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_NotEqual_InterfaceInterface(const TScriptInterface<class UInterface>& A, const TScriptInterface<class UInterface>& B)
+unsigned long UObject::STATIC_NotEqual_InterfaceInterface(const TScriptInterface<class UInterface>& A, const TScriptInterface<class UInterface>& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_InterfaceInterface");
 
@@ -4640,9 +4640,9 @@ bool UObject::STATIC_NotEqual_InterfaceInterface(const TScriptInterface<class UI
 // Parameters:
 // TScriptInterface<class UInterface> A                              (Parm)
 // TScriptInterface<class UInterface> B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_EqualEqual_InterfaceInterface(const TScriptInterface<class UInterface>& A, const TScriptInterface<class UInterface>& B)
+unsigned long UObject::STATIC_EqualEqual_InterfaceInterface(const TScriptInterface<class UInterface>& A, const TScriptInterface<class UInterface>& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_InterfaceInterface");
 
@@ -4666,9 +4666,9 @@ bool UObject::STATIC_EqualEqual_InterfaceInterface(const TScriptInterface<class 
 // Parameters:
 // class UObject*                 A                              (Parm)
 // class UObject*                 B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_NotEqual_ObjectObject(class UObject* A, class UObject* B)
+unsigned long UObject::STATIC_NotEqual_ObjectObject(class UObject* A, class UObject* B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_ObjectObject");
 
@@ -4692,9 +4692,9 @@ bool UObject::STATIC_NotEqual_ObjectObject(class UObject* A, class UObject* B)
 // Parameters:
 // class UObject*                 A                              (Parm)
 // class UObject*                 B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_EqualEqual_ObjectObject(class UObject* A, class UObject* B)
+unsigned long UObject::STATIC_EqualEqual_ObjectObject(class UObject* A, class UObject* B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_ObjectObject");
 
@@ -4742,10 +4742,10 @@ struct FString UObject::STATIC_PathName(class UObject* CheckObject)
 // Parameters:
 // struct FString                 Source                         (Parm, NeedCtorLink)
 // struct FString                 Delimiter                      (OptionalParm, Parm, NeedCtorLink)
-// bool                           bCullEmpty                     (OptionalParm, Parm)
+// unsigned long                  bCullEmpty                     (OptionalParm, Parm)
 // TArray<struct FString>         ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-TArray<struct FString> UObject::STATIC_SplitString(const struct FString& Source, const struct FString& Delimiter, bool bCullEmpty)
+TArray<struct FString> UObject::STATIC_SplitString(const struct FString& Source, const struct FString& Delimiter, unsigned long bCullEmpty)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SplitString");
 
@@ -4770,9 +4770,9 @@ TArray<struct FString> UObject::STATIC_SplitString(const struct FString& Source,
 // struct FString                 BaseString                     (Parm, NeedCtorLink)
 // TArray<struct FString>         Pieces                         (Parm, OutParm, NeedCtorLink)
 // struct FString                 delim                          (Parm, NeedCtorLink)
-// bool                           bCullEmpty                     (Parm)
+// unsigned long                  bCullEmpty                     (Parm)
 
-void UObject::STATIC_ParseStringIntoArray(const struct FString& BaseString, const struct FString& delim, bool bCullEmpty, TArray<struct FString>* Pieces)
+void UObject::STATIC_ParseStringIntoArray(const struct FString& BaseString, const struct FString& delim, unsigned long bCullEmpty, TArray<struct FString>* Pieces)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ParseStringIntoArray");
 
@@ -4799,9 +4799,9 @@ void UObject::STATIC_ParseStringIntoArray(const struct FString& BaseString, cons
 // TArray<struct FString>         StringArray                    (Parm, NeedCtorLink)
 // struct FString                 out_Result                     (Parm, OutParm, NeedCtorLink)
 // struct FString                 delim                          (OptionalParm, Parm, NeedCtorLink)
-// bool                           bIgnoreBlanks                  (OptionalParm, Parm)
+// unsigned long                  bIgnoreBlanks                  (OptionalParm, Parm)
 
-void UObject::STATIC_JoinArray(TArray<struct FString> StringArray, const struct FString& delim, bool bIgnoreBlanks, struct FString* out_Result)
+void UObject::STATIC_JoinArray(TArray<struct FString> StringArray, const struct FString& delim, unsigned long bIgnoreBlanks, struct FString* out_Result)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.JoinArray");
 
@@ -4849,10 +4849,10 @@ struct FString UObject::STATIC_GetRightMost(const struct FString& Text)
 // Parameters:
 // struct FString                 Text                           (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 SplitStr                       (Parm, CoerceParm, NeedCtorLink)
-// bool                           bOmitSplitStr                  (OptionalParm, Parm)
+// unsigned long                  bOmitSplitStr                  (OptionalParm, Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::STATIC_Split(const struct FString& Text, const struct FString& SplitStr, bool bOmitSplitStr)
+struct FString UObject::STATIC_Split(const struct FString& Text, const struct FString& SplitStr, unsigned long bOmitSplitStr)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Split");
 
@@ -4877,10 +4877,10 @@ struct FString UObject::STATIC_Split(const struct FString& Text, const struct FS
 // struct FString                 Src                            (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 Match                          (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 With                           (Parm, CoerceParm, NeedCtorLink)
-// bool                           bCaseSensitive                 (OptionalParm, Parm)
+// unsigned long                  bCaseSensitive                 (OptionalParm, Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::STATIC_Repl(const struct FString& Src, const struct FString& Match, const struct FString& With, bool bCaseSensitive)
+struct FString UObject::STATIC_Repl(const struct FString& Src, const struct FString& Match, const struct FString& With, unsigned long bCaseSensitive)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Repl");
 
@@ -5082,12 +5082,12 @@ struct FString UObject::STATIC_Mid(const struct FString& S, int I, int J)
 // Parameters:
 // struct FString                 S                              (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 T                              (Parm, CoerceParm, NeedCtorLink)
-// bool                           bSearchFromRight               (OptionalParm, Parm)
-// bool                           bIgnoreCase                    (OptionalParm, Parm)
+// unsigned long                  bSearchFromRight               (OptionalParm, Parm)
+// unsigned long                  bIgnoreCase                    (OptionalParm, Parm)
 // int                            StartPos                       (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::STATIC_InStr(const struct FString& S, const struct FString& T, bool bSearchFromRight, bool bIgnoreCase, int StartPos)
+int UObject::STATIC_InStr(const struct FString& S, const struct FString& T, unsigned long bSearchFromRight, unsigned long bIgnoreCase, int StartPos)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.InStr");
 
@@ -5222,9 +5222,9 @@ struct FString UObject::STATIC_ConcatEqual_StrStr(const struct FString& B, struc
 // Parameters:
 // struct FString                 A                              (Parm, NeedCtorLink)
 // struct FString                 B                              (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_ComplementEqual_StrStr(const struct FString& A, const struct FString& B)
+unsigned long UObject::STATIC_ComplementEqual_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ComplementEqual_StrStr");
 
@@ -5248,9 +5248,9 @@ bool UObject::STATIC_ComplementEqual_StrStr(const struct FString& A, const struc
 // Parameters:
 // struct FString                 A                              (Parm, NeedCtorLink)
 // struct FString                 B                              (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_NotEqual_StrStr(const struct FString& A, const struct FString& B)
+unsigned long UObject::STATIC_NotEqual_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_StrStr");
 
@@ -5274,9 +5274,9 @@ bool UObject::STATIC_NotEqual_StrStr(const struct FString& A, const struct FStri
 // Parameters:
 // struct FString                 A                              (Parm, NeedCtorLink)
 // struct FString                 B                              (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_EqualEqual_StrStr(const struct FString& A, const struct FString& B)
+unsigned long UObject::STATIC_EqualEqual_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_StrStr");
 
@@ -5300,9 +5300,9 @@ bool UObject::STATIC_EqualEqual_StrStr(const struct FString& A, const struct FSt
 // Parameters:
 // struct FString                 A                              (Parm, NeedCtorLink)
 // struct FString                 B                              (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_GreaterEqual_StrStr(const struct FString& A, const struct FString& B)
+unsigned long UObject::STATIC_GreaterEqual_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterEqual_StrStr");
 
@@ -5326,9 +5326,9 @@ bool UObject::STATIC_GreaterEqual_StrStr(const struct FString& A, const struct F
 // Parameters:
 // struct FString                 A                              (Parm, NeedCtorLink)
 // struct FString                 B                              (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_LessEqual_StrStr(const struct FString& A, const struct FString& B)
+unsigned long UObject::STATIC_LessEqual_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessEqual_StrStr");
 
@@ -5352,9 +5352,9 @@ bool UObject::STATIC_LessEqual_StrStr(const struct FString& A, const struct FStr
 // Parameters:
 // struct FString                 A                              (Parm, NeedCtorLink)
 // struct FString                 B                              (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_Greater_StrStr(const struct FString& A, const struct FString& B)
+unsigned long UObject::STATIC_Greater_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Greater_StrStr");
 
@@ -5378,9 +5378,9 @@ bool UObject::STATIC_Greater_StrStr(const struct FString& A, const struct FStrin
 // Parameters:
 // struct FString                 A                              (Parm, NeedCtorLink)
 // struct FString                 B                              (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_Less_StrStr(const struct FString& A, const struct FString& B)
+unsigned long UObject::STATIC_Less_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Less_StrStr");
 
@@ -5487,9 +5487,9 @@ struct FRotator UObject::STATIC_MakeRotator(int Pitch, int Yaw, int Roll)
 // int                            MaxLimit                       (Parm)
 // int                            MinLimit                       (Parm)
 // float                          InterpolationSpeed             (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_SClampRotAxis(float DeltaTime, int ViewAxis, int MaxLimit, int MinLimit, float InterpolationSpeed, int* out_DeltaViewAxis)
+unsigned long UObject::STATIC_SClampRotAxis(float DeltaTime, int ViewAxis, int MaxLimit, int MinLimit, float InterpolationSpeed, int* out_DeltaViewAxis)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SClampRotAxis");
 
@@ -5677,10 +5677,10 @@ int UObject::STATIC_NormalizeRotAxis(int Angle)
 // struct FRotator                Target                         (Parm)
 // float                          DeltaTime                      (Parm)
 // float                          InterpSpeed                    (Parm)
-// bool                           bConstantInterpSpeed           (OptionalParm, Parm)
+// unsigned long                  bConstantInterpSpeed           (OptionalParm, Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::STATIC_RInterpTo(const struct FRotator& Current, const struct FRotator& Target, float DeltaTime, float InterpSpeed, bool bConstantInterpSpeed)
+struct FRotator UObject::STATIC_RInterpTo(const struct FRotator& Current, const struct FRotator& Target, float DeltaTime, float InterpSpeed, unsigned long bConstantInterpSpeed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RInterpTo");
 
@@ -5734,10 +5734,10 @@ struct FRotator UObject::STATIC_RTransform(const struct FRotator& R, const struc
 // struct FRotator                A                              (Parm)
 // struct FRotator                B                              (Parm)
 // float                          Alpha                          (Parm)
-// bool                           bShortestPath                  (OptionalParm, Parm)
+// unsigned long                  bShortestPath                  (OptionalParm, Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::STATIC_RSmerp(const struct FRotator& A, const struct FRotator& B, float Alpha, bool bShortestPath)
+struct FRotator UObject::STATIC_RSmerp(const struct FRotator& A, const struct FRotator& B, float Alpha, unsigned long bShortestPath)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RSmerp");
 
@@ -5764,10 +5764,10 @@ struct FRotator UObject::STATIC_RSmerp(const struct FRotator& A, const struct FR
 // struct FRotator                A                              (Parm)
 // struct FRotator                B                              (Parm)
 // float                          Alpha                          (Parm)
-// bool                           bShortestPath                  (OptionalParm, Parm)
+// unsigned long                  bShortestPath                  (OptionalParm, Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::STATIC_RLerp(const struct FRotator& A, const struct FRotator& B, float Alpha, bool bShortestPath)
+struct FRotator UObject::STATIC_RLerp(const struct FRotator& A, const struct FRotator& B, float Alpha, unsigned long bShortestPath)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RLerp");
 
@@ -5843,10 +5843,10 @@ struct FRotator UObject::STATIC_OrthoRotation(const struct FVector& X, const str
 // Function Core.Object.RotRand
 // (Final, Native, Static, HasOptionalParms, Public)
 // Parameters:
-// bool                           bRoll                          (OptionalParm, Parm)
+// unsigned long                  bRoll                          (OptionalParm, Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::STATIC_RotRand(bool bRoll)
+struct FRotator UObject::STATIC_RotRand(unsigned long bRoll)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RotRand");
 
@@ -5931,9 +5931,9 @@ void UObject::STATIC_GetAxes(const struct FRotator& A, struct FVector* X, struct
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_ClockwiseFrom_IntInt(int A, int B)
+unsigned long UObject::STATIC_ClockwiseFrom_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ClockwiseFrom_IntInt");
 
@@ -6199,9 +6199,9 @@ struct FRotator UObject::STATIC_Multiply_RotatorFloat(const struct FRotator& A, 
 // Parameters:
 // struct FRotator                A                              (Parm)
 // struct FRotator                B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_NotEqual_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
+unsigned long UObject::STATIC_NotEqual_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_RotatorRotator");
 
@@ -6225,9 +6225,9 @@ bool UObject::STATIC_NotEqual_RotatorRotator(const struct FRotator& A, const str
 // Parameters:
 // struct FRotator                A                              (Parm)
 // struct FRotator                B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_EqualEqual_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
+unsigned long UObject::STATIC_EqualEqual_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_RotatorRotator");
 
@@ -6253,10 +6253,10 @@ bool UObject::STATIC_EqualEqual_RotatorRotator(const struct FRotator& A, const s
 // struct FRotator                Dir                            (Parm)
 // float                          Width                          (Parm)
 // struct FVector                 A                              (Parm)
-// bool                           bIgnoreZ                       (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bIgnoreZ                       (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::InCylinder(const struct FVector& Origin, const struct FRotator& Dir, float Width, const struct FVector& A, bool bIgnoreZ)
+unsigned long UObject::InCylinder(const struct FVector& Origin, const struct FRotator& Dir, float Width, const struct FVector& A, unsigned long bIgnoreZ)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.InCylinder");
 
@@ -6392,9 +6392,9 @@ struct FVector UObject::STATIC_VInterpTo(const struct FVector& Current, const st
 // (Final, Native, Static, Public)
 // Parameters:
 // struct FVector                 A                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_IsZero(const struct FVector& A)
+unsigned long UObject::STATIC_IsZero(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsZero");
 
@@ -6913,9 +6913,9 @@ float UObject::STATIC_Dot_VectorVector(const struct FVector& A, const struct FVe
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_NotEqual_VectorVector(const struct FVector& A, const struct FVector& B)
+unsigned long UObject::STATIC_NotEqual_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_VectorVector");
 
@@ -6939,9 +6939,9 @@ bool UObject::STATIC_NotEqual_VectorVector(const struct FVector& A, const struct
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_EqualEqual_VectorVector(const struct FVector& A, const struct FVector& B)
+unsigned long UObject::STATIC_EqualEqual_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_VectorVector");
 
@@ -8110,9 +8110,9 @@ float UObject::STATIC_MultiplyEqual_FloatFloat(float B, float* A)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_NotEqual_FloatFloat(float A, float B)
+unsigned long UObject::STATIC_NotEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_FloatFloat");
 
@@ -8136,9 +8136,9 @@ bool UObject::STATIC_NotEqual_FloatFloat(float A, float B)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_ComplementEqual_FloatFloat(float A, float B)
+unsigned long UObject::STATIC_ComplementEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ComplementEqual_FloatFloat");
 
@@ -8162,9 +8162,9 @@ bool UObject::STATIC_ComplementEqual_FloatFloat(float A, float B)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_EqualEqual_FloatFloat(float A, float B)
+unsigned long UObject::STATIC_EqualEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_FloatFloat");
 
@@ -8188,9 +8188,9 @@ bool UObject::STATIC_EqualEqual_FloatFloat(float A, float B)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_GreaterEqual_FloatFloat(float A, float B)
+unsigned long UObject::STATIC_GreaterEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterEqual_FloatFloat");
 
@@ -8214,9 +8214,9 @@ bool UObject::STATIC_GreaterEqual_FloatFloat(float A, float B)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_LessEqual_FloatFloat(float A, float B)
+unsigned long UObject::STATIC_LessEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessEqual_FloatFloat");
 
@@ -8240,9 +8240,9 @@ bool UObject::STATIC_LessEqual_FloatFloat(float A, float B)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_Greater_FloatFloat(float A, float B)
+unsigned long UObject::STATIC_Greater_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Greater_FloatFloat");
 
@@ -8266,9 +8266,9 @@ bool UObject::STATIC_Greater_FloatFloat(float A, float B)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_Less_FloatFloat(float A, float B)
+unsigned long UObject::STATIC_Less_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Less_FloatFloat");
 
@@ -8918,9 +8918,9 @@ int UObject::STATIC_And_IntInt(int A, int B)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_NotEqual_IntInt(int A, int B)
+unsigned long UObject::STATIC_NotEqual_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_IntInt");
 
@@ -8944,9 +8944,9 @@ bool UObject::STATIC_NotEqual_IntInt(int A, int B)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_EqualEqual_IntInt(int A, int B)
+unsigned long UObject::STATIC_EqualEqual_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_IntInt");
 
@@ -8970,9 +8970,9 @@ bool UObject::STATIC_EqualEqual_IntInt(int A, int B)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_GreaterEqual_IntInt(int A, int B)
+unsigned long UObject::STATIC_GreaterEqual_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterEqual_IntInt");
 
@@ -8996,9 +8996,9 @@ bool UObject::STATIC_GreaterEqual_IntInt(int A, int B)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_LessEqual_IntInt(int A, int B)
+unsigned long UObject::STATIC_LessEqual_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessEqual_IntInt");
 
@@ -9022,9 +9022,9 @@ bool UObject::STATIC_LessEqual_IntInt(int A, int B)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_Greater_IntInt(int A, int B)
+unsigned long UObject::STATIC_Greater_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Greater_IntInt");
 
@@ -9048,9 +9048,9 @@ bool UObject::STATIC_Greater_IntInt(int A, int B)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_Less_IntInt(int A, int B)
+unsigned long UObject::STATIC_Less_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Less_IntInt");
 
@@ -9572,11 +9572,11 @@ unsigned char UObject::STATIC_MultiplyEqual_ByteByte(unsigned char B, unsigned c
 // Function Core.Object.OrOr_BoolBool
 // (Final, Native, Operator, Static, Public)
 // Parameters:
-// bool                           A                              (Parm)
-// bool                           B                              (Parm, SkipParm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  A                              (Parm)
+// unsigned long                  B                              (Parm, SkipParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_OrOr_BoolBool(bool A, bool B)
+unsigned long UObject::STATIC_OrOr_BoolBool(unsigned long A, unsigned long B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.OrOr_BoolBool");
 
@@ -9598,11 +9598,11 @@ bool UObject::STATIC_OrOr_BoolBool(bool A, bool B)
 // Function Core.Object.XorXor_BoolBool
 // (Final, Native, Operator, Static, Public)
 // Parameters:
-// bool                           A                              (Parm)
-// bool                           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  A                              (Parm)
+// unsigned long                  B                              (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_XorXor_BoolBool(bool A, bool B)
+unsigned long UObject::STATIC_XorXor_BoolBool(unsigned long A, unsigned long B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.XorXor_BoolBool");
 
@@ -9624,11 +9624,11 @@ bool UObject::STATIC_XorXor_BoolBool(bool A, bool B)
 // Function Core.Object.AndAnd_BoolBool
 // (Final, Native, Operator, Static, Public)
 // Parameters:
-// bool                           A                              (Parm)
-// bool                           B                              (Parm, SkipParm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  A                              (Parm)
+// unsigned long                  B                              (Parm, SkipParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_AndAnd_BoolBool(bool A, bool B)
+unsigned long UObject::STATIC_AndAnd_BoolBool(unsigned long A, unsigned long B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AndAnd_BoolBool");
 
@@ -9650,11 +9650,11 @@ bool UObject::STATIC_AndAnd_BoolBool(bool A, bool B)
 // Function Core.Object.NotEqual_BoolBool
 // (Final, Native, Operator, Static, Public)
 // Parameters:
-// bool                           A                              (Parm)
-// bool                           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  A                              (Parm)
+// unsigned long                  B                              (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_NotEqual_BoolBool(bool A, bool B)
+unsigned long UObject::STATIC_NotEqual_BoolBool(unsigned long A, unsigned long B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_BoolBool");
 
@@ -9676,11 +9676,11 @@ bool UObject::STATIC_NotEqual_BoolBool(bool A, bool B)
 // Function Core.Object.EqualEqual_BoolBool
 // (Final, Native, Operator, Static, Public)
 // Parameters:
-// bool                           A                              (Parm)
-// bool                           B                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  A                              (Parm)
+// unsigned long                  B                              (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_EqualEqual_BoolBool(bool A, bool B)
+unsigned long UObject::STATIC_EqualEqual_BoolBool(unsigned long A, unsigned long B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_BoolBool");
 
@@ -9702,10 +9702,10 @@ bool UObject::STATIC_EqualEqual_BoolBool(bool A, bool B)
 // Function Core.Object.Not_PreBool
 // (Final, PreOperator, Native, Operator, Static, Public)
 // Parameters:
-// bool                           A                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  A                              (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::STATIC_Not_PreBool(bool A)
+unsigned long UObject::STATIC_Not_PreBool(unsigned long A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Not_PreBool");
 

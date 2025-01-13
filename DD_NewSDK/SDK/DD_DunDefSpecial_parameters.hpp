@@ -68,8 +68,8 @@ struct ADunDefTower_SummonEnemy_ForceSingleMove_Params
 {
 	struct FVector                                     NewLoc;                                                   // (Parm)
 	struct FRotator                                    NewRot;                                                   // (Parm)
-	bool                                               bShouldCollideWorld;                                      // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bShouldCollideWorld;                                      // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_SummonEnemy.ForceMoveActor
@@ -77,7 +77,7 @@ struct ADunDefTower_SummonEnemy_ForceMoveActor_Params
 {
 	class AActor*                                      Mover;                                                    // (Parm)
 	struct FVector                                     NewLoc;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_SummonEnemy.GetAlternateAggroActor
@@ -165,7 +165,7 @@ struct ADunDefTower_SummonEnemy_GetPawnBoostAmount_Params
 struct ADunDefTower_SummonEnemy_HasPawnBoostingType_Params
 {
 	TEnumAsByte<EPawnBoostType>                        boostType;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_SummonEnemy.TakeDamage
@@ -190,7 +190,7 @@ struct ADunDefTower_SummonEnemy_GetAlternateActor_Params
 // Function DunDefSpecial.DunDefTower_SummonEnemy.GetHealth
 struct ADunDefTower_SummonEnemy_GetHealth_Params
 {
-	bool                                               bGetMax;                                                  // (OptionalParm, Parm)
+	unsigned long                                      bGetMax;                                                  // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -200,14 +200,14 @@ struct ADunDefTower_SummonEnemy_HealDamage_Params
 	int                                                Amount;                                                   // (Parm)
 	class AController*                                 Healer;                                                   // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_SummonEnemy.AddHealth
 struct ADunDefTower_SummonEnemy_AddHealth_Params
 {
 	int                                                howMuch;                                                  // (Parm)
-	bool                                               bDontDisplayFloatingNumber;                               // (OptionalParm, Parm)
+	unsigned long                                      bDontDisplayFloatingNumber;                               // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_SummonEnemy.GetHealthPercent
@@ -230,14 +230,14 @@ struct ADunDefTower_SummonEnemy_GetToolTipText_Params
 // Function DunDefSpecial.DunDefTower_SummonEnemy.ScaleForHeroModifiers
 struct ADunDefTower_SummonEnemy_ScaleForHeroModifiers_Params
 {
-	bool                                               IsFirstTime;                                              // (Parm)
+	unsigned long                                      IsFirstTime;                                              // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_SummonEnemy.DrawMyHUD
 struct ADunDefTower_SummonEnemy_DrawMyHUD_Params
 {
 	class ADunDefHUD*                                  H;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_SummonEnemy.UpdateCommand
@@ -251,7 +251,7 @@ struct ADunDefTower_SummonEnemy_HandleCommand_Params
 	class AActor*                                      Target;                                                   // (Parm)
 	TEnumAsByte<ESummonedCommand>                      NewCommand;                                               // (Parm)
 	struct FVector                                     commandPoint;                                             // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_SummonEnemy.SetCommand
@@ -261,20 +261,20 @@ struct ADunDefTower_SummonEnemy_SetCommand_Params
 	TEnumAsByte<ESummonedCommand>                      NewCommand;                                               // (Parm)
 	class AActor*                                      commandInstigator;                                        // (Parm)
 	class AActor*                                      targetedActor;                                            // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_SummonEnemy.SetSelected
 struct ADunDefTower_SummonEnemy_SetSelected_Params
 {
-	bool                                               bWantsSelected;                                           // (Parm)
+	unsigned long                                      bWantsSelected;                                           // (Parm)
 	class AActor*                                      selectingActor;                                           // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_SummonEnemy.SetPendingSelection
 struct ADunDefTower_SummonEnemy_SetPendingSelection_Params
 {
-	bool                                               bIsPending;                                               // (Parm)
+	unsigned long                                      bIsPending;                                               // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_SummonEnemy.CleanUpSummon
@@ -295,7 +295,7 @@ struct ADunDefTower_SummonEnemy_BaseChange_Params
 // Function DunDefSpecial.DunDefTower_SummonEnemy.SetUpEnemyValues
 struct ADunDefTower_SummonEnemy_SetUpEnemyValues_Params
 {
-	bool                                               bInitialSetup;                                            // (OptionalParm, Parm)
+	unsigned long                                      bInitialSetup;                                            // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_SummonEnemy.SpawnMyEnemy
@@ -318,7 +318,7 @@ struct ADunDefTower_SummonEnemy_GetLastDamageTime_Params
 // Function DunDefSpecial.DunDefTower_SummonEnemy.HasBeenRendered
 struct ADunDefTower_SummonEnemy_HasBeenRendered_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_SummonEnemy.UpdateEnemyCollisionValues
@@ -345,9 +345,9 @@ struct ADunDefTower_SummonEnemy_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -369,7 +369,7 @@ struct ADunDefEmitterDamage_CheckValidAngle_Params
 {
 	class AActor*                                      Victim;                                                   // (Parm)
 	struct FVector                                     Origin;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefEmitterDamage.GetStatModifierObject
@@ -385,7 +385,7 @@ struct ADunDefEmitterDamage_GetStatValueByTag_Params
 	struct FString                                     StatTag;                                                  // (Parm, NeedCtorLink)
 	TScriptInterface<class UIActorModifierInterface>   TagActor;                                                 // (Parm)
 	TEnumAsByte<ELevelUpValueType>                     statType;                                                 // (OptionalParm, Parm)
-	bool                                               bBaseValueOnly;                                           // (OptionalParm, Parm)
+	unsigned long                                      bBaseValueOnly;                                           // (OptionalParm, Parm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -395,7 +395,7 @@ struct ADunDefEmitterDamage_InitalizeActorStats_Params
 	TScriptInterface<class UIActorModifierInterface>   ActorStatObject;                                          // (Parm)
 	class UObject*                                     CallingObject;                                            // (OptionalParm, Parm)
 	int                                                Tier;                                                     // (OptionalParm, Parm)
-	bool                                               bBaseValueOnly;                                           // (OptionalParm, Parm)
+	unsigned long                                      bBaseValueOnly;                                           // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefEmitterDamage.AllowSpawn
@@ -404,7 +404,7 @@ struct ADunDefEmitterDamage_AllowSpawn_Params
 	class AActor*                                      theArchetype;                                             // (Parm)
 	struct FVector                                     theLoc;                                                   // (Parm)
 	struct FRotator                                    theRot;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefEmitterDamage.HurtRadius
@@ -417,8 +417,8 @@ struct ADunDefEmitterDamage_HurtRadius_Params
 	struct FVector                                     HurtOrigin;                                               // (Parm)
 	class AActor*                                      IgnoredActor;                                             // (OptionalParm, Parm)
 	class AController*                                 InstigatedByController;                                   // (OptionalParm, Parm)
-	bool                                               bDoFullDamage;                                            // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bDoFullDamage;                                            // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefEmitterDamage.DoDamage
@@ -448,7 +448,7 @@ struct ACTF_PlayerAbility_PickupFlag_RequestPickup_Params
 // Function DunDefSpecial.CTF_Flag.SetAtBase
 struct ACTF_Flag_SetAtBase_Params
 {
-	bool                                               bIsAtBase;                                                // (Parm)
+	unsigned long                                      bIsAtBase;                                                // (Parm)
 };
 
 // Function DunDefSpecial.CTF_Flag.SetDroppedParticleColor
@@ -487,7 +487,7 @@ struct ACTF_Flag_PreventTowerAtPoint_Params
 	class ADunDefTower*                                towerArch;                                                // (Parm)
 	struct FVector                                     Point;                                                    // (Parm)
 	float                                              towerRadius;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_Flag.AllowTowerAtPoint
@@ -496,13 +496,13 @@ struct ACTF_Flag_AllowTowerAtPoint_Params
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
 	class ADunDefTower*                                towerArch;                                                // (Parm)
 	struct FVector                                     Point;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_Flag.CheckAllowance
 struct ACTF_Flag_CheckAllowance_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_Flag.PhysicsVolumeChange
@@ -531,7 +531,7 @@ struct ACTF_Flag_DisableCollision_Params
 struct ACTF_Flag_IsInAuraOrTrap_Params
 {
 	struct FVector                                     Loc;                                                      // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_Flag.CaptureFlag
@@ -547,8 +547,8 @@ struct ACTF_Flag_ReturnToBase_Params
 // Function DunDefSpecial.CTF_Flag.DropFlag
 struct ACTF_Flag_DropFlag_Params
 {
-	bool                                               bForceRandomizedPosition;                                 // (OptionalParm, Parm)
-	bool                                               bForceDroppedMessage;                                     // (OptionalParm, Parm)
+	unsigned long                                      bForceRandomizedPosition;                                 // (OptionalParm, Parm)
+	unsigned long                                      bForceDroppedMessage;                                     // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.CTF_Flag.PickUpFlag
@@ -567,7 +567,7 @@ struct ACTF_Flag_BeginBeingPickedUp_Params
 struct ACTF_Flag_CanBePickedUp_Params
 {
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_Flag.DrawMiniMapIcon
@@ -600,7 +600,7 @@ struct ACTF_Flag_Client_Activate_Params
 struct ACTF_Flag_Server_Activate_Params
 {
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
-	bool                                               forceActivation;                                          // (OptionalParm, Parm)
+	unsigned long                                      forceActivation;                                          // (OptionalParm, Parm)
 	int                                                activationType;                                           // (OptionalParm, Parm)
 };
 
@@ -622,14 +622,14 @@ struct ACTF_Flag_GetToolTipPriority_Params
 struct ACTF_Flag_TakesToolTipPriority_Params
 {
 	TScriptInterface<class UDunDefToolTipInterface>    otherToolTip;                                             // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_Flag.ContinueDrawingToolTip
 struct ACTF_Flag_ContinueDrawingToolTip_Params
 {
-	bool                                               ContinueDrawing;                                          // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ContinueDrawing;                                          // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_Flag.DrawToolTip
@@ -655,13 +655,13 @@ struct ACTF_Flag_PostBeginPlay_Params
 struct ACTF_Flag_DrawMyHUD_Params
 {
 	class ADunDefHUD*                                  H;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_Flag.OnlyDrawHUDForOwner
 struct ACTF_Flag_OnlyDrawHUDForOwner_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_Flag.ExecReplicatedFunction
@@ -678,9 +678,9 @@ struct ACTF_Flag_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -727,7 +727,7 @@ struct UCTF_UIGlobalHUD_UpdateCompetitive_Params
 // Function DunDefSpecial.CTF_DDPRI.IsFriendlyToLocal
 struct ACTF_DDPRI_IsFriendlyToLocal_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_DDPRI.PrintHeroLevelUpMessage
@@ -743,7 +743,7 @@ struct ACTF_DDPRI_PrintNewHeroMessage_Params
 // Function DunDefSpecial.CTF_DDPRI.SetReadyToSpawn
 struct ACTF_DDPRI_SetReadyToSpawn_Params
 {
-	bool                                               bIsReady;                                                 // (Parm)
+	unsigned long                                      bIsReady;                                                 // (Parm)
 };
 
 // Function DunDefSpecial.CTF_DDPRI.GetTeamName
@@ -779,7 +779,7 @@ struct ACTF_DDPRI_ReplicatedEvent_Params
 struct ACTF_DDGRI_AllowedToTeleport_Params
 {
 	class APawn*                                       Teleportee;                                               // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_DDGRI.DoDeathNotification
@@ -815,7 +815,7 @@ struct ACTF_DDGRI_CustomUpdatePlayerScoreLabel_Params
 struct ACTF_DDGRI_AllowDeathSpectatorMode_Params
 {
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_DDGRI.ModifyPlayerGroundSpeed
@@ -855,7 +855,7 @@ struct ACTF_DDGRI_GetVictoryLabelString_Params
 // Function DunDefSpecial.CTF_DDGRI.OverrideEndGameLabel
 struct ACTF_DDGRI_OverrideEndGameLabel_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_DDGRI.GetWinningPRI
@@ -884,7 +884,7 @@ struct ACTF_DDGRI_GetTeamIcon_Params
 // Function DunDefSpecial.CTF_DDGRI.IsTeamCompetitive
 struct ACTF_DDGRI_IsTeamCompetitive_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_DDGRI.AllowChatBetween
@@ -892,7 +892,7 @@ struct ACTF_DDGRI_AllowChatBetween_Params
 {
 	class APlayerReplicationInfo*                      myPlayer;                                                 // (Parm)
 	class APlayerReplicationInfo*                      TheirPlayer;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_DDGRI.GetTeamThatHasFlag
@@ -926,19 +926,19 @@ struct ACTF_DDGRI_CheckAllReady_Params
 // Function DunDefSpecial.CTF_DDGRI.CheckReadyPlayers
 struct ACTF_DDGRI_CheckReadyPlayers_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_DDGRI.SetAllowCountDown
 struct ACTF_DDGRI_SetAllowCountDown_Params
 {
-	bool                                               setAllow;                                                 // (Parm)
+	unsigned long                                      setAllow;                                                 // (Parm)
 };
 
 // Function DunDefSpecial.CTF_DDGRI.AllowGameCountDown
 struct ACTF_DDGRI_AllowGameCountDown_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_DDGRI.SetGameReady
@@ -1038,7 +1038,7 @@ struct ACTF_DDGRI_GetColorString_Params
 struct ACTF_DDGRI_GetTeamLists_Params
 {
 	int                                                TeamOnlyCheck;                                            // (Parm)
-	bool                                               bWantsReadyCheck;                                         // (OptionalParm, Parm)
+	unsigned long                                      bWantsReadyCheck;                                         // (OptionalParm, Parm)
 	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
 };
 
@@ -1052,7 +1052,7 @@ struct ACTF_DDGRI_GetCompetitivePlayerList_Params
 struct ACTF_DDGRI_DestroyTowerOnOwnerLeft_Params
 {
 	class ADunDefTower*                                aTower;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_DDGRI.GetMaxTowerUnits
@@ -1082,7 +1082,7 @@ struct ACTF_DDGRI_CanPlaceTowerUnitCost_Params
 	int                                                Cost;                                                     // (Parm)
 	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
 	class ADunDefTower*                                Tower;                                                    // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_DDGRI.RemovedTower
@@ -1137,9 +1137,9 @@ struct ACTF_DDGRI_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -1171,7 +1171,7 @@ struct ACTF_DDPC_GiveFlag_Params
 // Function DunDefSpecial.CTF_DDPC.SetIsReady
 struct ACTF_DDPC_SetIsReady_Params
 {
-	bool                                               bIsReady;                                                 // (OptionalParm, Parm)
+	unsigned long                                      bIsReady;                                                 // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.CTF_DDPC.SetDesiredTeam
@@ -1204,7 +1204,7 @@ struct ACTF_DDPC_ShowTeamSelectionUI_Params
 struct ACTD_DDGRI_AllowedToTeleport_Params
 {
 	class APawn*                                       Teleportee;                                               // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTD_DDGRI.DoLevelVictory
@@ -1241,13 +1241,13 @@ struct ACTD_DDGRI_Server_AddGRIHeroAbilities_Params
 struct ACTD_DDGRI_DestroyTowerOnOwnerLeft_Params
 {
 	class ADunDefTower*                                aTower;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTD_DDGRI.AllowActivatingCrystal
 struct ACTD_DDGRI_AllowActivatingCrystal_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTD_DDGRI.SetGameReady
@@ -1259,14 +1259,14 @@ struct ACTD_DDGRI_SetGameReady_Params
 struct UUI_TeamSelect_OnInterceptedInputKey_Params
 {
 	struct FInputEventParameters                       EventParms;                                               // (Const, Parm, OutParm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.UI_TeamSelect.NotifyWidgetClicked
 struct UUI_TeamSelect_NotifyWidgetClicked_Params
 {
 	class UUIObject*                                   Widget;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.UI_TeamSelect.Update
@@ -1278,7 +1278,7 @@ struct UUI_TeamSelect_Update_Params
 // Function DunDefSpecial.UI_TeamSelect.SceneActivated
 struct UUI_TeamSelect_SceneActivated_Params
 {
-	bool                                               bInitialActivation;                                       // (Parm)
+	unsigned long                                      bInitialActivation;                                       // (Parm)
 };
 
 // Function DunDefSpecial.CTF_GameInfo.AdjustDTDamage
@@ -1317,7 +1317,7 @@ struct ACTF_GameInfo_GetPlayerTeamForStart_Params
 struct ACTF_GameInfo_CheckScore_Params
 {
 	class APlayerReplicationInfo*                      Scorer;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_GameInfo.ScoreKill
@@ -1351,7 +1351,7 @@ struct ACTF_GameInfo_PlayerReplicationInfoInitialized_Params
 struct ACTF_GameInfo_DoPlayerLeaving_Params
 {
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
-	bool                                               bForceLocal;                                              // (OptionalParm, Parm)
+	unsigned long                                      bForceLocal;                                              // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.CTF_GameInfo.SpawnPlayerController
@@ -1393,7 +1393,7 @@ struct ACTF_FlagBase_PreventTowerAtPoint_Params
 	class ADunDefTower*                                towerArch;                                                // (Parm)
 	struct FVector                                     Point;                                                    // (Parm)
 	float                                              towerRadius;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_FlagBase.AllowTowerAtPoint
@@ -1402,13 +1402,13 @@ struct ACTF_FlagBase_AllowTowerAtPoint_Params
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
 	class ADunDefTower*                                towerArch;                                                // (Parm)
 	struct FVector                                     Point;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_FlagBase.CheckAllowance
 struct ACTF_FlagBase_CheckAllowance_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.CTF_FlagBase.DrawMiniMapIcon
@@ -1483,9 +1483,9 @@ struct ACTF_FlagBase_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -1532,7 +1532,7 @@ struct ADunDefTeamTowerVolume_AllowTowerAtPoint_Params
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
 	class ADunDefTower*                                towerArch;                                                // (Parm)
 	struct FVector                                     Point;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTeamTowerVolume.PreventTowerAtPoint
@@ -1542,13 +1542,13 @@ struct ADunDefTeamTowerVolume_PreventTowerAtPoint_Params
 	class ADunDefTower*                                towerArch;                                                // (Parm)
 	struct FVector                                     Point;                                                    // (Parm)
 	float                                              towerRadius;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTeamTowerVolume.CheckAllowance
 struct ADunDefTeamTowerVolume_CheckAllowance_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTeamTowerVolume.ExecReplicatedFunction
@@ -1565,9 +1565,9 @@ struct ADunDefTeamTowerVolume_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -1661,7 +1661,7 @@ struct ADunDefTower_TripWire_StaticGetTowerScale_Params
 // Function DunDefSpecial.DunDefTower_TripWire.AllowAbilityMove
 struct ADunDefTower_TripWire_AllowAbilityMove_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.TransferTowerOwnership
@@ -1681,13 +1681,13 @@ struct ADunDefTower_TripWire_CheckAssociateWithHero_Params
 // Function DunDefSpecial.DunDefTower_TripWire.CanDetonate
 struct ADunDefTower_TripWire_CanDetonate_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.HasCharges
 struct ADunDefTower_TripWire_HasCharges_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.GetSellWorth
@@ -1716,7 +1716,7 @@ struct ADunDefTower_TripWire_HealDetonationStyle_Params
 	int                                                HealAmt;                                                  // (Parm)
 	class AController*                                 Healer;                                                   // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
-	bool                                               bShowFloatingNumbers;                                     // (OptionalParm, Parm)
+	unsigned long                                      bShowFloatingNumbers;                                     // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.GetAlternateActor
@@ -1728,7 +1728,7 @@ struct ADunDefTower_TripWire_GetAlternateActor_Params
 // Function DunDefSpecial.DunDefTower_TripWire.IsMultiActorTower
 struct ADunDefTower_TripWire_IsMultiActorTower_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.DrawUpgradeOverlay
@@ -1776,7 +1776,7 @@ struct ADunDefTower_TripWire_GetToolTipText_Params
 // Function DunDefSpecial.DunDefTower_TripWire.ScaleForHeroModifiers
 struct ADunDefTower_TripWire_ScaleForHeroModifiers_Params
 {
-	bool                                               IsFirstTime;                                              // (Parm)
+	unsigned long                                      IsFirstTime;                                              // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.ScaleHealthMultiplier
@@ -1797,8 +1797,8 @@ struct ADunDefTower_TripWire_UpdateTowerRatingMaterial_Params
 // Function DunDefSpecial.DunDefTower_TripWire.NeedsRepair
 struct ADunDefTower_TripWire_NeedsRepair_Params
 {
-	bool                                               requireFullHealth;                                        // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      requireFullHealth;                                        // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.GetHealthPercent
@@ -1813,7 +1813,7 @@ struct ADunDefTower_TripWire_HealDamage_Params
 	int                                                Amount;                                                   // (Parm)
 	class AController*                                 Healer;                                                   // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.HealPctOfMaxHealth
@@ -1822,13 +1822,13 @@ struct ADunDefTower_TripWire_HealPctOfMaxHealth_Params
 	float                                              HealPct;                                                  // (Parm)
 	class AController*                                 Healer;                                                   // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
-	bool                                               bShowFloatingNumbers;                                     // (OptionalParm, Parm)
+	unsigned long                                      bShowFloatingNumbers;                                     // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.GetHealth
 struct ADunDefTower_TripWire_GetHealth_Params
 {
-	bool                                               bGetMax;                                                  // (OptionalParm, Parm)
+	unsigned long                                      bGetMax;                                                  // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -1907,8 +1907,8 @@ struct ADunDefTower_TripWire_DecreaseLifeEnergy_Params
 // Function DunDefSpecial.DunDefTower_TripWire.ContinueDrawingToolTip
 struct ADunDefTower_TripWire_ContinueDrawingToolTip_Params
 {
-	bool                                               ContinueDrawing;                                          // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ContinueDrawing;                                          // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.DrawToolTip
@@ -1924,7 +1924,7 @@ struct ADunDefTower_TripWire_DrawToolTip_Params
 struct ADunDefTower_TripWire_Sell_Params
 {
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.Destroyed
@@ -1958,14 +1958,14 @@ struct ADunDefTower_TripWire_RemoveStunnedActor_Params
 {
 	class AActor*                                      stunRemoval;                                              // (Parm)
 	int                                                removalIndex;                                             // (OptionalParm, Parm)
-	bool                                               bDontReplicate;                                           // (OptionalParm, Parm)
+	unsigned long                                      bDontReplicate;                                           // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.CanStun
 struct ADunDefTower_TripWire_CanStun_Params
 {
 	class ADunDefEnemy*                                stunTest;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.AddStunnedActor
@@ -1978,7 +1978,7 @@ struct ADunDefTower_TripWire_AddStunnedActor_Params
 // Function DunDefSpecial.DunDefTower_TripWire.ClearBeamTrippers
 struct ADunDefTower_TripWire_ClearBeamTrippers_Params
 {
-	bool                                               bFullClear;                                               // (Parm)
+	unsigned long                                      bFullClear;                                               // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.GetAttackDuration
@@ -1995,7 +1995,7 @@ struct ADunDefTower_TripWire_ResetTrip_Params
 // Function DunDefSpecial.DunDefTower_TripWire.DeactivateTrip
 struct ADunDefTower_TripWire_DeactivateTrip_Params
 {
-	bool                                               bShutDownEffects;                                         // (OptionalParm, Parm)
+	unsigned long                                      bShutDownEffects;                                         // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.ActivateTrip
@@ -2007,7 +2007,7 @@ struct ADunDefTower_TripWire_ActivateTrip_Params
 struct ADunDefTower_TripWire_DrawMyHUD_Params
 {
 	class ADunDefHUD*                                  H;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.GetTrapDamageMultiplier
@@ -2062,7 +2062,7 @@ struct ADunDefTower_TripWire_GetAttackRate_Params
 struct ADunDefTower_TripWire_DoTracing_Params
 {
 	float                                              dt;                                                       // (Parm)
-	bool                                               bForceDamage;                                             // (OptionalParm, Parm)
+	unsigned long                                      bForceDamage;                                             // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.UnTouch
@@ -2113,7 +2113,7 @@ struct ADunDefTower_TripWire_ClientSingleSetMovement_Params
 {
 	struct FVector                                     endLoc;                                                   // (Parm)
 	struct FRotator                                    endRot;                                                   // (Parm)
-	bool                                               bShouldCollideWorld;                                      // (OptionalParm, Parm)
+	unsigned long                                      bShouldCollideWorld;                                      // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.ForceSingleMove
@@ -2121,8 +2121,8 @@ struct ADunDefTower_TripWire_ForceSingleMove_Params
 {
 	struct FVector                                     NewLoc;                                                   // (Parm)
 	struct FRotator                                    NewRot;                                                   // (Parm)
-	bool                                               bShouldCollideWorld;                                      // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bShouldCollideWorld;                                      // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.DisableSingleMovementReplication
@@ -2156,7 +2156,7 @@ struct ADunDefTower_TripWire_SetDUCost_Params
 // Function DunDefSpecial.DunDefTower_TripWire.GetNextUpgradeLevel
 struct ADunDefTower_TripWire_GetNextUpgradeLevel_Params
 {
-	bool                                               bForceBeyondMaxUpgrade;                                   // (OptionalParm, Parm)
+	unsigned long                                      bForceBeyondMaxUpgrade;                                   // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -2202,7 +2202,7 @@ struct ADunDefTower_TripWire_DoUpgrade_Params
 // Function DunDefSpecial.DunDefTower_TripWire.CanBeUpgraded
 struct ADunDefTower_TripWire_CanBeUpgraded_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.ShutDownBeamEffects
@@ -2213,7 +2213,7 @@ struct ADunDefTower_TripWire_ShutDownBeamEffects_Params
 // Function DunDefSpecial.DunDefTower_TripWire.ActivateBeamEffects
 struct ADunDefTower_TripWire_ActivateBeamEffects_Params
 {
-	bool                                               bActive;                                                  // (Parm)
+	unsigned long                                      bActive;                                                  // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripWire.ActivateBeam
@@ -2290,9 +2290,9 @@ struct ADunDefTower_TripWire_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -2311,7 +2311,7 @@ struct ADunDefTower_TripPhysical_DisableAbilityMove_Params
 // Function DunDefSpecial.DunDefTower_TripPhysical.AllowAbilityMove
 struct ADunDefTower_TripPhysical_AllowAbilityMove_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripPhysical.ClientDisableMovementReplication
@@ -2330,7 +2330,7 @@ struct ADunDefTower_TripPhysical_ForceMoveActor_Params
 {
 	class AActor*                                      Mover;                                                    // (Parm)
 	struct FVector                                     NewLoc;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripPhysical.GetSelectionLocation
@@ -2343,7 +2343,7 @@ struct ADunDefTower_TripPhysical_GetSelectionLocation_Params
 // Function DunDefSpecial.DunDefTower_TripPhysical.IsPhysicalTower
 struct ADunDefTower_TripPhysical_IsPhysicalTower_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripPhysical.DrawMiniMapIcon
@@ -2362,7 +2362,7 @@ struct ADunDefTower_TripPhysical_UpdateMovementBeams_Params
 struct ADunDefTower_TripPhysical_IsPreviousToolTipActor_Params
 {
 	class ADunDefPlayerController*                     ownerCheck;                                               // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripPhysical.UpdateDamageFlashing
@@ -2381,7 +2381,7 @@ struct ADunDefTower_TripPhysical_HealDamage_Params
 	int                                                Amount;                                                   // (Parm)
 	class AController*                                 Healer;                                                   // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripPhysical.IncrementRepair
@@ -2467,7 +2467,7 @@ struct ADunDefTower_TripPhysical_GetHealthPercent_Params
 // Function DunDefSpecial.DunDefTower_TripPhysical.GetHealth
 struct ADunDefTower_TripPhysical_GetHealth_Params
 {
-	bool                                               bGetMax;                                                  // (OptionalParm, Parm)
+	unsigned long                                      bGetMax;                                                  // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -2475,13 +2475,13 @@ struct ADunDefTower_TripPhysical_GetHealth_Params
 struct ADunDefTower_TripPhysical_AddHealth_Params
 {
 	int                                                howMuch;                                                  // (Parm)
-	bool                                               bDontDisplayFloatingNumber;                               // (OptionalParm, Parm)
+	unsigned long                                      bDontDisplayFloatingNumber;                               // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripPhysical.ActivateBeamEffects
 struct ADunDefTower_TripPhysical_ActivateBeamEffects_Params
 {
-	bool                                               bActive;                                                  // (Parm)
+	unsigned long                                      bActive;                                                  // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripPhysical.ShutDownBeamEffects
@@ -2498,14 +2498,14 @@ struct ADunDefTower_TripPhysical_ActivateTrip_Params
 struct ADunDefTower_TripPhysical_DrawMyHUD_Params
 {
 	class ADunDefHUD*                                  H;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripPhysical.NeedsRepair
 struct ADunDefTower_TripPhysical_NeedsRepair_Params
 {
-	bool                                               requireFullHealth;                                        // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      requireFullHealth;                                        // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripPhysical.SubtractHealth
@@ -2561,7 +2561,7 @@ struct ADunDefTower_TripPhysical_GetAuraDamageMultiplier_Params
 // Function DunDefSpecial.DunDefTower_TripPhysical.UseForTowerSelectionPassThrough
 struct ADunDefTower_TripPhysical_UseForTowerSelectionPassThrough_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripPhysical.GetTowerTargetingDesirability
@@ -2669,9 +2669,9 @@ struct ADunDefPlayer_Hovering_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -2739,22 +2739,22 @@ struct ADunDefPlayer_Summoner_StopSpellEmitter_Params
 struct ADunDefPlayer_Summoner_StartSpellEmitter_Params
 {
 	class ADunDefEmitterSpawnable*                     Template;                                                 // (Parm)
-	bool                                               DontSetAsPrimaryEffect;                                   // (OptionalParm, Parm)
-	bool                                               IsSpawnEffect;                                            // (OptionalParm, Parm)
-	bool                                               bForceSpawnOnWeapon;                                      // (OptionalParm, Parm)
+	unsigned long                                      DontSetAsPrimaryEffect;                                   // (OptionalParm, Parm)
+	unsigned long                                      IsSpawnEffect;                                            // (OptionalParm, Parm)
+	unsigned long                                      bForceSpawnOnWeapon;                                      // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_Summoner.AllowDropPickups
 struct ADunDefPlayer_Summoner_AllowDropPickups_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_Summoner.SetOwnerNoSee
 struct ADunDefPlayer_Summoner_SetOwnerNoSee_Params
 {
-	bool                                               ownerNoSee;                                               // (Parm)
-	bool                                               ownerNoSeeWeapon;                                         // (OptionalParm, Parm)
+	unsigned long                                      ownerNoSee;                                               // (Parm)
+	unsigned long                                      ownerNoSeeWeapon;                                         // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_Summoner.Died
@@ -2763,7 +2763,7 @@ struct ADunDefPlayer_Summoner_Died_Params
 	class AController*                                 Killer;                                                   // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
 	struct FVector                                     HitLocation;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_Summoner.GetEnemyTargetingDesirability
@@ -2806,7 +2806,7 @@ struct ADunDefPlayer_Summoner_CheckForTokens_Params
 struct ADunDefPlayer_Summoner_AllowFamiliarAbilities_Params
 {
 	class UHeroEquipment_Familiar*                     askingFamiliar;                                           // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_Summoner.AttachAllEquipment
@@ -2822,13 +2822,13 @@ struct ADunDefPlayer_Summoner_DetachAllEquipment_Params
 // Function DunDefSpecial.DunDefPlayer_Summoner.SetPhased
 struct ADunDefPlayer_Summoner_SetPhased_Params
 {
-	bool                                               bNewPhaseState;                                           // (Parm)
+	unsigned long                                      bNewPhaseState;                                           // (Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_Summoner.AllowEquipmentAttachment
 struct ADunDefPlayer_Summoner_AllowEquipmentAttachment_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_Summoner.Destroyed
@@ -2875,7 +2875,7 @@ struct ADunDefPlayer_Summoner_RemoveAllSelectedTowers_Params
 struct ADunDefPlayer_Summoner_HasSelectedTower_Params
 {
 	class ADunDefTower_SummonEnemy*                    chkTower;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_Summoner.AddSelectedTowerGroup
@@ -2927,9 +2927,9 @@ struct ADunDefPlayer_Summoner_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -2951,7 +2951,7 @@ struct ADunDefDecoyTarget_DTGetEnemyTargetingDesirability_Params
 struct ADunDefDecoyTarget_DrawMyHUD_Params
 {
 	class ADunDefHUD*                                  H;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefDecoyTarget.PlayDeath
@@ -2966,13 +2966,13 @@ struct ADunDefDecoyTarget_AllowHeroGUID_Params
 	int                                                GUID2;                                                    // (Parm)
 	int                                                GUID3;                                                    // (Parm)
 	int                                                GUID4;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefDecoyTarget.CanDetonate
 struct ADunDefDecoyTarget_CanDetonate_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefDecoyTarget.Detonate
@@ -2989,20 +2989,20 @@ struct ADunDefDecoyTarget_SelfDestruct_Params
 // Function DunDefSpecial.DunDefDecoyTarget.ScaleForHeroModifiers
 struct ADunDefDecoyTarget_ScaleForHeroModifiers_Params
 {
-	bool                                               IsFirstTime;                                              // (Parm)
+	unsigned long                                      IsFirstTime;                                              // (Parm)
 };
 
 // Function DunDefSpecial.DunDefDecoyTarget.IsClassOnIgnoreList
 struct ADunDefDecoyTarget_IsClassOnIgnoreList_Params
 {
 	class UClass*                                      ActorClass;                                               // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefDecoyTarget.SetMaxNumberOfAttackers
 struct ADunDefDecoyTarget_SetMaxNumberOfAttackers_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefDecoyTarget.SetActiveTime
@@ -3055,7 +3055,7 @@ struct ADunDefDropOffPoint_PreventTowerAtPoint_Params
 	class ADunDefTower*                                towerArch;                                                // (Parm)
 	struct FVector                                     Point;                                                    // (Parm)
 	float                                              towerRadius;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefDropOffPoint.AllowTowerAtPoint
@@ -3064,13 +3064,13 @@ struct ADunDefDropOffPoint_AllowTowerAtPoint_Params
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
 	class ADunDefTower*                                towerArch;                                                // (Parm)
 	struct FVector                                     Point;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefDropOffPoint.CheckAllowance
 struct ADunDefDropOffPoint_CheckAllowance_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefDropOffPoint.DTGetEnemyTargetingDesirability
@@ -3125,7 +3125,7 @@ struct ADunDefDropOffPoint_AdjustDamage_Params
 // Function DunDefSpecial.DunDefDropOffPoint.OnlyDrawHUDForOwner
 struct ADunDefDropOffPoint_OnlyDrawHUDForOwner_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefDropOffPoint.DrawMiniMapIcon
@@ -3142,14 +3142,14 @@ struct ADunDefDropOffPoint_DrawActiveDisplay_Params
 	struct FVector                                     ScreenPos;                                                // (Parm)
 	float                                              Scale;                                                    // (Parm)
 	float                                              Opacity;                                                  // (Parm)
-	bool                                               bIsMiniMap;                                               // (OptionalParm, Parm)
+	unsigned long                                      bIsMiniMap;                                               // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefDropOffPoint.DrawMyHUD
 struct ADunDefDropOffPoint_DrawMyHUD_Params
 {
 	class ADunDefHUD*                                  H;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefDropOffPoint.DeactivatePoint
@@ -3199,7 +3199,7 @@ struct ADunDefDropOffPoint_PlaceNewItem_Params
 // Function DunDefSpecial.DunDefDropOffPoint.IsFull
 struct ADunDefDropOffPoint_IsFull_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefDropOffPoint.RemoveDropOffItem
@@ -3265,9 +3265,9 @@ struct ADunDefDropOffPoint_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -3281,7 +3281,7 @@ struct ADunDefDropOffPoint_ReplicatedEvent_Params
 // Function DunDefSpecial.DunDefPickupableItem.SetDroppingOff
 struct ADunDefPickupableItem_SetDroppingOff_Params
 {
-	bool                                               IsDroppingOff;                                            // (Parm)
+	unsigned long                                      IsDroppingOff;                                            // (Parm)
 	class ADunDefDropOffPoint*                         newDP;                                                    // (Parm)
 };
 
@@ -3304,7 +3304,7 @@ struct ADunDefPickupableItem_DoDestroyEffects_Params
 // Function DunDefSpecial.DunDefPickupableItem.DestroyPickUp
 struct ADunDefPickupableItem_DestroyPickUp_Params
 {
-	bool                                               bFromDamage;                                              // (OptionalParm, Parm)
+	unsigned long                                      bFromDamage;                                              // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefPickupableItem.PlaceAtPoint
@@ -3333,21 +3333,21 @@ struct ADunDefPickupableItem_GetDropOffWayPt_Params
 // Function DunDefSpecial.DunDefPickupableItem.OnlyDrawHUDForOwner
 struct ADunDefPickupableItem_OnlyDrawHUDForOwner_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPickupableItem.DrawMyHUD
 struct ADunDefPickupableItem_DrawMyHUD_Params
 {
 	class ADunDefHUD*                                  H;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPickupableItem.CanBePickedUp
 struct ADunDefPickupableItem_CanBePickedUp_Params
 {
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPickupableItem.PickupItem
@@ -3383,14 +3383,14 @@ struct ADunDefPickupableItem_GetToolTipPriority_Params
 struct ADunDefPickupableItem_TakesToolTipPriority_Params
 {
 	TScriptInterface<class UDunDefToolTipInterface>    otherToolTip;                                             // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPickupableItem.ContinueDrawingToolTip
 struct ADunDefPickupableItem_ContinueDrawingToolTip_Params
 {
-	bool                                               ContinueDrawing;                                          // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ContinueDrawing;                                          // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPickupableItem.DrawToolTip
@@ -3408,13 +3408,13 @@ struct ADunDefPickupableItem_AllowTowerAtPoint_Params
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
 	class ADunDefTower*                                towerArch;                                                // (Parm)
 	struct FVector                                     Point;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPickupableItem.CheckAllowance
 struct ADunDefPickupableItem_CheckAllowance_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPickupableItem.PreventTowerAtPoint
@@ -3424,7 +3424,7 @@ struct ADunDefPickupableItem_PreventTowerAtPoint_Params
 	class ADunDefTower*                                towerArch;                                                // (Parm)
 	struct FVector                                     Point;                                                    // (Parm)
 	float                                              towerRadius;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPickupableItem.DrawMiniMapIcon
@@ -3457,7 +3457,7 @@ struct ADunDefPickupableItem_Client_Activate_Params
 struct ADunDefPickupableItem_Server_Activate_Params
 {
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
-	bool                                               forceActivation;                                          // (OptionalParm, Parm)
+	unsigned long                                      forceActivation;                                          // (OptionalParm, Parm)
 	int                                                activationType;                                           // (OptionalParm, Parm)
 };
 
@@ -3494,9 +3494,9 @@ struct ADunDefPickupableItem_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -3559,7 +3559,7 @@ struct ADunDefPlayerController_Delivery_PickupItem_Params
 struct ADunDefGRI_Delivery_AllowedToTeleport_Params
 {
 	class APawn*                                       Teleportee;                                               // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefGRI_Delivery.SetCurrentDeliveryItem
@@ -3591,13 +3591,13 @@ struct ADunDefGRI_Delivery_ModifyPlayerGroundSpeed_Params
 // Function DunDefSpecial.DunDefGRI_Delivery.AllowPackageSpawn
 struct ADunDefGRI_Delivery_AllowPackageSpawn_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefGRI_Delivery.SetInCombatPhase
 struct ADunDefGRI_Delivery_SetInCombatPhase_Params
 {
-	bool                                               inCombatPhase;                                            // (Parm)
+	unsigned long                                      inCombatPhase;                                            // (Parm)
 };
 
 // Function DunDefSpecial.DunDefGRI_Delivery.DrawMyHUD
@@ -3679,7 +3679,7 @@ struct ADunDefFlashHeal_AllowSpawn_Params
 	class AActor*                                      theArchetype;                                             // (Parm)
 	struct FVector                                     theLoc;                                                   // (Parm)
 	struct FRotator                                    theRot;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefFlashHeal.FlashHeal
@@ -3696,7 +3696,7 @@ struct ADunDefFlashHeal_PostBeginPlay_Params
 struct ADunDefGRI_Assault_AllowedToTeleport_Params
 {
 	class APawn*                                       Teleportee;                                               // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefGRI_Assault.GetEnemyLifeSpanMultiplier
@@ -3804,14 +3804,14 @@ struct ADunDefGRI_Assault_RestartedPlayer_Params
 struct ADunDefGRI_Assault_CanEnterSpectatorMode_Params
 {
 	class ADunDefPlayerController*                     thePlayerController;                                      // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefGRI_Assault.CanRespawnPlayer
 struct ADunDefGRI_Assault_CanRespawnPlayer_Params
 {
 	class ADunDefPlayerController*                     thePlayerController;                                      // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefGRI_Chicken.PostBeginPlay
@@ -3835,14 +3835,14 @@ struct ADunDefGRI_Chicken_RestartedPlayer_Params
 struct ADunDefGRI_Chicken_CanEnterSpectatorMode_Params
 {
 	class ADunDefPlayerController*                     thePlayerController;                                      // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefGRI_Chicken.CanRespawnPlayer
 struct ADunDefGRI_Chicken_CanRespawnPlayer_Params
 {
 	class ADunDefPlayerController*                     thePlayerController;                                      // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefGRI_Chicken.DrawMyHUD
@@ -3877,7 +3877,7 @@ struct ADunDefGRI_Chicken_Tick_Params
 // Function DunDefSpecial.DunDefGRI_Chicken.SetInCombatPhase
 struct ADunDefGRI_Chicken_SetInCombatPhase_Params
 {
-	bool                                               inCombatPhase;                                            // (Parm)
+	unsigned long                                      inCombatPhase;                                            // (Parm)
 };
 
 // Function DunDefSpecial.DunDefGRI_Chicken.NotifyOfChicken
@@ -3900,9 +3900,9 @@ struct ADunDefGRI_Chicken_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -3963,7 +3963,7 @@ struct ADunDefGRI_GoldenTokens_DrawMyHUD_Params
 // Function DunDefSpecial.DunDefGRI_GoldenTokens.SetInCombatPhase
 struct ADunDefGRI_GoldenTokens_SetInCombatPhase_Params
 {
-	bool                                               inCombatPhase;                                            // (Parm)
+	unsigned long                                      inCombatPhase;                                            // (Parm)
 };
 
 // Function DunDefSpecial.DunDefGRI_GoldenTokens.CollectedGoldenToken
@@ -4016,14 +4016,14 @@ struct ADunDefGRI_KillEnemiesTimeLimit_RestartedPlayer_Params
 struct ADunDefGRI_KillEnemiesTimeLimit_CanEnterSpectatorMode_Params
 {
 	class ADunDefPlayerController*                     thePlayerController;                                      // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit.CanRespawnPlayer
 struct ADunDefGRI_KillEnemiesTimeLimit_CanRespawnPlayer_Params
 {
 	class ADunDefPlayerController*                     thePlayerController;                                      // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit.DrawMyHUD
@@ -4040,7 +4040,7 @@ struct ADunDefGRI_KillEnemiesTimeLimit_ReceivedGameClass_Params
 // Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit.SetInCombatPhase
 struct ADunDefGRI_KillEnemiesTimeLimit_SetInCombatPhase_Params
 {
-	bool                                               inCombatPhase;                                            // (Parm)
+	unsigned long                                      inCombatPhase;                                            // (Parm)
 };
 
 // Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit.PostBeginPlay
@@ -4095,7 +4095,7 @@ struct ADunDefGRI_KillEnemiesTimeLimit_Uber_Tick_Params
 // Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit_Uber.ReadToShowStats
 struct ADunDefGRI_KillEnemiesTimeLimit_Uber_ReadToShowStats_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit_Uber.GetGameOverLabelColor
@@ -4127,7 +4127,7 @@ struct ADunDefGRI_KillEnemiesTimeLimit_Uber_GetVictoryLabelString_Params
 // Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit_Uber.OverrideEndGameLabel
 struct ADunDefGRI_KillEnemiesTimeLimit_Uber_OverrideEndGameLabel_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit_Uber.GetMVP
@@ -4149,7 +4149,7 @@ struct ADunDefGRI_OgreAlly_ReceivedGameClass_Params
 // Function DunDefSpecial.DunDefGRI_OgreAlly.SetInCombatPhase
 struct ADunDefGRI_OgreAlly_SetInCombatPhase_Params
 {
-	bool                                               inCombatPhase;                                            // (Parm)
+	unsigned long                                      inCombatPhase;                                            // (Parm)
 };
 
 // Function DunDefSpecial.DunDefGRI_OgreAlly.PostBeginPlay
@@ -4223,9 +4223,9 @@ struct ADunDefGRI_VDay2_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -4261,7 +4261,7 @@ struct ADunDefHarbinger_v2_GetProjectileSpawnTransformation_Params
 // Function DunDefSpecial.DunDefHarbinger_v2.IsCurrentlyPlayingAttackAnimation
 struct ADunDefHarbinger_v2_IsCurrentlyPlayingAttackAnimation_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefHarbinger_v2.PlayShootFireAnimation
@@ -4273,7 +4273,7 @@ struct ADunDefHarbinger_v2_PlayShootFireAnimation_Params
 // Function DunDefSpecial.DunDefHarbinger_v2.IsCurrentlyPlayingChargeAnimation
 struct ADunDefHarbinger_v2_IsCurrentlyPlayingChargeAnimation_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefHarbinger_v2.PlayChargeFireAnimation
@@ -4308,9 +4308,9 @@ struct ADunDefHarbinger_v2_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -4375,14 +4375,14 @@ struct ADunDefPickupableSpawner_AdjustDamage_Params
 // Function DunDefSpecial.DunDefPickupableSpawner.OnlyDrawHUDForOwner
 struct ADunDefPickupableSpawner_OnlyDrawHUDForOwner_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPickupableSpawner.DrawMyHUD
 struct ADunDefPickupableSpawner_DrawMyHUD_Params
 {
 	class ADunDefHUD*                                  H;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPickupableSpawner.DrawToolTip
@@ -4397,7 +4397,7 @@ struct ADunDefPickupableSpawner_DrawToolTip_Params
 // Function DunDefSpecial.DunDefPickupableSpawner.ChangedGamePhases
 struct ADunDefPickupableSpawner_ChangedGamePhases_Params
 {
-	bool                                               IsCombatPhase;                                            // (Parm)
+	unsigned long                                      IsCombatPhase;                                            // (Parm)
 };
 
 // Function DunDefSpecial.DunDefPickupableSpawner.NotifyPickUp
@@ -4429,13 +4429,13 @@ struct ADunDefPickupableSpawner_GetSpawnLocandRot_Params
 // Function DunDefSpecial.DunDefPickupableSpawner.ActivateEffects
 struct ADunDefPickupableSpawner_ActivateEffects_Params
 {
-	bool                                               bTurnOn;                                                  // (Parm)
+	unsigned long                                      bTurnOn;                                                  // (Parm)
 };
 
 // Function DunDefSpecial.DunDefPickupableSpawner.SpawnPickUpItem
 struct ADunDefPickupableSpawner_SpawnPickUpItem_Params
 {
-	bool                                               bForceSpawn;                                              // (OptionalParm, Parm)
+	unsigned long                                      bForceSpawn;                                              // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefPickupableSpawner.PostBeginPlay
@@ -4449,13 +4449,13 @@ struct ADunDefPickupableSpawner_AllowTowerAtPoint_Params
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
 	class ADunDefTower*                                towerArch;                                                // (Parm)
 	struct FVector                                     Point;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPickupableSpawner.CheckAllowance
 struct ADunDefPickupableSpawner_CheckAllowance_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPickupableSpawner.PreventTowerAtPoint
@@ -4465,7 +4465,7 @@ struct ADunDefPickupableSpawner_PreventTowerAtPoint_Params
 	class ADunDefTower*                                towerArch;                                                // (Parm)
 	struct FVector                                     Point;                                                    // (Parm)
 	float                                              towerRadius;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPickupableSpawner.DrawMiniMapIcon
@@ -4498,7 +4498,7 @@ struct ADunDefPickupableSpawner_GetActivationWeighting_Params
 struct ADunDefPickupableSpawner_Server_Activate_Params
 {
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
-	bool                                               forceActivation;                                          // (OptionalParm, Parm)
+	unsigned long                                      forceActivation;                                          // (OptionalParm, Parm)
 	int                                                activationType;                                           // (OptionalParm, Parm)
 };
 
@@ -4519,20 +4519,20 @@ struct ADunDefPickupableSpawner_ReplicatedEvent_Params
 // Function DunDefSpecial.DunDefPlayer_DualMelee.SetOwnerNoSee
 struct ADunDefPlayer_DualMelee_SetOwnerNoSee_Params
 {
-	bool                                               ownerNoSee;                                               // (Parm)
-	bool                                               ownerNoSeeWeapon;                                         // (OptionalParm, Parm)
+	unsigned long                                      ownerNoSee;                                               // (Parm)
+	unsigned long                                      ownerNoSeeWeapon;                                         // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_DualMelee.AutoActivateSecondaryWeapon
 struct ADunDefPlayer_DualMelee_AutoActivateSecondaryWeapon_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_DualMelee.AllowNegativeStatusAffecting
 struct ADunDefPlayer_DualMelee_AllowNegativeStatusAffecting_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_DualMelee.GetAlternateStance
@@ -4568,7 +4568,7 @@ struct ADunDefPlayer_DualMelee_ShouldPlayHurtAnimation_Params
 	int                                                Damage;                                                   // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
 	int                                                Result;                                                   // (Parm, OutParm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_ResetOffhandWeaponSwingDamage
@@ -4623,7 +4623,7 @@ struct ADunDefPlayer_DualMelee_GivePlayerHitInfo_Params
 {
 	class AActor*                                      HitActor;                                                 // (Parm)
 	int                                                dealtDamage;                                              // (Parm)
-	bool                                               bAllowMomentumOverride;                                   // (Parm)
+	unsigned long                                      bAllowMomentumOverride;                                   // (Parm)
 	struct FVector                                     appliedMomentum;                                          // (Parm, OutParm)
 };
 
@@ -4666,22 +4666,22 @@ struct ADunDefPlayer_DualMelee_GetMeleeSwingInfoOverride_Params
 	class ADunDefWeapon_MeleeSword*                    overrideForWeap;                                          // (Parm)
 	int                                                currentMeleeSwingIndex;                                   // (Parm, OutParm)
 	struct FMeleeSwingInfo                             OverrideInfo;                                             // (Parm, OutParm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_DualMelee.OverrideMeleeSwingInfo
 struct ADunDefPlayer_DualMelee_OverrideMeleeSwingInfo_Params
 {
 	class ADunDefWeapon_MeleeSword*                    askingWeapon;                                             // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_DualMelee.CheckAllowMelee
 struct ADunDefPlayer_DualMelee_CheckAllowMelee_Params
 {
 	class ADunDefWeapon_MeleeSword*                    weaponCheck;                                              // (Parm)
-	bool                                               checkAnimDuration;                                        // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      checkAnimDuration;                                        // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_DualMelee.CheckPlayingCustomAnim
@@ -4689,7 +4689,7 @@ struct ADunDefPlayer_DualMelee_CheckPlayingCustomAnim_Params
 {
 	struct FName                                       inAnim;                                                   // (Parm)
 	float                                              TimeFromEndToConsiderFinished;                            // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_DualMelee.StopFire
@@ -4708,13 +4708,13 @@ struct ADunDefPlayer_DualMelee_ServerStopFire_Params
 struct ADunDefPlayer_DualMelee_SetComboInfo_Params
 {
 	class ADunDefWeapon_MeleeSword*                    comboWeapon;                                              // (Parm)
-	bool                                               bMainHand;                                                // (Parm)
+	unsigned long                                      bMainHand;                                                // (Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceCheck
 struct ADunDefPlayer_DualMelee_DoStanceCheck_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_DualMelee.StartFire
@@ -4738,14 +4738,14 @@ struct ADunDefPlayer_DualMelee_GetOffHandSocketName_Params
 // Function DunDefSpecial.DunDefPlayer_DualMelee.AllowDualWeapon
 struct ADunDefPlayer_DualMelee_AllowDualWeapon_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_DualMelee.CreateContainedInventoryFromTemplate
 struct ADunDefPlayer_DualMelee_CreateContainedInventoryFromTemplate_Params
 {
 	class AActor*                                      InventoryActorTemplate;                                   // (Parm)
-	bool                                               bDoNotActivate;                                           // (OptionalParm, Parm)
+	unsigned long                                      bDoNotActivate;                                           // (OptionalParm, Parm)
 	class AInventory*                                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -4774,7 +4774,7 @@ struct ADunDefPlayer_DualMelee_SwapWeaponFor_Params
 // Function DunDefSpecial.DunDefPlayer_DualMelee.HasLightningStance
 struct ADunDefPlayer_DualMelee_HasLightningStance_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_DualMelee.PostBeginPlay
@@ -4785,7 +4785,7 @@ struct ADunDefPlayer_DualMelee_PostBeginPlay_Params
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowNegativeStatusAffecting
 struct ADunDefPlayerAbility_StanceBase_AllowNegativeStatusAffecting_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.ResetWeaponDamage
@@ -4796,25 +4796,25 @@ struct ADunDefPlayerAbility_StanceBase_ResetWeaponDamage_Params
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopOffHandWeaponDamage
 struct ADunDefPlayerAbility_StanceBase_StopOffHandWeaponDamage_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopWeaponDamage
 struct ADunDefPlayerAbility_StanceBase_StopWeaponDamage_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartOffHandWeaponDamage
 struct ADunDefPlayerAbility_StanceBase_StartOffHandWeaponDamage_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartWeaponDamage
 struct ADunDefPlayerAbility_StanceBase_StartWeaponDamage_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GivePlayerHitInfo
@@ -4822,7 +4822,7 @@ struct ADunDefPlayerAbility_StanceBase_GivePlayerHitInfo_Params
 {
 	class AActor*                                      HitActor;                                                 // (Parm)
 	int                                                dealtDamage;                                              // (Parm)
-	bool                                               bAllowMomentumOverride;                                   // (Parm)
+	unsigned long                                      bAllowMomentumOverride;                                   // (Parm)
 	struct FVector                                     appliedMomentum;                                          // (Parm, OutParm)
 };
 
@@ -4839,27 +4839,27 @@ struct ADunDefPlayerAbility_StanceBase_AnimNotify_CurrentAbility_On_Params
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStanceCancel
 struct ADunDefPlayerAbility_StanceBase_AllowStanceCancel_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckDoStanceAttack
 struct ADunDefPlayerAbility_StanceBase_CheckDoStanceAttack_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetMultiplierValue
 struct ADunDefPlayerAbility_StanceBase_GetMultiplierValue_Params
 {
 	struct FStatMultipliers                            multiplierCheck;                                          // (Parm)
-	bool                                               bDoLog;                                                   // (OptionalParm, Parm)
+	unsigned long                                      bDoLog;                                                   // (OptionalParm, Parm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckStatus
 struct ADunDefPlayerAbility_StanceBase_CheckStatus_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetAbilityStatus
@@ -4877,7 +4877,7 @@ struct ADunDefPlayerAbility_StanceBase_OnActivate_Params
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStepTowards
 struct ADunDefPlayerAbility_StanceBase_AllowStepTowards_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerMomentumMultiplier
@@ -4911,21 +4911,21 @@ struct ADunDefPlayerAbility_LeapSlam_OnActivate_Params
 // Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.GetCostToActivate
 struct ADunDefPlayerAbility_LeapSlam_GetCostToActivate_Params
 {
-	bool                                               returnTrueValue;                                          // (OptionalParm, Parm)
+	unsigned long                                      returnTrueValue;                                          // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.RequestActivation
 struct ADunDefPlayerAbility_LeapSlam_RequestActivation_Params
 {
-	bool                                               bHeld;                                                    // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bHeld;                                                    // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.HasNoAutoAim
 struct ADunDefPlayerAbility_LeapSlam_HasNoAutoAim_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.GetAbilityStatus
@@ -4967,7 +4967,7 @@ struct ADunDefPlayerAbility_LeapSlam_AnimNotify_CurrentAbility_On_Params
 // Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.ConsumesInputWhenActive
 struct ADunDefPlayerAbility_LeapSlam_ConsumesInputWhenActive_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.DoTimeOut
@@ -4981,7 +4981,7 @@ struct ADunDefPlayerAbility_LeapSlam_GetLeapVelocity_Params
 	struct FVector                                     End;                                                      // (Parm)
 	struct FVector                                     Start;                                                    // (Parm)
 	struct FVector                                     JumpVelocity;                                             // (Parm, OutParm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.CancelAbility
@@ -5023,9 +5023,9 @@ struct ADunDefPlayerAbility_LeapSlam_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -5066,7 +5066,7 @@ struct ADunDefPlayer_Jester_WeaponSet_Params
 struct ADunDefPlayer_Jester_DrawMyHUD_Params
 {
 	class ADunDefHUD*                                  H;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_Jester.Tick
@@ -5078,7 +5078,7 @@ struct ADunDefPlayer_Jester_Tick_Params
 // Function DunDefSpecial.DunDefPlayer_Jester.GetWeaponIcon
 struct ADunDefPlayer_Jester_GetWeaponIcon_Params
 {
-	bool                                               bOffHand;                                                 // (Parm)
+	unsigned long                                      bOffHand;                                                 // (Parm)
 	class UMaterialInstanceConstant*                   ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -5089,7 +5089,7 @@ struct ADunDefPlayer_Jester_DrawWeaponIcons_Params
 	class ADunDefWeapon*                               weapDraw;                                                 // (Parm)
 	float                                              weapOpacity;                                              // (Parm)
 	int                                                paddingIndex;                                             // (Parm)
-	bool                                               bSelected;                                                // (Parm)
+	unsigned long                                      bSelected;                                                // (Parm)
 	float                                              hudScale;                                                 // (Parm)
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
 };
@@ -5103,7 +5103,7 @@ struct ADunDefPlayer_Jester_Destroyed_Params
 struct ADunDefPlayer_Jester_CreateContainedInventoryFromTemplate_Params
 {
 	class AActor*                                      InventoryActorTemplate;                                   // (Parm)
-	bool                                               bDoNotActivate;                                           // (OptionalParm, Parm)
+	unsigned long                                      bDoNotActivate;                                           // (OptionalParm, Parm)
 	class AInventory*                                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -5118,20 +5118,20 @@ struct ADunDefPlayer_Jester_SwapOffHandWeaponFor_Params
 // Function DunDefSpecial.DunDefPlayer_Jester.DoWeaponSwap
 struct ADunDefPlayer_Jester_DoWeaponSwap_Params
 {
-	bool                                               bForceSwap;                                               // (OptionalParm, Parm)
+	unsigned long                                      bForceSwap;                                               // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_Jester.ServerDoSwap
 struct ADunDefPlayer_Jester_ServerDoSwap_Params
 {
-	bool                                               bForceSwap;                                               // (OptionalParm, Parm)
+	unsigned long                                      bForceSwap;                                               // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_Jester.SetNewMainWeapon
 struct ADunDefPlayer_Jester_SetNewMainWeapon_Params
 {
 	class AWeapon*                                     theNewWeapon;                                             // (Parm)
-	bool                                               bRemoveExisting;                                          // (Parm)
+	unsigned long                                      bRemoveExisting;                                          // (Parm)
 	class UHeroEquipment*                              equipRef;                                                 // (Parm)
 };
 
@@ -5151,7 +5151,7 @@ struct ADunDefPlayer_Jester_GetShootAnim_Params
 // Function DunDefSpecial.DunDefPlayer_Jester.ForceWeaponActivationOverride
 struct ADunDefPlayer_Jester_ForceWeaponActivationOverride_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_Jester.SwapWeaponFor
@@ -5165,7 +5165,7 @@ struct ADunDefPlayer_Jester_SwapWeaponFor_Params
 // Function DunDefSpecial.DunDefPlayer_Jester.AllowDualWeapon
 struct ADunDefPlayer_Jester_AllowDualWeapon_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_Jester.ExecReplicatedFunction
@@ -5182,9 +5182,9 @@ struct ADunDefPlayer_Jester_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -5231,7 +5231,7 @@ struct ADunDefPlayer_SeriesEv_GetManaTokenAttractionRadius_Params
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.HasMaxManaPower
 struct ADunDefPlayer_SeriesEv_HasMaxManaPower_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.TryTokenCollection
@@ -5243,7 +5243,7 @@ struct ADunDefPlayer_SeriesEv_TryTokenCollection_Params
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.IsCurrentlyPlayingHurtAnimation
 struct ADunDefPlayer_SeriesEv_IsCurrentlyPlayingHurtAnimation_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.PlayHurtAnimation
@@ -5257,7 +5257,7 @@ struct ADunDefPlayer_SeriesEv_PlayHurtAnimation_Params
 struct ADunDefPlayer_SeriesEv_ShouldOverrideWeaponElementalEffects_Params
 {
 	class ADunDefWeapon*                               weaponCheck;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.StopFire
@@ -5285,27 +5285,27 @@ struct ADunDefPlayer_SeriesEv_PutArmDown_Params
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.PlayShootAnimation
 struct ADunDefPlayer_SeriesEv_PlayShootAnimation_Params
 {
-	bool                                               isBigShoot;                                               // (OptionalParm, Parm)
-	bool                                               Replicate;                                                // (OptionalParm, Parm)
-	bool                                               bDontPlayAnim;                                            // (OptionalParm, Parm)
+	unsigned long                                      isBigShoot;                                               // (OptionalParm, Parm)
+	unsigned long                                      Replicate;                                                // (OptionalParm, Parm)
+	unsigned long                                      bDontPlayAnim;                                            // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.ForceUseInstigatorForMuzzle
 struct ADunDefPlayer_SeriesEv_ForceUseInstigatorForMuzzle_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.CanReload
 struct ADunDefPlayer_SeriesEv_CanReload_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.GetWeaponIcon
 struct ADunDefPlayer_SeriesEv_GetWeaponIcon_Params
 {
-	bool                                               bOffHand;                                                 // (Parm)
+	unsigned long                                      bOffHand;                                                 // (Parm)
 	class UMaterialInstanceConstant*                   ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -5316,7 +5316,7 @@ struct ADunDefPlayer_SeriesEv_DrawWeaponIcons_Params
 	class ADunDefWeapon*                               weapDraw;                                                 // (Parm)
 	float                                              weapOpacity;                                              // (Parm)
 	int                                                paddingIndex;                                             // (Parm)
-	bool                                               bSelected;                                                // (Parm)
+	unsigned long                                      bSelected;                                                // (Parm)
 	float                                              hudScale;                                                 // (Parm)
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
 };
@@ -5325,7 +5325,7 @@ struct ADunDefPlayer_SeriesEv_DrawWeaponIcons_Params
 struct ADunDefPlayer_SeriesEv_DrawMyHUD_Params
 {
 	class ADunDefHUD*                                  H;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.Destroyed
@@ -5337,7 +5337,7 @@ struct ADunDefPlayer_SeriesEv_Destroyed_Params
 struct ADunDefPlayer_SeriesEv_CreateContainedInventoryFromTemplate_Params
 {
 	class AActor*                                      InventoryActorTemplate;                                   // (Parm)
-	bool                                               bDoNotActivate;                                           // (OptionalParm, Parm)
+	unsigned long                                      bDoNotActivate;                                           // (OptionalParm, Parm)
 	class AInventory*                                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -5352,20 +5352,20 @@ struct ADunDefPlayer_SeriesEv_SwapOffHandWeaponFor_Params
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.DoWeaponSwap
 struct ADunDefPlayer_SeriesEv_DoWeaponSwap_Params
 {
-	bool                                               bForceSwap;                                               // (OptionalParm, Parm)
+	unsigned long                                      bForceSwap;                                               // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.ServerDoSwap
 struct ADunDefPlayer_SeriesEv_ServerDoSwap_Params
 {
-	bool                                               bForceSwap;                                               // (OptionalParm, Parm)
+	unsigned long                                      bForceSwap;                                               // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.SetNewMainWeapon
 struct ADunDefPlayer_SeriesEv_SetNewMainWeapon_Params
 {
 	class AWeapon*                                     theNewWeapon;                                             // (Parm)
-	bool                                               bRemoveExisting;                                          // (Parm)
+	unsigned long                                      bRemoveExisting;                                          // (Parm)
 	class UHeroEquipment*                              equipRef;                                                 // (Parm)
 };
 
@@ -5394,13 +5394,13 @@ struct ADunDefPlayer_SeriesEv_GetOffHandSocketName_Params
 struct ADunDefPlayer_SeriesEv_OverrideWeaponAttach_Params
 {
 	class ADunDefWeapon*                               weaponCheck;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.AllowDualWeapon
 struct ADunDefPlayer_SeriesEv_AllowDualWeapon_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.ExecReplicatedFunction
@@ -5417,9 +5417,9 @@ struct ADunDefPlayer_SeriesEv_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -5434,7 +5434,7 @@ struct ADunDefPlayerAbility_ManaCharge_GetAbilityStatus_Params
 // Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.AllowUsageDuringCastingStates
 struct ADunDefPlayerAbility_ManaCharge_AllowUsageDuringCastingStates_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.DrawChargeBar
@@ -5452,7 +5452,7 @@ struct ADunDefPlayerAbility_ManaCharge_GetCooldownStartTime_Params
 // Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.ShouldDrawManaBar
 struct ADunDefPlayerAbility_ManaCharge_ShouldDrawManaBar_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.StopEffects
@@ -5526,7 +5526,7 @@ struct ADunDefPlayerAbility_ManaCharge_InCylinderFwd_Params
 	struct FVector                                     VDir;                                                     // (Parm)
 	float                                              RadiusSq;                                                 // (Parm)
 	struct FVector                                     A;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.DoDamage
@@ -5558,7 +5558,7 @@ struct ADunDefPlayerAbility_ManaCharge_StartDamageEffects_Params
 // Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.CanHoldMoreCharge
 struct ADunDefPlayerAbility_ManaCharge_CanHoldMoreCharge_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.CancelAbility
@@ -5590,9 +5590,9 @@ struct ADunDefPlayerAbility_ManaCharge_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -5600,7 +5600,7 @@ struct ADunDefPlayerAbility_ManaCharge_ExecReplicatedFunction_Params
 // Function DunDefSpecial.DunDefPlayerAbility_PhaseShift.AllowUsageDuringCastingStates
 struct ADunDefPlayerAbility_PhaseShift_AllowUsageDuringCastingStates_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_PhaseShift.GetCastingStateNamePC
@@ -5627,7 +5627,7 @@ struct ADunDefPlayerAbility_PhaseShift_ForceCancel_Params
 // Function DunDefSpecial.DunDefPlayerAbility_PhaseShift.SetPhaseMaterials
 struct ADunDefPlayerAbility_PhaseShift_SetPhaseMaterials_Params
 {
-	bool                                               bPhasedMaterials;                                         // (Parm)
+	unsigned long                                      bPhasedMaterials;                                         // (Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_PhaseShift.StartScaleUp
@@ -5700,9 +5700,9 @@ struct ADunDefPlayerAbility_PhaseShift_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -5728,8 +5728,8 @@ struct ADunDefPlayerAbility_BuilTripWire_AllowTowerPlacementPosition_Params
 {
 	struct FVector                                     placementPos;                                             // (Parm)
 	int                                                PlacementDeniedReason;                                    // (OptionalParm, Parm, OutParm)
-	bool                                               bOnlyCheckVolumes;                                        // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bOnlyCheckVolumes;                                        // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.GetCenterLocation
@@ -5741,13 +5741,13 @@ struct ADunDefPlayerAbility_BuilTripWire_GetCenterLocation_Params
 // Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.CanPlaceTowerUnitCost
 struct ADunDefPlayerAbility_BuilTripWire_CanPlaceTowerUnitCost_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.GetDUCost
 struct ADunDefPlayerAbility_BuilTripWire_GetDUCost_Params
 {
-	bool                                               bUseCustomEndLoc;                                         // (OptionalParm, Parm)
+	unsigned long                                      bUseCustomEndLoc;                                         // (OptionalParm, Parm)
 	struct FVector                                     endLoc;                                                   // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -5756,7 +5756,7 @@ struct ADunDefPlayerAbility_BuilTripWire_GetDUCost_Params
 struct ADunDefPlayerAbility_BuilTripWire_DrawCastingHUD_Params
 {
 	class ADunDefHUD*                                  H;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.CreateNewPreviewPoint
@@ -5823,7 +5823,7 @@ struct ADunDefPlayerAbility_BuilTripWire_BeginAltSummonTowerFX_Params
 	struct FVector                                     thePlacementLocation;                                     // (Parm)
 	struct FRotator                                    thePlacementRotation;                                     // (Parm)
 	float                                              scaleMult;                                                // (OptionalParm, Parm)
-	bool                                               bUsesDecal;                                               // (OptionalParm, Parm)
+	unsigned long                                      bUsesDecal;                                               // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.ExecReplicatedFunction
@@ -5840,9 +5840,9 @@ struct ADunDefPlayerAbility_BuilTripWire_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -5916,7 +5916,7 @@ struct ADunDefPlayerAbility_DefenseBoost_GetTowerBoostAmount_Params
 struct ADunDefPlayerAbility_DefenseBoost_HasTowerBoostingType_Params
 {
 	TEnumAsByte<ETowerBoostType>                       boostType;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_DefenseBoost.GetTowerBoostingTarget
@@ -5954,7 +5954,7 @@ struct ADunDefPlayerAbility_EnemyDrain_GetDamageMultiplier_Params
 struct ADunDefPlayerAbility_EnemyDrain_CanAffect_Params
 {
 	class AActor*                                      theAct;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_EnemyDrain.AddEffect
@@ -6001,7 +6001,7 @@ struct ADunDefPlayerAbility_InstantUpgradeTower_GetTowerCost_Params
 // Function DunDefSpecial.DunDefPlayerAbility_InstantUpgradeTower.ScaleForHeroModifiers
 struct ADunDefPlayerAbility_InstantUpgradeTower_ScaleForHeroModifiers_Params
 {
-	bool                                               IsFirstTime;                                              // (Parm)
+	unsigned long                                      IsFirstTime;                                              // (Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_InstantUpgradeTower.IsValidUpgradeTower
@@ -6009,8 +6009,8 @@ struct ADunDefPlayerAbility_InstantUpgradeTower_IsValidUpgradeTower_Params
 {
 	class ADunDefTower*                                Tower;                                                    // (Parm)
 	int                                                theNextUpgradeLevel;                                      // (OptionalParm, Parm, OutParm)
-	bool                                               bDontCountMana;                                           // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bDontCountMana;                                           // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_InvisibilityAOE.RemovedTower
@@ -6059,7 +6059,7 @@ struct ADunDefPlayerAbility_InvisibilityAOE_RemoveEffect_Params
 // Function DunDefSpecial.DunDefPlayerAbility_MoveTower.GetCostToActivate
 struct ADunDefPlayerAbility_MoveTower_GetCostToActivate_Params
 {
-	bool                                               returnTrueValue;                                          // (OptionalParm, Parm)
+	unsigned long                                      returnTrueValue;                                          // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -6109,7 +6109,7 @@ struct ADunDefPlayerAbility_MoveTower_ClientStartMovingState_Params
 // Function DunDefSpecial.DunDefPlayerAbility_MoveTower.ServerReceivePlacementState
 struct ADunDefPlayerAbility_MoveTower_ServerReceivePlacementState_Params
 {
-	bool                                               bIsValidPlacement;                                        // (Parm)
+	unsigned long                                      bIsValidPlacement;                                        // (Parm)
 	struct FVector                                     tPlacementLocation;                                       // (Parm)
 	struct FRotator                                    tPlacementRotation;                                       // (Parm)
 };
@@ -6131,8 +6131,8 @@ struct ADunDefPlayerAbility_MoveTower_AllowTowerPlacementPosition_Params
 {
 	struct FVector                                     placementPos;                                             // (Parm)
 	int                                                PlacementDeniedReason;                                    // (OptionalParm, Parm, OutParm)
-	bool                                               bOnlyCheckVolumes;                                        // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bOnlyCheckVolumes;                                        // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_MoveTower.GetOtherMoveAbilityTowerRadius
@@ -6144,13 +6144,13 @@ struct ADunDefPlayerAbility_MoveTower_GetOtherMoveAbilityTowerRadius_Params
 // Function DunDefSpecial.DunDefPlayerAbility_MoveTower.IsInPlacingTowerState
 struct ADunDefPlayerAbility_MoveTower_IsInPlacingTowerState_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_MoveTower.IsTowerPhysical
 struct ADunDefPlayerAbility_MoveTower_IsTowerPhysical_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_MoveTower.OnActivate
@@ -6194,9 +6194,9 @@ struct ADunDefPlayerAbility_MoveTower_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -6217,8 +6217,8 @@ struct ADunDefPlayerAbility_SummonCommand_GetAbilityStatus_Params
 // Function DunDefSpecial.DunDefPlayerAbility_SummonCommand.RequestActivation
 struct ADunDefPlayerAbility_SummonCommand_RequestActivation_Params
 {
-	bool                                               bHeld;                                                    // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bHeld;                                                    // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_SummonCommand.StopTowerPlacingAnimation
@@ -6234,7 +6234,7 @@ struct ADunDefPlayerAbility_SummonCommand_StartTowerPlacingAnimation_Params
 // Function DunDefSpecial.DunDefPlayerAbility_SummonCommand.AllowCastingCancelOnDamage
 struct ADunDefPlayerAbility_SummonCommand_AllowCastingCancelOnDamage_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_SummonCommand.PostPlacementUpdate
@@ -6313,14 +6313,14 @@ struct ADunDefPlayerAbility_PhaseShiftOverlord_DoMovementCommand_Params
 struct ADunDefPlayerAbility_PhaseShiftOverlord_DrawCastingHUD_Params
 {
 	class ADunDefHUD*                                  H;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_PhaseShiftOverlord.RequestActivation
 struct ADunDefPlayerAbility_PhaseShiftOverlord_RequestActivation_Params
 {
-	bool                                               bHeld;                                                    // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bHeld;                                                    // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_PhaseShiftOverlord.GetAbilityStatus
@@ -6333,8 +6333,8 @@ struct ADunDefPlayerAbility_PhaseShiftOverlord_GetAbilityStatus_Params
 // Function DunDefSpecial.DunDefPlayerAbility_PhaseShiftOverlord.RequestCancellation
 struct ADunDefPlayerAbility_PhaseShiftOverlord_RequestCancellation_Params
 {
-	bool                                               bForce;                                                   // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bForce;                                                   // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_PhaseShiftOverlord.HandleConfirmation
@@ -6365,7 +6365,7 @@ struct ADunDefPlayerAbility_SelectSummonUnits_StartTowerPlacingAnimation_Params
 // Function DunDefSpecial.DunDefPlayerAbility_SelectSummonUnits.AllowCastingCancelOnDamage
 struct ADunDefPlayerAbility_SelectSummonUnits_AllowCastingCancelOnDamage_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_SelectSummonUnits.DeSelectUnits
@@ -6431,13 +6431,13 @@ struct ADunDefPlayerAbility_SlamDash_GetAbilityStatus_Params
 // Function DunDefSpecial.DunDefPlayerAbility_SlamDash.ConsumesInputWhenActive
 struct ADunDefPlayerAbility_SlamDash_ConsumesInputWhenActive_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_SlamDash.AllowUsageDuringCastingStates
 struct ADunDefPlayerAbility_SlamDash_AllowUsageDuringCastingStates_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_SlamDash.CheckStuck
@@ -6479,9 +6479,9 @@ struct ADunDefPlayerAbility_SlamDash_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -6512,25 +6512,25 @@ struct ADunDefPlayerAbility_StanceOnDmgEffect_ResetWeaponDamage_Params
 // Function DunDefSpecial.DunDefPlayerAbility_StanceOnDmgEffect.StopOffHandWeaponDamage
 struct ADunDefPlayerAbility_StanceOnDmgEffect_StopOffHandWeaponDamage_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceOnDmgEffect.StopWeaponDamage
 struct ADunDefPlayerAbility_StanceOnDmgEffect_StopWeaponDamage_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceOnDmgEffect.StartOffHandWeaponDamage
 struct ADunDefPlayerAbility_StanceOnDmgEffect_StartOffHandWeaponDamage_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceOnDmgEffect.StartWeaponDamage
 struct ADunDefPlayerAbility_StanceOnDmgEffect_StartWeaponDamage_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceOnDmgEffect.DoAddHealth
@@ -6566,7 +6566,7 @@ struct ADunDefPlayerAbility_StanceLightning_ClearStunnedList_Params
 struct ADunDefPlayerAbility_StanceLightning_RemoveStunnedActor_Params
 {
 	class ADunDefEnemy*                                stunRemoval;                                              // (Parm)
-	bool                                               bDontReplicate;                                           // (OptionalParm, Parm)
+	unsigned long                                      bDontReplicate;                                           // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceLightning.AddStunnedActor
@@ -6602,7 +6602,7 @@ struct ADunDefPlayerAbility_StanceLightning_GetLastChainPos_Params
 struct ADunDefPlayerAbility_StanceLightning_CanStun_Params
 {
 	class ADunDefEnemy*                                stunTest;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceLightning.ExecReplicatedFunction
@@ -6619,9 +6619,9 @@ struct ADunDefPlayerAbility_StanceLightning_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -6636,25 +6636,25 @@ struct ADunDefPlayerAbility_StanceSpecialAttack_GetAbilityStatus_Params
 // Function DunDefSpecial.DunDefPlayerAbility_StanceSpecialAttack.StopOffHandWeaponDamage
 struct ADunDefPlayerAbility_StanceSpecialAttack_StopOffHandWeaponDamage_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceSpecialAttack.StopWeaponDamage
 struct ADunDefPlayerAbility_StanceSpecialAttack_StopWeaponDamage_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceSpecialAttack.StartOffHandWeaponDamage
 struct ADunDefPlayerAbility_StanceSpecialAttack_StartOffHandWeaponDamage_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceSpecialAttack.StartWeaponDamage
 struct ADunDefPlayerAbility_StanceSpecialAttack_StartWeaponDamage_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_StanceSpecialAttack.GetMomentum
@@ -6736,7 +6736,7 @@ struct ADunDefPlayerAbility_WheeloFortuna_GetAbilityStatus_Params
 // Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.GetCostToActivate
 struct ADunDefPlayerAbility_WheeloFortuna_GetCostToActivate_Params
 {
-	bool                                               returnTrueValue;                                          // (OptionalParm, Parm)
+	unsigned long                                      returnTrueValue;                                          // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -6782,7 +6782,7 @@ struct ADunDefPlayerAbility_WheeloFortuna_GoldEnemy_Params
 struct ADunDefPlayerAbility_WheeloFortuna_DoGolding_Params
 {
 	struct FGlyphPattern                               thePattern;                                               // (Parm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.EndEffect
@@ -6855,7 +6855,7 @@ struct ADunDefPlayerAbility_WheeloFortuna_FinishSelection_Params
 struct ADunDefPlayerAbility_WheeloFortuna_CheckPattern_Params
 {
 	struct FGlyphPattern                               CheckPattern;                                             // (Parm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.GetBoostedTargets
@@ -6881,7 +6881,7 @@ struct ADunDefPlayerAbility_WheeloFortuna_GetPawnBoostAmount_Params
 struct ADunDefPlayerAbility_WheeloFortuna_HasPawnBoostingType_Params
 {
 	TEnumAsByte<EPawnBoostType>                        boostType;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.UpdateStuns
@@ -6919,9 +6919,9 @@ struct ADunDefPlayerAbility_WheeloFortuna_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -6929,7 +6929,7 @@ struct ADunDefPlayerAbility_WheeloFortuna_ExecReplicatedFunction_Params
 // Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.ConsumesInputWhenActive
 struct ADunDefPlayerAbility_WhirlWind_ConsumesInputWhenActive_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.InitalizeActorStats
@@ -6938,14 +6938,14 @@ struct ADunDefPlayerAbility_WhirlWind_InitalizeActorStats_Params
 	TScriptInterface<class UIActorModifierInterface>   ActorStatObject;                                          // (Parm)
 	class UObject*                                     CallingObject;                                            // (OptionalParm, Parm)
 	int                                                Tier;                                                     // (OptionalParm, Parm)
-	bool                                               bBaseValueOnly;                                           // (OptionalParm, Parm)
+	unsigned long                                      bBaseValueOnly;                                           // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.CanAffect
 struct ADunDefPlayerAbility_WhirlWind_CanAffect_Params
 {
 	class AActor*                                      theAct;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.SetElementalVFX
@@ -6957,13 +6957,13 @@ struct ADunDefPlayerAbility_WhirlWind_SetElementalVFX_Params
 // Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.AbilityReleased
 struct ADunDefPlayerAbility_WhirlWind_AbilityReleased_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.AbilityPressed
 struct ADunDefPlayerAbility_WhirlWind_AbilityPressed_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.CancelEffect
@@ -7052,7 +7052,7 @@ struct ADunDefProjectileHoming_Piercing_GroundBound_PostBeginPlay_Params
 // Function DunDefSpecial.DunDefProjectileHoming_Piercing_GroundBound_Pulse.DoPulse
 struct ADunDefProjectileHoming_Piercing_GroundBound_Pulse_DoPulse_Params
 {
-	bool                                               bForce;                                                   // (OptionalParm, Parm)
+	unsigned long                                      bForce;                                                   // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefProjectileHoming_Piercing_GroundBound_Pulse.Expire
@@ -7074,7 +7074,7 @@ struct ADunDefProjectileHoming_Piercing_GroundBound_Pulse_InitProjectile_Params
 struct ADunDefProjectileHoming_Piercing_GroundBound_Pulse_IsImpactAllowed_Params
 {
 	class AActor*                                      Other;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefProjectileHoming_Piercing_GroundBound_Pulse.InitalizeActorStats
@@ -7083,7 +7083,7 @@ struct ADunDefProjectileHoming_Piercing_GroundBound_Pulse_InitalizeActorStats_Pa
 	TScriptInterface<class UIActorModifierInterface>   ActorStatObject;                                          // (Parm)
 	class UObject*                                     CallingObject;                                            // (OptionalParm, Parm)
 	int                                                Tier;                                                     // (OptionalParm, Parm)
-	bool                                               bBaseValueOnly;                                           // (OptionalParm, Parm)
+	unsigned long                                      bBaseValueOnly;                                           // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefProjectile_Orb.Destroyed
@@ -7094,13 +7094,13 @@ struct ADunDefProjectile_Orb_Destroyed_Params
 // Function DunDefSpecial.DunDefProjectile_Orb.DoPulse
 struct ADunDefProjectile_Orb_DoPulse_Params
 {
-	bool                                               bForce;                                                   // (OptionalParm, Parm)
+	unsigned long                                      bForce;                                                   // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefProjectile_Orb.IsTargetsInRange
 struct ADunDefProjectile_Orb_IsTargetsInRange_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefProjectile_Orb.ChangeSpeed
@@ -7121,7 +7121,7 @@ struct ADunDefProjectile_Orb_InitalizeActorStats_Params
 	TScriptInterface<class UIActorModifierInterface>   ActorStatObject;                                          // (Parm)
 	class UObject*                                     CallingObject;                                            // (OptionalParm, Parm)
 	int                                                Tier;                                                     // (OptionalParm, Parm)
-	bool                                               bBaseValueOnly;                                           // (OptionalParm, Parm)
+	unsigned long                                      bBaseValueOnly;                                           // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefProjectile_Orb.PostBeginPlay
@@ -7139,8 +7139,8 @@ struct ADunDefPurifyingBomb_HurtRadius_Params
 	struct FVector                                     HurtOrigin;                                               // (Parm)
 	class AActor*                                      IgnoredActor;                                             // (OptionalParm, Parm)
 	class AController*                                 InstigatedByController;                                   // (OptionalParm, Parm)
-	bool                                               bDoFullDamage;                                            // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bDoFullDamage;                                            // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_BoostAura.GetTowerBoostAmount
@@ -7154,7 +7154,7 @@ struct ADunDefTower_BoostAura_GetTowerBoostAmount_Params
 struct ADunDefTower_BoostAura_HasTowerBoostingType_Params
 {
 	TEnumAsByte<ETowerBoostType>                       boostType;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_BoostAura.GetTowerBoostingTarget
@@ -7189,7 +7189,7 @@ struct ADunDefTower_BoostAura_GetAttackDamage_Params
 // Function DunDefSpecial.DunDefTower_BoostAura.ScaleForHeroModifiers
 struct ADunDefTower_BoostAura_ScaleForHeroModifiers_Params
 {
-	bool                                               IsFirstTime;                                              // (Parm)
+	unsigned long                                      IsFirstTime;                                              // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_BoostAura.GetToolTipText
@@ -7225,7 +7225,7 @@ struct ADunDefTower_BoostAura_EntryEffectDT_Params
 struct ADunDefTower_BoostAura_AttacksDT_Params
 {
 	class ADunDefDamageableTarget*                     dt;                                                       // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_BoostAura.EnteredRadiusDT
@@ -7244,7 +7244,7 @@ struct ADunDefTower_BoostAura_UnTouch_Params
 struct ADunDefTower_BoostAura_CanTargetInvisibleTarget_Params
 {
 	TScriptInterface<class UDunDefTargetableInterface> aTarget;                                                  // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_BoostAura.Touch
@@ -7280,9 +7280,9 @@ struct ADunDefTower_BoostAura_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -7301,7 +7301,7 @@ struct ADunDefTower_TripTowerBuff_RefreshBoosts_Params
 // Function DunDefSpecial.DunDefTower_TripTowerBuff.ScaleForHeroModifiers
 struct ADunDefTower_TripTowerBuff_ScaleForHeroModifiers_Params
 {
-	bool                                               IsFirstTime;                                              // (Parm)
+	unsigned long                                      IsFirstTime;                                              // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripTowerBuff.DrawTowerToolTipStats
@@ -7329,8 +7329,8 @@ struct ADunDefTower_TripTowerBuff_GetToolTipText_Params
 // Function DunDefSpecial.DunDefTower_TripTowerBuff.NeedsRepair
 struct ADunDefTower_TripTowerBuff_NeedsRepair_Params
 {
-	bool                                               requireFullHealth;                                        // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      requireFullHealth;                                        // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripTowerBuff.RemoveTowerEffectIndex
@@ -7386,14 +7386,14 @@ struct ADunDefTower_TripTowerBuff_CheckTowers_Params
 struct ADunDefTower_TripTowerBuff_CanAffectTower_Params
 {
 	class ADunDefTower*                                towerCheck;                                               // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripTowerBuff.DoTracing
 struct ADunDefTower_TripTowerBuff_DoTracing_Params
 {
 	float                                              dt;                                                       // (Parm)
-	bool                                               bForceDamage;                                             // (OptionalParm, Parm)
+	unsigned long                                      bForceDamage;                                             // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripTowerBuff.GetTowerBoostAmount
@@ -7407,7 +7407,7 @@ struct ADunDefTower_TripTowerBuff_GetTowerBoostAmount_Params
 struct ADunDefTower_TripTowerBuff_HasTowerBoostingType_Params
 {
 	TEnumAsByte<ETowerBoostType>                       boostType;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_TripTowerBuff.GetTowerBoostingTarget
@@ -7430,9 +7430,9 @@ struct ADunDefTower_TripTowerBuff_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -7440,7 +7440,7 @@ struct ADunDefTower_TripTowerBuff_ExecReplicatedFunction_Params
 // Function DunDefSpecial.DunDefTower_BuffSpawner.ChangedGamePhases
 struct ADunDefTower_BuffSpawner_ChangedGamePhases_Params
 {
-	bool                                               IsCombatPhase;                                            // (Parm)
+	unsigned long                                      IsCombatPhase;                                            // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_BuffSpawner.AllowTowerAtPoint
@@ -7449,13 +7449,13 @@ struct ADunDefTower_BuffSpawner_AllowTowerAtPoint_Params
 	class ADunDefPlayerController*                     PC;                                                       // (Parm)
 	class ADunDefTower*                                towerArch;                                                // (Parm)
 	struct FVector                                     Point;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_BuffSpawner.CheckAllowance
 struct ADunDefTower_BuffSpawner_CheckAllowance_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_BuffSpawner.PreventTowerAtPoint
@@ -7465,13 +7465,13 @@ struct ADunDefTower_BuffSpawner_PreventTowerAtPoint_Params
 	class ADunDefTower*                                towerArch;                                                // (Parm)
 	struct FVector                                     Point;                                                    // (Parm)
 	float                                              towerRadius;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_BuffSpawner.IsPhysicalTower
 struct ADunDefTower_BuffSpawner_IsPhysicalTower_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_BuffSpawner.GetTowerTargetingDesirability
@@ -7515,7 +7515,7 @@ struct ADunDefTower_BuffSpawner_GetAttackDamage_Params
 // Function DunDefSpecial.DunDefTower_BuffSpawner.ScaleForHeroModifiers
 struct ADunDefTower_BuffSpawner_ScaleForHeroModifiers_Params
 {
-	bool                                               IsFirstTime;                                              // (Parm)
+	unsigned long                                      IsFirstTime;                                              // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_BuffSpawner.RemoveAllBuffTargets
@@ -7539,7 +7539,7 @@ struct ADunDefTower_BuffSpawner_AddBuffsToTarget_Params
 struct ADunDefTower_BuffSpawner_CanAffectTarget_Params
 {
 	class AActor*                                      Other;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_BuffSpawner.Tick
@@ -7600,9 +7600,9 @@ struct ADunDefTower_BuffSpawner_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -7681,8 +7681,8 @@ struct ADunDefTower_Present_AllowTowerSpawnAtLoc_Params
 {
 	class ADunDefTower*                                TowerArchetype;                                           // (Parm)
 	struct FVector                                     placementPos;                                             // (Parm)
-	bool                                               bOnlyCheckVolumes;                                        // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bOnlyCheckVolumes;                                        // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_Present.DoActorSpawn
@@ -7702,14 +7702,14 @@ struct ADunDefTower_Present_DoTowerSpawn_Params
 {
 	struct FspawnChances                               spawnChance;                                              // (Parm)
 	struct FVector                                     HitLoc;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_Present.DoPresentSpawn
 struct ADunDefTower_Present_DoPresentSpawn_Params
 {
 	struct FVector                                     HitLocation;                                              // (Parm)
-	bool                                               bSpawnOgresInLobby;                                       // (Parm)
+	unsigned long                                      bSpawnOgresInLobby;                                       // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_Present.PickActor
@@ -7717,7 +7717,7 @@ struct ADunDefTower_Present_PickActor_Params
 {
 	int                                                Idx;                                                      // (Parm)
 	struct FspawnChances                               spawnChance;                                              // (Parm, OutParm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_Present.PickSpawnGroup
@@ -7737,13 +7737,13 @@ struct ADunDefTower_Present_Died_Params
 // Function DunDefSpecial.DunDefTower_Present.ChangedGamePhases
 struct ADunDefTower_Present_ChangedGamePhases_Params
 {
-	bool                                               IsCombatPhase;                                            // (Parm)
+	unsigned long                                      IsCombatPhase;                                            // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_ProjectileReflect.IsPhysicalTower
 struct ADunDefTower_ProjectileReflect_IsPhysicalTower_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_ProjectileReflect.GetCostPerReflect
@@ -7796,7 +7796,7 @@ struct ADunDefTower_ProjectileReflect_Touch_Params
 // Function DunDefSpecial.DunDefTower_WebWall.ScaleForHeroModifiers
 struct ADunDefTower_WebWall_ScaleForHeroModifiers_Params
 {
-	bool                                               IsFirstTime;                                              // (Parm)
+	unsigned long                                      IsFirstTime;                                              // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_WebWall.DrawTowerToolTipActorStats
@@ -7825,7 +7825,7 @@ struct ADunDefTower_WebWall_DrawTowerToolTipStats_Params
 struct ADunDefTower_WebWall_CheckTouchingActor_Params
 {
 	class AActor*                                      Other;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_WebWall.GetAttackDamage
@@ -7856,7 +7856,7 @@ struct ADunDefTower_WebWall_TakeDamage_Params
 // Function DunDefSpecial.DunDefTower_WebWall.IsPhysicalTower
 struct ADunDefTower_WebWall_IsPhysicalTower_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTower_WebWall.KilledTarget
@@ -7887,8 +7887,8 @@ struct ADunDefTower_WebWall_PostBeginPlay_Params
 // Function DunDefSpecial.DunDefTurkey.UpdateDifficultyValues
 struct ADunDefTurkey_UpdateDifficultyValues_Params
 {
-	bool                                               UpdateMaterial;                                           // (OptionalParm, Parm)
-	bool                                               onlyDynamicValues;                                        // (OptionalParm, Parm)
+	unsigned long                                      UpdateMaterial;                                           // (OptionalParm, Parm)
+	unsigned long                                      onlyDynamicValues;                                        // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefTurkey.Bump
@@ -7918,7 +7918,7 @@ struct ADunDefTurkey_StartFlee_Params
 struct ADunDefTurkey_SetGroundSpeed_Params
 {
 	float                                              NewSpeed;                                                 // (Parm)
-	bool                                               bUseDifficultyMult;                                       // (OptionalParm, Parm)
+	unsigned long                                      bUseDifficultyMult;                                       // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.DunDefTurkey.Died
@@ -7927,7 +7927,7 @@ struct ADunDefTurkey_Died_Params
 	class AController*                                 Killer;                                                   // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
 	struct FVector                                     HitLocation;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTurkey.Destroyed
@@ -7944,7 +7944,7 @@ struct ADunDefTurkey_ReplicatedEvent_Params
 // Function DunDefSpecial.DunDefTurkeyController.WantsHurtAnimation
 struct ADunDefTurkeyController_WantsHurtAnimation_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTurkeyController.NotifyTakeHitEX
@@ -7968,13 +7968,13 @@ struct ADunDefTurkeyController_GetWanderPoint_Params
 struct ADunDefTurkeyController_DoFlee_Params
 {
 	class ADunDefPlayer*                               fleeFrom;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTurkeyController.CheckPlayers
 struct ADunDefTurkeyController_CheckPlayers_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefTurkeyController.TimeOutFlee
@@ -7990,7 +7990,7 @@ struct AGameInfo_AroundTheWorld_InitGameReplicationInfo_Params
 // Function DunDefSpecial.GameInfo_AroundTheWorld.DoWaveSkipping
 struct AGameInfo_AroundTheWorld_DoWaveSkipping_Params
 {
-	bool                                               bAllowArbritraryWaveSkipping;                             // (OptionalParm, Parm)
+	unsigned long                                      bAllowArbritraryWaveSkipping;                             // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.GameInfo_Assault.InitGameReplicationInfo
@@ -8001,7 +8001,7 @@ struct AGameInfo_Assault_InitGameReplicationInfo_Params
 // Function DunDefSpecial.GameInfo_Assault.DoWaveSkipping
 struct AGameInfo_Assault_DoWaveSkipping_Params
 {
-	bool                                               bAllowArbritraryWaveSkipping;                             // (OptionalParm, Parm)
+	unsigned long                                      bAllowArbritraryWaveSkipping;                             // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.GameInfo_Assault.PostBeginPlay
@@ -8039,7 +8039,7 @@ struct AGameInfo_KillEnemiesTimeLimit_RestartPlayer_Params
 // Function DunDefSpecial.GameInfo_KillEnemiesTimeLimit.DoWaveSkipping
 struct AGameInfo_KillEnemiesTimeLimit_DoWaveSkipping_Params
 {
-	bool                                               bAllowArbritraryWaveSkipping;                             // (OptionalParm, Parm)
+	unsigned long                                      bAllowArbritraryWaveSkipping;                             // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.GameInfo_KillEnemiesTimeLimit_Uber.AddObjectiveScore
@@ -8140,7 +8140,7 @@ struct ASnowManBoss_Died_Params
 	class AController*                                 Killer;                                                   // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
 	struct FVector                                     HitLocation;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.SnowManBoss.Destroyed
@@ -8189,7 +8189,7 @@ struct ASnowManBoss_SpawnSnowShootEffect_Params
 // Function DunDefSpecial.SnowManBoss.GetProjectileSpawnLoc
 struct ASnowManBoss_GetProjectileSpawnLoc_Params
 {
-	bool                                               bIsLeftSocket;                                            // (Parm)
+	unsigned long                                      bIsLeftSocket;                                            // (Parm)
 	struct FVector                                     Loc;                                                      // (Parm, OutParm)
 	struct FRotator                                    Rot;                                                      // (Parm, OutParm)
 };
@@ -8230,7 +8230,7 @@ struct ASnowManBossController_CheckForCustomAttacks_Params
 // Function DunDefSpecial.SnowManBossController.WantsHurtAnimation
 struct ASnowManBossController_WantsHurtAnimation_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.SnowManBossController.NotifyTakeHitEX
@@ -8247,7 +8247,7 @@ struct ASnowManBossController_NotifyTakeHitEX_Params
 // Function DunDefSpecial.SnowManBossController.CheckStomp
 struct ASnowManBossController_CheckStomp_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.SnowManBossController.ChooseAttack
@@ -8268,7 +8268,7 @@ struct ASnowManBossController_DoStomp_Params
 // Function DunDefSpecial.SnowManBossController.SpawnSnowProjectile
 struct ASnowManBossController_SpawnSnowProjectile_Params
 {
-	bool                                               bIsLeftSocket;                                            // (OptionalParm, Parm)
+	unsigned long                                      bIsLeftSocket;                                            // (OptionalParm, Parm)
 };
 
 // Function DunDefSpecial.TurkeyBoss.Died
@@ -8277,7 +8277,7 @@ struct ATurkeyBoss_Died_Params
 	class AController*                                 Killer;                                                   // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
 	struct FVector                                     HitLocation;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.TurkeyBoss.Destroyed
@@ -8346,7 +8346,7 @@ struct ATurkeyBoss_PlayPeckAttack_Params
 // Function DunDefSpecial.TurkeyBossController.WantsHurtAnimation
 struct ATurkeyBossController_WantsHurtAnimation_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.TurkeyBossController.NotifyTakeHitEX
@@ -8363,7 +8363,7 @@ struct ATurkeyBossController_NotifyTakeHitEX_Params
 // Function DunDefSpecial.TurkeyBossController.CheckStomp
 struct ATurkeyBossController_CheckStomp_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.TurkeyBossController.ChooseAttack

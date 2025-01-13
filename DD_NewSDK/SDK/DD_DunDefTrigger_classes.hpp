@@ -45,12 +45,12 @@ public:
 	float GetActivationWeighting();
 	void Client_Activate(class ADunDefPlayerController* PC, int activationType);
 	void UpdateActivationTime();
-	void Server_Activate(class ADunDefPlayerController* PC, bool forceActivation, int activationType);
+	void Server_Activate(class ADunDefPlayerController* PC, unsigned long forceActivation, int activationType);
 	int AllowActivation(class ADunDefPlayerController* PC, int activationType);
 	int GetToolTipPriority();
-	bool TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip);
+	unsigned long TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip);
 	void DrawToolTip(class UCanvas* C, int PosX, int PosY, class ULocalPlayer* ForPlayer);
-	bool ContinueDrawingToolTip(bool ContinueDrawing);
+	unsigned long ContinueDrawingToolTip(unsigned long ContinueDrawing);
 	void PostBeginPlay();
 };
 

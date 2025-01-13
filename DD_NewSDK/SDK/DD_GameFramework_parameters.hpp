@@ -25,8 +25,8 @@ struct AGameAIController_GeneratePathToLocation_Params
 {
 	struct FVector                                     Goal;                                                     // (Parm)
 	float                                              WithinDistance;                                           // (OptionalParm, Parm)
-	bool                                               bAllowPartialPath;                                        // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bAllowPartialPath;                                        // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameAIController.GeneratePathToActor
@@ -34,16 +34,16 @@ struct AGameAIController_GeneratePathToActor_Params
 {
 	class AActor*                                      Goal;                                                     // (Parm)
 	float                                              WithinDistance;                                           // (OptionalParm, Parm)
-	bool                                               bAllowPartialPath;                                        // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bAllowPartialPath;                                        // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameAIController.SetDesiredRotation
 struct AGameAIController_SetDesiredRotation_Params
 {
 	struct FRotator                                    TargetDesiredRotation;                                    // (Parm)
-	bool                                               InLockDesiredRotation;                                    // (OptionalParm, Parm)
-	bool                                               InUnlockWhenReached;                                      // (OptionalParm, Parm)
+	unsigned long                                      InLockDesiredRotation;                                    // (OptionalParm, Parm)
+	unsigned long                                      InUnlockWhenReached;                                      // (OptionalParm, Parm)
 	float                                              InterpolationTime;                                        // (OptionalParm, Parm)
 };
 
@@ -52,7 +52,7 @@ struct AGameAIController_AILog_Internal_Params
 {
 	struct FString                                     LogText;                                                  // (Parm, CoerceParm, NeedCtorLink)
 	struct FName                                       LogCategory;                                              // (OptionalParm, Parm)
-	bool                                               bForce;                                                   // (OptionalParm, Parm)
+	unsigned long                                      bForce;                                                   // (OptionalParm, Parm)
 };
 
 // Function GameFramework.GameAIController.RecordDemoAILog
@@ -101,7 +101,7 @@ struct AGameAIController_AbortCommand_Params
 {
 	class UGameAICommand*                              AbortCmd;                                                 // (Parm)
 	class UClass*                                      AbortClass;                                               // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameAIController.PopCommand
@@ -173,14 +173,14 @@ struct UGameAICommand_PrePushed_Params
 struct UGameAICommand_AllowStateTransitionTo_Params
 {
 	struct FName                                       StateName;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameAICommand.AllowTransitionTo
 struct UGameAICommand_AllowTransitionTo_Params
 {
 	class UClass*                                      AttemptCommand;                                           // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameAICommand.Tick
@@ -192,7 +192,7 @@ struct UGameAICommand_Tick_Params
 // Function GameFramework.GameAICommand.ShouldIgnoreNotifies
 struct UGameAICommand_ShouldIgnoreNotifies_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameAICommand.InternalTick
@@ -233,7 +233,7 @@ struct UGameAICommand_InternalPrePushed_Params
 struct UGameAICommand_InitCommand_Params
 {
 	class AGameAIController*                           AI;                                                       // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameAICommand.InitCommandUserActor
@@ -241,7 +241,7 @@ struct UGameAICommand_InitCommandUserActor_Params
 {
 	class AGameAIController*                           AI;                                                       // (Parm)
 	class AActor*                                      UserActor;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdAgent.GetBehaviorString
@@ -279,7 +279,7 @@ struct AGameCrowdAgent_GeneratePathToActor_Params
 {
 	class AActor*                                      Goal;                                                     // (Parm)
 	float                                              WithinDistance;                                           // (OptionalParm, Parm)
-	bool                                               bAllowPartialPath;                                        // (OptionalParm, Parm)
+	unsigned long                                      bAllowPartialPath;                                        // (OptionalParm, Parm)
 	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -331,13 +331,13 @@ struct AGameCrowdAgent_CalcCamera_Params
 	struct FVector                                     out_CamLoc;                                               // (Parm, OutParm)
 	struct FRotator                                    out_CamRot;                                               // (Parm, OutParm)
 	float                                              out_FOV;                                                  // (Parm, OutParm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdAgent.IsIdle
 struct AGameCrowdAgent_IsIdle_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdAgent.SetCurrentBehavior
@@ -412,16 +412,16 @@ struct AGameCrowdAgent_InitializeAgent_Params
 	class AGameCrowdAgent*                             AgentTemplate;                                            // (Parm)
 	class UGameCrowdGroup*                             NewGroup;                                                 // (Parm)
 	float                                              AgentWarmupTime;                                          // (Parm)
-	bool                                               bWarmupPosition;                                          // (Parm)
-	bool                                               bCheckWarmupVisibility;                                   // (Parm)
+	unsigned long                                      bWarmupPosition;                                          // (Parm)
+	unsigned long                                      bCheckWarmupVisibility;                                   // (Parm)
 };
 
 // Function GameFramework.GameCrowdAgent.SetLighting
 struct AGameCrowdAgent_SetLighting_Params
 {
-	bool                                               bEnableLightEnvironment;                                  // (Parm)
+	unsigned long                                      bEnableLightEnvironment;                                  // (Parm)
 	struct FLightingChannelContainer                   AgentLightingChannel;                                     // (Parm)
-	bool                                               bCastShadows;                                             // (Parm)
+	unsigned long                                      bCastShadows;                                             // (Parm)
 };
 
 // Function GameFramework.GameCrowdAgent.DisplayDebug
@@ -473,20 +473,20 @@ struct AGameCrowdAgent_PickBehaviorFrom_Params
 {
 	TArray<struct FBehaviorEntry>                      BehaviorList;                                             // (Parm, NeedCtorLink)
 	struct FVector                                     BestCameraLoc;                                            // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdAgent.SetPanic
 struct AGameCrowdAgent_SetPanic_Params
 {
 	class AActor*                                      PanicActor;                                               // (Parm)
-	bool                                               bNewPanic;                                                // (Parm)
+	unsigned long                                      bNewPanic;                                                // (Parm)
 };
 
 // Function GameFramework.GameCrowdAgent.IsPanicked
 struct AGameCrowdAgent_IsPanicked_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdAgent.FellOutOfWorld
@@ -532,7 +532,7 @@ struct AGameCrowdAgentSkeletal_OnPlayAgentAnimation_Params
 // Function GameFramework.GameCrowdAgentSkeletal.SetRootMotion
 struct AGameCrowdAgentSkeletal_SetRootMotion_Params
 {
-	bool                                               bRootMotionEnabled;                                       // (Parm)
+	unsigned long                                      bRootMotionEnabled;                                       // (Parm)
 };
 
 // Function GameFramework.GameCrowdAgentSkeletal.PlayDeath
@@ -544,9 +544,9 @@ struct AGameCrowdAgentSkeletal_PlayDeath_Params
 // Function GameFramework.GameCrowdAgentSkeletal.SetLighting
 struct AGameCrowdAgentSkeletal_SetLighting_Params
 {
-	bool                                               bEnableLightEnvironment;                                  // (Parm)
+	unsigned long                                      bEnableLightEnvironment;                                  // (Parm)
 	struct FLightingChannelContainer                   AgentLightingChannel;                                     // (Parm)
-	bool                                               bCastShadows;                                             // (Parm)
+	unsigned long                                      bCastShadows;                                             // (Parm)
 };
 
 // Function GameFramework.GameCrowdAgentSkeletal.PostBeginPlay
@@ -558,14 +558,14 @@ struct AGameCrowdAgentSkeletal_PostBeginPlay_Params
 struct UGameCrowdAgentBehavior_AllowBehaviorAt_Params
 {
 	class AGameCrowdDestination*                       Destination;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdAgentBehavior.AllowThisDestination
 struct UGameCrowdAgentBehavior_AllowThisDestination_Params
 {
 	class AGameCrowdDestination*                       Destination;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdAgentBehavior.PropagateViralBehaviorTo
@@ -620,7 +620,7 @@ struct UGameCrowdAgentBehavior_InitBehavior_Params
 // Function GameFramework.GameCrowdAgentBehavior.HandleMovement
 struct UGameCrowdAgentBehavior_HandleMovement_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdAgentBehavior.FinishedTargetRotation
@@ -633,7 +633,7 @@ struct UGameCrowdAgentBehavior_CanBeUsedBy_Params
 {
 	class AGameCrowdAgent*                             Agent;                                                    // (Parm)
 	struct FVector                                     cameraLoc;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdAgentBehavior.Tick
@@ -645,7 +645,7 @@ struct UGameCrowdAgentBehavior_Tick_Params
 // Function GameFramework.GameCrowdAgentBehavior.ShouldEndIdle
 struct UGameCrowdAgentBehavior_ShouldEndIdle_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdBehavior_PlayAnimation.GetBehaviorString
@@ -698,14 +698,14 @@ struct UGameCrowdBehavior_RunFromPanic_GetBehaviorString_Params
 struct UGameCrowdBehavior_RunFromPanic_AllowBehaviorAt_Params
 {
 	class AGameCrowdDestination*                       Destination;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdBehavior_RunFromPanic.AllowThisDestination
 struct UGameCrowdBehavior_RunFromPanic_AllowThisDestination_Params
 {
 	class AGameCrowdDestination*                       Destination;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdBehavior_RunFromPanic.PropagateViralBehaviorTo
@@ -739,7 +739,7 @@ struct UGameCrowdBehavior_WaitForGroup_StopBehavior_Params
 // Function GameFramework.GameCrowdBehavior_WaitForGroup.ShouldEndIdle
 struct UGameCrowdBehavior_WaitForGroup_ShouldEndIdle_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdBehavior_WaitForGroup.GetBehaviorString
@@ -762,7 +762,7 @@ struct UGameCrowdBehavior_WaitInQueue_StopBehavior_Params
 // Function GameFramework.GameCrowdBehavior_WaitInQueue.ShouldEndIdle
 struct UGameCrowdBehavior_WaitInQueue_ShouldEndIdle_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdBehavior_WaitInQueue.GetBehaviorString
@@ -786,7 +786,7 @@ struct UGameCrowdBehavior_WaitInQueue_ChangingDestination_Params
 // Function GameFramework.GameCrowdBehavior_WaitInQueue.HandleMovement
 struct UGameCrowdBehavior_WaitInQueue_HandleMovement_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdGroup.UpdateDestinations
@@ -819,7 +819,7 @@ struct AGameCrowdDestination_GeneratePathToActor_Params
 	class AGameCrowdAgent*                             Agent;                                                    // (Parm)
 	class AActor*                                      Goal;                                                     // (Parm)
 	float                                              WithinDistance;                                           // (OptionalParm, Parm)
-	bool                                               bAllowPartialPath;                                        // (OptionalParm, Parm)
+	unsigned long                                      bAllowPartialPath;                                        // (OptionalParm, Parm)
 	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -840,13 +840,13 @@ struct AGameCrowdDestination_GetSpawnPosition_Params
 struct AGameCrowdDestination_AllowableDestinationFor_Params
 {
 	class AGameCrowdAgent*                             Agent;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdDestination.AtCapacity
 struct AGameCrowdDestination_AtCapacity_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdDestination.IncrementCustomerCount
@@ -865,7 +865,7 @@ struct AGameCrowdDestination_DecrementCustomerCount_Params
 struct AGameCrowdDestination_PickNewDestinationFor_Params
 {
 	class AGameCrowdAgent*                             Agent;                                                    // (Parm)
-	bool                                               bIgnoreRestrictions;                                      // (Parm)
+	unsigned long                                      bIgnoreRestrictions;                                      // (Parm)
 };
 
 // Function GameFramework.GameCrowdDestination.ReachedDestination
@@ -884,8 +884,8 @@ struct AGameCrowdDestination_ReachedByAgent_Params
 {
 	class AGameCrowdAgent*                             Agent;                                                    // (Parm)
 	struct FVector                                     TestPosition;                                             // (Parm)
-	bool                                               bTestExactly;                                             // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bTestExactly;                                             // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdDestination.GetSpreadValue
@@ -902,7 +902,7 @@ struct AGameCrowdDestination_NotifyPathChanged_Params
 // Function GameFramework.GameCrowdDestinationQueuePoint.HasCustomer
 struct AGameCrowdDestinationQueuePoint_HasCustomer_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdDestinationQueuePoint.ClearQueue
@@ -938,7 +938,7 @@ struct AGameCrowdDestinationQueuePoint_ReachedDestination_Params
 // Function GameFramework.GameCrowdDestinationQueuePoint.HasSpace
 struct AGameCrowdDestinationQueuePoint_HasSpace_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdDestinationQueuePoint.QueueReachedBy
@@ -946,7 +946,7 @@ struct AGameCrowdDestinationQueuePoint_QueueReachedBy_Params
 {
 	class AGameCrowdAgent*                             Agent;                                                    // (Parm)
 	struct FVector                                     TestPosition;                                             // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdForcePoint.AppliedForce
@@ -1049,7 +1049,7 @@ struct AGameCrowdPopulationManager_SpawnAgent_Params
 struct AGameCrowdPopulationManager_ValidateSpawnAt_Params
 {
 	class AGameCrowdDestination*                       Candidate;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdPopulationManager.InitializeSpawnPoints
@@ -1105,7 +1105,7 @@ struct AGameCrowdPopulationManager_DisplayDebug_Params
 struct AGameCrowdPopulationManager_AddToAgentPool_Params
 {
 	class AGameCrowdAgent*                             Agent;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdPopulationManager.AgentDestroyed
@@ -1143,7 +1143,7 @@ struct UGameDamageType_ShouldHeadShotGib_Params
 {
 	class APawn*                                       TestPawn;                                                 // (Parm)
 	class APawn*                                       Instigator;                                               // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameDamageType.PlayExtraDamageSound
@@ -1155,14 +1155,14 @@ struct UGameDamageType_PlayExtraDamageSound_Params
 // Function GameFramework.GameDamageType.IsScriptedDamageType
 struct UGameDamageType_IsScriptedDamageType_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameDamageType.ShouldPlayForceFeedback
 struct UGameDamageType_ShouldPlayForceFeedback_Params
 {
 	class APawn*                                       DamagedPawn;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameDamageType.HandleDeadPlayer
@@ -1203,7 +1203,7 @@ struct UGameDamageType_ShouldGib_Params
 {
 	class APawn*                                       TestPawn;                                                 // (Parm)
 	class APawn*                                       Instigator;                                               // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameExplosionActor.ChooseCameraShake
@@ -1287,7 +1287,7 @@ struct AGameExplosionActor_DoCringesAndKnockdowns_Params
 struct AGameExplosionActor_ShouldDoCringeFor_Params
 {
 	class AGamePawn*                                   Victim;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameExplosionActor.DoBreakFracturedMeshes
@@ -1311,21 +1311,21 @@ struct AGameExplosionActor_HurtExplosion_Params
 	class AActor*                                      IgnoredActor;                                             // (Parm)
 	class UClass*                                      ActorClassToIgnoreForDamage;                              // (Parm)
 	class AController*                                 InstigatedByController;                                   // (Parm)
-	bool                                               bDoFullDamage;                                            // (Parm)
+	unsigned long                                      bDoFullDamage;                                            // (Parm)
 };
 
 // Function GameFramework.GameExplosionActor.IsBehindExplosion
 struct AGameExplosionActor_IsBehindExplosion_Params
 {
 	class AActor*                                      A;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameExplosionActor.DoFullDamageToActor
 struct AGameExplosionActor_DoFullDamageToActor_Params
 {
 	class AActor*                                      Victim;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameExplosionActor.GetPhysicalMaterial
@@ -1377,7 +1377,7 @@ struct AGamePawn_ReattachMesh_Params
 // Function GameFramework.GamePawn.UpdateShadowSettings
 struct AGamePawn_UpdateShadowSettings_Params
 {
-	bool                                               bInWantShadow;                                            // (Parm)
+	unsigned long                                      bInWantShadow;                                            // (Parm)
 };
 
 // Function GameFramework.GamePawn.Cringe
@@ -1418,13 +1418,13 @@ struct AGamePlayerController_ClientColorFade_Params
 // Function GameFramework.GamePlayerController.WarmupPause
 struct AGamePlayerController_WarmupPause_Params
 {
-	bool                                               bDesiredPauseState;                                       // (Parm)
+	unsigned long                                      bDesiredPauseState;                                       // (Parm)
 };
 
 // Function GameFramework.GamePlayerController.CanUnpauseWarmup
 struct AGamePlayerController_CanUnpauseWarmup_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GamePlayerController.GetCurrentMovie
@@ -1437,9 +1437,9 @@ struct AGamePlayerController_GetCurrentMovie_Params
 struct AGamePlayerController_ClientStopMovie_Params
 {
 	float                                              DelayInSeconds;                                           // (Parm)
-	bool                                               bAllowMovieToFinish;                                      // (Parm)
-	bool                                               bForceStopNonSkippable;                                   // (Parm)
-	bool                                               bForceStopLoadingMovie;                                   // (Parm)
+	unsigned long                                      bAllowMovieToFinish;                                      // (Parm)
+	unsigned long                                      bForceStopNonSkippable;                                   // (Parm)
+	unsigned long                                      bForceStopLoadingMovie;                                   // (Parm)
 };
 
 // Function GameFramework.GamePlayerController.ClientPlayMovie
@@ -1458,11 +1458,11 @@ struct AGamePlayerController_KeepPlayingLoadingMovie_Params
 // Function GameFramework.GamePlayerController.ShowLoadingMovie
 struct AGamePlayerController_ShowLoadingMovie_Params
 {
-	bool                                               bShowMovie;                                               // (Parm)
-	bool                                               bPauseAfterHide;                                          // (OptionalParm, Parm)
+	unsigned long                                      bShowMovie;                                               // (Parm)
+	unsigned long                                      bPauseAfterHide;                                          // (OptionalParm, Parm)
 	float                                              PauseDuration;                                            // (OptionalParm, Parm)
 	float                                              KeepPlayingDuration;                                      // (OptionalParm, Parm)
-	bool                                               bOverridePreviousDelays;                                  // (OptionalParm, Parm)
+	unsigned long                                      bOverridePreviousDelays;                                  // (OptionalParm, Parm)
 };
 
 // Function GameFramework.GamePlayerController.GetCurrentSoundMode
@@ -1498,7 +1498,7 @@ struct AGamePlayerController_NotifyCrowdAgentRefresh_Params
 // Function GameFramework.GamePlayerController.CrowdDebug
 struct AGamePlayerController_CrowdDebug_Params
 {
-	bool                                               bEnabled;                                                 // (Parm)
+	unsigned long                                      bEnabled;                                                 // (Parm)
 };
 
 // Function GameFramework.GamePlayerController.CrowdToggle
@@ -1527,7 +1527,7 @@ struct UNavMeshGoal_OutOfViewFrom_MustBeHiddenFromThisPoint_Params
 {
 	class UNavigationHandle*                           NavHandle;                                                // (Parm)
 	struct FVector                                     InOutOfViewLocation;                                      // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.NavMeshGoal_OutOfViewFrom.RecycleNative
@@ -1548,7 +1548,7 @@ struct UNavMeshPath_BiasAgainstPolysWithinDistanceOfLocations_BiasAgainstPolysWi
 	struct FRotator                                    InRotation;                                               // (Const, Parm)
 	float                                              InDistanceToCheck;                                        // (Const, Parm)
 	TArray<struct FVector>                             InLocationsToCheck;                                       // (Const, Parm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.SeqAct_GameCrowdPopulationManagerToggle.GetObjClassVersion
@@ -1679,7 +1679,7 @@ struct UGameThirdPersonCamera_UpdateFocusPoint_Params
 // Function GameFramework.GameThirdPersonCamera.ClearFocusPoint
 struct UGameThirdPersonCamera_ClearFocusPoint_Params
 {
-	bool                                               bLeaveCameraRotation;                                     // (OptionalParm, Parm)
+	unsigned long                                      bLeaveCameraRotation;                                     // (OptionalParm, Parm)
 };
 
 // Function GameFramework.GameThirdPersonCamera.GetFocusActor
@@ -1696,9 +1696,9 @@ struct UGameThirdPersonCamera_SetFocusOnActor_Params
 	struct FVector2D                                   InterpSpeedRange;                                         // (Parm)
 	struct FVector2D                                   InFocusFOV;                                               // (Parm)
 	float                                              CameraFOV;                                                // (OptionalParm, Parm)
-	bool                                               bAlwaysFocus;                                             // (OptionalParm, Parm)
-	bool                                               bAdjustCamera;                                            // (OptionalParm, Parm)
-	bool                                               bIgnoreTrace;                                             // (OptionalParm, Parm)
+	unsigned long                                      bAlwaysFocus;                                             // (OptionalParm, Parm)
+	unsigned long                                      bAdjustCamera;                                            // (OptionalParm, Parm)
+	unsigned long                                      bIgnoreTrace;                                             // (OptionalParm, Parm)
 	float                                              FocusPitchOffsetDeg;                                      // (OptionalParm, Parm)
 };
 
@@ -1709,9 +1709,9 @@ struct UGameThirdPersonCamera_SetFocusOnLoc_Params
 	struct FVector2D                                   InterpSpeedRange;                                         // (Parm)
 	struct FVector2D                                   InFocusFOV;                                               // (Parm)
 	float                                              CameraFOV;                                                // (OptionalParm, Parm)
-	bool                                               bAlwaysFocus;                                             // (OptionalParm, Parm)
-	bool                                               bAdjustCamera;                                            // (OptionalParm, Parm)
-	bool                                               bIgnoreTrace;                                             // (OptionalParm, Parm)
+	unsigned long                                      bAlwaysFocus;                                             // (OptionalParm, Parm)
+	unsigned long                                      bAdjustCamera;                                            // (OptionalParm, Parm)
+	unsigned long                                      bIgnoreTrace;                                             // (OptionalParm, Parm)
 	float                                              FocusPitchOffsetDeg;                                      // (OptionalParm, Parm)
 };
 
@@ -1733,7 +1733,7 @@ struct UGameThirdPersonCamera_BeginTurn_Params
 	int                                                EndAngle;                                                 // (Parm)
 	float                                              TimeSec;                                                  // (Parm)
 	float                                              DelaySec;                                                 // (OptionalParm, Parm)
-	bool                                               bAlignTargetWhenFinished;                                 // (OptionalParm, Parm)
+	unsigned long                                      bAlignTargetWhenFinished;                                 // (OptionalParm, Parm)
 };
 
 // Function GameFramework.GameThirdPersonCamera.PlayerUpdateCamera
@@ -1827,7 +1827,7 @@ struct AGamePlayerCamera_UpdateViewTarget_Params
 // Function GameFramework.GamePlayerCamera.ShouldConstrainAspectRatio
 struct AGamePlayerCamera_ShouldConstrainAspectRatio_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GamePlayerCamera.FindBestCameraType
@@ -1910,7 +1910,7 @@ struct UGameThirdPersonCameraMode_ProcessViewRotation_Params
 struct UGameThirdPersonCameraMode_SetFocusPoint_Params
 {
 	class APawn*                                       ViewedPawn;                                               // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameThirdPersonCameraMode.GetCameraWorstCaseLoc
@@ -1963,7 +1963,7 @@ struct AGameDecalManager_IsTooCloseToActiveDecal_Params
 {
 	struct FVector                                     DecalLocation;                                            // (Const, Parm, OutParm)
 	float                                              InCanSpawnDistance;                                       // (Const, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameParticleEventManager.HandleParticleModuleEventSendToGame
@@ -2004,7 +2004,7 @@ struct UGameSpecialMove_MessageEvent_Params
 {
 	struct FName                                       EventName;                                                // (Parm)
 	class UObject*                                     Sender;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameSpecialMove.ResetFacePreciseRotation
@@ -2028,13 +2028,13 @@ struct UGameSpecialMove_SetFacePreciseRotation_Params
 struct UGameSpecialMove_SetReachPreciseDestination_Params
 {
 	struct FVector                                     DestinationToReach;                                       // (Parm)
-	bool                                               bCancel;                                                  // (OptionalParm, Parm)
+	unsigned long                                      bCancel;                                                  // (OptionalParm, Parm)
 };
 
 // Function GameFramework.GameSpecialMove.ShouldReplicate
 struct UGameSpecialMove_ShouldReplicate_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameSpecialMove.SpecialMoveFlagsUpdated
@@ -2058,42 +2058,42 @@ struct UGameSpecialMove_SpecialMoveEnded_Params
 // Function GameFramework.GameSpecialMove.SpecialMoveStarted
 struct UGameSpecialMove_SpecialMoveStarted_Params
 {
-	bool                                               bForced;                                                  // (Parm)
+	unsigned long                                      bForced;                                                  // (Parm)
 	struct FName                                       PrevMove;                                                 // (Parm)
 };
 
 // Function GameFramework.GameSpecialMove.InternalCanDoSpecialMove
 struct UGameSpecialMove_InternalCanDoSpecialMove_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameSpecialMove.CanDoSpecialMove
 struct UGameSpecialMove_CanDoSpecialMove_Params
 {
-	bool                                               bForceCheck;                                              // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bForceCheck;                                              // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameSpecialMove.CanOverrideSpecialMove
 struct UGameSpecialMove_CanOverrideSpecialMove_Params
 {
 	struct FName                                       InMove;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameSpecialMove.CanOverrideMoveWith
 struct UGameSpecialMove_CanOverrideMoveWith_Params
 {
 	struct FName                                       NewMove;                                                  // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameSpecialMove.CanChainMove
 struct UGameSpecialMove_CanChainMove_Params
 {
 	struct FName                                       NextMove;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameSpecialMove.ExtractSpecialMoveFlags
@@ -2119,7 +2119,7 @@ struct UGameSpecialMove_InitSpecialMove_Params
 struct UGameCrowdSpawnerInterface_AddToAgentPool_Params
 {
 	class AGameCrowdAgent*                             Agent;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function GameFramework.GameCrowdSpawnerInterface.AgentDestroyed

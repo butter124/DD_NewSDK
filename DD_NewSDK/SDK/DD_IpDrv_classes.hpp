@@ -74,12 +74,12 @@ public:
 	void ResolveFailed();
 	void Resolved(const struct FIpAddr& Addr);
 	void GetLocalIP(struct FIpAddr* Arg);
-	bool StringToIpAddr(const struct FString& Str, struct FIpAddr* Addr);
+	unsigned long StringToIpAddr(const struct FString& Str, struct FIpAddr* Addr);
 	struct FString IpAddrToString(const struct FIpAddr& Arg);
 	int GetLastError();
 	void Resolve(const struct FString& Domain);
-	bool ParseURL(const struct FString& URL, struct FString* Addr, int* PortNum, struct FString* LevelName, struct FString* EntryName);
-	bool IsDataPending();
+	unsigned long ParseURL(const struct FString& URL, struct FString* Addr, int* PortNum, struct FString* LevelName, struct FString* EntryName);
+	unsigned long IsDataPending();
 };
 
 
@@ -112,11 +112,11 @@ public:
 	int ReadText(struct FString* Str);
 	int SendBinary(int Count, unsigned char B);
 	int SendText(const struct FString& Str);
-	bool IsConnected();
-	bool Close();
-	bool Open(const struct FIpAddr& Addr);
-	bool Listen();
-	int BindPort(int PortNum, bool bUseNextAvailable);
+	unsigned long IsConnected();
+	unsigned long Close();
+	unsigned long Open(const struct FIpAddr& Addr);
+	unsigned long Listen();
+	int BindPort(int PortNum, unsigned long bUseNextAvailable);
 };
 
 
@@ -153,9 +153,9 @@ public:
 	}
 
 
-	bool UploadHardwareData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick);
-	bool UploadGameplayEventsData(class UOnlineGameplayEvents* Events);
-	bool UploadProfileData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick, class UOnlineProfileSettings* ProfileSettings);
+	unsigned long UploadHardwareData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick);
+	unsigned long UploadGameplayEventsData(class UOnlineGameplayEvents* Events);
+	unsigned long UploadProfileData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick, class UOnlineProfileSettings* ProfileSettings);
 };
 
 
@@ -179,8 +179,8 @@ public:
 	struct FString GetNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
 	void ClearReadNewsCompletedDelegate(const struct FScriptDelegate& ReadGameNewsDelegate);
 	void AddReadNewsCompletedDelegate(const struct FScriptDelegate& ReadNewsDelegate);
-	void OnReadNewsCompleted(bool bWasSuccessful, TEnumAsByte<EOnlineNewsType> NewsType);
-	bool ReadNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
+	void OnReadNewsCompleted(unsigned long bWasSuccessful, TEnumAsByte<EOnlineNewsType> NewsType);
+	unsigned long ReadNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
 };
 
 
@@ -204,13 +204,13 @@ public:
 	}
 
 
-	bool ClearDownloadedFiles();
+	unsigned long ClearDownloadedFiles();
 	TEnumAsByte<EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
-	bool GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
+	unsigned long GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
 	void ClearReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
 	void AddReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
-	bool ReadTitleFile(const struct FString& FileToRead);
-	void OnReadTitleFileComplete(bool bWasSuccessful, const struct FString& Filename);
+	unsigned long ReadTitleFile(const struct FString& FileToRead);
+	void OnReadTitleFileComplete(unsigned long bWasSuccessful, const struct FString& Filename);
 };
 
 
@@ -277,14 +277,14 @@ public:
 	}
 
 
-	bool SendHostNewGameSessionResponse(bool bSuccess, const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo);
+	unsigned long SendHostNewGameSessionResponse(unsigned long bSuccess, const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo);
 	void OnCreateNewSessionRequestReceived(const struct FName& SessionName, class UClass* SearchClass, TArray<struct FPlayerMember>* Players);
 	void OnTravelRequestReceived(const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo);
 	void OnReceivedBandwidthTestResults(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, TEnumAsByte<EMeshBeaconBandwidthTestResult> TestResult, struct FConnectionBandwidthStats* BandwidthStats);
 	void OnReceivedBandwidthTestRequest(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType);
 	void OnConnectionRequestResult(TEnumAsByte<EMeshBeaconConnectionResult> ConnectionResult);
-	bool BeginBandwidthTest(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize);
-	bool RequestConnection(bool bRegisterSecureAddress, struct FOnlineGameSearchResult* DesiredHost, struct FClientConnectionRequest* ClientRequest);
+	unsigned long BeginBandwidthTest(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize);
+	unsigned long RequestConnection(unsigned long bRegisterSecureAddress, struct FOnlineGameSearchResult* DesiredHost, struct FClientConnectionRequest* ClientRequest);
 	void DestroyBeacon();
 };
 
@@ -312,24 +312,24 @@ public:
 	}
 
 
-	void OnReceivedClientCreateNewSessionResult(bool bSucceeded, const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo);
-	bool RequestClientCreateNewSession(const struct FUniqueNetId& PlayerNetId, const struct FName& SessionName, class UClass* SearchClass, TArray<struct FPlayerMember>* Players);
+	void OnReceivedClientCreateNewSessionResult(unsigned long bSucceeded, const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo);
+	unsigned long RequestClientCreateNewSession(const struct FUniqueNetId& PlayerNetId, const struct FName& SessionName, class UClass* SearchClass, TArray<struct FPlayerMember>* Players);
 	void TellClientsToTravel(const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo);
 	void OnAllPendingPlayersConnected();
-	bool AllPlayersConnected(TArray<struct FUniqueNetId>* Players);
+	unsigned long AllPlayersConnected(TArray<struct FUniqueNetId>* Players);
 	int GetConnectionIndexForPlayer(const struct FUniqueNetId& PlayerNetId);
 	void SetPendingPlayerConnections(TArray<struct FUniqueNetId>* Players);
 	void OnFinishedBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, TEnumAsByte<EMeshBeaconBandwidthTestResult> TestResult, struct FConnectionBandwidthStats* BandwidthStats);
 	void OnStartedBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType);
 	void OnReceivedClientConnectionRequest(struct FClientMeshBeaconConnection* NewClientConnection);
-	void AllowBandwidthTesting(bool bEnabled);
+	void AllowBandwidthTesting(unsigned long bEnabled);
 	void CancelPendingBandwidthTests();
-	bool HasPendingBandwidthTest();
+	unsigned long HasPendingBandwidthTest();
 	void CancelInProgressBandwidthTests();
-	bool HasInProgressBandwidthTest();
-	bool RequestClientBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize);
+	unsigned long HasInProgressBandwidthTest();
+	unsigned long RequestClientBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize);
 	void DestroyBeacon();
-	bool InitHostBeacon(const struct FUniqueNetId& InOwningPlayerId);
+	unsigned long InitHostBeacon(const struct FUniqueNetId& InOwningPlayerId);
 };
 
 
@@ -351,7 +351,7 @@ public:
 	}
 
 
-	bool IsPlayerInSession(const struct FName& SessionName, const struct FUniqueNetId& PlayerID);
+	unsigned long IsPlayerInSession(const struct FName& SessionName, const struct FUniqueNetId& PlayerID);
 	struct FUniqueNetId GetPlayerUniqueNetIdFromIndex(int UserIndex);
 	struct FString GetPlayerNicknameFromIndex(int UserIndex);
 };
@@ -405,65 +405,65 @@ public:
 
 
 	void CancelPendingAsyncTasks();
-	bool BindPlatformSpecificSessionToSearch(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, unsigned char PlatformSpecificInfo);
-	bool ReadPlatformSpecificSessionInfoBySessionName(const struct FName& SessionName, unsigned char* PlatformSpecificInfo);
-	bool ReadPlatformSpecificSessionInfo(struct FOnlineGameSearchResult* DesiredGame, unsigned char* PlatformSpecificInfo);
-	bool QueryNonAdvertisedData(int StartAt, int NumberToQuery);
-	bool RecalculateSkillRating(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players);
-	bool AcceptGameInvite(unsigned char LocalUserNum, const struct FName& SessionName, TArray<int> participatingPlayerControllerIds);
+	unsigned long BindPlatformSpecificSessionToSearch(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, unsigned char PlatformSpecificInfo);
+	unsigned long ReadPlatformSpecificSessionInfoBySessionName(const struct FName& SessionName, unsigned char* PlatformSpecificInfo);
+	unsigned long ReadPlatformSpecificSessionInfo(struct FOnlineGameSearchResult* DesiredGame, unsigned char* PlatformSpecificInfo);
+	unsigned long QueryNonAdvertisedData(int StartAt, int NumberToQuery);
+	unsigned long RecalculateSkillRating(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players);
+	unsigned long AcceptGameInvite(unsigned char LocalUserNum, const struct FName& SessionName, TArray<int> participatingPlayerControllerIds);
 	void ClearGameInviteAcceptedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate);
 	void AddGameInviteAcceptedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate);
 	void OnGameInviteAccepted(struct FOnlineGameSearchResult* InviteResult);
 	TArray<struct FOnlineArbitrationRegistrant> GetArbitratedPlayers(const struct FName& SessionName);
 	void ClearArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate);
 	void AddArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate);
-	void OnArbitrationRegistrationComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool RegisterForArbitration(const struct FName& SessionName);
+	void OnArbitrationRegistrationComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	unsigned long RegisterForArbitration(const struct FName& SessionName);
 	void ClearEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate);
 	void AddEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate);
-	void OnEndOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool EndOnlineGame(const struct FName& SessionName);
+	void OnEndOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	unsigned long EndOnlineGame(const struct FName& SessionName);
 	void ClearStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate);
 	void AddStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate);
-	void OnStartOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool StartOnlineGame(const struct FName& SessionName);
+	void OnStartOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	unsigned long StartOnlineGame(const struct FName& SessionName);
 	void ClearUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate);
 	void AddUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate);
-	void OnUnregisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful);
-	bool UnregisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID);
+	void OnUnregisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, unsigned long bWasSuccessful);
+	unsigned long UnregisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID);
 	void ClearRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate);
 	void AddRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate);
-	void OnRegisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful);
-	bool RegisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasInvited);
-	bool GetResolvedConnectString(const struct FName& SessionName, struct FString* ConnectInfo);
+	void OnRegisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, unsigned long bWasSuccessful);
+	unsigned long RegisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, unsigned long bWasInvited);
+	unsigned long GetResolvedConnectString(const struct FName& SessionName, struct FString* ConnectInfo);
 	void ClearJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate);
 	void AddJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate);
-	void OnJoinOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool JoinOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, TArray<int> participatingPlayerControllerIds, struct FOnlineGameSearchResult* DesiredGame);
-	bool FreeSearchResults(class UOnlineGameSearch* Search);
+	void OnJoinOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	unsigned long JoinOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, TArray<int> participatingPlayerControllerIds, struct FOnlineGameSearchResult* DesiredGame);
+	unsigned long FreeSearchResults(class UOnlineGameSearch* Search);
 	void ClearCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate);
 	void AddCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate);
-	void OnCancelFindOnlineGamesComplete(bool bWasSuccessful);
-	bool CancelFindOnlineGames();
+	void OnCancelFindOnlineGamesComplete(unsigned long bWasSuccessful);
+	unsigned long CancelFindOnlineGames();
 	void ClearFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate);
 	void AddFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate);
-	bool FindOnlineGames(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, int numParticipatingLocalPlayers);
+	unsigned long FindOnlineGames(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, int numParticipatingLocalPlayers);
 	void ClearDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate);
 	void AddDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate);
-	void OnDestroyOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool DestroyOnlineGame(const struct FName& SessionName, bool bShouldCleanupTasks);
+	void OnDestroyOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	unsigned long DestroyOnlineGame(const struct FName& SessionName, unsigned long bShouldCleanupTasks);
 	void ClearUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate);
 	void AddUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate);
-	void OnUpdateOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool UpdateOnlineGame(const struct FName& SessionName, class UOnlineGameSettings* UpdatedGameSettings, bool bShouldRefreshOnlineData);
+	void OnUpdateOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	unsigned long UpdateOnlineGame(const struct FName& SessionName, class UOnlineGameSettings* UpdatedGameSettings, unsigned long bShouldRefreshOnlineData);
 	void ClearCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate);
 	void AddCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate);
-	void OnCreateOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
+	void OnCreateOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
 	int CreateOnlineGameFailureID();
-	bool CreateOnlineGame(unsigned char HostingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings, TArray<int> participatingPlayerControllerIds);
+	unsigned long CreateOnlineGame(unsigned char HostingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings, TArray<int> participatingPlayerControllerIds);
 	class UOnlineGameSearch* GetGameSearch();
 	class UOnlineGameSettings* GetGameSettings(const struct FName& SessionName);
-	void OnFindOnlineGamesComplete(bool bWasSuccessful);
+	void OnFindOnlineGamesComplete(unsigned long bWasSuccessful);
 };
 
 
@@ -523,9 +523,9 @@ public:
 
 
 	void DestroyBeacon();
-	bool CancelReservation(const struct FUniqueNetId& CancellingPartyLeader);
-	bool RequestReservationUpdate(const struct FUniqueNetId& RequestingPartyLeader, struct FOnlineGameSearchResult* DesiredHost, TArray<struct FPlayerReservation>* PlayersToAdd);
-	bool RequestReservation(const struct FUniqueNetId& RequestingPartyLeader, struct FOnlineGameSearchResult* DesiredHost, TArray<struct FPlayerReservation>* Players);
+	unsigned long CancelReservation(const struct FUniqueNetId& CancellingPartyLeader);
+	unsigned long RequestReservationUpdate(const struct FUniqueNetId& RequestingPartyLeader, struct FOnlineGameSearchResult* DesiredHost, TArray<struct FPlayerReservation>* PlayersToAdd);
+	unsigned long RequestReservation(const struct FUniqueNetId& RequestingPartyLeader, struct FOnlineGameSearchResult* DesiredHost, TArray<struct FPlayerReservation>* Players);
 	void OnHostHasCancelled();
 	void OnHostIsReady();
 	void OnTravelRequestReceived(const struct FName& SessionName, class UClass* SearchClass, unsigned char PlatformSpecificInfo);
@@ -568,7 +568,7 @@ public:
 	void UnregisterParty(const struct FUniqueNetId& PartyLeader);
 	void UnregisterPartyMembers();
 	void RegisterPartyMembers();
-	bool AreReservationsFull();
+	unsigned long AreReservationsFull();
 	void TellClientsHostHasCancelled();
 	void TellClientsHostIsReady();
 	void TellClientsToTravel(const struct FName& SessionName, class UClass* SearchClass, unsigned char PlatformSpecificInfo);
@@ -576,10 +576,10 @@ public:
 	void OnClientCancellationReceived(const struct FUniqueNetId& PartyLeader);
 	void OnReservationsFull();
 	void OnReservationChange();
-	void HandlePlayerLogout(const struct FUniqueNetId& PlayerID, bool bMaintainParty);
+	void HandlePlayerLogout(const struct FUniqueNetId& PlayerID, unsigned long bMaintainParty);
 	TEnumAsByte<EPartyReservationResult> UpdatePartyReservationEntry(const struct FUniqueNetId& PartyLeader, TArray<struct FPlayerReservation>* PlayerMembers);
-	TEnumAsByte<EPartyReservationResult> AddPartyReservationEntry(const struct FUniqueNetId& PartyLeader, int TeamNum, bool bIsHost, TArray<struct FPlayerReservation>* PlayerMembers);
-	bool InitHostBeacon(int InNumTeams, int InNumPlayersPerTeam, int InNumReservations, const struct FName& InSessionName);
+	TEnumAsByte<EPartyReservationResult> AddPartyReservationEntry(const struct FUniqueNetId& PartyLeader, int TeamNum, unsigned long bIsHost, TArray<struct FPlayerReservation>* PlayerMembers);
+	unsigned long InitHostBeacon(int InNumTeams, int InNumPlayersPerTeam, int InNumReservations, const struct FName& InSessionName);
 };
 
 
@@ -678,27 +678,27 @@ public:
 	}
 
 
-	bool SentResponse();
-	bool SentText();
+	unsigned long SentResponse();
+	unsigned long SentText();
 	void Redirect(const struct FString& URL);
-	void SendStandardHeaders(const struct FString& ContentType, bool bCache);
+	void SendStandardHeaders(const struct FString& ContentType, unsigned long bCache);
 	void HTTPError(int ErrorNum, const struct FString& Data);
 	void SendHeaders();
-	void AddHeader(const struct FString& Header, bool bReplace);
+	void AddHeader(const struct FString& Header, unsigned long bReplace);
 	void HTTPHeader(const struct FString& Header);
 	void HTTPResponse(const struct FString& Header);
 	void FailAuthentication(const struct FString& Realm);
-	bool SendCachedFile(const struct FString& Filename, const struct FString& ContentType);
+	unsigned long SendCachedFile(const struct FString& Filename, const struct FString& ContentType);
 	void SendBinary(int Count, unsigned char B);
-	void SendText(const struct FString& Text, bool bNoCRLF);
+	void SendText(const struct FString& Text, unsigned long bNoCRLF);
 	void Dump();
 	struct FString GetHTTPExpiration(int OffsetSeconds);
 	struct FString LoadParsedUHTM(const struct FString& Filename);
-	bool IncludeBinaryFile(const struct FString& Filename);
-	bool IncludeUHTM(const struct FString& Filename);
+	unsigned long IncludeBinaryFile(const struct FString& Filename);
+	unsigned long IncludeUHTM(const struct FString& Filename);
 	void ClearSubst();
-	void Subst(const struct FString& Variable, const struct FString& Value, bool bClear);
-	bool FileExists(const struct FString& Filename);
+	void Subst(const struct FString& Variable, const struct FString& Value, unsigned long bClear);
+	unsigned long FileExists(const struct FString& Filename);
 };
 
 
@@ -720,7 +720,7 @@ public:
 
 	void PostQuery(class UWebRequest* Request, class UWebResponse* Response);
 	void Query(class UWebRequest* Request, class UWebResponse* Response);
-	bool PreQuery(class UWebRequest* Request, class UWebResponse* Response);
+	unsigned long PreQuery(class UWebRequest* Request, class UWebResponse* Response);
 	void CleanupApp();
 	void Cleanup();
 	void Init();
@@ -813,7 +813,7 @@ public:
 	void ClearCachedFiles();
 	void ClearReadFileDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
 	void AddReadFileDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
-	void OnReadFileComplete(bool bWasSuccessful, const struct FString& Filename);
+	void OnReadFileComplete(unsigned long bWasSuccessful, const struct FString& Filename);
 	void DownloadFiles();
 	void Init();
 };
@@ -842,7 +842,7 @@ public:
 	}
 
 
-	bool IsHanging();
+	unsigned long IsHanging();
 	void Cleanup();
 	void CheckRawBytes();
 	void EndOfHeaders();

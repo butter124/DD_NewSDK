@@ -183,10 +183,10 @@ void ADunDefTower_SummonEnemy::TransferTowerOwnership(class APawn* toPawn)
 // Parameters:
 // struct FVector                 NewLoc                         (Parm)
 // struct FRotator                NewRot                         (Parm)
-// bool                           bShouldCollideWorld            (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bShouldCollideWorld            (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_SummonEnemy::ForceSingleMove(const struct FVector& NewLoc, const struct FRotator& NewRot, bool bShouldCollideWorld)
+unsigned long ADunDefTower_SummonEnemy::ForceSingleMove(const struct FVector& NewLoc, const struct FRotator& NewRot, unsigned long bShouldCollideWorld)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.ForceSingleMove");
 
@@ -210,9 +210,9 @@ bool ADunDefTower_SummonEnemy::ForceSingleMove(const struct FVector& NewLoc, con
 // Parameters:
 // class AActor*                  Mover                          (Parm)
 // struct FVector                 NewLoc                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_SummonEnemy::ForceMoveActor(class AActor* Mover, const struct FVector& NewLoc)
+unsigned long ADunDefTower_SummonEnemy::ForceMoveActor(class AActor* Mover, const struct FVector& NewLoc)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.ForceMoveActor");
 
@@ -497,9 +497,9 @@ float ADunDefTower_SummonEnemy::GetPawnBoostAmount(TEnumAsByte<EPawnBoostType> b
 // (Defined, Simulated, Public)
 // Parameters:
 // TEnumAsByte<EPawnBoostType>    boostType                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_SummonEnemy::HasPawnBoostingType(TEnumAsByte<EPawnBoostType> boostType)
+unsigned long ADunDefTower_SummonEnemy::HasPawnBoostingType(TEnumAsByte<EPawnBoostType> boostType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.HasPawnBoostingType");
 
@@ -574,10 +574,10 @@ class AActor* ADunDefTower_SummonEnemy::GetAlternateActor()
 // Function DunDefSpecial.DunDefTower_SummonEnemy.GetHealth
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bGetMax                        (OptionalParm, Parm)
+// unsigned long                  bGetMax                        (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int ADunDefTower_SummonEnemy::GetHealth(bool bGetMax)
+int ADunDefTower_SummonEnemy::GetHealth(unsigned long bGetMax)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.GetHealth");
 
@@ -600,9 +600,9 @@ int ADunDefTower_SummonEnemy::GetHealth(bool bGetMax)
 // int                            Amount                         (Parm)
 // class AController*             Healer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_SummonEnemy::HealDamage(int Amount, class AController* Healer, class UClass* DamageType)
+unsigned long ADunDefTower_SummonEnemy::HealDamage(int Amount, class AController* Healer, class UClass* DamageType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.HealDamage");
 
@@ -625,9 +625,9 @@ bool ADunDefTower_SummonEnemy::HealDamage(int Amount, class AController* Healer,
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // int                            howMuch                        (Parm)
-// bool                           bDontDisplayFloatingNumber     (OptionalParm, Parm)
+// unsigned long                  bDontDisplayFloatingNumber     (OptionalParm, Parm)
 
-void ADunDefTower_SummonEnemy::AddHealth(int howMuch, bool bDontDisplayFloatingNumber)
+void ADunDefTower_SummonEnemy::AddHealth(int howMuch, unsigned long bDontDisplayFloatingNumber)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.AddHealth");
 
@@ -705,9 +705,9 @@ struct FString ADunDefTower_SummonEnemy::GetToolTipText()
 // Function DunDefSpecial.DunDefTower_SummonEnemy.ScaleForHeroModifiers
 // (Defined, Public)
 // Parameters:
-// bool                           IsFirstTime                    (Parm)
+// unsigned long                  IsFirstTime                    (Parm)
 
-void ADunDefTower_SummonEnemy::ScaleForHeroModifiers(bool IsFirstTime)
+void ADunDefTower_SummonEnemy::ScaleForHeroModifiers(unsigned long IsFirstTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.ScaleForHeroModifiers");
 
@@ -726,9 +726,9 @@ void ADunDefTower_SummonEnemy::ScaleForHeroModifiers(bool IsFirstTime)
 // (Defined, Simulated, Public, HasDefaults)
 // Parameters:
 // class ADunDefHUD*              H                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_SummonEnemy::DrawMyHUD(class ADunDefHUD* H)
+unsigned long ADunDefTower_SummonEnemy::DrawMyHUD(class ADunDefHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.DrawMyHUD");
 
@@ -768,9 +768,9 @@ void ADunDefTower_SummonEnemy::UpdateCommand()
 // class AActor*                  Target                         (Parm)
 // TEnumAsByte<ESummonedCommand>  NewCommand                     (Parm)
 // struct FVector                 commandPoint                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_SummonEnemy::HandleCommand(class AActor* Target, TEnumAsByte<ESummonedCommand> NewCommand, const struct FVector& commandPoint)
+unsigned long ADunDefTower_SummonEnemy::HandleCommand(class AActor* Target, TEnumAsByte<ESummonedCommand> NewCommand, const struct FVector& commandPoint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.HandleCommand");
 
@@ -796,9 +796,9 @@ bool ADunDefTower_SummonEnemy::HandleCommand(class AActor* Target, TEnumAsByte<E
 // TEnumAsByte<ESummonedCommand>  NewCommand                     (Parm)
 // class AActor*                  commandInstigator              (Parm)
 // class AActor*                  targetedActor                  (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_SummonEnemy::SetCommand(const struct FVector& commandPoint, TEnumAsByte<ESummonedCommand> NewCommand, class AActor* commandInstigator, class AActor* targetedActor)
+unsigned long ADunDefTower_SummonEnemy::SetCommand(const struct FVector& commandPoint, TEnumAsByte<ESummonedCommand> NewCommand, class AActor* commandInstigator, class AActor* targetedActor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.SetCommand");
 
@@ -821,10 +821,10 @@ bool ADunDefTower_SummonEnemy::SetCommand(const struct FVector& commandPoint, TE
 // Function DunDefSpecial.DunDefTower_SummonEnemy.SetSelected
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bWantsSelected                 (Parm)
+// unsigned long                  bWantsSelected                 (Parm)
 // class AActor*                  selectingActor                 (Parm)
 
-void ADunDefTower_SummonEnemy::SetSelected(bool bWantsSelected, class AActor* selectingActor)
+void ADunDefTower_SummonEnemy::SetSelected(unsigned long bWantsSelected, class AActor* selectingActor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.SetSelected");
 
@@ -843,9 +843,9 @@ void ADunDefTower_SummonEnemy::SetSelected(bool bWantsSelected, class AActor* se
 // Function DunDefSpecial.DunDefTower_SummonEnemy.SetPendingSelection
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bIsPending                     (Parm)
+// unsigned long                  bIsPending                     (Parm)
 
-void ADunDefTower_SummonEnemy::SetPendingSelection(bool bIsPending)
+void ADunDefTower_SummonEnemy::SetPendingSelection(unsigned long bIsPending)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.SetPendingSelection");
 
@@ -914,9 +914,9 @@ void ADunDefTower_SummonEnemy::BaseChange()
 // Function DunDefSpecial.DunDefTower_SummonEnemy.SetUpEnemyValues
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bInitialSetup                  (OptionalParm, Parm)
+// unsigned long                  bInitialSetup                  (OptionalParm, Parm)
 
-void ADunDefTower_SummonEnemy::SetUpEnemyValues(bool bInitialSetup)
+void ADunDefTower_SummonEnemy::SetUpEnemyValues(unsigned long bInitialSetup)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.SetUpEnemyValues");
 
@@ -992,9 +992,9 @@ float ADunDefTower_SummonEnemy::GetLastDamageTime()
 // Function DunDefSpecial.DunDefTower_SummonEnemy.HasBeenRendered
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_SummonEnemy::HasBeenRendered()
+unsigned long ADunDefTower_SummonEnemy::HasBeenRendered()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.HasBeenRendered");
 
@@ -1058,13 +1058,13 @@ void ADunDefTower_SummonEnemy::UpdateReplicatedStatValues()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefTower_SummonEnemy::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefTower_SummonEnemy::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_SummonEnemy.ExecReplicatedFunction");
 
@@ -1140,9 +1140,9 @@ class AActor* ADunDefEmitterDamage::GetDamageCauser()
 // Parameters:
 // class AActor*                  Victim                         (Parm)
 // struct FVector                 Origin                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefEmitterDamage::CheckValidAngle(class AActor* Victim, const struct FVector& Origin)
+unsigned long ADunDefEmitterDamage::CheckValidAngle(class AActor* Victim, const struct FVector& Origin)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefEmitterDamage.CheckValidAngle");
 
@@ -1188,10 +1188,10 @@ TScriptInterface<class UIActorModifierInterface> ADunDefEmitterDamage::GetStatMo
 // struct FString                 StatTag                        (Parm, NeedCtorLink)
 // TScriptInterface<class UIActorModifierInterface> TagActor                       (Parm)
 // TEnumAsByte<ELevelUpValueType> statType                       (OptionalParm, Parm)
-// bool                           bBaseValueOnly                 (OptionalParm, Parm)
+// unsigned long                  bBaseValueOnly                 (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float ADunDefEmitterDamage::GetStatValueByTag(float initalValue, const struct FString& StatTag, const TScriptInterface<class UIActorModifierInterface>& TagActor, TEnumAsByte<ELevelUpValueType> statType, bool bBaseValueOnly)
+float ADunDefEmitterDamage::GetStatValueByTag(float initalValue, const struct FString& StatTag, const TScriptInterface<class UIActorModifierInterface>& TagActor, TEnumAsByte<ELevelUpValueType> statType, unsigned long bBaseValueOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefEmitterDamage.GetStatValueByTag");
 
@@ -1218,9 +1218,9 @@ float ADunDefEmitterDamage::GetStatValueByTag(float initalValue, const struct FS
 // TScriptInterface<class UIActorModifierInterface> ActorStatObject                (Parm)
 // class UObject*                 CallingObject                  (OptionalParm, Parm)
 // int                            Tier                           (OptionalParm, Parm)
-// bool                           bBaseValueOnly                 (OptionalParm, Parm)
+// unsigned long                  bBaseValueOnly                 (OptionalParm, Parm)
 
-void ADunDefEmitterDamage::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly)
+void ADunDefEmitterDamage::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefEmitterDamage.InitalizeActorStats");
 
@@ -1244,9 +1244,9 @@ void ADunDefEmitterDamage::InitalizeActorStats(const TScriptInterface<class UIAc
 // class AActor*                  theArchetype                   (Parm)
 // struct FVector                 theLoc                         (Parm)
 // struct FRotator                theRot                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefEmitterDamage::STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot)
+unsigned long ADunDefEmitterDamage::STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefEmitterDamage.AllowSpawn");
 
@@ -1275,10 +1275,10 @@ bool ADunDefEmitterDamage::STATIC_AllowSpawn(class AActor* theArchetype, const s
 // struct FVector                 HurtOrigin                     (Parm)
 // class AActor*                  IgnoredActor                   (OptionalParm, Parm)
 // class AController*             InstigatedByController         (OptionalParm, Parm)
-// bool                           bDoFullDamage                  (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bDoFullDamage                  (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefEmitterDamage::HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, bool bDoFullDamage)
+unsigned long ADunDefEmitterDamage::HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, unsigned long bDoFullDamage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefEmitterDamage.HurtRadius");
 
@@ -1383,9 +1383,9 @@ void ACTF_PlayerAbility_PickupFlag::RequestPickup(class ACTF_Flag* newFlag)
 // Function DunDefSpecial.CTF_Flag.SetAtBase
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bIsAtBase                      (Parm)
+// unsigned long                  bIsAtBase                      (Parm)
 
-void ACTF_Flag::SetAtBase(bool bIsAtBase)
+void ACTF_Flag::SetAtBase(unsigned long bIsAtBase)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_Flag.SetAtBase");
 
@@ -1505,9 +1505,9 @@ void ACTF_Flag::AdjustDamage(int* Damage)
 // class ADunDefTower*            towerArch                      (Parm)
 // struct FVector                 Point                          (Parm)
 // float                          towerRadius                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_Flag::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius)
+unsigned long ACTF_Flag::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_Flag.PreventTowerAtPoint");
 
@@ -1533,9 +1533,9 @@ bool ACTF_Flag::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADu
 // class ADunDefPlayerController* PC                             (Parm)
 // class ADunDefTower*            towerArch                      (Parm)
 // struct FVector                 Point                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_Flag::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point)
+unsigned long ACTF_Flag::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_Flag.AllowTowerAtPoint");
 
@@ -1557,9 +1557,9 @@ bool ACTF_Flag::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunD
 // Function DunDefSpecial.CTF_Flag.CheckAllowance
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_Flag::CheckAllowance()
+unsigned long ACTF_Flag::CheckAllowance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_Flag.CheckAllowance");
 
@@ -1653,9 +1653,9 @@ void ACTF_Flag::DisableCollision()
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
 // struct FVector                 Loc                            (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_Flag::IsInAuraOrTrap(const struct FVector& Loc)
+unsigned long ACTF_Flag::IsInAuraOrTrap(const struct FVector& Loc)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_Flag.IsInAuraOrTrap");
 
@@ -1709,10 +1709,10 @@ void ACTF_Flag::ReturnToBase()
 // Function DunDefSpecial.CTF_Flag.DropFlag
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bForceRandomizedPosition       (OptionalParm, Parm)
-// bool                           bForceDroppedMessage           (OptionalParm, Parm)
+// unsigned long                  bForceRandomizedPosition       (OptionalParm, Parm)
+// unsigned long                  bForceDroppedMessage           (OptionalParm, Parm)
 
-void ACTF_Flag::DropFlag(bool bForceRandomizedPosition, bool bForceDroppedMessage)
+void ACTF_Flag::DropFlag(unsigned long bForceRandomizedPosition, unsigned long bForceDroppedMessage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_Flag.DropFlag");
 
@@ -1772,9 +1772,9 @@ void ACTF_Flag::BeginBeingPickedUp(class ADunDefPlayerController* newHolder)
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefPlayerController* PC                             (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_Flag::CanBePickedUp(class ADunDefPlayerController* PC)
+unsigned long ACTF_Flag::CanBePickedUp(class ADunDefPlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_Flag.CanBePickedUp");
 
@@ -1881,10 +1881,10 @@ void ACTF_Flag::Client_Activate(class ADunDefPlayerController* PC, int activatio
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // class ADunDefPlayerController* PC                             (Parm)
-// bool                           forceActivation                (OptionalParm, Parm)
+// unsigned long                  forceActivation                (OptionalParm, Parm)
 // int                            activationType                 (OptionalParm, Parm)
 
-void ACTF_Flag::Server_Activate(class ADunDefPlayerController* PC, bool forceActivation, int activationType)
+void ACTF_Flag::Server_Activate(class ADunDefPlayerController* PC, unsigned long forceActivation, int activationType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_Flag.Server_Activate");
 
@@ -1951,9 +1951,9 @@ int ACTF_Flag::GetToolTipPriority()
 // (Defined, Simulated, Public)
 // Parameters:
 // TScriptInterface<class UDunDefToolTipInterface> otherToolTip                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_Flag::TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip)
+unsigned long ACTF_Flag::TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_Flag.TakesToolTipPriority");
 
@@ -1973,10 +1973,10 @@ bool ACTF_Flag::TakesToolTipPriority(const TScriptInterface<class UDunDefToolTip
 // Function DunDefSpecial.CTF_Flag.ContinueDrawingToolTip
 // (Simulated, Public)
 // Parameters:
-// bool                           ContinueDrawing                (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ContinueDrawing                (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_Flag::ContinueDrawingToolTip(bool ContinueDrawing)
+unsigned long ACTF_Flag::ContinueDrawingToolTip(unsigned long ContinueDrawing)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_Flag.ContinueDrawingToolTip");
 
@@ -2057,9 +2057,9 @@ void ACTF_Flag::PostBeginPlay()
 // (Defined, Simulated, Public, HasDefaults)
 // Parameters:
 // class ADunDefHUD*              H                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_Flag::DrawMyHUD(class ADunDefHUD* H)
+unsigned long ACTF_Flag::DrawMyHUD(class ADunDefHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_Flag.DrawMyHUD");
 
@@ -2079,9 +2079,9 @@ bool ACTF_Flag::DrawMyHUD(class ADunDefHUD* H)
 // Function DunDefSpecial.CTF_Flag.OnlyDrawHUDForOwner
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_Flag::OnlyDrawHUDForOwner()
+unsigned long ACTF_Flag::OnlyDrawHUDForOwner()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_Flag.OnlyDrawHUDForOwner");
 
@@ -2111,13 +2111,13 @@ bool ACTF_Flag::OnlyDrawHUDForOwner()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ACTF_Flag::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ACTF_Flag::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_Flag.ExecReplicatedFunction");
 
@@ -2280,9 +2280,9 @@ void UCTF_UIGlobalHUD::UpdateCompetitive(float DeltaTime)
 // Function DunDefSpecial.CTF_DDPRI.IsFriendlyToLocal
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_DDPRI::IsFriendlyToLocal()
+unsigned long ACTF_DDPRI::IsFriendlyToLocal()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDPRI.IsFriendlyToLocal");
 
@@ -2335,9 +2335,9 @@ void ACTF_DDPRI::PrintNewHeroMessage()
 // Function DunDefSpecial.CTF_DDPRI.SetReadyToSpawn
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bIsReady                       (Parm)
+// unsigned long                  bIsReady                       (Parm)
 
-void ACTF_DDPRI::SetReadyToSpawn(bool bIsReady)
+void ACTF_DDPRI::SetReadyToSpawn(unsigned long bIsReady)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDPRI.SetReadyToSpawn");
 
@@ -2455,9 +2455,9 @@ void ACTF_DDPRI::ReplicatedEvent(const struct FName& VarName)
 // (Defined, Public)
 // Parameters:
 // class APawn*                   Teleportee                     (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_DDGRI::AllowedToTeleport(class APawn* Teleportee)
+unsigned long ACTF_DDGRI::AllowedToTeleport(class APawn* Teleportee)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDGRI.AllowedToTeleport");
 
@@ -2569,9 +2569,9 @@ void ACTF_DDGRI::CustomUpdatePlayerScoreLabel(class ULocalPlayer* ForPlayer, cla
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefPlayerController* PC                             (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_DDGRI::AllowDeathSpectatorMode(class ADunDefPlayerController* PC)
+unsigned long ACTF_DDGRI::AllowDeathSpectatorMode(class ADunDefPlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDGRI.AllowDeathSpectatorMode");
 
@@ -2704,9 +2704,9 @@ struct FString ACTF_DDGRI::GetVictoryLabelString(class APlayerReplicationInfo* m
 // Function DunDefSpecial.CTF_DDGRI.OverrideEndGameLabel
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_DDGRI::OverrideEndGameLabel()
+unsigned long ACTF_DDGRI::OverrideEndGameLabel()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDGRI.OverrideEndGameLabel");
 
@@ -2800,9 +2800,9 @@ void ACTF_DDGRI::GetTeamIcon(int TeamIndex, class USurface** theTeamIcon, struct
 // Function DunDefSpecial.CTF_DDGRI.IsTeamCompetitive
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_DDGRI::IsTeamCompetitive()
+unsigned long ACTF_DDGRI::IsTeamCompetitive()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDGRI.IsTeamCompetitive");
 
@@ -2823,9 +2823,9 @@ bool ACTF_DDGRI::IsTeamCompetitive()
 // Parameters:
 // class APlayerReplicationInfo*  myPlayer                       (Parm)
 // class APlayerReplicationInfo*  TheirPlayer                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_DDGRI::AllowChatBetween(class APlayerReplicationInfo* myPlayer, class APlayerReplicationInfo* TheirPlayer)
+unsigned long ACTF_DDGRI::AllowChatBetween(class APlayerReplicationInfo* myPlayer, class APlayerReplicationInfo* TheirPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDGRI.AllowChatBetween");
 
@@ -2940,9 +2940,9 @@ void ACTF_DDGRI::CheckAllReady()
 // Function DunDefSpecial.CTF_DDGRI.CheckReadyPlayers
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_DDGRI::CheckReadyPlayers()
+unsigned long ACTF_DDGRI::CheckReadyPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDGRI.CheckReadyPlayers");
 
@@ -2961,9 +2961,9 @@ bool ACTF_DDGRI::CheckReadyPlayers()
 // Function DunDefSpecial.CTF_DDGRI.SetAllowCountDown
 // (Defined, Public)
 // Parameters:
-// bool                           setAllow                       (Parm)
+// unsigned long                  setAllow                       (Parm)
 
-void ACTF_DDGRI::SetAllowCountDown(bool setAllow)
+void ACTF_DDGRI::SetAllowCountDown(unsigned long setAllow)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDGRI.SetAllowCountDown");
 
@@ -2981,9 +2981,9 @@ void ACTF_DDGRI::SetAllowCountDown(bool setAllow)
 // Function DunDefSpecial.CTF_DDGRI.AllowGameCountDown
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_DDGRI::AllowGameCountDown()
+unsigned long ACTF_DDGRI::AllowGameCountDown()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDGRI.AllowGameCountDown");
 
@@ -3313,10 +3313,10 @@ struct FString ACTF_DDGRI::GetColorString(const struct FColor& aColor)
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
 // int                            TeamOnlyCheck                  (Parm)
-// bool                           bWantsReadyCheck               (OptionalParm, Parm)
+// unsigned long                  bWantsReadyCheck               (OptionalParm, Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString ACTF_DDGRI::GetTeamLists(int TeamOnlyCheck, bool bWantsReadyCheck)
+struct FString ACTF_DDGRI::GetTeamLists(int TeamOnlyCheck, unsigned long bWantsReadyCheck)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDGRI.GetTeamLists");
 
@@ -3359,9 +3359,9 @@ struct FString ACTF_DDGRI::GetCompetitivePlayerList()
 // (Defined, Public)
 // Parameters:
 // class ADunDefTower*            aTower                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_DDGRI::DestroyTowerOnOwnerLeft(class ADunDefTower* aTower)
+unsigned long ACTF_DDGRI::DestroyTowerOnOwnerLeft(class ADunDefTower* aTower)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDGRI.DestroyTowerOnOwnerLeft");
 
@@ -3453,9 +3453,9 @@ int ACTF_DDGRI::GetCurrentTowerUnits(class ADunDefPlayerReplicationInfo* ddPRI)
 // int                            Cost                           (Parm)
 // class ADunDefPlayerController* ForPlayer                      (Parm)
 // class ADunDefTower*            Tower                          (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_DDGRI::CanPlaceTowerUnitCost(int Cost, class ADunDefPlayerController* ForPlayer, class ADunDefTower* Tower)
+unsigned long ACTF_DDGRI::CanPlaceTowerUnitCost(int Cost, class ADunDefPlayerController* ForPlayer, class ADunDefTower* Tower)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDGRI.CanPlaceTowerUnitCost");
 
@@ -3613,13 +3613,13 @@ int ACTF_DDGRI::GetSmallestTeam()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ACTF_DDGRI::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ACTF_DDGRI::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDGRI.ExecReplicatedFunction");
 
@@ -3727,9 +3727,9 @@ void ACTF_DDPC::GiveFlag(class ACTF_Flag* newFlag)
 // Function DunDefSpecial.CTF_DDPC.SetIsReady
 // (Defined, Net, NetReliable, HasOptionalParms, Public, NetServer)
 // Parameters:
-// bool                           bIsReady                       (OptionalParm, Parm)
+// unsigned long                  bIsReady                       (OptionalParm, Parm)
 
-void ACTF_DDPC::SetIsReady(bool bIsReady)
+void ACTF_DDPC::SetIsReady(unsigned long bIsReady)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_DDPC.SetIsReady");
 
@@ -3836,9 +3836,9 @@ void ACTF_DDPC::ShowTeamSelectionUI()
 // (Defined, Public)
 // Parameters:
 // class APawn*                   Teleportee                     (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTD_DDGRI::AllowedToTeleport(class APawn* Teleportee)
+unsigned long ACTD_DDGRI::AllowedToTeleport(class APawn* Teleportee)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTD_DDGRI.AllowedToTeleport");
 
@@ -3959,9 +3959,9 @@ void ACTD_DDGRI::Server_AddGRIHeroAbilities(class ADunDefPlayerController* PC)
 // (Defined, Public)
 // Parameters:
 // class ADunDefTower*            aTower                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTD_DDGRI::DestroyTowerOnOwnerLeft(class ADunDefTower* aTower)
+unsigned long ACTD_DDGRI::DestroyTowerOnOwnerLeft(class ADunDefTower* aTower)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTD_DDGRI.DestroyTowerOnOwnerLeft");
 
@@ -3981,9 +3981,9 @@ bool ACTD_DDGRI::DestroyTowerOnOwnerLeft(class ADunDefTower* aTower)
 // Function DunDefSpecial.CTD_DDGRI.AllowActivatingCrystal
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTD_DDGRI::AllowActivatingCrystal()
+unsigned long ACTD_DDGRI::AllowActivatingCrystal()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTD_DDGRI.AllowActivatingCrystal");
 
@@ -4020,9 +4020,9 @@ void ACTD_DDGRI::SetGameReady()
 // (Defined, Public, HasOutParms)
 // Parameters:
 // struct FInputEventParameters   EventParms                     (Const, Parm, OutParm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UUI_TeamSelect::OnInterceptedInputKey(struct FInputEventParameters* EventParms)
+unsigned long UUI_TeamSelect::OnInterceptedInputKey(struct FInputEventParameters* EventParms)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.UI_TeamSelect.OnInterceptedInputKey");
 
@@ -4045,9 +4045,9 @@ bool UUI_TeamSelect::OnInterceptedInputKey(struct FInputEventParameters* EventPa
 // (Defined, Event, Public)
 // Parameters:
 // class UUIObject*               Widget                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UUI_TeamSelect::NotifyWidgetClicked(class UUIObject* Widget)
+unsigned long UUI_TeamSelect::NotifyWidgetClicked(class UUIObject* Widget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.UI_TeamSelect.NotifyWidgetClicked");
 
@@ -4087,9 +4087,9 @@ void UUI_TeamSelect::Update(float DeltaTime)
 // Function DunDefSpecial.UI_TeamSelect.SceneActivated
 // (Defined, Event, Public)
 // Parameters:
-// bool                           bInitialActivation             (Parm)
+// unsigned long                  bInitialActivation             (Parm)
 
-void UUI_TeamSelect::SceneActivated(bool bInitialActivation)
+void UUI_TeamSelect::SceneActivated(unsigned long bInitialActivation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.UI_TeamSelect.SceneActivated");
 
@@ -4203,9 +4203,9 @@ unsigned char ACTF_GameInfo::GetPlayerTeamForStart(class AController* Player, un
 // (Defined, Public)
 // Parameters:
 // class APlayerReplicationInfo*  Scorer                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_GameInfo::CheckScore(class APlayerReplicationInfo* Scorer)
+unsigned long ACTF_GameInfo::CheckScore(class APlayerReplicationInfo* Scorer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_GameInfo.CheckScore");
 
@@ -4312,9 +4312,9 @@ void ACTF_GameInfo::PlayerReplicationInfoInitialized(class ADunDefPlayerControll
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // class ADunDefPlayerController* PC                             (Parm)
-// bool                           bForceLocal                    (OptionalParm, Parm)
+// unsigned long                  bForceLocal                    (OptionalParm, Parm)
 
-void ACTF_GameInfo::DoPlayerLeaving(class ADunDefPlayerController* PC, bool bForceLocal)
+void ACTF_GameInfo::DoPlayerLeaving(class ADunDefPlayerController* PC, unsigned long bForceLocal)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_GameInfo.DoPlayerLeaving");
 
@@ -4435,9 +4435,9 @@ void ACTD_GameInfo::PostBeginPlay()
 // class ADunDefTower*            towerArch                      (Parm)
 // struct FVector                 Point                          (Parm)
 // float                          towerRadius                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_FlagBase::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius)
+unsigned long ACTF_FlagBase::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_FlagBase.PreventTowerAtPoint");
 
@@ -4463,9 +4463,9 @@ bool ACTF_FlagBase::PreventTowerAtPoint(class ADunDefPlayerController* PC, class
 // class ADunDefPlayerController* PC                             (Parm)
 // class ADunDefTower*            towerArch                      (Parm)
 // struct FVector                 Point                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_FlagBase::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point)
+unsigned long ACTF_FlagBase::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_FlagBase.AllowTowerAtPoint");
 
@@ -4487,9 +4487,9 @@ bool ACTF_FlagBase::AllowTowerAtPoint(class ADunDefPlayerController* PC, class A
 // Function DunDefSpecial.CTF_FlagBase.CheckAllowance
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ACTF_FlagBase::CheckAllowance()
+unsigned long ACTF_FlagBase::CheckAllowance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_FlagBase.CheckAllowance");
 
@@ -4709,13 +4709,13 @@ void ACTF_FlagBase::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ACTF_FlagBase::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ACTF_FlagBase::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.CTF_FlagBase.ExecReplicatedFunction");
 
@@ -4869,9 +4869,9 @@ void ADunDefTeamTowerVolume::PostBeginPlay()
 // class ADunDefPlayerController* PC                             (Parm)
 // class ADunDefTower*            towerArch                      (Parm)
 // struct FVector                 Point                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTeamTowerVolume::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point)
+unsigned long ADunDefTeamTowerVolume::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTeamTowerVolume.AllowTowerAtPoint");
 
@@ -4897,9 +4897,9 @@ bool ADunDefTeamTowerVolume::AllowTowerAtPoint(class ADunDefPlayerController* PC
 // class ADunDefTower*            towerArch                      (Parm)
 // struct FVector                 Point                          (Parm)
 // float                          towerRadius                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTeamTowerVolume::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius)
+unsigned long ADunDefTeamTowerVolume::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTeamTowerVolume.PreventTowerAtPoint");
 
@@ -4922,9 +4922,9 @@ bool ADunDefTeamTowerVolume::PreventTowerAtPoint(class ADunDefPlayerController* 
 // Function DunDefSpecial.DunDefTeamTowerVolume.CheckAllowance
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTeamTowerVolume::CheckAllowance()
+unsigned long ADunDefTeamTowerVolume::CheckAllowance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTeamTowerVolume.CheckAllowance");
 
@@ -4954,13 +4954,13 @@ bool ADunDefTeamTowerVolume::CheckAllowance()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefTeamTowerVolume::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefTeamTowerVolume::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTeamTowerVolume.ExecReplicatedFunction");
 
@@ -5278,9 +5278,9 @@ float ADunDefTower_TripWire::STATIC_StaticGetTowerScale(class UDunDefHero* hero,
 // Function DunDefSpecial.DunDefTower_TripWire.AllowAbilityMove
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripWire::AllowAbilityMove()
+unsigned long ADunDefTower_TripWire::AllowAbilityMove()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.AllowAbilityMove");
 
@@ -5343,9 +5343,9 @@ void ADunDefTower_TripWire::CheckAssociateWithHero(class UDunDefHero* hero, clas
 // Function DunDefSpecial.DunDefTower_TripWire.CanDetonate
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripWire::CanDetonate()
+unsigned long ADunDefTower_TripWire::CanDetonate()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.CanDetonate");
 
@@ -5364,9 +5364,9 @@ bool ADunDefTower_TripWire::CanDetonate()
 // Function DunDefSpecial.DunDefTower_TripWire.HasCharges
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripWire::HasCharges()
+unsigned long ADunDefTower_TripWire::HasCharges()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.HasCharges");
 
@@ -5454,9 +5454,9 @@ void ADunDefTower_TripWire::DrawMiniMapIcon(class UCanvas* Canvas, class ADunDef
 // int                            HealAmt                        (Parm)
 // class AController*             Healer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
-// bool                           bShowFloatingNumbers           (OptionalParm, Parm)
+// unsigned long                  bShowFloatingNumbers           (OptionalParm, Parm)
 
-void ADunDefTower_TripWire::HealDetonationStyle(int HealAmt, class AController* Healer, class UClass* DamageType, bool bShowFloatingNumbers)
+void ADunDefTower_TripWire::HealDetonationStyle(int HealAmt, class AController* Healer, class UClass* DamageType, unsigned long bShowFloatingNumbers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.HealDetonationStyle");
 
@@ -5498,9 +5498,9 @@ class AActor* ADunDefTower_TripWire::GetAlternateActor()
 // Function DunDefSpecial.DunDefTower_TripWire.IsMultiActorTower
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripWire::IsMultiActorTower()
+unsigned long ADunDefTower_TripWire::IsMultiActorTower()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.IsMultiActorTower");
 
@@ -5655,9 +5655,9 @@ struct FString ADunDefTower_TripWire::GetToolTipText()
 // Function DunDefSpecial.DunDefTower_TripWire.ScaleForHeroModifiers
 // (Defined, Public)
 // Parameters:
-// bool                           IsFirstTime                    (Parm)
+// unsigned long                  IsFirstTime                    (Parm)
 
-void ADunDefTower_TripWire::ScaleForHeroModifiers(bool IsFirstTime)
+void ADunDefTower_TripWire::ScaleForHeroModifiers(unsigned long IsFirstTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.ScaleForHeroModifiers");
 
@@ -5726,10 +5726,10 @@ void ADunDefTower_TripWire::UpdateTowerRatingMaterial()
 // Function DunDefSpecial.DunDefTower_TripWire.NeedsRepair
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           requireFullHealth              (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  requireFullHealth              (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripWire::NeedsRepair(bool requireFullHealth)
+unsigned long ADunDefTower_TripWire::NeedsRepair(unsigned long requireFullHealth)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.NeedsRepair");
 
@@ -5773,9 +5773,9 @@ float ADunDefTower_TripWire::GetHealthPercent()
 // int                            Amount                         (Parm)
 // class AController*             Healer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripWire::HealDamage(int Amount, class AController* Healer, class UClass* DamageType)
+unsigned long ADunDefTower_TripWire::HealDamage(int Amount, class AController* Healer, class UClass* DamageType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.HealDamage");
 
@@ -5800,9 +5800,9 @@ bool ADunDefTower_TripWire::HealDamage(int Amount, class AController* Healer, cl
 // float                          HealPct                        (Parm)
 // class AController*             Healer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
-// bool                           bShowFloatingNumbers           (OptionalParm, Parm)
+// unsigned long                  bShowFloatingNumbers           (OptionalParm, Parm)
 
-void ADunDefTower_TripWire::HealPctOfMaxHealth(float HealPct, class AController* Healer, class UClass* DamageType, bool bShowFloatingNumbers)
+void ADunDefTower_TripWire::HealPctOfMaxHealth(float HealPct, class AController* Healer, class UClass* DamageType, unsigned long bShowFloatingNumbers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.HealPctOfMaxHealth");
 
@@ -5823,10 +5823,10 @@ void ADunDefTower_TripWire::HealPctOfMaxHealth(float HealPct, class AController*
 // Function DunDefSpecial.DunDefTower_TripWire.GetHealth
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bGetMax                        (OptionalParm, Parm)
+// unsigned long                  bGetMax                        (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int ADunDefTower_TripWire::GetHealth(bool bGetMax)
+int ADunDefTower_TripWire::GetHealth(unsigned long bGetMax)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.GetHealth");
 
@@ -6081,10 +6081,10 @@ void ADunDefTower_TripWire::DecreaseLifeEnergy(float X)
 // Function DunDefSpecial.DunDefTower_TripWire.ContinueDrawingToolTip
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ContinueDrawing                (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ContinueDrawing                (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripWire::ContinueDrawingToolTip(bool ContinueDrawing)
+unsigned long ADunDefTower_TripWire::ContinueDrawingToolTip(unsigned long ContinueDrawing)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.ContinueDrawingToolTip");
 
@@ -6131,9 +6131,9 @@ void ADunDefTower_TripWire::DrawToolTip(class UCanvas* C, int PosX, int PosY, cl
 // (Defined, Public)
 // Parameters:
 // class ADunDefPlayerController* PC                             (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripWire::Sell(class ADunDefPlayerController* PC)
+unsigned long ADunDefTower_TripWire::Sell(class ADunDefPlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.Sell");
 
@@ -6243,9 +6243,9 @@ void ADunDefTower_TripWire::ChildDetonate()
 // Parameters:
 // class AActor*                  stunRemoval                    (Parm)
 // int                            removalIndex                   (OptionalParm, Parm)
-// bool                           bDontReplicate                 (OptionalParm, Parm)
+// unsigned long                  bDontReplicate                 (OptionalParm, Parm)
 
-void ADunDefTower_TripWire::RemoveStunnedActor(class AActor* stunRemoval, int removalIndex, bool bDontReplicate)
+void ADunDefTower_TripWire::RemoveStunnedActor(class AActor* stunRemoval, int removalIndex, unsigned long bDontReplicate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.RemoveStunnedActor");
 
@@ -6266,9 +6266,9 @@ void ADunDefTower_TripWire::RemoveStunnedActor(class AActor* stunRemoval, int re
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefEnemy*            stunTest                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripWire::CanStun(class ADunDefEnemy* stunTest)
+unsigned long ADunDefTower_TripWire::CanStun(class ADunDefEnemy* stunTest)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.CanStun");
 
@@ -6311,9 +6311,9 @@ struct FBeamTrippers ADunDefTower_TripWire::AddStunnedActor(class ADunDefEnemy* 
 // Function DunDefSpecial.DunDefTower_TripWire.ClearBeamTrippers
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bFullClear                     (Parm)
+// unsigned long                  bFullClear                     (Parm)
 
-void ADunDefTower_TripWire::ClearBeamTrippers(bool bFullClear)
+void ADunDefTower_TripWire::ClearBeamTrippers(unsigned long bFullClear)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.ClearBeamTrippers");
 
@@ -6369,9 +6369,9 @@ void ADunDefTower_TripWire::ResetTrip()
 // Function DunDefSpecial.DunDefTower_TripWire.DeactivateTrip
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bShutDownEffects               (OptionalParm, Parm)
+// unsigned long                  bShutDownEffects               (OptionalParm, Parm)
 
-void ADunDefTower_TripWire::DeactivateTrip(bool bShutDownEffects)
+void ADunDefTower_TripWire::DeactivateTrip(unsigned long bShutDownEffects)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.DeactivateTrip");
 
@@ -6407,9 +6407,9 @@ void ADunDefTower_TripWire::ActivateTrip()
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefHUD*              H                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripWire::DrawMyHUD(class ADunDefHUD* H)
+unsigned long ADunDefTower_TripWire::DrawMyHUD(class ADunDefHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.DrawMyHUD");
 
@@ -6594,9 +6594,9 @@ float ADunDefTower_TripWire::GetAttackRate()
 // (Defined, Simulated, HasOptionalParms, Public, HasDefaults)
 // Parameters:
 // float                          dt                             (Parm)
-// bool                           bForceDamage                   (OptionalParm, Parm)
+// unsigned long                  bForceDamage                   (OptionalParm, Parm)
 
-void ADunDefTower_TripWire::DoTracing(float dt, bool bForceDamage)
+void ADunDefTower_TripWire::DoTracing(float dt, unsigned long bForceDamage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.DoTracing");
 
@@ -6759,9 +6759,9 @@ void ADunDefTower_TripWire::Tick(float DeltaTime)
 // Parameters:
 // struct FVector                 endLoc                         (Parm)
 // struct FRotator                endRot                         (Parm)
-// bool                           bShouldCollideWorld            (OptionalParm, Parm)
+// unsigned long                  bShouldCollideWorld            (OptionalParm, Parm)
 
-void ADunDefTower_TripWire::ClientSingleSetMovement(const struct FVector& endLoc, const struct FRotator& endRot, bool bShouldCollideWorld)
+void ADunDefTower_TripWire::ClientSingleSetMovement(const struct FVector& endLoc, const struct FRotator& endRot, unsigned long bShouldCollideWorld)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.ClientSingleSetMovement");
 
@@ -6783,10 +6783,10 @@ void ADunDefTower_TripWire::ClientSingleSetMovement(const struct FVector& endLoc
 // Parameters:
 // struct FVector                 NewLoc                         (Parm)
 // struct FRotator                NewRot                         (Parm)
-// bool                           bShouldCollideWorld            (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bShouldCollideWorld            (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripWire::ForceSingleMove(const struct FVector& NewLoc, const struct FRotator& NewRot, bool bShouldCollideWorld)
+unsigned long ADunDefTower_TripWire::ForceSingleMove(const struct FVector& NewLoc, const struct FRotator& NewRot, unsigned long bShouldCollideWorld)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.ForceSingleMove");
 
@@ -6902,10 +6902,10 @@ void ADunDefTower_TripWire::SetDUCost(int newDUCost)
 // Function DunDefSpecial.DunDefTower_TripWire.GetNextUpgradeLevel
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bForceBeyondMaxUpgrade         (OptionalParm, Parm)
+// unsigned long                  bForceBeyondMaxUpgrade         (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int ADunDefTower_TripWire::GetNextUpgradeLevel(bool bForceBeyondMaxUpgrade)
+int ADunDefTower_TripWire::GetNextUpgradeLevel(unsigned long bForceBeyondMaxUpgrade)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.GetNextUpgradeLevel");
 
@@ -7058,9 +7058,9 @@ void ADunDefTower_TripWire::DoUpgrade()
 // Function DunDefSpecial.DunDefTower_TripWire.CanBeUpgraded
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripWire::CanBeUpgraded()
+unsigned long ADunDefTower_TripWire::CanBeUpgraded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.CanBeUpgraded");
 
@@ -7096,9 +7096,9 @@ void ADunDefTower_TripWire::ShutDownBeamEffects()
 // Function DunDefSpecial.DunDefTower_TripWire.ActivateBeamEffects
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bActive                        (Parm)
+// unsigned long                  bActive                        (Parm)
 
-void ADunDefTower_TripWire::ActivateBeamEffects(bool bActive)
+void ADunDefTower_TripWire::ActivateBeamEffects(unsigned long bActive)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.ActivateBeamEffects");
 
@@ -7330,13 +7330,13 @@ void ADunDefTower_TripWire::SetUseHealthBarMat()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefTower_TripWire::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefTower_TripWire::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripWire.ExecReplicatedFunction");
 
@@ -7406,9 +7406,9 @@ void ADunDefTower_TripPhysical::DisableAbilityMove()
 // Function DunDefSpecial.DunDefTower_TripPhysical.AllowAbilityMove
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripPhysical::AllowAbilityMove()
+unsigned long ADunDefTower_TripPhysical::AllowAbilityMove()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripPhysical.AllowAbilityMove");
 
@@ -7466,9 +7466,9 @@ void ADunDefTower_TripPhysical::BaseChange()
 // Parameters:
 // class AActor*                  Mover                          (Parm)
 // struct FVector                 NewLoc                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripPhysical::ForceMoveActor(class AActor* Mover, const struct FVector& NewLoc)
+unsigned long ADunDefTower_TripPhysical::ForceMoveActor(class AActor* Mover, const struct FVector& NewLoc)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripPhysical.ForceMoveActor");
 
@@ -7513,9 +7513,9 @@ void ADunDefTower_TripPhysical::GetSelectionLocation(class AActor* wantsLocation
 // Function DunDefSpecial.DunDefTower_TripPhysical.IsPhysicalTower
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripPhysical::IsPhysicalTower()
+unsigned long ADunDefTower_TripPhysical::IsPhysicalTower()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripPhysical.IsPhysicalTower");
 
@@ -7574,9 +7574,9 @@ void ADunDefTower_TripPhysical::UpdateMovementBeams()
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefPlayerController* ownerCheck                     (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripPhysical::IsPreviousToolTipActor(class ADunDefPlayerController* ownerCheck)
+unsigned long ADunDefTower_TripPhysical::IsPreviousToolTipActor(class ADunDefPlayerController* ownerCheck)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripPhysical.IsPreviousToolTipActor");
 
@@ -7633,9 +7633,9 @@ void ADunDefTower_TripPhysical::PerformFullHeal()
 // int                            Amount                         (Parm)
 // class AController*             Healer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripPhysical::HealDamage(int Amount, class AController* Healer, class UClass* DamageType)
+unsigned long ADunDefTower_TripPhysical::HealDamage(int Amount, class AController* Healer, class UClass* DamageType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripPhysical.HealDamage");
 
@@ -7921,10 +7921,10 @@ float ADunDefTower_TripPhysical::GetHealthPercent()
 // Function DunDefSpecial.DunDefTower_TripPhysical.GetHealth
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bGetMax                        (OptionalParm, Parm)
+// unsigned long                  bGetMax                        (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int ADunDefTower_TripPhysical::GetHealth(bool bGetMax)
+int ADunDefTower_TripPhysical::GetHealth(unsigned long bGetMax)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripPhysical.GetHealth");
 
@@ -7945,9 +7945,9 @@ int ADunDefTower_TripPhysical::GetHealth(bool bGetMax)
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // int                            howMuch                        (Parm)
-// bool                           bDontDisplayFloatingNumber     (OptionalParm, Parm)
+// unsigned long                  bDontDisplayFloatingNumber     (OptionalParm, Parm)
 
-void ADunDefTower_TripPhysical::AddHealth(int howMuch, bool bDontDisplayFloatingNumber)
+void ADunDefTower_TripPhysical::AddHealth(int howMuch, unsigned long bDontDisplayFloatingNumber)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripPhysical.AddHealth");
 
@@ -7966,9 +7966,9 @@ void ADunDefTower_TripPhysical::AddHealth(int howMuch, bool bDontDisplayFloating
 // Function DunDefSpecial.DunDefTower_TripPhysical.ActivateBeamEffects
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bActive                        (Parm)
+// unsigned long                  bActive                        (Parm)
 
-void ADunDefTower_TripPhysical::ActivateBeamEffects(bool bActive)
+void ADunDefTower_TripPhysical::ActivateBeamEffects(unsigned long bActive)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripPhysical.ActivateBeamEffects");
 
@@ -8021,9 +8021,9 @@ void ADunDefTower_TripPhysical::ActivateTrip()
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefHUD*              H                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripPhysical::DrawMyHUD(class ADunDefHUD* H)
+unsigned long ADunDefTower_TripPhysical::DrawMyHUD(class ADunDefHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripPhysical.DrawMyHUD");
 
@@ -8043,10 +8043,10 @@ bool ADunDefTower_TripPhysical::DrawMyHUD(class ADunDefHUD* H)
 // Function DunDefSpecial.DunDefTower_TripPhysical.NeedsRepair
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           requireFullHealth              (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  requireFullHealth              (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripPhysical::NeedsRepair(bool requireFullHealth)
+unsigned long ADunDefTower_TripPhysical::NeedsRepair(unsigned long requireFullHealth)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripPhysical.NeedsRepair");
 
@@ -8227,9 +8227,9 @@ float ADunDefTower_TripPhysical::GetAuraDamageMultiplier()
 // Function DunDefSpecial.DunDefTower_TripPhysical.UseForTowerSelectionPassThrough
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripPhysical::UseForTowerSelectionPassThrough()
+unsigned long ADunDefTower_TripPhysical::UseForTowerSelectionPassThrough()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripPhysical.UseForTowerSelectionPassThrough");
 
@@ -8564,13 +8564,13 @@ void ADunDefPlayer_Hovering::StartHovering()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefPlayer_Hovering::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefPlayer_Hovering::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Hovering.ExecReplicatedFunction");
 
@@ -8807,11 +8807,11 @@ void ADunDefPlayer_Summoner::StopSpellEmitter()
 // (Defined, Simulated, HasOptionalParms, Public, HasDefaults)
 // Parameters:
 // class ADunDefEmitterSpawnable* Template                       (Parm)
-// bool                           DontSetAsPrimaryEffect         (OptionalParm, Parm)
-// bool                           IsSpawnEffect                  (OptionalParm, Parm)
-// bool                           bForceSpawnOnWeapon            (OptionalParm, Parm)
+// unsigned long                  DontSetAsPrimaryEffect         (OptionalParm, Parm)
+// unsigned long                  IsSpawnEffect                  (OptionalParm, Parm)
+// unsigned long                  bForceSpawnOnWeapon            (OptionalParm, Parm)
 
-void ADunDefPlayer_Summoner::StartSpellEmitter(class ADunDefEmitterSpawnable* Template, bool DontSetAsPrimaryEffect, bool IsSpawnEffect, bool bForceSpawnOnWeapon)
+void ADunDefPlayer_Summoner::StartSpellEmitter(class ADunDefEmitterSpawnable* Template, unsigned long DontSetAsPrimaryEffect, unsigned long IsSpawnEffect, unsigned long bForceSpawnOnWeapon)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Summoner.StartSpellEmitter");
 
@@ -8832,9 +8832,9 @@ void ADunDefPlayer_Summoner::StartSpellEmitter(class ADunDefEmitterSpawnable* Te
 // Function DunDefSpecial.DunDefPlayer_Summoner.AllowDropPickups
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_Summoner::AllowDropPickups()
+unsigned long ADunDefPlayer_Summoner::AllowDropPickups()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Summoner.AllowDropPickups");
 
@@ -8853,10 +8853,10 @@ bool ADunDefPlayer_Summoner::AllowDropPickups()
 // Function DunDefSpecial.DunDefPlayer_Summoner.SetOwnerNoSee
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           ownerNoSee                     (Parm)
-// bool                           ownerNoSeeWeapon               (OptionalParm, Parm)
+// unsigned long                  ownerNoSee                     (Parm)
+// unsigned long                  ownerNoSeeWeapon               (OptionalParm, Parm)
 
-void ADunDefPlayer_Summoner::SetOwnerNoSee(bool ownerNoSee, bool ownerNoSeeWeapon)
+void ADunDefPlayer_Summoner::SetOwnerNoSee(unsigned long ownerNoSee, unsigned long ownerNoSeeWeapon)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Summoner.SetOwnerNoSee");
 
@@ -8878,9 +8878,9 @@ void ADunDefPlayer_Summoner::SetOwnerNoSee(bool ownerNoSee, bool ownerNoSeeWeapo
 // class AController*             Killer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
 // struct FVector                 HitLocation                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_Summoner::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
+unsigned long ADunDefPlayer_Summoner::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Summoner.Died");
 
@@ -9014,9 +9014,9 @@ void ADunDefPlayer_Summoner::CheckForTokens()
 // (Defined, Simulated, Public)
 // Parameters:
 // class UHeroEquipment_Familiar* askingFamiliar                 (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_Summoner::AllowFamiliarAbilities(class UHeroEquipment_Familiar* askingFamiliar)
+unsigned long ADunDefPlayer_Summoner::AllowFamiliarAbilities(class UHeroEquipment_Familiar* askingFamiliar)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Summoner.AllowFamiliarAbilities");
 
@@ -9070,9 +9070,9 @@ void ADunDefPlayer_Summoner::DetachAllEquipment()
 // Function DunDefSpecial.DunDefPlayer_Summoner.SetPhased
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bNewPhaseState                 (Parm)
+// unsigned long                  bNewPhaseState                 (Parm)
 
-void ADunDefPlayer_Summoner::SetPhased(bool bNewPhaseState)
+void ADunDefPlayer_Summoner::SetPhased(unsigned long bNewPhaseState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Summoner.SetPhased");
 
@@ -9090,9 +9090,9 @@ void ADunDefPlayer_Summoner::SetPhased(bool bNewPhaseState)
 // Function DunDefSpecial.DunDefPlayer_Summoner.AllowEquipmentAttachment
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_Summoner::AllowEquipmentAttachment()
+unsigned long ADunDefPlayer_Summoner::AllowEquipmentAttachment()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Summoner.AllowEquipmentAttachment");
 
@@ -9247,9 +9247,9 @@ void ADunDefPlayer_Summoner::RemoveAllSelectedTowers()
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefTower_SummonEnemy* chkTower                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_Summoner::HasSelectedTower(class ADunDefTower_SummonEnemy* chkTower)
+unsigned long ADunDefPlayer_Summoner::HasSelectedTower(class ADunDefTower_SummonEnemy* chkTower)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Summoner.HasSelectedTower");
 
@@ -9396,13 +9396,13 @@ void ADunDefPlayer_Summoner::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefPlayer_Summoner::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefPlayer_Summoner::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Summoner.ExecReplicatedFunction");
 
@@ -9479,9 +9479,9 @@ float ADunDefDecoyTarget::DTGetEnemyTargetingDesirability(class ADunDefEnemyCont
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefHUD*              H                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefDecoyTarget::DrawMyHUD(class ADunDefHUD* H)
+unsigned long ADunDefDecoyTarget::DrawMyHUD(class ADunDefHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.DrawMyHUD");
 
@@ -9522,9 +9522,9 @@ void ADunDefDecoyTarget::PlayDeath()
 // int                            GUID2                          (Parm)
 // int                            GUID3                          (Parm)
 // int                            GUID4                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefDecoyTarget::AllowHeroGUID(int GUID1, int GUID2, int GUID3, int GUID4)
+unsigned long ADunDefDecoyTarget::AllowHeroGUID(int GUID1, int GUID2, int GUID3, int GUID4)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.AllowHeroGUID");
 
@@ -9547,9 +9547,9 @@ bool ADunDefDecoyTarget::AllowHeroGUID(int GUID1, int GUID2, int GUID3, int GUID
 // Function DunDefSpecial.DunDefDecoyTarget.CanDetonate
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefDecoyTarget::CanDetonate()
+unsigned long ADunDefDecoyTarget::CanDetonate()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.CanDetonate");
 
@@ -9605,9 +9605,9 @@ void ADunDefDecoyTarget::SelfDestruct()
 // Function DunDefSpecial.DunDefDecoyTarget.ScaleForHeroModifiers
 // (Defined, Public)
 // Parameters:
-// bool                           IsFirstTime                    (Parm)
+// unsigned long                  IsFirstTime                    (Parm)
 
-void ADunDefDecoyTarget::ScaleForHeroModifiers(bool IsFirstTime)
+void ADunDefDecoyTarget::ScaleForHeroModifiers(unsigned long IsFirstTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.ScaleForHeroModifiers");
 
@@ -9626,9 +9626,9 @@ void ADunDefDecoyTarget::ScaleForHeroModifiers(bool IsFirstTime)
 // (Defined, Simulated, Public)
 // Parameters:
 // class UClass*                  ActorClass                     (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefDecoyTarget::IsClassOnIgnoreList(class UClass* ActorClass)
+unsigned long ADunDefDecoyTarget::IsClassOnIgnoreList(class UClass* ActorClass)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.IsClassOnIgnoreList");
 
@@ -9648,9 +9648,9 @@ bool ADunDefDecoyTarget::IsClassOnIgnoreList(class UClass* ActorClass)
 // Function DunDefSpecial.DunDefDecoyTarget.SetMaxNumberOfAttackers
 // (Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefDecoyTarget::SetMaxNumberOfAttackers()
+unsigned long ADunDefDecoyTarget::SetMaxNumberOfAttackers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.SetMaxNumberOfAttackers");
 
@@ -9817,9 +9817,9 @@ void ADunDefDecoyTarget::PostBeginPlay()
 // class ADunDefTower*            towerArch                      (Parm)
 // struct FVector                 Point                          (Parm)
 // float                          towerRadius                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefDropOffPoint::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius)
+unsigned long ADunDefDropOffPoint::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDropOffPoint.PreventTowerAtPoint");
 
@@ -9845,9 +9845,9 @@ bool ADunDefDropOffPoint::PreventTowerAtPoint(class ADunDefPlayerController* PC,
 // class ADunDefPlayerController* PC                             (Parm)
 // class ADunDefTower*            towerArch                      (Parm)
 // struct FVector                 Point                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefDropOffPoint::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point)
+unsigned long ADunDefDropOffPoint::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDropOffPoint.AllowTowerAtPoint");
 
@@ -9869,9 +9869,9 @@ bool ADunDefDropOffPoint::AllowTowerAtPoint(class ADunDefPlayerController* PC, c
 // Function DunDefSpecial.DunDefDropOffPoint.CheckAllowance
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefDropOffPoint::CheckAllowance()
+unsigned long ADunDefDropOffPoint::CheckAllowance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDropOffPoint.CheckAllowance");
 
@@ -10045,9 +10045,9 @@ void ADunDefDropOffPoint::AdjustDamage(class UClass* DamageType, class AControll
 // Function DunDefSpecial.DunDefDropOffPoint.OnlyDrawHUDForOwner
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefDropOffPoint::OnlyDrawHUDForOwner()
+unsigned long ADunDefDropOffPoint::OnlyDrawHUDForOwner()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDropOffPoint.OnlyDrawHUDForOwner");
 
@@ -10092,9 +10092,9 @@ void ADunDefDropOffPoint::DrawMiniMapIcon(class UCanvas* Canvas, class ADunDefMi
 // struct FVector                 ScreenPos                      (Parm)
 // float                          Scale                          (Parm)
 // float                          Opacity                        (Parm)
-// bool                           bIsMiniMap                     (OptionalParm, Parm)
+// unsigned long                  bIsMiniMap                     (OptionalParm, Parm)
 
-void ADunDefDropOffPoint::DrawActiveDisplay(class UCanvas* C, const struct FVector& ScreenPos, float Scale, float Opacity, bool bIsMiniMap)
+void ADunDefDropOffPoint::DrawActiveDisplay(class UCanvas* C, const struct FVector& ScreenPos, float Scale, float Opacity, unsigned long bIsMiniMap)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDropOffPoint.DrawActiveDisplay");
 
@@ -10117,9 +10117,9 @@ void ADunDefDropOffPoint::DrawActiveDisplay(class UCanvas* C, const struct FVect
 // (Defined, Simulated, Public, HasDefaults)
 // Parameters:
 // class ADunDefHUD*              H                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefDropOffPoint::DrawMyHUD(class ADunDefHUD* H)
+unsigned long ADunDefDropOffPoint::DrawMyHUD(class ADunDefHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDropOffPoint.DrawMyHUD");
 
@@ -10287,9 +10287,9 @@ void ADunDefDropOffPoint::PlaceNewItem(class ADunDefPickupableItem* NewItem)
 // Function DunDefSpecial.DunDefDropOffPoint.IsFull
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefDropOffPoint::IsFull()
+unsigned long ADunDefDropOffPoint::IsFull()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDropOffPoint.IsFull");
 
@@ -10479,13 +10479,13 @@ void ADunDefDropOffPoint::Touch(class AActor* Other, class UPrimitiveComponent* 
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefDropOffPoint::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefDropOffPoint::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDropOffPoint.ExecReplicatedFunction");
 
@@ -10538,10 +10538,10 @@ void ADunDefDropOffPoint::ReplicatedEvent(const struct FName& VarName)
 // Function DunDefSpecial.DunDefPickupableItem.SetDroppingOff
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           IsDroppingOff                  (Parm)
+// unsigned long                  IsDroppingOff                  (Parm)
 // class ADunDefDropOffPoint*     newDP                          (Parm)
 
-void ADunDefPickupableItem::SetDroppingOff(bool IsDroppingOff, class ADunDefDropOffPoint* newDP)
+void ADunDefPickupableItem::SetDroppingOff(unsigned long IsDroppingOff, class ADunDefDropOffPoint* newDP)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableItem.SetDroppingOff");
 
@@ -10614,9 +10614,9 @@ void ADunDefPickupableItem::DoDestroyEffects()
 // Function DunDefSpecial.DunDefPickupableItem.DestroyPickUp
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           bFromDamage                    (OptionalParm, Parm)
+// unsigned long                  bFromDamage                    (OptionalParm, Parm)
 
-void ADunDefPickupableItem::DestroyPickUp(bool bFromDamage)
+void ADunDefPickupableItem::DestroyPickUp(unsigned long bFromDamage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableItem.DestroyPickUp");
 
@@ -10711,9 +10711,9 @@ void ADunDefPickupableItem::GetDropOffWayPt()
 // Function DunDefSpecial.DunDefPickupableItem.OnlyDrawHUDForOwner
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPickupableItem::OnlyDrawHUDForOwner()
+unsigned long ADunDefPickupableItem::OnlyDrawHUDForOwner()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableItem.OnlyDrawHUDForOwner");
 
@@ -10733,9 +10733,9 @@ bool ADunDefPickupableItem::OnlyDrawHUDForOwner()
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefHUD*              H                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPickupableItem::DrawMyHUD(class ADunDefHUD* H)
+unsigned long ADunDefPickupableItem::DrawMyHUD(class ADunDefHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableItem.DrawMyHUD");
 
@@ -10756,9 +10756,9 @@ bool ADunDefPickupableItem::DrawMyHUD(class ADunDefHUD* H)
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefPlayerController* PC                             (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPickupableItem::CanBePickedUp(class ADunDefPlayerController* PC)
+unsigned long ADunDefPickupableItem::CanBePickedUp(class ADunDefPlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableItem.CanBePickedUp");
 
@@ -10877,9 +10877,9 @@ int ADunDefPickupableItem::GetToolTipPriority()
 // (Defined, Simulated, Public)
 // Parameters:
 // TScriptInterface<class UDunDefToolTipInterface> otherToolTip                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPickupableItem::TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip)
+unsigned long ADunDefPickupableItem::TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableItem.TakesToolTipPriority");
 
@@ -10899,10 +10899,10 @@ bool ADunDefPickupableItem::TakesToolTipPriority(const TScriptInterface<class UD
 // Function DunDefSpecial.DunDefPickupableItem.ContinueDrawingToolTip
 // (Simulated, Public)
 // Parameters:
-// bool                           ContinueDrawing                (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ContinueDrawing                (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPickupableItem::ContinueDrawingToolTip(bool ContinueDrawing)
+unsigned long ADunDefPickupableItem::ContinueDrawingToolTip(unsigned long ContinueDrawing)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableItem.ContinueDrawingToolTip");
 
@@ -10951,9 +10951,9 @@ void ADunDefPickupableItem::DrawToolTip(class UCanvas* C, int PosX, int PosY, cl
 // class ADunDefPlayerController* PC                             (Parm)
 // class ADunDefTower*            towerArch                      (Parm)
 // struct FVector                 Point                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPickupableItem::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point)
+unsigned long ADunDefPickupableItem::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableItem.AllowTowerAtPoint");
 
@@ -10975,9 +10975,9 @@ bool ADunDefPickupableItem::AllowTowerAtPoint(class ADunDefPlayerController* PC,
 // Function DunDefSpecial.DunDefPickupableItem.CheckAllowance
 // (Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPickupableItem::CheckAllowance()
+unsigned long ADunDefPickupableItem::CheckAllowance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableItem.CheckAllowance");
 
@@ -11000,9 +11000,9 @@ bool ADunDefPickupableItem::CheckAllowance()
 // class ADunDefTower*            towerArch                      (Parm)
 // struct FVector                 Point                          (Parm)
 // float                          towerRadius                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPickupableItem::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius)
+unsigned long ADunDefPickupableItem::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableItem.PreventTowerAtPoint");
 
@@ -11112,10 +11112,10 @@ void ADunDefPickupableItem::Client_Activate(class ADunDefPlayerController* PC, i
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // class ADunDefPlayerController* PC                             (Parm)
-// bool                           forceActivation                (OptionalParm, Parm)
+// unsigned long                  forceActivation                (OptionalParm, Parm)
 // int                            activationType                 (OptionalParm, Parm)
 
-void ADunDefPickupableItem::Server_Activate(class ADunDefPlayerController* PC, bool forceActivation, int activationType)
+void ADunDefPickupableItem::Server_Activate(class ADunDefPlayerController* PC, unsigned long forceActivation, int activationType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableItem.Server_Activate");
 
@@ -11208,13 +11208,13 @@ void ADunDefPickupableItem::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefPickupableItem::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefPickupableItem::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableItem.ExecReplicatedFunction");
 
@@ -11419,9 +11419,9 @@ void ADunDefPlayerController_Delivery::PickupItem(class ADunDefPickupableItem* n
 // (Defined, Public)
 // Parameters:
 // class APawn*                   Teleportee                     (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGRI_Delivery::AllowedToTeleport(class APawn* Teleportee)
+unsigned long ADunDefGRI_Delivery::AllowedToTeleport(class APawn* Teleportee)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_Delivery.AllowedToTeleport");
 
@@ -11526,9 +11526,9 @@ float ADunDefGRI_Delivery::ModifyPlayerGroundSpeed(class ADunDefPlayer* aPlayer,
 // Function DunDefSpecial.DunDefGRI_Delivery.AllowPackageSpawn
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGRI_Delivery::AllowPackageSpawn()
+unsigned long ADunDefGRI_Delivery::AllowPackageSpawn()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_Delivery.AllowPackageSpawn");
 
@@ -11547,9 +11547,9 @@ bool ADunDefGRI_Delivery::AllowPackageSpawn()
 // Function DunDefSpecial.DunDefGRI_Delivery.SetInCombatPhase
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           inCombatPhase                  (Parm)
+// unsigned long                  inCombatPhase                  (Parm)
 
-void ADunDefGRI_Delivery::SetInCombatPhase(bool inCombatPhase)
+void ADunDefGRI_Delivery::SetInCombatPhase(unsigned long inCombatPhase)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_Delivery.SetInCombatPhase");
 
@@ -11814,9 +11814,9 @@ void ADunDefFlashHeal::SpawnHealEmitter(class AActor* HealedActor)
 // class AActor*                  theArchetype                   (Parm)
 // struct FVector                 theLoc                         (Parm)
 // struct FRotator                theRot                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefFlashHeal::STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot)
+unsigned long ADunDefFlashHeal::STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefFlashHeal.AllowSpawn");
 
@@ -11873,9 +11873,9 @@ void ADunDefFlashHeal::PostBeginPlay()
 // (Defined, Public)
 // Parameters:
 // class APawn*                   Teleportee                     (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGRI_Assault::AllowedToTeleport(class APawn* Teleportee)
+unsigned long ADunDefGRI_Assault::AllowedToTeleport(class APawn* Teleportee)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_Assault.AllowedToTeleport");
 
@@ -12228,9 +12228,9 @@ void ADunDefGRI_Assault::RestartedPlayer(class ADunDefPlayerController* NewPlaye
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefPlayerController* thePlayerController            (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGRI_Assault::CanEnterSpectatorMode(class ADunDefPlayerController* thePlayerController)
+unsigned long ADunDefGRI_Assault::CanEnterSpectatorMode(class ADunDefPlayerController* thePlayerController)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_Assault.CanEnterSpectatorMode");
 
@@ -12251,9 +12251,9 @@ bool ADunDefGRI_Assault::CanEnterSpectatorMode(class ADunDefPlayerController* th
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefPlayerController* thePlayerController            (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGRI_Assault::CanRespawnPlayer(class ADunDefPlayerController* thePlayerController)
+unsigned long ADunDefGRI_Assault::CanRespawnPlayer(class ADunDefPlayerController* thePlayerController)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_Assault.CanRespawnPlayer");
 
@@ -12332,9 +12332,9 @@ void ADunDefGRI_Chicken::RestartedPlayer(class ADunDefPlayerController* NewPlaye
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefPlayerController* thePlayerController            (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGRI_Chicken::CanEnterSpectatorMode(class ADunDefPlayerController* thePlayerController)
+unsigned long ADunDefGRI_Chicken::CanEnterSpectatorMode(class ADunDefPlayerController* thePlayerController)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_Chicken.CanEnterSpectatorMode");
 
@@ -12355,9 +12355,9 @@ bool ADunDefGRI_Chicken::CanEnterSpectatorMode(class ADunDefPlayerController* th
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefPlayerController* thePlayerController            (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGRI_Chicken::CanRespawnPlayer(class ADunDefPlayerController* thePlayerController)
+unsigned long ADunDefGRI_Chicken::CanRespawnPlayer(class ADunDefPlayerController* thePlayerController)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_Chicken.CanRespawnPlayer");
 
@@ -12475,9 +12475,9 @@ void ADunDefGRI_Chicken::Tick(float DeltaTime)
 // Function DunDefSpecial.DunDefGRI_Chicken.SetInCombatPhase
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           inCombatPhase                  (Parm)
+// unsigned long                  inCombatPhase                  (Parm)
 
-void ADunDefGRI_Chicken::SetInCombatPhase(bool inCombatPhase)
+void ADunDefGRI_Chicken::SetInCombatPhase(unsigned long inCombatPhase)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_Chicken.SetInCombatPhase");
 
@@ -12526,13 +12526,13 @@ void ADunDefGRI_Chicken::NotifyOfChicken(class ADunDefPlayerController* PC)
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefGRI_Chicken::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefGRI_Chicken::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_Chicken.ExecReplicatedFunction");
 
@@ -12739,9 +12739,9 @@ void ADunDefGRI_GoldenTokens::DrawMyHUD(class ADunDefHUD* H)
 // Function DunDefSpecial.DunDefGRI_GoldenTokens.SetInCombatPhase
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           inCombatPhase                  (Parm)
+// unsigned long                  inCombatPhase                  (Parm)
 
-void ADunDefGRI_GoldenTokens::SetInCombatPhase(bool inCombatPhase)
+void ADunDefGRI_GoldenTokens::SetInCombatPhase(unsigned long inCombatPhase)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_GoldenTokens.SetInCombatPhase");
 
@@ -12915,9 +12915,9 @@ void ADunDefGRI_KillEnemiesTimeLimit::RestartedPlayer(class ADunDefPlayerControl
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefPlayerController* thePlayerController            (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGRI_KillEnemiesTimeLimit::CanEnterSpectatorMode(class ADunDefPlayerController* thePlayerController)
+unsigned long ADunDefGRI_KillEnemiesTimeLimit::CanEnterSpectatorMode(class ADunDefPlayerController* thePlayerController)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit.CanEnterSpectatorMode");
 
@@ -12938,9 +12938,9 @@ bool ADunDefGRI_KillEnemiesTimeLimit::CanEnterSpectatorMode(class ADunDefPlayerC
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefPlayerController* thePlayerController            (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGRI_KillEnemiesTimeLimit::CanRespawnPlayer(class ADunDefPlayerController* thePlayerController)
+unsigned long ADunDefGRI_KillEnemiesTimeLimit::CanRespawnPlayer(class ADunDefPlayerController* thePlayerController)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit.CanRespawnPlayer");
 
@@ -12997,9 +12997,9 @@ void ADunDefGRI_KillEnemiesTimeLimit::ReceivedGameClass()
 // Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit.SetInCombatPhase
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           inCombatPhase                  (Parm)
+// unsigned long                  inCombatPhase                  (Parm)
 
-void ADunDefGRI_KillEnemiesTimeLimit::SetInCombatPhase(bool inCombatPhase)
+void ADunDefGRI_KillEnemiesTimeLimit::SetInCombatPhase(unsigned long inCombatPhase)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit.SetInCombatPhase");
 
@@ -13182,9 +13182,9 @@ void ADunDefGRI_KillEnemiesTimeLimit_Uber::Tick(float DeltaTime)
 // Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit_Uber.ReadToShowStats
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGRI_KillEnemiesTimeLimit_Uber::ReadToShowStats()
+unsigned long ADunDefGRI_KillEnemiesTimeLimit_Uber::ReadToShowStats()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit_Uber.ReadToShowStats");
 
@@ -13291,9 +13291,9 @@ struct FString ADunDefGRI_KillEnemiesTimeLimit_Uber::GetVictoryLabelString(class
 // Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit_Uber.OverrideEndGameLabel
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGRI_KillEnemiesTimeLimit_Uber::OverrideEndGameLabel()
+unsigned long ADunDefGRI_KillEnemiesTimeLimit_Uber::OverrideEndGameLabel()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit_Uber.OverrideEndGameLabel");
 
@@ -13367,9 +13367,9 @@ void ADunDefGRI_OgreAlly::ReceivedGameClass()
 // Function DunDefSpecial.DunDefGRI_OgreAlly.SetInCombatPhase
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           inCombatPhase                  (Parm)
+// unsigned long                  inCombatPhase                  (Parm)
 
-void ADunDefGRI_OgreAlly::SetInCombatPhase(bool inCombatPhase)
+void ADunDefGRI_OgreAlly::SetInCombatPhase(unsigned long inCombatPhase)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_OgreAlly.SetInCombatPhase");
 
@@ -13583,13 +13583,13 @@ void ADunDefGRI_VDay2::PrintPairMatch(class ADunDefEnemy* aPairMatch1, class ADu
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefGRI_VDay2::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefGRI_VDay2::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefGRI_VDay2.ExecReplicatedFunction");
 
@@ -13717,9 +13717,9 @@ void ADunDefHarbinger_v2::GetProjectileSpawnTransformation(const struct FName& s
 // Function DunDefSpecial.DunDefHarbinger_v2.IsCurrentlyPlayingAttackAnimation
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefHarbinger_v2::IsCurrentlyPlayingAttackAnimation()
+unsigned long ADunDefHarbinger_v2::IsCurrentlyPlayingAttackAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefHarbinger_v2.IsCurrentlyPlayingAttackAnimation");
 
@@ -13759,9 +13759,9 @@ float ADunDefHarbinger_v2::PlayShootFireAnimation()
 // Function DunDefSpecial.DunDefHarbinger_v2.IsCurrentlyPlayingChargeAnimation
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefHarbinger_v2::IsCurrentlyPlayingChargeAnimation()
+unsigned long ADunDefHarbinger_v2::IsCurrentlyPlayingChargeAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefHarbinger_v2.IsCurrentlyPlayingChargeAnimation");
 
@@ -13851,13 +13851,13 @@ void ADunDefHarbinger_v2::PlayJumpAnimation()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefHarbinger_v2::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefHarbinger_v2::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefHarbinger_v2.ExecReplicatedFunction");
 
@@ -14069,9 +14069,9 @@ void ADunDefPickupableSpawner::AdjustDamage(class UClass* DamageType, class ACon
 // Function DunDefSpecial.DunDefPickupableSpawner.OnlyDrawHUDForOwner
 // (Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPickupableSpawner::OnlyDrawHUDForOwner()
+unsigned long ADunDefPickupableSpawner::OnlyDrawHUDForOwner()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableSpawner.OnlyDrawHUDForOwner");
 
@@ -14091,9 +14091,9 @@ bool ADunDefPickupableSpawner::OnlyDrawHUDForOwner()
 // (Defined, Simulated, Public, HasDefaults)
 // Parameters:
 // class ADunDefHUD*              H                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPickupableSpawner::DrawMyHUD(class ADunDefHUD* H)
+unsigned long ADunDefPickupableSpawner::DrawMyHUD(class ADunDefHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableSpawner.DrawMyHUD");
 
@@ -14139,9 +14139,9 @@ void ADunDefPickupableSpawner::DrawToolTip(class UCanvas* C, int PosX, int PosY,
 // Function DunDefSpecial.DunDefPickupableSpawner.ChangedGamePhases
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           IsCombatPhase                  (Parm)
+// unsigned long                  IsCombatPhase                  (Parm)
 
-void ADunDefPickupableSpawner::ChangedGamePhases(bool IsCombatPhase)
+void ADunDefPickupableSpawner::ChangedGamePhases(unsigned long IsCombatPhase)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableSpawner.ChangedGamePhases");
 
@@ -14246,9 +14246,9 @@ void ADunDefPickupableSpawner::GetSpawnLocandRot(struct FVector* sLoc, struct FR
 // Function DunDefSpecial.DunDefPickupableSpawner.ActivateEffects
 // (Defined, Simulated, Public, HasDefaults)
 // Parameters:
-// bool                           bTurnOn                        (Parm)
+// unsigned long                  bTurnOn                        (Parm)
 
-void ADunDefPickupableSpawner::ActivateEffects(bool bTurnOn)
+void ADunDefPickupableSpawner::ActivateEffects(unsigned long bTurnOn)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableSpawner.ActivateEffects");
 
@@ -14266,9 +14266,9 @@ void ADunDefPickupableSpawner::ActivateEffects(bool bTurnOn)
 // Function DunDefSpecial.DunDefPickupableSpawner.SpawnPickUpItem
 // (Defined, HasOptionalParms, Public, HasDefaults)
 // Parameters:
-// bool                           bForceSpawn                    (OptionalParm, Parm)
+// unsigned long                  bForceSpawn                    (OptionalParm, Parm)
 
-void ADunDefPickupableSpawner::SpawnPickUpItem(bool bForceSpawn)
+void ADunDefPickupableSpawner::SpawnPickUpItem(unsigned long bForceSpawn)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableSpawner.SpawnPickUpItem");
 
@@ -14306,9 +14306,9 @@ void ADunDefPickupableSpawner::PostBeginPlay()
 // class ADunDefPlayerController* PC                             (Parm)
 // class ADunDefTower*            towerArch                      (Parm)
 // struct FVector                 Point                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPickupableSpawner::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point)
+unsigned long ADunDefPickupableSpawner::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableSpawner.AllowTowerAtPoint");
 
@@ -14330,9 +14330,9 @@ bool ADunDefPickupableSpawner::AllowTowerAtPoint(class ADunDefPlayerController* 
 // Function DunDefSpecial.DunDefPickupableSpawner.CheckAllowance
 // (Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPickupableSpawner::CheckAllowance()
+unsigned long ADunDefPickupableSpawner::CheckAllowance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableSpawner.CheckAllowance");
 
@@ -14355,9 +14355,9 @@ bool ADunDefPickupableSpawner::CheckAllowance()
 // class ADunDefTower*            towerArch                      (Parm)
 // struct FVector                 Point                          (Parm)
 // float                          towerRadius                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPickupableSpawner::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius)
+unsigned long ADunDefPickupableSpawner::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableSpawner.PreventTowerAtPoint");
 
@@ -14467,10 +14467,10 @@ float ADunDefPickupableSpawner::GetActivationWeighting()
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // class ADunDefPlayerController* PC                             (Parm)
-// bool                           forceActivation                (OptionalParm, Parm)
+// unsigned long                  forceActivation                (OptionalParm, Parm)
 // int                            activationType                 (OptionalParm, Parm)
 
-void ADunDefPickupableSpawner::Server_Activate(class ADunDefPlayerController* PC, bool forceActivation, int activationType)
+void ADunDefPickupableSpawner::Server_Activate(class ADunDefPlayerController* PC, unsigned long forceActivation, int activationType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPickupableSpawner.Server_Activate");
 
@@ -14535,10 +14535,10 @@ void ADunDefPickupableSpawner::ReplicatedEvent(const struct FName& VarName)
 // Function DunDefSpecial.DunDefPlayer_DualMelee.SetOwnerNoSee
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           ownerNoSee                     (Parm)
-// bool                           ownerNoSeeWeapon               (OptionalParm, Parm)
+// unsigned long                  ownerNoSee                     (Parm)
+// unsigned long                  ownerNoSeeWeapon               (OptionalParm, Parm)
 
-void ADunDefPlayer_DualMelee::SetOwnerNoSee(bool ownerNoSee, bool ownerNoSeeWeapon)
+void ADunDefPlayer_DualMelee::SetOwnerNoSee(unsigned long ownerNoSee, unsigned long ownerNoSeeWeapon)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.SetOwnerNoSee");
 
@@ -14557,9 +14557,9 @@ void ADunDefPlayer_DualMelee::SetOwnerNoSee(bool ownerNoSee, bool ownerNoSeeWeap
 // Function DunDefSpecial.DunDefPlayer_DualMelee.AutoActivateSecondaryWeapon
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_DualMelee::AutoActivateSecondaryWeapon()
+unsigned long ADunDefPlayer_DualMelee::AutoActivateSecondaryWeapon()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AutoActivateSecondaryWeapon");
 
@@ -14578,9 +14578,9 @@ bool ADunDefPlayer_DualMelee::AutoActivateSecondaryWeapon()
 // Function DunDefSpecial.DunDefPlayer_DualMelee.AllowNegativeStatusAffecting
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_DualMelee::AllowNegativeStatusAffecting()
+unsigned long ADunDefPlayer_DualMelee::AllowNegativeStatusAffecting()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AllowNegativeStatusAffecting");
 
@@ -14687,9 +14687,9 @@ void ADunDefPlayer_DualMelee::JumpOffPawn()
 // int                            Damage                         (Parm)
 // class UClass*                  DamageType                     (Parm)
 // int                            Result                         (Parm, OutParm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_DualMelee::ShouldPlayHurtAnimation(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, int* Result)
+unsigned long ADunDefPlayer_DualMelee::ShouldPlayHurtAnimation(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, int* Result)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.ShouldPlayHurtAnimation");
 
@@ -14871,10 +14871,10 @@ void ADunDefPlayer_DualMelee::AdjustDamage(class AController* InstigatedBy, cons
 // Parameters:
 // class AActor*                  HitActor                       (Parm)
 // int                            dealtDamage                    (Parm)
-// bool                           bAllowMomentumOverride         (Parm)
+// unsigned long                  bAllowMomentumOverride         (Parm)
 // struct FVector                 appliedMomentum                (Parm, OutParm)
 
-void ADunDefPlayer_DualMelee::GivePlayerHitInfo(class AActor* HitActor, int dealtDamage, bool bAllowMomentumOverride, struct FVector* appliedMomentum)
+void ADunDefPlayer_DualMelee::GivePlayerHitInfo(class AActor* HitActor, int dealtDamage, unsigned long bAllowMomentumOverride, struct FVector* appliedMomentum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.GivePlayerHitInfo");
 
@@ -15011,9 +15011,9 @@ void ADunDefPlayer_DualMelee::ActivateStance(class ADunDefPlayerAbility_StanceBa
 // class ADunDefWeapon_MeleeSword* overrideForWeap                (Parm)
 // int                            currentMeleeSwingIndex         (Parm, OutParm)
 // struct FMeleeSwingInfo         OverrideInfo                   (Parm, OutParm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_DualMelee::GetMeleeSwingInfoOverride(class ADunDefWeapon_MeleeSword* overrideForWeap, int* currentMeleeSwingIndex, struct FMeleeSwingInfo* OverrideInfo)
+unsigned long ADunDefPlayer_DualMelee::GetMeleeSwingInfoOverride(class ADunDefWeapon_MeleeSword* overrideForWeap, int* currentMeleeSwingIndex, struct FMeleeSwingInfo* OverrideInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.GetMeleeSwingInfoOverride");
 
@@ -15039,9 +15039,9 @@ bool ADunDefPlayer_DualMelee::GetMeleeSwingInfoOverride(class ADunDefWeapon_Mele
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefWeapon_MeleeSword* askingWeapon                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_DualMelee::OverrideMeleeSwingInfo(class ADunDefWeapon_MeleeSword* askingWeapon)
+unsigned long ADunDefPlayer_DualMelee::OverrideMeleeSwingInfo(class ADunDefWeapon_MeleeSword* askingWeapon)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.OverrideMeleeSwingInfo");
 
@@ -15062,10 +15062,10 @@ bool ADunDefPlayer_DualMelee::OverrideMeleeSwingInfo(class ADunDefWeapon_MeleeSw
 // (Defined, Simulated, HasOptionalParms, Public, HasDefaults)
 // Parameters:
 // class ADunDefWeapon_MeleeSword* weaponCheck                    (Parm)
-// bool                           checkAnimDuration              (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  checkAnimDuration              (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_DualMelee::CheckAllowMelee(class ADunDefWeapon_MeleeSword* weaponCheck, bool checkAnimDuration)
+unsigned long ADunDefPlayer_DualMelee::CheckAllowMelee(class ADunDefWeapon_MeleeSword* weaponCheck, unsigned long checkAnimDuration)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.CheckAllowMelee");
 
@@ -15088,9 +15088,9 @@ bool ADunDefPlayer_DualMelee::CheckAllowMelee(class ADunDefWeapon_MeleeSword* we
 // Parameters:
 // struct FName                   inAnim                         (Parm)
 // float                          TimeFromEndToConsiderFinished  (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_DualMelee::CheckPlayingCustomAnim(const struct FName& inAnim, float TimeFromEndToConsiderFinished)
+unsigned long ADunDefPlayer_DualMelee::CheckPlayingCustomAnim(const struct FName& inAnim, float TimeFromEndToConsiderFinished)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.CheckPlayingCustomAnim");
 
@@ -15152,9 +15152,9 @@ void ADunDefPlayer_DualMelee::ServerStopFire(unsigned char FireModeNum)
 // (Defined, Simulated, Public, HasDefaults)
 // Parameters:
 // class ADunDefWeapon_MeleeSword* comboWeapon                    (Parm)
-// bool                           bMainHand                      (Parm)
+// unsigned long                  bMainHand                      (Parm)
 
-void ADunDefPlayer_DualMelee::SetComboInfo(class ADunDefWeapon_MeleeSword* comboWeapon, bool bMainHand)
+void ADunDefPlayer_DualMelee::SetComboInfo(class ADunDefWeapon_MeleeSword* comboWeapon, unsigned long bMainHand)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.SetComboInfo");
 
@@ -15173,9 +15173,9 @@ void ADunDefPlayer_DualMelee::SetComboInfo(class ADunDefWeapon_MeleeSword* combo
 // Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceCheck
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_DualMelee::DoStanceCheck()
+unsigned long ADunDefPlayer_DualMelee::DoStanceCheck()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceCheck");
 
@@ -15255,9 +15255,9 @@ struct FName ADunDefPlayer_DualMelee::STATIC_GetOffHandSocketName()
 // Function DunDefSpecial.DunDefPlayer_DualMelee.AllowDualWeapon
 // (Defined, Static, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_DualMelee::STATIC_AllowDualWeapon()
+unsigned long ADunDefPlayer_DualMelee::STATIC_AllowDualWeapon()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AllowDualWeapon");
 
@@ -15277,10 +15277,10 @@ bool ADunDefPlayer_DualMelee::STATIC_AllowDualWeapon()
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
 // class AActor*                  InventoryActorTemplate         (Parm)
-// bool                           bDoNotActivate                 (OptionalParm, Parm)
+// unsigned long                  bDoNotActivate                 (OptionalParm, Parm)
 // class AInventory*              ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class AInventory* ADunDefPlayer_DualMelee::CreateContainedInventoryFromTemplate(class AActor* InventoryActorTemplate, bool bDoNotActivate)
+class AInventory* ADunDefPlayer_DualMelee::CreateContainedInventoryFromTemplate(class AActor* InventoryActorTemplate, unsigned long bDoNotActivate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.CreateContainedInventoryFromTemplate");
 
@@ -15371,9 +15371,9 @@ class ADunDefWeapon* ADunDefPlayer_DualMelee::SwapWeaponFor(class ADunDefWeapon*
 // Function DunDefSpecial.DunDefPlayer_DualMelee.HasLightningStance
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_DualMelee::HasLightningStance()
+unsigned long ADunDefPlayer_DualMelee::HasLightningStance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.HasLightningStance");
 
@@ -15409,9 +15409,9 @@ void ADunDefPlayer_DualMelee::PostBeginPlay()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowNegativeStatusAffecting
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceBase::AllowNegativeStatusAffecting()
+unsigned long ADunDefPlayerAbility_StanceBase::AllowNegativeStatusAffecting()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowNegativeStatusAffecting");
 
@@ -15447,9 +15447,9 @@ void ADunDefPlayerAbility_StanceBase::ResetWeaponDamage()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopOffHandWeaponDamage
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceBase::StopOffHandWeaponDamage()
+unsigned long ADunDefPlayerAbility_StanceBase::StopOffHandWeaponDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopOffHandWeaponDamage");
 
@@ -15468,9 +15468,9 @@ bool ADunDefPlayerAbility_StanceBase::StopOffHandWeaponDamage()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopWeaponDamage
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceBase::StopWeaponDamage()
+unsigned long ADunDefPlayerAbility_StanceBase::StopWeaponDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopWeaponDamage");
 
@@ -15489,9 +15489,9 @@ bool ADunDefPlayerAbility_StanceBase::StopWeaponDamage()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartOffHandWeaponDamage
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceBase::StartOffHandWeaponDamage()
+unsigned long ADunDefPlayerAbility_StanceBase::StartOffHandWeaponDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartOffHandWeaponDamage");
 
@@ -15510,9 +15510,9 @@ bool ADunDefPlayerAbility_StanceBase::StartOffHandWeaponDamage()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartWeaponDamage
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceBase::StartWeaponDamage()
+unsigned long ADunDefPlayerAbility_StanceBase::StartWeaponDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartWeaponDamage");
 
@@ -15533,10 +15533,10 @@ bool ADunDefPlayerAbility_StanceBase::StartWeaponDamage()
 // Parameters:
 // class AActor*                  HitActor                       (Parm)
 // int                            dealtDamage                    (Parm)
-// bool                           bAllowMomentumOverride         (Parm)
+// unsigned long                  bAllowMomentumOverride         (Parm)
 // struct FVector                 appliedMomentum                (Parm, OutParm)
 
-void ADunDefPlayerAbility_StanceBase::GivePlayerHitInfo(class AActor* HitActor, int dealtDamage, bool bAllowMomentumOverride, struct FVector* appliedMomentum)
+void ADunDefPlayerAbility_StanceBase::GivePlayerHitInfo(class AActor* HitActor, int dealtDamage, unsigned long bAllowMomentumOverride, struct FVector* appliedMomentum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GivePlayerHitInfo");
 
@@ -15593,9 +15593,9 @@ void ADunDefPlayerAbility_StanceBase::AnimNotify_CurrentAbility_On()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStanceCancel
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceBase::AllowStanceCancel()
+unsigned long ADunDefPlayerAbility_StanceBase::AllowStanceCancel()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStanceCancel");
 
@@ -15614,9 +15614,9 @@ bool ADunDefPlayerAbility_StanceBase::AllowStanceCancel()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckDoStanceAttack
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceBase::CheckDoStanceAttack()
+unsigned long ADunDefPlayerAbility_StanceBase::CheckDoStanceAttack()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckDoStanceAttack");
 
@@ -15636,10 +15636,10 @@ bool ADunDefPlayerAbility_StanceBase::CheckDoStanceAttack()
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
 // struct FStatMultipliers        multiplierCheck                (Parm)
-// bool                           bDoLog                         (OptionalParm, Parm)
+// unsigned long                  bDoLog                         (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float ADunDefPlayerAbility_StanceBase::GetMultiplierValue(const struct FStatMultipliers& multiplierCheck, bool bDoLog)
+float ADunDefPlayerAbility_StanceBase::GetMultiplierValue(const struct FStatMultipliers& multiplierCheck, unsigned long bDoLog)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetMultiplierValue");
 
@@ -15660,9 +15660,9 @@ float ADunDefPlayerAbility_StanceBase::GetMultiplierValue(const struct FStatMult
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckStatus
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceBase::CheckStatus()
+unsigned long ADunDefPlayerAbility_StanceBase::CheckStatus()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckStatus");
 
@@ -15723,9 +15723,9 @@ void ADunDefPlayerAbility_StanceBase::OnActivate()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStepTowards
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceBase::AllowStepTowards()
+unsigned long ADunDefPlayerAbility_StanceBase::AllowStepTowards()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStepTowards");
 
@@ -15841,10 +15841,10 @@ void ADunDefPlayerAbility_LeapSlam::OnActivate()
 // Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.GetCostToActivate
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           returnTrueValue                (OptionalParm, Parm)
+// unsigned long                  returnTrueValue                (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int ADunDefPlayerAbility_LeapSlam::GetCostToActivate(bool returnTrueValue)
+int ADunDefPlayerAbility_LeapSlam::GetCostToActivate(unsigned long returnTrueValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.GetCostToActivate");
 
@@ -15864,10 +15864,10 @@ int ADunDefPlayerAbility_LeapSlam::GetCostToActivate(bool returnTrueValue)
 // Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.RequestActivation
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bHeld                          (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bHeld                          (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_LeapSlam::RequestActivation(bool bHeld)
+unsigned long ADunDefPlayerAbility_LeapSlam::RequestActivation(unsigned long bHeld)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.RequestActivation");
 
@@ -15887,9 +15887,9 @@ bool ADunDefPlayerAbility_LeapSlam::RequestActivation(bool bHeld)
 // Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.HasNoAutoAim
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_LeapSlam::HasNoAutoAim()
+unsigned long ADunDefPlayerAbility_LeapSlam::HasNoAutoAim()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.HasNoAutoAim");
 
@@ -16032,9 +16032,9 @@ void ADunDefPlayerAbility_LeapSlam::AnimNotify_CurrentAbility_On()
 // Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.ConsumesInputWhenActive
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_LeapSlam::ConsumesInputWhenActive()
+unsigned long ADunDefPlayerAbility_LeapSlam::ConsumesInputWhenActive()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.ConsumesInputWhenActive");
 
@@ -16073,9 +16073,9 @@ void ADunDefPlayerAbility_LeapSlam::DoTimeOut()
 // struct FVector                 End                            (Parm)
 // struct FVector                 Start                          (Parm)
 // struct FVector                 JumpVelocity                   (Parm, OutParm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_LeapSlam::GetLeapVelocity(const struct FVector& End, const struct FVector& Start, struct FVector* JumpVelocity)
+unsigned long ADunDefPlayerAbility_LeapSlam::GetLeapVelocity(const struct FVector& End, const struct FVector& Start, struct FVector* JumpVelocity)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.GetLeapVelocity");
 
@@ -16195,13 +16195,13 @@ void ADunDefPlayerAbility_LeapSlam::PushCheck()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefPlayerAbility_LeapSlam::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefPlayerAbility_LeapSlam::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.ExecReplicatedFunction");
 
@@ -16341,9 +16341,9 @@ void ADunDefPlayer_Jester::WeaponSet(class AWeapon* NewWeapon)
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefHUD*              H                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_Jester::DrawMyHUD(class ADunDefHUD* H)
+unsigned long ADunDefPlayer_Jester::DrawMyHUD(class ADunDefHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Jester.DrawMyHUD");
 
@@ -16383,10 +16383,10 @@ void ADunDefPlayer_Jester::Tick(float DeltaTime)
 // Function DunDefSpecial.DunDefPlayer_Jester.GetWeaponIcon
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bOffHand                       (Parm)
+// unsigned long                  bOffHand                       (Parm)
 // class UMaterialInstanceConstant* ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UMaterialInstanceConstant* ADunDefPlayer_Jester::GetWeaponIcon(bool bOffHand)
+class UMaterialInstanceConstant* ADunDefPlayer_Jester::GetWeaponIcon(unsigned long bOffHand)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Jester.GetWeaponIcon");
 
@@ -16410,11 +16410,11 @@ class UMaterialInstanceConstant* ADunDefPlayer_Jester::GetWeaponIcon(bool bOffHa
 // class ADunDefWeapon*           weapDraw                       (Parm)
 // float                          weapOpacity                    (Parm)
 // int                            paddingIndex                   (Parm)
-// bool                           bSelected                      (Parm)
+// unsigned long                  bSelected                      (Parm)
 // float                          hudScale                       (Parm)
 // class ADunDefPlayerController* PC                             (Parm)
 
-void ADunDefPlayer_Jester::DrawWeaponIcons(class UCanvas* C, class ADunDefWeapon* weapDraw, float weapOpacity, int paddingIndex, bool bSelected, float hudScale, class ADunDefPlayerController* PC)
+void ADunDefPlayer_Jester::DrawWeaponIcons(class UCanvas* C, class ADunDefWeapon* weapDraw, float weapOpacity, int paddingIndex, unsigned long bSelected, float hudScale, class ADunDefPlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Jester.DrawWeaponIcons");
 
@@ -16456,10 +16456,10 @@ void ADunDefPlayer_Jester::Destroyed()
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
 // class AActor*                  InventoryActorTemplate         (Parm)
-// bool                           bDoNotActivate                 (OptionalParm, Parm)
+// unsigned long                  bDoNotActivate                 (OptionalParm, Parm)
 // class AInventory*              ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class AInventory* ADunDefPlayer_Jester::CreateContainedInventoryFromTemplate(class AActor* InventoryActorTemplate, bool bDoNotActivate)
+class AInventory* ADunDefPlayer_Jester::CreateContainedInventoryFromTemplate(class AActor* InventoryActorTemplate, unsigned long bDoNotActivate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Jester.CreateContainedInventoryFromTemplate");
 
@@ -16505,9 +16505,9 @@ class ADunDefWeapon* ADunDefPlayer_Jester::SwapOffHandWeaponFor(class ADunDefWea
 // Function DunDefSpecial.DunDefPlayer_Jester.DoWeaponSwap
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bForceSwap                     (OptionalParm, Parm)
+// unsigned long                  bForceSwap                     (OptionalParm, Parm)
 
-void ADunDefPlayer_Jester::DoWeaponSwap(bool bForceSwap)
+void ADunDefPlayer_Jester::DoWeaponSwap(unsigned long bForceSwap)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Jester.DoWeaponSwap");
 
@@ -16525,9 +16525,9 @@ void ADunDefPlayer_Jester::DoWeaponSwap(bool bForceSwap)
 // Function DunDefSpecial.DunDefPlayer_Jester.ServerDoSwap
 // (Defined, Net, NetReliable, HasOptionalParms, Public, NetServer)
 // Parameters:
-// bool                           bForceSwap                     (OptionalParm, Parm)
+// unsigned long                  bForceSwap                     (OptionalParm, Parm)
 
-void ADunDefPlayer_Jester::ServerDoSwap(bool bForceSwap)
+void ADunDefPlayer_Jester::ServerDoSwap(unsigned long bForceSwap)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Jester.ServerDoSwap");
 
@@ -16546,10 +16546,10 @@ void ADunDefPlayer_Jester::ServerDoSwap(bool bForceSwap)
 // (Defined, Simulated, Public)
 // Parameters:
 // class AWeapon*                 theNewWeapon                   (Parm)
-// bool                           bRemoveExisting                (Parm)
+// unsigned long                  bRemoveExisting                (Parm)
 // class UHeroEquipment*          equipRef                       (Parm)
 
-void ADunDefPlayer_Jester::SetNewMainWeapon(class AWeapon* theNewWeapon, bool bRemoveExisting, class UHeroEquipment* equipRef)
+void ADunDefPlayer_Jester::SetNewMainWeapon(class AWeapon* theNewWeapon, unsigned long bRemoveExisting, class UHeroEquipment* equipRef)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Jester.SetNewMainWeapon");
 
@@ -16612,9 +16612,9 @@ struct FName ADunDefPlayer_Jester::GetShootAnim()
 // Function DunDefSpecial.DunDefPlayer_Jester.ForceWeaponActivationOverride
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_Jester::ForceWeaponActivationOverride()
+unsigned long ADunDefPlayer_Jester::ForceWeaponActivationOverride()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Jester.ForceWeaponActivationOverride");
 
@@ -16658,9 +16658,9 @@ class ADunDefWeapon* ADunDefPlayer_Jester::SwapWeaponFor(class ADunDefWeapon* we
 // Function DunDefSpecial.DunDefPlayer_Jester.AllowDualWeapon
 // (Defined, Static, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_Jester::STATIC_AllowDualWeapon()
+unsigned long ADunDefPlayer_Jester::STATIC_AllowDualWeapon()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Jester.AllowDualWeapon");
 
@@ -16690,13 +16690,13 @@ bool ADunDefPlayer_Jester::STATIC_AllowDualWeapon()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefPlayer_Jester::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefPlayer_Jester::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_Jester.ExecReplicatedFunction");
 
@@ -16861,9 +16861,9 @@ float ADunDefPlayer_SeriesEv::GetManaTokenAttractionRadius()
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.HasMaxManaPower
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_SeriesEv::HasMaxManaPower()
+unsigned long ADunDefPlayer_SeriesEv::HasMaxManaPower()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.HasMaxManaPower");
 
@@ -16902,9 +16902,9 @@ void ADunDefPlayer_SeriesEv::TryTokenCollection(class ADunDefManaToken* Token)
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.IsCurrentlyPlayingHurtAnimation
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_SeriesEv::IsCurrentlyPlayingHurtAnimation()
+unsigned long ADunDefPlayer_SeriesEv::IsCurrentlyPlayingHurtAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.IsCurrentlyPlayingHurtAnimation");
 
@@ -16946,9 +16946,9 @@ void ADunDefPlayer_SeriesEv::PlayHurtAnimation(class UClass* DamageType, const s
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefWeapon*           weaponCheck                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_SeriesEv::ShouldOverrideWeaponElementalEffects(class ADunDefWeapon* weaponCheck)
+unsigned long ADunDefPlayer_SeriesEv::ShouldOverrideWeaponElementalEffects(class ADunDefWeapon* weaponCheck)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.ShouldOverrideWeaponElementalEffects");
 
@@ -17042,11 +17042,11 @@ void ADunDefPlayer_SeriesEv::PutArmDown()
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.PlayShootAnimation
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           isBigShoot                     (OptionalParm, Parm)
-// bool                           Replicate                      (OptionalParm, Parm)
-// bool                           bDontPlayAnim                  (OptionalParm, Parm)
+// unsigned long                  isBigShoot                     (OptionalParm, Parm)
+// unsigned long                  Replicate                      (OptionalParm, Parm)
+// unsigned long                  bDontPlayAnim                  (OptionalParm, Parm)
 
-void ADunDefPlayer_SeriesEv::PlayShootAnimation(bool isBigShoot, bool Replicate, bool bDontPlayAnim)
+void ADunDefPlayer_SeriesEv::PlayShootAnimation(unsigned long isBigShoot, unsigned long Replicate, unsigned long bDontPlayAnim)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.PlayShootAnimation");
 
@@ -17066,9 +17066,9 @@ void ADunDefPlayer_SeriesEv::PlayShootAnimation(bool isBigShoot, bool Replicate,
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.ForceUseInstigatorForMuzzle
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_SeriesEv::ForceUseInstigatorForMuzzle()
+unsigned long ADunDefPlayer_SeriesEv::ForceUseInstigatorForMuzzle()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.ForceUseInstigatorForMuzzle");
 
@@ -17087,9 +17087,9 @@ bool ADunDefPlayer_SeriesEv::ForceUseInstigatorForMuzzle()
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.CanReload
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_SeriesEv::CanReload()
+unsigned long ADunDefPlayer_SeriesEv::CanReload()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.CanReload");
 
@@ -17108,10 +17108,10 @@ bool ADunDefPlayer_SeriesEv::CanReload()
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.GetWeaponIcon
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bOffHand                       (Parm)
+// unsigned long                  bOffHand                       (Parm)
 // class UMaterialInstanceConstant* ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UMaterialInstanceConstant* ADunDefPlayer_SeriesEv::GetWeaponIcon(bool bOffHand)
+class UMaterialInstanceConstant* ADunDefPlayer_SeriesEv::GetWeaponIcon(unsigned long bOffHand)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.GetWeaponIcon");
 
@@ -17135,11 +17135,11 @@ class UMaterialInstanceConstant* ADunDefPlayer_SeriesEv::GetWeaponIcon(bool bOff
 // class ADunDefWeapon*           weapDraw                       (Parm)
 // float                          weapOpacity                    (Parm)
 // int                            paddingIndex                   (Parm)
-// bool                           bSelected                      (Parm)
+// unsigned long                  bSelected                      (Parm)
 // float                          hudScale                       (Parm)
 // class ADunDefPlayerController* PC                             (Parm)
 
-void ADunDefPlayer_SeriesEv::DrawWeaponIcons(class UCanvas* C, class ADunDefWeapon* weapDraw, float weapOpacity, int paddingIndex, bool bSelected, float hudScale, class ADunDefPlayerController* PC)
+void ADunDefPlayer_SeriesEv::DrawWeaponIcons(class UCanvas* C, class ADunDefWeapon* weapDraw, float weapOpacity, int paddingIndex, unsigned long bSelected, float hudScale, class ADunDefPlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.DrawWeaponIcons");
 
@@ -17164,9 +17164,9 @@ void ADunDefPlayer_SeriesEv::DrawWeaponIcons(class UCanvas* C, class ADunDefWeap
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefHUD*              H                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_SeriesEv::DrawMyHUD(class ADunDefHUD* H)
+unsigned long ADunDefPlayer_SeriesEv::DrawMyHUD(class ADunDefHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.DrawMyHUD");
 
@@ -17204,10 +17204,10 @@ void ADunDefPlayer_SeriesEv::Destroyed()
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
 // class AActor*                  InventoryActorTemplate         (Parm)
-// bool                           bDoNotActivate                 (OptionalParm, Parm)
+// unsigned long                  bDoNotActivate                 (OptionalParm, Parm)
 // class AInventory*              ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class AInventory* ADunDefPlayer_SeriesEv::CreateContainedInventoryFromTemplate(class AActor* InventoryActorTemplate, bool bDoNotActivate)
+class AInventory* ADunDefPlayer_SeriesEv::CreateContainedInventoryFromTemplate(class AActor* InventoryActorTemplate, unsigned long bDoNotActivate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.CreateContainedInventoryFromTemplate");
 
@@ -17253,9 +17253,9 @@ class ADunDefWeapon* ADunDefPlayer_SeriesEv::SwapOffHandWeaponFor(class ADunDefW
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.DoWeaponSwap
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bForceSwap                     (OptionalParm, Parm)
+// unsigned long                  bForceSwap                     (OptionalParm, Parm)
 
-void ADunDefPlayer_SeriesEv::DoWeaponSwap(bool bForceSwap)
+void ADunDefPlayer_SeriesEv::DoWeaponSwap(unsigned long bForceSwap)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.DoWeaponSwap");
 
@@ -17273,9 +17273,9 @@ void ADunDefPlayer_SeriesEv::DoWeaponSwap(bool bForceSwap)
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.ServerDoSwap
 // (Defined, Net, NetReliable, HasOptionalParms, Public, NetServer)
 // Parameters:
-// bool                           bForceSwap                     (OptionalParm, Parm)
+// unsigned long                  bForceSwap                     (OptionalParm, Parm)
 
-void ADunDefPlayer_SeriesEv::ServerDoSwap(bool bForceSwap)
+void ADunDefPlayer_SeriesEv::ServerDoSwap(unsigned long bForceSwap)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.ServerDoSwap");
 
@@ -17294,10 +17294,10 @@ void ADunDefPlayer_SeriesEv::ServerDoSwap(bool bForceSwap)
 // (Defined, Simulated, Public)
 // Parameters:
 // class AWeapon*                 theNewWeapon                   (Parm)
-// bool                           bRemoveExisting                (Parm)
+// unsigned long                  bRemoveExisting                (Parm)
 // class UHeroEquipment*          equipRef                       (Parm)
 
-void ADunDefPlayer_SeriesEv::SetNewMainWeapon(class AWeapon* theNewWeapon, bool bRemoveExisting, class UHeroEquipment* equipRef)
+void ADunDefPlayer_SeriesEv::SetNewMainWeapon(class AWeapon* theNewWeapon, unsigned long bRemoveExisting, class UHeroEquipment* equipRef)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.SetNewMainWeapon");
 
@@ -17386,9 +17386,9 @@ struct FName ADunDefPlayer_SeriesEv::STATIC_GetOffHandSocketName()
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefWeapon*           weaponCheck                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_SeriesEv::OverrideWeaponAttach(class ADunDefWeapon* weaponCheck)
+unsigned long ADunDefPlayer_SeriesEv::OverrideWeaponAttach(class ADunDefWeapon* weaponCheck)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.OverrideWeaponAttach");
 
@@ -17408,9 +17408,9 @@ bool ADunDefPlayer_SeriesEv::OverrideWeaponAttach(class ADunDefWeapon* weaponChe
 // Function DunDefSpecial.DunDefPlayer_SeriesEv.AllowDualWeapon
 // (Defined, Static, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayer_SeriesEv::STATIC_AllowDualWeapon()
+unsigned long ADunDefPlayer_SeriesEv::STATIC_AllowDualWeapon()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.AllowDualWeapon");
 
@@ -17440,13 +17440,13 @@ bool ADunDefPlayer_SeriesEv::STATIC_AllowDualWeapon()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefPlayer_SeriesEv::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefPlayer_SeriesEv::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_SeriesEv.ExecReplicatedFunction");
 
@@ -17504,9 +17504,9 @@ TEnumAsByte<EPlayerAbilityStatus> ADunDefPlayerAbility_ManaCharge::GetAbilitySta
 // Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.AllowUsageDuringCastingStates
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_ManaCharge::AllowUsageDuringCastingStates()
+unsigned long ADunDefPlayerAbility_ManaCharge::AllowUsageDuringCastingStates()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.AllowUsageDuringCastingStates");
 
@@ -17566,9 +17566,9 @@ float ADunDefPlayerAbility_ManaCharge::GetCooldownStartTime()
 // Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.ShouldDrawManaBar
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_ManaCharge::ShouldDrawManaBar()
+unsigned long ADunDefPlayerAbility_ManaCharge::ShouldDrawManaBar()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.ShouldDrawManaBar");
 
@@ -17809,9 +17809,9 @@ void ADunDefPlayerAbility_ManaCharge::ServerCollectManaToken(class ADunDefManaTo
 // struct FVector                 VDir                           (Parm)
 // float                          RadiusSq                       (Parm)
 // struct FVector                 A                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_ManaCharge::InCylinderFwd(const struct FVector& Origin, const struct FVector& VDir, float RadiusSq, const struct FVector& A)
+unsigned long ADunDefPlayerAbility_ManaCharge::InCylinderFwd(const struct FVector& Origin, const struct FVector& VDir, float RadiusSq, const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.InCylinderFwd");
 
@@ -17923,9 +17923,9 @@ void ADunDefPlayerAbility_ManaCharge::StartDamageEffects()
 // Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.CanHoldMoreCharge
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_ManaCharge::CanHoldMoreCharge()
+unsigned long ADunDefPlayerAbility_ManaCharge::CanHoldMoreCharge()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.CanHoldMoreCharge");
 
@@ -18006,13 +18006,13 @@ void ADunDefPlayerAbility_ManaCharge::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefPlayerAbility_ManaCharge::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefPlayerAbility_ManaCharge::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_ManaCharge.ExecReplicatedFunction");
 
@@ -18045,9 +18045,9 @@ void ADunDefPlayerAbility_ManaCharge::ExecReplicatedFunction(const struct FName&
 // Function DunDefSpecial.DunDefPlayerAbility_PhaseShift.AllowUsageDuringCastingStates
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_PhaseShift::AllowUsageDuringCastingStates()
+unsigned long ADunDefPlayerAbility_PhaseShift::AllowUsageDuringCastingStates()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_PhaseShift.AllowUsageDuringCastingStates");
 
@@ -18138,9 +18138,9 @@ void ADunDefPlayerAbility_PhaseShift::ForceCancel()
 // Function DunDefSpecial.DunDefPlayerAbility_PhaseShift.SetPhaseMaterials
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bPhasedMaterials               (Parm)
+// unsigned long                  bPhasedMaterials               (Parm)
 
-void ADunDefPlayerAbility_PhaseShift::SetPhaseMaterials(bool bPhasedMaterials)
+void ADunDefPlayerAbility_PhaseShift::SetPhaseMaterials(unsigned long bPhasedMaterials)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_PhaseShift.SetPhaseMaterials");
 
@@ -18357,13 +18357,13 @@ void ADunDefPlayerAbility_PhaseShift::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefPlayerAbility_PhaseShift::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefPlayerAbility_PhaseShift::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_PhaseShift.ExecReplicatedFunction");
 
@@ -18452,10 +18452,10 @@ void ADunDefPlayerAbility_BuilTripWire::CancelAbility()
 // Parameters:
 // struct FVector                 placementPos                   (Parm)
 // int                            PlacementDeniedReason          (OptionalParm, Parm, OutParm)
-// bool                           bOnlyCheckVolumes              (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bOnlyCheckVolumes              (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_BuilTripWire::AllowTowerPlacementPosition(const struct FVector& placementPos, bool bOnlyCheckVolumes, int* PlacementDeniedReason)
+unsigned long ADunDefPlayerAbility_BuilTripWire::AllowTowerPlacementPosition(const struct FVector& placementPos, unsigned long bOnlyCheckVolumes, int* PlacementDeniedReason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.AllowTowerPlacementPosition");
 
@@ -18500,9 +18500,9 @@ struct FVector ADunDefPlayerAbility_BuilTripWire::GetCenterLocation()
 // Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.CanPlaceTowerUnitCost
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_BuilTripWire::CanPlaceTowerUnitCost()
+unsigned long ADunDefPlayerAbility_BuilTripWire::CanPlaceTowerUnitCost()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.CanPlaceTowerUnitCost");
 
@@ -18521,11 +18521,11 @@ bool ADunDefPlayerAbility_BuilTripWire::CanPlaceTowerUnitCost()
 // Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.GetDUCost
 // (Defined, Simulated, HasOptionalParms, Public, HasDefaults)
 // Parameters:
-// bool                           bUseCustomEndLoc               (OptionalParm, Parm)
+// unsigned long                  bUseCustomEndLoc               (OptionalParm, Parm)
 // struct FVector                 endLoc                         (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int ADunDefPlayerAbility_BuilTripWire::GetDUCost(bool bUseCustomEndLoc, const struct FVector& endLoc)
+int ADunDefPlayerAbility_BuilTripWire::GetDUCost(unsigned long bUseCustomEndLoc, const struct FVector& endLoc)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.GetDUCost");
 
@@ -18547,9 +18547,9 @@ int ADunDefPlayerAbility_BuilTripWire::GetDUCost(bool bUseCustomEndLoc, const st
 // (Defined, Simulated, Public, HasDefaults)
 // Parameters:
 // class ADunDefHUD*              H                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_BuilTripWire::DrawCastingHUD(class ADunDefHUD* H)
+unsigned long ADunDefPlayerAbility_BuilTripWire::DrawCastingHUD(class ADunDefHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.DrawCastingHUD");
 
@@ -18763,9 +18763,9 @@ void ADunDefPlayerAbility_BuilTripWire::UpdateAltSummonTowerFX(float Percent)
 // struct FVector                 thePlacementLocation           (Parm)
 // struct FRotator                thePlacementRotation           (Parm)
 // float                          scaleMult                      (OptionalParm, Parm)
-// bool                           bUsesDecal                     (OptionalParm, Parm)
+// unsigned long                  bUsesDecal                     (OptionalParm, Parm)
 
-void ADunDefPlayerAbility_BuilTripWire::BeginAltSummonTowerFX(class ADunDefEmitterSpawnable* spellEffect, const struct FVector& thePlacementLocation, const struct FRotator& thePlacementRotation, float scaleMult, bool bUsesDecal)
+void ADunDefPlayerAbility_BuilTripWire::BeginAltSummonTowerFX(class ADunDefEmitterSpawnable* spellEffect, const struct FVector& thePlacementLocation, const struct FRotator& thePlacementRotation, float scaleMult, unsigned long bUsesDecal)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.BeginAltSummonTowerFX");
 
@@ -18798,13 +18798,13 @@ void ADunDefPlayerAbility_BuilTripWire::BeginAltSummonTowerFX(class ADunDefEmitt
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefPlayerAbility_BuilTripWire::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefPlayerAbility_BuilTripWire::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.ExecReplicatedFunction");
 
@@ -19057,9 +19057,9 @@ float ADunDefPlayerAbility_DefenseBoost::GetTowerBoostAmount(TEnumAsByte<ETowerB
 // (Defined, Simulated, Public)
 // Parameters:
 // TEnumAsByte<ETowerBoostType>   boostType                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_DefenseBoost::HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType)
+unsigned long ADunDefPlayerAbility_DefenseBoost::HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_DefenseBoost.HasTowerBoostingType");
 
@@ -19189,9 +19189,9 @@ float ADunDefPlayerAbility_EnemyDrain::GetDamageMultiplier()
 // (Defined, Simulated, Public)
 // Parameters:
 // class AActor*                  theAct                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_EnemyDrain::CanAffect(class AActor* theAct)
+unsigned long ADunDefPlayerAbility_EnemyDrain::CanAffect(class AActor* theAct)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_EnemyDrain.CanAffect");
 
@@ -19350,9 +19350,9 @@ int ADunDefPlayerAbility_InstantUpgradeTower::GetTowerCost(class ADunDefTower* U
 // Function DunDefSpecial.DunDefPlayerAbility_InstantUpgradeTower.ScaleForHeroModifiers
 // (Defined, Public)
 // Parameters:
-// bool                           IsFirstTime                    (Parm)
+// unsigned long                  IsFirstTime                    (Parm)
 
-void ADunDefPlayerAbility_InstantUpgradeTower::ScaleForHeroModifiers(bool IsFirstTime)
+void ADunDefPlayerAbility_InstantUpgradeTower::ScaleForHeroModifiers(unsigned long IsFirstTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_InstantUpgradeTower.ScaleForHeroModifiers");
 
@@ -19372,10 +19372,10 @@ void ADunDefPlayerAbility_InstantUpgradeTower::ScaleForHeroModifiers(bool IsFirs
 // Parameters:
 // class ADunDefTower*            Tower                          (Parm)
 // int                            theNextUpgradeLevel            (OptionalParm, Parm, OutParm)
-// bool                           bDontCountMana                 (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bDontCountMana                 (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_InstantUpgradeTower::IsValidUpgradeTower(class ADunDefTower* Tower, bool bDontCountMana, int* theNextUpgradeLevel)
+unsigned long ADunDefPlayerAbility_InstantUpgradeTower::IsValidUpgradeTower(class ADunDefTower* Tower, unsigned long bDontCountMana, int* theNextUpgradeLevel)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_InstantUpgradeTower.IsValidUpgradeTower");
 
@@ -19544,10 +19544,10 @@ void ADunDefPlayerAbility_InvisibilityAOE::RemoveEffect(int Index)
 // Function DunDefSpecial.DunDefPlayerAbility_MoveTower.GetCostToActivate
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           returnTrueValue                (OptionalParm, Parm)
+// unsigned long                  returnTrueValue                (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int ADunDefPlayerAbility_MoveTower::GetCostToActivate(bool returnTrueValue)
+int ADunDefPlayerAbility_MoveTower::GetCostToActivate(unsigned long returnTrueValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_MoveTower.GetCostToActivate");
 
@@ -19711,11 +19711,11 @@ void ADunDefPlayerAbility_MoveTower::ClientStartMovingState(class ADunDefTower* 
 // Function DunDefSpecial.DunDefPlayerAbility_MoveTower.ServerReceivePlacementState
 // (Defined, Net, Public, NetServer)
 // Parameters:
-// bool                           bIsValidPlacement              (Parm)
+// unsigned long                  bIsValidPlacement              (Parm)
 // struct FVector                 tPlacementLocation             (Parm)
 // struct FRotator                tPlacementRotation             (Parm)
 
-void ADunDefPlayerAbility_MoveTower::ServerReceivePlacementState(bool bIsValidPlacement, const struct FVector& tPlacementLocation, const struct FRotator& tPlacementRotation)
+void ADunDefPlayerAbility_MoveTower::ServerReceivePlacementState(unsigned long bIsValidPlacement, const struct FVector& tPlacementLocation, const struct FRotator& tPlacementRotation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_MoveTower.ServerReceivePlacementState");
 
@@ -19777,10 +19777,10 @@ void ADunDefPlayerAbility_MoveTower::UpdateDecalPlacement(float DeltaTime)
 // Parameters:
 // struct FVector                 placementPos                   (Parm)
 // int                            PlacementDeniedReason          (OptionalParm, Parm, OutParm)
-// bool                           bOnlyCheckVolumes              (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bOnlyCheckVolumes              (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_MoveTower::AllowTowerPlacementPosition(const struct FVector& placementPos, bool bOnlyCheckVolumes, int* PlacementDeniedReason)
+unsigned long ADunDefPlayerAbility_MoveTower::AllowTowerPlacementPosition(const struct FVector& placementPos, unsigned long bOnlyCheckVolumes, int* PlacementDeniedReason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_MoveTower.AllowTowerPlacementPosition");
 
@@ -19825,9 +19825,9 @@ float ADunDefPlayerAbility_MoveTower::GetOtherMoveAbilityTowerRadius()
 // Function DunDefSpecial.DunDefPlayerAbility_MoveTower.IsInPlacingTowerState
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_MoveTower::IsInPlacingTowerState()
+unsigned long ADunDefPlayerAbility_MoveTower::IsInPlacingTowerState()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_MoveTower.IsInPlacingTowerState");
 
@@ -19846,9 +19846,9 @@ bool ADunDefPlayerAbility_MoveTower::IsInPlacingTowerState()
 // Function DunDefSpecial.DunDefPlayerAbility_MoveTower.IsTowerPhysical
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_MoveTower::IsTowerPhysical()
+unsigned long ADunDefPlayerAbility_MoveTower::IsTowerPhysical()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_MoveTower.IsTowerPhysical");
 
@@ -19970,13 +19970,13 @@ void ADunDefPlayerAbility_MoveTower::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefPlayerAbility_MoveTower::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefPlayerAbility_MoveTower::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_MoveTower.ExecReplicatedFunction");
 
@@ -20054,10 +20054,10 @@ TEnumAsByte<EPlayerAbilityStatus> ADunDefPlayerAbility_SummonCommand::GetAbility
 // Function DunDefSpecial.DunDefPlayerAbility_SummonCommand.RequestActivation
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bHeld                          (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bHeld                          (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_SummonCommand::RequestActivation(bool bHeld)
+unsigned long ADunDefPlayerAbility_SummonCommand::RequestActivation(unsigned long bHeld)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_SummonCommand.RequestActivation");
 
@@ -20111,9 +20111,9 @@ void ADunDefPlayerAbility_SummonCommand::StartTowerPlacingAnimation()
 // Function DunDefSpecial.DunDefPlayerAbility_SummonCommand.AllowCastingCancelOnDamage
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_SummonCommand::AllowCastingCancelOnDamage()
+unsigned long ADunDefPlayerAbility_SummonCommand::AllowCastingCancelOnDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_SummonCommand.AllowCastingCancelOnDamage");
 
@@ -20370,9 +20370,9 @@ void ADunDefPlayerAbility_PhaseShiftOverlord::DoMovementCommand(TArray<class ADu
 // (Defined, Simulated, Public, HasDefaults)
 // Parameters:
 // class ADunDefHUD*              H                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_PhaseShiftOverlord::DrawCastingHUD(class ADunDefHUD* H)
+unsigned long ADunDefPlayerAbility_PhaseShiftOverlord::DrawCastingHUD(class ADunDefHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_PhaseShiftOverlord.DrawCastingHUD");
 
@@ -20392,10 +20392,10 @@ bool ADunDefPlayerAbility_PhaseShiftOverlord::DrawCastingHUD(class ADunDefHUD* H
 // Function DunDefSpecial.DunDefPlayerAbility_PhaseShiftOverlord.RequestActivation
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bHeld                          (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bHeld                          (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_PhaseShiftOverlord::RequestActivation(bool bHeld)
+unsigned long ADunDefPlayerAbility_PhaseShiftOverlord::RequestActivation(unsigned long bHeld)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_PhaseShiftOverlord.RequestActivation");
 
@@ -20440,10 +20440,10 @@ TEnumAsByte<EPlayerAbilityStatus> ADunDefPlayerAbility_PhaseShiftOverlord::GetAb
 // Function DunDefSpecial.DunDefPlayerAbility_PhaseShiftOverlord.RequestCancellation
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bForce                         (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bForce                         (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_PhaseShiftOverlord::RequestCancellation(bool bForce)
+unsigned long ADunDefPlayerAbility_PhaseShiftOverlord::RequestCancellation(unsigned long bForce)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_PhaseShiftOverlord.RequestCancellation");
 
@@ -20548,9 +20548,9 @@ void ADunDefPlayerAbility_SelectSummonUnits::StartTowerPlacingAnimation()
 // Function DunDefSpecial.DunDefPlayerAbility_SelectSummonUnits.AllowCastingCancelOnDamage
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_SelectSummonUnits::AllowCastingCancelOnDamage()
+unsigned long ADunDefPlayerAbility_SelectSummonUnits::AllowCastingCancelOnDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_SelectSummonUnits.AllowCastingCancelOnDamage");
 
@@ -20773,9 +20773,9 @@ TEnumAsByte<EPlayerAbilityStatus> ADunDefPlayerAbility_SlamDash::GetAbilityStatu
 // Function DunDefSpecial.DunDefPlayerAbility_SlamDash.ConsumesInputWhenActive
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_SlamDash::ConsumesInputWhenActive()
+unsigned long ADunDefPlayerAbility_SlamDash::ConsumesInputWhenActive()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_SlamDash.ConsumesInputWhenActive");
 
@@ -20794,9 +20794,9 @@ bool ADunDefPlayerAbility_SlamDash::ConsumesInputWhenActive()
 // Function DunDefSpecial.DunDefPlayerAbility_SlamDash.AllowUsageDuringCastingStates
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_SlamDash::AllowUsageDuringCastingStates()
+unsigned long ADunDefPlayerAbility_SlamDash::AllowUsageDuringCastingStates()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_SlamDash.AllowUsageDuringCastingStates");
 
@@ -20911,13 +20911,13 @@ void ADunDefPlayerAbility_SlamDash::PushCheck()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefPlayerAbility_SlamDash::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefPlayerAbility_SlamDash::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_SlamDash.ExecReplicatedFunction");
 
@@ -21029,9 +21029,9 @@ void ADunDefPlayerAbility_StanceOnDmgEffect::ResetWeaponDamage()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceOnDmgEffect.StopOffHandWeaponDamage
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceOnDmgEffect::StopOffHandWeaponDamage()
+unsigned long ADunDefPlayerAbility_StanceOnDmgEffect::StopOffHandWeaponDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceOnDmgEffect.StopOffHandWeaponDamage");
 
@@ -21050,9 +21050,9 @@ bool ADunDefPlayerAbility_StanceOnDmgEffect::StopOffHandWeaponDamage()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceOnDmgEffect.StopWeaponDamage
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceOnDmgEffect::StopWeaponDamage()
+unsigned long ADunDefPlayerAbility_StanceOnDmgEffect::StopWeaponDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceOnDmgEffect.StopWeaponDamage");
 
@@ -21071,9 +21071,9 @@ bool ADunDefPlayerAbility_StanceOnDmgEffect::StopWeaponDamage()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceOnDmgEffect.StartOffHandWeaponDamage
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceOnDmgEffect::StartOffHandWeaponDamage()
+unsigned long ADunDefPlayerAbility_StanceOnDmgEffect::StartOffHandWeaponDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceOnDmgEffect.StartOffHandWeaponDamage");
 
@@ -21092,9 +21092,9 @@ bool ADunDefPlayerAbility_StanceOnDmgEffect::StartOffHandWeaponDamage()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceOnDmgEffect.StartWeaponDamage
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceOnDmgEffect::StartWeaponDamage()
+unsigned long ADunDefPlayerAbility_StanceOnDmgEffect::StartWeaponDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceOnDmgEffect.StartWeaponDamage");
 
@@ -21214,9 +21214,9 @@ void ADunDefPlayerAbility_StanceLightning::ClearStunnedList()
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
 // class ADunDefEnemy*            stunRemoval                    (Parm)
-// bool                           bDontReplicate                 (OptionalParm, Parm)
+// unsigned long                  bDontReplicate                 (OptionalParm, Parm)
 
-void ADunDefPlayerAbility_StanceLightning::RemoveStunnedActor(class ADunDefEnemy* stunRemoval, bool bDontReplicate)
+void ADunDefPlayerAbility_StanceLightning::RemoveStunnedActor(class ADunDefEnemy* stunRemoval, unsigned long bDontReplicate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceLightning.RemoveStunnedActor");
 
@@ -21336,9 +21336,9 @@ struct FVector ADunDefPlayerAbility_StanceLightning::GetLastChainPos()
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefEnemy*            stunTest                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceLightning::CanStun(class ADunDefEnemy* stunTest)
+unsigned long ADunDefPlayerAbility_StanceLightning::CanStun(class ADunDefEnemy* stunTest)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceLightning.CanStun");
 
@@ -21369,13 +21369,13 @@ bool ADunDefPlayerAbility_StanceLightning::CanStun(class ADunDefEnemy* stunTest)
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefPlayerAbility_StanceLightning::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefPlayerAbility_StanceLightning::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceLightning.ExecReplicatedFunction");
 
@@ -21433,9 +21433,9 @@ TEnumAsByte<EPlayerAbilityStatus> ADunDefPlayerAbility_StanceSpecialAttack::GetA
 // Function DunDefSpecial.DunDefPlayerAbility_StanceSpecialAttack.StopOffHandWeaponDamage
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceSpecialAttack::StopOffHandWeaponDamage()
+unsigned long ADunDefPlayerAbility_StanceSpecialAttack::StopOffHandWeaponDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceSpecialAttack.StopOffHandWeaponDamage");
 
@@ -21454,9 +21454,9 @@ bool ADunDefPlayerAbility_StanceSpecialAttack::StopOffHandWeaponDamage()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceSpecialAttack.StopWeaponDamage
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceSpecialAttack::StopWeaponDamage()
+unsigned long ADunDefPlayerAbility_StanceSpecialAttack::StopWeaponDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceSpecialAttack.StopWeaponDamage");
 
@@ -21475,9 +21475,9 @@ bool ADunDefPlayerAbility_StanceSpecialAttack::StopWeaponDamage()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceSpecialAttack.StartOffHandWeaponDamage
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceSpecialAttack::StartOffHandWeaponDamage()
+unsigned long ADunDefPlayerAbility_StanceSpecialAttack::StartOffHandWeaponDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceSpecialAttack.StartOffHandWeaponDamage");
 
@@ -21496,9 +21496,9 @@ bool ADunDefPlayerAbility_StanceSpecialAttack::StartOffHandWeaponDamage()
 // Function DunDefSpecial.DunDefPlayerAbility_StanceSpecialAttack.StartWeaponDamage
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_StanceSpecialAttack::StartWeaponDamage()
+unsigned long ADunDefPlayerAbility_StanceSpecialAttack::StartWeaponDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceSpecialAttack.StartWeaponDamage");
 
@@ -21776,10 +21776,10 @@ TEnumAsByte<EPlayerAbilityStatus> ADunDefPlayerAbility_WheeloFortuna::GetAbility
 // Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.GetCostToActivate
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           returnTrueValue                (OptionalParm, Parm)
+// unsigned long                  returnTrueValue                (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int ADunDefPlayerAbility_WheeloFortuna::GetCostToActivate(bool returnTrueValue)
+int ADunDefPlayerAbility_WheeloFortuna::GetCostToActivate(unsigned long returnTrueValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.GetCostToActivate");
 
@@ -21929,9 +21929,9 @@ void ADunDefPlayerAbility_WheeloFortuna::GoldEnemy(class ADunDefEnemy* Enemy)
 // (Defined, Public)
 // Parameters:
 // struct FGlyphPattern           thePattern                     (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_WheeloFortuna::DoGolding(const struct FGlyphPattern& thePattern)
+unsigned long ADunDefPlayerAbility_WheeloFortuna::DoGolding(const struct FGlyphPattern& thePattern)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.DoGolding");
 
@@ -22174,9 +22174,9 @@ void ADunDefPlayerAbility_WheeloFortuna::FinishSelection()
 // (Defined, Simulated, Public, HasDefaults)
 // Parameters:
 // struct FGlyphPattern           CheckPattern                   (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_WheeloFortuna::CheckPattern(const struct FGlyphPattern& CheckPattern)
+unsigned long ADunDefPlayerAbility_WheeloFortuna::CheckPattern(const struct FGlyphPattern& CheckPattern)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.CheckPattern");
 
@@ -22262,9 +22262,9 @@ float ADunDefPlayerAbility_WheeloFortuna::GetPawnBoostAmount(TEnumAsByte<EPawnBo
 // (Defined, Public, HasDefaults)
 // Parameters:
 // TEnumAsByte<EPawnBoostType>    boostType                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_WheeloFortuna::HasPawnBoostingType(TEnumAsByte<EPawnBoostType> boostType)
+unsigned long ADunDefPlayerAbility_WheeloFortuna::HasPawnBoostingType(TEnumAsByte<EPawnBoostType> boostType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.HasPawnBoostingType");
 
@@ -22366,13 +22366,13 @@ void ADunDefPlayerAbility_WheeloFortuna::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefPlayerAbility_WheeloFortuna::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefPlayerAbility_WheeloFortuna::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.ExecReplicatedFunction");
 
@@ -22405,9 +22405,9 @@ void ADunDefPlayerAbility_WheeloFortuna::ExecReplicatedFunction(const struct FNa
 // Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.ConsumesInputWhenActive
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_WhirlWind::ConsumesInputWhenActive()
+unsigned long ADunDefPlayerAbility_WhirlWind::ConsumesInputWhenActive()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.ConsumesInputWhenActive");
 
@@ -22429,9 +22429,9 @@ bool ADunDefPlayerAbility_WhirlWind::ConsumesInputWhenActive()
 // TScriptInterface<class UIActorModifierInterface> ActorStatObject                (Parm)
 // class UObject*                 CallingObject                  (OptionalParm, Parm)
 // int                            Tier                           (OptionalParm, Parm)
-// bool                           bBaseValueOnly                 (OptionalParm, Parm)
+// unsigned long                  bBaseValueOnly                 (OptionalParm, Parm)
 
-void ADunDefPlayerAbility_WhirlWind::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly)
+void ADunDefPlayerAbility_WhirlWind::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.InitalizeActorStats");
 
@@ -22453,9 +22453,9 @@ void ADunDefPlayerAbility_WhirlWind::InitalizeActorStats(const TScriptInterface<
 // (Defined, Simulated, Public)
 // Parameters:
 // class AActor*                  theAct                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_WhirlWind::CanAffect(class AActor* theAct)
+unsigned long ADunDefPlayerAbility_WhirlWind::CanAffect(class AActor* theAct)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.CanAffect");
 
@@ -22495,9 +22495,9 @@ void ADunDefPlayerAbility_WhirlWind::SetElementalVFX(TEnumAsByte<EElementTrait> 
 // Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.AbilityReleased
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_WhirlWind::AbilityReleased()
+unsigned long ADunDefPlayerAbility_WhirlWind::AbilityReleased()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.AbilityReleased");
 
@@ -22516,9 +22516,9 @@ bool ADunDefPlayerAbility_WhirlWind::AbilityReleased()
 // Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.AbilityPressed
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPlayerAbility_WhirlWind::AbilityPressed()
+unsigned long ADunDefPlayerAbility_WhirlWind::AbilityPressed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_WhirlWind.AbilityPressed");
 
@@ -22816,9 +22816,9 @@ void ADunDefProjectileHoming_Piercing_GroundBound::PostBeginPlay()
 // Function DunDefSpecial.DunDefProjectileHoming_Piercing_GroundBound_Pulse.DoPulse
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           bForce                         (OptionalParm, Parm)
+// unsigned long                  bForce                         (OptionalParm, Parm)
 
-void ADunDefProjectileHoming_Piercing_GroundBound_Pulse::DoPulse(bool bForce)
+void ADunDefProjectileHoming_Piercing_GroundBound_Pulse::DoPulse(unsigned long bForce)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefProjectileHoming_Piercing_GroundBound_Pulse.DoPulse");
 
@@ -22882,9 +22882,9 @@ void ADunDefProjectileHoming_Piercing_GroundBound_Pulse::InitProjectile(const st
 // (Defined, Simulated, Public)
 // Parameters:
 // class AActor*                  Other                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefProjectileHoming_Piercing_GroundBound_Pulse::IsImpactAllowed(class AActor* Other)
+unsigned long ADunDefProjectileHoming_Piercing_GroundBound_Pulse::IsImpactAllowed(class AActor* Other)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefProjectileHoming_Piercing_GroundBound_Pulse.IsImpactAllowed");
 
@@ -22907,9 +22907,9 @@ bool ADunDefProjectileHoming_Piercing_GroundBound_Pulse::IsImpactAllowed(class A
 // TScriptInterface<class UIActorModifierInterface> ActorStatObject                (Parm)
 // class UObject*                 CallingObject                  (OptionalParm, Parm)
 // int                            Tier                           (OptionalParm, Parm)
-// bool                           bBaseValueOnly                 (OptionalParm, Parm)
+// unsigned long                  bBaseValueOnly                 (OptionalParm, Parm)
 
-void ADunDefProjectileHoming_Piercing_GroundBound_Pulse::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly)
+void ADunDefProjectileHoming_Piercing_GroundBound_Pulse::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefProjectileHoming_Piercing_GroundBound_Pulse.InitalizeActorStats");
 
@@ -22947,9 +22947,9 @@ void ADunDefProjectile_Orb::Destroyed()
 // Function DunDefSpecial.DunDefProjectile_Orb.DoPulse
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           bForce                         (OptionalParm, Parm)
+// unsigned long                  bForce                         (OptionalParm, Parm)
 
-void ADunDefProjectile_Orb::DoPulse(bool bForce)
+void ADunDefProjectile_Orb::DoPulse(unsigned long bForce)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefProjectile_Orb.DoPulse");
 
@@ -22967,9 +22967,9 @@ void ADunDefProjectile_Orb::DoPulse(bool bForce)
 // Function DunDefSpecial.DunDefProjectile_Orb.IsTargetsInRange
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefProjectile_Orb::IsTargetsInRange()
+unsigned long ADunDefProjectile_Orb::IsTargetsInRange()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefProjectile_Orb.IsTargetsInRange");
 
@@ -23030,9 +23030,9 @@ void ADunDefProjectile_Orb::CheckGround()
 // TScriptInterface<class UIActorModifierInterface> ActorStatObject                (Parm)
 // class UObject*                 CallingObject                  (OptionalParm, Parm)
 // int                            Tier                           (OptionalParm, Parm)
-// bool                           bBaseValueOnly                 (OptionalParm, Parm)
+// unsigned long                  bBaseValueOnly                 (OptionalParm, Parm)
 
-void ADunDefProjectile_Orb::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly)
+void ADunDefProjectile_Orb::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefProjectile_Orb.InitalizeActorStats");
 
@@ -23077,10 +23077,10 @@ void ADunDefProjectile_Orb::PostBeginPlay()
 // struct FVector                 HurtOrigin                     (Parm)
 // class AActor*                  IgnoredActor                   (OptionalParm, Parm)
 // class AController*             InstigatedByController         (OptionalParm, Parm)
-// bool                           bDoFullDamage                  (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bDoFullDamage                  (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPurifyingBomb::HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, bool bDoFullDamage)
+unsigned long ADunDefPurifyingBomb::HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, unsigned long bDoFullDamage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPurifyingBomb.HurtRadius");
 
@@ -23131,9 +23131,9 @@ float ADunDefTower_BoostAura::GetTowerBoostAmount(TEnumAsByte<ETowerBoostType> b
 // (Defined, Simulated, Public)
 // Parameters:
 // TEnumAsByte<ETowerBoostType>   boostType                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_BoostAura::HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType)
+unsigned long ADunDefTower_BoostAura::HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_BoostAura.HasTowerBoostingType");
 
@@ -23253,9 +23253,9 @@ float ADunDefTower_BoostAura::GetAttackDamage()
 // Function DunDefSpecial.DunDefTower_BoostAura.ScaleForHeroModifiers
 // (Defined, Public)
 // Parameters:
-// bool                           IsFirstTime                    (Parm)
+// unsigned long                  IsFirstTime                    (Parm)
 
-void ADunDefTower_BoostAura::ScaleForHeroModifiers(bool IsFirstTime)
+void ADunDefTower_BoostAura::ScaleForHeroModifiers(unsigned long IsFirstTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_BoostAura.ScaleForHeroModifiers");
 
@@ -23368,9 +23368,9 @@ void ADunDefTower_BoostAura::EntryEffectDT(class ADunDefDamageableTarget* dt)
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefDamageableTarget* dt                             (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_BoostAura::AttacksDT(class ADunDefDamageableTarget* dt)
+unsigned long ADunDefTower_BoostAura::AttacksDT(class ADunDefDamageableTarget* dt)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_BoostAura.AttacksDT");
 
@@ -23431,9 +23431,9 @@ void ADunDefTower_BoostAura::UnTouch(class AActor* Other)
 // (Defined, Simulated, Public)
 // Parameters:
 // TScriptInterface<class UDunDefTargetableInterface> aTarget                        (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_BoostAura::CanTargetInvisibleTarget(const TScriptInterface<class UDunDefTargetableInterface>& aTarget)
+unsigned long ADunDefTower_BoostAura::CanTargetInvisibleTarget(const TScriptInterface<class UDunDefTargetableInterface>& aTarget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_BoostAura.CanTargetInvisibleTarget");
 
@@ -23524,13 +23524,13 @@ void ADunDefTower_BoostAura::Timer()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefTower_BoostAura::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefTower_BoostAura::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_BoostAura.ExecReplicatedFunction");
 
@@ -23600,9 +23600,9 @@ void ADunDefTower_TripTowerBuff::RefreshBoosts()
 // Function DunDefSpecial.DunDefTower_TripTowerBuff.ScaleForHeroModifiers
 // (Defined, Public)
 // Parameters:
-// bool                           IsFirstTime                    (Parm)
+// unsigned long                  IsFirstTime                    (Parm)
 
-void ADunDefTower_TripTowerBuff::ScaleForHeroModifiers(bool IsFirstTime)
+void ADunDefTower_TripTowerBuff::ScaleForHeroModifiers(unsigned long IsFirstTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripTowerBuff.ScaleForHeroModifiers");
 
@@ -23691,10 +23691,10 @@ struct FString ADunDefTower_TripTowerBuff::GetToolTipText()
 // Function DunDefSpecial.DunDefTower_TripTowerBuff.NeedsRepair
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           requireFullHealth              (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  requireFullHealth              (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripTowerBuff::NeedsRepair(bool requireFullHealth)
+unsigned long ADunDefTower_TripTowerBuff::NeedsRepair(unsigned long requireFullHealth)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripTowerBuff.NeedsRepair");
 
@@ -23881,9 +23881,9 @@ void ADunDefTower_TripTowerBuff::CheckTowers()
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefTower*            towerCheck                     (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripTowerBuff::CanAffectTower(class ADunDefTower* towerCheck)
+unsigned long ADunDefTower_TripTowerBuff::CanAffectTower(class ADunDefTower* towerCheck)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripTowerBuff.CanAffectTower");
 
@@ -23904,9 +23904,9 @@ bool ADunDefTower_TripTowerBuff::CanAffectTower(class ADunDefTower* towerCheck)
 // (Defined, Simulated, HasOptionalParms, Public, HasDefaults)
 // Parameters:
 // float                          dt                             (Parm)
-// bool                           bForceDamage                   (OptionalParm, Parm)
+// unsigned long                  bForceDamage                   (OptionalParm, Parm)
 
-void ADunDefTower_TripTowerBuff::DoTracing(float dt, bool bForceDamage)
+void ADunDefTower_TripTowerBuff::DoTracing(float dt, unsigned long bForceDamage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripTowerBuff.DoTracing");
 
@@ -23949,9 +23949,9 @@ float ADunDefTower_TripTowerBuff::GetTowerBoostAmount(TEnumAsByte<ETowerBoostTyp
 // (Defined, Simulated, Public)
 // Parameters:
 // TEnumAsByte<ETowerBoostType>   boostType                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_TripTowerBuff::HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType)
+unsigned long ADunDefTower_TripTowerBuff::HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripTowerBuff.HasTowerBoostingType");
 
@@ -24003,13 +24003,13 @@ TScriptInterface<class UDunDefTargetableInterface> ADunDefTower_TripTowerBuff::G
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefTower_TripTowerBuff::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefTower_TripTowerBuff::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_TripTowerBuff.ExecReplicatedFunction");
 
@@ -24042,9 +24042,9 @@ void ADunDefTower_TripTowerBuff::ExecReplicatedFunction(const struct FName& Func
 // Function DunDefSpecial.DunDefTower_BuffSpawner.ChangedGamePhases
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           IsCombatPhase                  (Parm)
+// unsigned long                  IsCombatPhase                  (Parm)
 
-void ADunDefTower_BuffSpawner::ChangedGamePhases(bool IsCombatPhase)
+void ADunDefTower_BuffSpawner::ChangedGamePhases(unsigned long IsCombatPhase)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_BuffSpawner.ChangedGamePhases");
 
@@ -24065,9 +24065,9 @@ void ADunDefTower_BuffSpawner::ChangedGamePhases(bool IsCombatPhase)
 // class ADunDefPlayerController* PC                             (Parm)
 // class ADunDefTower*            towerArch                      (Parm)
 // struct FVector                 Point                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_BuffSpawner::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point)
+unsigned long ADunDefTower_BuffSpawner::AllowTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_BuffSpawner.AllowTowerAtPoint");
 
@@ -24089,9 +24089,9 @@ bool ADunDefTower_BuffSpawner::AllowTowerAtPoint(class ADunDefPlayerController* 
 // Function DunDefSpecial.DunDefTower_BuffSpawner.CheckAllowance
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_BuffSpawner::CheckAllowance()
+unsigned long ADunDefTower_BuffSpawner::CheckAllowance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_BuffSpawner.CheckAllowance");
 
@@ -24114,9 +24114,9 @@ bool ADunDefTower_BuffSpawner::CheckAllowance()
 // class ADunDefTower*            towerArch                      (Parm)
 // struct FVector                 Point                          (Parm)
 // float                          towerRadius                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_BuffSpawner::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius)
+unsigned long ADunDefTower_BuffSpawner::PreventTowerAtPoint(class ADunDefPlayerController* PC, class ADunDefTower* towerArch, const struct FVector& Point, float towerRadius)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_BuffSpawner.PreventTowerAtPoint");
 
@@ -24139,9 +24139,9 @@ bool ADunDefTower_BuffSpawner::PreventTowerAtPoint(class ADunDefPlayerController
 // Function DunDefSpecial.DunDefTower_BuffSpawner.IsPhysicalTower
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_BuffSpawner::IsPhysicalTower()
+unsigned long ADunDefTower_BuffSpawner::IsPhysicalTower()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_BuffSpawner.IsPhysicalTower");
 
@@ -24283,9 +24283,9 @@ float ADunDefTower_BuffSpawner::GetAttackDamage()
 // Function DunDefSpecial.DunDefTower_BuffSpawner.ScaleForHeroModifiers
 // (Defined, Public)
 // Parameters:
-// bool                           IsFirstTime                    (Parm)
+// unsigned long                  IsFirstTime                    (Parm)
 
-void ADunDefTower_BuffSpawner::ScaleForHeroModifiers(bool IsFirstTime)
+void ADunDefTower_BuffSpawner::ScaleForHeroModifiers(unsigned long IsFirstTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_BuffSpawner.ScaleForHeroModifiers");
 
@@ -24361,9 +24361,9 @@ void ADunDefTower_BuffSpawner::AddBuffsToTarget(class AActor* Other)
 // (Defined, Simulated, Public)
 // Parameters:
 // class AActor*                  Other                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_BuffSpawner::CanAffectTarget(class AActor* Other)
+unsigned long ADunDefTower_BuffSpawner::CanAffectTarget(class AActor* Other)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_BuffSpawner.CanAffectTarget");
 
@@ -24528,13 +24528,13 @@ void ADunDefTower_BuffSpawner::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefTower_BuffSpawner::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefTower_BuffSpawner::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_BuffSpawner.ExecReplicatedFunction");
 
@@ -24797,10 +24797,10 @@ void ADunDefTower_Present::DrawTowerToolTipStats(class UCanvas* C, float Opacity
 // Parameters:
 // class ADunDefTower*            TowerArchetype                 (Parm)
 // struct FVector                 placementPos                   (Parm)
-// bool                           bOnlyCheckVolumes              (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bOnlyCheckVolumes              (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_Present::AllowTowerSpawnAtLoc(class ADunDefTower* TowerArchetype, const struct FVector& placementPos, bool bOnlyCheckVolumes)
+unsigned long ADunDefTower_Present::AllowTowerSpawnAtLoc(class ADunDefTower* TowerArchetype, const struct FVector& placementPos, unsigned long bOnlyCheckVolumes)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_Present.AllowTowerSpawnAtLoc");
 
@@ -24864,9 +24864,9 @@ void ADunDefTower_Present::DoEnemySpawn(const struct FspawnChances& spawnChance)
 // Parameters:
 // struct FspawnChances           spawnChance                    (Parm)
 // struct FVector                 HitLoc                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_Present::DoTowerSpawn(const struct FspawnChances& spawnChance, const struct FVector& HitLoc)
+unsigned long ADunDefTower_Present::DoTowerSpawn(const struct FspawnChances& spawnChance, const struct FVector& HitLoc)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_Present.DoTowerSpawn");
 
@@ -24888,9 +24888,9 @@ bool ADunDefTower_Present::DoTowerSpawn(const struct FspawnChances& spawnChance,
 // (Defined, Public, HasDefaults)
 // Parameters:
 // struct FVector                 HitLocation                    (Parm)
-// bool                           bSpawnOgresInLobby             (Parm)
+// unsigned long                  bSpawnOgresInLobby             (Parm)
 
-void ADunDefTower_Present::DoPresentSpawn(const struct FVector& HitLocation, bool bSpawnOgresInLobby)
+void ADunDefTower_Present::DoPresentSpawn(const struct FVector& HitLocation, unsigned long bSpawnOgresInLobby)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_Present.DoPresentSpawn");
 
@@ -24911,9 +24911,9 @@ void ADunDefTower_Present::DoPresentSpawn(const struct FVector& HitLocation, boo
 // Parameters:
 // int                            Idx                            (Parm)
 // struct FspawnChances           spawnChance                    (Parm, OutParm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_Present::PickActor(int Idx, struct FspawnChances* spawnChance)
+unsigned long ADunDefTower_Present::PickActor(int Idx, struct FspawnChances* spawnChance)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_Present.PickActor");
 
@@ -24979,9 +24979,9 @@ void ADunDefTower_Present::Died(class AController* EventInstigator, const struct
 // Function DunDefSpecial.DunDefTower_Present.ChangedGamePhases
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           IsCombatPhase                  (Parm)
+// unsigned long                  IsCombatPhase                  (Parm)
 
-void ADunDefTower_Present::ChangedGamePhases(bool IsCombatPhase)
+void ADunDefTower_Present::ChangedGamePhases(unsigned long IsCombatPhase)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_Present.ChangedGamePhases");
 
@@ -24999,9 +24999,9 @@ void ADunDefTower_Present::ChangedGamePhases(bool IsCombatPhase)
 // Function DunDefSpecial.DunDefTower_ProjectileReflect.IsPhysicalTower
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_ProjectileReflect::IsPhysicalTower()
+unsigned long ADunDefTower_ProjectileReflect::IsPhysicalTower()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.IsPhysicalTower");
 
@@ -25164,9 +25164,9 @@ void ADunDefTower_ProjectileReflect::Touch(class AActor* Other, class UPrimitive
 // Function DunDefSpecial.DunDefTower_WebWall.ScaleForHeroModifiers
 // (Defined, Public)
 // Parameters:
-// bool                           IsFirstTime                    (Parm)
+// unsigned long                  IsFirstTime                    (Parm)
 
-void ADunDefTower_WebWall::ScaleForHeroModifiers(bool IsFirstTime)
+void ADunDefTower_WebWall::ScaleForHeroModifiers(unsigned long IsFirstTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_WebWall.ScaleForHeroModifiers");
 
@@ -25251,9 +25251,9 @@ void ADunDefTower_WebWall::DrawTowerToolTipStats(class UCanvas* C, float Opacity
 // (Defined, Public)
 // Parameters:
 // class AActor*                  Other                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_WebWall::CheckTouchingActor(class AActor* Other)
+unsigned long ADunDefTower_WebWall::CheckTouchingActor(class AActor* Other)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_WebWall.CheckTouchingActor");
 
@@ -25349,9 +25349,9 @@ void ADunDefTower_WebWall::TakeDamage(int DamageAmount, class AController* Event
 // Function DunDefSpecial.DunDefTower_WebWall.IsPhysicalTower
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTower_WebWall::IsPhysicalTower()
+unsigned long ADunDefTower_WebWall::IsPhysicalTower()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_WebWall.IsPhysicalTower");
 
@@ -25450,10 +25450,10 @@ void ADunDefTower_WebWall::PostBeginPlay()
 // Function DunDefSpecial.DunDefTurkey.UpdateDifficultyValues
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           UpdateMaterial                 (OptionalParm, Parm)
-// bool                           onlyDynamicValues              (OptionalParm, Parm)
+// unsigned long                  UpdateMaterial                 (OptionalParm, Parm)
+// unsigned long                  onlyDynamicValues              (OptionalParm, Parm)
 
-void ADunDefTurkey::UpdateDifficultyValues(bool UpdateMaterial, bool onlyDynamicValues)
+void ADunDefTurkey::UpdateDifficultyValues(unsigned long UpdateMaterial, unsigned long onlyDynamicValues)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTurkey.UpdateDifficultyValues");
 
@@ -25548,9 +25548,9 @@ void ADunDefTurkey::StartFlee()
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // float                          NewSpeed                       (Parm)
-// bool                           bUseDifficultyMult             (OptionalParm, Parm)
+// unsigned long                  bUseDifficultyMult             (OptionalParm, Parm)
 
-void ADunDefTurkey::SetGroundSpeed(float NewSpeed, bool bUseDifficultyMult)
+void ADunDefTurkey::SetGroundSpeed(float NewSpeed, unsigned long bUseDifficultyMult)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTurkey.SetGroundSpeed");
 
@@ -25572,9 +25572,9 @@ void ADunDefTurkey::SetGroundSpeed(float NewSpeed, bool bUseDifficultyMult)
 // class AController*             Killer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
 // struct FVector                 HitLocation                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTurkey::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
+unsigned long ADunDefTurkey::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTurkey.Died");
 
@@ -25633,9 +25633,9 @@ void ADunDefTurkey::ReplicatedEvent(const struct FName& VarName)
 // Function DunDefSpecial.DunDefTurkeyController.WantsHurtAnimation
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTurkeyController::WantsHurtAnimation()
+unsigned long ADunDefTurkeyController::WantsHurtAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTurkeyController.WantsHurtAnimation");
 
@@ -25706,9 +25706,9 @@ struct FVector ADunDefTurkeyController::GetWanderPoint()
 // (Defined, Public, HasDefaults)
 // Parameters:
 // class ADunDefPlayer*           fleeFrom                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTurkeyController::DoFlee(class ADunDefPlayer* fleeFrom)
+unsigned long ADunDefTurkeyController::DoFlee(class ADunDefPlayer* fleeFrom)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTurkeyController.DoFlee");
 
@@ -25728,9 +25728,9 @@ bool ADunDefTurkeyController::DoFlee(class ADunDefPlayer* fleeFrom)
 // Function DunDefSpecial.DunDefTurkeyController.CheckPlayers
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTurkeyController::CheckPlayers()
+unsigned long ADunDefTurkeyController::CheckPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTurkeyController.CheckPlayers");
 
@@ -25783,9 +25783,9 @@ void AGameInfo_AroundTheWorld::InitGameReplicationInfo()
 // Function DunDefSpecial.GameInfo_AroundTheWorld.DoWaveSkipping
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           bAllowArbritraryWaveSkipping   (OptionalParm, Parm)
+// unsigned long                  bAllowArbritraryWaveSkipping   (OptionalParm, Parm)
 
-void AGameInfo_AroundTheWorld::DoWaveSkipping(bool bAllowArbritraryWaveSkipping)
+void AGameInfo_AroundTheWorld::DoWaveSkipping(unsigned long bAllowArbritraryWaveSkipping)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.GameInfo_AroundTheWorld.DoWaveSkipping");
 
@@ -25820,9 +25820,9 @@ void AGameInfo_Assault::InitGameReplicationInfo()
 // Function DunDefSpecial.GameInfo_Assault.DoWaveSkipping
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           bAllowArbritraryWaveSkipping   (OptionalParm, Parm)
+// unsigned long                  bAllowArbritraryWaveSkipping   (OptionalParm, Parm)
 
-void AGameInfo_Assault::DoWaveSkipping(bool bAllowArbritraryWaveSkipping)
+void AGameInfo_Assault::DoWaveSkipping(unsigned long bAllowArbritraryWaveSkipping)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.GameInfo_Assault.DoWaveSkipping");
 
@@ -25943,9 +25943,9 @@ void AGameInfo_KillEnemiesTimeLimit::RestartPlayer(class AController* NewPlayer)
 // Function DunDefSpecial.GameInfo_KillEnemiesTimeLimit.DoWaveSkipping
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           bAllowArbritraryWaveSkipping   (OptionalParm, Parm)
+// unsigned long                  bAllowArbritraryWaveSkipping   (OptionalParm, Parm)
 
-void AGameInfo_KillEnemiesTimeLimit::DoWaveSkipping(bool bAllowArbritraryWaveSkipping)
+void AGameInfo_KillEnemiesTimeLimit::DoWaveSkipping(unsigned long bAllowArbritraryWaveSkipping)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.GameInfo_KillEnemiesTimeLimit.DoWaveSkipping");
 
@@ -26263,9 +26263,9 @@ void ASnowManBoss::StopMovement()
 // class AController*             Killer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
 // struct FVector                 HitLocation                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ASnowManBoss::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
+unsigned long ASnowManBoss::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.SnowManBoss.Died");
 
@@ -26433,11 +26433,11 @@ void ASnowManBoss::SpawnSnowShootEffect(const struct FVector& SpawnLoc, const st
 // Function DunDefSpecial.SnowManBoss.GetProjectileSpawnLoc
 // (Defined, Simulated, Public, HasOutParms)
 // Parameters:
-// bool                           bIsLeftSocket                  (Parm)
+// unsigned long                  bIsLeftSocket                  (Parm)
 // struct FVector                 Loc                            (Parm, OutParm)
 // struct FRotator                Rot                            (Parm, OutParm)
 
-void ASnowManBoss::GetProjectileSpawnLoc(bool bIsLeftSocket, struct FVector* Loc, struct FRotator* Rot)
+void ASnowManBoss::GetProjectileSpawnLoc(unsigned long bIsLeftSocket, struct FVector* Loc, struct FRotator* Rot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.SnowManBoss.GetProjectileSpawnLoc");
 
@@ -26574,9 +26574,9 @@ void ASnowManBossController::CheckForCustomAttacks()
 // Function DunDefSpecial.SnowManBossController.WantsHurtAnimation
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ASnowManBossController::WantsHurtAnimation()
+unsigned long ASnowManBossController::WantsHurtAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.SnowManBossController.WantsHurtAnimation");
 
@@ -26625,9 +26625,9 @@ void ASnowManBossController::NotifyTakeHitEX(class AController* InstigatedBy, co
 // Function DunDefSpecial.SnowManBossController.CheckStomp
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ASnowManBossController::CheckStomp()
+unsigned long ASnowManBossController::CheckStomp()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.SnowManBossController.CheckStomp");
 
@@ -26697,9 +26697,9 @@ void ASnowManBossController::DoStomp()
 // Function DunDefSpecial.SnowManBossController.SpawnSnowProjectile
 // (Defined, HasOptionalParms, Public, HasDefaults)
 // Parameters:
-// bool                           bIsLeftSocket                  (OptionalParm, Parm)
+// unsigned long                  bIsLeftSocket                  (OptionalParm, Parm)
 
-void ASnowManBossController::SpawnSnowProjectile(bool bIsLeftSocket)
+void ASnowManBossController::SpawnSnowProjectile(unsigned long bIsLeftSocket)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.SnowManBossController.SpawnSnowProjectile");
 
@@ -26720,9 +26720,9 @@ void ASnowManBossController::SpawnSnowProjectile(bool bIsLeftSocket)
 // class AController*             Killer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
 // struct FVector                 HitLocation                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ATurkeyBoss::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
+unsigned long ATurkeyBoss::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.TurkeyBoss.Died");
 
@@ -26961,9 +26961,9 @@ float ATurkeyBoss::PlayPeckAttack()
 // Function DunDefSpecial.TurkeyBossController.WantsHurtAnimation
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ATurkeyBossController::WantsHurtAnimation()
+unsigned long ATurkeyBossController::WantsHurtAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.TurkeyBossController.WantsHurtAnimation");
 
@@ -27012,9 +27012,9 @@ void ATurkeyBossController::NotifyTakeHitEX(class AController* InstigatedBy, con
 // Function DunDefSpecial.TurkeyBossController.CheckStomp
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ATurkeyBossController::CheckStomp()
+unsigned long ATurkeyBossController::CheckStomp()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.TurkeyBossController.CheckStomp");
 

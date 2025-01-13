@@ -31,7 +31,7 @@ struct ADunDefPortalNode_AllowSpawn_Params
 	class AActor*                                      theArchetype;                                             // (Parm)
 	struct FVector                                     theLoc;                                                   // (Parm)
 	struct FRotator                                    theRot;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefPortal.DunDefPortalNode.FadeOut
@@ -63,9 +63,9 @@ struct ADunDefPortalNode_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -81,14 +81,14 @@ struct ADunDefWeapon_PortalGun_HitBlockingVolume_Params
 {
 	struct FVector                                     Start;                                                    // (Parm)
 	struct FVector                                     End;                                                      // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefPortal.DunDefWeapon_PortalGun.IsInAnyPortalBlockingVolume
 struct ADunDefWeapon_PortalGun_IsInAnyPortalBlockingVolume_Params
 {
 	struct FVector                                     aPoint;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefPortal.DunDefWeapon_PortalGun.Tick
@@ -102,13 +102,13 @@ struct ADunDefWeapon_PortalGun_GetReloadingColors_Params
 {
 	struct FLinearColor                                BarColor;                                                 // (Parm, OutParm)
 	struct FLinearColor                                TextColor;                                                // (Parm, OutParm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefPortal.DunDefWeapon_PortalGun.HasBothPortals
 struct ADunDefWeapon_PortalGun_HasBothPortals_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefPortal.DunDefWeapon_PortalGun.ClearPortal
@@ -147,7 +147,7 @@ struct ADunDefWeapon_PortalGun_ShootProjectiles_Params
 // Function DunDefPortal.DunDefWeapon_PortalGun.HasAnyAmmo
 struct ADunDefWeapon_PortalGun_HasAnyAmmo_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefPortal.DunDefWeapon_PortalGun.BeginFire
@@ -173,13 +173,13 @@ struct ADunDefWeapon_PortalGun_PostBeginPlay_Params
 // Function DunDefPortal.DunDefWeapon_PortalGun.PlayCancelAnimation
 struct ADunDefWeapon_PortalGun_PlayCancelAnimation_Params
 {
-	bool                                               bIsPrimary;                                               // (Parm)
+	unsigned long                                      bIsPrimary;                                               // (Parm)
 };
 
 // Function DunDefPortal.DunDefWeapon_PortalGun.PlayedShootAnimation
 struct ADunDefWeapon_PortalGun_PlayedShootAnimation_Params
 {
-	bool                                               isBigShot;                                                // (OptionalParm, Parm)
+	unsigned long                                      isBigShot;                                                // (OptionalParm, Parm)
 };
 
 // Function DunDefPortal.DunDefWeapon_PortalGun.GetTotalAmmo
@@ -209,7 +209,7 @@ struct ADunDefWeapon_PortalGun_GetAmmoPercent_Params
 // Function DunDefPortal.DunDefWeapon_PortalGun.UsesAmmo
 struct ADunDefWeapon_PortalGun_UsesAmmo_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefPortal.DunDefWeapon_PortalGun.ExecReplicatedFunction
@@ -226,9 +226,9 @@ struct ADunDefWeapon_PortalGun_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };

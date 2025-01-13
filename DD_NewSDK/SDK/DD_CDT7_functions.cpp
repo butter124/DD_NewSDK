@@ -276,9 +276,9 @@ void UHeroEquipment_Familiar_TowerDamageScaling::NotifyEquipment_AnimNotifyAttac
 // Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.ShootProjectile
 // (Defined, HasOptionalParms, Public, HasDefaults)
 // Parameters:
-// bool                           bIsAltProjectile               (OptionalParm, Parm)
+// unsigned long                  bIsAltProjectile               (OptionalParm, Parm)
 
-void UHeroEquipment_Familiar_TowerDamageScaling::ShootProjectile(bool bIsAltProjectile)
+void UHeroEquipment_Familiar_TowerDamageScaling::ShootProjectile(unsigned long bIsAltProjectile)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.ShootProjectile");
 
@@ -367,11 +367,11 @@ void UHeroEquipment_Familiar_TowerDamageScaling::ApplyPrimaryDamageMultiplierDis
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // TEnumAsByte<EEquipmentStatType> equipmentStatType              (Parm)
-// bool                           returnFinalAddedValue          (OptionalParm, Parm)
-// bool                           includeStatLevelUp             (OptionalParm, Parm)
+// unsigned long                  returnFinalAddedValue          (OptionalParm, Parm)
+// unsigned long                  includeStatLevelUp             (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UHeroEquipment_Familiar_TowerDamageScaling::GetEquipmentStatValue(TEnumAsByte<EEquipmentStatType> equipmentStatType, bool returnFinalAddedValue, bool includeStatLevelUp)
+float UHeroEquipment_Familiar_TowerDamageScaling::GetEquipmentStatValue(TEnumAsByte<EEquipmentStatType> equipmentStatType, unsigned long returnFinalAddedValue, unsigned long includeStatLevelUp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.GetEquipmentStatValue");
 
@@ -394,13 +394,13 @@ float UHeroEquipment_Familiar_TowerDamageScaling::GetEquipmentStatValue(TEnumAsB
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // float                          equipmentQuality               (Parm)
-// bool                           doResetStatsToTemplate         (OptionalParm, Parm)
-// bool                           bDontUseMissionRandomizerMultiplier (OptionalParm, Parm)
+// unsigned long                  doResetStatsToTemplate         (OptionalParm, Parm)
+// unsigned long                  bDontUseMissionRandomizerMultiplier (OptionalParm, Parm)
 // float                          RandomizerMultiplierOverride   (OptionalParm, Parm)
-// bool                           bIsForShop                     (OptionalParm, Parm)
-// bool                           bAllowTranscendentGear         (OptionalParm, Parm)
+// unsigned long                  bIsForShop                     (OptionalParm, Parm)
+// unsigned long                  bAllowTranscendentGear         (OptionalParm, Parm)
 
-void UHeroEquipment_Familiar_TowerDamageScaling::AddRandomizeValues(float equipmentQuality, bool doResetStatsToTemplate, bool bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, bool bIsForShop, bool bAllowTranscendentGear)
+void UHeroEquipment_Familiar_TowerDamageScaling::AddRandomizeValues(float equipmentQuality, unsigned long doResetStatsToTemplate, unsigned long bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, unsigned long bIsForShop, unsigned long bAllowTranscendentGear)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.AddRandomizeValues");
 
@@ -425,11 +425,11 @@ void UHeroEquipment_Familiar_TowerDamageScaling::AddRandomizeValues(float equipm
 // Parameters:
 // TEnumAsByte<EEquipmentStatType> EQS                            (Parm)
 // int                            statSubIndex                   (OptionalParm, Parm)
-// bool                           IsInForgeUI                    (OptionalParm, Parm)
-// bool                           bIgnoreManaRequirement         (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  IsInForgeUI                    (OptionalParm, Parm)
+// unsigned long                  bIgnoreManaRequirement         (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UHeroEquipment_Familiar_TowerDamageScaling::AllowStatLevelUp(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, bool IsInForgeUI, bool bIgnoreManaRequirement)
+unsigned long UHeroEquipment_Familiar_TowerDamageScaling::AllowStatLevelUp(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, unsigned long IsInForgeUI, unsigned long bIgnoreManaRequirement)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.AllowStatLevelUp");
 
@@ -452,10 +452,10 @@ bool UHeroEquipment_Familiar_TowerDamageScaling::AllowStatLevelUp(TEnumAsByte<EE
 // Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.GetAttackInterval
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           bIncludeShotsPerSecondExponent (OptionalParm, Parm)
+// unsigned long                  bIncludeShotsPerSecondExponent (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UHeroEquipment_Familiar_TowerDamageScaling::GetAttackInterval(bool bIncludeShotsPerSecondExponent)
+float UHeroEquipment_Familiar_TowerDamageScaling::GetAttackInterval(unsigned long bIncludeShotsPerSecondExponent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.GetAttackInterval");
 
@@ -638,9 +638,9 @@ struct FRotator UHeroEquipment_Familiar_TowerDamageScaling::GetDesiredDirection(
 // Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.ShutDown
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           isDestruction                  (OptionalParm, Parm)
+// unsigned long                  isDestruction                  (OptionalParm, Parm)
 
-void UHeroEquipment_Familiar_TowerDamageScaling::ShutDown(bool isDestruction)
+void UHeroEquipment_Familiar_TowerDamageScaling::ShutDown(unsigned long isDestruction)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.ShutDown");
 
@@ -830,9 +830,9 @@ void UHeroEquipment_Familiar_Melee_TowerScaling::NotifyEquipment_AnimNotifyAttac
 // Function CDT7.HeroEquipment_Familiar_Melee_TowerScaling.ShutDown
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           isDestruction                  (OptionalParm, Parm)
+// unsigned long                  isDestruction                  (OptionalParm, Parm)
 
-void UHeroEquipment_Familiar_Melee_TowerScaling::ShutDown(bool isDestruction)
+void UHeroEquipment_Familiar_Melee_TowerScaling::ShutDown(unsigned long isDestruction)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT7.HeroEquipment_Familiar_Melee_TowerScaling.ShutDown");
 
@@ -936,9 +936,9 @@ void UHeroEquipment_Familiar_Melee_TowerScaling::UpdateAttackSwing(float DeltaTi
 // Parameters:
 // class ADunDefPlayer*           myOwner                        (Parm)
 // class AActor*                  newEntry                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UHeroEquipment_Familiar_Melee_TowerScaling::AddToSwingHurtList(class ADunDefPlayer* myOwner, class AActor* newEntry)
+unsigned long UHeroEquipment_Familiar_Melee_TowerScaling::AddToSwingHurtList(class ADunDefPlayer* myOwner, class AActor* newEntry)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT7.HeroEquipment_Familiar_Melee_TowerScaling.AddToSwingHurtList");
 
@@ -981,9 +981,9 @@ void UHeroEquipment_Familiar_Melee_TowerScaling::TickedByPawn(class ADunDefPlaye
 // Function CDT7.UI_TBR.LaunchMap
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bStartTrueBossRush             (OptionalParm, Parm)
+// unsigned long                  bStartTrueBossRush             (OptionalParm, Parm)
 
-void UUI_TBR::LaunchMap(bool bStartTrueBossRush)
+void UUI_TBR::LaunchMap(unsigned long bStartTrueBossRush)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT7.UI_TBR.LaunchMap");
 
@@ -1002,9 +1002,9 @@ void UUI_TBR::LaunchMap(bool bStartTrueBossRush)
 // (Defined, Simulated, Public)
 // Parameters:
 // class UUIObject*               Widget                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UUI_TBR::WasCheckPointButtonPressed(class UUIObject* Widget)
+unsigned long UUI_TBR::WasCheckPointButtonPressed(class UUIObject* Widget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT7.UI_TBR.WasCheckPointButtonPressed");
 
@@ -1025,9 +1025,9 @@ bool UUI_TBR::WasCheckPointButtonPressed(class UUIObject* Widget)
 // (Defined, Event, Public)
 // Parameters:
 // class UUIObject*               Widget                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UUI_TBR::NotifyWidgetClicked(class UUIObject* Widget)
+unsigned long UUI_TBR::NotifyWidgetClicked(class UUIObject* Widget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT7.UI_TBR.NotifyWidgetClicked");
 
@@ -1064,9 +1064,9 @@ void UUI_TBR::CheckProgress()
 // Function CDT7.UI_TBR.SceneActivated
 // (Defined, Event, Public)
 // Parameters:
-// bool                           bInitialActivation             (Parm)
+// unsigned long                  bInitialActivation             (Parm)
 
-void UUI_TBR::SceneActivated(bool bInitialActivation)
+void UUI_TBR::SceneActivated(unsigned long bInitialActivation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT7.UI_TBR.SceneActivated");
 

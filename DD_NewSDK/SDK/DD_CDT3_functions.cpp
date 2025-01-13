@@ -106,9 +106,9 @@ struct FVector AMultiZoneMinimap::ConvertWorldCoordToCenterMapCoord(const struct
 // Parameters:
 // class APawn*                   PlayerPawn                     (Parm)
 // struct FTexVolumeMap           Vmap                           (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AMultiZoneMinimap::IsTouching(class APawn* PlayerPawn, const struct FTexVolumeMap& Vmap)
+unsigned long AMultiZoneMinimap::IsTouching(class APawn* PlayerPawn, const struct FTexVolumeMap& Vmap)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT3.MultiZoneMinimap.IsTouching");
 

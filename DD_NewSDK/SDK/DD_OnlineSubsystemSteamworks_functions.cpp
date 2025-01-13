@@ -38,9 +38,9 @@ int UOnlineGameInterfaceSteamworks::CreateOnlineGameFailureID()
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FString                 ConnectInfo                    (Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceSteamworks::GetResolvedConnectString(const struct FName& SessionName, struct FString* ConnectInfo)
+unsigned long UOnlineGameInterfaceSteamworks::GetResolvedConnectString(const struct FName& SessionName, struct FString* ConnectInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks.GetResolvedConnectString");
 
@@ -66,9 +66,9 @@ bool UOnlineGameInterfaceSteamworks::GetResolvedConnectString(const struct FName
 // Parameters:
 // int                            StartAt                        (Parm)
 // int                            NumberToQuery                  (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceSteamworks::QueryNonAdvertisedData(int StartAt, int NumberToQuery)
+unsigned long UOnlineGameInterfaceSteamworks::QueryNonAdvertisedData(int StartAt, int NumberToQuery)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks.QueryNonAdvertisedData");
 
@@ -132,9 +132,9 @@ void UOnlineGameInterfaceSteamworks::AddUnregisterPlayerCompleteDelegate(const s
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineGameInterfaceSteamworks::OnUnregisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful)
+void UOnlineGameInterfaceSteamworks::OnUnregisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks.OnUnregisterPlayerComplete");
 
@@ -156,9 +156,9 @@ void UOnlineGameInterfaceSteamworks::OnUnregisterPlayerComplete(const struct FNa
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceSteamworks::UnregisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID)
+unsigned long UOnlineGameInterfaceSteamworks::UnregisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks.UnregisterPlayer");
 
@@ -222,9 +222,9 @@ void UOnlineGameInterfaceSteamworks::AddRegisterPlayerCompleteDelegate(const str
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineGameInterfaceSteamworks::OnRegisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful)
+void UOnlineGameInterfaceSteamworks::OnRegisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks.OnRegisterPlayerComplete");
 
@@ -246,10 +246,10 @@ void UOnlineGameInterfaceSteamworks::OnRegisterPlayerComplete(const struct FName
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           bWasInvited                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bWasInvited                    (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceSteamworks::RegisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasInvited)
+unsigned long UOnlineGameInterfaceSteamworks::RegisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, unsigned long bWasInvited)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks.RegisterPlayer");
 
@@ -275,9 +275,9 @@ bool UOnlineGameInterfaceSteamworks::RegisterPlayer(const struct FName& SessionN
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FName                   SessionName                    (Parm)
 // TArray<int>                    participatingPlayerControllerIds (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceSteamworks::AcceptGameInvite(unsigned char LocalUserNum, const struct FName& SessionName, TArray<int> participatingPlayerControllerIds)
+unsigned long UOnlineGameInterfaceSteamworks::AcceptGameInvite(unsigned char LocalUserNum, const struct FName& SessionName, TArray<int> participatingPlayerControllerIds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks.AcceptGameInvite");
 
@@ -368,10 +368,10 @@ void UOnlineGameInterfaceSteamworks::AddGameInviteAcceptedDelegate(unsigned char
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // class UOnlineGameSettings*     UpdatedGameSettings            (Parm)
-// bool                           bShouldRefreshOnlineData       (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bShouldRefreshOnlineData       (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceSteamworks::UpdateOnlineGame(const struct FName& SessionName, class UOnlineGameSettings* UpdatedGameSettings, bool bShouldRefreshOnlineData)
+unsigned long UOnlineGameInterfaceSteamworks::UpdateOnlineGame(const struct FName& SessionName, class UOnlineGameSettings* UpdatedGameSettings, unsigned long bShouldRefreshOnlineData)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks.UpdateOnlineGame");
 
@@ -434,9 +434,9 @@ void UOnlineSubsystemSteamworks::AddQuerySubscribedDownloadsComplete(const struc
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnQuerySubscribedDownloadsComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnQuerySubscribedDownloadsComplete(bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnQuerySubscribedDownloadsComplete(unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnQuerySubscribedDownloadsComplete");
 
@@ -476,9 +476,9 @@ struct FString UOnlineSubsystemSteamworks::SubscribedDownloadsInformation()
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.QuerySubscribedDownloads
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::QuerySubscribedDownloads()
+unsigned long UOnlineSubsystemSteamworks::QuerySubscribedDownloads()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.QuerySubscribedDownloads");
 
@@ -569,9 +569,9 @@ void UOnlineSubsystemSteamworks::AddQueryAvailableDownloadsComplete(unsigned cha
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnQueryAvailableDownloadsComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnQueryAvailableDownloadsComplete(bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnQueryAvailableDownloadsComplete(unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnQueryAvailableDownloadsComplete");
 
@@ -591,9 +591,9 @@ void UOnlineSubsystemSteamworks::OnQueryAvailableDownloadsComplete(bool bWasSucc
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            CategoryMask                   (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::QueryAvailableDownloads(unsigned char LocalUserNum, int CategoryMask)
+unsigned long UOnlineSubsystemSteamworks::QueryAvailableDownloads(unsigned char LocalUserNum, int CategoryMask)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.QueryAvailableDownloads");
 
@@ -642,9 +642,9 @@ TEnumAsByte<EOnlineEnumerationReadState> UOnlineSubsystemSteamworks::GetContentL
 // (Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ReadContentList(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::ReadContentList(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ReadContentList");
 
@@ -708,9 +708,9 @@ void UOnlineSubsystemSteamworks::AddReadContentComplete(unsigned char LocalUserN
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnReadContentComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnReadContentComplete(bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnReadContentComplete(unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnReadContentComplete");
 
@@ -867,11 +867,11 @@ void UOnlineSubsystemSteamworks::AddStringVerificationDelegate(const struct FScr
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnStringVerificationComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bVerifiedSuccessfully          (Parm)
+// unsigned long                  bVerifiedSuccessfully          (Parm)
 // int                            StringID                       (Parm)
 // unsigned char                  StringType                     (Parm)
 
-void UOnlineSubsystemSteamworks::OnStringVerificationComplete(bool bVerifiedSuccessfully, int StringID, unsigned char StringType)
+void UOnlineSubsystemSteamworks::OnStringVerificationComplete(unsigned long bVerifiedSuccessfully, int StringID, unsigned char StringType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnStringVerificationComplete");
 
@@ -1022,9 +1022,9 @@ void UOnlineSubsystemSteamworks::OnDeviceFound()
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.HasBeenRegistered
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::HasBeenRegistered()
+unsigned long UOnlineSubsystemSteamworks::HasBeenRegistered()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.HasBeenRegistered");
 
@@ -1045,9 +1045,9 @@ bool UOnlineSubsystemSteamworks::HasBeenRegistered()
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // float                          NewVolume                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::SetCaptureVolume(unsigned char LocalUserNum, float NewVolume)
+unsigned long UOnlineSubsystemSteamworks::SetCaptureVolume(unsigned char LocalUserNum, float NewVolume)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.SetCaptureVolume");
 
@@ -1071,9 +1071,9 @@ bool UOnlineSubsystemSteamworks::SetCaptureVolume(unsigned char LocalUserNum, fl
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // float                          NewVolume                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::SetPlaybackVolume(unsigned char LocalUserNum, float NewVolume)
+unsigned long UOnlineSubsystemSteamworks::SetPlaybackVolume(unsigned char LocalUserNum, float NewVolume)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.SetPlaybackVolume");
 
@@ -1131,9 +1131,9 @@ void UOnlineSubsystemSteamworks::ManageInvites()
 // (Public)
 // Parameters:
 // struct FString                 PlayerName                     (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::FindUniqueNetIdForPlayer(const struct FString& PlayerName)
+unsigned long UOnlineSubsystemSteamworks::FindUniqueNetIdForPlayer(const struct FString& PlayerName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.FindUniqueNetIdForPlayer");
 
@@ -1197,11 +1197,11 @@ void UOnlineSubsystemSteamworks::AddFindUniqueNetIdForPlayerDelegate(unsigned ch
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnFindUniqueNetIdForPlayerComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           Found                          (Parm)
+// unsigned long                  Found                          (Parm)
 // struct FString                 PlayerName                     (Parm, NeedCtorLink)
 // int                            Id                             (Parm)
 
-void UOnlineSubsystemSteamworks::OnFindUniqueNetIdForPlayerComplete(bool Found, const struct FString& PlayerName, int Id)
+void UOnlineSubsystemSteamworks::OnFindUniqueNetIdForPlayerComplete(unsigned long Found, const struct FString& PlayerName, int Id)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnFindUniqueNetIdForPlayerComplete");
 
@@ -1223,9 +1223,9 @@ void UOnlineSubsystemSteamworks::OnFindUniqueNetIdForPlayerComplete(bool Found, 
 // Parameters:
 // struct FUniqueNetId            PlayerIdToAdd                  (Parm)
 // struct FString                 PlayerName                     (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::AddToPlayersMetList(const struct FUniqueNetId& PlayerIdToAdd, const struct FString& PlayerName)
+unsigned long UOnlineSubsystemSteamworks::AddToPlayersMetList(const struct FUniqueNetId& PlayerIdToAdd, const struct FString& PlayerName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.AddToPlayersMetList");
 
@@ -1249,9 +1249,9 @@ bool UOnlineSubsystemSteamworks::AddToPlayersMetList(const struct FUniqueNetId& 
 // struct FString                 LeaderboardName                (Parm, NeedCtorLink)
 // TEnumAsByte<ELeaderboardSortType> SortType                       (Parm)
 // TEnumAsByte<ELeaderboardFormat> DisplayFormat                  (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CreateLeaderboard(const struct FString& LeaderboardName, TEnumAsByte<ELeaderboardSortType> SortType, TEnumAsByte<ELeaderboardFormat> DisplayFormat)
+unsigned long UOnlineSubsystemSteamworks::CreateLeaderboard(const struct FString& LeaderboardName, TEnumAsByte<ELeaderboardSortType> SortType, TEnumAsByte<ELeaderboardFormat> DisplayFormat)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CreateLeaderboard");
 
@@ -1334,9 +1334,9 @@ void UOnlineSubsystemSteamworks::OnGetNumberOfCurrentPlayersComplete(int TotalPl
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetNumberOfCurrentPlayers
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::GetNumberOfCurrentPlayers()
+unsigned long UOnlineSubsystemSteamworks::GetNumberOfCurrentPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetNumberOfCurrentPlayers");
 
@@ -1405,9 +1405,9 @@ void UOnlineSubsystemSteamworks::OnReadOnlineAvatarComplete(const struct FUnique
 // TArray<struct FUniqueNetId>    Players                        (Const, Parm, OutParm, NeedCtorLink)
 // struct FString                 Title                          (Parm, NeedCtorLink)
 // struct FString                 Description                    (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ShowCustomPlayersUI(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description, TArray<struct FUniqueNetId>* Players)
+unsigned long UOnlineSubsystemSteamworks::ShowCustomPlayersUI(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description, TArray<struct FUniqueNetId>* Players)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowCustomPlayersUI");
 
@@ -1529,11 +1529,11 @@ void UOnlineSubsystemSteamworks::OnReadAchievementsComplete(int TitleId)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            TitleId                        (OptionalParm, Parm)
-// bool                           bShouldReadText                (OptionalParm, Parm)
-// bool                           bShouldReadImages              (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bShouldReadText                (OptionalParm, Parm)
+// unsigned long                  bShouldReadImages              (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ReadAchievements(unsigned char LocalUserNum, int TitleId, bool bShouldReadText, bool bShouldReadImages)
+unsigned long UOnlineSubsystemSteamworks::ReadAchievements(unsigned char LocalUserNum, int TitleId, unsigned long bShouldReadText, unsigned long bShouldReadImages)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ReadAchievements");
 
@@ -1558,9 +1558,9 @@ bool UOnlineSubsystemSteamworks::ReadAchievements(unsigned char LocalUserNum, in
 // (Native, Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ShowPlayersUI(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::ShowPlayersUI(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowPlayersUI");
 
@@ -1583,9 +1583,9 @@ bool UOnlineSubsystemSteamworks::ShowPlayersUI(unsigned char LocalUserNum)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ShowFriendsInviteUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
+unsigned long UOnlineSubsystemSteamworks::ShowFriendsInviteUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowFriendsInviteUI");
 
@@ -1608,9 +1608,9 @@ bool UOnlineSubsystemSteamworks::ShowFriendsInviteUI(unsigned char LocalUserNum,
 // (Native, Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ShowFriendsUI(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::ShowFriendsUI(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowFriendsUI");
 
@@ -1694,9 +1694,9 @@ void UOnlineSubsystemSteamworks::OnProfileDataChanged()
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            PictureId                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::UnlockGamerPicture(unsigned char LocalUserNum, int PictureId)
+unsigned long UOnlineSubsystemSteamworks::UnlockGamerPicture(unsigned char LocalUserNum, int PictureId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.UnlockGamerPicture");
 
@@ -1762,9 +1762,9 @@ void UOnlineSubsystemSteamworks::AddUnlockAchievementCompleteDelegate(unsigned c
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnUnlockAchievementComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnUnlockAchievementComplete(bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnUnlockAchievementComplete(unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnUnlockAchievementComplete");
 
@@ -1784,9 +1784,9 @@ void UOnlineSubsystemSteamworks::OnUnlockAchievementComplete(bool bWasSuccessful
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            AchievementId                  (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::UnlockAchievement(unsigned char LocalUserNum, int AchievementId)
+unsigned long UOnlineSubsystemSteamworks::UnlockAchievement(unsigned char LocalUserNum, int AchievementId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.UnlockAchievement");
 
@@ -1810,9 +1810,9 @@ bool UOnlineSubsystemSteamworks::UnlockAchievement(unsigned char LocalUserNum, i
 // Parameters:
 // int                            DeviceID                       (Parm)
 // int                            SizeNeeded                     (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::IsDeviceValid(int DeviceID, int SizeNeeded)
+unsigned long UOnlineSubsystemSteamworks::IsDeviceValid(int DeviceID, int SizeNeeded)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.IsDeviceValid");
 
@@ -1906,9 +1906,9 @@ void UOnlineSubsystemSteamworks::AddDeviceSelectionDoneDelegate(unsigned char Lo
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnDeviceSelectionComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnDeviceSelectionComplete(bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnDeviceSelectionComplete(unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnDeviceSelectionComplete");
 
@@ -1928,11 +1928,11 @@ void UOnlineSubsystemSteamworks::OnDeviceSelectionComplete(bool bWasSuccessful)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            SizeNeeded                     (Parm)
-// bool                           bForceShowUI                   (OptionalParm, Parm)
-// bool                           bManageStorage                 (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bForceShowUI                   (OptionalParm, Parm)
+// unsigned long                  bManageStorage                 (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ShowDeviceSelectionUI(unsigned char LocalUserNum, int SizeNeeded, bool bForceShowUI, bool bManageStorage)
+unsigned long UOnlineSubsystemSteamworks::ShowDeviceSelectionUI(unsigned char LocalUserNum, int SizeNeeded, unsigned long bForceShowUI, unsigned long bManageStorage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowDeviceSelectionUI");
 
@@ -1957,9 +1957,9 @@ bool UOnlineSubsystemSteamworks::ShowDeviceSelectionUI(unsigned char LocalUserNu
 // (Native, Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ShowMembershipMarketplaceUI(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::ShowMembershipMarketplaceUI(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowMembershipMarketplaceUI");
 
@@ -1983,9 +1983,9 @@ bool UOnlineSubsystemSteamworks::ShowMembershipMarketplaceUI(unsigned char Local
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            CategoryMask                   (OptionalParm, Parm)
 // int                            OfferId                        (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ShowContentMarketplaceUI(unsigned char LocalUserNum, int CategoryMask, int OfferId)
+unsigned long UOnlineSubsystemSteamworks::ShowContentMarketplaceUI(unsigned char LocalUserNum, int CategoryMask, int OfferId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowContentMarketplaceUI");
 
@@ -2010,9 +2010,9 @@ bool UOnlineSubsystemSteamworks::ShowContentMarketplaceUI(unsigned char LocalUse
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 InviteText                     (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ShowInviteUI(unsigned char LocalUserNum, const struct FString& InviteText)
+unsigned long UOnlineSubsystemSteamworks::ShowInviteUI(unsigned char LocalUserNum, const struct FString& InviteText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowInviteUI");
 
@@ -2035,9 +2035,9 @@ bool UOnlineSubsystemSteamworks::ShowInviteUI(unsigned char LocalUserNum, const 
 // (Native, Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ShowAchievementsUI(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::ShowAchievementsUI(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowAchievementsUI");
 
@@ -2059,9 +2059,9 @@ bool UOnlineSubsystemSteamworks::ShowAchievementsUI(unsigned char LocalUserNum)
 // (Native, Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ShowMessagesUI(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::ShowMessagesUI(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowMessagesUI");
 
@@ -2085,9 +2085,9 @@ bool UOnlineSubsystemSteamworks::ShowMessagesUI(unsigned char LocalUserNum)
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
 // struct FString                 PlayerName                     (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ShowGamerCardUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName)
+unsigned long UOnlineSubsystemSteamworks::ShowGamerCardUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowGamerCardUI");
 
@@ -2112,9 +2112,9 @@ bool UOnlineSubsystemSteamworks::ShowGamerCardUI(unsigned char LocalUserNum, con
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ShowFeedbackUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
+unsigned long UOnlineSubsystemSteamworks::ShowFeedbackUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowFeedbackUI");
 
@@ -2138,9 +2138,9 @@ bool UOnlineSubsystemSteamworks::ShowFeedbackUI(unsigned char LocalUserNum, cons
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            MessageIndex                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::DeleteMessage(unsigned char LocalUserNum, int MessageIndex)
+unsigned long UOnlineSubsystemSteamworks::DeleteMessage(unsigned char LocalUserNum, int MessageIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.DeleteMessage");
 
@@ -2162,9 +2162,9 @@ bool UOnlineSubsystemSteamworks::DeleteMessage(unsigned char LocalUserNum, int M
 // (Defined, Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::UnmuteAll(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::UnmuteAll(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.UnmuteAll");
 
@@ -2185,10 +2185,10 @@ bool UOnlineSubsystemSteamworks::UnmuteAll(unsigned char LocalUserNum)
 // (Defined, Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           bAllowFriends                  (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bAllowFriends                  (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::MuteAll(unsigned char LocalUserNum, bool bAllowFriends)
+unsigned long UOnlineSubsystemSteamworks::MuteAll(unsigned char LocalUserNum, unsigned long bAllowFriends)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.MuteAll");
 
@@ -2211,9 +2211,9 @@ bool UOnlineSubsystemSteamworks::MuteAll(unsigned char LocalUserNum, bool bAllow
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (Parm)
 // struct FString                 ClientStatGuid                 (Const, Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::RegisterStatGuid(const struct FUniqueNetId& PlayerID, struct FString* ClientStatGuid)
+unsigned long UOnlineSubsystemSteamworks::RegisterStatGuid(const struct FUniqueNetId& PlayerID, struct FString* ClientStatGuid)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.RegisterStatGuid");
 
@@ -2299,9 +2299,9 @@ void UOnlineSubsystemSteamworks::AddRegisterHostStatGuidCompleteDelegate(const s
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnRegisterHostStatGuidComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnRegisterHostStatGuidComplete(bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnRegisterHostStatGuidComplete(unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnRegisterHostStatGuidComplete");
 
@@ -2320,9 +2320,9 @@ void UOnlineSubsystemSteamworks::OnRegisterHostStatGuidComplete(bool bWasSuccess
 // (Native, Public, HasOutParms)
 // Parameters:
 // struct FString                 HostStatGuid                   (Const, Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::RegisterHostStatGuid(struct FString* HostStatGuid)
+unsigned long UOnlineSubsystemSteamworks::RegisterHostStatGuid(struct FString* HostStatGuid)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.RegisterHostStatGuid");
 
@@ -2501,9 +2501,9 @@ void UOnlineSubsystemSteamworks::AddJoinFriendGameCompleteDelegate(const struct 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnJoinFriendGameComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnJoinFriendGameComplete(bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnJoinFriendGameComplete(unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnJoinFriendGameComplete");
 
@@ -2523,9 +2523,9 @@ void UOnlineSubsystemSteamworks::OnJoinFriendGameComplete(bool bWasSuccessful)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            Friend                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::JoinFriendGame(unsigned char LocalUserNum, const struct FUniqueNetId& Friend)
+unsigned long UOnlineSubsystemSteamworks::JoinFriendGame(unsigned char LocalUserNum, const struct FUniqueNetId& Friend)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.JoinFriendGame");
 
@@ -2616,9 +2616,9 @@ void UOnlineSubsystemSteamworks::OnReceivedGameInvite(unsigned char LocalUserNum
 // unsigned char                  LocalUserNum                   (Parm)
 // TArray<struct FUniqueNetId>    Friends                        (Parm, NeedCtorLink)
 // struct FString                 Text                           (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::SendGameInviteToFriends(unsigned char LocalUserNum, TArray<struct FUniqueNetId> Friends, const struct FString& Text)
+unsigned long UOnlineSubsystemSteamworks::SendGameInviteToFriends(unsigned char LocalUserNum, TArray<struct FUniqueNetId> Friends, const struct FString& Text)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.SendGameInviteToFriends");
 
@@ -2644,9 +2644,9 @@ bool UOnlineSubsystemSteamworks::SendGameInviteToFriends(unsigned char LocalUser
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            Friend                         (Parm)
 // struct FString                 Text                           (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::SendGameInviteToFriend(unsigned char LocalUserNum, const struct FUniqueNetId& Friend, const struct FString& Text)
+unsigned long UOnlineSubsystemSteamworks::SendGameInviteToFriend(unsigned char LocalUserNum, const struct FUniqueNetId& Friend, const struct FString& Text)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.SendGameInviteToFriend");
 
@@ -2672,9 +2672,9 @@ bool UOnlineSubsystemSteamworks::SendGameInviteToFriend(unsigned char LocalUserN
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            Friend                         (Parm)
 // struct FString                 Message                        (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::SendMessageToFriend(unsigned char LocalUserNum, const struct FUniqueNetId& Friend, const struct FString& Message)
+unsigned long UOnlineSubsystemSteamworks::SendMessageToFriend(unsigned char LocalUserNum, const struct FUniqueNetId& Friend, const struct FString& Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.SendMessageToFriend");
 
@@ -2769,9 +2769,9 @@ void UOnlineSubsystemSteamworks::OnFriendInviteReceived(unsigned char LocalUserN
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            RequestingPlayer               (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::DenyFriendInvite(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer)
+unsigned long UOnlineSubsystemSteamworks::DenyFriendInvite(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.DenyFriendInvite");
 
@@ -2795,9 +2795,9 @@ bool UOnlineSubsystemSteamworks::DenyFriendInvite(unsigned char LocalUserNum, co
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            RequestingPlayer               (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::AcceptFriendInvite(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer)
+unsigned long UOnlineSubsystemSteamworks::AcceptFriendInvite(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.AcceptFriendInvite");
 
@@ -2821,9 +2821,9 @@ bool UOnlineSubsystemSteamworks::AcceptFriendInvite(unsigned char LocalUserNum, 
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            FormerFriend                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::RemoveFriend(unsigned char LocalUserNum, const struct FUniqueNetId& FormerFriend)
+unsigned long UOnlineSubsystemSteamworks::RemoveFriend(unsigned char LocalUserNum, const struct FUniqueNetId& FormerFriend)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.RemoveFriend");
 
@@ -2889,9 +2889,9 @@ void UOnlineSubsystemSteamworks::AddAddFriendByNameCompleteDelegate(unsigned cha
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnAddFriendByNameComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnAddFriendByNameComplete(bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnAddFriendByNameComplete(unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnAddFriendByNameComplete");
 
@@ -2912,9 +2912,9 @@ void UOnlineSubsystemSteamworks::OnAddFriendByNameComplete(bool bWasSuccessful)
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 FriendName                     (Parm, NeedCtorLink)
 // struct FString                 Message                        (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::AddFriendByName(unsigned char LocalUserNum, const struct FString& FriendName, const struct FString& Message)
+unsigned long UOnlineSubsystemSteamworks::AddFriendByName(unsigned char LocalUserNum, const struct FString& FriendName, const struct FString& Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.AddFriendByName");
 
@@ -2940,9 +2940,9 @@ bool UOnlineSubsystemSteamworks::AddFriendByName(unsigned char LocalUserNum, con
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            NewFriend                      (Parm)
 // struct FString                 Message                        (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::AddFriend(unsigned char LocalUserNum, const struct FUniqueNetId& NewFriend, const struct FString& Message)
+unsigned long UOnlineSubsystemSteamworks::AddFriend(unsigned char LocalUserNum, const struct FUniqueNetId& NewFriend, const struct FString& Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.AddFriend");
 
@@ -3030,9 +3030,9 @@ void UOnlineSubsystemSteamworks::AddKeyboardInputDoneDelegate(const struct FScri
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnKeyboardInputComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnKeyboardInputComplete(bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnKeyboardInputComplete(unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnKeyboardInputComplete");
 
@@ -3053,14 +3053,14 @@ void UOnlineSubsystemSteamworks::OnKeyboardInputComplete(bool bWasSuccessful)
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 TitleText                      (Parm, NeedCtorLink)
 // struct FString                 DescriptionText                (Parm, NeedCtorLink)
-// bool                           bIsPassword                    (OptionalParm, Parm)
-// bool                           bShouldValidate                (OptionalParm, Parm)
+// unsigned long                  bIsPassword                    (OptionalParm, Parm)
+// unsigned long                  bShouldValidate                (OptionalParm, Parm)
 // struct FString                 DefaultText                    (OptionalParm, Parm, NeedCtorLink)
 // int                            MaxResultLength                (OptionalParm, Parm)
-// bool                           bAllowSpaces                   (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bAllowSpaces                   (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ShowKeyboardUI(unsigned char LocalUserNum, const struct FString& TitleText, const struct FString& DescriptionText, bool bIsPassword, bool bShouldValidate, const struct FString& DefaultText, int MaxResultLength, bool bAllowSpaces)
+unsigned long UOnlineSubsystemSteamworks::ShowKeyboardUI(unsigned char LocalUserNum, const struct FString& TitleText, const struct FString& DescriptionText, unsigned long bIsPassword, unsigned long bShouldValidate, const struct FString& DefaultText, int MaxResultLength, unsigned long bAllowSpaces)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowKeyboardUI");
 
@@ -3119,9 +3119,9 @@ void UOnlineSubsystemSteamworks::SetOnlineStatus(unsigned char LocalUserNum, int
 // (Public, HasOutParms)
 // Parameters:
 // TArray<struct FString>         Accounts                       (Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::GetLocalAccountNames(TArray<struct FString>* Accounts)
+unsigned long UOnlineSubsystemSteamworks::GetLocalAccountNames(TArray<struct FString>* Accounts)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetLocalAccountNames");
 
@@ -3145,9 +3145,9 @@ bool UOnlineSubsystemSteamworks::GetLocalAccountNames(TArray<struct FString>* Ac
 // Parameters:
 // struct FString                 UserName                       (Parm, NeedCtorLink)
 // struct FString                 Password                       (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::DeleteLocalAccount(const struct FString& UserName, const struct FString& Password)
+unsigned long UOnlineSubsystemSteamworks::DeleteLocalAccount(const struct FString& UserName, const struct FString& Password)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.DeleteLocalAccount");
 
@@ -3171,9 +3171,9 @@ bool UOnlineSubsystemSteamworks::DeleteLocalAccount(const struct FString& UserNa
 // struct FString                 NewUserName                    (Parm, NeedCtorLink)
 // struct FString                 OldUserName                    (Parm, NeedCtorLink)
 // struct FString                 Password                       (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::RenameLocalAccount(const struct FString& NewUserName, const struct FString& OldUserName, const struct FString& Password)
+unsigned long UOnlineSubsystemSteamworks::RenameLocalAccount(const struct FString& NewUserName, const struct FString& OldUserName, const struct FString& Password)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.RenameLocalAccount");
 
@@ -3197,9 +3197,9 @@ bool UOnlineSubsystemSteamworks::RenameLocalAccount(const struct FString& NewUse
 // Parameters:
 // struct FString                 UserName                       (Parm, NeedCtorLink)
 // struct FString                 Password                       (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CreateLocalAccount(const struct FString& UserName, const struct FString& Password)
+unsigned long UOnlineSubsystemSteamworks::CreateLocalAccount(const struct FString& UserName, const struct FString& Password)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CreateLocalAccount");
 
@@ -3284,9 +3284,9 @@ void UOnlineSubsystemSteamworks::OnCreateOnlineAccountCompleted(TEnumAsByte<EOnl
 // struct FString                 Password                       (Parm, NeedCtorLink)
 // struct FString                 EmailAddress                   (Parm, NeedCtorLink)
 // struct FString                 ProductKey                     (OptionalParm, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CreateOnlineAccount(const struct FString& UserName, const struct FString& Password, const struct FString& EmailAddress, const struct FString& ProductKey)
+unsigned long UOnlineSubsystemSteamworks::CreateOnlineAccount(const struct FString& UserName, const struct FString& Password, const struct FString& EmailAddress, const struct FString& ProductKey)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CreateOnlineAccount");
 
@@ -3335,9 +3335,9 @@ TEnumAsByte<EOnlineEnumerationReadState> UOnlineSubsystemSteamworks::GetTitleFil
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // TArray<unsigned char>          FileContents                   (Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents)
+unsigned long UOnlineSubsystemSteamworks::GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetTitleFileContents");
 
@@ -3402,9 +3402,9 @@ void UOnlineSubsystemSteamworks::AddReadTitleFileCompleteDelegate(const struct F
 // (Native, Public)
 // Parameters:
 // struct FString                 FileToRead                     (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ReadTitleFile(const struct FString& FileToRead)
+unsigned long UOnlineSubsystemSteamworks::ReadTitleFile(const struct FString& FileToRead)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ReadTitleFile");
 
@@ -3425,10 +3425,10 @@ bool UOnlineSubsystemSteamworks::ReadTitleFile(const struct FString& FileToRead)
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnReadTitleFileComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 
-void UOnlineSubsystemSteamworks::OnReadTitleFileComplete(bool bWasSuccessful, const struct FString& Filename)
+void UOnlineSubsystemSteamworks::OnReadTitleFileComplete(unsigned long bWasSuccessful, const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnReadTitleFileComplete");
 
@@ -3587,9 +3587,9 @@ void UOnlineSubsystemSteamworks::OnConnectionStatusChange(TEnumAsByte<EOnlineSer
 // (Native, Public)
 // Parameters:
 // int                            ControllerId                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::IsControllerConnected(int ControllerId)
+unsigned long UOnlineSubsystemSteamworks::IsControllerConnected(int ControllerId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.IsControllerConnected");
 
@@ -3651,9 +3651,9 @@ void UOnlineSubsystemSteamworks::AddControllerChangeDelegate(const struct FScrip
 // (Public, Delegate)
 // Parameters:
 // int                            ControllerId                   (Parm)
-// bool                           bIsConnected                   (Parm)
+// unsigned long                  bIsConnected                   (Parm)
 
-void UOnlineSubsystemSteamworks::OnControllerChange(int ControllerId, bool bIsConnected)
+void UOnlineSubsystemSteamworks::OnControllerChange(int ControllerId, unsigned long bIsConnected)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnControllerChange");
 
@@ -3754,9 +3754,9 @@ void UOnlineSubsystemSteamworks::AddExternalUIChangeDelegate(const struct FScrip
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnExternalUIChange
 // (Public, Delegate)
 // Parameters:
-// bool                           bIsOpening                     (Parm)
+// unsigned long                  bIsOpening                     (Parm)
 
-void UOnlineSubsystemSteamworks::OnExternalUIChange(bool bIsOpening)
+void UOnlineSubsystemSteamworks::OnExternalUIChange(unsigned long bIsOpening)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnExternalUIChange");
 
@@ -3814,9 +3814,9 @@ void UOnlineSubsystemSteamworks::AddLinkStatusChangeDelegate(const struct FScrip
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnLinkStatusChange
 // (Public, Delegate)
 // Parameters:
-// bool                           bIsConnected                   (Parm)
+// unsigned long                  bIsConnected                   (Parm)
 
-void UOnlineSubsystemSteamworks::OnLinkStatusChange(bool bIsConnected)
+void UOnlineSubsystemSteamworks::OnLinkStatusChange(unsigned long bIsConnected)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnLinkStatusChange");
 
@@ -3834,9 +3834,9 @@ void UOnlineSubsystemSteamworks::OnLinkStatusChange(bool bIsConnected)
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.HasLinkConnection
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::HasLinkConnection()
+unsigned long UOnlineSubsystemSteamworks::HasLinkConnection()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.HasLinkConnection");
 
@@ -3905,9 +3905,9 @@ struct FString UOnlineSubsystemSteamworks::GetPlayerNicknameFromIndex(int UserIn
 // struct FName                   SessionName                    (Parm)
 // int                            LeaderboardId                  (Parm)
 // TArray<struct FOnlinePlayerScore> PlayerScores                   (Const, Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::WriteOnlinePlayerScores(const struct FName& SessionName, int LeaderboardId, TArray<struct FOnlinePlayerScore>* PlayerScores)
+unsigned long UOnlineSubsystemSteamworks::WriteOnlinePlayerScores(const struct FName& SessionName, int LeaderboardId, TArray<struct FOnlinePlayerScore>* PlayerScores)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.WriteOnlinePlayerScores");
 
@@ -3973,9 +3973,9 @@ void UOnlineSubsystemSteamworks::AddFlushOnlineStatsCompleteDelegate(const struc
 // (Public, Delegate)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnFlushOnlineStatsComplete(const struct FName& SessionName, bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnFlushOnlineStatsComplete(const struct FName& SessionName, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnFlushOnlineStatsComplete");
 
@@ -3995,9 +3995,9 @@ void UOnlineSubsystemSteamworks::OnFlushOnlineStatsComplete(const struct FName& 
 // (Native, Public)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::FlushOnlineStats(const struct FName& SessionName)
+unsigned long UOnlineSubsystemSteamworks::FlushOnlineStats(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.FlushOnlineStats");
 
@@ -4021,9 +4021,9 @@ bool UOnlineSubsystemSteamworks::FlushOnlineStats(const struct FName& SessionNam
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            Player                         (Parm)
 // class UOnlineStatsWrite*       StatsWrite                     (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::WriteOnlineStats(const struct FName& SessionName, const struct FUniqueNetId& Player, class UOnlineStatsWrite* StatsWrite)
+unsigned long UOnlineSubsystemSteamworks::WriteOnlineStats(const struct FName& SessionName, const struct FUniqueNetId& Player, class UOnlineStatsWrite* StatsWrite)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.WriteOnlineStats");
 
@@ -4107,9 +4107,9 @@ void UOnlineSubsystemSteamworks::AddReadOnlineStatsCompleteDelegate(const struct
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnReadOnlineStatsComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnReadOnlineStatsComplete(bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnReadOnlineStatsComplete(unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnReadOnlineStatsComplete");
 
@@ -4130,9 +4130,9 @@ void UOnlineSubsystemSteamworks::OnReadOnlineStatsComplete(bool bWasSuccessful)
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlineStatsRead*        StatsRead                      (Parm)
 // int                            NumRows                        (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ReadOnlineStatsByRankAroundPlayer(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, int NumRows)
+unsigned long UOnlineSubsystemSteamworks::ReadOnlineStatsByRankAroundPlayer(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, int NumRows)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ReadOnlineStatsByRankAroundPlayer");
 
@@ -4158,9 +4158,9 @@ bool UOnlineSubsystemSteamworks::ReadOnlineStatsByRankAroundPlayer(unsigned char
 // class UOnlineStatsRead*        StatsRead                      (Parm)
 // int                            StartIndex                     (OptionalParm, Parm)
 // int                            NumToRead                      (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ReadOnlineStatsByRank(class UOnlineStatsRead* StatsRead, int StartIndex, int NumToRead)
+unsigned long UOnlineSubsystemSteamworks::ReadOnlineStatsByRank(class UOnlineStatsRead* StatsRead, int StartIndex, int NumToRead)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ReadOnlineStatsByRank");
 
@@ -4185,9 +4185,9 @@ bool UOnlineSubsystemSteamworks::ReadOnlineStatsByRank(class UOnlineStatsRead* S
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlineStatsRead*        StatsRead                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ReadOnlineStatsForFriends(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead)
+unsigned long UOnlineSubsystemSteamworks::ReadOnlineStatsForFriends(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ReadOnlineStatsForFriends");
 
@@ -4211,9 +4211,9 @@ bool UOnlineSubsystemSteamworks::ReadOnlineStatsForFriends(unsigned char LocalUs
 // Parameters:
 // TArray<struct FUniqueNetId>    Players                        (Const, Parm, OutParm, NeedCtorLink)
 // class UOnlineStatsRead*        StatsRead                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ReadOnlineStats(class UOnlineStatsRead* StatsRead, TArray<struct FUniqueNetId>* Players)
+unsigned long UOnlineSubsystemSteamworks::ReadOnlineStats(class UOnlineStatsRead* StatsRead, TArray<struct FUniqueNetId>* Players)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ReadOnlineStats");
 
@@ -4239,9 +4239,9 @@ bool UOnlineSubsystemSteamworks::ReadOnlineStats(class UOnlineStatsRead* StatsRe
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class USpeechRecognition*      SpeechRecogObj                 (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::SetSpeechRecognitionObject(unsigned char LocalUserNum, class USpeechRecognition* SpeechRecogObj)
+unsigned long UOnlineSubsystemSteamworks::SetSpeechRecognitionObject(unsigned char LocalUserNum, class USpeechRecognition* SpeechRecogObj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.SetSpeechRecognitionObject");
 
@@ -4265,9 +4265,9 @@ bool UOnlineSubsystemSteamworks::SetSpeechRecognitionObject(unsigned char LocalU
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            VocabularyId                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::SelectVocabulary(unsigned char LocalUserNum, int VocabularyId)
+unsigned long UOnlineSubsystemSteamworks::SelectVocabulary(unsigned char LocalUserNum, int VocabularyId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.SelectVocabulary");
 
@@ -4352,9 +4352,9 @@ void UOnlineSubsystemSteamworks::OnRecognitionComplete()
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TArray<struct FSpeechRecognizedWord> words                          (Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::GetRecognitionResults(unsigned char LocalUserNum, TArray<struct FSpeechRecognizedWord>* words)
+unsigned long UOnlineSubsystemSteamworks::GetRecognitionResults(unsigned char LocalUserNum, TArray<struct FSpeechRecognizedWord>* words)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetRecognitionResults");
 
@@ -4379,9 +4379,9 @@ bool UOnlineSubsystemSteamworks::GetRecognitionResults(unsigned char LocalUserNu
 // (Native, Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::StopSpeechRecognition(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::StopSpeechRecognition(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.StopSpeechRecognition");
 
@@ -4403,9 +4403,9 @@ bool UOnlineSubsystemSteamworks::StopSpeechRecognition(unsigned char LocalUserNu
 // (Native, Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::StartSpeechRecognition(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::StartSpeechRecognition(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.StartSpeechRecognition");
 
@@ -4607,9 +4607,9 @@ void UOnlineSubsystemSteamworks::OnPlayerBeginTalking(const struct FUniqueNetId&
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::UnmuteRemoteTalker(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
+unsigned long UOnlineSubsystemSteamworks::UnmuteRemoteTalker(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.UnmuteRemoteTalker");
 
@@ -4633,9 +4633,9 @@ bool UOnlineSubsystemSteamworks::UnmuteRemoteTalker(unsigned char LocalUserNum, 
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::MuteRemoteTalker(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
+unsigned long UOnlineSubsystemSteamworks::MuteRemoteTalker(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.MuteRemoteTalker");
 
@@ -4660,9 +4660,9 @@ bool UOnlineSubsystemSteamworks::MuteRemoteTalker(unsigned char LocalUserNum, co
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
 // int                            Priority                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::SetRemoteTalkerPriority(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, int Priority)
+unsigned long UOnlineSubsystemSteamworks::SetRemoteTalkerPriority(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, int Priority)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.SetRemoteTalkerPriority");
 
@@ -4686,9 +4686,9 @@ bool UOnlineSubsystemSteamworks::SetRemoteTalkerPriority(unsigned char LocalUser
 // (Native, Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::IsHeadsetPresent(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::IsHeadsetPresent(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.IsHeadsetPresent");
 
@@ -4710,9 +4710,9 @@ bool UOnlineSubsystemSteamworks::IsHeadsetPresent(unsigned char LocalUserNum)
 // (Native, Public)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::IsRemotePlayerTalking(const struct FUniqueNetId& PlayerID)
+unsigned long UOnlineSubsystemSteamworks::IsRemotePlayerTalking(const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.IsRemotePlayerTalking");
 
@@ -4734,9 +4734,9 @@ bool UOnlineSubsystemSteamworks::IsRemotePlayerTalking(const struct FUniqueNetId
 // (Native, Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::IsLocalPlayerTalking(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::IsLocalPlayerTalking(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.IsLocalPlayerTalking");
 
@@ -4758,9 +4758,9 @@ bool UOnlineSubsystemSteamworks::IsLocalPlayerTalking(unsigned char LocalUserNum
 // (Native, Public)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::UnregisterRemoteTalker(const struct FUniqueNetId& PlayerID)
+unsigned long UOnlineSubsystemSteamworks::UnregisterRemoteTalker(const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.UnregisterRemoteTalker");
 
@@ -4782,9 +4782,9 @@ bool UOnlineSubsystemSteamworks::UnregisterRemoteTalker(const struct FUniqueNetI
 // (Native, Public)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::RegisterRemoteTalker(const struct FUniqueNetId& PlayerID)
+unsigned long UOnlineSubsystemSteamworks::RegisterRemoteTalker(const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.RegisterRemoteTalker");
 
@@ -4806,9 +4806,9 @@ bool UOnlineSubsystemSteamworks::RegisterRemoteTalker(const struct FUniqueNetId&
 // (Native, Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::UnregisterLocalTalker(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::UnregisterLocalTalker(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.UnregisterLocalTalker");
 
@@ -4830,9 +4830,9 @@ bool UOnlineSubsystemSteamworks::UnregisterLocalTalker(unsigned char LocalUserNu
 // (Native, Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::RegisterLocalTalker(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::RegisterLocalTalker(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.RegisterLocalTalker");
 
@@ -4929,9 +4929,9 @@ void UOnlineSubsystemSteamworks::AddReadFriendsCompleteDelegate(unsigned char Lo
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnReadFriendsComplete
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnReadFriendsComplete(bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnReadFriendsComplete(unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnReadFriendsComplete");
 
@@ -4952,9 +4952,9 @@ void UOnlineSubsystemSteamworks::OnReadFriendsComplete(bool bWasSuccessful)
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            Count                          (OptionalParm, Parm)
 // int                            StartingAt                     (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ReadFriendsList(unsigned char LocalUserNum, int Count, int StartingAt)
+unsigned long UOnlineSubsystemSteamworks::ReadFriendsList(unsigned char LocalUserNum, int Count, int StartingAt)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ReadFriendsList");
 
@@ -5022,9 +5022,9 @@ void UOnlineSubsystemSteamworks::AddWritePlayerStorageCompleteDelegate(unsigned 
 // (Public, Delegate)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnWritePlayerStorageComplete(unsigned char LocalUserNum, bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnWritePlayerStorageComplete(unsigned char LocalUserNum, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnWritePlayerStorageComplete");
 
@@ -5045,9 +5045,9 @@ void UOnlineSubsystemSteamworks::OnWritePlayerStorageComplete(unsigned char Loca
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlinePlayerStorage*    PlayerStorage                  (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::WritePlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage)
+unsigned long UOnlineSubsystemSteamworks::WritePlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.WritePlayerStorage");
 
@@ -5137,9 +5137,9 @@ void UOnlineSubsystemSteamworks::AddReadPlayerStorageForNetIdCompleteDelegate(co
 // (Public, Delegate)
 // Parameters:
 // struct FUniqueNetId            NetId                          (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnReadPlayerStorageForNetIdComplete(const struct FUniqueNetId& NetId, bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnReadPlayerStorageForNetIdComplete(const struct FUniqueNetId& NetId, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnReadPlayerStorageForNetIdComplete");
 
@@ -5160,9 +5160,9 @@ void UOnlineSubsystemSteamworks::OnReadPlayerStorageForNetIdComplete(const struc
 // Parameters:
 // struct FUniqueNetId            NetId                          (Parm)
 // class UOnlinePlayerStorage*    PlayerStorage                  (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ReadPlayerStorageForNetId(const struct FUniqueNetId& NetId, class UOnlinePlayerStorage* PlayerStorage)
+unsigned long UOnlineSubsystemSteamworks::ReadPlayerStorageForNetId(const struct FUniqueNetId& NetId, class UOnlinePlayerStorage* PlayerStorage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ReadPlayerStorageForNetId");
 
@@ -5229,9 +5229,9 @@ void UOnlineSubsystemSteamworks::AddReadPlayerStorageCompleteDelegate(unsigned c
 // (Public, Delegate)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnReadPlayerStorageComplete(unsigned char LocalUserNum, bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnReadPlayerStorageComplete(unsigned char LocalUserNum, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnReadPlayerStorageComplete");
 
@@ -5252,9 +5252,9 @@ void UOnlineSubsystemSteamworks::OnReadPlayerStorageComplete(unsigned char Local
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlinePlayerStorage*    PlayerStorage                  (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ReadPlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage)
+unsigned long UOnlineSubsystemSteamworks::ReadPlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ReadPlayerStorage");
 
@@ -5321,9 +5321,9 @@ void UOnlineSubsystemSteamworks::AddWriteProfileSettingsCompleteDelegate(unsigne
 // (Public, Delegate)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnWriteProfileSettingsComplete(unsigned char LocalUserNum, bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnWriteProfileSettingsComplete(unsigned char LocalUserNum, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnWriteProfileSettingsComplete");
 
@@ -5344,9 +5344,9 @@ void UOnlineSubsystemSteamworks::OnWriteProfileSettingsComplete(unsigned char Lo
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlineProfileSettings*  ProfileSettings                (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::WriteProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings)
+unsigned long UOnlineSubsystemSteamworks::WriteProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.WriteProfileSettings");
 
@@ -5436,9 +5436,9 @@ void UOnlineSubsystemSteamworks::AddReadProfileSettingsCompleteDelegate(unsigned
 // (Public, Delegate)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnReadProfileSettingsComplete(unsigned char LocalUserNum, bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnReadProfileSettingsComplete(unsigned char LocalUserNum, unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnReadProfileSettingsComplete");
 
@@ -5459,9 +5459,9 @@ void UOnlineSubsystemSteamworks::OnReadProfileSettingsComplete(unsigned char Loc
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlineProfileSettings*  ProfileSettings                (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ReadProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings)
+unsigned long UOnlineSubsystemSteamworks::ReadProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ReadProfileSettings");
 
@@ -5715,9 +5715,9 @@ void UOnlineSubsystemSteamworks::AddLoginChangeDelegate(const struct FScriptDele
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::IsMuted(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
+unsigned long UOnlineSubsystemSteamworks::IsMuted(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.IsMuted");
 
@@ -5740,9 +5740,9 @@ bool UOnlineSubsystemSteamworks::IsMuted(unsigned char LocalUserNum, const struc
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TArray<struct FFriendsQuery>   Query                          (Parm, OutParm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::AreAnyFriends(unsigned char LocalUserNum, TArray<struct FFriendsQuery>* Query)
+unsigned long UOnlineSubsystemSteamworks::AreAnyFriends(unsigned char LocalUserNum, TArray<struct FFriendsQuery>* Query)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.AreAnyFriends");
 
@@ -5768,9 +5768,9 @@ bool UOnlineSubsystemSteamworks::AreAnyFriends(unsigned char LocalUserNum, TArra
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::IsFriend(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
+unsigned long UOnlineSubsystemSteamworks::IsFriend(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.IsFriend");
 
@@ -5957,9 +5957,9 @@ struct FString UOnlineSubsystemSteamworks::GetPlayerNickname(unsigned char Local
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm, OutParm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::GetUniquePlayerId(unsigned char LocalUserNum, struct FUniqueNetId* PlayerID)
+unsigned long UOnlineSubsystemSteamworks::GetUniquePlayerId(unsigned char LocalUserNum, struct FUniqueNetId* PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetUniquePlayerId");
 
@@ -5983,9 +5983,9 @@ bool UOnlineSubsystemSteamworks::GetUniquePlayerId(unsigned char LocalUserNum, s
 // (Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::IsLocalLogin(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::IsLocalLogin(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.IsLocalLogin");
 
@@ -6006,9 +6006,9 @@ bool UOnlineSubsystemSteamworks::IsLocalLogin(unsigned char LocalUserNum)
 // (Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::IsGuestLogin(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::IsGuestLogin(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.IsGuestLogin");
 
@@ -6096,9 +6096,9 @@ void UOnlineSubsystemSteamworks::AddLogoutCompletedDelegate(unsigned char LocalU
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnLogoutCompleted
 // (Public, Delegate)
 // Parameters:
-// bool                           bWasSuccessful                 (Parm)
+// unsigned long                  bWasSuccessful                 (Parm)
 
-void UOnlineSubsystemSteamworks::OnLogoutCompleted(bool bWasSuccessful)
+void UOnlineSubsystemSteamworks::OnLogoutCompleted(unsigned long bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnLogoutCompleted");
 
@@ -6117,9 +6117,9 @@ void UOnlineSubsystemSteamworks::OnLogoutCompleted(bool bWasSuccessful)
 // (Native, Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::Logout(unsigned char LocalUserNum)
+unsigned long UOnlineSubsystemSteamworks::Logout(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.Logout");
 
@@ -6206,9 +6206,9 @@ void UOnlineSubsystemSteamworks::OnLoginFailed(unsigned char LocalUserNum, TEnum
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.AutoLogin
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::AutoLogin()
+unsigned long UOnlineSubsystemSteamworks::AutoLogin()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.AutoLogin");
 
@@ -6231,10 +6231,10 @@ bool UOnlineSubsystemSteamworks::AutoLogin()
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 LoginName                      (Parm, NeedCtorLink)
 // struct FString                 Password                       (Parm, NeedCtorLink)
-// bool                           bWantsLocalOnly                (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bWantsLocalOnly                (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::Login(unsigned char LocalUserNum, const struct FString& LoginName, const struct FString& Password, bool bWantsLocalOnly)
+unsigned long UOnlineSubsystemSteamworks::Login(unsigned char LocalUserNum, const struct FString& LoginName, const struct FString& Password, unsigned long bWantsLocalOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.Login");
 
@@ -6258,10 +6258,10 @@ bool UOnlineSubsystemSteamworks::Login(unsigned char LocalUserNum, const struct 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowLoginUI
 // (Native, HasOptionalParms, Public)
 // Parameters:
-// bool                           bShowOnlineOnly                (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bShowOnlineOnly                (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::ShowLoginUI(bool bShowOnlineOnly)
+unsigned long UOnlineSubsystemSteamworks::ShowLoginUI(unsigned long bShowOnlineOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ShowLoginUI");
 
@@ -6371,9 +6371,9 @@ void UOnlineSubsystemSteamworks::OnLoginChange(unsigned char LocalUserNum)
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.Init
 // (Native, Event, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemSteamworks::Init()
+unsigned long UOnlineSubsystemSteamworks::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.Init");
 

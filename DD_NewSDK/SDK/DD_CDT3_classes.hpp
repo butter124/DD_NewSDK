@@ -66,7 +66,7 @@ public:
 
 	struct FVector ConvertCanvasCoordToWorldCoord(const struct FVector& mapCoord, float additionalCoordScale);
 	struct FVector ConvertWorldCoordToCenterMapCoord(const struct FVector& worldCoord, float additionalCoordScale);
-	bool IsTouching(class APawn* PlayerPawn, const struct FTexVolumeMap& Vmap);
+	unsigned long IsTouching(class APawn* PlayerPawn, const struct FTexVolumeMap& Vmap);
 	void SetMapIndex(int Index);
 	void CheckToDisplayMap();
 	void Tick(float DeltaTime);

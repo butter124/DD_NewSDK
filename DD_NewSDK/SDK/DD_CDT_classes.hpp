@@ -38,13 +38,13 @@ public:
 	void FireAttackBegin();
 	void PostBeginPlay();
 	void GetProjectileSpawnTransformation(const struct FName& socketToUse, struct FVector* Position, struct FRotator* Orientation);
-	bool IsCurrentlyPlayingAttackAnimation();
+	unsigned long IsCurrentlyPlayingAttackAnimation();
 	float PlayShootFireAnimation();
-	bool IsCurrentlyPlayingChargeAnimation();
+	unsigned long IsCurrentlyPlayingChargeAnimation();
 	float PlayChargeFireAnimation();
 	void PlayHurtAnimation(class UClass* DamageType, const struct FVector& HitLocation);
 	void PlayJumpAnimation();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
