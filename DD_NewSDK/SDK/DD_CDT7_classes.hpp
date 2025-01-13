@@ -171,14 +171,14 @@ public:
 	void OnDunDefProjectileImpacted(class ADunDefProjectile* aProjectile, class AActor* impactedOn);
 	void NotifyEquipment_PawnTookDamage(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum, class AActor* DamageCauser);
 	void NotifyEquipment_AnimNotifyAttachment(int NotifyID, class USkeletalMeshComponent* equipmentSkelComp);
-	void ShootProjectile(bool bIsAltProjectile);
+	void ShootProjectile(unsigned long bIsAltProjectile);
 	void GetMuzzleTransformation(class USkeletalMeshComponent* myMeshComp, struct FVector* SpawnLocation, struct FRotator* SpawnRotation);
 	int GetWeaponDamage();
 	void ApplyPrimaryDamageMultiplierDisplay(int* StatValue);
-	float GetEquipmentStatValue(TEnumAsByte<EEquipmentStatType> equipmentStatType, bool returnFinalAddedValue, bool includeStatLevelUp);
-	void AddRandomizeValues(float equipmentQuality, bool doResetStatsToTemplate, bool bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, bool bIsForShop, bool bAllowTranscendentGear);
-	bool AllowStatLevelUp(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, bool IsInForgeUI, bool bIgnoreManaRequirement);
-	float GetAttackInterval(bool bIncludeShotsPerSecondExponent);
+	float GetEquipmentStatValue(TEnumAsByte<EEquipmentStatType> equipmentStatType, unsigned long returnFinalAddedValue, unsigned long includeStatLevelUp);
+	void AddRandomizeValues(float equipmentQuality, unsigned long doResetStatsToTemplate, unsigned long bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, unsigned long bIsForShop, unsigned long bAllowTranscendentGear);
+	unsigned long AllowStatLevelUp(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, unsigned long IsInForgeUI, unsigned long bIgnoreManaRequirement);
+	float GetAttackInterval(unsigned long bIncludeShotsPerSecondExponent);
 	class UClass* GetElementalDamageType();
 	float GetProjectileElementalDamage();
 	float GetProjectileDamage(class ADunDefProjectile* projectileArch);
@@ -186,7 +186,7 @@ public:
 	int GetNumProjectiles();
 	struct FRotator GetDesiredSphereRotationalPlacement(class USkeletalMeshComponent* myMeshComp, class ADunDefPlayer* myPlayer, unsigned char* HasTarget);
 	struct FRotator GetDesiredDirection(class USkeletalMeshComponent* myMeshComp, class ADunDefPlayer* myPlayer);
-	void ShutDown(bool isDestruction);
+	void ShutDown(unsigned long isDestruction);
 	void AttachedComponent(class UPrimitiveComponent* aComp);
 	void UpdateAI(class ADunDefPlayer* PlayerOwner, float DeltaTime);
 	void UpdateDelayedShots(class ADunDefPlayer* PlayerOwner, float DeltaTime);
@@ -237,12 +237,12 @@ public:
 
 	void AttachedComponent(class UPrimitiveComponent* aComp);
 	void NotifyEquipment_AnimNotifyAttachment(int NotifyID, class USkeletalMeshComponent* equipmentSkelComp);
-	void ShutDown(bool isDestruction);
+	void ShutDown(unsigned long isDestruction);
 	void UpdateAI(class ADunDefPlayer* PlayerOwner, float DeltaTime);
 	float GetHealMultiplier();
 	float GetMomentumMultiplier();
 	void UpdateAttackSwing(float DeltaTime);
-	bool AddToSwingHurtList(class ADunDefPlayer* myOwner, class AActor* newEntry);
+	unsigned long AddToSwingHurtList(class ADunDefPlayer* myOwner, class AActor* newEntry);
 	void TickedByPawn(class ADunDefPlayer* PlayerOwner, float DeltaTime);
 };
 
@@ -269,11 +269,11 @@ public:
 	}
 
 
-	void LaunchMap(bool bStartTrueBossRush);
-	bool WasCheckPointButtonPressed(class UUIObject* Widget);
-	bool NotifyWidgetClicked(class UUIObject* Widget);
+	void LaunchMap(unsigned long bStartTrueBossRush);
+	unsigned long WasCheckPointButtonPressed(class UUIObject* Widget);
+	unsigned long NotifyWidgetClicked(class UUIObject* Widget);
 	void CheckProgress();
-	void SceneActivated(bool bInitialActivation);
+	void SceneActivated(unsigned long bInitialActivation);
 };
 
 

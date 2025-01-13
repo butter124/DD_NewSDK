@@ -100,7 +100,7 @@ struct UHeroEquipment_Familiar_TowerDamageScaling_NotifyEquipment_AnimNotifyAtta
 // Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.ShootProjectile
 struct UHeroEquipment_Familiar_TowerDamageScaling_ShootProjectile_Params
 {
-	bool                                               bIsAltProjectile;                                         // (OptionalParm, Parm)
+	unsigned long                                      bIsAltProjectile;                                         // (OptionalParm, Parm)
 };
 
 // Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.GetMuzzleTransformation
@@ -127,8 +127,8 @@ struct UHeroEquipment_Familiar_TowerDamageScaling_ApplyPrimaryDamageMultiplierDi
 struct UHeroEquipment_Familiar_TowerDamageScaling_GetEquipmentStatValue_Params
 {
 	TEnumAsByte<EEquipmentStatType>                    equipmentStatType;                                        // (Parm)
-	bool                                               returnFinalAddedValue;                                    // (OptionalParm, Parm)
-	bool                                               includeStatLevelUp;                                       // (OptionalParm, Parm)
+	unsigned long                                      returnFinalAddedValue;                                    // (OptionalParm, Parm)
+	unsigned long                                      includeStatLevelUp;                                       // (OptionalParm, Parm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -136,11 +136,11 @@ struct UHeroEquipment_Familiar_TowerDamageScaling_GetEquipmentStatValue_Params
 struct UHeroEquipment_Familiar_TowerDamageScaling_AddRandomizeValues_Params
 {
 	float                                              equipmentQuality;                                         // (Parm)
-	bool                                               doResetStatsToTemplate;                                   // (OptionalParm, Parm)
-	bool                                               bDontUseMissionRandomizerMultiplier;                      // (OptionalParm, Parm)
+	unsigned long                                      doResetStatsToTemplate;                                   // (OptionalParm, Parm)
+	unsigned long                                      bDontUseMissionRandomizerMultiplier;                      // (OptionalParm, Parm)
 	float                                              RandomizerMultiplierOverride;                             // (OptionalParm, Parm)
-	bool                                               bIsForShop;                                               // (OptionalParm, Parm)
-	bool                                               bAllowTranscendentGear;                                   // (OptionalParm, Parm)
+	unsigned long                                      bIsForShop;                                               // (OptionalParm, Parm)
+	unsigned long                                      bAllowTranscendentGear;                                   // (OptionalParm, Parm)
 };
 
 // Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.AllowStatLevelUp
@@ -148,15 +148,15 @@ struct UHeroEquipment_Familiar_TowerDamageScaling_AllowStatLevelUp_Params
 {
 	TEnumAsByte<EEquipmentStatType>                    EQS;                                                      // (Parm)
 	int                                                statSubIndex;                                             // (OptionalParm, Parm)
-	bool                                               IsInForgeUI;                                              // (OptionalParm, Parm)
-	bool                                               bIgnoreManaRequirement;                                   // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      IsInForgeUI;                                              // (OptionalParm, Parm)
+	unsigned long                                      bIgnoreManaRequirement;                                   // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.GetAttackInterval
 struct UHeroEquipment_Familiar_TowerDamageScaling_GetAttackInterval_Params
 {
-	bool                                               bIncludeShotsPerSecondExponent;                           // (OptionalParm, Parm)
+	unsigned long                                      bIncludeShotsPerSecondExponent;                           // (OptionalParm, Parm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -212,7 +212,7 @@ struct UHeroEquipment_Familiar_TowerDamageScaling_GetDesiredDirection_Params
 // Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.ShutDown
 struct UHeroEquipment_Familiar_TowerDamageScaling_ShutDown_Params
 {
-	bool                                               isDestruction;                                            // (OptionalParm, Parm)
+	unsigned long                                      isDestruction;                                            // (OptionalParm, Parm)
 };
 
 // Function CDT7.HeroEquipment_Familiar_TowerDamageScaling.AttachedComponent
@@ -271,7 +271,7 @@ struct UHeroEquipment_Familiar_Melee_TowerScaling_NotifyEquipment_AnimNotifyAtta
 // Function CDT7.HeroEquipment_Familiar_Melee_TowerScaling.ShutDown
 struct UHeroEquipment_Familiar_Melee_TowerScaling_ShutDown_Params
 {
-	bool                                               isDestruction;                                            // (OptionalParm, Parm)
+	unsigned long                                      isDestruction;                                            // (OptionalParm, Parm)
 };
 
 // Function CDT7.HeroEquipment_Familiar_Melee_TowerScaling.UpdateAI
@@ -304,7 +304,7 @@ struct UHeroEquipment_Familiar_Melee_TowerScaling_AddToSwingHurtList_Params
 {
 	class ADunDefPlayer*                               myOwner;                                                  // (Parm)
 	class AActor*                                      newEntry;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function CDT7.HeroEquipment_Familiar_Melee_TowerScaling.TickedByPawn
@@ -317,21 +317,21 @@ struct UHeroEquipment_Familiar_Melee_TowerScaling_TickedByPawn_Params
 // Function CDT7.UI_TBR.LaunchMap
 struct UUI_TBR_LaunchMap_Params
 {
-	bool                                               bStartTrueBossRush;                                       // (OptionalParm, Parm)
+	unsigned long                                      bStartTrueBossRush;                                       // (OptionalParm, Parm)
 };
 
 // Function CDT7.UI_TBR.WasCheckPointButtonPressed
 struct UUI_TBR_WasCheckPointButtonPressed_Params
 {
 	class UUIObject*                                   Widget;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function CDT7.UI_TBR.NotifyWidgetClicked
 struct UUI_TBR_NotifyWidgetClicked_Params
 {
 	class UUIObject*                                   Widget;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function CDT7.UI_TBR.CheckProgress
@@ -342,7 +342,7 @@ struct UUI_TBR_CheckProgress_Params
 // Function CDT7.UI_TBR.SceneActivated
 struct UUI_TBR_SceneActivated_Params
 {
-	bool                                               bInitialActivation;                                       // (Parm)
+	unsigned long                                      bInitialActivation;                                       // (Parm)
 };
 
 }

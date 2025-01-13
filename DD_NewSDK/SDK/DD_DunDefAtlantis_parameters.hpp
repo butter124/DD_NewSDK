@@ -65,7 +65,7 @@ struct ADunDefGRI_RisingWater_DrawMyHUD_Params
 struct ADunDefGRI_RisingWater_SetNewSolver_Params
 {
 	class ADunDefPlayer*                               newSolver;                                                // (Parm)
-	bool                                               bIgnoreGameInfoNotification;                              // (OptionalParm, Parm)
+	unsigned long                                      bIgnoreGameInfoNotification;                              // (OptionalParm, Parm)
 };
 
 // Function DunDefAtlantis.DunDefGRI_RisingWater.NotifyPuzzleSolverDeath
@@ -98,9 +98,9 @@ struct ADunDefGRI_RisingWater_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -228,9 +228,9 @@ struct APuzzleRoomActor_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -287,8 +287,8 @@ struct ADunDefInkCloud_HurtRadius_Params
 	struct FVector                                     HurtOrigin;                                               // (Parm)
 	class AActor*                                      IgnoredActor;                                             // (OptionalParm, Parm)
 	class AController*                                 InstigatedByController;                                   // (OptionalParm, Parm)
-	bool                                               bDoFullDamage;                                            // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bDoFullDamage;                                            // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefInkCloud.FadeOut
@@ -314,7 +314,7 @@ struct ADunDefKraken_Died_Params
 	class AController*                                 Killer;                                                   // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
 	struct FVector                                     HitLocation;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefKraken.DestroyTentacles
@@ -438,14 +438,14 @@ struct ADunDefKraken_PlayLeftTentacleAttack_Params
 struct ADunDefKraken_IsValidRightSwingTarget_Params
 {
 	class AActor*                                      checkTarg;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefKraken.IsValidLeftSwingTarget
 struct ADunDefKraken_IsValidLeftSwingTarget_Params
 {
 	class AActor*                                      checkTarg;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefKraken.AddToRightSwingHurtList
@@ -518,14 +518,14 @@ struct ADunDefKraken_PlayWithDrawTentacle_Params
 struct ADunDefKraken_NotifyTentacleWithdraw_Params
 {
 	class AKrakenTentacle*                             damagedTentacle;                                          // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefKraken.CheckSpecialCoreDmg
 struct ADunDefKraken_CheckSpecialCoreDmg_Params
 {
 	struct FVector                                     HitLocation;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefKraken.AdjustDamage
@@ -573,8 +573,8 @@ struct ADunDefKraken_TakeDamage_Params
 // Function DunDefAtlantis.DunDefKraken.UpdateDifficultyValues
 struct ADunDefKraken_UpdateDifficultyValues_Params
 {
-	bool                                               UpdateMaterial;                                           // (OptionalParm, Parm)
-	bool                                               onlyDynamicValues;                                        // (OptionalParm, Parm)
+	unsigned long                                      UpdateMaterial;                                           // (OptionalParm, Parm)
+	unsigned long                                      onlyDynamicValues;                                        // (OptionalParm, Parm)
 };
 
 // Function DunDefAtlantis.DunDefKraken.SetMovementPhysics
@@ -612,9 +612,9 @@ struct ADunDefKraken_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -628,7 +628,7 @@ struct ADunDefKraken_ReplicatedEvent_Params
 // Function DunDefAtlantis.KrakenTentacle.ForceLineOfSight
 struct AKrakenTentacle_ForceLineOfSight_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.KrakenTentacle.GetLightningTowerDamagePercent
@@ -640,32 +640,32 @@ struct AKrakenTentacle_GetLightningTowerDamagePercent_Params
 // Function DunDefAtlantis.KrakenTentacle.setIsWebbed
 struct AKrakenTentacle_setIsWebbed_Params
 {
-	bool                                               isWebbed;                                                 // (Parm)
+	unsigned long                                      isWebbed;                                                 // (Parm)
 };
 
 // Function DunDefAtlantis.KrakenTentacle.isWebbed
 struct AKrakenTentacle_isWebbed_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.KrakenTentacle.GetChainIgnore
 struct AKrakenTentacle_GetChainIgnore_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.KrakenTentacle.SetChainIgnore
 struct AKrakenTentacle_SetChainIgnore_Params
 {
-	bool                                               ignore;                                                   // (Parm)
+	unsigned long                                      ignore;                                                   // (Parm)
 };
 
 // Function DunDefAtlantis.KrakenTentacle.IsBeingChainedBy
 struct AKrakenTentacle_IsBeingChainedBy_Params
 {
 	class ADunDefTower_ChainLightning*                 Tower;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.KrakenTentacle.RemoveFromChainingTowers
@@ -683,7 +683,7 @@ struct AKrakenTentacle_AddToChainingTowers_Params
 // Function DunDefAtlantis.KrakenTentacle.AllowSuction
 struct AKrakenTentacle_AllowSuction_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.KrakenTentacle.ClientTakeRadiusDamage
@@ -695,7 +695,7 @@ struct AKrakenTentacle_ClientTakeRadiusDamage_Params
 	class UClass*                                      DamageType;                                               // (Parm)
 	float                                              Momentum;                                                 // (Parm)
 	struct FVector                                     HurtOrigin;                                               // (Parm)
-	bool                                               bFullDamage;                                              // (Parm)
+	unsigned long                                      bFullDamage;                                              // (Parm)
 	class AActor*                                      DamageCauser;                                             // (Parm)
 	float                                              DamageFalloffExponent;                                    // (OptionalParm, Parm)
 	class UObject*                                     WhatHitMe;                                                // (OptionalParm, Parm)
@@ -739,7 +739,7 @@ struct AKrakenTentacle_HealPctOfMaxHealth_Params
 	float                                              HealPct;                                                  // (Parm)
 	class AController*                                 Healer;                                                   // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
-	bool                                               bShowFloatingNumbers;                                     // (OptionalParm, Parm)
+	unsigned long                                      bShowFloatingNumbers;                                     // (OptionalParm, Parm)
 };
 
 // Function DunDefAtlantis.KrakenTentacle.ForceMoveActor
@@ -747,7 +747,7 @@ struct AKrakenTentacle_ForceMoveActor_Params
 {
 	class AActor*                                      Mover;                                                    // (Parm)
 	struct FVector                                     NewLoc;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.KrakenTentacle.GetOverrideTargetComponent
@@ -760,7 +760,7 @@ struct AKrakenTentacle_GetOverrideTargetComponent_Params
 struct AKrakenTentacle_EncroachingOn_Params
 {
 	class AActor*                                      Other;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.KrakenTentacle.Bump
@@ -783,13 +783,13 @@ struct AKrakenTentacle_Touch_Params
 // Function DunDefAtlantis.KrakenTentacle.SetDoDamageChecks
 struct AKrakenTentacle_SetDoDamageChecks_Params
 {
-	bool                                               bAllowDamage;                                             // (Parm)
+	unsigned long                                      bAllowDamage;                                             // (Parm)
 };
 
 // Function DunDefAtlantis.KrakenTentacle.GetHealth
 struct AKrakenTentacle_GetHealth_Params
 {
-	bool                                               bGetMax;                                                  // (OptionalParm, Parm)
+	unsigned long                                      bGetMax;                                                  // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -802,14 +802,14 @@ struct AKrakenTentacle_GetMass_Params
 // Function DunDefAtlantis.KrakenTentacle.AllowDarknessIgnorance
 struct AKrakenTentacle_AllowDarknessIgnorance_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.KrakenTentacle.ForceFriendlyFire
 struct AKrakenTentacle_ForceFriendlyFire_Params
 {
 	class AActor*                                      Target;                                                   // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.KrakenTentacle.GetInterpolatedTargetingLocation
@@ -859,7 +859,7 @@ struct AKrakenTentacle_IgnoreFriendlyFireDamage_Params
 {
 	TScriptInterface<class UDunDefTargetableInterface> instigatorActor;                                          // (Parm)
 	class AController*                                 OptionalController;                                       // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.KrakenTentacle.GetTargetingTeam
@@ -955,9 +955,9 @@ struct AKrakenTentacle_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -1054,7 +1054,7 @@ struct ADunDefKrakenController_UpdateDashPoint_Params
 struct ADunDefKrakenController_AddToDashHurtList_Params
 {
 	class AActor*                                      DashedActor;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefKrakenController.EndMeleeSwing
@@ -1081,14 +1081,14 @@ struct ADunDefKrakenController_DoBiting_Params
 struct ADunDefKrakenController_AddToSwingHurtList_Params
 {
 	class AActor*                                      newEntry;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefKrakenController.ShouldDamage
 struct ADunDefKrakenController_ShouldDamage_Params
 {
 	class AActor*                                      act;                                                      // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefKrakenController.DoAttack
@@ -1101,7 +1101,7 @@ struct ADunDefKrakenController_GeneratePathToActor_Params
 {
 	class AActor*                                      Goal;                                                     // (Parm)
 	float                                              WithinDistance;                                           // (OptionalParm, Parm)
-	bool                                               bAllowPartialPath;                                        // (OptionalParm, Parm)
+	unsigned long                                      bAllowPartialPath;                                        // (OptionalParm, Parm)
 	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -1111,22 +1111,22 @@ struct ADunDefKrakenController_MoveAroundBlockade_Params
 	class AActor*                                      blockadeActor;                                            // (Parm)
 	float                                              BlockadeWidth;                                            // (Parm)
 	struct FVector                                     HitNormal;                                                // (Parm)
-	bool                                               SkipBlockingCheck;                                        // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      SkipBlockingCheck;                                        // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefKrakenController.NavActorReachable
 struct ADunDefKrakenController_NavActorReachable_Params
 {
 	class AActor*                                      A;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefKrakenController.FindNearestNavPointTo
 struct ADunDefKrakenController_FindNearestNavPointTo_Params
 {
 	class AActor*                                      A;                                                        // (Parm)
-	bool                                               bCheckVisible;                                            // (OptionalParm, Parm)
+	unsigned long                                      bCheckVisible;                                            // (OptionalParm, Parm)
 	class ANavigationPoint*                            ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -1139,13 +1139,13 @@ struct ADunDefKrakenController_GetAttackRange_Params
 // Function DunDefAtlantis.DunDefKrakenController.ForceTentacleAttack
 struct ADunDefKrakenController_ForceTentacleAttack_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefKrakenController.WantsHurtAnimation
 struct ADunDefKrakenController_WantsHurtAnimation_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefKrakenController.NotifyTakeHitEX
@@ -1163,13 +1163,13 @@ struct ADunDefKrakenController_NotifyTakeHitEX_Params
 struct ADunDefKrakenController_Possess_Params
 {
 	class APawn*                                       inPawn;                                                   // (Parm)
-	bool                                               bVehicleTransition;                                       // (Parm)
+	unsigned long                                      bVehicleTransition;                                       // (Parm)
 };
 
 // Function DunDefAtlantis.DunDefSharkMan.IsCurrentlyPlayingAttackAnimation
 struct ADunDefSharkMan_IsCurrentlyPlayingAttackAnimation_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefSharkMan.NotifyTakeHitEX
@@ -1202,7 +1202,7 @@ struct ADunDefSharkMan_ClearChargeHurtList_Params
 struct ADunDefSharkMan_AddToChargeHurtList_Params
 {
 	class ADunDefPlayer*                               Player;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefSharkMan.EndCharging
@@ -1242,7 +1242,7 @@ struct ADunDefSharkMan_PlaySharkManChargeFailAnimation_Params
 // Function DunDefAtlantis.DunDefSharkMan.StopSharkManDizzyAnimation
 struct ADunDefSharkMan_StopSharkManDizzyAnimation_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefSharkMan.PlaySharkManDizzyAnimation
@@ -1387,9 +1387,9 @@ struct ADunDefSharkMan_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -1441,34 +1441,34 @@ struct ADunDefSharkmanController_DoPositionPoll_Params
 // Function DunDefAtlantis.DunDefSharkmanController.IsWinding
 struct ADunDefSharkmanController_IsWinding_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefSharkmanController.IsDistractedByCore
 struct ADunDefSharkmanController_IsDistractedByCore_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefSharkmanController.IsCloseToTowers
 struct ADunDefSharkmanController_IsCloseToTowers_Params
 {
 	float                                              Radius;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefSharkmanController.IsCloseToPlayers
 struct ADunDefSharkmanController_IsCloseToPlayers_Params
 {
 	float                                              Radius;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefSharkmanController.AddToSwingHurtList
 struct ADunDefSharkmanController_AddToSwingHurtList_Params
 {
 	class AActor*                                      newEntry;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.DunDefSharkmanController.EndMeleeSwing
@@ -1487,7 +1487,7 @@ struct ADunDefSharkmanController_StartMeleeSwing_Params
 struct APuzzlePieceActor_ScaleColor_Params
 {
 	float                                              DeltaTime;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefAtlantis.PuzzlePieceActor.TurnOnStartEmitter
@@ -1510,7 +1510,7 @@ struct APuzzlePieceActor_ShutOffVFX_Params
 struct APuzzlePieceActor_SetColorLerp_Params
 {
 	struct FLinearColor                                NewColor;                                                 // (Parm)
-	bool                                               bShouldScaleBack;                                         // (Parm)
+	unsigned long                                      bShouldScaleBack;                                         // (Parm)
 	float                                              lerpScale;                                                // (Parm)
 };
 
@@ -1620,9 +1620,9 @@ struct ARaisingWaterVolume_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };

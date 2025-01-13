@@ -3513,18 +3513,19 @@ struct FNamedInterfaceDef
 	struct FString                                     InterfaceClassName;                                       // 0x0008(0x000C) (NeedCtorLink)
 };
 
-// ScriptStruct Engine.OnlineSubsystem.OnlineRegistrant
-// 0x0008
 // ScriptStruct Engine.OnlineSubsystem.UniqueNetId
 // 0x0008
 struct FUniqueNetId
 {
 	struct FQWord                                      Uid;                                                      // 0x0000(0x0008)
 };
+// ScriptStruct Engine.OnlineSubsystem.OnlineRegistrant
+// 0x0008
 struct FOnlineRegistrant
 {
 	struct FUniqueNetId                                PlayerNetId;                                              // 0x0000(0x0008) (Const)
 };
+
 // ScriptStruct Engine.OnlineSubsystem.OnlineArbitrationRegistrant
 // 0x000C (0x0014 - 0x0008)
 struct FOnlineArbitrationRegistrant : public FOnlineRegistrant
@@ -3543,7 +3544,6 @@ struct FNamedSession
 	TArray<struct FOnlineRegistrant>                   Registrants;                                              // 0x0010(0x000C) (NeedCtorLink)
 	TArray<struct FOnlineArbitrationRegistrant>        ArbitrationRegistrants;                                   // 0x001C(0x000C) (NeedCtorLink)
 };
-
 
 
 // ScriptStruct Engine.GameInfo.GameClassShortName
@@ -7540,7 +7540,6 @@ struct FCameraShakeInstance
 	struct FMatrix                                     UserPlaySpaceMatrix;                                      // 0x0040(0x0040)
 };
 
-
 // ScriptStruct Engine.CameraShake.FOscillator
 // 0x0009
 struct FFOscillator
@@ -7549,6 +7548,7 @@ struct FFOscillator
 	float                                              Frequency;                                                // 0x0004(0x0004) (Edit)
 	TEnumAsByte<EInitialOscillatorOffset>              InitialOffset;                                            // 0x0008(0x0001) (Edit)
 };
+
 // ScriptStruct Engine.CameraShake.ROscillator
 // 0x0024
 struct FROscillator
@@ -7566,6 +7566,7 @@ struct FVOscillator
 	struct FFOscillator                                Y;                                                        // 0x000C(0x000C) (Edit)
 	struct FFOscillator                                Z;                                                        // 0x0018(0x000C) (Edit)
 };
+
 
 // ScriptStruct Engine.Actor.AnimSlotDesc
 // 0x000C

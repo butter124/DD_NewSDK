@@ -38,10 +38,10 @@ struct FString AGameAIController::GetActionString()
 // Parameters:
 // struct FVector                 Goal                           (Parm)
 // float                          WithinDistance                 (OptionalParm, Parm)
-// bool                           bAllowPartialPath              (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bAllowPartialPath              (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameAIController::GeneratePathToLocation(const struct FVector& Goal, float WithinDistance, bool bAllowPartialPath)
+unsigned long AGameAIController::GeneratePathToLocation(const struct FVector& Goal, float WithinDistance, unsigned long bAllowPartialPath)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.GeneratePathToLocation");
 
@@ -65,10 +65,10 @@ bool AGameAIController::GeneratePathToLocation(const struct FVector& Goal, float
 // Parameters:
 // class AActor*                  Goal                           (Parm)
 // float                          WithinDistance                 (OptionalParm, Parm)
-// bool                           bAllowPartialPath              (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bAllowPartialPath              (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameAIController::GeneratePathToActor(class AActor* Goal, float WithinDistance, bool bAllowPartialPath)
+unsigned long AGameAIController::GeneratePathToActor(class AActor* Goal, float WithinDistance, unsigned long bAllowPartialPath)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.GeneratePathToActor");
 
@@ -91,11 +91,11 @@ bool AGameAIController::GeneratePathToActor(class AActor* Goal, float WithinDist
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // struct FRotator                TargetDesiredRotation          (Parm)
-// bool                           InLockDesiredRotation          (OptionalParm, Parm)
-// bool                           InUnlockWhenReached            (OptionalParm, Parm)
+// unsigned long                  InLockDesiredRotation          (OptionalParm, Parm)
+// unsigned long                  InUnlockWhenReached            (OptionalParm, Parm)
 // float                          InterpolationTime              (OptionalParm, Parm)
 
-void AGameAIController::SetDesiredRotation(const struct FRotator& TargetDesiredRotation, bool InLockDesiredRotation, bool InUnlockWhenReached, float InterpolationTime)
+void AGameAIController::SetDesiredRotation(const struct FRotator& TargetDesiredRotation, unsigned long InLockDesiredRotation, unsigned long InUnlockWhenReached, float InterpolationTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.SetDesiredRotation");
 
@@ -118,9 +118,9 @@ void AGameAIController::SetDesiredRotation(const struct FRotator& TargetDesiredR
 // Parameters:
 // struct FString                 LogText                        (Parm, CoerceParm, NeedCtorLink)
 // struct FName                   LogCategory                    (OptionalParm, Parm)
-// bool                           bForce                         (OptionalParm, Parm)
+// unsigned long                  bForce                         (OptionalParm, Parm)
 
-void AGameAIController::AILog_Internal(const struct FString& LogText, const struct FName& LogCategory, bool bForce)
+void AGameAIController::AILog_Internal(const struct FString& LogText, const struct FName& LogCategory, unsigned long bForce)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.AILog_Internal");
 
@@ -285,9 +285,9 @@ class UGameAICommand* AGameAIController::GetActiveCommand()
 // Parameters:
 // class UGameAICommand*          AbortCmd                       (Parm)
 // class UClass*                  AbortClass                     (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameAIController::AbortCommand(class UGameAICommand* AbortCmd, class UClass* AbortClass)
+unsigned long AGameAIController::AbortCommand(class UGameAICommand* AbortCmd, class UClass* AbortClass)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.AbortCommand");
 
@@ -530,9 +530,9 @@ void UGameAICommand::PrePushed(class AGameAIController* AI)
 // (Defined, Public)
 // Parameters:
 // struct FName                   StateName                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameAICommand::AllowStateTransitionTo(const struct FName& StateName)
+unsigned long UGameAICommand::AllowStateTransitionTo(const struct FName& StateName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.AllowStateTransitionTo");
 
@@ -553,9 +553,9 @@ bool UGameAICommand::AllowStateTransitionTo(const struct FName& StateName)
 // (Defined, Public)
 // Parameters:
 // class UClass*                  AttemptCommand                 (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameAICommand::AllowTransitionTo(class UClass* AttemptCommand)
+unsigned long UGameAICommand::AllowTransitionTo(class UClass* AttemptCommand)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.AllowTransitionTo");
 
@@ -595,9 +595,9 @@ void UGameAICommand::Tick(float DeltaTime)
 // Function GameFramework.GameAICommand.ShouldIgnoreNotifies
 // (Final, Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameAICommand::ShouldIgnoreNotifies()
+unsigned long UGameAICommand::ShouldIgnoreNotifies()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.ShouldIgnoreNotifies");
 
@@ -732,9 +732,9 @@ void UGameAICommand::InternalPrePushed(class AGameAIController* AI)
 // (Defined, Static, Public)
 // Parameters:
 // class AGameAIController*       AI                             (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameAICommand::STATIC_InitCommand(class AGameAIController* AI)
+unsigned long UGameAICommand::STATIC_InitCommand(class AGameAIController* AI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.InitCommand");
 
@@ -756,9 +756,9 @@ bool UGameAICommand::STATIC_InitCommand(class AGameAIController* AI)
 // Parameters:
 // class AGameAIController*       AI                             (Parm)
 // class AActor*                  UserActor                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameAICommand::STATIC_InitCommandUserActor(class AGameAIController* AI, class AActor* UserActor)
+unsigned long UGameAICommand::STATIC_InitCommandUserActor(class AGameAIController* AI, class AActor* UserActor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.InitCommandUserActor");
 
@@ -876,10 +876,10 @@ void AGameCrowdAgent::NativePostRenderFor(class APlayerController* PC, class UCa
 // Parameters:
 // class AActor*                  Goal                           (Parm)
 // float                          WithinDistance                 (OptionalParm, Parm)
-// bool                           bAllowPartialPath              (OptionalParm, Parm)
+// unsigned long                  bAllowPartialPath              (OptionalParm, Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector AGameCrowdAgent::GeneratePathToActor(class AActor* Goal, float WithinDistance, bool bAllowPartialPath)
+struct FVector AGameCrowdAgent::GeneratePathToActor(class AActor* Goal, float WithinDistance, unsigned long bAllowPartialPath)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.GeneratePathToActor");
 
@@ -1034,9 +1034,9 @@ void AGameCrowdAgent::UpdateIntermediatePoint(class AActor* DestinationActor)
 // struct FVector                 out_CamLoc                     (Parm, OutParm)
 // struct FRotator                out_CamRot                     (Parm, OutParm)
 // float                          out_FOV                        (Parm, OutParm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameCrowdAgent::CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV)
+unsigned long AGameCrowdAgent::CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.CalcCamera");
 
@@ -1063,9 +1063,9 @@ bool AGameCrowdAgent::CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, s
 // Function GameFramework.GameCrowdAgent.IsIdle
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameCrowdAgent::IsIdle()
+unsigned long AGameCrowdAgent::IsIdle()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.IsIdle");
 
@@ -1309,10 +1309,10 @@ void AGameCrowdAgent::OnPlayAgentAnimation(class USeqAct_PlayAgentAnimation* Act
 // class AGameCrowdAgent*         AgentTemplate                  (Parm)
 // class UGameCrowdGroup*         NewGroup                       (Parm)
 // float                          AgentWarmupTime                (Parm)
-// bool                           bWarmupPosition                (Parm)
-// bool                           bCheckWarmupVisibility         (Parm)
+// unsigned long                  bWarmupPosition                (Parm)
+// unsigned long                  bCheckWarmupVisibility         (Parm)
 
-void AGameCrowdAgent::InitializeAgent(class AActor* SpawnLoc, class AGameCrowdAgent* AgentTemplate, class UGameCrowdGroup* NewGroup, float AgentWarmupTime, bool bWarmupPosition, bool bCheckWarmupVisibility)
+void AGameCrowdAgent::InitializeAgent(class AActor* SpawnLoc, class AGameCrowdAgent* AgentTemplate, class UGameCrowdGroup* NewGroup, float AgentWarmupTime, unsigned long bWarmupPosition, unsigned long bCheckWarmupVisibility)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.InitializeAgent");
 
@@ -1335,11 +1335,11 @@ void AGameCrowdAgent::InitializeAgent(class AActor* SpawnLoc, class AGameCrowdAg
 // Function GameFramework.GameCrowdAgent.SetLighting
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bEnableLightEnvironment        (Parm)
+// unsigned long                  bEnableLightEnvironment        (Parm)
 // struct FLightingChannelContainer AgentLightingChannel           (Parm)
-// bool                           bCastShadows                   (Parm)
+// unsigned long                  bCastShadows                   (Parm)
 
-void AGameCrowdAgent::SetLighting(bool bEnableLightEnvironment, const struct FLightingChannelContainer& AgentLightingChannel, bool bCastShadows)
+void AGameCrowdAgent::SetLighting(unsigned long bEnableLightEnvironment, const struct FLightingChannelContainer& AgentLightingChannel, unsigned long bCastShadows)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.SetLighting");
 
@@ -1510,9 +1510,9 @@ void AGameCrowdAgent::WaitForGroupMembers()
 // Parameters:
 // TArray<struct FBehaviorEntry>  BehaviorList                   (Parm, NeedCtorLink)
 // struct FVector                 BestCameraLoc                  (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameCrowdAgent::PickBehaviorFrom(TArray<struct FBehaviorEntry> BehaviorList, const struct FVector& BestCameraLoc)
+unsigned long AGameCrowdAgent::PickBehaviorFrom(TArray<struct FBehaviorEntry> BehaviorList, const struct FVector& BestCameraLoc)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.PickBehaviorFrom");
 
@@ -1534,9 +1534,9 @@ bool AGameCrowdAgent::PickBehaviorFrom(TArray<struct FBehaviorEntry> BehaviorLis
 // (Defined, Public)
 // Parameters:
 // class AActor*                  PanicActor                     (Parm)
-// bool                           bNewPanic                      (Parm)
+// unsigned long                  bNewPanic                      (Parm)
 
-void AGameCrowdAgent::SetPanic(class AActor* PanicActor, bool bNewPanic)
+void AGameCrowdAgent::SetPanic(class AActor* PanicActor, unsigned long bNewPanic)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.SetPanic");
 
@@ -1555,9 +1555,9 @@ void AGameCrowdAgent::SetPanic(class AActor* PanicActor, bool bNewPanic)
 // Function GameFramework.GameCrowdAgent.IsPanicked
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameCrowdAgent::IsPanicked()
+unsigned long AGameCrowdAgent::IsPanicked()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.IsPanicked");
 
@@ -1709,9 +1709,9 @@ void AGameCrowdAgentSkeletal::OnPlayAgentAnimation(class USeqAct_PlayAgentAnimat
 // Function GameFramework.GameCrowdAgentSkeletal.SetRootMotion
 // (Native, Public)
 // Parameters:
-// bool                           bRootMotionEnabled             (Parm)
+// unsigned long                  bRootMotionEnabled             (Parm)
 
-void AGameCrowdAgentSkeletal::SetRootMotion(bool bRootMotionEnabled)
+void AGameCrowdAgentSkeletal::SetRootMotion(unsigned long bRootMotionEnabled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSkeletal.SetRootMotion");
 
@@ -1751,11 +1751,11 @@ void AGameCrowdAgentSkeletal::PlayDeath(const struct FVector& KillMomentum)
 // Function GameFramework.GameCrowdAgentSkeletal.SetLighting
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bEnableLightEnvironment        (Parm)
+// unsigned long                  bEnableLightEnvironment        (Parm)
 // struct FLightingChannelContainer AgentLightingChannel           (Parm)
-// bool                           bCastShadows                   (Parm)
+// unsigned long                  bCastShadows                   (Parm)
 
-void AGameCrowdAgentSkeletal::SetLighting(bool bEnableLightEnvironment, const struct FLightingChannelContainer& AgentLightingChannel, bool bCastShadows)
+void AGameCrowdAgentSkeletal::SetLighting(unsigned long bEnableLightEnvironment, const struct FLightingChannelContainer& AgentLightingChannel, unsigned long bCastShadows)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSkeletal.SetLighting");
 
@@ -1793,9 +1793,9 @@ void AGameCrowdAgentSkeletal::PostBeginPlay()
 // (Defined, Public)
 // Parameters:
 // class AGameCrowdDestination*   Destination                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameCrowdAgentBehavior::AllowBehaviorAt(class AGameCrowdDestination* Destination)
+unsigned long UGameCrowdAgentBehavior::AllowBehaviorAt(class AGameCrowdDestination* Destination)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.AllowBehaviorAt");
 
@@ -1816,9 +1816,9 @@ bool UGameCrowdAgentBehavior::AllowBehaviorAt(class AGameCrowdDestination* Desti
 // (Defined, Public)
 // Parameters:
 // class AGameCrowdDestination*   Destination                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameCrowdAgentBehavior::AllowThisDestination(class AGameCrowdDestination* Destination)
+unsigned long UGameCrowdAgentBehavior::AllowThisDestination(class AGameCrowdDestination* Destination)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.AllowThisDestination");
 
@@ -2001,9 +2001,9 @@ void UGameCrowdAgentBehavior::InitBehavior(class AGameCrowdAgent* Agent)
 // Function GameFramework.GameCrowdAgentBehavior.HandleMovement
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameCrowdAgentBehavior::HandleMovement()
+unsigned long UGameCrowdAgentBehavior::HandleMovement()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.HandleMovement");
 
@@ -2042,9 +2042,9 @@ void UGameCrowdAgentBehavior::FinishedTargetRotation()
 // Parameters:
 // class AGameCrowdAgent*         Agent                          (Parm)
 // struct FVector                 cameraLoc                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameCrowdAgentBehavior::CanBeUsedBy(class AGameCrowdAgent* Agent, const struct FVector& cameraLoc)
+unsigned long UGameCrowdAgentBehavior::CanBeUsedBy(class AGameCrowdAgent* Agent, const struct FVector& cameraLoc)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.CanBeUsedBy");
 
@@ -2086,9 +2086,9 @@ void UGameCrowdAgentBehavior::Tick(float DeltaTime)
 // Function GameFramework.GameCrowdAgentBehavior.ShouldEndIdle
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameCrowdAgentBehavior::ShouldEndIdle()
+unsigned long UGameCrowdAgentBehavior::ShouldEndIdle()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.ShouldEndIdle");
 
@@ -2264,9 +2264,9 @@ struct FString UGameCrowdBehavior_RunFromPanic::GetBehaviorString()
 // (Defined, Public)
 // Parameters:
 // class AGameCrowdDestination*   Destination                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameCrowdBehavior_RunFromPanic::AllowBehaviorAt(class AGameCrowdDestination* Destination)
+unsigned long UGameCrowdBehavior_RunFromPanic::AllowBehaviorAt(class AGameCrowdDestination* Destination)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_RunFromPanic.AllowBehaviorAt");
 
@@ -2287,9 +2287,9 @@ bool UGameCrowdBehavior_RunFromPanic::AllowBehaviorAt(class AGameCrowdDestinatio
 // (Defined, Public)
 // Parameters:
 // class AGameCrowdDestination*   Destination                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameCrowdBehavior_RunFromPanic::AllowThisDestination(class AGameCrowdDestination* Destination)
+unsigned long UGameCrowdBehavior_RunFromPanic::AllowThisDestination(class AGameCrowdDestination* Destination)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_RunFromPanic.AllowThisDestination");
 
@@ -2403,9 +2403,9 @@ void UGameCrowdBehavior_WaitForGroup::StopBehavior()
 // Function GameFramework.GameCrowdBehavior_WaitForGroup.ShouldEndIdle
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameCrowdBehavior_WaitForGroup::ShouldEndIdle()
+unsigned long UGameCrowdBehavior_WaitForGroup::ShouldEndIdle()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_WaitForGroup.ShouldEndIdle");
 
@@ -2483,9 +2483,9 @@ void UGameCrowdBehavior_WaitInQueue::StopBehavior()
 // Function GameFramework.GameCrowdBehavior_WaitInQueue.ShouldEndIdle
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameCrowdBehavior_WaitInQueue::ShouldEndIdle()
+unsigned long UGameCrowdBehavior_WaitInQueue::ShouldEndIdle()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_WaitInQueue.ShouldEndIdle");
 
@@ -2567,9 +2567,9 @@ void UGameCrowdBehavior_WaitInQueue::ChangingDestination(class AGameCrowdDestina
 // Function GameFramework.GameCrowdBehavior_WaitInQueue.HandleMovement
 // (Native, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameCrowdBehavior_WaitInQueue::HandleMovement()
+unsigned long UGameCrowdBehavior_WaitInQueue::HandleMovement()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_WaitInQueue.HandleMovement");
 
@@ -2672,10 +2672,10 @@ void AGameCrowdInteractionPoint::OnToggle(class USeqAct_Toggle* Action)
 // class AGameCrowdAgent*         Agent                          (Parm)
 // class AActor*                  Goal                           (Parm)
 // float                          WithinDistance                 (OptionalParm, Parm)
-// bool                           bAllowPartialPath              (OptionalParm, Parm)
+// unsigned long                  bAllowPartialPath              (OptionalParm, Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector AGameCrowdDestination::GeneratePathToActor(class AGameCrowdAgent* Agent, class AActor* Goal, float WithinDistance, bool bAllowPartialPath)
+struct FVector AGameCrowdDestination::GeneratePathToActor(class AGameCrowdAgent* Agent, class AActor* Goal, float WithinDistance, unsigned long bAllowPartialPath)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.GeneratePathToActor");
 
@@ -2743,9 +2743,9 @@ void AGameCrowdDestination::GetSpawnPosition(class USeqAct_GameCrowdSpawner* Spa
 // (Defined, Event, Public)
 // Parameters:
 // class AGameCrowdAgent*         Agent                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameCrowdDestination::AllowableDestinationFor(class AGameCrowdAgent* Agent)
+unsigned long AGameCrowdDestination::AllowableDestinationFor(class AGameCrowdAgent* Agent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.AllowableDestinationFor");
 
@@ -2765,9 +2765,9 @@ bool AGameCrowdDestination::AllowableDestinationFor(class AGameCrowdAgent* Agent
 // Function GameFramework.GameCrowdDestination.AtCapacity
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameCrowdDestination::AtCapacity()
+unsigned long AGameCrowdDestination::AtCapacity()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.AtCapacity");
 
@@ -2827,9 +2827,9 @@ void AGameCrowdDestination::DecrementCustomerCount(class AGameCrowdAgent* Depart
 // (Defined, Public)
 // Parameters:
 // class AGameCrowdAgent*         Agent                          (Parm)
-// bool                           bIgnoreRestrictions            (Parm)
+// unsigned long                  bIgnoreRestrictions            (Parm)
 
-void AGameCrowdDestination::PickNewDestinationFor(class AGameCrowdAgent* Agent, bool bIgnoreRestrictions)
+void AGameCrowdDestination::PickNewDestinationFor(class AGameCrowdAgent* Agent, unsigned long bIgnoreRestrictions)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.PickNewDestinationFor");
 
@@ -2887,10 +2887,10 @@ void AGameCrowdDestination::PostBeginPlay()
 // Parameters:
 // class AGameCrowdAgent*         Agent                          (Parm)
 // struct FVector                 TestPosition                   (Parm)
-// bool                           bTestExactly                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bTestExactly                   (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameCrowdDestination::ReachedByAgent(class AGameCrowdAgent* Agent, const struct FVector& TestPosition, bool bTestExactly)
+unsigned long AGameCrowdDestination::ReachedByAgent(class AGameCrowdAgent* Agent, const struct FVector& TestPosition, unsigned long bTestExactly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.ReachedByAgent");
 
@@ -2951,9 +2951,9 @@ void AGameCrowdDestination::NotifyPathChanged()
 // Function GameFramework.GameCrowdDestinationQueuePoint.HasCustomer
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameCrowdDestinationQueuePoint::HasCustomer()
+unsigned long AGameCrowdDestinationQueuePoint::HasCustomer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestinationQueuePoint.HasCustomer");
 
@@ -3071,9 +3071,9 @@ void AGameCrowdDestinationQueuePoint::ReachedDestination(class AGameCrowdAgent* 
 // Function GameFramework.GameCrowdDestinationQueuePoint.HasSpace
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameCrowdDestinationQueuePoint::HasSpace()
+unsigned long AGameCrowdDestinationQueuePoint::HasSpace()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestinationQueuePoint.HasSpace");
 
@@ -3094,9 +3094,9 @@ bool AGameCrowdDestinationQueuePoint::HasSpace()
 // Parameters:
 // class AGameCrowdAgent*         Agent                          (Parm)
 // struct FVector                 TestPosition                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameCrowdDestinationQueuePoint::QueueReachedBy(class AGameCrowdAgent* Agent, const struct FVector& TestPosition)
+unsigned long AGameCrowdDestinationQueuePoint::QueueReachedBy(class AGameCrowdAgent* Agent, const struct FVector& TestPosition)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestinationQueuePoint.QueueReachedBy");
 
@@ -3433,9 +3433,9 @@ class AGameCrowdAgent* AGameCrowdPopulationManager::SpawnAgent(class AGameCrowdD
 // (Defined, Public, HasDefaults)
 // Parameters:
 // class AGameCrowdDestination*   Candidate                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameCrowdPopulationManager::ValidateSpawnAt(class AGameCrowdDestination* Candidate)
+unsigned long AGameCrowdPopulationManager::ValidateSpawnAt(class AGameCrowdDestination* Candidate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.ValidateSpawnAt");
 
@@ -3614,9 +3614,9 @@ void AGameCrowdPopulationManager::DisplayDebug(class AHUD* HUD, float* out_YL, f
 // (Defined, Public)
 // Parameters:
 // class AGameCrowdAgent*         Agent                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameCrowdPopulationManager::AddToAgentPool(class AGameCrowdAgent* Agent)
+unsigned long AGameCrowdPopulationManager::AddToAgentPool(class AGameCrowdAgent* Agent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.AddToAgentPool");
 
@@ -3739,9 +3739,9 @@ void UGameDamageType::STATIC_HandleDamageFX(class AGamePawn* DamagedPawn, struct
 // Parameters:
 // class APawn*                   TestPawn                       (Parm)
 // class APawn*                   Instigator                     (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameDamageType::STATIC_ShouldHeadShotGib(class APawn* TestPawn, class APawn* Instigator)
+unsigned long UGameDamageType::STATIC_ShouldHeadShotGib(class APawn* TestPawn, class APawn* Instigator)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameDamageType.ShouldHeadShotGib");
 
@@ -3782,9 +3782,9 @@ void UGameDamageType::STATIC_PlayExtraDamageSound(class APawn* VictimPawn)
 // Function GameFramework.GameDamageType.IsScriptedDamageType
 // (Defined, Static, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameDamageType::STATIC_IsScriptedDamageType()
+unsigned long UGameDamageType::STATIC_IsScriptedDamageType()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameDamageType.IsScriptedDamageType");
 
@@ -3804,9 +3804,9 @@ bool UGameDamageType::STATIC_IsScriptedDamageType()
 // (Defined, Static, Public)
 // Parameters:
 // class APawn*                   DamagedPawn                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameDamageType::STATIC_ShouldPlayForceFeedback(class APawn* DamagedPawn)
+unsigned long UGameDamageType::STATIC_ShouldPlayForceFeedback(class APawn* DamagedPawn)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameDamageType.ShouldPlayForceFeedback");
 
@@ -3929,9 +3929,9 @@ void UGameDamageType::STATIC_ModifyDamage(class APawn* Victim, class AController
 // Parameters:
 // class APawn*                   TestPawn                       (Parm)
 // class APawn*                   Instigator                     (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameDamageType::STATIC_ShouldGib(class APawn* TestPawn, class APawn* Instigator)
+unsigned long UGameDamageType::STATIC_ShouldGib(class APawn* TestPawn, class APawn* Instigator)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameDamageType.ShouldGib");
 
@@ -4206,9 +4206,9 @@ void AGameExplosionActor::DoCringesAndKnockdowns()
 // (Defined, Protected)
 // Parameters:
 // class AGamePawn*               Victim                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameExplosionActor::ShouldDoCringeFor(class AGamePawn* Victim)
+unsigned long AGameExplosionActor::ShouldDoCringeFor(class AGamePawn* Victim)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.ShouldDoCringeFor");
 
@@ -4263,9 +4263,9 @@ void AGameExplosionActor::DoBreakFracturedMeshes(const struct FVector& ExploOrig
 // class AActor*                  IgnoredActor                   (Parm)
 // class UClass*                  ActorClassToIgnoreForDamage    (Parm)
 // class AController*             InstigatedByController         (Parm)
-// bool                           bDoFullDamage                  (Parm)
+// unsigned long                  bDoFullDamage                  (Parm)
 
-void AGameExplosionActor::HurtExplosion(float BaseDamage, float DamageRadius, float DamageFalloffExp, class UClass* DamageType, float MomentumScale, const struct FVector& ExploOrigin, class AActor* IgnoredActor, class UClass* ActorClassToIgnoreForDamage, class AController* InstigatedByController, bool bDoFullDamage)
+void AGameExplosionActor::HurtExplosion(float BaseDamage, float DamageRadius, float DamageFalloffExp, class UClass* DamageType, float MomentumScale, const struct FVector& ExploOrigin, class AActor* IgnoredActor, class UClass* ActorClassToIgnoreForDamage, class AController* InstigatedByController, unsigned long bDoFullDamage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.HurtExplosion");
 
@@ -4293,9 +4293,9 @@ void AGameExplosionActor::HurtExplosion(float BaseDamage, float DamageRadius, fl
 // (Defined, Simulated, Protected)
 // Parameters:
 // class AActor*                  A                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameExplosionActor::IsBehindExplosion(class AActor* A)
+unsigned long AGameExplosionActor::IsBehindExplosion(class AActor* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.IsBehindExplosion");
 
@@ -4316,9 +4316,9 @@ bool AGameExplosionActor::IsBehindExplosion(class AActor* A)
 // (Defined, Simulated, Public)
 // Parameters:
 // class AActor*                  Victim                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameExplosionActor::DoFullDamageToActor(class AActor* Victim)
+unsigned long AGameExplosionActor::DoFullDamageToActor(class AActor* Victim)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.DoFullDamageToActor");
 
@@ -4495,9 +4495,9 @@ void AGamePawn::ReattachMesh()
 // Function GameFramework.GamePawn.UpdateShadowSettings
 // (Defined, Simulated, Event, Public)
 // Parameters:
-// bool                           bInWantShadow                  (Parm)
+// unsigned long                  bInWantShadow                  (Parm)
 
-void AGamePawn::UpdateShadowSettings(bool bInWantShadow)
+void AGamePawn::UpdateShadowSettings(unsigned long bInWantShadow)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePawn.UpdateShadowSettings");
 
@@ -4620,9 +4620,9 @@ void AGamePlayerController::ClientColorFade(const struct FColor& FadeColor, unsi
 // Function GameFramework.GamePlayerController.WarmupPause
 // (Defined, Event, Public, HasDefaults)
 // Parameters:
-// bool                           bDesiredPauseState             (Parm)
+// unsigned long                  bDesiredPauseState             (Parm)
 
-void AGamePlayerController::WarmupPause(bool bDesiredPauseState)
+void AGamePlayerController::WarmupPause(unsigned long bDesiredPauseState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.WarmupPause");
 
@@ -4640,9 +4640,9 @@ void AGamePlayerController::WarmupPause(bool bDesiredPauseState)
 // Function GameFramework.GamePlayerController.CanUnpauseWarmup
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGamePlayerController::CanUnpauseWarmup()
+unsigned long AGamePlayerController::CanUnpauseWarmup()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.CanUnpauseWarmup");
 
@@ -4685,11 +4685,11 @@ void AGamePlayerController::GetCurrentMovie(struct FString* MovieName)
 // (Final, Net, NetReliable, Simulated, Native, Event, Public, NetClient)
 // Parameters:
 // float                          DelayInSeconds                 (Parm)
-// bool                           bAllowMovieToFinish            (Parm)
-// bool                           bForceStopNonSkippable         (Parm)
-// bool                           bForceStopLoadingMovie         (Parm)
+// unsigned long                  bAllowMovieToFinish            (Parm)
+// unsigned long                  bForceStopNonSkippable         (Parm)
+// unsigned long                  bForceStopLoadingMovie         (Parm)
 
-void AGamePlayerController::ClientStopMovie(float DelayInSeconds, bool bAllowMovieToFinish, bool bForceStopNonSkippable, bool bForceStopLoadingMovie)
+void AGamePlayerController::ClientStopMovie(float DelayInSeconds, unsigned long bAllowMovieToFinish, unsigned long bForceStopNonSkippable, unsigned long bForceStopLoadingMovie)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.ClientStopMovie");
 
@@ -4754,13 +4754,13 @@ void AGamePlayerController::STATIC_KeepPlayingLoadingMovie()
 // Function GameFramework.GamePlayerController.ShowLoadingMovie
 // (Final, Native, Static, HasOptionalParms, Public)
 // Parameters:
-// bool                           bShowMovie                     (Parm)
-// bool                           bPauseAfterHide                (OptionalParm, Parm)
+// unsigned long                  bShowMovie                     (Parm)
+// unsigned long                  bPauseAfterHide                (OptionalParm, Parm)
 // float                          PauseDuration                  (OptionalParm, Parm)
 // float                          KeepPlayingDuration            (OptionalParm, Parm)
-// bool                           bOverridePreviousDelays        (OptionalParm, Parm)
+// unsigned long                  bOverridePreviousDelays        (OptionalParm, Parm)
 
-void AGamePlayerController::STATIC_ShowLoadingMovie(bool bShowMovie, bool bPauseAfterHide, float PauseDuration, float KeepPlayingDuration, bool bOverridePreviousDelays)
+void AGamePlayerController::STATIC_ShowLoadingMovie(unsigned long bShowMovie, unsigned long bPauseAfterHide, float PauseDuration, float KeepPlayingDuration, unsigned long bOverridePreviousDelays)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.ShowLoadingMovie");
 
@@ -4883,9 +4883,9 @@ void AGamePlayerController::NotifyCrowdAgentRefresh()
 // Function GameFramework.GamePlayerController.CrowdDebug
 // (Defined, Exec, Public)
 // Parameters:
-// bool                           bEnabled                       (Parm)
+// unsigned long                  bEnabled                       (Parm)
 
-void AGamePlayerController::CrowdDebug(bool bEnabled)
+void AGamePlayerController::CrowdDebug(unsigned long bEnabled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.CrowdDebug");
 
@@ -4978,9 +4978,9 @@ void UNavMeshGoal_OutOfViewFrom::Recycle()
 // Parameters:
 // class UNavigationHandle*       NavHandle                      (Parm)
 // struct FVector                 InOutOfViewLocation            (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UNavMeshGoal_OutOfViewFrom::STATIC_MustBeHiddenFromThisPoint(class UNavigationHandle* NavHandle, const struct FVector& InOutOfViewLocation)
+unsigned long UNavMeshGoal_OutOfViewFrom::STATIC_MustBeHiddenFromThisPoint(class UNavigationHandle* NavHandle, const struct FVector& InOutOfViewLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.NavMeshGoal_OutOfViewFrom.MustBeHiddenFromThisPoint");
 
@@ -5041,9 +5041,9 @@ void UNavMeshPath_BiasAgainstPolysWithinDistanceOfLocations::Recycle()
 // struct FRotator                InRotation                     (Const, Parm)
 // float                          InDistanceToCheck              (Const, Parm)
 // TArray<struct FVector>         InLocationsToCheck             (Const, Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UNavMeshPath_BiasAgainstPolysWithinDistanceOfLocations::STATIC_BiasAgainstPolysWithinDistanceOfLocations(class UNavigationHandle* NavHandle, const struct FVector& InLocation, const struct FRotator& InRotation, float InDistanceToCheck, TArray<struct FVector> InLocationsToCheck)
+unsigned long UNavMeshPath_BiasAgainstPolysWithinDistanceOfLocations::STATIC_BiasAgainstPolysWithinDistanceOfLocations(class UNavigationHandle* NavHandle, const struct FVector& InLocation, const struct FRotator& InRotation, float InDistanceToCheck, TArray<struct FVector> InLocationsToCheck)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.NavMeshPath_BiasAgainstPolysWithinDistanceOfLocations.BiasAgainstPolysWithinDistanceOfLocations");
 
@@ -5489,9 +5489,9 @@ void UGameThirdPersonCamera::UpdateFocusPoint(class APawn* P)
 // Function GameFramework.GameThirdPersonCamera.ClearFocusPoint
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           bLeaveCameraRotation           (OptionalParm, Parm)
+// unsigned long                  bLeaveCameraRotation           (OptionalParm, Parm)
 
-void UGameThirdPersonCamera::ClearFocusPoint(bool bLeaveCameraRotation)
+void UGameThirdPersonCamera::ClearFocusPoint(unsigned long bLeaveCameraRotation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.ClearFocusPoint");
 
@@ -5535,12 +5535,12 @@ class AActor* UGameThirdPersonCamera::GetFocusActor()
 // struct FVector2D               InterpSpeedRange               (Parm)
 // struct FVector2D               InFocusFOV                     (Parm)
 // float                          CameraFOV                      (OptionalParm, Parm)
-// bool                           bAlwaysFocus                   (OptionalParm, Parm)
-// bool                           bAdjustCamera                  (OptionalParm, Parm)
-// bool                           bIgnoreTrace                   (OptionalParm, Parm)
+// unsigned long                  bAlwaysFocus                   (OptionalParm, Parm)
+// unsigned long                  bAdjustCamera                  (OptionalParm, Parm)
+// unsigned long                  bIgnoreTrace                   (OptionalParm, Parm)
 // float                          FocusPitchOffsetDeg            (OptionalParm, Parm)
 
-void UGameThirdPersonCamera::SetFocusOnActor(class AActor* FocusActor, const struct FName& FocusBoneName, const struct FVector2D& InterpSpeedRange, const struct FVector2D& InFocusFOV, float CameraFOV, bool bAlwaysFocus, bool bAdjustCamera, bool bIgnoreTrace, float FocusPitchOffsetDeg)
+void UGameThirdPersonCamera::SetFocusOnActor(class AActor* FocusActor, const struct FName& FocusBoneName, const struct FVector2D& InterpSpeedRange, const struct FVector2D& InFocusFOV, float CameraFOV, unsigned long bAlwaysFocus, unsigned long bAdjustCamera, unsigned long bIgnoreTrace, float FocusPitchOffsetDeg)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.SetFocusOnActor");
 
@@ -5570,12 +5570,12 @@ void UGameThirdPersonCamera::SetFocusOnActor(class AActor* FocusActor, const str
 // struct FVector2D               InterpSpeedRange               (Parm)
 // struct FVector2D               InFocusFOV                     (Parm)
 // float                          CameraFOV                      (OptionalParm, Parm)
-// bool                           bAlwaysFocus                   (OptionalParm, Parm)
-// bool                           bAdjustCamera                  (OptionalParm, Parm)
-// bool                           bIgnoreTrace                   (OptionalParm, Parm)
+// unsigned long                  bAlwaysFocus                   (OptionalParm, Parm)
+// unsigned long                  bAdjustCamera                  (OptionalParm, Parm)
+// unsigned long                  bIgnoreTrace                   (OptionalParm, Parm)
 // float                          FocusPitchOffsetDeg            (OptionalParm, Parm)
 
-void UGameThirdPersonCamera::SetFocusOnLoc(const struct FVector& FocusWorldLoc, const struct FVector2D& InterpSpeedRange, const struct FVector2D& InFocusFOV, float CameraFOV, bool bAlwaysFocus, bool bAdjustCamera, bool bIgnoreTrace, float FocusPitchOffsetDeg)
+void UGameThirdPersonCamera::SetFocusOnLoc(const struct FVector& FocusWorldLoc, const struct FVector2D& InterpSpeedRange, const struct FVector2D& InFocusFOV, float CameraFOV, unsigned long bAlwaysFocus, unsigned long bAdjustCamera, unsigned long bIgnoreTrace, float FocusPitchOffsetDeg)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.SetFocusOnLoc");
 
@@ -5642,9 +5642,9 @@ void UGameThirdPersonCamera::EndTurn()
 // int                            EndAngle                       (Parm)
 // float                          TimeSec                        (Parm)
 // float                          DelaySec                       (OptionalParm, Parm)
-// bool                           bAlignTargetWhenFinished       (OptionalParm, Parm)
+// unsigned long                  bAlignTargetWhenFinished       (OptionalParm, Parm)
 
-void UGameThirdPersonCamera::BeginTurn(int StartAngle, int EndAngle, float TimeSec, float DelaySec, bool bAlignTargetWhenFinished)
+void UGameThirdPersonCamera::BeginTurn(int StartAngle, int EndAngle, float TimeSec, float DelaySec, unsigned long bAlignTargetWhenFinished)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.BeginTurn");
 
@@ -5962,9 +5962,9 @@ void AGamePlayerCamera::UpdateViewTarget(float DeltaTime, struct FTViewTarget* O
 // Function GameFramework.GamePlayerCamera.ShouldConstrainAspectRatio
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGamePlayerCamera::ShouldConstrainAspectRatio()
+unsigned long AGamePlayerCamera::ShouldConstrainAspectRatio()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerCamera.ShouldConstrainAspectRatio");
 
@@ -6237,9 +6237,9 @@ void UGameThirdPersonCameraMode::ProcessViewRotation(float DeltaTime, class AAct
 // (Defined, Simulated, Public)
 // Parameters:
 // class APawn*                   ViewedPawn                     (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameThirdPersonCameraMode::SetFocusPoint(class APawn* ViewedPawn)
+unsigned long UGameThirdPersonCameraMode::SetFocusPoint(class APawn* ViewedPawn)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCameraMode.SetFocusPoint");
 
@@ -6405,9 +6405,9 @@ class UGameDecal* AGameDecalManager::SpawnDecalMinimal(float InDecalLifeSpan, fl
 // Parameters:
 // struct FVector                 DecalLocation                  (Const, Parm, OutParm)
 // float                          InCanSpawnDistance             (Const, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AGameDecalManager::IsTooCloseToActiveDecal(float InCanSpawnDistance, struct FVector* DecalLocation)
+unsigned long AGameDecalManager::IsTooCloseToActiveDecal(float InCanSpawnDistance, struct FVector* DecalLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameDecalManager.IsTooCloseToActiveDecal");
 
@@ -6541,9 +6541,9 @@ void UGameSpecialMove::ForcePawnRotation(class APawn* P, const struct FRotator& 
 // Parameters:
 // struct FName                   EventName                      (Parm)
 // class UObject*                 Sender                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameSpecialMove::MessageEvent(const struct FName& EventName, class UObject* Sender)
+unsigned long UGameSpecialMove::MessageEvent(const struct FName& EventName, class UObject* Sender)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.MessageEvent");
 
@@ -6623,9 +6623,9 @@ void UGameSpecialMove::SetFacePreciseRotation(const struct FRotator& RotationToF
 // (Final, Native, HasOptionalParms, Public)
 // Parameters:
 // struct FVector                 DestinationToReach             (Parm)
-// bool                           bCancel                        (OptionalParm, Parm)
+// unsigned long                  bCancel                        (OptionalParm, Parm)
 
-void UGameSpecialMove::SetReachPreciseDestination(const struct FVector& DestinationToReach, bool bCancel)
+void UGameSpecialMove::SetReachPreciseDestination(const struct FVector& DestinationToReach, unsigned long bCancel)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.SetReachPreciseDestination");
 
@@ -6645,9 +6645,9 @@ void UGameSpecialMove::SetReachPreciseDestination(const struct FVector& Destinat
 // Function GameFramework.GameSpecialMove.ShouldReplicate
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameSpecialMove::ShouldReplicate()
+unsigned long UGameSpecialMove::ShouldReplicate()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.ShouldReplicate");
 
@@ -6725,10 +6725,10 @@ void UGameSpecialMove::SpecialMoveEnded(const struct FName& PrevMove, const stru
 // Function GameFramework.GameSpecialMove.SpecialMoveStarted
 // (Public)
 // Parameters:
-// bool                           bForced                        (Parm)
+// unsigned long                  bForced                        (Parm)
 // struct FName                   PrevMove                       (Parm)
 
-void UGameSpecialMove::SpecialMoveStarted(bool bForced, const struct FName& PrevMove)
+void UGameSpecialMove::SpecialMoveStarted(unsigned long bForced, const struct FName& PrevMove)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.SpecialMoveStarted");
 
@@ -6747,9 +6747,9 @@ void UGameSpecialMove::SpecialMoveStarted(bool bForced, const struct FName& Prev
 // Function GameFramework.GameSpecialMove.InternalCanDoSpecialMove
 // (Defined, Protected)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameSpecialMove::InternalCanDoSpecialMove()
+unsigned long UGameSpecialMove::InternalCanDoSpecialMove()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.InternalCanDoSpecialMove");
 
@@ -6768,10 +6768,10 @@ bool UGameSpecialMove::InternalCanDoSpecialMove()
 // Function GameFramework.GameSpecialMove.CanDoSpecialMove
 // (Final, Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           bForceCheck                    (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bForceCheck                    (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameSpecialMove::CanDoSpecialMove(bool bForceCheck)
+unsigned long UGameSpecialMove::CanDoSpecialMove(unsigned long bForceCheck)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.CanDoSpecialMove");
 
@@ -6792,9 +6792,9 @@ bool UGameSpecialMove::CanDoSpecialMove(bool bForceCheck)
 // (Defined, Public)
 // Parameters:
 // struct FName                   InMove                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameSpecialMove::CanOverrideSpecialMove(const struct FName& InMove)
+unsigned long UGameSpecialMove::CanOverrideSpecialMove(const struct FName& InMove)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.CanOverrideSpecialMove");
 
@@ -6815,9 +6815,9 @@ bool UGameSpecialMove::CanOverrideSpecialMove(const struct FName& InMove)
 // (Defined, Public)
 // Parameters:
 // struct FName                   NewMove                        (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameSpecialMove::CanOverrideMoveWith(const struct FName& NewMove)
+unsigned long UGameSpecialMove::CanOverrideMoveWith(const struct FName& NewMove)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.CanOverrideMoveWith");
 
@@ -6838,9 +6838,9 @@ bool UGameSpecialMove::CanOverrideMoveWith(const struct FName& NewMove)
 // (Defined, Public)
 // Parameters:
 // struct FName                   NextMove                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameSpecialMove::CanChainMove(const struct FName& NextMove)
+unsigned long UGameSpecialMove::CanChainMove(const struct FName& NextMove)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.CanChainMove");
 
@@ -6925,9 +6925,9 @@ void UGameSpecialMove::InitSpecialMove(class AGamePawn* inPawn, const struct FNa
 // (Public)
 // Parameters:
 // class AGameCrowdAgent*         Agent                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UGameCrowdSpawnerInterface::AddToAgentPool(class AGameCrowdAgent* Agent)
+unsigned long UGameCrowdSpawnerInterface::AddToAgentPool(class AGameCrowdAgent* Agent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdSpawnerInterface.AddToAgentPool");
 

@@ -32,7 +32,7 @@ struct ADunDefWeapon_MagicStaff_WithOribitingEffect_GetTotalKnockbackMomentum_Pa
 // Function CDT8.DunDefWeapon_MagicStaff_WithOribitingEffect.GetTotalKnockbackRange
 struct ADunDefWeapon_MagicStaff_WithOribitingEffect_GetTotalKnockbackRange_Params
 {
-	bool                                               IgnoreChargePercent;                                      // (OptionalParm, Parm)
+	unsigned long                                      IgnoreChargePercent;                                      // (OptionalParm, Parm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -57,11 +57,11 @@ struct UHeroEquipment_Familiar_AoeBuffer_TickedByPawn_Params
 struct UHeroEquipment_Familiar_AoeBuffer_AddRandomizeValues_Params
 {
 	float                                              equipmentQuality;                                         // (Parm)
-	bool                                               doResetStatsToTemplate;                                   // (OptionalParm, Parm)
-	bool                                               bDontUseMissionRandomizerMultiplier;                      // (OptionalParm, Parm)
+	unsigned long                                      doResetStatsToTemplate;                                   // (OptionalParm, Parm)
+	unsigned long                                      bDontUseMissionRandomizerMultiplier;                      // (OptionalParm, Parm)
 	float                                              RandomizerMultiplierOverride;                             // (OptionalParm, Parm)
-	bool                                               bIsForShop;                                               // (OptionalParm, Parm)
-	bool                                               bAllowTranscendentGear;                                   // (OptionalParm, Parm)
+	unsigned long                                      bIsForShop;                                               // (OptionalParm, Parm)
+	unsigned long                                      bAllowTranscendentGear;                                   // (OptionalParm, Parm)
 };
 
 // Function CDT8.HeroEquipment_Familiar_AoeBuffer.GetBuffTier
@@ -89,8 +89,8 @@ struct UHeroEquipment_Familiar_AoeBuffer_ApplyLevelUp_Params
 	int                                                statSubIndex;                                             // (OptionalParm, Parm)
 	struct FString                                     setUserEquipmentName;                                     // (OptionalParm, Parm, NeedCtorLink)
 	struct FString                                     setUserForgerName;                                        // (OptionalParm, Parm, NeedCtorLink)
-	bool                                               refresh;                                                  // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      refresh;                                                  // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function CDT8.HeroEquipment_Familiar_AoeBuffer.InitFromNetInfo
@@ -107,7 +107,7 @@ struct UHeroEquipment_Familiar_AoeBuffer_CheckStatLevelUpIterations_Params
 	int                                                statSubIndex;                                             // (Parm)
 	int                                                EquipmentLevelToCheck;                                    // (Parm)
 	float                                              Value;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function CDT8.HeroEquipment_Familiar_AoeBuffer.AllowStatLevelUp
@@ -115,9 +115,9 @@ struct UHeroEquipment_Familiar_AoeBuffer_AllowStatLevelUp_Params
 {
 	TEnumAsByte<EEquipmentStatType>                    EQS;                                                      // (Parm)
 	int                                                statSubIndex;                                             // (OptionalParm, Parm)
-	bool                                               IsInForgeUI;                                              // (OptionalParm, Parm)
-	bool                                               bIgnoreManaRequirement;                                   // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      IsInForgeUI;                                              // (OptionalParm, Parm)
+	unsigned long                                      bIgnoreManaRequirement;                                   // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function CDT8.HeroEquipment_Familiar_AoeBuffer.GetNextStatLevelUpValue
@@ -125,7 +125,7 @@ struct UHeroEquipment_Familiar_AoeBuffer_GetNextStatLevelUpValue_Params
 {
 	TEnumAsByte<EEquipmentStatType>                    EQS;                                                      // (Parm)
 	int                                                statSubIndex;                                             // (OptionalParm, Parm)
-	bool                                               SetAsValue;                                               // (OptionalParm, Parm)
+	unsigned long                                      SetAsValue;                                               // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 

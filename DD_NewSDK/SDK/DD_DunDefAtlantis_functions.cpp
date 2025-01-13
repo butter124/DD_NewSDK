@@ -174,9 +174,9 @@ void ADunDefGRI_RisingWater::DrawMyHUD(class ADunDefHUD* H)
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
 // class ADunDefPlayer*           newSolver                      (Parm)
-// bool                           bIgnoreGameInfoNotification    (OptionalParm, Parm)
+// unsigned long                  bIgnoreGameInfoNotification    (OptionalParm, Parm)
 
-void ADunDefGRI_RisingWater::SetNewSolver(class ADunDefPlayer* newSolver, bool bIgnoreGameInfoNotification)
+void ADunDefGRI_RisingWater::SetNewSolver(class ADunDefPlayer* newSolver, unsigned long bIgnoreGameInfoNotification)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefGRI_RisingWater.SetNewSolver");
 
@@ -261,13 +261,13 @@ class ADunDefPlayer* ADunDefGRI_RisingWater::PickNewSolver()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefGRI_RisingWater::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefGRI_RisingWater::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefGRI_RisingWater.ExecReplicatedFunction");
 
@@ -673,13 +673,13 @@ void APuzzleRoomActor::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void APuzzleRoomActor::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void APuzzleRoomActor::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.PuzzleRoomActor.ExecReplicatedFunction");
 
@@ -856,10 +856,10 @@ void ADunDefInkCloud::ResetCurrentMoveActors()
 // struct FVector                 HurtOrigin                     (Parm)
 // class AActor*                  IgnoredActor                   (OptionalParm, Parm)
 // class AController*             InstigatedByController         (OptionalParm, Parm)
-// bool                           bDoFullDamage                  (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bDoFullDamage                  (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefInkCloud::HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, bool bDoFullDamage)
+unsigned long ADunDefInkCloud::HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, unsigned long bDoFullDamage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefInkCloud.HurtRadius");
 
@@ -946,9 +946,9 @@ void ADunDefKraken::CheckKrakenProximity()
 // class AController*             Killer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
 // struct FVector                 HitLocation                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefKraken::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
+unsigned long ADunDefKraken::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKraken.Died");
 
@@ -1368,9 +1368,9 @@ float ADunDefKraken::PlayLeftTentacleAttack()
 // (Defined, Public)
 // Parameters:
 // class AActor*                  checkTarg                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefKraken::IsValidRightSwingTarget(class AActor* checkTarg)
+unsigned long ADunDefKraken::IsValidRightSwingTarget(class AActor* checkTarg)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKraken.IsValidRightSwingTarget");
 
@@ -1391,9 +1391,9 @@ bool ADunDefKraken::IsValidRightSwingTarget(class AActor* checkTarg)
 // (Defined, Public)
 // Parameters:
 // class AActor*                  checkTarg                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefKraken::IsValidLeftSwingTarget(class AActor* checkTarg)
+unsigned long ADunDefKraken::IsValidLeftSwingTarget(class AActor* checkTarg)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKraken.IsValidLeftSwingTarget");
 
@@ -1632,9 +1632,9 @@ void ADunDefKraken::PlayWithDrawTentacle(int tentacleIndex)
 // (Defined, Public)
 // Parameters:
 // class AKrakenTentacle*         damagedTentacle                (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefKraken::NotifyTentacleWithdraw(class AKrakenTentacle* damagedTentacle)
+unsigned long ADunDefKraken::NotifyTentacleWithdraw(class AKrakenTentacle* damagedTentacle)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKraken.NotifyTentacleWithdraw");
 
@@ -1655,9 +1655,9 @@ bool ADunDefKraken::NotifyTentacleWithdraw(class AKrakenTentacle* damagedTentacl
 // (Defined, Public, HasDefaults)
 // Parameters:
 // struct FVector                 HitLocation                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefKraken::CheckSpecialCoreDmg(const struct FVector& HitLocation)
+unsigned long ADunDefKraken::CheckSpecialCoreDmg(const struct FVector& HitLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKraken.CheckSpecialCoreDmg");
 
@@ -1796,10 +1796,10 @@ void ADunDefKraken::TakeDamage(int DamageAmount, class AController* EventInstiga
 // Function DunDefAtlantis.DunDefKraken.UpdateDifficultyValues
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           UpdateMaterial                 (OptionalParm, Parm)
-// bool                           onlyDynamicValues              (OptionalParm, Parm)
+// unsigned long                  UpdateMaterial                 (OptionalParm, Parm)
+// unsigned long                  onlyDynamicValues              (OptionalParm, Parm)
 
-void ADunDefKraken::UpdateDifficultyValues(bool UpdateMaterial, bool onlyDynamicValues)
+void ADunDefKraken::UpdateDifficultyValues(unsigned long UpdateMaterial, unsigned long onlyDynamicValues)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKraken.UpdateDifficultyValues");
 
@@ -1901,13 +1901,13 @@ void ADunDefKraken::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefKraken::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefKraken::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKraken.ExecReplicatedFunction");
 
@@ -1960,9 +1960,9 @@ void ADunDefKraken::ReplicatedEvent(const struct FName& VarName)
 // Function DunDefAtlantis.KrakenTentacle.ForceLineOfSight
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AKrakenTentacle::ForceLineOfSight()
+unsigned long AKrakenTentacle::ForceLineOfSight()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.ForceLineOfSight");
 
@@ -2002,9 +2002,9 @@ float AKrakenTentacle::GetLightningTowerDamagePercent()
 // Function DunDefAtlantis.KrakenTentacle.setIsWebbed
 // (Defined, Public)
 // Parameters:
-// bool                           isWebbed                       (Parm)
+// unsigned long                  isWebbed                       (Parm)
 
-void AKrakenTentacle::setIsWebbed(bool isWebbed)
+void AKrakenTentacle::setIsWebbed(unsigned long isWebbed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.setIsWebbed");
 
@@ -2022,9 +2022,9 @@ void AKrakenTentacle::setIsWebbed(bool isWebbed)
 // Function DunDefAtlantis.KrakenTentacle.isWebbed
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AKrakenTentacle::isWebbed()
+unsigned long AKrakenTentacle::isWebbed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.isWebbed");
 
@@ -2043,9 +2043,9 @@ bool AKrakenTentacle::isWebbed()
 // Function DunDefAtlantis.KrakenTentacle.GetChainIgnore
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AKrakenTentacle::GetChainIgnore()
+unsigned long AKrakenTentacle::GetChainIgnore()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.GetChainIgnore");
 
@@ -2064,9 +2064,9 @@ bool AKrakenTentacle::GetChainIgnore()
 // Function DunDefAtlantis.KrakenTentacle.SetChainIgnore
 // (Defined, Public)
 // Parameters:
-// bool                           ignore                         (Parm)
+// unsigned long                  ignore                         (Parm)
 
-void AKrakenTentacle::SetChainIgnore(bool ignore)
+void AKrakenTentacle::SetChainIgnore(unsigned long ignore)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.SetChainIgnore");
 
@@ -2085,9 +2085,9 @@ void AKrakenTentacle::SetChainIgnore(bool ignore)
 // (Defined, Public)
 // Parameters:
 // class ADunDefTower_ChainLightning* Tower                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AKrakenTentacle::IsBeingChainedBy(class ADunDefTower_ChainLightning* Tower)
+unsigned long AKrakenTentacle::IsBeingChainedBy(class ADunDefTower_ChainLightning* Tower)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.IsBeingChainedBy");
 
@@ -2147,9 +2147,9 @@ void AKrakenTentacle::AddToChainingTowers(class ADunDefTower_ChainLightning* Tow
 // Function DunDefAtlantis.KrakenTentacle.AllowSuction
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AKrakenTentacle::AllowSuction()
+unsigned long AKrakenTentacle::AllowSuction()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.AllowSuction");
 
@@ -2174,12 +2174,12 @@ bool AKrakenTentacle::AllowSuction()
 // class UClass*                  DamageType                     (Parm)
 // float                          Momentum                       (Parm)
 // struct FVector                 HurtOrigin                     (Parm)
-// bool                           bFullDamage                    (Parm)
+// unsigned long                  bFullDamage                    (Parm)
 // class AActor*                  DamageCauser                   (Parm)
 // float                          DamageFalloffExponent          (OptionalParm, Parm)
 // class UObject*                 WhatHitMe                      (OptionalParm, Parm)
 
-void AKrakenTentacle::ClientTakeRadiusDamage(class APawn* InstigatorPawn, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe)
+void AKrakenTentacle::ClientTakeRadiusDamage(class APawn* InstigatorPawn, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, unsigned long bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.ClientTakeRadiusDamage");
 
@@ -2305,9 +2305,9 @@ void AKrakenTentacle::LocalTookDamage(int DamageAmount, const struct FVector& at
 // float                          HealPct                        (Parm)
 // class AController*             Healer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
-// bool                           bShowFloatingNumbers           (OptionalParm, Parm)
+// unsigned long                  bShowFloatingNumbers           (OptionalParm, Parm)
 
-void AKrakenTentacle::HealPctOfMaxHealth(float HealPct, class AController* Healer, class UClass* DamageType, bool bShowFloatingNumbers)
+void AKrakenTentacle::HealPctOfMaxHealth(float HealPct, class AController* Healer, class UClass* DamageType, unsigned long bShowFloatingNumbers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.HealPctOfMaxHealth");
 
@@ -2330,9 +2330,9 @@ void AKrakenTentacle::HealPctOfMaxHealth(float HealPct, class AController* Heale
 // Parameters:
 // class AActor*                  Mover                          (Parm)
 // struct FVector                 NewLoc                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AKrakenTentacle::ForceMoveActor(class AActor* Mover, const struct FVector& NewLoc)
+unsigned long AKrakenTentacle::ForceMoveActor(class AActor* Mover, const struct FVector& NewLoc)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.ForceMoveActor");
 
@@ -2375,9 +2375,9 @@ class UPrimitiveComponent* AKrakenTentacle::GetOverrideTargetComponent()
 // (Defined, Event, Public)
 // Parameters:
 // class AActor*                  Other                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AKrakenTentacle::EncroachingOn(class AActor* Other)
+unsigned long AKrakenTentacle::EncroachingOn(class AActor* Other)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.EncroachingOn");
 
@@ -2447,9 +2447,9 @@ void AKrakenTentacle::Touch(class AActor* Other, class UPrimitiveComponent* Othe
 // Function DunDefAtlantis.KrakenTentacle.SetDoDamageChecks
 // (Defined, Public)
 // Parameters:
-// bool                           bAllowDamage                   (Parm)
+// unsigned long                  bAllowDamage                   (Parm)
 
-void AKrakenTentacle::SetDoDamageChecks(bool bAllowDamage)
+void AKrakenTentacle::SetDoDamageChecks(unsigned long bAllowDamage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.SetDoDamageChecks");
 
@@ -2467,10 +2467,10 @@ void AKrakenTentacle::SetDoDamageChecks(bool bAllowDamage)
 // Function DunDefAtlantis.KrakenTentacle.GetHealth
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bGetMax                        (OptionalParm, Parm)
+// unsigned long                  bGetMax                        (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int AKrakenTentacle::GetHealth(bool bGetMax)
+int AKrakenTentacle::GetHealth(unsigned long bGetMax)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.GetHealth");
 
@@ -2511,9 +2511,9 @@ float AKrakenTentacle::GetMass()
 // Function DunDefAtlantis.KrakenTentacle.AllowDarknessIgnorance
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AKrakenTentacle::AllowDarknessIgnorance()
+unsigned long AKrakenTentacle::AllowDarknessIgnorance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.AllowDarknessIgnorance");
 
@@ -2533,9 +2533,9 @@ bool AKrakenTentacle::AllowDarknessIgnorance()
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // class AActor*                  Target                         (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AKrakenTentacle::ForceFriendlyFire(class AActor* Target)
+unsigned long AKrakenTentacle::ForceFriendlyFire(class AActor* Target)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.ForceFriendlyFire");
 
@@ -2698,9 +2698,9 @@ float AKrakenTentacle::GetAttackRangeOffset()
 // Parameters:
 // TScriptInterface<class UDunDefTargetableInterface> instigatorActor                (Parm)
 // class AController*             OptionalController             (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool AKrakenTentacle::IgnoreFriendlyFireDamage(const TScriptInterface<class UDunDefTargetableInterface>& instigatorActor, class AController* OptionalController)
+unsigned long AKrakenTentacle::IgnoreFriendlyFireDamage(const TScriptInterface<class UDunDefTargetableInterface>& instigatorActor, class AController* OptionalController)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.IgnoreFriendlyFireDamage");
 
@@ -2984,13 +2984,13 @@ void AKrakenTentacle::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void AKrakenTentacle::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void AKrakenTentacle::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.ExecReplicatedFunction");
 
@@ -3317,9 +3317,9 @@ void ADunDefKrakenController::UpdateDashPoint()
 // (Defined, Public, HasDefaults)
 // Parameters:
 // class AActor*                  DashedActor                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefKrakenController::AddToDashHurtList(class AActor* DashedActor)
+unsigned long ADunDefKrakenController::AddToDashHurtList(class AActor* DashedActor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKrakenController.AddToDashHurtList");
 
@@ -3408,9 +3408,9 @@ void ADunDefKrakenController::DoBiting()
 // (Defined, Public)
 // Parameters:
 // class AActor*                  newEntry                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefKrakenController::AddToSwingHurtList(class AActor* newEntry)
+unsigned long ADunDefKrakenController::AddToSwingHurtList(class AActor* newEntry)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKrakenController.AddToSwingHurtList");
 
@@ -3431,9 +3431,9 @@ bool ADunDefKrakenController::AddToSwingHurtList(class AActor* newEntry)
 // (Defined, Public)
 // Parameters:
 // class AActor*                  act                            (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefKrakenController::ShouldDamage(class AActor* act)
+unsigned long ADunDefKrakenController::ShouldDamage(class AActor* act)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKrakenController.ShouldDamage");
 
@@ -3472,10 +3472,10 @@ void ADunDefKrakenController::DoAttack()
 // Parameters:
 // class AActor*                  Goal                           (Parm)
 // float                          WithinDistance                 (OptionalParm, Parm)
-// bool                           bAllowPartialPath              (OptionalParm, Parm)
+// unsigned long                  bAllowPartialPath              (OptionalParm, Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector ADunDefKrakenController::GeneratePathToActor(class AActor* Goal, float WithinDistance, bool bAllowPartialPath)
+struct FVector ADunDefKrakenController::GeneratePathToActor(class AActor* Goal, float WithinDistance, unsigned long bAllowPartialPath)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKrakenController.GeneratePathToActor");
 
@@ -3500,10 +3500,10 @@ struct FVector ADunDefKrakenController::GeneratePathToActor(class AActor* Goal, 
 // class AActor*                  blockadeActor                  (Parm)
 // float                          BlockadeWidth                  (Parm)
 // struct FVector                 HitNormal                      (Parm)
-// bool                           SkipBlockingCheck              (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  SkipBlockingCheck              (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefKrakenController::MoveAroundBlockade(class AActor* blockadeActor, float BlockadeWidth, const struct FVector& HitNormal, bool SkipBlockingCheck)
+unsigned long ADunDefKrakenController::MoveAroundBlockade(class AActor* blockadeActor, float BlockadeWidth, const struct FVector& HitNormal, unsigned long SkipBlockingCheck)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKrakenController.MoveAroundBlockade");
 
@@ -3527,9 +3527,9 @@ bool ADunDefKrakenController::MoveAroundBlockade(class AActor* blockadeActor, fl
 // (Defined, Public)
 // Parameters:
 // class AActor*                  A                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefKrakenController::NavActorReachable(class AActor* A)
+unsigned long ADunDefKrakenController::NavActorReachable(class AActor* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKrakenController.NavActorReachable");
 
@@ -3550,10 +3550,10 @@ bool ADunDefKrakenController::NavActorReachable(class AActor* A)
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // class AActor*                  A                              (Parm)
-// bool                           bCheckVisible                  (OptionalParm, Parm)
+// unsigned long                  bCheckVisible                  (OptionalParm, Parm)
 // class ANavigationPoint*        ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class ANavigationPoint* ADunDefKrakenController::FindNearestNavPointTo(class AActor* A, bool bCheckVisible)
+class ANavigationPoint* ADunDefKrakenController::FindNearestNavPointTo(class AActor* A, unsigned long bCheckVisible)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKrakenController.FindNearestNavPointTo");
 
@@ -3595,9 +3595,9 @@ float ADunDefKrakenController::GetAttackRange()
 // Function DunDefAtlantis.DunDefKrakenController.ForceTentacleAttack
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefKrakenController::ForceTentacleAttack()
+unsigned long ADunDefKrakenController::ForceTentacleAttack()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKrakenController.ForceTentacleAttack");
 
@@ -3616,9 +3616,9 @@ bool ADunDefKrakenController::ForceTentacleAttack()
 // Function DunDefAtlantis.DunDefKrakenController.WantsHurtAnimation
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefKrakenController::WantsHurtAnimation()
+unsigned long ADunDefKrakenController::WantsHurtAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKrakenController.WantsHurtAnimation");
 
@@ -3668,9 +3668,9 @@ void ADunDefKrakenController::NotifyTakeHitEX(class AController* InstigatedBy, c
 // (Defined, Event, Public)
 // Parameters:
 // class APawn*                   inPawn                         (Parm)
-// bool                           bVehicleTransition             (Parm)
+// unsigned long                  bVehicleTransition             (Parm)
 
-void ADunDefKrakenController::Possess(class APawn* inPawn, bool bVehicleTransition)
+void ADunDefKrakenController::Possess(class APawn* inPawn, unsigned long bVehicleTransition)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefKrakenController.Possess");
 
@@ -3689,9 +3689,9 @@ void ADunDefKrakenController::Possess(class APawn* inPawn, bool bVehicleTransiti
 // Function DunDefAtlantis.DunDefSharkMan.IsCurrentlyPlayingAttackAnimation
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSharkMan::IsCurrentlyPlayingAttackAnimation()
+unsigned long ADunDefSharkMan::IsCurrentlyPlayingAttackAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefSharkMan.IsCurrentlyPlayingAttackAnimation");
 
@@ -3786,9 +3786,9 @@ void ADunDefSharkMan::ClearChargeHurtList()
 // (Defined, Public)
 // Parameters:
 // class ADunDefPlayer*           Player                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSharkMan::AddToChargeHurtList(class ADunDefPlayer* Player)
+unsigned long ADunDefSharkMan::AddToChargeHurtList(class ADunDefPlayer* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefSharkMan.AddToChargeHurtList");
 
@@ -3925,9 +3925,9 @@ float ADunDefSharkMan::PlaySharkManChargeFailAnimation()
 // Function DunDefAtlantis.DunDefSharkMan.StopSharkManDizzyAnimation
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSharkMan::StopSharkManDizzyAnimation()
+unsigned long ADunDefSharkMan::StopSharkManDizzyAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefSharkMan.StopSharkManDizzyAnimation");
 
@@ -4384,13 +4384,13 @@ void ADunDefSharkMan::MeleeLeftStart()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefSharkMan::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefSharkMan::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefSharkMan.ExecReplicatedFunction");
 
@@ -4565,9 +4565,9 @@ void ADunDefSharkmanController::DoPositionPoll()
 // Function DunDefAtlantis.DunDefSharkmanController.IsWinding
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSharkmanController::IsWinding()
+unsigned long ADunDefSharkmanController::IsWinding()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefSharkmanController.IsWinding");
 
@@ -4586,9 +4586,9 @@ bool ADunDefSharkmanController::IsWinding()
 // Function DunDefAtlantis.DunDefSharkmanController.IsDistractedByCore
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSharkmanController::IsDistractedByCore()
+unsigned long ADunDefSharkmanController::IsDistractedByCore()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefSharkmanController.IsDistractedByCore");
 
@@ -4608,9 +4608,9 @@ bool ADunDefSharkmanController::IsDistractedByCore()
 // (Defined, Public)
 // Parameters:
 // float                          Radius                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSharkmanController::IsCloseToTowers(float Radius)
+unsigned long ADunDefSharkmanController::IsCloseToTowers(float Radius)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefSharkmanController.IsCloseToTowers");
 
@@ -4631,9 +4631,9 @@ bool ADunDefSharkmanController::IsCloseToTowers(float Radius)
 // (Defined, Public)
 // Parameters:
 // float                          Radius                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSharkmanController::IsCloseToPlayers(float Radius)
+unsigned long ADunDefSharkmanController::IsCloseToPlayers(float Radius)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefSharkmanController.IsCloseToPlayers");
 
@@ -4654,9 +4654,9 @@ bool ADunDefSharkmanController::IsCloseToPlayers(float Radius)
 // (Defined, Public)
 // Parameters:
 // class AActor*                  newEntry                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSharkmanController::AddToSwingHurtList(class AActor* newEntry)
+unsigned long ADunDefSharkmanController::AddToSwingHurtList(class AActor* newEntry)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.DunDefSharkmanController.AddToSwingHurtList");
 
@@ -4717,9 +4717,9 @@ void ADunDefSharkmanController::StartMeleeSwing(TEnumAsByte<EFist> fist)
 // (Defined, Simulated, Public, HasDefaults)
 // Parameters:
 // float                          DeltaTime                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool APuzzlePieceActor::ScaleColor(float DeltaTime)
+unsigned long APuzzlePieceActor::ScaleColor(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.PuzzlePieceActor.ScaleColor");
 
@@ -4794,10 +4794,10 @@ void APuzzlePieceActor::ShutOffVFX(float lerpScale)
 // (Defined, Simulated, Public)
 // Parameters:
 // struct FLinearColor            NewColor                       (Parm)
-// bool                           bShouldScaleBack               (Parm)
+// unsigned long                  bShouldScaleBack               (Parm)
 // float                          lerpScale                      (Parm)
 
-void APuzzlePieceActor::SetColorLerp(const struct FLinearColor& NewColor, bool bShouldScaleBack, float lerpScale)
+void APuzzlePieceActor::SetColorLerp(const struct FLinearColor& NewColor, unsigned long bShouldScaleBack, float lerpScale)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.PuzzlePieceActor.SetColorLerp");
 
@@ -5126,13 +5126,13 @@ void ARaisingWaterVolume::Touch(class AActor* Other, class UPrimitiveComponent* 
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ARaisingWaterVolume::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ARaisingWaterVolume::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.RaisingWaterVolume.ExecReplicatedFunction");
 

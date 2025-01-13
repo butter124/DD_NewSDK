@@ -81,9 +81,9 @@ float ADunDefWebProjectile::GetPawnBoostAmount(TEnumAsByte<EPawnBoostType> boost
 // (Defined, Public)
 // Parameters:
 // TEnumAsByte<EPawnBoostType>    boostType                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefWebProjectile::HasPawnBoostingType(TEnumAsByte<EPawnBoostType> boostType)
+unsigned long ADunDefWebProjectile::HasPawnBoostingType(TEnumAsByte<EPawnBoostType> boostType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefWebProjectile.HasPawnBoostingType");
 
@@ -161,9 +161,9 @@ void ADunDefWebProjectile::AddWebEffect(class AActor* theAct)
 // (Defined, Simulated, Public)
 // Parameters:
 // class AActor*                  theAct                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefWebProjectile::CanAddWebAffect(class AActor* theAct)
+unsigned long ADunDefWebProjectile::CanAddWebAffect(class AActor* theAct)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefWebProjectile.CanAddWebAffect");
 
@@ -283,9 +283,9 @@ float ADunDefWebProjectile::GetTowerBoostAmount(TEnumAsByte<ETowerBoostType> che
 // (Defined, Public)
 // Parameters:
 // TEnumAsByte<ETowerBoostType>   checkType                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefWebProjectile::HasTowerBoostingType(TEnumAsByte<ETowerBoostType> checkType)
+unsigned long ADunDefWebProjectile::HasTowerBoostingType(TEnumAsByte<ETowerBoostType> checkType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefWebProjectile.HasTowerBoostingType");
 
@@ -326,9 +326,9 @@ TScriptInterface<class UDunDefTargetableInterface> ADunDefWebProjectile::GetTowe
 // Function DunDefSpider.DunDefWebProjectile.EndAttachment
 // (Defined, Simulated, Public, HasDefaults)
 // Parameters:
-// bool                           bClearList                     (Parm)
+// unsigned long                  bClearList                     (Parm)
 
-void ADunDefWebProjectile::EndAttachment(bool bClearList)
+void ADunDefWebProjectile::EndAttachment(unsigned long bClearList)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefWebProjectile.EndAttachment");
 
@@ -346,9 +346,9 @@ void ADunDefWebProjectile::EndAttachment(bool bClearList)
 // Function DunDefSpider.DunDefWebProjectile.SetScaleTime
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bDoScaleUp                     (OptionalParm, Parm)
+// unsigned long                  bDoScaleUp                     (OptionalParm, Parm)
 
-void ADunDefWebProjectile::SetScaleTime(bool bDoScaleUp)
+void ADunDefWebProjectile::SetScaleTime(unsigned long bDoScaleUp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefWebProjectile.SetScaleTime");
 
@@ -535,13 +535,13 @@ void ADunDefWebProjectile::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefWebProjectile::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefWebProjectile::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefWebProjectile.ExecReplicatedFunction");
 
@@ -575,9 +575,9 @@ void ADunDefWebProjectile::ExecReplicatedFunction(const struct FName& FunctionNa
 // (Defined, Simulated, Public, HasDefaults)
 // Parameters:
 // class ADunDefHUD*              H                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefCrystalCore_PortalDefense::DrawMyHUD(class ADunDefHUD* H)
+unsigned long ADunDefCrystalCore_PortalDefense::DrawMyHUD(class ADunDefHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefCrystalCore_PortalDefense.DrawMyHUD");
 
@@ -651,9 +651,9 @@ void ADunDefCrystalCore_PortalDefense::OnTeleport(class USeqAct_Teleport* Action
 // Function DunDefSpider.DunDefCrystalCore_PortalDefense.UpdateCrystalCore
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           locked                         (OptionalParm, Parm)
+// unsigned long                  locked                         (OptionalParm, Parm)
 
-void ADunDefCrystalCore_PortalDefense::UpdateCrystalCore(bool locked)
+void ADunDefCrystalCore_PortalDefense::UpdateCrystalCore(unsigned long locked)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefCrystalCore_PortalDefense.UpdateCrystalCore");
 
@@ -820,13 +820,13 @@ void ADunDefCrystalCore_PortalDefense::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefCrystalCore_PortalDefense::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefCrystalCore_PortalDefense::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefCrystalCore_PortalDefense.ExecReplicatedFunction");
 
@@ -930,9 +930,9 @@ void ADunDefGRI_PortalDefense::NotifyPortalHit()
 // Function DunDefSpider.DunDefGRI_PortalDefense.SetInCombatPhase
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           inCombatPhase                  (Parm)
+// unsigned long                  inCombatPhase                  (Parm)
 
-void ADunDefGRI_PortalDefense::SetInCombatPhase(bool inCombatPhase)
+void ADunDefGRI_PortalDefense::SetInCombatPhase(unsigned long inCombatPhase)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefGRI_PortalDefense.SetInCombatPhase");
 
@@ -992,9 +992,9 @@ void ADunDefSpider::PlayDying(class UClass* DamageType, const struct FVector& Hi
 // class AController*             Killer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
 // struct FVector                 HitLocation                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSpider::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
+unsigned long ADunDefSpider::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpider.Died");
 
@@ -1293,10 +1293,10 @@ float ADunDefSpider::PlayLungeAnimation()
 // Function DunDefSpider.DunDefSpider.UpdateDifficultyValues
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           UpdateMaterial                 (OptionalParm, Parm)
-// bool                           onlyDynamicValues              (OptionalParm, Parm)
+// unsigned long                  UpdateMaterial                 (OptionalParm, Parm)
+// unsigned long                  onlyDynamicValues              (OptionalParm, Parm)
 
-void ADunDefSpider::UpdateDifficultyValues(bool UpdateMaterial, bool onlyDynamicValues)
+void ADunDefSpider::UpdateDifficultyValues(unsigned long UpdateMaterial, unsigned long onlyDynamicValues)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpider.UpdateDifficultyValues");
 
@@ -1380,13 +1380,13 @@ void ADunDefSpider::ReplicatedEvent(const struct FName& VarName)
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefSpider::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefSpider::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpider.ExecReplicatedFunction");
 
@@ -1562,9 +1562,9 @@ void AGameInfo_PortalDefense::SetWaveNumber(int theWaveNumber)
 // Function DunDefSpider.GameInfo_PortalDefense.DoWaveSkipping
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           bAllowArbritraryWaveSkipping   (OptionalParm, Parm)
+// unsigned long                  bAllowArbritraryWaveSkipping   (OptionalParm, Parm)
 
-void AGameInfo_PortalDefense::DoWaveSkipping(bool bAllowArbritraryWaveSkipping)
+void AGameInfo_PortalDefense::DoWaveSkipping(unsigned long bAllowArbritraryWaveSkipping)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.GameInfo_PortalDefense.DoWaveSkipping");
 
@@ -1624,9 +1624,9 @@ void ADunDefGRI_VDay::DrawExtraEnemyMinimapIcon(class UCanvas* Canvas, class ADu
 // (Defined, Simulated, Public)
 // Parameters:
 // class ADunDefEnemy*            enemyActor                     (Parm)
-// bool                           isBoy                          (Parm)
+// unsigned long                  isBoy                          (Parm)
 
-void ADunDefGRI_VDay::GenderSpawned(class ADunDefEnemy* enemyActor, bool isBoy)
+void ADunDefGRI_VDay::GenderSpawned(class ADunDefEnemy* enemyActor, unsigned long isBoy)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefGRI_VDay.GenderSpawned");
 
@@ -1680,13 +1680,13 @@ void ADunDefGRI_VDay::PairMatched(const struct FVector& Loc1, const struct FVect
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefGRI_VDay::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefGRI_VDay::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefGRI_VDay.ExecReplicatedFunction");
 
@@ -1740,10 +1740,10 @@ float ADunDefSpiderController::GetToolTipAttackRange()
 // Function DunDefSpider.DunDefSpiderController.GetTargetableRange
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           bCheckAttackRange              (OptionalParm, Parm)
+// unsigned long                  bCheckAttackRange              (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float ADunDefSpiderController::GetTargetableRange(bool bCheckAttackRange)
+float ADunDefSpiderController::GetTargetableRange(unsigned long bCheckAttackRange)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpiderController.GetTargetableRange");
 
@@ -1866,10 +1866,10 @@ void ADunDefSpiderController::PawnDied(class APawn* inPawn)
 // Parameters:
 // class AActor*                  Other                          (Parm)
 // float                          AttackRangeOffset              (OptionalParm, Parm)
-// bool                           bCheckDeltaZ                   (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bCheckDeltaZ                   (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSpiderController::IsWithinAttackRange(class AActor* Other, float AttackRangeOffset, bool bCheckDeltaZ)
+unsigned long ADunDefSpiderController::IsWithinAttackRange(class AActor* Other, float AttackRangeOffset, unsigned long bCheckDeltaZ)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpiderController.IsWithinAttackRange");
 
@@ -1980,9 +1980,9 @@ void ADunDefSpiderController::CheckForCustomAttacks()
 // Function DunDefSpider.DunDefSpiderController.AllowWebAttack
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSpiderController::AllowWebAttack()
+unsigned long ADunDefSpiderController::AllowWebAttack()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpiderController.AllowWebAttack");
 
@@ -2002,9 +2002,9 @@ bool ADunDefSpiderController::AllowWebAttack()
 // (Defined, Public)
 // Parameters:
 // class AActor*                  newEntry                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSpiderController::AddToSwingHurtList(class AActor* newEntry)
+unsigned long ADunDefSpiderController::AddToSwingHurtList(class AActor* newEntry)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpiderController.AddToSwingHurtList");
 
@@ -2081,9 +2081,9 @@ float ADunDefSpiderController::GetWebChargeTime()
 // Parameters:
 // class AActor*                  Other                          (Parm)
 // struct FVector                 HitNormal                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSpiderController::NotifyBump(class AActor* Other, const struct FVector& HitNormal)
+unsigned long ADunDefSpiderController::NotifyBump(class AActor* Other, const struct FVector& HitNormal)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpiderController.NotifyBump");
 
@@ -2105,9 +2105,9 @@ bool ADunDefSpiderController::NotifyBump(class AActor* Other, const struct FVect
 // (Defined, Event, HasOptionalParms, Public)
 // Parameters:
 // class AActor*                  NewTarget                      (Parm)
-// bool                           bDontClearIgnoreList           (OptionalParm, Parm)
+// unsigned long                  bDontClearIgnoreList           (OptionalParm, Parm)
 
-void ADunDefSpiderQueenController::SetTarget(class AActor* NewTarget, bool bDontClearIgnoreList)
+void ADunDefSpiderQueenController::SetTarget(class AActor* NewTarget, unsigned long bDontClearIgnoreList)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpiderQueenController.SetTarget");
 
@@ -2331,9 +2331,9 @@ void ADunDefSpiderQueenController::ForceWakeUp()
 // (Defined, Public)
 // Parameters:
 // class AActor*                  newEntry                       (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSpiderQueenController::AddToSwingHurtList(class AActor* newEntry)
+unsigned long ADunDefSpiderQueenController::AddToSwingHurtList(class AActor* newEntry)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpiderQueenController.AddToSwingHurtList");
 
@@ -2424,9 +2424,9 @@ void ADunDefSpiderQueen::SetDyingPhysics()
 // class AController*             Killer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
 // struct FVector                 HitLocation                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSpiderQueen::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
+unsigned long ADunDefSpiderQueen::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpiderQueen.Died");
 
@@ -2448,9 +2448,9 @@ bool ADunDefSpiderQueen::Died(class AController* Killer, class UClass* DamageTyp
 // Function DunDefSpider.DunDefSpiderQueen.SetUpperBodyLookAt
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bTurnOn                        (Parm)
+// unsigned long                  bTurnOn                        (Parm)
 
-void ADunDefSpiderQueen::SetUpperBodyLookAt(bool bTurnOn)
+void ADunDefSpiderQueen::SetUpperBodyLookAt(unsigned long bTurnOn)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpiderQueen.SetUpperBodyLookAt");
 
@@ -2738,9 +2738,9 @@ void ADunDefSpiderQueen::TakeDamage(int DamageAmount, class AController* EventIn
 // (Defined, Public, HasDefaults)
 // Parameters:
 // struct FVector                 HitLocation                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefSpiderQueen::CheckSpecialCoreDmg(const struct FVector& HitLocation)
+unsigned long ADunDefSpiderQueen::CheckSpecialCoreDmg(const struct FVector& HitLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpiderQueen.CheckSpecialCoreDmg");
 
@@ -2922,10 +2922,10 @@ float ADunDefSpiderQueen::PlayBabySpawnAnim(float playSpeed)
 // Function DunDefSpider.DunDefSpiderQueen.GetPawnDamageModifier
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bDontIncludeAbilities          (OptionalParm, Parm)
+// unsigned long                  bDontIncludeAbilities          (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float ADunDefSpiderQueen::GetPawnDamageModifier(bool bDontIncludeAbilities)
+float ADunDefSpiderQueen::GetPawnDamageModifier(unsigned long bDontIncludeAbilities)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpiderQueen.GetPawnDamageModifier");
 
@@ -2945,10 +2945,10 @@ float ADunDefSpiderQueen::GetPawnDamageModifier(bool bDontIncludeAbilities)
 // Function DunDefSpider.DunDefSpiderQueen.UpdateDifficultyValues
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           UpdateMaterial                 (OptionalParm, Parm)
-// bool                           onlyDynamicValues              (OptionalParm, Parm)
+// unsigned long                  UpdateMaterial                 (OptionalParm, Parm)
+// unsigned long                  onlyDynamicValues              (OptionalParm, Parm)
 
-void ADunDefSpiderQueen::UpdateDifficultyValues(bool UpdateMaterial, bool onlyDynamicValues)
+void ADunDefSpiderQueen::UpdateDifficultyValues(unsigned long UpdateMaterial, unsigned long onlyDynamicValues)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpiderQueen.UpdateDifficultyValues");
 
@@ -3012,13 +3012,13 @@ void ADunDefSpiderQueen::PlayJumpAnimation()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefSpiderQueen::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefSpiderQueen::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.DunDefSpiderQueen.ExecReplicatedFunction");
 
@@ -3075,9 +3075,9 @@ float UTowerDeboosterObject::GetTowerBoostAmount(TEnumAsByte<ETowerBoostType> bo
 // (Defined, Public)
 // Parameters:
 // TEnumAsByte<ETowerBoostType>   checkType                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTowerDeboosterObject::HasTowerBoostingType(TEnumAsByte<ETowerBoostType> checkType)
+unsigned long UTowerDeboosterObject::HasTowerBoostingType(TEnumAsByte<ETowerBoostType> checkType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpider.TowerDeboosterObject.HasTowerBoostingType");
 

@@ -32,7 +32,7 @@ public:
 
 
 	void OnToggle(class USeqAct_Toggle* Action);
-	bool CanBuff(class AActor* Target);
+	unsigned long CanBuff(class AActor* Target);
 	void UnTouch(class AActor* Other);
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
 };
@@ -95,11 +95,11 @@ public:
 	void GetBoostedTargets(TArray<class APawn*>* boostedTargets);
 	void NotifyOfBoostedRemoval(class APawn* removedBoostee);
 	float GetPawnBoostAmount(TEnumAsByte<EPawnBoostType> boostType);
-	bool HasPawnBoostingType(TEnumAsByte<EPawnBoostType> boostType);
+	unsigned long HasPawnBoostingType(TEnumAsByte<EPawnBoostType> boostType);
 	float GetTowerBoostAmount(TEnumAsByte<ETowerBoostType> boostType);
-	bool HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType);
+	unsigned long HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType);
 	TScriptInterface<class UDunDefTargetableInterface> GetTowerBoostingTarget();
-	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly);
+	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly);
 	void DeactivateBuff();
 	void ActivateBuff();
 };
@@ -125,7 +125,7 @@ public:
 	}
 
 
-	bool CanAffectTarget(class AActor* Target);
+	unsigned long CanAffectTarget(class AActor* Target);
 	TScriptInterface<class UDunDefTargetableInterface> GetNearestTarget();
 	void Initialize();
 	void BuffEffect();
@@ -157,8 +157,8 @@ public:
 	}
 
 
-	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly);
-	bool CanDamage(class AActor* Target);
+	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly);
+	unsigned long CanDamage(class AActor* Target);
 	float GetBuffDamage();
 	void BuffEffect();
 };
@@ -188,10 +188,10 @@ public:
 
 
 	void ResetTimer();
-	bool IsBetween(float Value, float X, float Y);
-	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly);
+	unsigned long IsBetween(float Value, float X, float Y);
+	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly);
 	float GetDamageMultiplier(class AActor* damagedTarget);
-	bool IsAdjustAllowed(class UObject* Target, const struct FsLastDamageInfo& TheDamageInfo);
+	unsigned long IsAdjustAllowed(class UObject* Target, const struct FsLastDamageInfo& TheDamageInfo);
 	void AdjustDealtDamage(class AActor* damagedTarget, int OriginalDamage, int* inDamage, struct FsLastDamageInfo* damageInfo, struct FVector* Momentum);
 };
 
@@ -220,9 +220,9 @@ public:
 	float GetPawnBoostAmount(TEnumAsByte<EPawnBoostType> boostType);
 	void RemoveDebuff();
 	void ApplyDebuff();
-	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly);
+	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly);
 	void BuffEffect();
-	bool STATIC_IsValidTarget(class AActor* Target, class AActor* BuffOwner, class UDunDefBuff* aBuffTemplate);
+	unsigned long STATIC_IsValidTarget(class AActor* Target, class AActor* BuffOwner, class UDunDefBuff* aBuffTemplate);
 	void DeactivateBuff();
 	void ActivateBuff();
 };
@@ -252,8 +252,8 @@ public:
 	void BuffEffect();
 	void DeactivateBuff();
 	void ActivateBuff();
-	bool CanProc(class AActor* aActor);
-	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly);
+	unsigned long CanProc(class AActor* aActor);
+	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly);
 };
 
 
@@ -283,9 +283,9 @@ public:
 	}
 
 
-	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly);
+	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly);
 	float GetExtraDamageAmount(float dealtDamage);
-	bool IsValidHitTarget(class AActor* TargetActor, class AActor* DamageCauser, class AController* DamageInstigator, class UClass* DamageType, class UObject* whatDidDamage);
+	unsigned long IsValidHitTarget(class AActor* TargetActor, class AActor* DamageCauser, class AController* DamageInstigator, class UClass* DamageType, class UObject* whatDidDamage);
 	void ReportActorDealtDamage(int dealtDamage, class AActor* Victim, class UClass* TheDamageType, class AActor* DamageCauser, class AController* DamageInstigator, int adjustedDamage, class UObject* whatDidDamage);
 	void AdjustDealtDamage(class AActor* damagedTarget, int OriginalDamage, int* inDamage, struct FsLastDamageInfo* damageInfo, struct FVector* Momentum);
 };
@@ -324,8 +324,8 @@ public:
 	void HandleShieldDeath();
 	void DoDamageEffects(class AController* fromController, class UObject* WhatHitMe);
 	void AdjustTargetDamage(class AActor* forActor, class AController* fromController, class UClass* TheDamageType, class UObject* WhatHitMe, const struct FsLastDamageInfo& damageInfo, int* howMuchDamage, struct FVector* Momentum);
-	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly);
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -359,10 +359,10 @@ public:
 	}
 
 
-	bool CanSpawn(class UObject* EventCauser, class UObject* EventOwner, class UObject* whatDidDamage);
+	unsigned long CanSpawn(class UObject* EventCauser, class UObject* EventOwner, class UObject* whatDidDamage);
 	void DestroySpawn(class UObject* theObject);
 	void EnforceSpawnLimit(int aspawnCount);
-	bool CheckSpawnCount();
+	unsigned long CheckSpawnCount();
 	int GetSpawnCount();
 	void SpawnArchetype(class AActor* TargetActor);
 	void BuffEffect();
@@ -402,9 +402,9 @@ public:
 	float GetPawnBoostAmount(TEnumAsByte<EPawnBoostType> boostType);
 	void RemoveDebuff();
 	void ApplyDebuff();
-	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly);
+	void InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly);
 	void BuffEffect();
-	bool STATIC_IsValidTarget(class AActor* Target, class AActor* BuffOwner, class UDunDefBuff* aBuffTemplate);
+	unsigned long STATIC_IsValidTarget(class AActor* Target, class AActor* BuffOwner, class UDunDefBuff* aBuffTemplate);
 	void DeactivateBuff();
 	void ActivateBuff();
 };

@@ -45,7 +45,7 @@ struct ADunDefHarbinger_GetProjectileSpawnTransformation_Params
 // Function CDT.DunDefHarbinger.IsCurrentlyPlayingAttackAnimation
 struct ADunDefHarbinger_IsCurrentlyPlayingAttackAnimation_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function CDT.DunDefHarbinger.PlayShootFireAnimation
@@ -57,7 +57,7 @@ struct ADunDefHarbinger_PlayShootFireAnimation_Params
 // Function CDT.DunDefHarbinger.IsCurrentlyPlayingChargeAnimation
 struct ADunDefHarbinger_IsCurrentlyPlayingChargeAnimation_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function CDT.DunDefHarbinger.PlayChargeFireAnimation
@@ -92,9 +92,9 @@ struct ADunDefHarbinger_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };

@@ -110,9 +110,9 @@ void ADunDefHarbinger::GetProjectileSpawnTransformation(const struct FName& sock
 // Function CDT.DunDefHarbinger.IsCurrentlyPlayingAttackAnimation
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefHarbinger::IsCurrentlyPlayingAttackAnimation()
+unsigned long ADunDefHarbinger::IsCurrentlyPlayingAttackAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT.DunDefHarbinger.IsCurrentlyPlayingAttackAnimation");
 
@@ -152,9 +152,9 @@ float ADunDefHarbinger::PlayShootFireAnimation()
 // Function CDT.DunDefHarbinger.IsCurrentlyPlayingChargeAnimation
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefHarbinger::IsCurrentlyPlayingChargeAnimation()
+unsigned long ADunDefHarbinger::IsCurrentlyPlayingChargeAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT.DunDefHarbinger.IsCurrentlyPlayingChargeAnimation");
 
@@ -244,13 +244,13 @@ void ADunDefHarbinger::PlayJumpAnimation()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefHarbinger::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefHarbinger::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT.DunDefHarbinger.ExecReplicatedFunction");
 

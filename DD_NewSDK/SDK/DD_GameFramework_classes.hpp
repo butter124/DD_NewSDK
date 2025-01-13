@@ -37,10 +37,10 @@ public:
 
 
 	struct FString GetActionString();
-	bool GeneratePathToLocation(const struct FVector& Goal, float WithinDistance, bool bAllowPartialPath);
-	bool GeneratePathToActor(class AActor* Goal, float WithinDistance, bool bAllowPartialPath);
-	void SetDesiredRotation(const struct FRotator& TargetDesiredRotation, bool InLockDesiredRotation, bool InUnlockWhenReached, float InterpolationTime);
-	void AILog_Internal(const struct FString& LogText, const struct FName& LogCategory, bool bForce);
+	unsigned long GeneratePathToLocation(const struct FVector& Goal, float WithinDistance, unsigned long bAllowPartialPath);
+	unsigned long GeneratePathToActor(class AActor* Goal, float WithinDistance, unsigned long bAllowPartialPath);
+	void SetDesiredRotation(const struct FRotator& TargetDesiredRotation, unsigned long InLockDesiredRotation, unsigned long InUnlockWhenReached, float InterpolationTime);
+	void AILog_Internal(const struct FString& LogText, const struct FName& LogCategory, unsigned long bForce);
 	void RecordDemoAILog(const struct FString& LogText);
 	void Destroyed();
 	class UGameAICommand* GetAICommandInStack(class UClass* InClass);
@@ -48,7 +48,7 @@ public:
 	void DumpCommandStack();
 	void CheckCommandCount();
 	class UGameAICommand* GetActiveCommand();
-	bool AbortCommand(class UGameAICommand* AbortCmd, class UClass* AbortClass);
+	unsigned long AbortCommand(class UGameAICommand* AbortCmd, class UClass* AbortClass);
 	void PopCommand(class UGameAICommand* ToBePoppedCommand);
 	void PushCommand(class UGameAICommand* NewCommand);
 };
@@ -85,18 +85,18 @@ public:
 	void Pushed();
 	void PostPopped();
 	void PrePushed(class AGameAIController* AI);
-	bool AllowStateTransitionTo(const struct FName& StateName);
-	bool AllowTransitionTo(class UClass* AttemptCommand);
+	unsigned long AllowStateTransitionTo(const struct FName& StateName);
+	unsigned long AllowTransitionTo(class UClass* AttemptCommand);
 	void Tick(float DeltaTime);
-	bool ShouldIgnoreNotifies();
+	unsigned long ShouldIgnoreNotifies();
 	void InternalTick(float DeltaTime);
 	void InternalResumed(const struct FName& OldCommandName);
 	void InternalPaused(class UGameAICommand* NewCommand);
 	void InternalPopped();
 	void InternalPushed();
 	void InternalPrePushed(class AGameAIController* AI);
-	bool STATIC_InitCommand(class AGameAIController* AI);
-	bool STATIC_InitCommandUserActor(class AGameAIController* AI, class AActor* UserActor);
+	unsigned long STATIC_InitCommand(class AGameAIController* AI);
+	unsigned long STATIC_InitCommandUserActor(class AGameAIController* AI, class AActor* UserActor);
 };
 
 
@@ -212,15 +212,15 @@ public:
 	struct FString GetDestString();
 	void PostRenderFor(class APlayerController* PC, class UCanvas* Canvas, const struct FVector& CameraPosition, const struct FVector& CameraDir);
 	void NativePostRenderFor(class APlayerController* PC, class UCanvas* Canvas, const struct FVector& CameraPosition, const struct FVector& CameraDir);
-	struct FVector GeneratePathToActor(class AActor* Goal, float WithinDistance, bool bAllowPartialPath);
+	struct FVector GeneratePathToActor(class AActor* Goal, float WithinDistance, unsigned long bAllowPartialPath);
 	void InitNavigationHandle();
 	void OverlappedActorEvent(class AActor* A);
 	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	void FireDeathEvent();
 	void PlayDeath(const struct FVector& KillMomentum);
 	void UpdateIntermediatePoint(class AActor* DestinationActor);
-	bool CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV);
-	bool IsIdle();
+	unsigned long CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV);
+	unsigned long IsIdle();
 	void SetCurrentBehavior(class UGameCrowdAgentBehavior* BehaviorArchetype);
 	void StopBehavior();
 	void ActivateInstancedBehavior(class UGameCrowdAgentBehavior* NewBehaviorObject);
@@ -233,8 +233,8 @@ public:
 	void StopIdleAnimation();
 	void PlayIdleAnimation();
 	void OnPlayAgentAnimation(class USeqAct_PlayAgentAnimation* Action);
-	void InitializeAgent(class AActor* SpawnLoc, class AGameCrowdAgent* AgentTemplate, class UGameCrowdGroup* NewGroup, float AgentWarmupTime, bool bWarmupPosition, bool bCheckWarmupVisibility);
-	void SetLighting(bool bEnableLightEnvironment, const struct FLightingChannelContainer& AgentLightingChannel, bool bCastShadows);
+	void InitializeAgent(class AActor* SpawnLoc, class AGameCrowdAgent* AgentTemplate, class UGameCrowdGroup* NewGroup, float AgentWarmupTime, unsigned long bWarmupPosition, unsigned long bCheckWarmupVisibility);
+	void SetLighting(unsigned long bEnableLightEnvironment, const struct FLightingChannelContainer& AgentLightingChannel, unsigned long bCastShadows);
 	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void Destroyed();
 	void ResetPooledAgent();
@@ -243,9 +243,9 @@ public:
 	void SetMaxSpeed();
 	void SetCurrentDestination(class AGameCrowdDestination* NewDest);
 	void WaitForGroupMembers();
-	bool PickBehaviorFrom(TArray<struct FBehaviorEntry> BehaviorList, const struct FVector& BestCameraLoc);
-	void SetPanic(class AActor* PanicActor, bool bNewPanic);
-	bool IsPanicked();
+	unsigned long PickBehaviorFrom(TArray<struct FBehaviorEntry> BehaviorList, const struct FVector& BestCameraLoc);
+	void SetPanic(class AActor* PanicActor, unsigned long bNewPanic);
+	unsigned long IsPanicked();
 	void FellOutOfWorld(class UClass* dmgType);
 };
 
@@ -293,9 +293,9 @@ public:
 	void PlayIdleAnimation();
 	void ClearLatentAnimation();
 	void OnPlayAgentAnimation(class USeqAct_PlayAgentAnimation* Action);
-	void SetRootMotion(bool bRootMotionEnabled);
+	void SetRootMotion(unsigned long bRootMotionEnabled);
 	void PlayDeath(const struct FVector& KillMomentum);
-	void SetLighting(bool bEnableLightEnvironment, const struct FLightingChannelContainer& AgentLightingChannel, bool bCastShadows);
+	void SetLighting(unsigned long bEnableLightEnvironment, const struct FLightingChannelContainer& AgentLightingChannel, unsigned long bCastShadows);
 	void PostBeginPlay();
 };
 
@@ -320,8 +320,8 @@ public:
 	}
 
 
-	bool AllowBehaviorAt(class AGameCrowdDestination* Destination);
-	bool AllowThisDestination(class AGameCrowdDestination* Destination);
+	unsigned long AllowBehaviorAt(class AGameCrowdDestination* Destination);
+	unsigned long AllowThisDestination(class AGameCrowdDestination* Destination);
 	void PropagateViralBehaviorTo(class AGameCrowdAgent* OtherAgent);
 	void ActivatedBy(class AActor* NewActionTarget);
 	class AActor* GetDestinationActor();
@@ -330,11 +330,11 @@ public:
 	void OnAnimEnd(class UAnimNodeSequence* SeqNode, float PlayedTime, float ExcessTime);
 	void StopBehavior();
 	void InitBehavior(class AGameCrowdAgent* Agent);
-	bool HandleMovement();
+	unsigned long HandleMovement();
 	void FinishedTargetRotation();
-	bool CanBeUsedBy(class AGameCrowdAgent* Agent, const struct FVector& cameraLoc);
+	unsigned long CanBeUsedBy(class AGameCrowdAgent* Agent, const struct FVector& cameraLoc);
 	void Tick(float DeltaTime);
-	bool ShouldEndIdle();
+	unsigned long ShouldEndIdle();
 };
 
 
@@ -388,8 +388,8 @@ public:
 
 
 	struct FString GetBehaviorString();
-	bool AllowBehaviorAt(class AGameCrowdDestination* Destination);
-	bool AllowThisDestination(class AGameCrowdDestination* Destination);
+	unsigned long AllowBehaviorAt(class AGameCrowdDestination* Destination);
+	unsigned long AllowThisDestination(class AGameCrowdDestination* Destination);
 	void PropagateViralBehaviorTo(class AGameCrowdAgent* OtherAgent);
 	void StopBehavior();
 	void InitBehavior(class AGameCrowdAgent* Agent);
@@ -411,7 +411,7 @@ public:
 
 
 	void StopBehavior();
-	bool ShouldEndIdle();
+	unsigned long ShouldEndIdle();
 	struct FString GetBehaviorString();
 	void InitBehavior(class AGameCrowdAgent* Agent);
 };
@@ -433,11 +433,11 @@ public:
 
 
 	void StopBehavior();
-	bool ShouldEndIdle();
+	unsigned long ShouldEndIdle();
 	struct FString GetBehaviorString();
 	class AActor* GetDestinationActor();
 	void ChangingDestination(class AGameCrowdDestination* NewDest);
-	bool HandleMovement();
+	unsigned long HandleMovement();
 };
 
 
@@ -532,17 +532,17 @@ public:
 	}
 
 
-	struct FVector GeneratePathToActor(class AGameCrowdAgent* Agent, class AActor* Goal, float WithinDistance, bool bAllowPartialPath);
+	struct FVector GeneratePathToActor(class AGameCrowdAgent* Agent, class AActor* Goal, float WithinDistance, unsigned long bAllowPartialPath);
 	void InitNavigationHandle();
 	void GetSpawnPosition(class USeqAct_GameCrowdSpawner* Spawner, struct FVector* SpawnPos, struct FRotator* SpawnRot);
-	bool AllowableDestinationFor(class AGameCrowdAgent* Agent);
-	bool AtCapacity();
+	unsigned long AllowableDestinationFor(class AGameCrowdAgent* Agent);
+	unsigned long AtCapacity();
 	void IncrementCustomerCount(class AGameCrowdAgent* ArrivingAgent);
 	void DecrementCustomerCount(class AGameCrowdAgent* DepartingAgent);
-	void PickNewDestinationFor(class AGameCrowdAgent* Agent, bool bIgnoreRestrictions);
+	void PickNewDestinationFor(class AGameCrowdAgent* Agent, unsigned long bIgnoreRestrictions);
 	void ReachedDestination(class AGameCrowdAgent* Agent);
 	void PostBeginPlay();
-	bool ReachedByAgent(class AGameCrowdAgent* Agent, const struct FVector& TestPosition, bool bTestExactly);
+	unsigned long ReachedByAgent(class AGameCrowdAgent* Agent, const struct FVector& TestPosition, unsigned long bTestExactly);
 	float GetSpreadValue();
 	void NotifyPathChanged();
 };
@@ -569,14 +569,14 @@ public:
 	}
 
 
-	bool HasCustomer();
+	unsigned long HasCustomer();
 	void ClearQueue(class AGameCrowdAgent* OldCustomer);
 	void AddCustomer(class AGameCrowdAgent* NewCustomer, class AGameCrowdInteractionPoint* PreviousPosition);
 	void ActuallyAdvance();
 	void AdvanceCustomerTo(class AGameCrowdInteractionPoint* FrontPosition);
 	void ReachedDestination(class AGameCrowdAgent* Agent);
-	bool HasSpace();
-	bool QueueReachedBy(class AGameCrowdAgent* Agent, const struct FVector& TestPosition);
+	unsigned long HasSpace();
+	unsigned long QueueReachedBy(class AGameCrowdAgent* Agent, const struct FVector& TestPosition);
 };
 
 
@@ -730,7 +730,7 @@ public:
 
 	class AGameCrowdAgent* CreateNewAgent(class AGameCrowdDestination* SpawnLoc, class AGameCrowdAgent* AgentTemplate, class UGameCrowdGroup* NewGroup);
 	class AGameCrowdAgent* SpawnAgent(class AGameCrowdDestination* SpawnLoc);
-	bool ValidateSpawnAt(class AGameCrowdDestination* Candidate);
+	unsigned long ValidateSpawnAt(class AGameCrowdDestination* Candidate);
 	void InitializeSpawnPoints(const struct FVector& ViewLocation, const struct FVector& PredictionLocation);
 	void AddPrioritizedSpawnPoint(class AGameCrowdDestination* GCD, const struct FVector& ViewLocation);
 	void AnalyzeSpawnPoints(int StartIndex, int StopIndex, const struct FVector& ViewLocation, const struct FVector& PredictionLocation);
@@ -738,7 +738,7 @@ public:
 	class AGameCrowdDestination* PickSpawnPoint();
 	void Tick(float DeltaSeconds);
 	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
-	bool AddToAgentPool(class AGameCrowdAgent* Agent);
+	unsigned long AddToAgentPool(class AGameCrowdAgent* Agent);
 	void AgentDestroyed(class AGameCrowdAgent* Agent);
 	void OnGameCrowdPopulationManagerToggle(class USeqAct_GameCrowdPopulationManagerToggle* inAction);
 	void PostBeginPlay();
@@ -807,15 +807,15 @@ public:
 
 
 	void STATIC_HandleDamageFX(class AGamePawn* DamagedPawn, struct FTakeHitInfo* HitInfo);
-	bool STATIC_ShouldHeadShotGib(class APawn* TestPawn, class APawn* Instigator);
+	unsigned long STATIC_ShouldHeadShotGib(class APawn* TestPawn, class APawn* Instigator);
 	void STATIC_PlayExtraDamageSound(class APawn* VictimPawn);
-	bool STATIC_IsScriptedDamageType();
-	bool STATIC_ShouldPlayForceFeedback(class APawn* DamagedPawn);
+	unsigned long STATIC_IsScriptedDamageType();
+	unsigned long STATIC_ShouldPlayForceFeedback(class APawn* DamagedPawn);
 	void STATIC_HandleDeadPlayer(class AGamePlayerController* Player);
 	void STATIC_HandleKilledPawn(class APawn* KilledPawn, class APawn* Instigator);
 	void STATIC_HandleDamagedPawn(class APawn* DamagedPawn, class APawn* Instigator, int DamageAmt, const struct FVector& Momentum);
 	void STATIC_ModifyDamage(class APawn* Victim, class AController* InstigatedBy, const struct FVector& HitLocation, const struct FTraceHitInfo& HitInfo, int* out_Damage, struct FVector* out_Momentum);
-	bool STATIC_ShouldGib(class APawn* TestPawn, class APawn* Instigator);
+	unsigned long STATIC_ShouldGib(class APawn* TestPawn, class APawn* Instigator);
 };
 
 
@@ -942,11 +942,11 @@ public:
 	void KnockdownPawn(class AGamePawn* Victim, float DistFromExplosion);
 	void CringePawn(class AGamePawn* Victim, float DistFromExplosion);
 	void DoCringesAndKnockdowns();
-	bool ShouldDoCringeFor(class AGamePawn* Victim);
+	unsigned long ShouldDoCringeFor(class AGamePawn* Victim);
 	void DoBreakFracturedMeshes(const struct FVector& ExploOrigin, float DamageRadius, float RBStrength, class UClass* dmgType);
-	void HurtExplosion(float BaseDamage, float DamageRadius, float DamageFalloffExp, class UClass* DamageType, float MomentumScale, const struct FVector& ExploOrigin, class AActor* IgnoredActor, class UClass* ActorClassToIgnoreForDamage, class AController* InstigatedByController, bool bDoFullDamage);
-	bool IsBehindExplosion(class AActor* A);
-	bool DoFullDamageToActor(class AActor* Victim);
+	void HurtExplosion(float BaseDamage, float DamageRadius, float DamageFalloffExp, class UClass* DamageType, float MomentumScale, const struct FVector& ExploOrigin, class AActor* IgnoredActor, class UClass* ActorClassToIgnoreForDamage, class AController* InstigatedByController, unsigned long bDoFullDamage);
+	unsigned long IsBehindExplosion(class AActor* A);
+	unsigned long DoFullDamageToActor(class AActor* Victim);
 	class UPhysicalMaterial* GetPhysicalMaterial();
 	void PreBeginPlay();
 };
@@ -1018,7 +1018,7 @@ public:
 
 	void ReattachMeshWithoutBeingSeen();
 	void ReattachMesh();
-	void UpdateShadowSettings(bool bInWantShadow);
+	void UpdateShadowSettings(unsigned long bInWantShadow);
 	void Cringe(float Duration);
 	void ServerKnockdown(const struct FVector& RBLinearVelocity, const struct FVector& RBAngularVelocity, const struct FVector& RadialOrigin, float RadialRadius, float RadialStrength, const struct FVector& PointImpulse, const struct FVector& PointImpulsePosition, const struct FName& PointImpulseBoneName);
 	void GetTargetFrictionCylinder(float* CylinderRadius, float* CylinderHeight);
@@ -1044,19 +1044,19 @@ public:
 
 
 	void ClientColorFade(const struct FColor& FadeColor, unsigned char FromAlpha, unsigned char ToAlpha, float FadeTime);
-	void WarmupPause(bool bDesiredPauseState);
-	bool CanUnpauseWarmup();
+	void WarmupPause(unsigned long bDesiredPauseState);
+	unsigned long CanUnpauseWarmup();
 	void GetCurrentMovie(struct FString* MovieName);
-	void ClientStopMovie(float DelayInSeconds, bool bAllowMovieToFinish, bool bForceStopNonSkippable, bool bForceStopLoadingMovie);
+	void ClientStopMovie(float DelayInSeconds, unsigned long bAllowMovieToFinish, unsigned long bForceStopNonSkippable, unsigned long bForceStopLoadingMovie);
 	void ClientPlayMovie(const struct FString& MovieName, int InStartOfRenderingMovieFrame, int InEndOfRenderingMovieFrame);
 	void STATIC_KeepPlayingLoadingMovie();
-	void STATIC_ShowLoadingMovie(bool bShowMovie, bool bPauseAfterHide, float PauseDuration, float KeepPlayingDuration, bool bOverridePreviousDelays);
+	void STATIC_ShowLoadingMovie(unsigned long bShowMovie, unsigned long bPauseAfterHide, float PauseDuration, float KeepPlayingDuration, unsigned long bOverridePreviousDelays);
 	struct FName GetCurrentSoundMode();
 	void SetSoundMode(const struct FName& InSoundModeName);
 	void DoForceFeedbackForScreenShake(class UCameraShake* ShakeData, float Scale);
 	void NotifyCrowdAgentInRadius(class AGameCrowdAgent* Agent);
 	void NotifyCrowdAgentRefresh();
-	void CrowdDebug(bool bEnabled);
+	void CrowdDebug(unsigned long bEnabled);
 	void CrowdToggle();
 	void CrowdFocus();
 	int GetUIPlayerIndex();
@@ -1140,7 +1140,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_MustBeHiddenFromThisPoint(class UNavigationHandle* NavHandle, const struct FVector& InOutOfViewLocation);
+	unsigned long STATIC_MustBeHiddenFromThisPoint(class UNavigationHandle* NavHandle, const struct FVector& InOutOfViewLocation);
 	void RecycleNative();
 };
 
@@ -1163,7 +1163,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_BiasAgainstPolysWithinDistanceOfLocations(class UNavigationHandle* NavHandle, const struct FVector& InLocation, const struct FRotator& InRotation, float InDistanceToCheck, TArray<struct FVector> InLocationsToCheck);
+	unsigned long STATIC_BiasAgainstPolysWithinDistanceOfLocations(class UNavigationHandle* NavHandle, const struct FVector& InLocation, const struct FRotator& InRotation, float InDistanceToCheck, TArray<struct FVector> InLocationsToCheck);
 };
 
 
@@ -1367,13 +1367,13 @@ public:
 	void AdjustFocusPointInterpolation(const struct FRotator& Delta);
 	struct FVector GetActualFocusLocation();
 	void UpdateFocusPoint(class APawn* P);
-	void ClearFocusPoint(bool bLeaveCameraRotation);
+	void ClearFocusPoint(unsigned long bLeaveCameraRotation);
 	class AActor* GetFocusActor();
-	void SetFocusOnActor(class AActor* FocusActor, const struct FName& FocusBoneName, const struct FVector2D& InterpSpeedRange, const struct FVector2D& InFocusFOV, float CameraFOV, bool bAlwaysFocus, bool bAdjustCamera, bool bIgnoreTrace, float FocusPitchOffsetDeg);
-	void SetFocusOnLoc(const struct FVector& FocusWorldLoc, const struct FVector2D& InterpSpeedRange, const struct FVector2D& InFocusFOV, float CameraFOV, bool bAlwaysFocus, bool bAdjustCamera, bool bIgnoreTrace, float FocusPitchOffsetDeg);
+	void SetFocusOnActor(class AActor* FocusActor, const struct FName& FocusBoneName, const struct FVector2D& InterpSpeedRange, const struct FVector2D& InFocusFOV, float CameraFOV, unsigned long bAlwaysFocus, unsigned long bAdjustCamera, unsigned long bIgnoreTrace, float FocusPitchOffsetDeg);
+	void SetFocusOnLoc(const struct FVector& FocusWorldLoc, const struct FVector2D& InterpSpeedRange, const struct FVector2D& InFocusFOV, float CameraFOV, unsigned long bAlwaysFocus, unsigned long bAdjustCamera, unsigned long bIgnoreTrace, float FocusPitchOffsetDeg);
 	void AdjustTurn(int AngleOffset);
 	void EndTurn();
-	void BeginTurn(int StartAngle, int EndAngle, float TimeSec, float DelaySec, bool bAlignTargetWhenFinished);
+	void BeginTurn(int StartAngle, int EndAngle, float TimeSec, float DelaySec, unsigned long bAlignTargetWhenFinished);
 	void PlayerUpdateCamera(class APawn* P, float DeltaTime, struct FTViewTarget* OutVT);
 	void UpdateCamera(class APawn* P, float DeltaTime, struct FTViewTarget* OutVT);
 	float GetDesiredFOV(class APawn* ViewedPawn);
@@ -1416,7 +1416,7 @@ public:
 	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void UpdateCameraLensEffects(struct FTViewTarget* OutVT);
 	void UpdateViewTarget(float DeltaTime, struct FTViewTarget* OutVT);
-	bool ShouldConstrainAspectRatio();
+	unsigned long ShouldConstrainAspectRatio();
 	class UGameCameraBase* FindBestCameraType(class AActor* CameraTarget);
 	void Reset();
 	void PostBeginPlay();
@@ -1496,7 +1496,7 @@ public:
 	struct FVector DOFTrace(class AActor* TraceOwner, const struct FVector& StartTrace, const struct FVector& EndTrace);
 	struct FVector GetDOFFocusLoc(class AActor* TraceOwner, const struct FVector& StartTrace, const struct FVector& EndTrace);
 	void ProcessViewRotation(float DeltaTime, class AActor* ViewTarget, struct FRotator* out_ViewRotation, struct FRotator* out_DeltaRot);
-	bool SetFocusPoint(class APawn* ViewedPawn);
+	unsigned long SetFocusPoint(class APawn* ViewedPawn);
 	struct FVector GetCameraWorstCaseLoc(class APawn* TargetPawn);
 	float GetDesiredFOV(class APawn* ViewedPawn);
 	struct FVector AdjustViewOffset(class APawn* P, const struct FVector& Offset);
@@ -1555,7 +1555,7 @@ public:
 
 
 	class UGameDecal* SpawnDecalMinimal(float InDecalLifeSpan, float InCanSpawnDistance, struct FVector* DecalLocation);
-	bool IsTooCloseToActiveDecal(float InCanSpawnDistance, struct FVector* DecalLocation);
+	unsigned long IsTooCloseToActiveDecal(float InCanSpawnDistance, struct FVector* DecalLocation);
 };
 
 
@@ -1606,21 +1606,21 @@ public:
 	struct FVector RelativeToWorldOffset(const struct FRotator& InRotation, const struct FVector& RelativeSpaceOffset);
 	struct FVector WorldToRelativeOffset(const struct FRotator& InRotation, const struct FVector& WorldSpaceOffset);
 	void ForcePawnRotation(class APawn* P, const struct FRotator& NewRotation);
-	bool MessageEvent(const struct FName& EventName, class UObject* Sender);
+	unsigned long MessageEvent(const struct FName& EventName, class UObject* Sender);
 	void ResetFacePreciseRotation();
 	void ReachedPrecisePosition();
 	void SetFacePreciseRotation(const struct FRotator& RotationToFace, float InterpolationTime);
-	void SetReachPreciseDestination(const struct FVector& DestinationToReach, bool bCancel);
-	bool ShouldReplicate();
+	void SetReachPreciseDestination(const struct FVector& DestinationToReach, unsigned long bCancel);
+	unsigned long ShouldReplicate();
 	void SpecialMoveFlagsUpdated();
 	void Tick(float DeltaTime);
 	void SpecialMoveEnded(const struct FName& PrevMove, const struct FName& NextMove);
-	void SpecialMoveStarted(bool bForced, const struct FName& PrevMove);
-	bool InternalCanDoSpecialMove();
-	bool CanDoSpecialMove(bool bForceCheck);
-	bool CanOverrideSpecialMove(const struct FName& InMove);
-	bool CanOverrideMoveWith(const struct FName& NewMove);
-	bool CanChainMove(const struct FName& NextMove);
+	void SpecialMoveStarted(unsigned long bForced, const struct FName& PrevMove);
+	unsigned long InternalCanDoSpecialMove();
+	unsigned long CanDoSpecialMove(unsigned long bForceCheck);
+	unsigned long CanOverrideSpecialMove(const struct FName& InMove);
+	unsigned long CanOverrideMoveWith(const struct FName& NewMove);
+	unsigned long CanChainMove(const struct FName& NextMove);
 	void ExtractSpecialMoveFlags(int Flags);
 	void InitSpecialMoveFlags(int* out_Flags);
 	void InitSpecialMove(class AGamePawn* inPawn, const struct FName& InHandle);
@@ -1640,7 +1640,7 @@ public:
 	}
 
 
-	bool AddToAgentPool(class AGameCrowdAgent* Agent);
+	unsigned long AddToAgentPool(class AGameCrowdAgent* Agent);
 	void AgentDestroyed(class AGameCrowdAgent* Agent);
 };
 

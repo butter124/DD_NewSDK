@@ -52,15 +52,15 @@ public:
 	}
 
 
-	void AddRandomizeValues(float equipmentQuality, bool doResetStatsToTemplate, bool bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, bool bIsForShop, bool bAllowTranscendentGear);
+	void AddRandomizeValues(float equipmentQuality, unsigned long doResetStatsToTemplate, unsigned long bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, unsigned long bIsForShop, unsigned long bAllowTranscendentGear);
 	int GetStatLevelUpAmountIterations(TEnumAsByte<EEquipmentStatType> EQS, int Value, int statSubIndex);
-	int GetNextStatLevelUpValue(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, bool SetAsValue);
+	int GetNextStatLevelUpValue(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, unsigned long SetAsValue);
 	void InitFromNetInfo(const struct FEquipmentNetInfo& Info, class UObject* fromDroppedEquipment);
-	bool CheckStatLevelUpIterations(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, int EquipmentLevelToCheck, float Value);
-	bool AllowStatLevelUp(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, bool IsInForgeUI, bool bIgnoreManaRequirement);
+	unsigned long CheckStatLevelUpIterations(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, int EquipmentLevelToCheck, float Value);
+	unsigned long AllowStatLevelUp(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, unsigned long IsInForgeUI, unsigned long bIgnoreManaRequirement);
 	int GetWeaponDamage();
 	void ApplyPrimaryDamageMultiplierDisplay(int* StatValue);
-	float GetEquipmentStatValue(TEnumAsByte<EEquipmentStatType> equipmentStatType, bool returnFinalAddedValue, bool includeStatLevelUp);
+	float GetEquipmentStatValue(TEnumAsByte<EEquipmentStatType> equipmentStatType, unsigned long returnFinalAddedValue, unsigned long includeStatLevelUp);
 	void NotifyEquipment_PawnAttacked(int FireMode);
 	struct FRotator GetDesiredSphereRotationalPlacement(class USkeletalMeshComponent* myMeshComp, class ADunDefPlayer* myPlayer, unsigned char* HasTarget);
 	struct FRotator GetDesiredDirection(class USkeletalMeshComponent* myMeshComp, class ADunDefPlayer* myPlayer);
@@ -72,7 +72,7 @@ public:
 	void UpdateAI(class ADunDefPlayer* PlayerOwner, float DeltaTime);
 	void TickedByPawn(class ADunDefPlayer* PlayerOwner, float DeltaTime);
 	void UpdateRotation(float DeltaTime);
-	void ShutDown(bool isDestruction);
+	void ShutDown(unsigned long isDestruction);
 	void AttachedComponent(class UPrimitiveComponent* aComp);
 };
 
@@ -95,7 +95,7 @@ public:
 	TScriptInterface<class UDunDefTargetableInterface> GetBestTarget();
 	void BeginRangedAttack();
 	void BeginMeleeAttack();
-	bool CanWebTarget(const TScriptInterface<class UDunDefTargetableInterface>& Target);
+	unsigned long CanWebTarget(const TScriptInterface<class UDunDefTargetableInterface>& Target);
 	void UpdateAI(class ADunDefPlayer* PlayerOwner, float DeltaTime);
 };
 

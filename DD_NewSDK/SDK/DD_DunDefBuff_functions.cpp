@@ -36,9 +36,9 @@ void ABuffVolume::OnToggle(class USeqAct_Toggle* Action)
 // (Defined, Public)
 // Parameters:
 // class AActor*                  Target                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ABuffVolume::CanBuff(class AActor* Target)
+unsigned long ABuffVolume::CanBuff(class AActor* Target)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.BuffVolume.CanBuff");
 
@@ -204,9 +204,9 @@ float UDunDefBuff_Boost::GetPawnBoostAmount(TEnumAsByte<EPawnBoostType> boostTyp
 // (Defined, Public)
 // Parameters:
 // TEnumAsByte<EPawnBoostType>    boostType                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UDunDefBuff_Boost::HasPawnBoostingType(TEnumAsByte<EPawnBoostType> boostType)
+unsigned long UDunDefBuff_Boost::HasPawnBoostingType(TEnumAsByte<EPawnBoostType> boostType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_Boost.HasPawnBoostingType");
 
@@ -250,9 +250,9 @@ float UDunDefBuff_Boost::GetTowerBoostAmount(TEnumAsByte<ETowerBoostType> boostT
 // (Defined, Public)
 // Parameters:
 // TEnumAsByte<ETowerBoostType>   boostType                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UDunDefBuff_Boost::HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType)
+unsigned long UDunDefBuff_Boost::HasTowerBoostingType(TEnumAsByte<ETowerBoostType> boostType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_Boost.HasTowerBoostingType");
 
@@ -296,9 +296,9 @@ TScriptInterface<class UDunDefTargetableInterface> UDunDefBuff_Boost::GetTowerBo
 // TScriptInterface<class UIActorModifierInterface> ActorStatObject                (Parm)
 // class UObject*                 CallingObject                  (OptionalParm, Parm)
 // int                            Tier                           (OptionalParm, Parm)
-// bool                           bBaseValueOnly                 (OptionalParm, Parm)
+// unsigned long                  bBaseValueOnly                 (OptionalParm, Parm)
 
-void UDunDefBuff_Boost::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly)
+void UDunDefBuff_Boost::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_Boost.InitalizeActorStats");
 
@@ -354,9 +354,9 @@ void UDunDefBuff_Boost::ActivateBuff()
 // (Defined, Public)
 // Parameters:
 // class AActor*                  Target                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UDunDefBuff_Contagion::CanAffectTarget(class AActor* Target)
+unsigned long UDunDefBuff_Contagion::CanAffectTarget(class AActor* Target)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_Contagion.CanAffectTarget");
 
@@ -434,9 +434,9 @@ void UDunDefBuff_Contagion::BuffEffect()
 // TScriptInterface<class UIActorModifierInterface> ActorStatObject                (Parm)
 // class UObject*                 CallingObject                  (OptionalParm, Parm)
 // int                            Tier                           (OptionalParm, Parm)
-// bool                           bBaseValueOnly                 (OptionalParm, Parm)
+// unsigned long                  bBaseValueOnly                 (OptionalParm, Parm)
 
-void UDunDefBuff_Damage::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly)
+void UDunDefBuff_Damage::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_Damage.InitalizeActorStats");
 
@@ -458,9 +458,9 @@ void UDunDefBuff_Damage::InitalizeActorStats(const TScriptInterface<class UIActo
 // (Defined, Public)
 // Parameters:
 // class AActor*                  Target                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UDunDefBuff_Damage::CanDamage(class AActor* Target)
+unsigned long UDunDefBuff_Damage::CanDamage(class AActor* Target)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_Damage.CanDamage");
 
@@ -538,9 +538,9 @@ void UDunDefBuff_DamageAdjuster::ResetTimer()
 // float                          Value                          (Parm)
 // float                          X                              (Parm)
 // float                          Y                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UDunDefBuff_DamageAdjuster::IsBetween(float Value, float X, float Y)
+unsigned long UDunDefBuff_DamageAdjuster::IsBetween(float Value, float X, float Y)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_DamageAdjuster.IsBetween");
 
@@ -565,9 +565,9 @@ bool UDunDefBuff_DamageAdjuster::IsBetween(float Value, float X, float Y)
 // TScriptInterface<class UIActorModifierInterface> ActorStatObject                (Parm)
 // class UObject*                 CallingObject                  (OptionalParm, Parm)
 // int                            Tier                           (OptionalParm, Parm)
-// bool                           bBaseValueOnly                 (OptionalParm, Parm)
+// unsigned long                  bBaseValueOnly                 (OptionalParm, Parm)
 
-void UDunDefBuff_DamageAdjuster::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly)
+void UDunDefBuff_DamageAdjuster::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_DamageAdjuster.InitalizeActorStats");
 
@@ -613,9 +613,9 @@ float UDunDefBuff_DamageAdjuster::GetDamageMultiplier(class AActor* damagedTarge
 // Parameters:
 // class UObject*                 Target                         (Parm)
 // struct FsLastDamageInfo        TheDamageInfo                  (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UDunDefBuff_DamageAdjuster::IsAdjustAllowed(class UObject* Target, const struct FsLastDamageInfo& TheDamageInfo)
+unsigned long UDunDefBuff_DamageAdjuster::IsAdjustAllowed(class UObject* Target, const struct FsLastDamageInfo& TheDamageInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_DamageAdjuster.IsAdjustAllowed");
 
@@ -728,9 +728,9 @@ void UDunDefBuff_EnemyBuff::ApplyDebuff()
 // TScriptInterface<class UIActorModifierInterface> ActorStatObject                (Parm)
 // class UObject*                 CallingObject                  (OptionalParm, Parm)
 // int                            Tier                           (OptionalParm, Parm)
-// bool                           bBaseValueOnly                 (OptionalParm, Parm)
+// unsigned long                  bBaseValueOnly                 (OptionalParm, Parm)
 
-void UDunDefBuff_EnemyBuff::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly)
+void UDunDefBuff_EnemyBuff::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_EnemyBuff.InitalizeActorStats");
 
@@ -771,9 +771,9 @@ void UDunDefBuff_EnemyBuff::BuffEffect()
 // class AActor*                  Target                         (Parm)
 // class AActor*                  BuffOwner                      (Parm)
 // class UDunDefBuff*             aBuffTemplate                  (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UDunDefBuff_EnemyBuff::STATIC_IsValidTarget(class AActor* Target, class AActor* BuffOwner, class UDunDefBuff* aBuffTemplate)
+unsigned long UDunDefBuff_EnemyBuff::STATIC_IsValidTarget(class AActor* Target, class AActor* BuffOwner, class UDunDefBuff* aBuffTemplate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_EnemyBuff.IsValidTarget");
 
@@ -933,9 +933,9 @@ void UDunDefBuff_ExtraLife::ActivateBuff()
 // (Defined, Public)
 // Parameters:
 // class AActor*                  aActor                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UDunDefBuff_ExtraLife::CanProc(class AActor* aActor)
+unsigned long UDunDefBuff_ExtraLife::CanProc(class AActor* aActor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_ExtraLife.CanProc");
 
@@ -958,9 +958,9 @@ bool UDunDefBuff_ExtraLife::CanProc(class AActor* aActor)
 // TScriptInterface<class UIActorModifierInterface> ActorStatObject                (Parm)
 // class UObject*                 CallingObject                  (OptionalParm, Parm)
 // int                            Tier                           (OptionalParm, Parm)
-// bool                           bBaseValueOnly                 (OptionalParm, Parm)
+// unsigned long                  bBaseValueOnly                 (OptionalParm, Parm)
 
-void UDunDefBuff_ExtraLife::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly)
+void UDunDefBuff_ExtraLife::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_ExtraLife.InitalizeActorStats");
 
@@ -984,9 +984,9 @@ void UDunDefBuff_ExtraLife::InitalizeActorStats(const TScriptInterface<class UIA
 // TScriptInterface<class UIActorModifierInterface> ActorStatObject                (Parm)
 // class UObject*                 CallingObject                  (OptionalParm, Parm)
 // int                            Tier                           (OptionalParm, Parm)
-// bool                           bBaseValueOnly                 (OptionalParm, Parm)
+// unsigned long                  bBaseValueOnly                 (OptionalParm, Parm)
 
-void UDunDefBuff_OnHit::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly)
+void UDunDefBuff_OnHit::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_OnHit.InitalizeActorStats");
 
@@ -1035,9 +1035,9 @@ float UDunDefBuff_OnHit::GetExtraDamageAmount(float dealtDamage)
 // class AController*             DamageInstigator               (Parm)
 // class UClass*                  DamageType                     (Parm)
 // class UObject*                 whatDidDamage                  (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UDunDefBuff_OnHit::IsValidHitTarget(class AActor* TargetActor, class AActor* DamageCauser, class AController* DamageInstigator, class UClass* DamageType, class UObject* whatDidDamage)
+unsigned long UDunDefBuff_OnHit::IsValidHitTarget(class AActor* TargetActor, class AActor* DamageCauser, class AController* DamageInstigator, class UClass* DamageType, class UObject* whatDidDamage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_OnHit.IsValidHitTarget");
 
@@ -1219,9 +1219,9 @@ void UDunDefBuff_Shield::AdjustTargetDamage(class AActor* forActor, class AContr
 // TScriptInterface<class UIActorModifierInterface> ActorStatObject                (Parm)
 // class UObject*                 CallingObject                  (OptionalParm, Parm)
 // int                            Tier                           (OptionalParm, Parm)
-// bool                           bBaseValueOnly                 (OptionalParm, Parm)
+// unsigned long                  bBaseValueOnly                 (OptionalParm, Parm)
 
-void UDunDefBuff_Shield::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly)
+void UDunDefBuff_Shield::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_Shield.InitalizeActorStats");
 
@@ -1253,13 +1253,13 @@ void UDunDefBuff_Shield::InitalizeActorStats(const TScriptInterface<class UIActo
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void UDunDefBuff_Shield::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void UDunDefBuff_Shield::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_Shield.ExecReplicatedFunction");
 
@@ -1295,9 +1295,9 @@ void UDunDefBuff_Shield::ExecReplicatedFunction(const struct FName& FunctionName
 // class UObject*                 EventCauser                    (OptionalParm, Parm)
 // class UObject*                 EventOwner                     (OptionalParm, Parm)
 // class UObject*                 whatDidDamage                  (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UDunDefBuff_Spawn::CanSpawn(class UObject* EventCauser, class UObject* EventOwner, class UObject* whatDidDamage)
+unsigned long UDunDefBuff_Spawn::CanSpawn(class UObject* EventCauser, class UObject* EventOwner, class UObject* whatDidDamage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_Spawn.CanSpawn");
 
@@ -1359,9 +1359,9 @@ void UDunDefBuff_Spawn::EnforceSpawnLimit(int aspawnCount)
 // Function DunDefBuff.DunDefBuff_Spawn.CheckSpawnCount
 // (Defined, Protected)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UDunDefBuff_Spawn::CheckSpawnCount()
+unsigned long UDunDefBuff_Spawn::CheckSpawnCount()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_Spawn.CheckSpawnCount");
 
@@ -1722,9 +1722,9 @@ void UDunDefBuff_Web::ApplyDebuff()
 // TScriptInterface<class UIActorModifierInterface> ActorStatObject                (Parm)
 // class UObject*                 CallingObject                  (OptionalParm, Parm)
 // int                            Tier                           (OptionalParm, Parm)
-// bool                           bBaseValueOnly                 (OptionalParm, Parm)
+// unsigned long                  bBaseValueOnly                 (OptionalParm, Parm)
 
-void UDunDefBuff_Web::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, bool bBaseValueOnly)
+void UDunDefBuff_Web::InitalizeActorStats(const TScriptInterface<class UIActorModifierInterface>& ActorStatObject, class UObject* CallingObject, int Tier, unsigned long bBaseValueOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_Web.InitalizeActorStats");
 
@@ -1765,9 +1765,9 @@ void UDunDefBuff_Web::BuffEffect()
 // class AActor*                  Target                         (Parm)
 // class AActor*                  BuffOwner                      (Parm)
 // class UDunDefBuff*             aBuffTemplate                  (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UDunDefBuff_Web::STATIC_IsValidTarget(class AActor* Target, class AActor* BuffOwner, class UDunDefBuff* aBuffTemplate)
+unsigned long UDunDefBuff_Web::STATIC_IsValidTarget(class AActor* Target, class AActor* BuffOwner, class UDunDefBuff* aBuffTemplate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_Web.IsValidTarget");
 

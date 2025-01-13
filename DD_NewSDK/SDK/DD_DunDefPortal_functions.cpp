@@ -55,9 +55,9 @@ void ADunDefPortalNode::Tick(float DeltaTime)
 // class AActor*                  theArchetype                   (Parm)
 // struct FVector                 theLoc                         (Parm)
 // struct FRotator                theRot                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefPortalNode::STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot)
+unsigned long ADunDefPortalNode::STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefPortal.DunDefPortalNode.AllowSpawn");
 
@@ -136,13 +136,13 @@ void ADunDefPortalNode::Touch(class AActor* Other, class UPrimitiveComponent* Ot
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefPortalNode::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefPortalNode::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefPortal.DunDefPortalNode.ExecReplicatedFunction");
 
@@ -197,9 +197,9 @@ void ADunDefPortalNode::ReplicatedEvent(const struct FName& VarName)
 // Parameters:
 // struct FVector                 Start                          (Parm)
 // struct FVector                 End                            (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefWeapon_PortalGun::HitBlockingVolume(const struct FVector& Start, const struct FVector& End)
+unsigned long ADunDefWeapon_PortalGun::HitBlockingVolume(const struct FVector& Start, const struct FVector& End)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefPortal.DunDefWeapon_PortalGun.HitBlockingVolume");
 
@@ -221,9 +221,9 @@ bool ADunDefWeapon_PortalGun::HitBlockingVolume(const struct FVector& Start, con
 // (Defined, Public)
 // Parameters:
 // struct FVector                 aPoint                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefWeapon_PortalGun::IsInAnyPortalBlockingVolume(const struct FVector& aPoint)
+unsigned long ADunDefWeapon_PortalGun::IsInAnyPortalBlockingVolume(const struct FVector& aPoint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefPortal.DunDefWeapon_PortalGun.IsInAnyPortalBlockingVolume");
 
@@ -265,9 +265,9 @@ void ADunDefWeapon_PortalGun::Tick(float DeltaTime)
 // Parameters:
 // struct FLinearColor            BarColor                       (Parm, OutParm)
 // struct FLinearColor            TextColor                      (Parm, OutParm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefWeapon_PortalGun::GetReloadingColors(struct FLinearColor* BarColor, struct FLinearColor* TextColor)
+unsigned long ADunDefWeapon_PortalGun::GetReloadingColors(struct FLinearColor* BarColor, struct FLinearColor* TextColor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefPortal.DunDefWeapon_PortalGun.GetReloadingColors");
 
@@ -291,9 +291,9 @@ bool ADunDefWeapon_PortalGun::GetReloadingColors(struct FLinearColor* BarColor, 
 // Function DunDefPortal.DunDefWeapon_PortalGun.HasBothPortals
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefWeapon_PortalGun::HasBothPortals()
+unsigned long ADunDefWeapon_PortalGun::HasBothPortals()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefPortal.DunDefWeapon_PortalGun.HasBothPortals");
 
@@ -423,9 +423,9 @@ void ADunDefWeapon_PortalGun::ShootProjectiles(int theFireMode)
 // Function DunDefPortal.DunDefWeapon_PortalGun.HasAnyAmmo
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefWeapon_PortalGun::HasAnyAmmo()
+unsigned long ADunDefWeapon_PortalGun::HasAnyAmmo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefPortal.DunDefWeapon_PortalGun.HasAnyAmmo");
 
@@ -511,9 +511,9 @@ void ADunDefWeapon_PortalGun::PostBeginPlay()
 // Function DunDefPortal.DunDefWeapon_PortalGun.PlayCancelAnimation
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           bIsPrimary                     (Parm)
+// unsigned long                  bIsPrimary                     (Parm)
 
-void ADunDefWeapon_PortalGun::PlayCancelAnimation(bool bIsPrimary)
+void ADunDefWeapon_PortalGun::PlayCancelAnimation(unsigned long bIsPrimary)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefPortal.DunDefWeapon_PortalGun.PlayCancelAnimation");
 
@@ -531,9 +531,9 @@ void ADunDefWeapon_PortalGun::PlayCancelAnimation(bool bIsPrimary)
 // Function DunDefPortal.DunDefWeapon_PortalGun.PlayedShootAnimation
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           isBigShot                      (OptionalParm, Parm)
+// unsigned long                  isBigShot                      (OptionalParm, Parm)
 
-void ADunDefWeapon_PortalGun::PlayedShootAnimation(bool isBigShot)
+void ADunDefWeapon_PortalGun::PlayedShootAnimation(unsigned long isBigShot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefPortal.DunDefWeapon_PortalGun.PlayedShootAnimation");
 
@@ -635,9 +635,9 @@ float ADunDefWeapon_PortalGun::GetAmmoPercent()
 // Function DunDefPortal.DunDefWeapon_PortalGun.UsesAmmo
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefWeapon_PortalGun::UsesAmmo()
+unsigned long ADunDefWeapon_PortalGun::UsesAmmo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefPortal.DunDefWeapon_PortalGun.UsesAmmo");
 
@@ -667,13 +667,13 @@ bool ADunDefWeapon_PortalGun::UsesAmmo()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefWeapon_PortalGun::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefWeapon_PortalGun::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefPortal.DunDefWeapon_PortalGun.ExecReplicatedFunction");
 

@@ -248,15 +248,15 @@ public:
 	}
 
 
-	bool STATIC_AllowFloatingPointRenderTargets();
+	unsigned long STATIC_AllowFloatingPointRenderTargets();
 	void STATIC_AddOverlayWrapped(class UFont* Font, const struct FString& Text, float X, float Y, float ScaleX, float ScaleY, float WrapWidth);
-	void STATIC_AddOverlay(class UFont* Font, const struct FString& Text, float X, float Y, float ScaleX, float ScaleY, bool bIsCentered);
+	void STATIC_AddOverlay(class UFont* Font, const struct FString& Text, float X, float Y, float ScaleX, float ScaleY, unsigned long bIsCentered);
 	void STATIC_RemoveAllOverlays();
-	void STATIC_StopMovie(bool bDelayStopUntilGameHasRendered);
-	bool STATIC_PlayLoadMapMovie();
+	void STATIC_StopMovie(unsigned long bDelayStopUntilGameHasRendered);
+	unsigned long STATIC_PlayLoadMapMovie();
 	struct FString STATIC_GetLastMovieName();
 	class UAudioDevice* STATIC_GetAudioDevice();
-	bool STATIC_IsSplitScreen();
+	unsigned long STATIC_IsSplitScreen();
 	class UFont* STATIC_GetAdditionalFont(int AdditionalFontIndex);
 	class UFont* STATIC_GetSubtitleFont();
 	class UFont* STATIC_GetLargeFont();
@@ -264,18 +264,18 @@ public:
 	class UFont* STATIC_GetSmallFont();
 	class UFont* STATIC_GetTinyFont();
 	struct FString STATIC_GetBuildDate();
-	bool STATIC_UsePS3CircleToAccept();
+	unsigned long STATIC_UsePS3CircleToAccept();
 	void STATIC_HideSoftKeyboard();
 	void STATIC_ShowSoftKeyboard(const struct FString& DefaultText);
-	bool STATIC_IsNavConnected();
-	bool STATIC_IsEyeConnected();
+	unsigned long STATIC_IsNavConnected();
+	unsigned long STATIC_IsEyeConnected();
 	void STATIC_ClearMoveCalibration();
-	bool STATIC_IsMoveCalibrated();
-	bool STATIC_IsMoveConnected();
-	bool STATIC_IsStereoScopic3D();
+	unsigned long STATIC_IsMoveCalibrated();
+	unsigned long STATIC_IsMoveConnected();
+	unsigned long STATIC_IsStereoScopic3D();
 	class AWorldInfo* STATIC_GetCurrentWorldInfo();
-	bool STATIC_IsGame();
-	bool STATIC_IsEditor();
+	unsigned long STATIC_IsGame();
+	unsigned long STATIC_IsEditor();
 };
 
 
@@ -314,7 +314,7 @@ public:
 
 	class UOnlineSubsystem* STATIC_GetOnlineSubsystem();
 	void DestroyNamedNetDriver(const struct FName& NetDriverName);
-	bool CreateNamedNetDriver(const struct FName& NetDriverName);
+	unsigned long CreateNamedNetDriver(const struct FName& NetDriverName);
 };
 
 
@@ -506,32 +506,32 @@ public:
 
 
 	void ReplicationInlineRPCTrigger(class APlayerController* PC, TArray<struct FInlineMultiCastReplication>* MultiCastQueue);
-	void STATIC_ActorDirectMulticastFunction(class AActor* act, const struct FName& FunctionName, class APlayerController* SendToSpecificController, bool ForceBroadcastToOwners, bool BroadCastToLocalControllers, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, bool onlyFunction, bool onlyFloatParam, bool onlyVectorParam, bool onlyNameParam, bool onlyActorParam, bool onlyVectorAndByte, unsigned char byteParam, bool isUnreliable, bool onlyByteParam, class UObject* objectParam1);
-	void ActorInlineQueueMulticastFunction(const struct FName& FunctionName, class APlayerController* SendToSpecificController, bool ForceBroadcastToOwners, bool BroadCastToLocalControllers, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, bool onlyFunction, bool onlyFloatParam, bool onlyVectorParam, bool onlyNameParam, bool onlyActorParam, bool onlyVectorAndByte, unsigned char byteParam, bool isUnreliable, bool onlyByteParam, class UObject* objectParam1, int ReplicatedFuncNameMax);
-	bool ShouldBlockPlayerAim(class APlayerController* PC);
-	bool STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot);
-	bool IsPlayingSound(class USoundCue* ASound);
+	void STATIC_ActorDirectMulticastFunction(class AActor* act, const struct FName& FunctionName, class APlayerController* SendToSpecificController, unsigned long ForceBroadcastToOwners, unsigned long BroadCastToLocalControllers, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, unsigned long onlyFunction, unsigned long onlyFloatParam, unsigned long onlyVectorParam, unsigned long onlyNameParam, unsigned long onlyActorParam, unsigned long onlyVectorAndByte, unsigned char byteParam, unsigned long isUnreliable, unsigned long onlyByteParam, class UObject* objectParam1);
+	void ActorInlineQueueMulticastFunction(const struct FName& FunctionName, class APlayerController* SendToSpecificController, unsigned long ForceBroadcastToOwners, unsigned long BroadCastToLocalControllers, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, unsigned long onlyFunction, unsigned long onlyFloatParam, unsigned long onlyVectorParam, unsigned long onlyNameParam, unsigned long onlyActorParam, unsigned long onlyVectorAndByte, unsigned char byteParam, unsigned long isUnreliable, unsigned long onlyByteParam, class UObject* objectParam1, int ReplicatedFuncNameMax);
+	unsigned long ShouldBlockPlayerAim(class APlayerController* PC);
+	unsigned long STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot);
+	unsigned long IsPlayingSound(class USoundCue* ASound);
 	void StopSound(class USoundCue* ASound, float FadeOutTime);
 	struct FVector LeadTarget(const struct FVector& sp, float bs, const struct FVector& tp, const struct FVector& tv, class AActor* aTarget);
 	void InitializeDD();
-	bool GetTickDisabled();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
-	bool WillOverlap(const struct FVector& PosA, const struct FVector& VelA, const struct FVector& PosB, const struct FVector& VelB, float StepSize, float Radius, float* Time);
+	unsigned long GetTickDisabled();
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	unsigned long WillOverlap(const struct FVector& PosA, const struct FVector& VelA, const struct FVector& PosB, const struct FVector& VelB, float StepSize, float Radius, float* Time);
 	struct FVector GetAvoidanceVector(const struct FVector& GoalLocation, float CollisionRadius, float MaxSpeed, int NumSamples, float VelocityStepRate, float MaxTimeTilOverlap, TArray<class AActor*>* Obstacles);
-	bool IsClient();
-	bool IsServer();
-	bool IsOwningClient();
+	unsigned long IsClient();
+	unsigned long IsServer();
+	unsigned long IsOwningClient();
 	void ReplicationEnded();
 	void PostDemoRewind();
 	void AnimTreeUpdated(class USkeletalMeshComponent* SkelMesh);
-	bool SupportsKismetModification(class USequenceOp* AskingOp, struct FString* Reason);
+	unsigned long SupportsKismetModification(class USequenceOp* AskingOp, struct FString* Reason);
 	void TrailsNotifyEnd(class UAnimNotify_Trails* AnimNotifyData);
 	void TrailsNotifyTick(class UAnimNotify_Trails* AnimNotifyData);
 	void TrailsNotify(class UAnimNotify_Trails* AnimNotifyData);
 	void PlayParticleEffect(class UAnimNotify_PlayParticleEffect* AnimNotifyData, class UAnimNodeSequence* NodeSeq);
 	void GetAimAdhesionExtent(float* Width, float* Height, struct FVector* Center);
 	void GetAimFrictionExtent(float* Width, float* Height, struct FVector* Center);
-	bool IsInPersistentLevel();
+	unsigned long IsInPersistentLevel();
 	void OnRigidBodySpringOverextension(class URB_BodyInstance* BodyInstance);
 	struct FGuid STATIC_GetPackageGuid(const struct FName& PackageName);
 	void PostInitAnimTree(class USkeletalMeshComponent* SkelComp);
@@ -547,25 +547,25 @@ public:
 	void InterpolationStarted(class USeqAct_Interp* InterpAction, class UInterpGroupInst* GroupInst);
 	void PickedUpBy(class APawn* P);
 	void SpawnedByKismet();
-	struct FVector GetTargetLocation(class AActor* RequestedBy, bool bRequestAlternateLoc);
+	struct FVector GetTargetLocation(class AActor* RequestedBy, unsigned long bRequestAlternateLoc);
 	void FindGoodEndView(class APlayerController* PC, struct FRotator* GoodRotation);
 	void NotifyLocalPlayerTeamReceived();
 	struct FString GetLocationStringFor(class APlayerReplicationInfo* PRI);
 	unsigned char ScriptGetTeamNum();
 	unsigned char GetTeamNum();
 	void PawnBaseDied();
-	bool IsPlayerOwned();
+	unsigned long IsPlayerOwned();
 	void GetActorEyesViewPoint(struct FVector* out_Location, struct FRotator* out_Rotation);
-	bool IsStationary();
+	unsigned long IsStationary();
 	class UFaceFXAsset* GetActorFaceFXAsset();
-	bool CanActorPlayFaceFXAnim();
-	bool IsActorPlayingFaceFXAnim();
+	unsigned long CanActorPlayFaceFXAnim();
+	unsigned long IsActorPlayingFaceFXAnim();
 	void SetSkelControlScale(const struct FName& SkelControlName, float Scale);
 	void SetMorphWeight(const struct FName& MorphNodeName, float MorphWeight);
 	void StopActorFaceFXAnim();
-	bool PlayActorFaceFXAnim(class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay);
+	unsigned long PlayActorFaceFXAnim(class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay);
 	void FinishAnimControl(class UInterpGroup* InInterpGroup);
-	void SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, bool bFireNotifies, bool bLooping);
+	void SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, unsigned long bFireNotifies, unsigned long bLooping);
 	void BeginAnimControl(class UInterpGroup* InInterpGroup);
 	void OnAnimPlay(class UAnimNodeSequence* SeqNode);
 	void OnAnimEnd(class UAnimNodeSequence* SeqNode, float PlayedTime, float ExcessTime);
@@ -578,25 +578,25 @@ public:
 	void OnSetVelocity(class USeqAct_SetVelocity* Action);
 	void OnTeleport(class USeqAct_Teleport* Action);
 	void OnModifyHealth(class USeqAct_ModifyHealth* Action);
-	void PrestreamTextures(float Seconds, bool bEnableStreaming);
+	void PrestreamTextures(float Seconds, unsigned long bEnableStreaming);
 	void ShutDown();
 	void SetNetUpdateTime(float NewUpdateTime);
 	void ForceNetRelevant();
 	void OnDestroy(class USeqAct_Destroy* Action);
 	void UnbaseAttachments();
-	void ClearLatentAction(class UClass* actionClass, bool bAborted, class USeqAct_Latent* exceptionAction);
-	bool FindEventsOfClass(class UClass* EventClass, bool bIncludeDisabled, TArray<class USequenceEvent*>* out_EventList);
-	bool ActivateEventClass(class UClass* InClass, class AActor* InInstigator, bool bTest, TArray<class USequenceEvent*>* EventList, TArray<int>* ActivateIndices, TArray<class USequenceEvent*>* ActivatedEvents);
-	bool TriggerGlobalEventClass(class UClass* InEventClass, class AActor* InInstigator, int ActivateIndex);
+	void ClearLatentAction(class UClass* actionClass, unsigned long bAborted, class USeqAct_Latent* exceptionAction);
+	unsigned long FindEventsOfClass(class UClass* EventClass, unsigned long bIncludeDisabled, TArray<class USequenceEvent*>* out_EventList);
+	unsigned long ActivateEventClass(class UClass* InClass, class AActor* InInstigator, unsigned long bTest, TArray<class USequenceEvent*>* EventList, TArray<int>* ActivateIndices, TArray<class USequenceEvent*>* ActivatedEvents);
+	unsigned long TriggerGlobalEventClass(class UClass* InEventClass, class AActor* InInstigator, int ActivateIndex);
 	void ReceivedNewEvent(class USequenceEvent* Evt);
-	bool TriggerEventClass(class UClass* InEventClass, class AActor* InInstigator, int ActivateIndex, bool bTest, TArray<class USequenceEvent*>* ActivatedEvents);
-	bool EffectIsRelevant(const struct FVector& SpawnLocation, bool bForceDedicated, float CullDistance);
-	bool CheckMaxEffectDistance(class APlayerController* P, const struct FVector& SpawnLocation, float CullDistance);
+	unsigned long TriggerEventClass(class UClass* InEventClass, class AActor* InInstigator, int ActivateIndex, unsigned long bTest, TArray<class USequenceEvent*>* ActivatedEvents);
+	unsigned long EffectIsRelevant(const struct FVector& SpawnLocation, unsigned long bForceDedicated, float CullDistance);
+	unsigned long CheckMaxEffectDistance(class APlayerController* P, const struct FVector& SpawnLocation, float CullDistance);
 	void ApplyFluidSurfaceImpact(class AFluidSurfaceActor* Fluid, const struct FVector& HitLocation);
-	bool CanSplash();
-	void PlayTeleportEffect(bool bOut, bool bSound);
-	bool IsInPain();
-	bool IsInVolume(class AVolume* aVolume);
+	unsigned long CanSplash();
+	void PlayTeleportEffect(unsigned long bOut, unsigned long bSound);
+	unsigned long IsInPain();
+	unsigned long IsInVolume(class AVolume* aVolume);
 	void Reset();
 	class UAudioComponent* GetFaceFXAudioComponent();
 	void ModifyHearSoundComponent(class UAudioComponent* AC);
@@ -608,21 +608,21 @@ public:
 	void STATIC_ReplaceText(const struct FString& Replace, const struct FString& With, struct FString* Text);
 	struct FString GetHumanReadableName();
 	struct FString GetItemName(const struct FString& FullName);
-	bool CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV);
+	unsigned long CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV);
 	void EndViewTarget(class APlayerController* PC);
 	void BecomeViewTarget(class APlayerController* PC);
-	bool CheckForErrors();
+	unsigned long CheckForErrors();
 	void DebugFreezeGame(class AActor* ActorToLookAt);
 	float GetGravityZ();
 	void CheckHitInfo(class UPrimitiveComponent* FallBackComponent, const struct FVector& Dir, struct FTraceHitInfo* HitInfo, struct FVector* out_HitLocation);
-	void ClientTakeRadiusDamage(class APawn* InstigatorPawn, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
+	void ClientTakeRadiusDamage(class APawn* InstigatorPawn, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, unsigned long bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
 	void ClientTakeDamage(int DamageAmount, class APawn* InstigatorPawn, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
-	void TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
-	bool HealDamage(int Amount, class AController* Healer, class UClass* DamageType);
+	void TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, unsigned long bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
+	unsigned long HealDamage(int Amount, class AController* Healer, class UClass* DamageType);
 	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	void KilledBy(class APawn* EventInstigator);
-	bool HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, bool bDoFullDamage);
-	bool StopsProjectile(class AProjectile* P);
+	unsigned long HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, unsigned long bDoFullDamage);
+	unsigned long StopsProjectile(class AProjectile* P);
 	void NotifySkelControlBeyondLimit(class USkelControlLookAt* LookAt);
 	void ConstraintBrokenNotify(class AActor* ConOwner, class URB_ConstraintSetup* ConSetup, class URB_ConstraintInstance* ConInstance);
 	void SetInitialState();
@@ -631,16 +631,16 @@ public:
 	void BroadcastLocalizedTeamMessage(int TeamIndex, class UClass* InMessageClass, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 	void BroadcastLocalizedMessage(class UClass* InMessageClass, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 	void PreBeginPlay();
-	bool FindActorsOfClass(class UClass* ActorClass, TArray<class AActor*>* out_Actors);
+	unsigned long FindActorsOfClass(class UClass* ActorClass, TArray<class AActor*>* out_Actors);
 	class APlayerController* GetALocalPlayerController();
 	void LocalPlayerControllers(class UClass* BaseClass, class APlayerController** PC);
 	void AllOwnedComponents(class UClass* BaseClass, class UActorComponent** OutComponent);
 	void ComponentList(class UClass* BaseClass, class UActorComponent** out_Component);
-	void OverlappingActorArrayDotCheck(float Radius, const struct FVector& Loc, bool bUseMoreExpensiveSphereTest, bool bUseSimpleLocationCheck, bool bForceLocationCheck, float MinDot, TArray<class AActor*>* InActors, class AActor** out_Actor);
-	void OverlappingActorArray(float Radius, const struct FVector& Loc, bool bUseMoreExpensiveSphereTest, bool bUseSimpleLocationCheck, bool bForceLocationCheck, TArray<class AActor*>* InActors, class AActor** out_Actor);
-	void OverlappingActors(class UClass* BaseClass, float Radius, const struct FVector& Loc, bool bIgnoreHidden, int OctreeCollectionGroupsMask, class AActor** out_Actor);
-	void CollidingActors(class UClass* BaseClass, float Radius, const struct FVector& Loc, bool bUseOverlapCheck, class UClass* InterfaceClass, int OctreeCollectionGroupsMask, class AActor** Actor);
-	void VisibleCollidingActors(class UClass* BaseClass, float Radius, const struct FVector& Loc, bool bIgnoreHidden, const struct FVector& Extent, bool bTraceActors, class UClass* InterfaceClass, class AActor** Actor);
+	void OverlappingActorArrayDotCheck(float Radius, const struct FVector& Loc, unsigned long bUseMoreExpensiveSphereTest, unsigned long bUseSimpleLocationCheck, unsigned long bForceLocationCheck, float MinDot, TArray<class AActor*>* InActors, class AActor** out_Actor);
+	void OverlappingActorArray(float Radius, const struct FVector& Loc, unsigned long bUseMoreExpensiveSphereTest, unsigned long bUseSimpleLocationCheck, unsigned long bForceLocationCheck, TArray<class AActor*>* InActors, class AActor** out_Actor);
+	void OverlappingActors(class UClass* BaseClass, float Radius, const struct FVector& Loc, unsigned long bIgnoreHidden, int OctreeCollectionGroupsMask, class AActor** out_Actor);
+	void CollidingActors(class UClass* BaseClass, float Radius, const struct FVector& Loc, unsigned long bUseOverlapCheck, class UClass* InterfaceClass, int OctreeCollectionGroupsMask, class AActor** Actor);
+	void VisibleCollidingActors(class UClass* BaseClass, float Radius, const struct FVector& Loc, unsigned long bIgnoreHidden, const struct FVector& Extent, unsigned long bTraceActors, class UClass* InterfaceClass, class AActor** Actor);
 	void VisibleActors(class UClass* BaseClass, float Radius, const struct FVector& Loc, class AActor** Actor);
 	void TraceActors(class UClass* BaseClass, const struct FVector& End, const struct FVector& Start, const struct FVector& Extent, int ExtraTraceFlags, class UClass* InterfaceClass, class AActor** Actor, struct FVector* HitLoc, struct FVector* HitNorm, struct FTraceHitInfo* HitInfo);
 	void TouchingActors(class UClass* BaseClass, class AActor** Actor);
@@ -650,48 +650,48 @@ public:
 	void AllActors(class UClass* BaseClass, class UClass* InterfaceClass, class AActor** Actor);
 	struct FString GetURLMap();
 	void PostTeleport(class ATeleporter* OutTeleporter);
-	bool PreTeleport(class ATeleporter* InTeleporter);
+	unsigned long PreTeleport(class ATeleporter* InTeleporter);
 	struct FVector GetDestination(class AController* C);
-	bool SuggestTossVelocity(const struct FVector& Destination, const struct FVector& Start, float TossSpeed, float BaseTossZ, float DesiredZPct, const struct FVector& CollisionSize, float TerminalVelocity, float OverrideGravityZ, bool bOnlyTraceUp, struct FVector* TossVelocity);
-	bool PlayerCanSeeMe();
+	unsigned long SuggestTossVelocity(const struct FVector& Destination, const struct FVector& Start, float TossSpeed, float BaseTossZ, float DesiredZPct, const struct FVector& CollisionSize, float TerminalVelocity, float OverrideGravityZ, unsigned long bOnlyTraceUp, struct FVector* TossVelocity);
+	unsigned long PlayerCanSeeMe();
 	void MakeNoise(float Loudness, const struct FName& NoiseType);
-	void PlaySound(class USoundCue* InSoundCue, bool bNotReplicated, bool bNoRepToOwner, bool bStopWhenOwnerDestroyed, const struct FVector& SoundLocation, bool bNoRepToRelevant);
-	class UAudioComponent* CreateAudioComponent(class USoundCue* InSoundCue, bool bPlay, bool bStopWhenOwnerDestroyed, bool bUseLocation, const struct FVector& SourceLocation, bool bAttachToSelf);
+	void PlaySound(class USoundCue* InSoundCue, unsigned long bNotReplicated, unsigned long bNoRepToOwner, unsigned long bStopWhenOwnerDestroyed, const struct FVector& SoundLocation, unsigned long bNoRepToRelevant);
+	class UAudioComponent* CreateAudioComponent(class USoundCue* InSoundCue, unsigned long bPlay, unsigned long bStopWhenOwnerDestroyed, unsigned long bUseLocation, const struct FVector& SourceLocation, unsigned long bAttachToSelf);
 	void ResetTimerTimeDilation(const struct FName& TimerName, class UObject* inObj);
 	void ModifyTimerTimeDilation(const struct FName& TimerName, float InTimerTimeDilation, class UObject* inObj);
 	float GetRemainingTimeForTimer(const struct FName& TimerFuncName, class UObject* inObj);
 	float GetTimerRate(const struct FName& TimerFuncName, class UObject* inObj);
 	float GetTimerCount(const struct FName& inTimerFunc, class UObject* inObj);
-	bool IsTimerActive(const struct FName& inTimerFunc, class UObject* inObj);
-	void PauseTimer(bool bPause, const struct FName& inTimerFunc, class UObject* inObj);
+	unsigned long IsTimerActive(const struct FName& inTimerFunc, class UObject* inObj);
+	void PauseTimer(unsigned long bPause, const struct FName& inTimerFunc, class UObject* inObj);
 	void ClearAllTimers(class UObject* inObj);
 	void ClearTimer(const struct FName& inTimerFunc, class UObject* inObj);
-	void SetTimer(float InRate, bool inbLoop, const struct FName& inTimerFunc, class UObject* inObj);
+	void SetTimer(float InRate, unsigned long inbLoop, const struct FName& inTimerFunc, class UObject* inObj);
 	void TornOff();
-	bool Destroy();
-	class AActor* Spawn(class UClass* SpawnClass, class AActor* SpawnOwner, const struct FName& SpawnTag, const struct FVector& SpawnLocation, const struct FRotator& SpawnRotation, class AActor* ActorTemplate, bool bNoCollisionFail);
+	unsigned long Destroy();
+	class AActor* Spawn(class UClass* SpawnClass, class AActor* SpawnOwner, const struct FName& SpawnTag, const struct FVector& SpawnLocation, const struct FRotator& SpawnRotation, class AActor* ActorTemplate, unsigned long bNoCollisionFail);
 	float GetCollisionRadius();
 	void GetBoundingCylinder(float* CollisionRadius, float* CollisionHeight);
 	void GetComponentsBoundingBox(struct FBox* ActorBox);
-	bool IsOverlapping(class AActor* A);
-	bool ContainsPoint(const struct FVector& Spot);
-	bool FindSpot(const struct FVector& BoxExtent, struct FVector* SpotLocation);
-	bool TraceAllPhysicsAssetInteractions(class USkeletalMeshComponent* SkelMeshComp, const struct FVector& EndTrace, const struct FVector& StartTrace, const struct FVector& Extent, TArray<struct FImpactInfo>* out_Hits);
-	bool FastTrace(const struct FVector& TraceEnd, const struct FVector& TraceStart, const struct FVector& BoxExtent, bool bTraceBullet, bool bUseCollisionMask);
-	bool PointCheckComponent(class UPrimitiveComponent* InComponent, const struct FVector& PointLocation, const struct FVector& PointExtent);
-	bool TraceComponent(class UPrimitiveComponent* InComponent, const struct FVector& TraceEnd, const struct FVector& TraceStart, const struct FVector& Extent, bool bComplexCollision, struct FVector* HitLocation, struct FVector* HitNormal, struct FTraceHitInfo* HitInfo);
-	class AActor* Trace(const struct FVector& TraceEnd, const struct FVector& TraceStart, bool bTraceActors, const struct FVector& Extent, int ExtraTraceFlags, struct FVector* HitLocation, struct FVector* HitNormal, struct FTraceHitInfo* HitInfo);
+	unsigned long IsOverlapping(class AActor* A);
+	unsigned long ContainsPoint(const struct FVector& Spot);
+	unsigned long FindSpot(const struct FVector& BoxExtent, struct FVector* SpotLocation);
+	unsigned long TraceAllPhysicsAssetInteractions(class USkeletalMeshComponent* SkelMeshComp, const struct FVector& EndTrace, const struct FVector& StartTrace, const struct FVector& Extent, TArray<struct FImpactInfo>* out_Hits);
+	unsigned long FastTrace(const struct FVector& TraceEnd, const struct FVector& TraceStart, const struct FVector& BoxExtent, unsigned long bTraceBullet, unsigned long bUseCollisionMask);
+	unsigned long PointCheckComponent(class UPrimitiveComponent* InComponent, const struct FVector& PointLocation, const struct FVector& PointExtent);
+	unsigned long TraceComponent(class UPrimitiveComponent* InComponent, const struct FVector& TraceEnd, const struct FVector& TraceStart, const struct FVector& Extent, unsigned long bComplexCollision, struct FVector* HitLocation, struct FVector* HitNormal, struct FTraceHitInfo* HitInfo);
+	class AActor* Trace(const struct FVector& TraceEnd, const struct FVector& TraceStart, unsigned long bTraceActors, const struct FVector& Extent, int ExtraTraceFlags, struct FVector* HitLocation, struct FVector* HitNormal, struct FTraceHitInfo* HitInfo);
 	void VolumeBasedDestroy(class APhysicsVolume* PV);
 	void OutsideWorldBounds();
 	void FellOutOfWorld(class UClass* dmgType);
-	bool UsedBy(class APawn* User);
-	bool OverRotated(struct FRotator* out_Desired, struct FRotator* out_Actual);
-	bool ClampRotation(const struct FRotator& rBase, const struct FRotator& rUpperLimits, const struct FRotator& rLowerLimits, struct FRotator* out_Rot);
+	unsigned long UsedBy(class APawn* User);
+	unsigned long OverRotated(struct FRotator* out_Desired, struct FRotator* out_Actual);
+	unsigned long ClampRotation(const struct FRotator& rBase, const struct FRotator& rUpperLimits, const struct FRotator& rLowerLimits, struct FRotator* out_Rot);
 	void OnSleepRBPhysics();
 	void OnWakeRBPhysics();
 	void RanInto(class AActor* Other);
 	void EncroachedBy(class AActor* Other);
-	bool EncroachingOn(class AActor* Other);
+	unsigned long EncroachingOn(class AActor* Other);
 	void CollisionChanged();
 	class AActor* SpecialHandling(class APawn* Other);
 	void Detach(class AActor* Other);
@@ -710,7 +710,7 @@ public:
 	void LostChild(class AActor* Other);
 	void GainedChild(class AActor* Other);
 	void Destroyed();
-	void SetTickIsDisabled(bool bInDisabled);
+	void SetTickIsDisabled(unsigned long bInDisabled);
 	void SetTickGroup(TEnumAsByte<ETickingGroup> NewTickGroup);
 	void ReattachComponent(class UActorComponent* ComponentToReattach);
 	void DetachComponent(class UActorComponent* ExComponent);
@@ -718,19 +718,19 @@ public:
 	void UnClock(float* Time);
 	void Clock(float* Time);
 	void SetPhysics(TEnumAsByte<EPhysics> newPhysics);
-	void SetOnlyOwnerSee(bool bNewOnlyOwnerSee);
-	void SetHidden(bool bNewHidden);
+	void SetOnlyOwnerSee(unsigned long bNewOnlyOwnerSee);
+	void SetHidden(unsigned long bNewHidden);
 	void ChartData(const struct FString& DataName, float DataValue);
 	void STATIC_FlushDebugStrings();
 	void STATIC_DrawDebugString(const struct FVector& TextLocation, const struct FString& Text, class AActor* TestBaseActor, const struct FColor& TextColor, float Duration);
-	void STATIC_DrawDebugCone(const struct FVector& Origin, const struct FVector& Direction, float Length, float AngleWidth, float AngleHeight, int NumSides, const struct FColor& DrawColor, bool bPersistentLines);
-	void STATIC_DrawDebugCylinder(const struct FVector& Start, const struct FVector& End, float Radius, int Segments, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
-	void STATIC_DrawDebugSphere(const struct FVector& Center, float Radius, int Segments, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
-	void STATIC_DrawDebugCoordinateSystem(const struct FVector& AxisLoc, const struct FRotator& AxisRot, float Scale, bool bPersistentLines);
-	void STATIC_DrawDebugStar(const struct FVector& Position, float Size, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
-	void STATIC_DrawDebugBox(const struct FVector& Center, const struct FVector& Extent, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
-	void STATIC_DrawDebugPoint(const struct FVector& Position, float Size, const struct FLinearColor& PointColor, bool bPersistentLines);
-	void STATIC_DrawDebugLine(const struct FVector& LineStart, const struct FVector& LineEnd, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
+	void STATIC_DrawDebugCone(const struct FVector& Origin, const struct FVector& Direction, float Length, float AngleWidth, float AngleHeight, int NumSides, const struct FColor& DrawColor, unsigned long bPersistentLines);
+	void STATIC_DrawDebugCylinder(const struct FVector& Start, const struct FVector& End, float Radius, int Segments, unsigned char R, unsigned char G, unsigned char B, unsigned long bPersistentLines);
+	void STATIC_DrawDebugSphere(const struct FVector& Center, float Radius, int Segments, unsigned char R, unsigned char G, unsigned char B, unsigned long bPersistentLines);
+	void STATIC_DrawDebugCoordinateSystem(const struct FVector& AxisLoc, const struct FRotator& AxisRot, float Scale, unsigned long bPersistentLines);
+	void STATIC_DrawDebugStar(const struct FVector& Position, float Size, unsigned char R, unsigned char G, unsigned char B, unsigned long bPersistentLines);
+	void STATIC_DrawDebugBox(const struct FVector& Center, const struct FVector& Extent, unsigned char R, unsigned char G, unsigned char B, unsigned long bPersistentLines);
+	void STATIC_DrawDebugPoint(const struct FVector& Position, float Size, const struct FLinearColor& PointColor, unsigned long bPersistentLines);
+	void STATIC_DrawDebugLine(const struct FVector& LineStart, const struct FVector& LineEnd, unsigned char R, unsigned char G, unsigned char B, unsigned long bPersistentLines);
 	void STATIC_FlushPersistentDebugLines();
 	struct FVector STATIC_GetBasedPosition(const struct FBasedPosition& BP);
 	void STATIC_SetBasedPosition(const struct FVector& pos, class AActor* ForcedBase, struct FBasedPosition* BP);
@@ -738,37 +738,37 @@ public:
 	void STATIC_Vect2BP(const struct FVector& pos, class AActor* ForcedBase, struct FBasedPosition* BP);
 	float GetEnemyTargetingDesirability(class AEngineNativeDunDefAIController* forController);
 	class AActor* GetTopOwner();
-	bool IsOwnedByAnySplitPlayer(class APlayerController* PC, class AActor* InActor);
-	void SetForcedInitialReplicatedProperty(class UProperty* PropToReplicate, bool bAdd);
+	unsigned long IsOwnedByAnySplitPlayer(class APlayerController* PC, class AActor* InActor);
+	void SetForcedInitialReplicatedProperty(class UProperty* PropToReplicate, unsigned long bAdd);
 	void ReplicatedDataBinding(const struct FName& VarName);
 	void ReplicatedEvent(const struct FName& VarName);
-	bool IsOwnedBy(class AActor* TestActor);
+	unsigned long IsOwnedBy(class AActor* TestActor);
 	class AActor* GetBaseMost();
-	bool IsBasedOn(class AActor* TestActor);
+	unsigned long IsBasedOn(class AActor* TestActor);
 	void FindBase();
 	void SetOwner(class AActor* NewOwner);
 	void SetBase(class AActor* NewBase, const struct FVector& NewFloor, class USkeletalMeshComponent* SkelComp, const struct FName& AttachName);
 	float GetTerminalVelocity();
 	void AutonomousPhysics(float DeltaSeconds);
-	bool MoveSmooth(const struct FVector& Delta);
+	unsigned long MoveSmooth(const struct FVector& Delta);
 	int fixedTurn(int Current, int Desired, int DeltaRate);
-	void SetHardAttach(bool bNewHardAttach);
-	bool SetRelativeLocation(const struct FVector& NewLocation);
-	bool SetRelativeRotation(const struct FRotator& NewRotation);
-	void SetZone(bool bForceRefresh);
+	void SetHardAttach(unsigned long bNewHardAttach);
+	unsigned long SetRelativeLocation(const struct FVector& NewLocation);
+	unsigned long SetRelativeRotation(const struct FRotator& NewRotation);
+	void SetZone(unsigned long bForceRefresh);
 	TEnumAsByte<EMoveDir> MovingWhichWay(float* Amount);
-	bool SetRotation(const struct FRotator& NewRotation);
-	bool SetLocation(const struct FVector& NewLocation);
-	bool Move(const struct FVector& Delta);
+	unsigned long SetRotation(const struct FRotator& NewRotation);
+	unsigned long SetLocation(const struct FVector& NewLocation);
+	unsigned long Move(const struct FVector& Delta);
 	void SetDrawScale3D(const struct FVector& NewScale3D);
 	void SetDrawScale(float NewScale);
 	void SetCollisionType(TEnumAsByte<ECollisionType> NewCollisionType);
 	void SetCollisionSize(float NewRadius, float NewHeight);
-	void SetCollision(bool bNewColActors, bool bNewBlockActors, bool bNewIgnoreEncroachers);
+	void SetCollision(unsigned long bNewColActors, unsigned long bNewBlockActors, unsigned long bNewIgnoreEncroachers);
 	void FinishAnim(class UAnimNodeSequence* SeqNode);
 	void Sleep(float Seconds);
-	struct FString ConsoleCommand(const struct FString& Command, bool bWriteToLog);
-	void ForceUpdateComponents(bool bCollisionUpdate, bool bTransformOnly);
+	struct FString ConsoleCommand(const struct FString& Command, unsigned long bWriteToLog);
+	void ForceUpdateComponents(unsigned long bCollisionUpdate, unsigned long bTransformOnly);
 };
 
 
@@ -836,8 +836,8 @@ public:
 	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	struct FString GetLocationStringFor(class APlayerReplicationInfo* PRI);
 	void PostBeginPlay();
-	bool EncompassesPoint(const struct FVector& Loc);
-	bool Encompasses(class AActor* Other);
+	unsigned long EncompassesPoint(const struct FVector& Loc);
+	unsigned long Encompasses(class AActor* Other);
 };
 
 
@@ -1007,7 +1007,7 @@ public:
 
 	void ApplyCheckpointRecord(struct APhysicsVolume_FCheckpointRecord* Record);
 	void CreateCheckpointRecord(struct APhysicsVolume_FCheckpointRecord* Record);
-	bool ShouldSaveForCheckpoint();
+	unsigned long ShouldSaveForCheckpoint();
 	void OnSetDamageInstigator(class USeqAct_SetDamageInstigator* Action);
 	void NotifyPawnBecameViewTarget(class APawn* P, class APlayerController* PC);
 	void ModifyPlayer(class APawn* PlayerPawn);
@@ -1086,7 +1086,7 @@ public:
 	void PhysicsChangedFor(class AActor* Other);
 	void PawnLeavingVolume(class APawn* P);
 	void PawnEnteredVolume(class APawn* P);
-	bool InUse(class APawn* Ignored);
+	unsigned long InUse(class APawn* Ignored);
 	void PostBeginPlay();
 };
 
@@ -1160,7 +1160,7 @@ public:
 	}
 
 
-	bool StopsProjectile(class AProjectile* P);
+	unsigned long StopsProjectile(class AProjectile* P);
 	void PostBeginPlay();
 };
 
@@ -1224,7 +1224,7 @@ public:
 	void SetLightEnvironmentToNotBeDynamic();
 	void Detach(class AActor* Other);
 	void Attach(class AActor* Other);
-	bool CanBasePawn(class APawn* P);
+	unsigned long CanBasePawn(class APawn* P);
 	void SetStaticMesh(class UStaticMesh* NewMesh, const struct FVector& NewTranslation, const struct FRotator& NewRotation, const struct FVector& NewScale3D);
 	void OnSetMaterial(class USeqAct_SetMaterial* Action);
 	void OnSetMesh(class USeqAct_SetMesh* Action);
@@ -1266,18 +1266,18 @@ public:
 
 	void ApplyCheckpointRecord(struct AInterpActor_FCheckpointRecord* Record);
 	void CreateCheckpointRecord(struct AInterpActor_FCheckpointRecord* Record);
-	bool ShouldSaveForCheckpoint();
+	unsigned long ShouldSaveForCheckpoint();
 	void ShutDown();
 	void InterpolationChanged(class USeqAct_Interp* InterpAction);
 	void InterpolationFinished(class USeqAct_Interp* InterpAction);
 	void InterpolationStarted(class USeqAct_Interp* InterpAction, class UInterpGroupInst* GroupInst);
-	void PlayMovingSound(bool bClosing);
+	void PlayMovingSound(unsigned long bClosing);
 	void FinishedOpen();
 	void Restart();
 	void Detach(class AActor* Other);
 	void Attach(class AActor* Other);
 	void RanInto(class AActor* Other);
-	bool EncroachingOn(class AActor* Other);
+	unsigned long EncroachingOn(class AActor* Other);
 	void SetShadowParentOnAllAttachedComponents();
 	void PostBeginPlay();
 };
@@ -1304,7 +1304,7 @@ public:
 	void HideSelf();
 	void ApplyCheckpointRecord(struct AEmitter_FCheckpointRecord* Record);
 	void CreateCheckpointRecord(struct AEmitter_FCheckpointRecord* Record);
-	bool ShouldSaveForCheckpoint();
+	unsigned long ShouldSaveForCheckpoint();
 	void OnSetParticleSysParam(class USeqAct_SetParticleSysParam* Action);
 	void SetActorParameter(const struct FName& ParameterName, class AActor* Param);
 	void SetExtColorParameter(const struct FName& ParameterName, unsigned char Red, unsigned char Green, unsigned char Blue, unsigned char Alpha);
@@ -1317,7 +1317,7 @@ public:
 	void OnParticleSystemFinished(class UParticleSystemComponent* FinishedComponent);
 	void ReplicatedEvent(const struct FName& VarName);
 	void PostBeginPlay();
-	void SetTemplate(class UParticleSystem* NewTemplate, bool bDestroyOnFinish);
+	void SetTemplate(class UParticleSystem* NewTemplate, unsigned long bDestroyOnFinish);
 };
 
 
@@ -1348,12 +1348,12 @@ public:
 
 
 	class UParticleSystemComponent* SpawnEmitterCustomLifetime(class UParticleSystem* EmitterTemplate);
-	class UParticleSystemComponent* SpawnEmitterMeshAttachment(class UParticleSystem* EmitterTemplate, class USkeletalMeshComponent* Mesh, const struct FName& AttachPointName, bool bAttachToSocket, const struct FVector& RelativeLoc, const struct FRotator& RelativeRot, bool bDontUsePool);
+	class UParticleSystemComponent* SpawnEmitterMeshAttachment(class UParticleSystem* EmitterTemplate, class USkeletalMeshComponent* Mesh, const struct FName& AttachPointName, unsigned long bAttachToSocket, const struct FVector& RelativeLoc, const struct FRotator& RelativeRot, unsigned long bDontUsePool);
 	class UParticleSystemComponent* SpawnEmitter(class UParticleSystem* EmitterTemplate, const struct FVector& SpawnLocation, const struct FRotator& SpawnRotation, class AActor* AttachToActor, float DrawScaleMult, float theCustomTimeDilation);
 	class UParticleSystemComponent* GetPooledComponent(class UParticleSystem* EmitterTemplate);
-	class UMaterialInstanceConstant* GetFreeMatInstConsts(bool bCreateNewObject);
+	class UMaterialInstanceConstant* GetFreeMatInstConsts(unsigned long bCreateNewObject);
 	void FreeMaterialInstanceConstants(class UStaticMeshComponent* SMC);
-	class UStaticMeshComponent* GetFreeStaticMeshComponent(bool bCreateNewObject);
+	class UStaticMeshComponent* GetFreeStaticMeshComponent(unsigned long bCreateNewObject);
 	void FreeStaticMeshComponents(class UParticleSystemComponent* PSC);
 	void ReturnToPool(class UParticleSystemComponent* PSC);
 	void ClearPoolComponents();
@@ -1394,8 +1394,8 @@ public:
 
 
 	float GetWidescreenScale();
-	void SetTextCharacterClipping(bool bEnableTextCharacterClipping);
-	void SetForceDropShadows(bool bForceDropShadows);
+	void SetTextCharacterClipping(unsigned long bEnableTextCharacterClipping);
+	void SetForceDropShadows(unsigned long bForceDropShadows);
 	void DrawTileBase(class USurface* surf, float XL, float YL);
 	void STATIC_WrapString(const struct FString& Text, float Width, float Scale, class UFont* theFont, TArray<struct FString>* wrappedStrings);
 	float GetSmallestNudgedScale(float nudgeAmount);
@@ -1419,24 +1419,24 @@ public:
 	void SetClip(float X, float Y);
 	void SetOrigin(float X, float Y);
 	void SetPos(float PosX, float PosY);
-	void Reset(bool bKeepOrigin);
+	void Reset(unsigned long bKeepOrigin);
 	void DrawColorizedTile(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor);
-	void DrawTileStretched(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, bool bStretchHorizontally, bool bStretchVertically, float ScalingFactor);
+	void DrawTileStretched(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, unsigned long bStretchHorizontally, unsigned long bStretchVertically, float ScalingFactor);
 	void PopTransform();
 	void PushTranslationMatrix(const struct FVector& TranslationVector);
 	void DeProject(const struct FVector2D& ScreenPos, struct FVector* WorldOrigin, struct FVector* WorldDirection);
 	struct FVector ProjectNoClip(const struct FVector& Location);
 	struct FVector Project(const struct FVector& Location);
 	void DrawTileClipped(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL);
-	void DrawTextRA(const struct FString& Text, bool CR, float XScale, float YScale, bool Wrap, float Left, float Right, float Top, float Bottom);
-	void DrawTextShadowed(const struct FString& Text, bool CR, float XScale, float YScale, bool IsRightAligned, bool Wrap, const struct FLinearColor& gradientColor, float Left, float Right, float Top, float Bottom, TArray<struct FTextEx>* TextBlock);
-	float DrawTextCenteredShadowed(const struct FString& Text, bool CR, float XScale, float YScale, bool CenterY, class UFont* FontToUse, bool Wrap, const struct FLinearColor& gradientColor, float Left, float Right, float Top, float Bottom, bool checkForLineBreaks, TArray<struct FTextEx>* TextBlock);
-	void DrawTextCentered(const struct FString& Text, bool CR, float XScale, float YScale, bool CenterY, bool Wrap, float Left, float Right, float Top, float Bottom);
+	void DrawTextRA(const struct FString& Text, unsigned long CR, float XScale, float YScale, unsigned long Wrap, float Left, float Right, float Top, float Bottom);
+	void DrawTextShadowed(const struct FString& Text, unsigned long CR, float XScale, float YScale, unsigned long IsRightAligned, unsigned long Wrap, const struct FLinearColor& gradientColor, float Left, float Right, float Top, float Bottom, TArray<struct FTextEx>* TextBlock);
+	float DrawTextCenteredShadowed(const struct FString& Text, unsigned long CR, float XScale, float YScale, unsigned long CenterY, class UFont* FontToUse, unsigned long Wrap, const struct FLinearColor& gradientColor, float Left, float Right, float Top, float Bottom, unsigned long checkForLineBreaks, TArray<struct FTextEx>* TextBlock);
+	void DrawTextCentered(const struct FString& Text, unsigned long CR, float XScale, float YScale, unsigned long CenterY, unsigned long Wrap, float Left, float Right, float Top, float Bottom);
 	void STATIC_AddColoredText(const struct FString& Text, const struct FColor& InColor, TArray<struct FTextEx>* TextBlock);
-	void DrawText(const struct FString& Text, bool CR, float XScale, float YScale, bool Wrap, float Left, float Right, float Top, float Bottom, struct FFontRenderInfo* RenderInfo, TArray<struct FTextEx>* TextBlock);
+	void DrawText(const struct FString& Text, unsigned long CR, float XScale, float YScale, unsigned long Wrap, float Left, float Right, float Top, float Bottom, struct FFontRenderInfo* RenderInfo, TArray<struct FTextEx>* TextBlock);
 	void TextSize(const struct FString& String, float* XL, float* YL);
-	void StrLen(const struct FString& String, float XScale, float YScale, bool Wrap, float* XL, float* YL);
-	struct FFontRenderInfo STATIC_CreateFontRenderInfo(bool bClipText, bool bEnableShadow, const struct FLinearColor& GlowColor, const struct FVector2D& GlowOuterRadius, const struct FVector2D& GlowInnerRadius);
+	void StrLen(const struct FString& String, float XScale, float YScale, unsigned long Wrap, float* XL, float* YL);
+	struct FFontRenderInfo STATIC_CreateFontRenderInfo(unsigned long bClipText, unsigned long bEnableShadow, const struct FLinearColor& GlowColor, const struct FVector2D& GlowOuterRadius, const struct FVector2D& GlowInnerRadius);
 	void DrawMaterialTileClipped(class UMaterialInterface* Mat, float XL, float YL, float U, float V, float UL, float VL);
 	void DrawMaterialTile(class UMaterialInterface* Mat, float XL, float YL, float U, float V, float UL, float VL);
 	void DrawTile(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL);
@@ -1496,7 +1496,7 @@ public:
 	}
 
 
-	void OnLostFocusPause(bool Enable);
+	void OnLostFocusPause(unsigned long Enable);
 	void PlayerOwnerDied();
 	struct FColor STATIC_GetRYGColorRamp(float Pct);
 	class UFont* STATIC_GetFontSizeIndex(int FontSize);
@@ -1510,13 +1510,13 @@ public:
 	void DrawMessage(int I, float PosY, float* DX, float* DY);
 	void GetScreenCoords(float PosY, float* ScreenX, float* ScreenY, struct FHudLocalizedMessage* InMessage);
 	float GetHUDCanvasScale();
-	void AddChatMessage(int Index, class UClass* InMessageClass, const struct FString& CriticalString, int Switch, float Position, float Lifetime, int FontSize, const struct FColor& DrawColor, int MessageCount, class UObject* OptionalObject, class USurface* Icon, bool bLeftJustified, float TextScale, const struct FString& SecondaryMessage);
-	void AddLocalizedMessage(int Index, class UClass* InMessageClass, const struct FString& CriticalString, int Switch, float Position, float Lifetime, int FontSize, const struct FColor& DrawColor, int MessageCount, class UObject* OptionalObject, class USurface* Icon, bool bLeftJustified, float TextScale);
-	void ChatMessage(class UClass* InMessageClass, class APlayerReplicationInfo* RelatedPRI_2, const struct FString& CriticalString, int Switch, float Position, float Lifetime, int FontSize, const struct FColor& DrawColor, class UObject* OptionalObject, class USurface* Icon, bool bLeftJustified, float TextScale, const struct FString& SecondaryMessage);
-	void LocalizedMessage(class UClass* InMessageClass, class APlayerReplicationInfo* RelatedPRI_2, const struct FString& CriticalString, int Switch, float Position, float Lifetime, int FontSize, const struct FColor& DrawColor, class UObject* OptionalObject, class USurface* Icon, bool bLeftJustified, float TextScale);
+	void AddChatMessage(int Index, class UClass* InMessageClass, const struct FString& CriticalString, int Switch, float Position, float Lifetime, int FontSize, const struct FColor& DrawColor, int MessageCount, class UObject* OptionalObject, class USurface* Icon, unsigned long bLeftJustified, float TextScale, const struct FString& SecondaryMessage);
+	void AddLocalizedMessage(int Index, class UClass* InMessageClass, const struct FString& CriticalString, int Switch, float Position, float Lifetime, int FontSize, const struct FColor& DrawColor, int MessageCount, class UObject* OptionalObject, class USurface* Icon, unsigned long bLeftJustified, float TextScale);
+	void ChatMessage(class UClass* InMessageClass, class APlayerReplicationInfo* RelatedPRI_2, const struct FString& CriticalString, int Switch, float Position, float Lifetime, int FontSize, const struct FColor& DrawColor, class UObject* OptionalObject, class USurface* Icon, unsigned long bLeftJustified, float TextScale, const struct FString& SecondaryMessage);
+	void LocalizedMessage(class UClass* InMessageClass, class APlayerReplicationInfo* RelatedPRI_2, const struct FString& CriticalString, int Switch, float Position, float Lifetime, int FontSize, const struct FColor& DrawColor, class UObject* OptionalObject, class USurface* Icon, unsigned long bLeftJustified, float TextScale);
 	void AddConsoleMessage(const struct FString& M, class UClass* InMessageClass, class APlayerReplicationInfo* PRI, float Lifetime);
 	void DisplayConsoleMessages();
-	bool IsOnCanvas(const struct FVector& ScreenPos, float Width, float Height);
+	unsigned long IsOnCanvas(const struct FVector& ScreenPos, float Width, float Height);
 	void Message(class APlayerReplicationInfo* PRI, const struct FString& msg, const struct FName& MsgType, float Lifetime);
 	void ClearMessage(struct FHudLocalizedMessage* M);
 	void DisplayBadConnectionAlert();
@@ -1529,10 +1529,10 @@ public:
 	void DrawRoute(class APawn* Target);
 	void FXStop(class UClass* aClass);
 	void FXPlay(class UClass* aClass, const struct FString& FXAnimPath);
-	bool ShouldDisplayDebug(const struct FName& DebugType);
+	unsigned long ShouldDisplayDebug(const struct FName& DebugType);
 	void ShowDebug(const struct FName& DebugType);
 	void ShowGameDebug();
-	void SetShowScores(bool bNewValue);
+	void SetShowScores(unsigned long bNewValue);
 	void ShowScores();
 	void ShowHUD();
 	void ToggleHUD();
@@ -1600,7 +1600,7 @@ public:
 	}
 
 
-	bool CheckForSentinelRun();
+	unsigned long CheckForSentinelRun();
 	void StartMatch();
 	struct FString GetNextAutomatedTestingMap();
 	void IncrementNumberOfMatchesPlayed();
@@ -1669,7 +1669,7 @@ public:
 	void Destroyed();
 	void Logf(const struct FString& logString);
 	void CloseFile();
-	bool OpenFile(const struct FString& InFilename, TEnumAsByte<EFWFileType> InFileType, const struct FString& InExtension, bool bUnique, bool bIncludeTimeStamp);
+	unsigned long OpenFile(const struct FString& InFilename, TEnumAsByte<EFWFileType> InFileType, const struct FString& InExtension, unsigned long bUnique, unsigned long bIncludeTimeStamp);
 };
 
 
@@ -1687,7 +1687,7 @@ public:
 
 
 	void CloseLog();
-	void OpenLog(const struct FString& LogFilename, const struct FString& extension, bool bUnique);
+	void OpenLog(const struct FString& LogFilename, const struct FString& extension, unsigned long bUnique);
 };
 
 
@@ -1732,24 +1732,24 @@ public:
 	void STATIC_DumpGameSettings(class UOnlineGameSettings* GameSettings);
 	int STATIC_GetNumSupportedLogins();
 	int GetBuildUniqueId();
-	bool STATIC_AreUniqueNetIdsEqual(struct FUniqueNetId* NetIdA, struct FUniqueNetId* NetIdB);
-	bool STATIC_StringToUniqueNetId(const struct FString& UniqueNetIdString, struct FUniqueNetId* out_UniqueId);
+	unsigned long STATIC_AreUniqueNetIdsEqual(struct FUniqueNetId* NetIdA, struct FUniqueNetId* NetIdB);
+	unsigned long STATIC_StringToUniqueNetId(const struct FString& UniqueNetIdString, struct FUniqueNetId* out_UniqueId);
 	struct FString STATIC_UniqueNetIdToString(struct FUniqueNetId* IdToConvert);
 	class UObject* GetNamedInterface(const struct FName& InterfaceName);
 	void SetNamedInterface(const struct FName& InterfaceName, class UObject* NewInterface);
-	bool SetPartyChatInterface(class UObject* NewInterface);
-	bool SetNewsInterface(class UObject* NewInterface);
-	bool SetStatsInterface(class UObject* NewInterface);
-	bool SetVoiceInterface(class UObject* NewInterface);
-	bool SetContentInterface(class UObject* NewInterface);
-	bool SetGameInterface(class UObject* NewInterface);
-	bool SetSystemInterface(class UObject* NewInterface);
-	bool SetPlayerInterfaceEx(class UObject* NewInterface);
-	bool SetPlayerInterface(class UObject* NewInterface);
-	bool SetAccountInterface(class UObject* NewInterface);
+	unsigned long SetPartyChatInterface(class UObject* NewInterface);
+	unsigned long SetNewsInterface(class UObject* NewInterface);
+	unsigned long SetStatsInterface(class UObject* NewInterface);
+	unsigned long SetVoiceInterface(class UObject* NewInterface);
+	unsigned long SetContentInterface(class UObject* NewInterface);
+	unsigned long SetGameInterface(class UObject* NewInterface);
+	unsigned long SetSystemInterface(class UObject* NewInterface);
+	unsigned long SetPlayerInterfaceEx(class UObject* NewInterface);
+	unsigned long SetPlayerInterface(class UObject* NewInterface);
+	unsigned long SetAccountInterface(class UObject* NewInterface);
 	void Exit();
-	bool PostInit();
-	bool Init();
+	unsigned long PostInit();
+	unsigned long Init();
 };
 
 
@@ -1859,92 +1859,92 @@ public:
 
 
 	void StandbyCheatDetected(TEnumAsByte<EStandbyType> StandbyType);
-	void EnableStandbyCheatDetection(bool bIsEnabled);
+	void EnableStandbyCheatDetection(unsigned long bIsEnabled);
 	void BeginBVT(const struct FString& TagDesc);
-	bool CheckForSentinelRun();
-	bool ShouldAutoContinueToNextRound();
-	bool IsDoingASentinelRun();
-	bool IsCheckingForMemLeaks();
-	bool IsCheckingForFragmentation();
-	bool IsAutomatedPerfTesting();
+	unsigned long CheckForSentinelRun();
+	unsigned long ShouldAutoContinueToNextRound();
+	unsigned long IsDoingASentinelRun();
+	unsigned long IsCheckingForMemLeaks();
+	unsigned long IsCheckingForFragmentation();
+	unsigned long IsAutomatedPerfTesting();
 	void TellClientsToTravelToSession(const struct FName& SessionName, class UClass* SearchClass, unsigned char PlatformSpecificInfo);
 	void TellClientsToReturnToPartyHost();
-	void OnServerCreateComplete(const struct FName& SessionName, bool bWasSuccessful);
+	void OnServerCreateComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
 	void RegisterServer();
 	void OnLoginChange(unsigned char LocalUserNum);
 	void OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode);
 	void ClearAutoLoginDelegates();
-	bool ProcessServerLogin();
+	unsigned long ProcessServerLogin();
 	void MatineeCancelled();
 	void RecalculateSkillRating();
 	void UpdateGameplayMuteList(class APlayerController* PC);
 	void NotifyArbitratedMatchEnd();
-	bool MatchIsInProgress();
-	void ArbitrationRegistrationComplete(const struct FName& SessionName, bool bWasSuccessful);
+	unsigned long MatchIsInProgress();
+	void ArbitrationRegistrationComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
 	void RegisterServerForArbitration();
 	void StartArbitratedMatch();
 	void StartArbitrationRegistration();
-	void ProcessClientRegistrationCompletion(class APlayerController* PC, bool bWasSuccessful);
+	void ProcessClientRegistrationCompletion(class APlayerController* PC, unsigned long bWasSuccessful);
 	void UpdateGameSettingsCounts();
 	void SetSeamlessTravelViewTarget(class APlayerController* PC);
 	void HandleSeamlessTravelPlayer(class AController** C);
 	void UpdateGameSettings();
 	void PostSeamlessTravel();
 	void SwapPlayerControllers(class APlayerController* OldPC, class APlayerController* NewPC);
-	void GetSeamlessTravelActorList(bool bToEntry, TArray<class AActor*>* ActorList);
+	void GetSeamlessTravelActorList(unsigned long bToEntry, TArray<class AActor*>* ActorList);
 	void OverridePRI(class APlayerController* PC, class APlayerReplicationInfo* OldPRI);
-	bool FindInactivePRI(class APlayerController* PC);
+	unsigned long FindInactivePRI(class APlayerController* PC);
 	void AddInactivePRI(class APlayerReplicationInfo* PRI, class APlayerController* PC);
 	void PostCommitMapChange();
 	void PreCommitMapChange(const struct FString& PreviousMapName, const struct FString& NextMapName);
-	bool AllowPausing(class APlayerController* PC);
-	bool AllowCheats(class APlayerController* P);
-	bool STATIC_AllowMutator(const struct FString& MutatorClassName);
-	bool PlayerCanRestart(class APlayerController* aPlayer);
-	bool PlayerCanRestartGame(class APlayerController* aPlayer);
+	unsigned long AllowPausing(class APlayerController* PC);
+	unsigned long AllowCheats(class APlayerController* P);
+	unsigned long STATIC_AllowMutator(const struct FString& MutatorClassName);
+	unsigned long PlayerCanRestart(class APlayerController* aPlayer);
+	unsigned long PlayerCanRestartGame(class APlayerController* aPlayer);
 	void KillBots();
 	void DriverLeftVehicle(class AVehicle* V, class APawn* P);
-	bool CanLeaveVehicle(class AVehicle* V, class APawn* P);
+	unsigned long CanLeaveVehicle(class AVehicle* V, class APawn* P);
 	void DriverEnteredVehicle(class AVehicle* V, class APawn* P);
 	void ModifyScoreKill(class AController* Killer, class AController* Other);
 	void ScoreKill(class AController* Killer, class AController* Other);
-	bool CheckScore(class APlayerReplicationInfo* Scorer);
+	unsigned long CheckScore(class APlayerReplicationInfo* Scorer);
 	void ScoreObjective(class APlayerReplicationInfo* Scorer, int Score);
 	void AddObjectiveScore(class APlayerReplicationInfo* Scorer, int Score);
 	float RatePlayerStart(class APlayerStart* P, unsigned char Team, class AController* Player);
 	class APlayerStart* ChoosePlayerStart(class AController* Player, unsigned char InTeam);
 	class ANavigationPoint* FindPlayerStart(class AController* Player, unsigned char InTeam, const struct FString& IncomingName);
-	bool ShouldSpawnAtStartSpot(class AController* Player);
+	unsigned long ShouldSpawnAtStartSpot(class AController* Player);
 	void EndLogging(const struct FString& Reason);
 	void EndOnlineGame();
 	void PerformEndGameHandling();
 	void EndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
 	void WriteOnlinePlayerScores();
 	void WriteOnlineStats();
-	bool CheckEndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
-	bool CheckModifiedEndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
+	unsigned long CheckEndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
+	unsigned long CheckModifiedEndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
 	void BroadcastLocalizedTeam(int TeamIndex, class AActor* Sender, class UClass* Message, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 	void BroadcastLocalized(class AActor* Sender, class UClass* Message, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 	void BroadcastTeam(class AController* Sender, const struct FString& msg, const struct FName& Type);
 	void Broadcast(class AActor* Sender, const struct FString& msg, const struct FName& Type);
 	void RestartGame();
-	bool GetTravelType();
+	unsigned long GetTravelType();
 	struct FString GetNextMap();
 	void SendPlayer(class APlayerController* aPlayer, const struct FString& URL);
 	unsigned char PickTeam(unsigned char Current, class AController* C);
-	bool ChangeTeam(class AController* Other, int N, bool bNewTeam);
-	void ChangeName(class AController* Other, const struct FString& S, bool bNameChange);
+	unsigned long ChangeTeam(class AController* Other, int N, unsigned long bNewTeam);
+	void ChangeName(class AController* Other, const struct FString& S, unsigned long bNameChange);
 	void DiscardInventory(class APawn* Other, class AController* Killer);
-	bool PickupQuery(class APawn* Other, class UClass* ItemClass, class AActor* Pickup);
-	bool ShouldRespawn(class APickupFactory* Other);
-	bool CheckRelevance(class AActor* Other);
+	unsigned long PickupQuery(class APawn* Other, class UClass* ItemClass, class AActor* Pickup);
+	unsigned long ShouldRespawn(class APickupFactory* Other);
+	unsigned long CheckRelevance(class AActor* Other);
 	void ReduceDamage(class APawn* injured, class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, class AActor* DamageCauser, int* Damage, struct FVector* Momentum);
-	bool CanSpectate(class APlayerController* Viewer, class APlayerReplicationInfo* ViewTarget);
+	unsigned long CanSpectate(class APlayerController* Viewer, class APlayerReplicationInfo* ViewTarget);
 	void KickBan(const struct FString& S);
 	void Kick(const struct FString& S);
 	struct FString STATIC_ParseKillMessage(const struct FString& KillerName, const struct FString& VictimName, const struct FString& DeathMessage);
 	void BroadcastDeathMessage(class AController* Killer, class AController* Other, class UClass* DamageType);
-	bool PreventDeath(class APawn* KilledPawn, class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	unsigned long PreventDeath(class APawn* KilledPawn, class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
 	void Killed(class AController* Killer, class AController* KilledPlayer, class APawn* KilledPawn, class UClass* DamageType);
 	void NotifyKilled(class AController* Killer, class AController* Killed, class APawn* KilledPawn);
 	void SetPlayerDefaults(class APawn* PlayerPawn);
@@ -1965,34 +1965,34 @@ public:
 	void UsedSpotForPlayer(class ANavigationPoint* StartSpot);
 	void StartBots();
 	void StartHumans();
-	void OnStartOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
+	void OnStartOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
 	void StartOnlineGame();
 	void StartMatch();
 	class APlayerController* Login(const struct FString& Portal, const struct FString& Options, const struct FUniqueNetId& UniqueId, struct FString* ErrorMessage);
 	class APlayerController* SpawnPlayerController(const struct FVector& SpawnLocation, const struct FRotator& SpawnRotation);
 	int GetNextPlayerID();
-	bool AtCapacity(bool bSpectator);
+	unsigned long AtCapacity(unsigned long bSpectator);
 	void PreLogin(const struct FString& Options, const struct FString& Address, struct FString* ErrorMessage);
-	bool RequiresPassword();
-	class APlayerController* ProcessClientTravel(const struct FGuid& NextMapGuid, bool bSeamless, bool bAbsolute, struct FString* URL);
-	void ProcessServerTravel(const struct FString& URL, bool bAbsolute);
+	unsigned long RequiresPassword();
+	class APlayerController* ProcessClientTravel(const struct FGuid& NextMapGuid, unsigned long bSeamless, unsigned long bAbsolute, struct FString* URL);
+	void ProcessServerTravel(const struct FString& URL, unsigned long bAbsolute);
 	void RemoveMutator(class AMutator* MutatorToRemove);
-	void AddMutator(const struct FString& mutname, bool bUserAdded);
+	void AddMutator(const struct FString& mutname, unsigned long bUserAdded);
 	void NotifyPendingConnectionLost();
 	void InitGame(const struct FString& Options, struct FString* ErrorMessage);
 	class UClass* STATIC_SetGameType(const struct FString& MapName, const struct FString& Options, const struct FString& Portal);
 	struct FString STATIC_GetDefaultGameClassPath(const struct FString& MapName, const struct FString& Options, const struct FString& Portal);
 	int STATIC_GetIntOption(const struct FString& Options, const struct FString& ParseString, int CurrentValue);
-	bool STATIC_HasOption(const struct FString& Options, const struct FString& InKey);
+	unsigned long STATIC_HasOption(const struct FString& Options, const struct FString& InKey);
 	struct FString STATIC_ParseOption(const struct FString& Options, const struct FString& InKey);
 	void STATIC_GetKeyValue(const struct FString& Pair, struct FString* Key, struct FString* Value);
-	bool STATIC_GrabOption(struct FString* Options, struct FString* Result);
+	unsigned long STATIC_GrabOption(struct FString* Options, struct FString* Result);
 	void SetGameSpeed(float T);
 	void DebugPause();
 	void ForceClearUnpauseDelegates(class AActor* PauseActor);
 	void ClearPause();
-	bool SetPause(class APlayerController* PC, const struct FScriptDelegate& CanUnpauseDelegate);
-	bool CanUnpause();
+	unsigned long SetPause(class APlayerController* PC, const struct FScriptDelegate& CanUnpauseDelegate);
+	unsigned long CanUnpause();
 	int GetServerPort();
 	int GetNumPlayers();
 	struct FString GetNetworkNumber();
@@ -2004,12 +2004,12 @@ public:
 	void DoNavFearCostFallOff();
 	void Timer();
 	void ResetLevel();
-	bool ShouldReset(class AActor* ActorToReset);
+	unsigned long ShouldReset(class AActor* ActorToReset);
 	void Reset();
 	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void PostBeginPlay();
 	class ACoverReplicator* GetCoverReplicator();
-	bool STATIC_UseLowGore(class AWorldInfo* WI);
+	unsigned long STATIC_UseLowGore(class AWorldInfo* WI);
 	struct FString FindPlayerByID(int PlayerID);
 	void PreBeginPlay();
 };
@@ -2053,31 +2053,31 @@ public:
 	void NetDamage(int OriginalDamage, class APawn* injured, class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, class AActor* DamageCauser, int* Damage, struct FVector* Momentum);
 	void ScoreKill(class AController* Killer, class AController* Killed);
 	void ScoreObjective(class APlayerReplicationInfo* Scorer, int Score);
-	bool PreventDeath(class APawn* Killed, class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
-	bool OverridePickupQuery(class APawn* Other, class UClass* ItemClass, class AActor* Pickup, unsigned char* bAllowPickup);
-	bool CheckEndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
-	bool HandleRestartGame();
+	unsigned long PreventDeath(class APawn* Killed, class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	unsigned long OverridePickupQuery(class APawn* Other, class UClass* ItemClass, class AActor* Pickup, unsigned char* bAllowPickup);
+	unsigned long CheckEndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
+	unsigned long HandleRestartGame();
 	class ANavigationPoint* FindPlayerStart(class AController* Player, unsigned char InTeam, const struct FString& IncomingName);
-	void GetSeamlessTravelActorList(bool bToEntry, TArray<class AActor*>* ActorList);
+	void GetSeamlessTravelActorList(unsigned long bToEntry, TArray<class AActor*>* ActorList);
 	void InitMutator(const struct FString& Options, struct FString* ErrorMessage);
 	void DriverLeftVehicle(class AVehicle* V, class APawn* P);
-	bool CanLeaveVehicle(class AVehicle* V, class APawn* P);
+	unsigned long CanLeaveVehicle(class AVehicle* V, class APawn* P);
 	void DriverEnteredVehicle(class AVehicle* V, class APawn* P);
 	void NotifyLogin(class AController* NewPlayer);
 	void NotifyLogout(class AController* Exiting);
 	struct FString ParseChatPercVar(class AController* Who, const struct FString& Cmd);
 	void GetServerPlayers(struct FServerResponseLine* ServerState);
 	void GetServerDetails(struct FServerResponseLine* ServerState);
-	bool CheckReplacement(class AActor* Other);
-	bool CheckRelevance(class AActor* Other);
-	bool IsRelevant(class AActor* Other);
-	bool AlwaysKeep(class AActor* Other);
+	unsigned long CheckReplacement(class AActor* Other);
+	unsigned long CheckRelevance(class AActor* Other);
+	unsigned long IsRelevant(class AActor* Other);
+	unsigned long AlwaysKeep(class AActor* Other);
 	void AddMutator(class AMutator* M);
 	void ModifyPlayer(class APawn* Other);
 	void ModifyLogin(struct FString* Portal, struct FString* Options);
 	void Mutate(const struct FString& MutateString, class APlayerController* Sender);
 	void Destroyed();
-	bool MutatorIsAllowed();
+	unsigned long MutatorIsAllowed();
 	void PreBeginPlay();
 };
 
@@ -2331,23 +2331,23 @@ public:
 	class AWorldInfo* STATIC_GetWorldInfo();
 	struct FWorldFractureSettings GetWorldFractureSettings();
 	void DoMemoryTracking();
-	bool GetDemoRewindPoints(TArray<int>* OutRewindPoints);
+	unsigned long GetDemoRewindPoints(TArray<int>* OutRewindPoints);
 	void GetDemoFrameInfo(int* CurrentFrame, int* TotalFrames);
-	bool IsPlayingDemo();
-	bool IsRecordingDemo();
+	unsigned long IsPlayingDemo();
+	unsigned long IsRecordingDemo();
 	TEnumAsByte<EDetailMode> GetDetailMode();
-	struct FString GetMapName(bool bIncludePrefix);
+	struct FString GetMapName(unsigned long bIncludePrefix);
 	void SetMapInfo(class UMapInfo* NewMapInfo);
 	class UMapInfo* GetMapInfo();
-	void SetSeamlessTravelMidpointPause(bool bNowPaused);
-	bool IsInSeamlessTravel();
-	void SeamlessTravel(const struct FString& URL, bool bAbsolute, const struct FGuid& MapPackageGuid);
+	void SetSeamlessTravelMidpointPause(unsigned long bNowPaused);
+	unsigned long IsInSeamlessTravel();
+	void SeamlessTravel(const struct FString& URL, unsigned long bAbsolute, const struct FGuid& MapPackageGuid);
 	void CommitMapChange();
 	void CancelPendingMapChange();
-	bool IsMapChangeReady();
-	bool IsPreparingMapChange();
+	unsigned long IsMapChangeReady();
+	unsigned long IsPreparingMapChange();
 	void PrepareMapChange(TArray<struct FName>* LevelNames);
-	void NotifyMatchStarted(bool bShouldActivateLevelStartupEvents, bool bShouldActivateLevelBeginningEvents, bool bShouldActivateLevelLoadedEvents);
+	void NotifyMatchStarted(unsigned long bShouldActivateLevelStartupEvents, unsigned long bShouldActivateLevelBeginningEvents, unsigned long bShouldActivateLevelLoadedEvents);
 	void AllPawns(class UClass* BaseClass, const struct FVector& TestLocation, float TestRadius, class APawn** P);
 	void AllControllers(class UClass* BaseClass, class AController** C);
 	void NavigationPointCheck(const struct FVector& Point, const struct FVector& Extent, TArray<class ANavigationPoint*>* Navs, TArray<class UReachSpec*>* Specs);
@@ -2357,22 +2357,22 @@ public:
 	void PostBeginPlay();
 	void PreBeginPlay();
 	void ThisIsNeverExecuted(class ADefaultPhysicsVolume* P);
-	void ServerTravel(const struct FString& URL, bool bAbsolute, bool bShouldSkipGameNotify);
+	void ServerTravel(const struct FString& URL, unsigned long bAbsolute, unsigned long bShouldSkipGameNotify);
 	class UClass* GetGameClass();
 	struct FString GetAddressURL();
 	void VerifyNavList();
-	void ForceGarbageCollection(bool bFullPurge);
-	bool STATIC_IsPlayInEditor();
-	bool STATIC_IsSteamBuild();
-	bool STATIC_IsConsoleBuild(TEnumAsByte<EConsoleType> ConsoleType);
-	bool STATIC_IsDemoBuild();
+	void ForceGarbageCollection(unsigned long bFullPurge);
+	unsigned long STATIC_IsPlayInEditor();
+	unsigned long STATIC_IsSteamBuild();
+	unsigned long STATIC_IsConsoleBuild(TEnumAsByte<EConsoleType> ConsoleType);
+	unsigned long STATIC_IsDemoBuild();
 	struct FString GetLocalURL();
 	void SetLevelRBGravity(const struct FVector& NewGrav);
 	TArray<class USequence*> GetAllRootSequences();
 	class USequence* GetGameSequence();
 	float GetGravityZ();
 	void UpdateMusicTrack(const struct FMusicTrackStruct& NewMusicTrack);
-	bool STATIC_IsMenuLevel(const struct FString& MapName);
+	unsigned long STATIC_IsMenuLevel(const struct FString& MapName);
 	void AddOnScreenDebugMessage(int Key, float TimeToDisplay, const struct FColor& DisplayColor, const struct FString& DebugMessage);
 	void ReplicatedEvent(const struct FName& VarName);
 	class UNavMeshPathGoalEvaluator* GetNavMeshPathGoalEvaluatorFromCache(class UClass* GoalEvalClass, class UNavigationHandle* Requestor);
@@ -2414,10 +2414,10 @@ public:
 	void OwnerEvent(const struct FName& EventName);
 	struct FString STATIC_GetLocalString(int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3);
 	void DropFrom(const struct FVector& StartLocation, const struct FVector& StartVelocity);
-	bool DenyPickupQuery(class UClass* ItemClass, class AActor* Pickup);
+	unsigned long DenyPickupQuery(class UClass* ItemClass, class AActor* Pickup);
 	void ItemRemovedFromInvManager();
-	void ClientGivenTo(class APawn* NewOwner, bool bDoNotActivate);
-	void GivenTo(class APawn* thisPawn, bool bDoNotActivate);
+	void ClientGivenTo(class APawn* NewOwner, unsigned long bDoNotActivate);
+	void GivenTo(class APawn* thisPawn, unsigned long bDoNotActivate);
 	void AnnouncePickup(class APawn* Other);
 	void GiveTo(class APawn* Other);
 	float STATIC_DetourWeight(class APawn* Other, float PathWeight);
@@ -2471,25 +2471,25 @@ public:
 
 	void CacheAIController();
 	void WeaponIsDown();
-	bool StillFiring(unsigned char FireMode);
-	bool ShouldRefire();
+	unsigned long StillFiring(unsigned char FireMode);
+	unsigned long ShouldRefire();
 	void NotifyWeaponFinishedFiring(unsigned char FireMode);
 	void NotifyWeaponFired(unsigned char FireMode);
 	void HandleFinishedFiring();
-	bool TryPutDown();
+	unsigned long TryPutDown();
 	struct FVector GetPhysicalFireStartLoc(const struct FVector& AimDir);
 	struct FVector GetMuzzleLoc();
 	void CustomFire(int theFireMode);
 	class AProjectile* ProjectileFire();
 	void ProcessInstantHit(unsigned char FiringMode, const struct FImpactInfo& Impact, int NumHits);
 	void InstantFire();
-	bool STATIC_PassThroughDamage(class AActor* HitActor);
+	unsigned long STATIC_PassThroughDamage(class AActor* HitActor);
 	struct FImpactInfo CalcWeaponFire(const struct FVector& StartTrace, const struct FVector& EndTrace, const struct FVector& Extent, TArray<struct FImpactInfo>* ImpactList);
 	class AActor* GetTraceOwner();
 	float GetTraceRange();
 	struct FRotator GetAdjustedAim(const struct FVector& StartFireLoc);
 	void FireAmmunition();
-	void FireModeUpdated(unsigned char FiringMode, bool bViaReplication);
+	void FireModeUpdated(unsigned char FiringMode, unsigned long bViaReplication);
 	void SetCurrentFireMode(unsigned char FiringModeNum);
 	void SendToFiringState(unsigned char FireModeNum);
 	void ForceEndFire();
@@ -2501,18 +2501,18 @@ public:
 	void StartFire(unsigned char FireModeNum);
 	void WeaponCalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot);
 	void ClientCheckWeaponSet();
-	void ClientWeaponSet(bool bOptionalSet, bool bDoNotActivate);
-	void ClientGivenTo(class APawn* NewOwner, bool bDoNotActivate);
+	void ClientWeaponSet(unsigned long bOptionalSet, unsigned long bDoNotActivate);
+	void ClientGivenTo(class APawn* NewOwner, unsigned long bDoNotActivate);
 	float AdjustFOVAngle(float FOVAngle);
 	void GetViewAxes(struct FVector* XAxis, struct FVector* YAxis, struct FVector* ZAxis);
 	void DetachWeapon();
-	void AttachWeaponTo(class USkeletalMeshComponent* MeshCpnt, const struct FName& SocketName, bool bDontPlaySound);
+	void AttachWeaponTo(class USkeletalMeshComponent* MeshCpnt, const struct FName& SocketName, unsigned long bDontPlaySound);
 	void ClearFlashLocation();
 	void SetFlashLocation(const struct FVector& HitLocation);
 	void ClearFlashCount();
 	void IncrementFlashCount();
 	void WeaponEmpty();
-	bool DenyPickupQuery(class UClass* ItemClass, class AActor* Pickup);
+	unsigned long DenyPickupQuery(class UClass* ItemClass, class AActor* Pickup);
 	void PutDownWeapon();
 	void Activate();
 	void TimeWeaponEquipping();
@@ -2524,17 +2524,17 @@ public:
 	void StopFireEffects(unsigned char FireModeNum);
 	void PlayFireEffects(unsigned char FireModeNum, const struct FVector& HitLocation);
 	void StopWeaponAnimation();
-	void PlayWeaponAnimation(const struct FName& Sequence, float fDesiredDuration, bool bLoop, class USkeletalMeshComponent* SkelMesh);
+	void PlayWeaponAnimation(const struct FName& Sequence, float fDesiredDuration, unsigned long bLoop, class USkeletalMeshComponent* SkelMesh);
 	void WeaponPlaySound(class USoundCue* Sound, float NoiseLoudness);
 	class UAnimNodeSequence* GetWeaponAnimNodeSeq();
-	bool FireOnRelease();
+	unsigned long FireOnRelease();
 	float SuggestDefenseStyle();
 	float SuggestAttackStyle();
-	bool CanAttack(class AActor* Other);
+	unsigned long CanAttack(class AActor* Other);
 	float RangedAttackTime();
-	bool RecommendLongRangedAttack();
-	bool FocusOnLeader(bool bLeaderFiring);
-	bool RecommendRangedAttack();
+	unsigned long RecommendLongRangedAttack();
+	unsigned long FocusOnLeader(unsigned long bLeaderFiring);
+	unsigned long RecommendRangedAttack();
 	float GetWeaponRating();
 	float RelativeStrengthVersus(class APawn* P, float Dist);
 	float GetAIRating();
@@ -2545,23 +2545,23 @@ public:
 	void ClearAllPendingFire();
 	void ClearPendingFire(int FireMode);
 	void SetPendingFire(int FireMode);
-	bool PendingFire(int FireMode);
+	unsigned long PendingFire(int FireMode);
 	int GetPendingFireLength();
-	bool HasAnyAmmo();
-	bool HasAmmo(unsigned char FireModeNum, int Amount);
+	unsigned long HasAnyAmmo();
+	unsigned long HasAmmo(unsigned char FireModeNum, int Amount);
 	int AddAmmo(int Amount);
 	void ConsumeAmmo(unsigned char FireModeNum);
 	void GetWeaponDebug(TArray<struct FString>* DebugInfo);
 	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
-	bool DenyClientWeaponSet();
-	bool IsFiring();
+	unsigned long DenyClientWeaponSet();
+	unsigned long IsFiring();
 	void ClientWeaponThrown();
-	bool CanThrow();
+	unsigned long CanThrow();
 	void DropFrom(const struct FVector& StartLocation, const struct FVector& StartVelocity);
-	bool DoOverridePrevWeapon();
-	bool DoOverrideNextWeapon();
+	unsigned long DoOverridePrevWeapon();
+	unsigned long DoOverrideNextWeapon();
 	void HolderDied();
-	bool IsActiveWeapon();
+	unsigned long IsActiveWeapon();
 	void ItemRemovedFromInvManager();
 	void Destroyed();
 };
@@ -2587,19 +2587,19 @@ public:
 
 	void UpdateController();
 	void ClientSyncWeapon(class AWeapon* NewWeapon);
-	void ClientWeaponSet(class AWeapon* NewWeapon, bool bOptionalSet, bool bDoNotActivate);
+	void ClientWeaponSet(class AWeapon* NewWeapon, unsigned long bOptionalSet, unsigned long bDoNotActivate);
 	void ChangedWeapon();
-	bool CancelWeaponChange();
+	unsigned long CancelWeaponChange();
 	void SetPendingWeapon(class AWeapon* DesiredWeapon);
 	void InternalSetCurrentWeapon(class AWeapon* DesiredWeapon);
 	void ServerSetCurrentWeapon(class AWeapon* DesiredWeapon);
 	void SetCurrentWeapon(class AWeapon* DesiredWeapon);
 	void NextWeapon();
 	void PrevWeapon();
-	void SwitchToBestWeapon(bool bForceADifferentWeapon);
-	class AWeapon* GetBestWeapon(bool bForceADifferentWeapon);
+	void SwitchToBestWeapon(unsigned long bForceADifferentWeapon);
+	class AWeapon* GetBestWeapon(unsigned long bForceADifferentWeapon);
 	float GetWeaponRatingFor(class AWeapon* W);
-	bool IsActiveWeapon(class AWeapon* ThisWeapon);
+	unsigned long IsActiveWeapon(class AWeapon* ThisWeapon);
 	void StopFire(unsigned char FireModeNum);
 	void StartFire(unsigned char FireModeNum);
 	void DrawHUD(class AHUD* H);
@@ -2607,17 +2607,17 @@ public:
 	void OwnerDied();
 	int ModifyDamage(int Damage, class AController* InstigatedBy, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType);
 	void DiscardInventory();
-	void RemoveClassFromInventory(class UClass* DesiredClass, bool bAllowSubclass);
+	void RemoveClassFromInventory(class UClass* DesiredClass, unsigned long bAllowSubclass);
 	void RemoveFromInventory(class AInventory* ItemToRemove);
-	bool AddInventory(class AInventory* NewItem, bool bDoNotActivate);
-	class AInventory* CreateInventory(class UClass* NewInventoryItemClass, bool bDoNotActivate);
-	class AInventory* FindInventoryType(class UClass* DesiredClass, bool bAllowSubclass);
-	bool HandlePickupQuery(class UClass* ItemClass, class AActor* Pickup);
+	unsigned long AddInventory(class AInventory* NewItem, unsigned long bDoNotActivate);
+	class AInventory* CreateInventory(class UClass* NewInventoryItemClass, unsigned long bDoNotActivate);
+	class AInventory* FindInventoryType(class UClass* DesiredClass, unsigned long bAllowSubclass);
+	unsigned long HandlePickupQuery(class UClass* ItemClass, class AActor* Pickup);
 	void Destroyed();
 	void SetupFor(class APawn* P);
 	void InventoryActors(class UClass* BaseClass, class AInventory** Inv);
 	void ClearAllPendingFire(class AWeapon* InWeapon);
-	bool IsPendingFire(class AWeapon* InWeapon, int InFiringMode);
+	unsigned long IsPendingFire(class AWeapon* InWeapon, int InFiringMode);
 	void ClearPendingFire(class AWeapon* InWeapon, int InFiringMode);
 	void SetPendingFire(class AWeapon* InWeapon, int InFiringMode);
 	int GetPendingFireLength(class AWeapon* InWeapon);
@@ -2770,20 +2770,20 @@ public:
 	struct FString GetDebugAbbrev();
 	void ApplyCheckpointRecord(struct ANavigationPoint_FCheckpointRecord* Record);
 	void CreateCheckpointRecord(struct ANavigationPoint_FCheckpointRecord* Record);
-	bool ShouldSaveForCheckpoint();
+	unsigned long ShouldSaveForCheckpoint();
 	void ShutDown();
 	void OnToggle(class USeqAct_Toggle* inAction);
-	bool IsOnDifferentNetwork(class ANavigationPoint* Nav);
-	bool STATIC_GetAllNavInRadius(class AActor* ChkActor, const struct FVector& ChkPoint, float Radius, bool bSkipBlocked, int inNetworkID, const struct FCylinder& MinSize, TArray<class ANavigationPoint*>* out_NavList);
+	unsigned long IsOnDifferentNetwork(class ANavigationPoint* Nav);
+	unsigned long STATIC_GetAllNavInRadius(class AActor* ChkActor, const struct FVector& ChkPoint, float Radius, unsigned long bSkipBlocked, int inNetworkID, const struct FCylinder& MinSize, TArray<class ANavigationPoint*>* out_NavList);
 	class ANavigationPoint* STATIC_GetNearestNavToPoint(class AActor* ChkActor, const struct FVector& ChkPoint, class UClass* RequiredClass, TArray<class ANavigationPoint*> ExcludeList);
 	class ANavigationPoint* STATIC_GetNearestNavToActor(class AActor* ChkActor, class UClass* RequiredClass, TArray<class ANavigationPoint*> ExcludeList, float MinDist);
-	bool ProceedWithMove(class APawn* Other);
-	bool SuggestMovePreparation(class APawn* Other);
+	unsigned long ProceedWithMove(class APawn* Other);
+	unsigned long SuggestMovePreparation(class APawn* Other);
 	float DetourWeight(class APawn* Other, float PathWeight);
-	bool Accept(class AActor* Incoming, class AActor* Source);
+	unsigned long Accept(class AActor* Incoming, class AActor* Source);
 	int SpecialCost(class APawn* Seeker, class UReachSpec* Path);
-	bool CanTeleport(class AActor* A);
-	bool IsUsableAnchorFor(class APawn* P);
+	unsigned long CanTeleport(class AActor* A);
+	unsigned long IsUsableAnchorFor(class APawn* P);
 	class UReachSpec* GetReachSpecTo(class ANavigationPoint* Nav, class UClass* SpecClass);
 	void GetBoundingCylinder(float* CollisionRadius, float* CollisionHeight);
 };
@@ -2830,10 +2830,10 @@ public:
 	}
 
 
-	bool CanReachPylon(class APylon* DestPylon, class AController* C);
+	unsigned long CanReachPylon(class APylon* DestPylon, class AController* C);
 	void OnToggle(class USeqAct_Toggle* Action);
-	bool IsEnabled();
-	void SetEnabled(bool bEnabled);
+	unsigned long IsEnabled();
+	void SetEnabled(unsigned long bEnabled);
 };
 
 
@@ -2884,39 +2884,39 @@ public:
 	struct FString GetDebugAbbrev();
 	TEnumAsByte<ECoverLocationDescription> GetLocationDescription(int SlotIdx);
 	struct FString GetDebugString(int SlotIdx);
-	int AddCoverSlot(const struct FVector& SlotLocation, const struct FRotator& SlotRotation, int SlotIdx, bool bForceSlotUpdate);
-	bool GetSwatTurnTarget(int SlotIdx, int Direction, struct FCoverReference* out_Info);
+	int AddCoverSlot(const struct FVector& SlotLocation, const struct FRotator& SlotRotation, int SlotIdx, unsigned long bForceSlotUpdate);
+	unsigned long GetSwatTurnTarget(int SlotIdx, int Direction, struct FCoverReference* out_Info);
 	void ShutDown();
 	void ApplyCheckpointRecord(struct ANavigationPoint_FCheckpointRecord* Record);
 	void CreateCheckpointRecord(struct ANavigationPoint_FCheckpointRecord* Record);
 	void OnToggle(class USeqAct_Toggle* inAction);
-	bool IsEnabled();
-	bool AutoAdjustSlot(int SlotIdx, bool bOnlyCheckLeans);
+	unsigned long IsEnabled();
+	unsigned long AutoAdjustSlot(int SlotIdx, unsigned long bOnlyCheckLeans);
 	void OnModifyCover(class USeqAct_ModifyCover* Action);
 	void NotifySlotOwnerCoverDisabled(int SlotIdx);
-	void SetSlotEnabled(int SlotIdx, bool bEnable);
-	void SetDisabled(bool bNewDisabled);
+	void SetSlotEnabled(int SlotIdx, unsigned long bEnable);
+	void SetDisabled(unsigned long bNewDisabled);
 	void GetSlotActions(int SlotIdx, TArray<TEnumAsByte<ECoverAction>>* Actions);
-	bool HasFireLinkTo(int SlotIdx, const struct FCoverInfo& ChkCover, bool bAllowFallbackLinks);
-	bool GetFireLinkTo(int SlotIdx, const struct FCoverInfo& ChkCover, TEnumAsByte<ECoverAction> ChkAction, TEnumAsByte<ECoverType> ChkType, int* out_FireLinkIdx, TArray<int>* out_Items);
-	bool AllowLeftTransition(int SlotIdx);
-	bool AllowRightTransition(int SlotIdx);
+	unsigned long HasFireLinkTo(int SlotIdx, const struct FCoverInfo& ChkCover, unsigned long bAllowFallbackLinks);
+	unsigned long GetFireLinkTo(int SlotIdx, const struct FCoverInfo& ChkCover, TEnumAsByte<ECoverAction> ChkAction, TEnumAsByte<ECoverType> ChkType, int* out_FireLinkIdx, TArray<int>* out_Items);
+	unsigned long AllowLeftTransition(int SlotIdx);
+	unsigned long AllowRightTransition(int SlotIdx);
 	int GetSlotIdxToRight(int SlotIdx, int Cnt);
 	int GetSlotIdxToLeft(int SlotIdx, int Cnt);
-	bool IsRightEdgeSlot(int SlotIdx, bool bIgnoreLeans);
-	bool IsLeftEdgeSlot(int SlotIdx, bool bIgnoreLeans);
-	bool IsEdgeSlot(int SlotIdx, bool bIgnoreLeans);
-	bool FindSlots(const struct FVector& CheckLocation, float MaxDistance, int* LeftSlotIdx, int* RightSlotIdx);
-	bool IsStationarySlot(int SlotIdx);
-	bool IsValidClaim(class APawn* ChkClaim, int SlotIdx, bool bSkipTeamCheck, bool bSkipOverlapCheck);
-	bool UnClaim(class APawn* OldClaim, int SlotIdx, bool bUnclaimAll);
-	bool Claim(class APawn* NewClaim, int SlotIdx);
+	unsigned long IsRightEdgeSlot(int SlotIdx, unsigned long bIgnoreLeans);
+	unsigned long IsLeftEdgeSlot(int SlotIdx, unsigned long bIgnoreLeans);
+	unsigned long IsEdgeSlot(int SlotIdx, unsigned long bIgnoreLeans);
+	unsigned long FindSlots(const struct FVector& CheckLocation, float MaxDistance, int* LeftSlotIdx, int* RightSlotIdx);
+	unsigned long IsStationarySlot(int SlotIdx);
+	unsigned long IsValidClaim(class APawn* ChkClaim, int SlotIdx, unsigned long bSkipTeamCheck, unsigned long bSkipOverlapCheck);
+	unsigned long UnClaim(class APawn* OldClaim, int SlotIdx, unsigned long bUnclaimAll);
+	unsigned long Claim(class APawn* NewClaim, int SlotIdx);
 	void SetInvalidUntil(int SlotIdx, float TimeToBecomeValid);
-	bool IsExposedTo(int SlotIdx, const struct FCoverInfo& ChkSlot, float* out_ExposedScale);
+	unsigned long IsExposedTo(int SlotIdx, const struct FCoverInfo& ChkSlot, float* out_ExposedScale);
 	class ACoverSlotMarker* GetSlotMarker(int SlotIdx);
 	struct FVector GetSlotViewPoint(int SlotIdx, TEnumAsByte<ECoverType> Type, TEnumAsByte<ECoverAction> Action);
-	struct FRotator GetSlotRotation(int SlotIdx, bool bForceUseOffset);
-	struct FVector GetSlotLocation(int SlotIdx, bool bForceUseOffset);
+	struct FRotator GetSlotRotation(int SlotIdx, unsigned long bForceUseOffset);
+	struct FVector GetSlotLocation(int SlotIdx, unsigned long bForceUseOffset);
 };
 
 
@@ -2938,8 +2938,8 @@ public:
 
 	struct FString GetDebugString();
 	struct FString GetDebugAbbrev();
-	bool IsValidClaim(class APawn* ChkClaim, bool bSkipTeamCheck, bool bSkipOverlapCheck);
-	void SetSlotEnabled(bool bEnable);
+	unsigned long IsValidClaim(class APawn* ChkClaim, unsigned long bSkipTeamCheck, unsigned long bSkipOverlapCheck);
+	void SetSlotEnabled(unsigned long bEnable);
 	struct FRotator GetSlotRotation();
 	struct FVector GetSlotLocation();
 };
@@ -2967,8 +2967,8 @@ public:
 	}
 
 
-	bool SuggestMovePreparation(class APawn* Other);
-	bool ProceedWithMove(class APawn* Other);
+	unsigned long SuggestMovePreparation(class APawn* Other);
+	unsigned long ProceedWithMove(class APawn* Other);
 	class AActor* SpecialHandling(class APawn* Other);
 	void MoverClosed();
 	void MoverOpened();
@@ -3007,7 +3007,7 @@ public:
 	}
 
 
-	bool SuggestMovePreparation(class APawn* Other);
+	unsigned long SuggestMovePreparation(class APawn* Other);
 };
 
 
@@ -3045,8 +3045,8 @@ public:
 	}
 
 
-	bool ProceedWithMove(class APawn* Other);
-	bool SuggestMovePreparation(class APawn* Other);
+	unsigned long ProceedWithMove(class APawn* Other);
+	unsigned long SuggestMovePreparation(class APawn* Other);
 	class AActor* SpecialHandling(class APawn* Other);
 	void PostBeginPlay();
 };
@@ -3067,9 +3067,9 @@ public:
 	}
 
 
-	bool SuggestMovePreparation(class APawn* Other);
+	unsigned long SuggestMovePreparation(class APawn* Other);
 	void WaitForLift(class APawn* Other);
-	bool CanBeReachedFromLiftBy(class APawn* Other);
+	unsigned long CanBeReachedFromLiftBy(class APawn* Other);
 };
 
 
@@ -3168,7 +3168,7 @@ public:
 	}
 
 
-	bool DelayRespawn();
+	unsigned long DelayRespawn();
 	void Destroyed();
 	void SetPickupVisible();
 	void SetPickupHidden();
@@ -3177,12 +3177,12 @@ public:
 	void RecheckValidTouch();
 	void PickedUpBy(class APawn* P);
 	void GiveTo(class APawn* P);
-	bool ReadyToPickup(float MaxWait);
+	unsigned long ReadyToPickup(float MaxWait);
 	void SpawnCopyFor(class APawn* Recipient);
 	float DetourWeight(class APawn* Other, float PathWeight);
 	void StartSleeping();
 	void SetRespawn();
-	bool CheckForErrors();
+	unsigned long CheckForErrors();
 	void Reset();
 	void STATIC_StaticPrecache(class AWorldInfo* W);
 	void SetPickupMesh();
@@ -3228,7 +3228,7 @@ public:
 	}
 
 
-	bool CanTeleport(class AActor* A);
+	unsigned long CanTeleport(class AActor* A);
 };
 
 
@@ -3246,8 +3246,8 @@ public:
 	}
 
 
-	bool IsEnabled();
-	void SetEnabled(bool bEnabled);
+	unsigned long IsEnabled();
+	void SetEnabled(unsigned long bEnabled);
 	void PostBeginPlay();
 };
 
@@ -3301,9 +3301,9 @@ public:
 	class AActor* SpecialHandling(class APawn* Other);
 	void PostTouch(class AActor* Other);
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
-	bool Accept(class AActor* Incoming, class AActor* Source);
+	unsigned long Accept(class AActor* Incoming, class AActor* Source);
 	void PostBeginPlay();
-	bool CanTeleport(class AActor* A);
+	unsigned long CanTeleport(class AActor* A);
 };
 
 
@@ -3361,22 +3361,22 @@ public:
 	float STATIC_StaticGetTimeToLocation(const struct FVector& TargetLoc, const struct FVector& StartLoc, class AController* RequestedBy);
 	float GetTimeToLocation(const struct FVector& TargetLoc);
 	void FellOutOfWorld(class UClass* dmgType);
-	bool IsStationary();
+	unsigned long IsStationary();
 	void RandSpin(float spinRate);
 	void Explode(const struct FVector& HitLocation, const struct FVector& HitNormal);
 	void EncroachedBy(class AActor* Other);
 	void HitWall(const struct FVector& HitNormal, class AActor* Wall, class UPrimitiveComponent* WallComp);
 	void ProcessTouch(class AActor* Other, const struct FVector& HitLocation, const struct FVector& HitNormal);
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
-	bool HurtRadius(float DamageAmount, float InDamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, bool bDoFullDamage);
+	unsigned long HurtRadius(float DamageAmount, float InDamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, unsigned long bDoFullDamage);
 	void Reset();
-	bool CanSplash();
+	unsigned long CanSplash();
 	unsigned char GetTeamNum();
 	void Init(const struct FVector& Direction);
 	void Destroyed();
 	void PostBeginPlay();
 	void PreBeginPlay();
-	bool EncroachingOn(class AActor* Other);
+	unsigned long EncroachingOn(class AActor* Other);
 };
 
 
@@ -3498,11 +3498,11 @@ public:
 	}
 
 
-	bool StopsProjectile(class AProjectile* P);
+	unsigned long StopsProjectile(class AProjectile* P);
 	class UTextureRenderTarget2D* CreatePortalTexture();
 	struct FVector TransformHitLocation(const struct FVector& HitLocation);
 	struct FVector TransformVectorDir(const struct FVector& V);
-	bool TransformActor(class AActor* A);
+	unsigned long TransformActor(class AActor* A);
 };
 
 
@@ -3596,8 +3596,8 @@ public:
 
 	void ApplyCheckpointRecord(struct ATrigger_FCheckpointRecord* Record);
 	void CreateCheckpointRecord(struct ATrigger_FCheckpointRecord* Record);
-	bool ShouldSaveForCheckpoint();
-	bool StopsProjectile(class AProjectile* P);
+	unsigned long ShouldSaveForCheckpoint();
+	unsigned long StopsProjectile(class AProjectile* P);
 	void UnTrigger();
 	void NotifyTriggered();
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
@@ -3627,8 +3627,8 @@ public:
 
 
 	void DetachFromAny();
-	void ForceUpdate(bool bTransformOnly);
-	void SetComponentRBFixed(bool bFixed);
+	void ForceUpdate(unsigned long bTransformOnly);
+	void SetComponentRBFixed(unsigned long bFixed);
 	void SetTickGroup(TEnumAsByte<ETickingGroup> NewTickGroup);
 };
 
@@ -3730,7 +3730,7 @@ public:
 	}
 
 
-	void OcclusionChanged(bool bNowOccluded);
+	void OcclusionChanged(unsigned long bNowOccluded);
 	void OnQueueSubtitles(TArray<struct FSubtitleCue> Subtitles, float CueDuration);
 	void OnAudioFinished(class UAudioComponent* AC);
 	void ResetToDefaults();
@@ -3739,7 +3739,7 @@ public:
 	void AdjustVolume(float AdjustVolumeDuration, float AdjustVolumeLevel);
 	void FadeOut(float FadeOutDuration, float FadeVolumeLevel);
 	void FadeIn(float FadeInDuration, float FadeVolumeLevel);
-	bool IsPlaying();
+	unsigned long IsPlaying();
 	void Stop();
 	void Play();
 };
@@ -3765,7 +3765,7 @@ public:
 	}
 
 
-	void SetEnabled(bool bSetEnabled);
+	void SetEnabled(unsigned long bSetEnabled);
 };
 
 
@@ -3787,8 +3787,8 @@ public:
 	}
 
 
-	bool IsEnabled();
-	void SetEnabled(bool bNewEnabled);
+	unsigned long IsEnabled();
+	void SetEnabled(unsigned long bNewEnabled);
 };
 
 
@@ -3856,7 +3856,7 @@ public:
 	struct FVector GetDirection();
 	struct FVector GetOrigin();
 	void SetLightProperties(float NewBrightness, const struct FColor& NewLightColor, class ULightFunction* NewLightFunction);
-	void SetEnabled(bool bSetEnabled);
+	void SetEnabled(unsigned long bSetEnabled);
 };
 
 
@@ -4047,46 +4047,46 @@ public:
 	TEnumAsByte<EGJKResult> ClosestPointOnComponentToPoint(struct FVector* POI, struct FVector* Extent, struct FVector* OutPointA, struct FVector* OutPointB);
 	struct FRotator GetRotation();
 	struct FVector GetPosition();
-	void SetAbsolute(bool NewAbsoluteTranslation, bool NewAbsoluteRotation, bool NewAbsoluteScale);
-	void SetTransform(bool bNewTranslation, const struct FVector& NewTranslation, bool bNewRotation, const struct FRotator& NewRotation, bool bNewScale, float NewScale, bool bNewScale3D, const struct FVector& NewScale3D);
+	void SetAbsolute(unsigned long NewAbsoluteTranslation, unsigned long NewAbsoluteRotation, unsigned long NewAbsoluteScale);
+	void SetTransform(unsigned long bNewTranslation, const struct FVector& NewTranslation, unsigned long bNewRotation, const struct FRotator& NewRotation, unsigned long bNewScale, float NewScale, unsigned long bNewScale3D, const struct FVector& NewScale3D);
 	void SetScale3D(const struct FVector& NewScale3D);
 	void SetScale(float NewScale);
 	void SetRotation(const struct FRotator& NewRotation);
 	void SetTranslation(const struct FVector& NewTranslation);
-	void SetActorCollision(bool NewCollideActors, bool NewBlockActors, bool NewAlwaysCheckCollision);
-	void SetTraceBlocking(bool NewBlockZeroExtent, bool NewBlockNonZeroExtent);
-	void SetViewOwnerDepthPriorityGroup(bool bNewUseViewOwnerDepthPriorityGroup, TEnumAsByte<ESceneDepthPriorityGroup> NewViewOwnerDepthPriorityGroup);
+	void SetActorCollision(unsigned long NewCollideActors, unsigned long NewBlockActors, unsigned long NewAlwaysCheckCollision);
+	void SetTraceBlocking(unsigned long NewBlockZeroExtent, unsigned long NewBlockNonZeroExtent);
+	void SetViewOwnerDepthPriorityGroup(unsigned long bNewUseViewOwnerDepthPriorityGroup, TEnumAsByte<ESceneDepthPriorityGroup> NewViewOwnerDepthPriorityGroup);
 	void SetDepthPriorityGroup(TEnumAsByte<ESceneDepthPriorityGroup> NewDepthPriorityGroup);
 	void SetLightingChannels(const struct FLightingChannelContainer& NewLightingChannels);
 	void SetCullDistance(float NewCullDistance);
 	void SetLightEnvironment(class ULightEnvironmentComponent* NewLightEnvironment);
 	void SetShadowParent(class UPrimitiveComponent* NewShadowParent);
-	void SetIgnoreOwnerHidden(bool bNewIgnoreOwnerHidden);
-	void SetOnlyOwnerSee(bool bNewOnlyOwnerSee);
-	void SetOwnerNoSee(bool bNewOwnerNoSee);
-	void SetHidden(bool NewHidden);
+	void SetIgnoreOwnerHidden(unsigned long bNewIgnoreOwnerHidden);
+	void SetOnlyOwnerSee(unsigned long bNewOnlyOwnerSee);
+	void SetOwnerNoSee(unsigned long bNewOwnerNoSee);
+	void SetHidden(unsigned long NewHidden);
 	void SetRBDominanceGroup(unsigned char InDomGroup);
 	class URB_BodyInstance* GetRootBodyInstance();
 	void SetPhysMaterialOverride(class UPhysicalMaterial* NewPhysMaterial);
 	void InitRBPhys();
-	void SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision);
+	void SetNotifyRigidBodyCollision(unsigned long bNewNotifyRigidBodyCollision);
 	void SetRBChannel(TEnumAsByte<ERBCollisionChannel> Channel);
 	void SetRBCollisionChannels(const struct FRBCollisionChannelContainer& Channels);
-	void SetRBCollidesWithChannel(TEnumAsByte<ERBCollisionChannel> Channel, bool bNewCollides);
-	void SetBlockRigidBody(bool bNewBlockRigidBody);
-	bool RigidBodyIsAwake(const struct FName& BoneName);
+	void SetRBCollidesWithChannel(TEnumAsByte<ERBCollisionChannel> Channel, unsigned long bNewCollides);
+	void SetBlockRigidBody(unsigned long bNewBlockRigidBody);
+	unsigned long RigidBodyIsAwake(const struct FName& BoneName);
 	void PutRigidBodyToSleep(const struct FName& BoneName);
 	void WakeRigidBody(const struct FName& BoneName);
 	void SetRBRotation(const struct FRotator& NewRot, const struct FName& BoneName);
 	void SetRBPosition(const struct FVector& NewPos, const struct FName& BoneName);
 	void RetardRBLinearVelocity(const struct FVector& RetardDir, float VelScale);
-	void SetRBAngularVelocity(const struct FVector& NewAngVel, bool bAddToCurrent);
-	void SetRBLinearVelocity(const struct FVector& NewVel, bool bAddToCurrent);
+	void SetRBAngularVelocity(const struct FVector& NewAngVel, unsigned long bAddToCurrent);
+	void SetRBLinearVelocity(const struct FVector& NewVel, unsigned long bAddToCurrent);
 	void AddTorque(const struct FVector& Torque, const struct FName& BoneName);
 	void AddRadialForce(const struct FVector& Origin, float Radius, float Strength, TEnumAsByte<ERadialImpulseFalloff> Falloff);
 	void AddForce(const struct FVector& Force, const struct FVector& Position, const struct FName& BoneName);
-	void AddRadialImpulse(const struct FVector& Origin, float Radius, float Strength, TEnumAsByte<ERadialImpulseFalloff> Falloff, bool bVelChange);
-	void AddImpulse(const struct FVector& Impulse, const struct FVector& Position, const struct FName& BoneName, bool bVelChange);
+	void AddRadialImpulse(const struct FVector& Origin, float Radius, float Strength, TEnumAsByte<ERadialImpulseFalloff> Falloff, unsigned long bVelChange);
+	void AddImpulse(const struct FVector& Impulse, const struct FVector& Position, const struct FName& BoneName, unsigned long bVelChange);
 };
 
 
@@ -4394,7 +4394,7 @@ public:
 
 	class UMaterialInstanceTimeVarying* CreateAndSetMaterialInstanceTimeVarying(int ElementIndex);
 	class UMaterialInstanceConstant* CreateAndSetMaterialInstanceConstant(int ElementIndex);
-	void PrestreamTextures(float Seconds, bool bPrioritizeCharacterTextures);
+	void PrestreamTextures(float Seconds, unsigned long bPrioritizeCharacterTextures);
 	int GetNumElements();
 	void SetMaterial(int ElementIndex, class UMaterialInterface* Material);
 	class UMaterialInterface* GetMaterial(int ElementIndex);
@@ -4432,9 +4432,9 @@ public:
 	}
 
 
-	void SetForceStaticDecals(bool bInForceStaticDecals);
-	void DisableRBCollisionWithSMC(class UStaticMeshComponent* OtherSMC, bool bDisabled);
-	bool SetStaticMesh(class UStaticMesh* NewMesh, bool bForce);
+	void SetForceStaticDecals(unsigned long bInForceStaticDecals);
+	void DisableRBCollisionWithSMC(class UStaticMeshComponent* OtherSMC, unsigned long bDisabled);
+	unsigned long SetStaticMesh(class UStaticMesh* NewMesh, unsigned long bForce);
 };
 
 
@@ -4512,7 +4512,7 @@ public:
 	void OnUpdatePropertyBlurOpacity();
 	void OnUpdatePropertyBlurFalloffExponent();
 	void OnUpdatePropertyBlurScale();
-	void SetEnabled(bool bInEnabled);
+	void SetEnabled(unsigned long bInEnabled);
 	void SetBlurOpacity(float InBlurOpacity);
 	void SetBlurFalloffExponent(float InBlurFalloffExponent);
 	void SetBlurScale(float InBlurScale);
@@ -4550,8 +4550,8 @@ public:
 	}
 
 
-	void SetEnabled(bool bEnable);
-	bool NeedsUpdate();
+	void SetEnabled(unsigned long bEnable);
+	unsigned long NeedsUpdate();
 	void SetFrameRate(float NewFrameRate);
 };
 
@@ -5355,72 +5355,72 @@ public:
 	void SendMessage(class APlayerReplicationInfo* Recipient, const struct FName& MessageType, float Wait, class UClass* DamageType);
 	void CurrentLevelUnloaded();
 	class AActor* GetRouteGoalAfter(int RouteIdx);
-	bool IsInCombat(bool bForceCheck);
-	bool IsSpectating();
+	unsigned long IsInCombat(unsigned long bForceCheck);
+	unsigned long IsSpectating();
 	void OnToggleHidden(class USeqAct_ToggleHidden* Action);
 	void NotifyAddInventory(class AInventory* NewItem);
 	void OnModifyHealth(class USeqAct_ModifyHealth* Action);
-	bool NotifyCoverClaimViolation(class AController* NewClaim, class ACoverLink* Link, int SlotIdx);
+	unsigned long NotifyCoverClaimViolation(class AController* NewClaim, class ACoverLink* Link, int SlotIdx);
 	void NotifyCoverAdjusted();
-	void NotifyCoverDisabled(class ACoverLink* Link, int SlotIdx, bool bAdjacentIdx);
+	void NotifyCoverDisabled(class ACoverLink* Link, int SlotIdx, unsigned long bAdjacentIdx);
 	void OnSetVelocity(class USeqAct_SetVelocity* Action);
 	void OnSetPhysics(class USeqAct_SetPhysics* Action);
 	void OnToggleAffectedByHitEffects(class USeqAct_ToggleAffectedByHitEffects* inAction);
 	void OnToggleGodMode(class USeqAct_ToggleGodMode* inAction);
 	void OnTeleport(class USeqAct_Teleport* Action);
-	bool IsDead();
+	unsigned long IsDead();
 	struct FString GetHumanReadableName();
 	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void StopLatentExecution();
-	bool InLatentExecution(int LatentActionNumber);
+	unsigned long InLatentExecution(int LatentActionNumber);
 	void ReachedPreciseDestination();
 	void NotifyMissedJump();
 	void NotifyJumpApex();
-	bool NotifyBump(class AActor* Other, const struct FVector& HitNormal);
+	unsigned long NotifyBump(class AActor* Other, const struct FVector& HitNormal);
 	void NotifyFallingHitWall(const struct FVector& HitNormal, class AActor* Wall);
-	bool NotifyHitWall(const struct FVector& HitNormal, class AActor* Wall);
-	bool NotifyLanded(const struct FVector& HitNormal, class AActor* FloorActor);
-	bool NotifyHeadVolumeChange(class APhysicsVolume* NewVolume);
+	unsigned long NotifyHitWall(const struct FVector& HitNormal, class AActor* Wall);
+	unsigned long NotifyLanded(const struct FVector& HitNormal, class AActor* FloorActor);
+	unsigned long NotifyHeadVolumeChange(class APhysicsVolume* NewVolume);
 	void NotifyPhysicsVolumeChange(class APhysicsVolume* NewVolume);
-	bool LandingShake();
-	bool IsAimingAt(class AActor* aTarget, float Epsilon);
+	unsigned long LandingShake();
+	unsigned long IsAimingAt(class AActor* aTarget, float Epsilon);
 	void GetActorEyesViewPoint(struct FVector* out_Location, struct FRotator* out_Rotation);
 	void GetPlayerViewPoint(struct FVector* out_Location, struct FRotator* out_Rotation);
-	bool HandlePathObstruction(class AActor* BlockedBy);
+	unsigned long HandlePathObstruction(class AActor* BlockedBy);
 	void UnderLift(class ALiftCenter* Lift);
-	bool MoverFinished();
+	unsigned long MoverFinished();
 	void WaitForMover(class AInterpActor* M);
-	bool AllowDetourTo(class ANavigationPoint* N);
-	void MayFall(bool bFloor, const struct FVector& FloorNormal);
+	unsigned long AllowDetourTo(class ANavigationPoint* N);
+	void MayFall(unsigned long bFloor, const struct FVector& FloorNormal);
 	void EndClimbLadder();
 	void LongFall();
 	void WaitForLanding(float waitDuration);
-	bool PickWallAdjust(const struct FVector& HitNormal);
+	unsigned long PickWallAdjust(const struct FVector& HitNormal);
 	void MoveUnreachable(const struct FVector& AttemptedDest, class AActor* AttemptedTarget);
-	bool ActorReachable(class AActor* anActor);
-	bool PointReachable(const struct FVector& aPoint);
-	class AActor* FindPathToIntercept(class APawn* P, class AActor* InRouteGoal, bool bWeightDetours, int MaxPathLength, bool bReturnPartial);
+	unsigned long ActorReachable(class AActor* anActor);
+	unsigned long PointReachable(const struct FVector& aPoint);
+	class AActor* FindPathToIntercept(class APawn* P, class AActor* InRouteGoal, unsigned long bWeightDetours, int MaxPathLength, unsigned long bReturnPartial);
 	class ANavigationPoint* FindRandomDest();
-	class AActor* FindPathTowardNearest(class UClass* GoalClass, bool bWeightDetours, int MaxPathLength, bool bReturnPartial);
-	class AActor* FindPathToward(class AActor* anActor, bool bWeightDetours, int MaxPathLength, bool bReturnPartial);
-	class AActor* FindPathTo(const struct FVector& aPoint, int MaxPathLength, bool bReturnPartial);
+	class AActor* FindPathTowardNearest(class UClass* GoalClass, unsigned long bWeightDetours, int MaxPathLength, unsigned long bReturnPartial);
+	class AActor* FindPathToward(class AActor* anActor, unsigned long bWeightDetours, int MaxPathLength, unsigned long bReturnPartial);
+	class AActor* FindPathTo(const struct FVector& aPoint, int MaxPathLength, unsigned long bReturnPartial);
 	void FinishRotation();
 	void SetupSpecialPathAbilities();
-	void MoveToward(class AActor* NewTarget, class AActor* ViewFocus, float DestinationOffset, bool bUseStrafing, bool bShouldWalk);
-	void MoveToDirectNonPathPos(const struct FVector& NewDestination, class AActor* ViewFocus, float DestinationOffset, bool bShouldWalk);
-	void MoveTo(const struct FVector& NewDestination, class AActor* ViewFocus, float DestinationOffset, bool bShouldWalk);
+	void MoveToward(class AActor* NewTarget, class AActor* ViewFocus, float DestinationOffset, unsigned long bUseStrafing, unsigned long bShouldWalk);
+	void MoveToDirectNonPathPos(const struct FVector& NewDestination, class AActor* ViewFocus, float DestinationOffset, unsigned long bShouldWalk);
+	void MoveTo(const struct FVector& NewDestination, class AActor* ViewFocus, float DestinationOffset, unsigned long bShouldWalk);
 	void EnemyNotVisible();
 	void SeeMonster(class APawn* Seen);
 	void SeePlayer(class APawn* Seen);
 	void HearNoise(float Loudness, class AActor* NoiseMaker, const struct FName& NoiseType);
 	class APawn* PickTarget(class UClass* TargetClass, const struct FVector& FireDir, const struct FVector& projStart, float MaxRange, float* bestAim, float* bestDist);
-	bool CanSeeByPoints(const struct FVector& ViewLocation, const struct FVector& TestLocation, const struct FRotator& ViewRotation);
-	bool CanSee(class APawn* Other);
-	bool LineOfSightTo(class AActor* Other, const struct FVector& chkLocation, bool bTryAlternateTargetLoc);
+	unsigned long CanSeeByPoints(const struct FVector& ViewLocation, const struct FVector& TestLocation, const struct FRotator& ViewRotation);
+	unsigned long CanSee(class APawn* Other);
+	unsigned long LineOfSightTo(class AActor* Other, const struct FVector& chkLocation, unsigned long bTryAlternateTargetLoc);
 	void NotifyChangedWeapon(class AWeapon* PrevWeapon, class AWeapon* NewWeapon);
 	void ClientSetWeapon(class UClass* WeaponClass);
-	void ClientSwitchToBestWeapon(bool bForceNewWeapon);
-	void SwitchToBestWeapon(bool bForceNewWeapon);
+	void ClientSwitchToBestWeapon(unsigned long bForceNewWeapon);
+	void SwitchToBestWeapon(unsigned long bForceNewWeapon);
 	void ReceiveProjectileWarning(class AProjectile* Proj);
 	void ReceiveWarning(class APawn* shooter, float projSpeed, const struct FVector& FireDir);
 	void InstantWarnTarget(class AActor* InTarget, class AWeapon* FiredWeapon, const struct FVector& FireDir);
@@ -5428,12 +5428,12 @@ public:
 	void HandlePickup(class AInventory* Inv);
 	void RoundHasEnded(class AActor* EndRoundFocus);
 	void StopFiring();
-	bool FireWeaponAt(class AActor* InActor);
+	unsigned long FireWeaponAt(class AActor* InActor);
 	float RatePickup(class AActor* PickupHolder, class UClass* inPickup);
 	void WarnProjExplode(class AProjectile* Proj);
 	void NotifyProjLanded(class AProjectile* Proj);
 	void NotifyKilled(class AController* Killer, class AController* Killed, class APawn* KilledPawn);
-	void GameHasEnded(class AActor* EndGameFocus, bool bIsWinner);
+	void GameHasEnded(class AActor* EndGameFocus, unsigned long bIsWinner);
 	void SetCharacter(const struct FString& inCharacter);
 	void ServerGivePawn();
 	void ServerRestartPlayer();
@@ -5441,43 +5441,43 @@ public:
 	void InitPlayerReplicationInfo();
 	void NotifyTakeHit(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum);
 	void EnemyJustTeleported();
-	bool BeyondFogDistance(const struct FVector& ViewPoint, const struct FVector& OtherPoint);
-	void Restart(bool bVehicleTransition);
+	unsigned long BeyondFogDistance(const struct FVector& ViewPoint, const struct FVector& OtherPoint);
+	void Restart(unsigned long bVehicleTransition);
 	void CleanupPRI();
 	void Destroyed();
 	void NotifyPostLanded();
-	bool GamePlayEndedState();
+	unsigned long GamePlayEndedState();
 	void PawnDied(class APawn* inPawn);
 	void UnPossess();
 	void UpdateSex();
-	void Possess(class APawn* inPawn, bool bVehicleTransition);
+	void Possess(class APawn* inPawn, unsigned long bVehicleTransition);
 	void OnPossess(class USeqAct_Possess* inAction);
 	void ReplicatedEvent(const struct FName& VarName);
-	void ClientSetRotation(const struct FRotator& NewRotation, bool bResetCamera);
+	void ClientSetRotation(const struct FRotator& NewRotation, unsigned long bResetCamera);
 	void ClientSetLocation(const struct FVector& NewLocation, const struct FRotator& NewRotation);
 	void Reset();
 	void PostBeginPlay();
 	void SetSkelControlScale(const struct FName& SkelControlName, float Scale);
 	void SetMorphWeight(const struct FName& MorphNodeName, float MorphWeight);
 	void StopActorFaceFXAnim();
-	bool PlayActorFaceFXAnim(class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay);
+	unsigned long PlayActorFaceFXAnim(class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay);
 	void FinishAnimControl(class UInterpGroup* InInterpGroup);
-	void SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, bool bFireNotifies, bool bLooping);
+	void SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, unsigned long bFireNotifies, unsigned long bLooping);
 	void BeginAnimControl(class UInterpGroup* InInterpGroup);
 	void NotifyPathChanged();
 	struct FVector GetAdjustLocation();
-	void SetAdjustLocation(const struct FVector& NewLoc, bool bAdjust, bool bOffsetFromBase);
+	void SetAdjustLocation(const struct FVector& NewLoc, unsigned long bAdjust, unsigned long bOffsetFromBase);
 	struct FVector GetDestinationPosition();
-	void SetDestinationPosition(const struct FVector& Dest, bool bOffsetFromBase);
+	void SetDestinationPosition(const struct FVector& Dest, unsigned long bOffsetFromBase);
 	struct FVector GetFocalPoint();
-	void SetFocalPoint(const struct FVector& FP, bool bOffsetFromBase);
+	void SetFocalPoint(const struct FVector& FP, unsigned long bOffsetFromBase);
 	void RouteCache_RemoveIndex(int InIndex, int Count);
 	void RouteCache_RemoveItem(class ANavigationPoint* Nav);
 	void RouteCache_InsertItem(class ANavigationPoint* Nav, int Idx);
 	void RouteCache_AddItem(class ANavigationPoint* Nav);
 	void RouteCache_Empty();
-	class ANavigationPoint* NativeFindNearestNavPointTo(class AActor* A, class UClass* InClass, bool bCheckVisible, int ConnectionSetID);
-	bool IsLocalPlayerController();
+	class ANavigationPoint* NativeFindNearestNavPointTo(class AActor* A, class UClass* InClass, unsigned long bCheckVisible, int ConnectionSetID);
+	unsigned long IsLocalPlayerController();
 };
 
 
@@ -5500,7 +5500,7 @@ public:
 	}
 
 
-	bool Customize();
+	unsigned long Customize();
 	void UpdateFromURL(class AGameInfo* Game, struct FString* URL);
 	void BuildURL(struct FString* URL);
 	void AppendContextsToURL(struct FString* URL);
@@ -5508,42 +5508,42 @@ public:
 	void AppendDataBindingsToURL(struct FString* URL);
 	void GetQoSAdvertisedStringSettings(TArray<struct FLocalizedStringSetting>* QoSSettings);
 	void GetQoSAdvertisedProperties(TArray<struct FSettingsProperty>* QoSProps);
-	bool GetRangedPropertyValue(int PropertyId, float* OutValue);
-	bool SetRangedPropertyValue(int PropertyId, float NewValue);
-	bool GetPropertyRange(int PropertyId, float* OutMinValue, float* OutMaxValue, float* RangeIncrement, unsigned char* bFormatAsInt);
-	bool GetPropertyMappingType(int PropertyId, TEnumAsByte<EPropertyValueMappingType>* OutType);
-	bool HasStringSetting(int SettingId);
-	bool HasProperty(int PropertyId);
-	void UpdateProperties(bool bShouldAddIfMissing, TArray<struct FSettingsProperty>* Props);
-	void UpdateStringSettings(bool bShouldAddIfMissing, TArray<struct FLocalizedStringSetting>* Settings);
+	unsigned long GetRangedPropertyValue(int PropertyId, float* OutValue);
+	unsigned long SetRangedPropertyValue(int PropertyId, float NewValue);
+	unsigned long GetPropertyRange(int PropertyId, float* OutMinValue, float* OutMaxValue, float* RangeIncrement, unsigned char* bFormatAsInt);
+	unsigned long GetPropertyMappingType(int PropertyId, TEnumAsByte<EPropertyValueMappingType>* OutType);
+	unsigned long HasStringSetting(int SettingId);
+	unsigned long HasProperty(int PropertyId);
+	void UpdateProperties(unsigned long bShouldAddIfMissing, TArray<struct FSettingsProperty>* Props);
+	void UpdateStringSettings(unsigned long bShouldAddIfMissing, TArray<struct FLocalizedStringSetting>* Settings);
 	TEnumAsByte<ESettingsDataType> GetPropertyType(int PropertyId);
-	bool GetPropertyValueId(int PropertyId, int* ValueId);
-	bool SetPropertyValueId(int PropertyId, int ValueId);
-	bool GetStringProperty(int PropertyId, struct FString* Value);
+	unsigned long GetPropertyValueId(int PropertyId, int* ValueId);
+	unsigned long SetPropertyValueId(int PropertyId, int ValueId);
+	unsigned long GetStringProperty(int PropertyId, struct FString* Value);
 	void SetStringProperty(int PropertyId, const struct FString& Value);
-	bool GetIntProperty(int PropertyId, int* Value);
+	unsigned long GetIntProperty(int PropertyId, int* Value);
 	void SetIntProperty(int PropertyId, int Value);
-	bool GetFloatProperty(int PropertyId, float* Value);
+	unsigned long GetFloatProperty(int PropertyId, float* Value);
 	void SetFloatProperty(int PropertyId, float Value);
-	bool SetPropertyFromStringByName(const struct FName& PropertyName, struct FString* NewValue);
+	unsigned long SetPropertyFromStringByName(const struct FName& PropertyName, struct FString* NewValue);
 	struct FString GetPropertyAsStringByName(const struct FName& PropertyName);
 	struct FString GetPropertyAsString(int PropertyId);
 	struct FString GetPropertyColumnHeader(int PropertyId);
 	struct FName GetPropertyName(int PropertyId);
-	bool GetPropertyId(const struct FName& PropertyName, int* PropertyId);
-	bool SetStringSettingValueFromStringByName(const struct FName& StringSettingName, struct FString* NewValue);
+	unsigned long GetPropertyId(const struct FName& PropertyName, int* PropertyId);
+	unsigned long SetStringSettingValueFromStringByName(const struct FName& StringSettingName, struct FString* NewValue);
 	struct FName GetStringSettingValueNameByName(const struct FName& StringSettingName);
 	struct FName GetStringSettingValueName(int StringSettingId, int ValueIndex);
-	bool IsWildcardStringSetting(int StringSettingId);
+	unsigned long IsWildcardStringSetting(int StringSettingId);
 	struct FString GetStringSettingColumnHeader(int StringSettingId);
 	struct FName GetStringSettingName(int StringSettingId);
-	bool GetStringSettingId(const struct FName& StringSettingName, int* StringSettingId);
-	bool GetStringSettingValueByName(const struct FName& StringSettingName, int* ValueIndex);
-	void SetStringSettingValueByName(const struct FName& StringSettingName, int ValueIndex, bool bShouldAutoAdd);
-	bool GetStringSettingValueNames(int StringSettingId, TArray<struct FIdToStringMapping>* Values);
-	bool IncrementStringSettingValue(int StringSettingId, int Direction, bool bShouldWrap);
-	bool GetStringSettingValue(int StringSettingId, int* ValueIndex);
-	void SetStringSettingValue(int StringSettingId, int ValueIndex, bool bShouldAutoAdd);
+	unsigned long GetStringSettingId(const struct FName& StringSettingName, int* StringSettingId);
+	unsigned long GetStringSettingValueByName(const struct FName& StringSettingName, int* ValueIndex);
+	void SetStringSettingValueByName(const struct FName& StringSettingName, int ValueIndex, unsigned long bShouldAutoAdd);
+	unsigned long GetStringSettingValueNames(int StringSettingId, TArray<struct FIdToStringMapping>* Values);
+	unsigned long IncrementStringSettingValue(int StringSettingId, int Direction, unsigned long bShouldWrap);
+	unsigned long GetStringSettingValue(int StringSettingId, int* ValueIndex);
+	void SetStringSettingValue(int StringSettingId, int ValueIndex, unsigned long bShouldAutoAdd);
 	void STATIC_GetSettingsDataDateTime(struct FSettingsData* Data, int* OutInt1, int* OutInt2);
 	void STATIC_GetSettingsDataBlob(struct FSettingsData* Data, TArray<unsigned char>* OutBlob);
 	int STATIC_GetSettingsDataInt(struct FSettingsData* Data);
@@ -5644,12 +5644,12 @@ public:
 	}
 
 
-	void StopCameraAnim(class UCameraAnimInst* AnimInst, bool bImmediate);
-	void StopAllCameraAnimsByType(class UCameraAnim* Anim, bool bImmediate);
-	void StopAllCameraAnims(bool bImmediate);
-	class UCameraAnimInst* PlayCameraAnim(class UCameraAnim* Anim, float Rate, float Scale, float BlendInTime, float BlendOutTime, bool bLoop, bool bRandomStartTime, float Duration, bool bSingleInstance);
+	void StopCameraAnim(class UCameraAnimInst* AnimInst, unsigned long bImmediate);
+	void StopAllCameraAnimsByType(class UCameraAnim* Anim, unsigned long bImmediate);
+	void StopAllCameraAnims(unsigned long bImmediate);
+	class UCameraAnimInst* PlayCameraAnim(class UCameraAnim* Anim, float Rate, float Scale, float BlendInTime, float BlendOutTime, unsigned long bLoop, unsigned long bRandomStartTime, float Duration, unsigned long bSingleInstance);
 	void ClearAllCameraShakes();
-	void STATIC_PlayWorldCameraShake(class UCameraShake* Shake, class AActor* ShakeInstigator, const struct FVector& Epicenter, float InnerRadius, float OuterRadius, float Falloff, bool bTryForceFeedback, bool bOrientShakeTowardsEpicenter);
+	void STATIC_PlayWorldCameraShake(class UCameraShake* Shake, class AActor* ShakeInstigator, const struct FVector& Epicenter, float InnerRadius, float OuterRadius, float Falloff, unsigned long bTryForceFeedback, unsigned long bOrientShakeTowardsEpicenter);
 	float STATIC_CalcRadialShakeScale(class ACamera* Cam, const struct FVector& Epicenter, float InnerRadius, float OuterRadius, float Falloff);
 	void StopCameraShake(class UCameraShake* Shake);
 	void PlayCameraShake(class UCameraShake* Shake, float Scale, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
@@ -5658,7 +5658,7 @@ public:
 	void AddCameraLensEffect(class UClass* LensEffectEmitterClass);
 	class AEmitterCameraLensEffectBase* FindCameraLensEffect(class UClass* LensEffectEmitterClass);
 	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
-	bool AllowPawnRotation();
+	unsigned long AllowPawnRotation();
 	void ProcessViewRotation(float DeltaTime, struct FRotator* OutViewRotation, struct FRotator* OutDeltaRot);
 	void SetViewTarget(class AActor* NewViewTarget, const struct FViewTargetTransitionParams& TransitionParams);
 	void UpdateViewTarget(float DeltaTime, struct FTViewTarget* OutVT);
@@ -5815,7 +5815,7 @@ public:
 	void ClientExecMultiCastFunctionOnlyFloatParam(class AActor* act, const struct FName& FunctionName, float FloatParam);
 	void ClientExecMultiCastFunctionNoParams(class AActor* act, const struct FName& FunctionName);
 	void ClientExecMultiCastFunctionNoParams_Unreliable(class AActor* act, const struct FName& FunctionName);
-	void ClientExecMultiCastFunction(class AActor* act, const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ClientExecMultiCastFunction(class AActor* act, const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ToggleSpectator();
 	void SkippedMovie();
 	void LogOutBugItAIGoToLogFile(const struct FString& InScreenShotDesc, const struct FString& InGoString, const struct FString& InLocString);
@@ -5831,46 +5831,46 @@ public:
 	void OnSetSoundMode(class USeqAct_SetSoundMode* Action);
 	void ClientSpawnCameraLensEffect(class UClass* LensEffectEmitterClass);
 	void ClientStopCameraAnim(class UCameraAnim* AnimToStop);
-	void ClientPlayCameraAnim(class UCameraAnim* AnimToPlay, float Scale, float Rate, float BlendInTime, float BlendOutTime, bool bLoop, bool bRandomStartTime, TEnumAsByte<ECameraAnimPlaySpace> Space, const struct FRotator& CustomPlaySpace);
+	void ClientPlayCameraAnim(class UCameraAnim* AnimToPlay, float Scale, float Rate, float BlendInTime, float BlendOutTime, unsigned long bLoop, unsigned long bRandomStartTime, TEnumAsByte<ECameraAnimPlaySpace> Space, const struct FRotator& CustomPlaySpace);
 	void OnCameraShake(class USeqAct_CameraShake* inAction);
 	void ClientStopCameraShake(class UCameraShake* Shake);
-	void ClientPlayCameraShake(class UCameraShake* Shake, float Scale, bool bTryForceFeedback, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
+	void ClientPlayCameraShake(class UCameraShake* Shake, float Scale, unsigned long bTryForceFeedback, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
 	void DoForceFeedbackForScreenShake(class UCameraShake* ShakeData, float ShakeScale);
 	void InputMatchDelegate();
 	void Sentinel_PostAcquireTravelTheWorldPoints();
 	void Sentinel_PreAcquireTravelTheWorldPoints();
 	void Sentinel_SetupForGamebasedTravelTheWorld();
 	void OnFlyThroughHasEnded(class USeqAct_FlyThroughHasEnded* inAction);
-	bool GetAchievementProgression(int AchievementId, float* CurrentValue, float* MaxValue);
+	unsigned long GetAchievementProgression(int AchievementId, float* CurrentValue, float* MaxValue);
 	struct FString STATIC_GetPartyGameTypeName();
 	struct FString STATIC_GetPartyMapName();
-	bool IsPartyLeader();
-	void ClientPrestreamTextures(class AActor* ForcedActor, float ForceDuration, bool bEnableStreaming);
+	unsigned long IsPartyLeader();
+	void ClientPrestreamTextures(class AActor* ForcedActor, float ForceDuration, unsigned long bEnableStreaming);
 	void ClientSetForceMipLevelsToBeResident(class UMaterialInterface* Material, float ForceDuration);
 	void ClientControlMovieTexture(class UTextureMovie* MovieTexture, TEnumAsByte<EMovieControlType> Mode);
 	int GetSplitscreenPlayerCount();
 	class APlayerController* GetSplitscreenPlayerControllerByIndex(int PlayerIndex);
 	class APlayerReplicationInfo* GetSplitscreenPlayerByIndex(int PlayerIndex);
-	bool HasSplitscreenPlayer(class APlayerReplicationInfo* PRI);
-	bool IsSplitscreenPlayer(int* out_SplitscreenPlayerIndex);
-	bool IsPrimaryPlayer();
+	unsigned long HasSplitscreenPlayer(class APlayerReplicationInfo* PRI);
+	unsigned long IsSplitscreenPlayer(int* out_SplitscreenPlayerIndex);
+	unsigned long IsPrimaryPlayer();
 	void ClientReturnToParty(const struct FUniqueNetId& RequestingPlayerId);
-	void OnJoinTravelToSessionComplete(const struct FName& SessionName, bool bWasSuccessful);
+	void OnJoinTravelToSessionComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
 	void ClientTravelToSession(const struct FName& SessionName, class UClass* SearchClass, unsigned char PlatformSpecificInfo);
 	void PathClear();
 	void PathChild(int Cnt);
 	void PathStep(int Cnt);
 	void SoakPause(class APawn* P);
 	void IncrementNumberOfMatchesPlayed();
-	bool CanViewUserCreatedContent();
+	unsigned long CanViewUserCreatedContent();
 	void ClientEndOnlineGame();
 	void ClientStartOnlineGame();
 	void ServerRegisterClientStatGuid(const struct FString& StatGuid);
-	void OnRegisterHostStatGuidComplete(bool bWasSuccessful);
+	void OnRegisterHostStatGuidComplete(unsigned long bWasSuccessful);
 	void ClientRegisterHostStatGuid(const struct FString& StatGuid);
 	void RemoveAllDebugStrings();
 	void RemoveDebugText(class AActor* SrcActor);
-	void AddDebugText(const struct FString& DebugText, class AActor* SrcActor, float Duration, const struct FVector& Offset, const struct FVector& DesiredOffset, const struct FColor& TextColor, bool bSkipOverwriteCheck, bool bAbsoluteLocation);
+	void AddDebugText(const struct FString& DebugText, class AActor* SrcActor, float Duration, const struct FVector& Offset, const struct FVector& DesiredOffset, const struct FColor& TextColor, unsigned long bSkipOverwriteCheck, unsigned long bAbsoluteLocation);
 	void DrawDebugTextList(class UCanvas* Canvas, float RenderDelta);
 	void OnDestroy(class USeqAct_Destroy* Action);
 	void ClientStartNetworkedVoice();
@@ -5883,20 +5883,20 @@ public:
 	void NotifyNotEnoughSpaceInInvite();
 	void NotifyNotAllPlayersCanJoinInvite();
 	void NotifyInviteFailed();
-	void OnInviteJoinComplete(const struct FName& SessionName, bool bWasSuccessful);
-	void OnDestroyForInviteComplete(const struct FName& SessionName, bool bWasSuccessful);
-	void OnEndForInviteComplete(const struct FName& SessionName, bool bWasSuccessful);
+	void OnInviteJoinComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	void OnDestroyForInviteComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	void OnEndForInviteComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
 	void ClearInviteDelegates();
-	bool CanAllPlayersPlayOnline(bool checkPermissions);
-	bool InviteHasEnoughSpace(class UOnlineGameSettings* InviteSettings);
+	unsigned long CanAllPlayersPlayOnline(unsigned long checkPermissions);
+	unsigned long InviteHasEnoughSpace(class UOnlineGameSettings* InviteSettings);
 	void OnGameInviteAccepted(struct FOnlineGameSearchResult* InviteResult);
-	void ServerRegisteredForArbitration(bool bWasSuccessful);
-	void OnArbitrationRegisterComplete(const struct FName& SessionName, bool bWasSuccessful);
+	void ServerRegisteredForArbitration(unsigned long bWasSuccessful);
+	void OnArbitrationRegisterComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
 	void ClientRegisterForArbitration();
 	void ClientWasKicked();
-	bool IsShowingSubtitles();
-	void SetShowSubtitles(bool bValue);
-	void NotifyDirectorControl(bool bNowControlling);
+	unsigned long IsShowingSubtitles();
+	void SetShowSubtitles(unsigned long bValue);
+	void NotifyDirectorControl(unsigned long bNowControlling);
 	void ServerUnmutePlayer(const struct FUniqueNetId& PlayerNetId);
 	void RetryMuting();
 	void ServerMutePlayer(const struct FUniqueNetId& PlayerNetId);
@@ -5909,8 +5909,8 @@ public:
 	void ClientSetOnlineStatus();
 	void SeamlessTravelFrom(class APlayerController* OldPC);
 	void SeamlessTravelTo(class APlayerController* NewPC);
-	void GetSeamlessTravelActorList(bool bToEntry, TArray<class AActor*>* ActorList);
-	bool IsPlayerMuted(struct FUniqueNetId* Sender);
+	void GetSeamlessTravelActorList(unsigned long bToEntry, TArray<class AActor*>* ActorList);
+	unsigned long IsPlayerMuted(struct FUniqueNetId* Sender);
 	class UUIInteraction* GetUIController();
 	void SaveActorConfig(const struct FName& actorName);
 	void SaveClassConfig(const struct FString& ClassName);
@@ -5919,21 +5919,21 @@ public:
 	void ClientCancelPendingMapChange();
 	void ClientCommitMapChange();
 	void DelayedPrepareMapChange();
-	void ClientPrepareMapChange(const struct FName& LevelName, bool bFirst, bool bLast);
-	void ServerUpdateLevelVisibility(const struct FName& PackageName, bool bIsVisible);
-	void ClientUpdateLevelStreamingStatus(const struct FName& PackageName, bool bNewShouldBeLoaded, bool bNewShouldBeVisible, bool bNewShouldBlockOnLoad);
-	void LevelStreamingStatusChanged(class ULevelStreaming* LevelObject, bool bNewShouldBeLoaded, bool bNewShouldBeVisible, bool bNewShouldBlockOnLoad);
+	void ClientPrepareMapChange(const struct FName& LevelName, unsigned long bFirst, unsigned long bLast);
+	void ServerUpdateLevelVisibility(const struct FName& PackageName, unsigned long bIsVisible);
+	void ClientUpdateLevelStreamingStatus(const struct FName& PackageName, unsigned long bNewShouldBeLoaded, unsigned long bNewShouldBeVisible, unsigned long bNewShouldBlockOnLoad);
+	void LevelStreamingStatusChanged(class ULevelStreaming* LevelObject, unsigned long bNewShouldBeLoaded, unsigned long bNewShouldBeVisible, unsigned long bNewShouldBlockOnLoad);
 	void ClientForceGarbageCollection();
 	void OnConsoleCommand(class USeqAct_ConsoleCommand* inAction);
 	void ResetPlayerMovementInput();
-	bool IsLookInputIgnored();
-	void IgnoreLookInput(bool bNewLookInput);
-	bool IsMoveInputIgnored();
-	void IgnoreMoveInput(bool bNewMoveInput);
-	void ClientSetCinematicMode(bool bInCinematicMode, bool bAffectsMovement, bool bAffectsTurning, bool bAffectsHUD);
-	void SetCinematicMode(bool bInCinematicMode, bool bHidePlayer, bool bAffectsHUD, bool bAffectsMovement, bool bAffectsTurning, bool bAffectsButtons);
+	unsigned long IsLookInputIgnored();
+	void IgnoreLookInput(unsigned long bNewLookInput);
+	unsigned long IsMoveInputIgnored();
+	void IgnoreMoveInput(unsigned long bNewMoveInput);
+	void ClientSetCinematicMode(unsigned long bInCinematicMode, unsigned long bAffectsMovement, unsigned long bAffectsTurning, unsigned long bAffectsHUD);
+	void SetCinematicMode(unsigned long bInCinematicMode, unsigned long bHidePlayer, unsigned long bAffectsHUD, unsigned long bAffectsMovement, unsigned long bAffectsTurning, unsigned long bAffectsButtons);
 	void OnToggleCinematicMode(class USeqAct_ToggleCinematicMode* Action);
-	bool IsForceFeedbackAllowed();
+	unsigned long IsForceFeedbackAllowed();
 	void ClientStopForceFeedbackWaveform(class UForceFeedbackWaveform* FFWaveform);
 	void ClientPlayForceFeedbackWaveform(class UForceFeedbackWaveform* FFWaveform);
 	void PlayRumble(class UAnimNotify_Rumble* TheAnimNotify);
@@ -5952,17 +5952,17 @@ public:
 	void ClientDrawKismetText(const struct FKismetDrawTextInfo& DrawTextInfo, float DisplayTime);
 	void OnDrawText(class USeqAct_DrawText* inAction);
 	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
-	void ClientIgnoreLookInput(bool bIgnore);
-	void ClientIgnoreMoveInput(bool bIgnore);
+	void ClientIgnoreLookInput(unsigned long bIgnore);
+	void ClientIgnoreMoveInput(unsigned long bIgnore);
 	void OnToggleInput(class USeqAct_ToggleInput* inAction);
 	void DrawHUD(class AHUD* H);
-	bool CanRestartPlayer();
+	unsigned long CanRestartPlayer();
 	void ServerViewSelf(const struct FViewTargetTransitionParams& TransitionParams);
 	void ViewAPlayer(int Dir);
 	void ServerViewPrevPlayer();
 	void ServerViewNextPlayer();
 	void ServerSetSpectatorLocation(const struct FVector& NewLoc);
-	bool IsSpectating();
+	unsigned long IsSpectating();
 	void CheckJumpOrDuck();
 	void ClearDoubleClick();
 	struct FRotator LimitViewRotation(const struct FRotator& ViewRotation, float ViewPitchMin, float ViewPitchMax);
@@ -5976,27 +5976,27 @@ public:
 	void ClientSetViewTarget(class AActor* A, const struct FViewTargetTransitionParams& TransitionParams);
 	void SetViewTargetWithBlend(class AActor* NewViewTarget, float BlendTime, TEnumAsByte<EViewTargetBlendFunction> BlendFunc, float BlendExp);
 	void SetViewTarget(class AActor* NewViewTarget, const struct FViewTargetTransitionParams& TransitionParams);
-	bool IsLocalPlayerController();
+	unsigned long IsLocalPlayerController();
 	float GetFOVAngle();
 	void AdjustFOV(float DeltaTime);
-	bool NotifyLanded(const struct FVector& HitNormal, class AActor* FloorActor);
-	float AimHelpDot(bool bInstantHit);
+	unsigned long NotifyLanded(const struct FVector& HitNormal, class AActor* FloorActor);
+	float AimHelpDot(unsigned long bInstantHit);
 	struct FRotator GetAdjustedAimFor(class AWeapon* W, const struct FVector& StartFireLoc);
 	void CameraLookAtFinished(class USeqAct_CameraLookAt* Action);
-	bool AimingHelp(bool bInstantHit);
+	unsigned long AimingHelp(unsigned long bInstantHit);
 	void PlayerMove(float DeltaTime);
 	void PlayerTick(float DeltaTime);
 	void NotifyChangedWeapon(class AWeapon* PreviousWeapon, class AWeapon* NewWeapon);
-	void ClientGameEnded(class AActor* EndGameFocus, bool bIsWinner);
-	void GameHasEnded(class AActor* EndGameFocus, bool bIsWinner);
+	void ClientGameEnded(class AActor* EndGameFocus, unsigned long bIsWinner);
+	void GameHasEnded(class AActor* EndGameFocus, unsigned long bIsWinner);
 	void ClientRestart(class APawn* NewPawn);
 	void EnterStartState();
 	void ForceSingleNetUpdateFor(class AActor* Target);
-	bool HasClientLoadedCurrentWorld();
-	void NotifyLoadedWorld(const struct FName& WorldPackageName, bool bFinalDest);
+	unsigned long HasClientLoadedCurrentWorld();
+	void NotifyLoadedWorld(const struct FName& WorldPackageName, unsigned long bFinalDest);
 	void ServerNotifyLoadedWorld(const struct FName& WorldPackageName);
-	void Restart(bool bVehicleTransition);
-	void ClientSetProgressMessage(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title, bool bIgnoreFutureNetworkMessages);
+	void Restart(unsigned long bVehicleTransition);
+	void ClientSetProgressMessage(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title, unsigned long bIgnoreFutureNetworkMessages);
 	void SwitchLevel(const struct FString& URL);
 	void ServerChangeTeam(int N);
 	void ChangeTeam(const struct FString& TeamName);
@@ -6005,12 +6005,12 @@ public:
 	void SetName(const struct FString& S);
 	void ServerSuicide();
 	void Suicide();
-	bool TriggerInteracted();
-	bool FindVehicleToDrive();
-	bool PerformedUseAction();
+	unsigned long TriggerInteracted();
+	unsigned long FindVehicleToDrive();
+	unsigned long PerformedUseAction();
 	void ServerUse();
 	void Use();
-	void GetTriggerUseList(float interactDistanceToCheck, float crosshairDist, float MinDot, bool bUsuableOnly, TArray<class ATrigger*>* out_useList);
+	void GetTriggerUseList(float interactDistanceToCheck, float crosshairDist, float MinDot, unsigned long bUsuableOnly, TArray<class ATrigger*>* out_useList);
 	void StopAltFire(unsigned char FireModeNum);
 	void StartAltFire(unsigned char FireModeNum);
 	void StopFire(unsigned char FireModeNum);
@@ -6021,14 +6021,14 @@ public:
 	void ThrowWeapon();
 	void UTrace();
 	void ServerUTrace();
-	void ConditionalPause(bool bDesiredPauseState);
+	void ConditionalPause(unsigned long bDesiredPauseState);
 	void ShowMenu();
 	void ServerPause();
-	void Pause(bool bForce);
-	bool IsPaused();
-	bool SetPause(bool bPause, const struct FScriptDelegate& CanUnpauseDelegate, bool bForcePause);
-	bool CanUnpause();
-	void PauseRumbleForAllPlayers(bool bShouldPauseRumble);
+	void Pause(unsigned long bForce);
+	unsigned long IsPaused();
+	unsigned long SetPause(unsigned long bPause, const struct FScriptDelegate& CanUnpauseDelegate, unsigned long bForcePause);
+	unsigned long CanUnpause();
+	void PauseRumbleForAllPlayers(unsigned long bShouldPauseRumble);
 	void QuickLoad();
 	void QuickSave();
 	void LocalTravel(const struct FString& URL);
@@ -6056,28 +6056,28 @@ public:
 	void VeryShortClientAdjustPosition(float TimeStamp, float NewLocX, float NewLocY, float NewLocZ, class AActor* NewBase);
 	void MoveAutonomous(float DeltaTime, unsigned char CompressedFlags, const struct FVector& newAccel, const struct FRotator& DeltaRot);
 	void ProcessMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot);
-	void ProcessDrive(float InForward, float InStrafe, float InUp, bool InJump);
-	void ServerDrive(float InForward, float InStrafe, float aUp, bool InJump, int View);
+	void ProcessDrive(float InForward, float InStrafe, float InUp, unsigned long InJump);
+	void ServerDrive(float InForward, float InStrafe, float aUp, unsigned long InJump, int View);
 	void SendClientAdjustment();
 	void ServerMove(float TimeStamp, const struct FVector& InAccel, const struct FVector& ClientLoc, unsigned char MoveFlags, unsigned char ClientRoll, int View);
 	void OldServerMove(float OldTimeStamp, unsigned char OldAccelX, unsigned char OldAccelY, unsigned char OldAccelZ, unsigned char OldMoveFlags);
 	void DualServerMove(float TimeStamp0, const struct FVector& InAccel0, unsigned char PendingFlags, int View0, float TimeStamp, const struct FVector& InAccel, const struct FVector& ClientLoc, unsigned char NewFlags, unsigned char ClientRoll, int View);
 	void ForceDeathUpdate();
 	void ClientVoiceMessage(class APlayerReplicationInfo* Sender, class APlayerReplicationInfo* Recipient, const struct FName& MessageType, unsigned char messageID);
-	bool UsingFirstPersonCamera();
-	void ClientSetCameraFade(bool bEnableFading, const struct FColor& FadeColor, const struct FVector2D& FadeAlpha, float FadeTime);
+	unsigned long UsingFirstPersonCamera();
+	void ClientSetCameraFade(unsigned long bEnableFading, const struct FColor& FadeColor, const struct FVector2D& FadeAlpha, float FadeTime);
 	void ResetCameraMode();
 	void SetCameraMode(const struct FName& NewCamMode);
 	void ClientSetCameraMode(const struct FName& NewCamMode);
 	void ServerCamera(const struct FName& NewMode);
 	void Camera(const struct FName& NewMode);
-	void PreClientTravel(const struct FString& PendingURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel);
+	void PreClientTravel(const struct FString& PendingURL, TEnumAsByte<ETravelType> TravelType, unsigned long bIsSeamlessTravel);
 	void ServerTeamSay(const struct FString& msg);
 	void TeamSay(const struct FString& msg);
 	void ClientAdminMessage(const struct FString& msg);
 	void ServerSay(const struct FString& msg);
 	void Say(const struct FString& msg);
-	bool AllowTextMessage(const struct FString& msg);
+	unsigned long AllowTextMessage(const struct FString& msg);
 	void ServerMutate(const struct FString& MutateString);
 	void Mutate(const struct FString& MutateString);
 	void FOV(float F);
@@ -6094,15 +6094,15 @@ public:
 	void TeamTalk();
 	void Talk();
 	class USoundCue* CreateTTSSoundCue(const struct FString& StrToSpeak, class APlayerReplicationInfo* PRI);
-	bool AllowTTSMessageFrom(class APlayerReplicationInfo* PRI);
-	bool CanCommunicate();
+	unsigned long AllowTTSMessageFrom(class APlayerReplicationInfo* PRI);
+	unsigned long CanCommunicate();
 	void ClientMessage(const struct FString& S, const struct FName& Type, float MsgLifeTime);
 	void ClientPlayActorFaceFXAnim(class AActor* SourceActor, class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay);
 	void Kismet_ClientStopSound(class USoundCue* ASound, class AActor* SourceActor, float FadeOutTime);
-	void Kismet_ClientPlaySound(class USoundCue* ASound, class AActor* SourceActor, float VolumeMultiplier, float PitchMultiplier, float FadeInTime, bool bSuppressSubtitles, bool bSuppressSpatialization);
-	bool IsClosestLocalPlayerToActor(class AActor* TheActor);
-	void ClientHearSound(class USoundCue* ASound, class AActor* SourceActor, const struct FVector& SourceLocation, bool bStopWhenOwnerDestroyed, bool bIsOccluded);
-	class UAudioComponent* GetPooledAudioComponent(class USoundCue* ASound, class AActor* SourceActor, bool bStopWhenOwnerDestroyed, bool bUseLocation, const struct FVector& SourceLocation);
+	void Kismet_ClientPlaySound(class USoundCue* ASound, class AActor* SourceActor, float VolumeMultiplier, float PitchMultiplier, float FadeInTime, unsigned long bSuppressSubtitles, unsigned long bSuppressSpatialization);
+	unsigned long IsClosestLocalPlayerToActor(class AActor* TheActor);
+	void ClientHearSound(class USoundCue* ASound, class AActor* SourceActor, const struct FVector& SourceLocation, unsigned long bStopWhenOwnerDestroyed, unsigned long bIsOccluded);
+	class UAudioComponent* GetPooledAudioComponent(class USoundCue* ASound, class AActor* SourceActor, unsigned long bStopWhenOwnerDestroyed, unsigned long bUseLocation, const struct FVector& SourceLocation);
 	void HearSoundFinished(class UAudioComponent* AC);
 	void ClientPlaySound(class USoundCue* ASound);
 	void ReceiveLocalizedMessage(class UClass* Message, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
@@ -6113,17 +6113,17 @@ public:
 	void UnPossess();
 	void ServerAcknowledgePossession(class APawn* P);
 	void AcknowledgePossession(class APawn* P);
-	void Possess(class APawn* aPawn, bool bVehicleTransition);
+	void Possess(class APawn* aPawn, unsigned long bVehicleTransition);
 	void GivePawn(class APawn* NewPawn);
 	void AskForPawn();
 	void ClientGotoState(const struct FName& NewState, const struct FName& NewLabel);
-	bool IsMouseAvailable();
-	bool IsKeyboardAvailable();
-	void SetUseTiltForwardAndBack(bool bActive);
-	void SetOnlyUseControllerTiltInput(bool bActive);
-	void SetControllerTiltActive(bool bActive);
-	void SetControllerTiltDesiredIfAvailable(bool bActive);
-	bool IsControllerTiltActive();
+	unsigned long IsMouseAvailable();
+	unsigned long IsKeyboardAvailable();
+	void SetUseTiltForwardAndBack(unsigned long bActive);
+	void SetOnlyUseControllerTiltInput(unsigned long bActive);
+	void SetControllerTiltActive(unsigned long bActive);
+	void SetControllerTiltDesiredIfAvailable(unsigned long bActive);
+	unsigned long IsControllerTiltActive();
 	float GetRumbleScale();
 	void SetRumbleScale(float ScaleBy);
 	void ReloadProfileSettings();
@@ -6152,30 +6152,30 @@ public:
 	void ReceivedPlayer();
 	void PostBeginPlay();
 	class ACoverReplicator* SpawnCoverReplicator();
-	bool CanUnpauseControllerConnected();
-	void OnControllerChanged(int ControllerId, bool bIsConnected);
-	bool CanUnpauseExternalUI();
-	void OnExternalUIChanged(bool bIsOpening);
+	unsigned long CanUnpauseControllerConnected();
+	void OnControllerChanged(int ControllerId, unsigned long bIsConnected);
+	unsigned long CanUnpauseExternalUI();
+	void OnExternalUIChanged(unsigned long bIsOpening);
 	void ForceClearUnpauseDelegates();
 	void FellOutOfWorld(class UClass* dmgType);
 	void CleanUpAudioComponents();
 	int FindStairRotation(float DeltaTime);
-	bool CheckSpeedHack(float DeltaTime);
+	unsigned long CheckSpeedHack(float DeltaTime);
 	void ServerProcessConvolve(const struct FString& C, int H);
 	void ClientConvolve(const struct FString& C, int H);
 	void SetAudioGroupVolume(const struct FName& GroupName, float Volume);
-	void SetAllowMatureLanguage(bool bAllowMatureLanguge);
+	void SetAllowMatureLanguage(unsigned long bAllowMatureLanguge);
 	struct FString PasteFromClipboard();
 	void CopyToClipboard(const struct FString& Text);
 	struct FString GetDefaultURL(const struct FString& Option);
-	void UpdateURL(const struct FString& NewOption, const struct FString& NewValue, bool bSave1Default);
-	void ClientTravel(const struct FString& URL, TEnumAsByte<ETravelType> TravelType, bool bSeamless, const struct FGuid& MapPackageGuid);
-	bool IsPositionRelevant(const struct FVector& Position, float Range, bool includeAllChildConnections);
-	struct FString ConsoleCommand(const struct FString& Command, bool bWriteToLog);
+	void UpdateURL(const struct FString& NewOption, const struct FString& NewValue, unsigned long bSave1Default);
+	void ClientTravel(const struct FString& URL, TEnumAsByte<ETravelType> TravelType, unsigned long bSeamless, const struct FGuid& MapPackageGuid);
+	unsigned long IsPositionRelevant(const struct FVector& Position, float Range, unsigned long includeAllChildConnections);
+	struct FString ConsoleCommand(const struct FString& Command, unsigned long bWriteToLog);
 	struct FString GetServerNetworkAddress();
 	struct FString GetPlayerNetworkAddress();
 	void SetNetSpeed(int NewSpeed);
-	void ClientDrawCoordinateSystem(const struct FVector& AxisLoc, const struct FRotator& AxisRot, float Scale, bool bPersistentLines);
+	void ClientDrawCoordinateSystem(const struct FVector& AxisLoc, const struct FRotator& AxisRot, float Scale, unsigned long bPersistentLines);
 };
 
 
@@ -6194,11 +6194,11 @@ public:
 	}
 
 
-	void LogParticleActivateSystemCalls(bool bShouldLog);
-	void LogPlaySoundCalls(bool bShouldLog);
+	void LogParticleActivateSystemCalls(unsigned long bShouldLog);
+	void LogPlaySoundCalls(unsigned long bShouldLog);
 	void InitCheatManager();
 	void VerbosePathDebug();
-	void TestNavMeshPath(bool bDrawPath);
+	void TestNavMeshPath(unsigned long bDrawPath);
 	void SetOnlineDebugLevel(int DebugLevel);
 	void TestLevel();
 	void EnableDebugCamera();
@@ -6206,7 +6206,7 @@ public:
 	void StreamLevelOut(const struct FName& PackageName);
 	void OnlyLoadLevel(const struct FName& PackageName);
 	void StreamLevelIn(const struct FName& PackageName);
-	void SetLevelStreamingStatus(const struct FName& PackageName, bool bShouldBeLoaded, bool bShouldBeVisible);
+	void SetLevelStreamingStatus(const struct FName& PackageName, unsigned long bShouldBeLoaded, unsigned long bShouldBeVisible);
 	void AllWeapons();
 	void Loaded();
 	void ViewClass(class UClass* aClass);
@@ -6214,7 +6214,7 @@ public:
 	void ViewFlag();
 	void ViewActor(const struct FName& actorName);
 	void ViewPlayer(const struct FString& S);
-	void ViewSelf(bool bQuiet);
+	void ViewSelf(unsigned long bQuiet);
 	void RememberSpot();
 	void FractureAllMeshesToMaximizeMemoryUsage();
 	void FractureAllMeshes();
@@ -6454,12 +6454,12 @@ public:
 	}
 
 
-	bool IsEmpty();
+	unsigned long IsEmpty();
 	void Clear();
 	void ToArray(TArray<int>* OutValues);
-	bool GetKeyByValue(int InValue, int* OutKey);
-	bool Get(int InKey, int* OutValue);
-	bool Remove(int InKey);
+	unsigned long GetKeyByValue(int InValue, int* OutKey);
+	unsigned long Get(int InKey, int* OutValue);
+	unsigned long Remove(int InKey);
 	void Add(int InKey, int InValue);
 };
 
@@ -6843,7 +6843,7 @@ public:
 	}
 
 
-	void PauseWaveform(bool bPause);
+	void PauseWaveform(unsigned long bPause);
 	void StopForceFeedbackWaveform(class UForceFeedbackWaveform* WaveForm);
 	void PlayForceFeedbackWaveform(class UForceFeedbackWaveform* WaveForm);
 };
@@ -6894,7 +6894,7 @@ public:
 
 	struct FString GetFilename();
 	void CloseStatsFile();
-	bool OpenStatsFile(const struct FString& Filename);
+	unsigned long OpenStatsFile(const struct FString& Filename);
 };
 
 
@@ -6919,13 +6919,13 @@ public:
 	int GetPlatform();
 	int GetTitleID();
 	struct FString GetSessionID();
-	bool IsEventFiltered(int EventID);
+	unsigned long IsEventFiltered(int EventID);
 	void RemoveFilter(int EventID);
 	void AddFilter(int EventID);
 	void ProcessStream();
-	bool SerializeHeader();
+	unsigned long SerializeHeader();
 	void CloseStatsFile();
-	bool OpenStatsFile(const struct FString& Filename);
+	unsigned long OpenStatsFile(const struct FString& Filename);
 };
 
 
@@ -6950,7 +6950,7 @@ public:
 	void LogPlayerPlayerEvent(int EventID, class AController* Player, class AController* Target);
 	void LogPlayerKillDeath(int EventID, int KillType, class AController* Killer, class UClass* dmgType, class AController* Dead);
 	void LogAllPlayerPositionsEvent(int EventID);
-	void LogPlayerLoginChange(int EventID, class AController* Player, const struct FString& PlayerName, const struct FUniqueNetId& PlayerID, bool bSplitScreen);
+	void LogPlayerLoginChange(int EventID, class AController* Player, const struct FString& PlayerName, const struct FUniqueNetId& PlayerID, unsigned long bSplitScreen);
 	void LogPlayerSpawnEvent(int EventID, class AController* Player, class UClass* PawnClass, int TeamID);
 	void LogPlayerStringEvent(int EventID, class AController* Player, const struct FString& EventString);
 	void LogPlayerFloatEvent(int EventID, class AController* Player, float Value);
@@ -6959,11 +6959,11 @@ public:
 	void LogGameStringEvent(int EventID, const struct FString& Value);
 	void LogGameIntEvent(int EventID, int Value);
 	void Poll();
-	bool SerializeFooter();
-	bool SerializeHeader();
+	unsigned long SerializeFooter();
+	unsigned long SerializeHeader();
 	void CloseStatsFile();
-	bool OpenStatsFile(const struct FString& Filename);
-	bool IsSessionInProgress();
+	unsigned long OpenStatsFile(const struct FString& Filename);
+	unsigned long IsSessionInProgress();
 	void EndLogging();
 	void StartLogging(float HeartbeatDelta);
 };
@@ -7018,7 +7018,7 @@ public:
 	void ClearProgressMessages();
 	void SetProgressTime(float T);
 	void NotifyConnectionError(const struct FString& Message, const struct FString& Title);
-	void SetProgressMessage(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title, bool bIgnoreFutureNetworkMessages);
+	void SetProgressMessage(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title, unsigned long bIgnoreFutureNetworkMessages);
 	void NotifyDownloadProgress(const struct FString& Message, const struct FString& Title);
 	int RemoveLocalPlayer(class ULocalPlayer* ExistingPlayer);
 	int AddLocalPlayer(class ULocalPlayer* NewPlayer);
@@ -7030,16 +7030,16 @@ public:
 	void PostRender(class UCanvas* Canvas);
 	void DrawTitleSafeArea(class UCanvas* Canvas);
 	void Tick(float DeltaTime);
-	void CalculatePixelCenter(class ULocalPlayer* LPlayer, class UCanvas* Canvas, bool bUseMaxPercent, float* out_CenterX, float* out_CenterY);
-	bool CalculateDeadZoneForAllSides(class ULocalPlayer* LPlayer, class UCanvas* Canvas, bool bUseMaxPercent, float* fTopSafeZone, float* fBottomSafeZone, float* fLeftSafeZone, float* fRightSafeZone);
-	float CalculateDeadZone(class ULocalPlayer* LPlayer, TEnumAsByte<ESafeZoneType> SZType, class UCanvas* Canvas, bool bUseMaxPercent);
-	void CalculateSafeZoneValues(class UCanvas* Canvas, int LocalPlayerIndex, bool bUseMaxPercent, float* out_Horizontal, float* out_Vertical);
+	void CalculatePixelCenter(class ULocalPlayer* LPlayer, class UCanvas* Canvas, unsigned long bUseMaxPercent, float* out_CenterX, float* out_CenterY);
+	unsigned long CalculateDeadZoneForAllSides(class ULocalPlayer* LPlayer, class UCanvas* Canvas, unsigned long bUseMaxPercent, float* fTopSafeZone, float* fBottomSafeZone, float* fLeftSafeZone, float* fRightSafeZone);
+	float CalculateDeadZone(class ULocalPlayer* LPlayer, TEnumAsByte<ESafeZoneType> SZType, class UCanvas* Canvas, unsigned long bUseMaxPercent);
+	void CalculateSafeZoneValues(class UCanvas* Canvas, int LocalPlayerIndex, unsigned long bUseMaxPercent, float* out_Horizontal, float* out_Vertical);
 	void GetScreenSizeForPlayer(class ULocalPlayer* InPlayer, float* out_Width, float* out_Height);
 	void GetPixelSizeOfScreen(float SizeX, float SizeY, int LocalPlayerIndex, float* out_Width, float* out_Height);
-	bool HasRightSafeZone(int LocalPlayerIndex);
-	bool HasLeftSafeZone(int LocalPlayerIndex);
-	bool HasBottomSafeZone(int LocalPlayerIndex);
-	bool HasTopSafeZone(int LocalPlayerIndex);
+	unsigned long HasRightSafeZone(int LocalPlayerIndex);
+	unsigned long HasLeftSafeZone(int LocalPlayerIndex);
+	unsigned long HasBottomSafeZone(int LocalPlayerIndex);
+	unsigned long HasTopSafeZone(int LocalPlayerIndex);
 	int ConvertLocalPlayerToGamePlayerIndex(class ULocalPlayer* LPlayer);
 	void GetSubtitleRegion(struct FVector2D* MinPos, struct FVector2D* MaxPos);
 	void LayoutPlayers();
@@ -7048,23 +7048,23 @@ public:
 	void SetSplitscreenConfiguration(TEnumAsByte<ESplitScreenType> SplitType);
 	void GameSessionEnded();
 	int InsertInteraction(class UInteraction* NewInteraction, int InIndex);
-	bool CreateInitialPlayer(struct FString* OutError, int* InitialController);
-	bool Init(struct FString* OutError);
+	unsigned long CreateInitialPlayer(struct FString* OutError, int* InitialController);
+	unsigned long Init(struct FString* OutError);
 	class ULocalPlayer* FindPlayerByControllerId(int ControllerId);
-	bool RemovePlayer(class ULocalPlayer* ExPlayer, bool justRemove, bool forceQuitToMainMenu, bool bIgnoreGuests);
-	class ULocalPlayer* CreatePlayer(int ControllerId, bool bSpawnActor, struct FString* OutError);
+	unsigned long RemovePlayer(class ULocalPlayer* ExPlayer, unsigned long justRemove, unsigned long forceQuitToMainMenu, unsigned long bIgnoreGuests);
+	class ULocalPlayer* CreatePlayer(int ControllerId, unsigned long bSpawnActor, struct FString* OutError);
 	void EditBoxFocused(class UUIEditBox* focusedEditBox, int PlayerIndex);
 	void TrackUp(int TrackIndex, int xCoord, int yCoord);
 	void TrackMove(int TrackIndex, int xCoord, int yCoord);
-	bool TrackDown(int TrackIndex, int xCoord, int yCoord);
-	bool IsConsolePointerAvailable(int ControllerId);
-	bool ShouldForceFullscreenViewport();
-	bool IsFullScreenViewport();
+	unsigned long TrackDown(int TrackIndex, int xCoord, int yCoord);
+	unsigned long IsConsolePointerAvailable(int ControllerId);
+	unsigned long ShouldForceFullscreenViewport();
+	unsigned long IsFullScreenViewport();
 	void GetViewportSize(struct FVector2D* out_ViewportSize);
 	struct FString ConsoleCommand(const struct FString& Command);
-	bool HandleInputChar(int ControllerId, const struct FString& Unicode);
-	bool HandleInputAxis(int ControllerId, const struct FName& Key, float Delta, float DeltaTime, bool bGamepad);
-	bool HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad);
+	unsigned long HandleInputChar(int ControllerId, const struct FString& Unicode);
+	unsigned long HandleInputAxis(int ControllerId, const struct FName& Key, float Delta, float DeltaTime, unsigned long bGamepad);
+	unsigned long HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, unsigned long bGamepad);
 };
 
 
@@ -7105,10 +7105,10 @@ public:
 	void AddReadFileDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
 	void AddFileToDownload(const struct FString& Filename);
 	void ProcessIniLocFile(const struct FString& Filename, TArray<unsigned char>* FileData);
-	void OnReadFileComplete(bool bWasSuccessful, const struct FString& Filename);
+	void OnReadFileComplete(unsigned long bWasSuccessful, const struct FString& Filename);
 	void DownloadFiles();
 	void Init();
-	void OnReadTitleFileComplete(bool bWasSuccessful, const struct FString& Filename);
+	void OnReadTitleFileComplete(unsigned long bWasSuccessful, const struct FString& Filename);
 };
 
 
@@ -7449,7 +7449,7 @@ public:
 	}
 
 
-	bool AllowConsole();
+	unsigned long AllowConsole();
 	void ApplyNavigationMeshChanges();
 };
 
@@ -7492,13 +7492,13 @@ public:
 	}
 
 
-	void SetForceMipLevelsToBeResident(bool OverrideForceMiplevelsToBeResident, bool bForceMiplevelsToBeResidentValue, float ForceDuration);
-	bool GetVectorCurveParameterValue(const struct FName& ParameterName, struct FInterpCurveVector* OutValue);
-	bool GetVectorParameterValue(const struct FName& ParameterName, struct FLinearColor* OutValue);
-	bool GetTextureParameterValue(const struct FName& ParameterName, class UTexture** OutValue);
-	bool GetScalarCurveParameterValue(const struct FName& ParameterName, struct FInterpCurveFloat* OutValue);
-	bool GetScalarParameterValue(const struct FName& ParameterName, float* OutValue);
-	bool GetFontParameterValue(const struct FName& ParameterName, class UFont** OutFontValue, int* OutFontPage);
+	void SetForceMipLevelsToBeResident(unsigned long OverrideForceMiplevelsToBeResident, unsigned long bForceMiplevelsToBeResidentValue, float ForceDuration);
+	unsigned long GetVectorCurveParameterValue(const struct FName& ParameterName, struct FInterpCurveVector* OutValue);
+	unsigned long GetVectorParameterValue(const struct FName& ParameterName, struct FLinearColor* OutValue);
+	unsigned long GetTextureParameterValue(const struct FName& ParameterName, class UTexture** OutValue);
+	unsigned long GetScalarCurveParameterValue(const struct FName& ParameterName, struct FInterpCurveFloat* OutValue);
+	unsigned long GetScalarParameterValue(const struct FName& ParameterName, float* OutValue);
+	unsigned long GetFontParameterValue(const struct FName& ParameterName, class UFont** OutFontValue, int* OutFontPage);
 	class UPhysicalMaterial* GetPhysicalMaterial();
 	class UMaterial* GetMaterial();
 };
@@ -7652,12 +7652,12 @@ public:
 	}
 
 
-	bool IsEmpty();
+	unsigned long IsEmpty();
 	void Clear();
 	void ToArray(TArray<int>* OutValues);
-	bool GetKeyByValue(int InValue, struct FName* OutKey);
-	bool Get(const struct FName& InKey, int* OutValue);
-	bool Remove(const struct FName& InKey);
+	unsigned long GetKeyByValue(int InValue, struct FName* OutKey);
+	unsigned long Get(const struct FName& InKey, int* OutValue);
+	unsigned long Remove(const struct FName& InKey);
 	void Add(const struct FName& InKey, int InValue);
 };
 
@@ -7796,30 +7796,30 @@ public:
 	void SetToDefaults();
 	void AddSettingFloat(int SettingId);
 	void AddSettingInt(int SettingId);
-	bool GetRangedProfileSettingValue(int ProfileId, float* OutValue);
-	bool SetRangedProfileSettingValue(int ProfileId, float NewValue);
-	bool GetProfileSettingRange(int ProfileId, float* OutMinValue, float* OutMaxValue, float* RangeIncrement, unsigned char* bFormatAsInt);
-	bool STATIC_GetProfileSettingMappingIds(int ProfileId, TArray<int>* IDs);
-	bool GetProfileSettingMappingType(int ProfileId, TEnumAsByte<EPropertyValueMappingType>* OutType);
-	bool SetProfileSettingValueFloat(int ProfileSettingId, float Value);
-	bool SetProfileSettingValueInt(int ProfileSettingId, int Value);
-	bool SetProfileSettingValueId(int ProfileSettingId, int Value);
-	bool GetProfileSettingValueFloat(int ProfileSettingId, float* Value);
-	bool GetProfileSettingValueInt(int ProfileSettingId, int* Value);
-	bool GetProfileSettingValueId(int ProfileSettingId, int* ValueId, int* ListIndex);
-	bool SetProfileSettingValue(int ProfileSettingId, struct FString* NewValue);
-	bool SetProfileSettingValueByName(const struct FName& ProfileSettingName, struct FString* NewValue);
-	bool GetProfileSettingValueByName(const struct FName& ProfileSettingName, struct FString* Value);
-	bool GetProfileSettingValues(int ProfileSettingId, TArray<struct FName>* Values);
+	unsigned long GetRangedProfileSettingValue(int ProfileId, float* OutValue);
+	unsigned long SetRangedProfileSettingValue(int ProfileId, float NewValue);
+	unsigned long GetProfileSettingRange(int ProfileId, float* OutMinValue, float* OutMaxValue, float* RangeIncrement, unsigned char* bFormatAsInt);
+	unsigned long STATIC_GetProfileSettingMappingIds(int ProfileId, TArray<int>* IDs);
+	unsigned long GetProfileSettingMappingType(int ProfileId, TEnumAsByte<EPropertyValueMappingType>* OutType);
+	unsigned long SetProfileSettingValueFloat(int ProfileSettingId, float Value);
+	unsigned long SetProfileSettingValueInt(int ProfileSettingId, int Value);
+	unsigned long SetProfileSettingValueId(int ProfileSettingId, int Value);
+	unsigned long GetProfileSettingValueFloat(int ProfileSettingId, float* Value);
+	unsigned long GetProfileSettingValueInt(int ProfileSettingId, int* Value);
+	unsigned long GetProfileSettingValueId(int ProfileSettingId, int* ValueId, int* ListIndex);
+	unsigned long SetProfileSettingValue(int ProfileSettingId, struct FString* NewValue);
+	unsigned long SetProfileSettingValueByName(const struct FName& ProfileSettingName, struct FString* NewValue);
+	unsigned long GetProfileSettingValueByName(const struct FName& ProfileSettingName, struct FString* Value);
+	unsigned long GetProfileSettingValues(int ProfileSettingId, TArray<struct FName>* Values);
 	struct FName GetProfileSettingValueName(int ProfileSettingId);
-	bool GetProfileSettingValue(int ProfileSettingId, int ValueMapID, struct FString* Value);
-	bool IsProfileSettingIdMapped(int ProfileSettingId);
+	unsigned long GetProfileSettingValue(int ProfileSettingId, int ValueMapID, struct FString* Value);
+	unsigned long IsProfileSettingIdMapped(int ProfileSettingId);
 	int FindProfileMappingIndexByName(const struct FName& ProfileSettingName);
 	int FindProfileMappingIndex(int ProfileSettingId);
 	int FindProfileSettingIndex(int ProfileSettingId);
 	struct FString GetProfileSettingColumnHeader(int ProfileSettingId);
 	struct FName GetProfileSettingName(int ProfileSettingId);
-	bool GetProfileSettingId(const struct FName& ProfileSettingName, int* ProfileSettingId);
+	unsigned long GetProfileSettingId(const struct FName& ProfileSettingName, int* ProfileSettingId);
 	void NotifySettingValueUpdated(const struct FName& SettingName);
 };
 
@@ -7846,9 +7846,9 @@ public:
 	void AppendVersionToSettings();
 	void AppendVersionToReadIds();
 	void SetToDefaults();
-	bool GetProfileSettingDefaultFloat(int ProfileSettingId, float* DefaultFloat);
-	bool GetProfileSettingDefaultInt(int ProfileSettingId, int* DefaultInt);
-	bool GetProfileSettingDefaultId(int ProfileSettingId, int* DefaultId, int* ListIndex);
+	unsigned long GetProfileSettingDefaultFloat(int ProfileSettingId, float* DefaultFloat);
+	unsigned long GetProfileSettingDefaultInt(int ProfileSettingId, int* DefaultInt);
+	unsigned long GetProfileSettingDefaultId(int ProfileSettingId, int* DefaultId, int* ListIndex);
 };
 
 
@@ -7875,10 +7875,10 @@ public:
 	void Reset();
 	void GetContentIdsFromPlaylist(int PlaylistId, TArray<int>* ContentIds);
 	void GetTeamInfoFromPlaylist(int PlaylistId, int* TeamSize, int* TeamCount);
-	bool HasAnyGameSettings(int PlaylistId);
+	unsigned long HasAnyGameSettings(int PlaylistId);
 	class UOnlineGameSettings* GetGameSettings(int PlaylistId, int GameSettingsId);
 	void FinalizePlaylistObjects();
-	void OnReadTitleFileComplete(bool bWasSuccessful, const struct FString& Filename);
+	void OnReadTitleFileComplete(unsigned long bWasSuccessful, const struct FString& Filename);
 	void DetermineFilesToDownload();
 	void DownloadPlaylist();
 	void OnReadPlaylistComplete();
@@ -7900,7 +7900,7 @@ public:
 
 
 	struct FName GetViewName(int ViewId);
-	bool GetViewId(const struct FName& ViewName, int* ViewId);
+	unsigned long GetViewId(const struct FName& ViewName, int* ViewId);
 };
 
 
@@ -7931,10 +7931,10 @@ public:
 
 	int GetRankForPlayer(const struct FUniqueNetId& PlayerID);
 	void AddPlayer(const struct FString& PlayerName, const struct FUniqueNetId& PlayerID);
-	bool SetFloatStatValueForPlayer(const struct FUniqueNetId& PlayerID, int StatColumnNo, float StatValue);
-	bool GetFloatStatValueForPlayer(const struct FUniqueNetId& PlayerID, int StatColumnNo, float* StatValue);
-	bool SetIntStatValueForPlayer(const struct FUniqueNetId& PlayerID, int StatColumnNo, int StatValue);
-	bool GetIntStatValueForPlayer(const struct FUniqueNetId& PlayerID, int StatColumnNo, int* StatValue);
+	unsigned long SetFloatStatValueForPlayer(const struct FUniqueNetId& PlayerID, int StatColumnNo, float StatValue);
+	unsigned long GetFloatStatValueForPlayer(const struct FUniqueNetId& PlayerID, int StatColumnNo, float* StatValue);
+	unsigned long SetIntStatValueForPlayer(const struct FUniqueNetId& PlayerID, int StatColumnNo, int StatValue);
+	unsigned long GetIntStatValueForPlayer(const struct FUniqueNetId& PlayerID, int StatColumnNo, int* StatValue);
 	void OnReadComplete();
 };
 
@@ -7971,7 +7971,7 @@ public:
 	void SetIntStat(int StatId, int Value);
 	void SetFloatStat(int StatId, float Value);
 	struct FName GetStatName(int StatId);
-	bool GetStatId(const struct FName& StatName, int* StatId);
+	unsigned long GetStatId(const struct FName& StatName, int* StatId);
 	void OnStatsWriteComplete();
 };
 
@@ -8075,18 +8075,18 @@ public:
 	void DeProject(const struct FVector2D& RelativeScreenPos, struct FVector* WorldOrigin, struct FVector* WorldDirection);
 	void TouchPlayerPostProcessChain();
 	class UPostProcessChain* GetPostProcessChain(int InIndex);
-	bool RemoveAllPostProcessingChains();
-	bool RemovePostProcessingChain(int InIndex);
-	bool InsertPostProcessingChain(class UPostProcessChain* InChain, int InIndex, bool bInClone);
+	unsigned long RemoveAllPostProcessingChains();
+	unsigned long RemovePostProcessingChain(int InIndex);
+	unsigned long InsertPostProcessingChain(class UPostProcessChain* InChain, int InIndex, unsigned long bInClone);
 	void SetControllerId(int NewControllerId);
-	void ClearPostProcessSettingsOverride(bool bSnapToRecovery);
+	void ClearPostProcessSettingsOverride(unsigned long bSnapToRecovery);
 	void UpdateOverridePostProcessSettings(const struct FPostProcessSettings& OverrideSettings);
 	void OverridePostProcessSettings(const struct FPostProcessSettings& OverrideSettings, float StartBlendTime);
-	bool GetActorVisibility(class AActor* TestActor);
-	bool IsSphereVisible(const struct FVector& Center, float Radius);
+	unsigned long GetActorVisibility(class AActor* TestActor);
+	unsigned long IsSphereVisible(const struct FVector& Center, float Radius);
 	void SendSplitLeave();
 	void SendSplitJoin();
-	bool SpawnPlayActor(const struct FString& URL, struct FString* OutError);
+	unsigned long SpawnPlayActor(const struct FString& URL, struct FString* OutError);
 };
 
 
@@ -8465,7 +8465,7 @@ public:
 	}
 
 
-	bool IsBlockedFor(class APawn* P);
+	unsigned long IsBlockedFor(class APawn* P);
 	struct FVector GetDirection();
 	class ANavigationPoint* GetEnd();
 	int CostFor(class APawn* P);
@@ -8706,10 +8706,10 @@ public:
 	void ResetMoveFor(class APawn* P);
 	void PrepMoveFor(class APawn* P);
 	void SetMoveFor(class APlayerController* P, float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> InDoubleClick);
-	bool CanCombineWith(class USavedMove* NewMove, class APawn* inPawn, float MaxDelta);
+	unsigned long CanCombineWith(class USavedMove* NewMove, class APawn* inPawn, float MaxDelta);
 	void SetInitialPosition(class APawn* P);
 	struct FVector GetStartLocation();
-	bool IsImportantMove(const struct FVector& CompareAccel);
+	unsigned long IsImportantMove(const struct FVector& CompareAccel);
 	void PostUpdate(class APlayerController* P);
 	void Clear();
 };
@@ -8806,7 +8806,7 @@ public:
 
 
 	void UpdateGameSpyCustomKeys();
-	bool MatchesGameFilter();
+	unsigned long MatchesGameFilter();
 };
 
 
@@ -9115,7 +9115,7 @@ public:
 	}
 
 
-	bool SetLODDistance(int LODLevelIndex, float InDistance);
+	unsigned long SetLODDistance(int LODLevelIndex, float InDistance);
 	void SetCurrentLODMethod(TEnumAsByte<EParticleSystemLODMethod> InMethod);
 	float GetLODDistance(int LODLevelIndex);
 	int GetLODLevelCount();
@@ -9137,13 +9137,13 @@ public:
 	}
 
 
-	bool IsEmpty();
+	unsigned long IsEmpty();
 	void Clear();
 	void ToArrayWithKeys(TArray<struct FString>* OutKeys, TArray<int>* OutValues);
 	void ToArray(TArray<int>* OutValues);
-	bool GetKeyByValue(int InValue, struct FString* OutKey);
-	bool Get(const struct FString& InKey, int* OutValue);
-	bool Remove(const struct FString& InKey);
+	unsigned long GetKeyByValue(int InValue, struct FString* OutKey);
+	unsigned long Get(const struct FString& InKey, int* OutValue);
+	unsigned long Remove(const struct FString& InKey);
 	void Add(const struct FString& InKey, int InValue);
 };
 
@@ -9328,7 +9328,7 @@ public:
 	}
 
 
-	void SetSplitNavMesh(bool bNewValue);
+	void SetSplitNavMesh(unsigned long bNewValue);
 };
 
 
@@ -9368,14 +9368,14 @@ public:
 	}
 
 
-	bool CanFireWeapon(class AWeapon* Wpn, unsigned char FireModeNum);
-	bool ShouldRefire();
+	unsigned long CanFireWeapon(class AWeapon* Wpn, unsigned char FireModeNum);
+	unsigned long ShouldRefire();
 	void NotifyWeaponFinishedFiring(class AWeapon* W, unsigned char FireMode);
 	void NotifyWeaponFired(class AWeapon* W, unsigned char FireMode);
 	void OnAIMoveToActor(class USeqAct_AIMoveToActor* Action);
 	void GetPlayerViewPoint(struct FVector* out_Location, struct FRotator* out_Rotation);
 	void SetTeam(int inTeamIdx);
-	bool PriorityObjective();
+	unsigned long PriorityObjective();
 	struct FName GetOrders();
 	class AActor* GetOrderObject();
 	void SetOrders(const struct FName& NewOrders, class AController* OrderGiver);
@@ -9453,7 +9453,7 @@ public:
 	}
 
 
-	void SetEnabled(bool bInEnabled);
+	void SetEnabled(unsigned long bInEnabled);
 	void OnToggle(class USeqAct_Toggle* Action);
 	void PostBeginPlay();
 	void UnRegisterObstacle();
@@ -9585,7 +9585,7 @@ public:
 	}
 
 
-	bool AIActivateSwitch(class AAIController* AI);
+	unsigned long AIActivateSwitch(class AAIController* AI);
 };
 
 
@@ -9631,27 +9631,27 @@ public:
 	}
 
 
-	bool IsBoxOnNavMesh(const struct FVector& Center, const struct FVector& Extent);
+	unsigned long IsBoxOnNavMesh(const struct FVector& Center, const struct FVector& Extent);
 	struct FVector GetFirstMoveLocation();
-	bool IsAnchorInescapable();
+	unsigned long IsAnchorInescapable();
 	void LimitPathCacheDistance(float MaxDist);
-	void GetValidPositionsForBox(const struct FVector& pos, float Radius, const struct FVector& Extent, bool bMustBeReachableFromStartPos, int MaxPositions, float MinRadius, const struct FVector& ValidBoxAroundStartPos, TArray<struct FVector>* out_ValidPositions);
+	void GetValidPositionsForBox(const struct FVector& pos, float Radius, const struct FVector& Extent, unsigned long bMustBeReachableFromStartPos, int MaxPositions, float MinRadius, const struct FVector& ValidBoxAroundStartPos, TArray<struct FVector>* out_ValidPositions);
 	void GetAllPolyCentersWithinBounds(const struct FVector& pos, const struct FVector& Extent, TArray<struct FVector>* out_PolyCtrs);
-	void DrawPathCache(const struct FVector& DrawOffset, bool bPersistent, const struct FColor& DrawColor);
-	bool ActorReachable(class AActor* A);
-	bool PointReachable(const struct FVector& Point);
-	bool GetNearestNavMeshPoint(const struct FVector& Position, const struct FVector& SearchExtent, bool doLineChecks, float MinDistance, bool mustBeUnderneath, struct FVector* NearestPoint);
-	bool PointCheck(const struct FVector& Pt, const struct FVector& Extent);
-	bool LineCheck(const struct FVector& Start, const struct FVector& End, const struct FVector& Extent, struct FVector* out_HitLocation, struct FVector* out_HitNormal);
-	bool STATIC_ObstaclePointCheck(const struct FVector& Pt, const struct FVector& Extent);
-	bool STATIC_ObstacleLineCheck(const struct FVector& Start, const struct FVector& End, const struct FVector& Extent, struct FVector* out_HitLoc, struct FVector* out_HitNorm);
-	bool SuggestMovePreparation(const struct FVector& MovePt, class AController* C);
-	bool FindPath(class AActor** out_DestActor, int* out_DestItem);
-	bool ComputeValidFinalDestination(struct FVector* out_ComputedPosition);
-	bool SetFinalDestination(const struct FVector& FinalDest);
-	bool GetNextMoveLocation(float ArrivalDistance, struct FVector* out_MoveDest);
+	void DrawPathCache(const struct FVector& DrawOffset, unsigned long bPersistent, const struct FColor& DrawColor);
+	unsigned long ActorReachable(class AActor* A);
+	unsigned long PointReachable(const struct FVector& Point);
+	unsigned long GetNearestNavMeshPoint(const struct FVector& Position, const struct FVector& SearchExtent, unsigned long doLineChecks, float MinDistance, unsigned long mustBeUnderneath, struct FVector* NearestPoint);
+	unsigned long PointCheck(const struct FVector& Pt, const struct FVector& Extent);
+	unsigned long LineCheck(const struct FVector& Start, const struct FVector& End, const struct FVector& Extent, struct FVector* out_HitLocation, struct FVector* out_HitNormal);
+	unsigned long STATIC_ObstaclePointCheck(const struct FVector& Pt, const struct FVector& Extent);
+	unsigned long STATIC_ObstacleLineCheck(const struct FVector& Start, const struct FVector& End, const struct FVector& Extent, struct FVector* out_HitLoc, struct FVector* out_HitNorm);
+	unsigned long SuggestMovePreparation(const struct FVector& MovePt, class AController* C);
+	unsigned long FindPath(class AActor** out_DestActor, int* out_DestItem);
+	unsigned long ComputeValidFinalDestination(struct FVector* out_ComputedPosition);
+	unsigned long SetFinalDestination(const struct FVector& FinalDest);
+	unsigned long GetNextMoveLocation(float ArrivalDistance, struct FVector* out_MoveDest);
 	class APylon* STATIC_GetPylonFromPos(const struct FVector& Position);
-	bool FindPylon();
+	unsigned long FindPylon();
 	struct FVector GetBestUnfinishedPathPoint();
 	void PathCache_RemoveIndex(int InIdx, int Count);
 	struct FVector PathCache_GetGoalPoint();
@@ -9703,7 +9703,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_AlongLine(class UNavigationHandle* NavHandle, const struct FVector& Dir);
+	unsigned long STATIC_AlongLine(class UNavigationHandle* NavHandle, const struct FVector& Dir);
 };
 
 
@@ -9720,7 +9720,7 @@ public:
 	}
 
 
-	bool STATIC_EnforceTwoWayEdges(class UNavigationHandle* NavHandle);
+	unsigned long STATIC_EnforceTwoWayEdges(class UNavigationHandle* NavHandle);
 };
 
 
@@ -9741,7 +9741,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_EnforceMinDist(class UNavigationHandle* NavHandle, float InMinDist, TEnumAsByte<ENavMeshEdgeType> InEdgeType, const struct FVector& LastLocation);
+	unsigned long STATIC_EnforceMinDist(class UNavigationHandle* NavHandle, float InMinDist, TEnumAsByte<ENavMeshEdgeType> InEdgeType, const struct FVector& LastLocation);
 };
 
 
@@ -9761,8 +9761,8 @@ public:
 
 
 	void Recycle();
-	bool STATIC_TowardPoint(class UNavigationHandle* NavHandle, const struct FVector& Point);
-	bool STATIC_TowardGoal(class UNavigationHandle* NavHandle, class AActor* Goal);
+	unsigned long STATIC_TowardPoint(class UNavigationHandle* NavHandle, const struct FVector& Point);
+	unsigned long STATIC_TowardGoal(class UNavigationHandle* NavHandle, class AActor* Goal);
 };
 
 
@@ -9786,7 +9786,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_StayWithinEnvelopeToLoc(class UNavigationHandle* NavHandle, const struct FVector& InEnvelopeTestPoint, float InMaxDistance, float InMinDistance, bool bInSoft, float InSoftStartPenalty, bool bOnlyTossOutSpecsThatLeave);
+	unsigned long STATIC_StayWithinEnvelopeToLoc(class UNavigationHandle* NavHandle, const struct FVector& InEnvelopeTestPoint, float InMaxDistance, float InMinDistance, unsigned long bInSoft, float InSoftStartPenalty, unsigned long bOnlyTossOutSpecsThatLeave);
 };
 
 
@@ -9807,7 +9807,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_DontExceedMaxDist(class UNavigationHandle* NavHandle, float InMaxTraversalDist, bool bInSoft);
+	unsigned long STATIC_DontExceedMaxDist(class UNavigationHandle* NavHandle, float InMaxTraversalDist, unsigned long bInSoft);
 };
 
 
@@ -9853,8 +9853,8 @@ public:
 
 
 	void Recycle();
-	bool STATIC_AtLocation(class UNavigationHandle* NavHandle, const struct FVector& GoalLocation, float Dist, bool bReturnPartial);
-	bool STATIC_AtActor(class UNavigationHandle* NavHandle, class AActor* GoalActor, float Dist, bool bReturnPartial);
+	unsigned long STATIC_AtLocation(class UNavigationHandle* NavHandle, const struct FVector& GoalLocation, float Dist, unsigned long bReturnPartial);
+	unsigned long STATIC_AtActor(class UNavigationHandle* NavHandle, class AActor* GoalActor, float Dist, unsigned long bReturnPartial);
 	void RecycleNative();
 };
 
@@ -9897,7 +9897,7 @@ public:
 
 	void Recycle();
 	void RecycleNative();
-	bool STATIC_GoUntilBust(class UNavigationHandle* NavHandle, int InMaxPathVisits);
+	unsigned long STATIC_GoUntilBust(class UNavigationHandle* NavHandle, int InMaxPathVisits);
 };
 
 
@@ -9915,7 +9915,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_MakeSureAIFits(class UNavigationHandle* NavHandle);
+	unsigned long STATIC_MakeSureAIFits(class UNavigationHandle* NavHandle);
 };
 
 
@@ -9954,7 +9954,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_AlongLine(class APawn* P, const struct FVector& Dir);
+	unsigned long STATIC_AlongLine(class APawn* P, const struct FVector& Dir);
 };
 
 
@@ -9976,7 +9976,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_DontGetStuck(class APawn* P);
+	unsigned long STATIC_DontGetStuck(class APawn* P);
 	void CachePawnReacFlags(class APawn* P);
 };
 
@@ -9998,7 +9998,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_EnforceMinDist(class APawn* P, float InMinDist, class UClass* InSpecClass, const struct FVector& LastLocation);
+	unsigned long STATIC_EnforceMinDist(class APawn* P, float InMinDist, class UClass* InSpecClass, const struct FVector& LastLocation);
 };
 
 
@@ -10017,7 +10017,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_TowardGoal(class APawn* P, class AActor* Goal);
+	unsigned long STATIC_TowardGoal(class APawn* P, class AActor* Goal);
 };
 
 
@@ -10036,7 +10036,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_TowardPoint(class APawn* P, const struct FVector& Point);
+	unsigned long STATIC_TowardPoint(class APawn* P, const struct FVector& Point);
 };
 
 
@@ -10060,7 +10060,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_StayWithinEnvelopeToLoc(class APawn* P, const struct FVector& InEnvelopeTestPoint, float InMaxDistance, float InMinDistance, bool bInSoft, float InSoftStartPenalty, bool bOnlyTossOutSpecsThatLeave);
+	unsigned long STATIC_StayWithinEnvelopeToLoc(class APawn* P, const struct FVector& InEnvelopeTestPoint, float InMaxDistance, float InMinDistance, unsigned long bInSoft, float InSoftStartPenalty, unsigned long bOnlyTossOutSpecsThatLeave);
 };
 
 
@@ -10081,7 +10081,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_DontExceedMaxDist(class APawn* P, float InMaxTraversalDist, bool bInSoft);
+	unsigned long STATIC_DontExceedMaxDist(class APawn* P, float InMaxTraversalDist, unsigned long bInSoft);
 };
 
 
@@ -10124,7 +10124,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_AtActor(class APawn* P, class AActor* Goal, float Dist, bool bReturnPartial);
+	unsigned long STATIC_AtActor(class APawn* P, class AActor* Goal, float Dist, unsigned long bReturnPartial);
 };
 
 
@@ -10142,7 +10142,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_GoUntilBust(class APawn* P, int InMaxPathVisits);
+	unsigned long STATIC_GoUntilBust(class APawn* P, int InMaxPathVisits);
 };
 
 
@@ -10176,12 +10176,12 @@ public:
 
 
 	int STATIC_GetObjClassVersion();
-	bool IsPastingIntoUISequenceAllowed();
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
-	bool IsPastingIntoLevelSequenceAllowed();
-	bool IsValidLevelSequenceObject();
+	unsigned long IsPastingIntoUISequenceAllowed();
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsPastingIntoLevelSequenceAllowed();
+	unsigned long IsValidLevelSequenceObject();
 	class AWorldInfo* GetWorldInfo();
-	void ScriptLog(const struct FString& LogText, bool bWarning);
+	void ScriptLog(const struct FString& LogText, unsigned long bWarning);
 };
 
 
@@ -10223,14 +10223,14 @@ public:
 	void VersionUpdated(int OldVersion, int NewVersion);
 	void Deactivated();
 	void Activated();
-	bool ActivateNamedOutputLink(const struct FString& LinkDesc);
-	bool ActivateOutputLink(int OutputIdx);
+	unsigned long ActivateNamedOutputLink(const struct FString& LinkDesc);
+	unsigned long ActivateOutputLink(int OutputIdx);
 	void LinkedVariables(class UClass* VarClass, const struct FString& inDesc, class USequenceVariable** OutVariable);
 	void GetBoolVars(const struct FString& inDesc, TArray<unsigned char>* boolVars);
 	void GetInterpDataVars(const struct FString& inDesc, TArray<class UInterpData*>* outIData);
 	void GetObjectVars(const struct FString& inDesc, TArray<class UObject*>* objVars);
-	void GetLinkedObjects(class UClass* ObjectType, bool bRecurse, TArray<class USequenceObject*>* out_Objects);
-	bool HasLinkedOps(bool bConsiderInputLinks);
+	void GetLinkedObjects(class UClass* ObjectType, unsigned long bRecurse, TArray<class USequenceObject*>* out_Objects);
+	unsigned long HasLinkedOps(unsigned long bConsiderInputLinks);
 };
 
 
@@ -10299,21 +10299,21 @@ public:
 	void PlayParticleEffect(class UAnimNotify_PlayParticleEffect* AnimNotifyData, class UAnimNodeSequence* NodeSeq);
 	void ApplyCheckpointRecord(struct ASkeletalMeshActor_FCheckpointRecord* Record);
 	void CreateCheckpointRecord(struct ASkeletalMeshActor_FCheckpointRecord* Record);
-	bool ShouldSaveForCheckpoint();
+	unsigned long ShouldSaveForCheckpoint();
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	void DoKismetAttachment(class AActor* Attachment, class USeqAct_AttachToActor* Action);
 	void OnSetSkelControlTarget(class USeqAct_SetSkelControlTarget* Action);
 	void OnUpdatePhysBonesFromAnim(class USeqAct_UpdatePhysBonesFromAnim* Action);
 	void OnSetMesh(class USeqAct_SetMesh* Action);
-	bool IsActorPlayingFaceFXAnim();
+	unsigned long IsActorPlayingFaceFXAnim();
 	class UFaceFXAsset* GetActorFaceFXAsset();
 	void OnPlayFaceFXAnim(class USeqAct_PlayFaceFXAnim* inAction);
 	class UAudioComponent* GetFaceFXAudioComponent();
 	void StopActorFaceFXAnim();
-	bool PlayActorFaceFXAnim(class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay);
+	unsigned long PlayActorFaceFXAnim(class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay);
 	void MAT_FinishAnimControl(class UInterpGroup* InInterpGroup);
 	void FinishAnimControl(class UInterpGroup* InInterpGroup);
-	void SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, bool bFireNotifies, bool bLooping);
+	void SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, unsigned long bFireNotifies, unsigned long bLooping);
 	void MAT_BeginAnimControl(class UInterpGroup* InInterpGroup);
 	void BeginAnimControl(class UInterpGroup* InInterpGroup);
 	void OnSetMaterial(class USeqAct_SetMaterial* Action);
@@ -10394,8 +10394,8 @@ public:
 	void SetSkelControlScale(const struct FName& SkelControlName, float Scale);
 	void SetMorphWeight(const struct FName& MorphNodeName, float MorphWeight);
 	void FinishAnimControl(class UInterpGroup* InInterpGroup);
-	void MAT_SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, bool bFireNotifies, bool bLooping);
-	void SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, bool bFireNotifies, bool bLooping);
+	void MAT_SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, unsigned long bFireNotifies, unsigned long bLooping);
+	void SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, unsigned long bFireNotifies, unsigned long bLooping);
 	void ClearAnimNodes();
 	void CacheAnimNodes();
 	void PostInitAnimTree(class USkeletalMeshComponent* SkelComp);
@@ -10629,7 +10629,7 @@ public:
 	}
 
 
-	bool FindNextNotifyOfClass(class UAnimNodeSequence* AnimSeqInstigator, class UClass* NotifyClass, struct FAnimNotifyEvent* OutEvent);
+	unsigned long FindNextNotifyOfClass(class UAnimNodeSequence* AnimSeqInstigator, class UClass* NotifyClass, struct FAnimNotifyEvent* OutEvent);
 };
 
 
@@ -10906,7 +10906,7 @@ public:
 
 	void ReplayAnim();
 	void StopAnim();
-	void PlayAnim(bool bLoop, float Rate, float StartTime);
+	void PlayAnim(unsigned long bLoop, float Rate, float StartTime);
 	class UAnimNode* FindAnimNode(const struct FName& InNodeName);
 	void OnCeaseRelevant();
 	void OnBecomeRelevant();
@@ -10932,7 +10932,7 @@ public:
 
 	void ReplayAnim();
 	void StopAnim();
-	void PlayAnim(bool bLoop, float Rate, float StartTime);
+	void PlayAnim(unsigned long bLoop, float Rate, float StartTime);
 };
 
 
@@ -11067,7 +11067,7 @@ public:
 	class UAnimNodeSequence* GetActiveChild();
 	struct FName GetAnimName();
 	void BlendToLoopingAnim(const struct FName& AnimSeqName, float BlendInTime, float Rate);
-	void PlayOneShotAnim(const struct FName& AnimSeqName, float BlendInTime, float BlendOutTime, bool bDontBlendOut, float Rate);
+	void PlayOneShotAnim(const struct FName& AnimSeqName, float BlendInTime, float BlendOutTime, unsigned long bDontBlendOut, float Rate);
 };
 
 
@@ -11088,11 +11088,11 @@ public:
 
 	void SetRootBoneAxisOption(TEnumAsByte<ERootBoneAxis> AxisX, TEnumAsByte<ERootBoneAxis> AxisY, TEnumAsByte<ERootBoneAxis> AxisZ);
 	class UAnimNodeSequence* GetCustomAnimNodeSeq();
-	void SetActorAnimEndNotification(bool bNewStatus);
+	void SetActorAnimEndNotification(unsigned long bNewStatus);
 	void SetCustomAnim(const struct FName& AnimName);
 	void StopCustomAnim(float BlendOutTime);
-	void PlayCustomAnimByDuration(const struct FName& AnimName, float Duration, float BlendInTime, float BlendOutTime, bool bLooping, bool bOverride);
-	float PlayCustomAnim(const struct FName& AnimName, float Rate, float BlendInTime, float BlendOutTime, bool bLooping, bool bOverride, float NotificationWeightOverride);
+	void PlayCustomAnimByDuration(const struct FName& AnimName, float Duration, float BlendInTime, float BlendOutTime, unsigned long bLooping, unsigned long bOverride);
+	float PlayCustomAnim(const struct FName& AnimName, float Rate, float BlendInTime, float BlendOutTime, unsigned long bLooping, unsigned long bOverride, float NotificationWeightOverride);
 };
 
 
@@ -11363,12 +11363,12 @@ public:
 	void SetRootBoneRotationOption(TEnumAsByte<ERootRotationOption> AxisX, TEnumAsByte<ERootRotationOption> AxisY, TEnumAsByte<ERootRotationOption> AxisZ);
 	void SetRootBoneAxisOption(TEnumAsByte<ERootBoneAxis> AxisX, TEnumAsByte<ERootBoneAxis> AxisY, TEnumAsByte<ERootBoneAxis> AxisZ);
 	class UAnimNodeSequence* GetCustomAnimNodeSeq();
-	void SetActorAnimEndNotification(bool bNewStatus);
+	void SetActorAnimEndNotification(unsigned long bNewStatus);
 	void SetCustomAnim(const struct FName& AnimName);
 	void StopCustomAnim(float BlendOutTime);
 	struct FName GetPlayedAnimation();
-	void PlayCustomAnimByDuration(const struct FName& AnimName, float Duration, float BlendInTime, float BlendOutTime, bool bLooping, bool bOverride);
-	float PlayCustomAnim(const struct FName& AnimName, float Rate, float BlendInTime, float BlendOutTime, bool bLooping, bool bOverride, float StartTime);
+	void PlayCustomAnimByDuration(const struct FName& AnimName, float Duration, float BlendInTime, float BlendOutTime, unsigned long bLooping, unsigned long bOverride);
+	float PlayCustomAnim(const struct FName& AnimName, float Rate, float BlendInTime, float BlendOutTime, unsigned long bLooping, unsigned long bOverride, float StartTime);
 };
 
 
@@ -11445,8 +11445,8 @@ public:
 	void ForceGroupRelativePosition(const struct FName& GroupName, float RelativePosition);
 	class UAnimNodeSequence* GetGroupNotifyMaster(const struct FName& GroupName);
 	class UAnimNodeSequence* GetGroupSynchMaster(const struct FName& GroupName);
-	bool SetAnimGroupForNode(class UAnimNodeSequence* SeqNode, const struct FName& GroupName, bool bCreateIfNotFound);
-	void SetUseSavedPose(bool bUseSaved);
+	unsigned long SetAnimGroupForNode(class UAnimNodeSequence* SeqNode, const struct FName& GroupName, unsigned long bCreateIfNotFound);
+	void SetUseSavedPose(unsigned long bUseSaved);
 	class UMorphNodeBase* FindMorphNode(const struct FName& InNodeName);
 	class USkelControlBase* FindSkelControl(const struct FName& InControlName);
 };
@@ -11507,10 +11507,10 @@ public:
 	float FindGroupPosition(float GroupRelativePosition);
 	float FindGroupRelativePosition(float GroupRelativePosition);
 	float GetNormalizedPosition();
-	void SetPosition(float NewTime, bool bFireNotifies);
+	void SetPosition(float NewTime, unsigned long bFireNotifies);
 	void ReplayAnim();
 	void StopAnim();
-	void PlayAnim(bool bLoop, float InRate, float StartTime);
+	void PlayAnim(unsigned long bLoop, float InRate, float StartTime);
 	void SetAnim(const struct FName& Sequence);
 };
 
@@ -11596,9 +11596,9 @@ public:
 	}
 
 
-	bool UpdateMorphTarget(class UMorphTarget* Target, float InWeight);
+	unsigned long UpdateMorphTarget(class UMorphTarget* Target, float InWeight);
 	void RemoveMorphTarget(const struct FName& MorphTargetName);
-	bool AddMorphTarget(const struct FName& MorphTargetName, float InWeight);
+	unsigned long AddMorphTarget(const struct FName& MorphTargetName, float InWeight);
 };
 
 
@@ -11752,7 +11752,7 @@ public:
 
 	void TickSkelControl(float DeltaTime);
 	void SetSkelControlStrength(float NewStrength, float InBlendTime);
-	void SetSkelControlActive(bool bInActive);
+	void SetSkelControlActive(unsigned long bInActive);
 };
 
 
@@ -11899,7 +11899,7 @@ public:
 	}
 
 
-	bool CanLookAtPoint(const struct FVector& PointLoc, bool bDrawDebugInfo, bool bDebugUsePersistentLines, bool bDebugFlushLinesFirst);
+	unsigned long CanLookAtPoint(const struct FVector& PointLoc, unsigned long bDrawDebugInfo, unsigned long bDebugUsePersistentLines, unsigned long bDebugFlushLinesFirst);
 	void SetLookAtAlpha(float DesiredAlpha, float DesiredBlendTime);
 	void InterpolateTargetLocation(float DeltaTime);
 	void SetTargetLocation(const struct FVector& NewTargetLocation);
@@ -12171,12 +12171,12 @@ public:
 	}
 
 
-	class UDecalComponent* SpawnDecal(class UMaterialInterface* DecalMaterial, const struct FVector& DecalLocation, const struct FRotator& DecalOrientation, float Width, float Height, float Thickness, bool bNoClip, float DecalRotation, class UPrimitiveComponent* HitComponent, bool bProjectOnTerrain, bool bProjectOnSkeletalMeshes, const struct FName& HitBone, int HitNodeIndex, int HitLevelIndex, float InDecalLifeSpan, int InFracturedStaticMeshComponentIndex, float InDepthBias, const struct FVector2D& InBlendRange);
+	class UDecalComponent* SpawnDecal(class UMaterialInterface* DecalMaterial, const struct FVector& DecalLocation, const struct FRotator& DecalOrientation, float Width, float Height, float Thickness, unsigned long bNoClip, float DecalRotation, class UPrimitiveComponent* HitComponent, unsigned long bProjectOnTerrain, unsigned long bProjectOnSkeletalMeshes, const struct FName& HitBone, int HitNodeIndex, int HitLevelIndex, float InDecalLifeSpan, int InFracturedStaticMeshComponentIndex, float InDepthBias, const struct FVector2D& InBlendRange);
 	class UDecalComponent* GetPooledComponent();
-	void STATIC_SetDecalParameters(class UDecalComponent* TheDecal, class UMaterialInterface* DecalMaterial, const struct FVector& DecalLocation, const struct FRotator& DecalOrientation, float Width, float Height, float Thickness, bool bNoClip, float DecalRotation, class UPrimitiveComponent* HitComponent, bool bProjectOnTerrain, bool bProjectOnSkeletalMeshes, const struct FName& HitBone, int HitNodeIndex, int HitLevelIndex, int InFracturedStaticMeshComponentIndex, float DepthBias, const struct FVector2D& BlendRange);
-	bool CanSpawnDecals();
+	void STATIC_SetDecalParameters(class UDecalComponent* TheDecal, class UMaterialInterface* DecalMaterial, const struct FVector& DecalLocation, const struct FRotator& DecalOrientation, float Width, float Height, float Thickness, unsigned long bNoClip, float DecalRotation, class UPrimitiveComponent* HitComponent, unsigned long bProjectOnTerrain, unsigned long bProjectOnSkeletalMeshes, const struct FName& HitBone, int HitNodeIndex, int HitLevelIndex, int InFracturedStaticMeshComponentIndex, float DepthBias, const struct FVector2D& BlendRange);
+	unsigned long CanSpawnDecals();
 	void DecalFinished(class UDecalComponent* Decal);
-	bool STATIC_AreDynamicDecalsEnabled();
+	unsigned long STATIC_AreDynamicDecalsEnabled();
 };
 
 
@@ -12300,7 +12300,7 @@ public:
 
 	void ApplyCheckpointRecord(struct AFogVolumeDensityInfo_FCheckpointRecord* Record);
 	void CreateCheckpointRecord(struct AFogVolumeDensityInfo_FCheckpointRecord* Record);
-	bool ShouldSaveForCheckpoint();
+	unsigned long ShouldSaveForCheckpoint();
 	void OnToggle(class USeqAct_Toggle* Action);
 	void ReplicatedEvent(const struct FName& VarName);
 	void PostBeginPlay();
@@ -12388,7 +12388,7 @@ public:
 	}
 
 
-	void SetEnabled(bool bSetEnabled);
+	void SetEnabled(unsigned long bSetEnabled);
 };
 
 
@@ -12545,18 +12545,18 @@ public:
 	void HideFragmentsToMaximizeMemoryUsage();
 	void HideOneFragment();
 	void ResetVisibility();
-	void BreakOffPartsInRadius(const struct FVector& Origin, float Radius, float RBStrength, bool bWantPhysChunksAndParticles);
+	void BreakOffPartsInRadius(const struct FVector& Origin, float Radius, float RBStrength, unsigned long bWantPhysChunksAndParticles);
 	void Explode();
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	void RemoveDecals(int IndexToRemoveDecalsFrom);
-	bool FractureEffectIsRelevant(bool bForceDedicated, class APawn* EffectInstigator, unsigned char* bWantPhysChunksAndParticles);
-	bool IsFracturedByDamageType(class UClass* dmgType);
-	bool SpawnDeferredParts();
-	void BreakOffIsolatedIslands(TArray<int> IgnoreFrags, const struct FVector& ChunkDir, TArray<class AFracturedStaticMeshPart*> DisableCollWithPart, bool bWantPhysChunks, TArray<unsigned char>* FragmentVis);
+	unsigned long FractureEffectIsRelevant(unsigned long bForceDedicated, class APawn* EffectInstigator, unsigned char* bWantPhysChunksAndParticles);
+	unsigned long IsFracturedByDamageType(class UClass* dmgType);
+	unsigned long SpawnDeferredParts();
+	void BreakOffIsolatedIslands(TArray<int> IgnoreFrags, const struct FVector& ChunkDir, TArray<class AFracturedStaticMeshPart*> DisableCollWithPart, unsigned long bWantPhysChunks, TArray<unsigned char>* FragmentVis);
 	void ResetHealth();
 	void PostBeginPlay();
-	class AFracturedStaticMeshPart* SpawnPartMulti(TArray<int> ChunkIndices, const struct FVector& InitialVel, const struct FVector& InitialAngVel, float RelativeScale, bool bExplosion);
-	class AFracturedStaticMeshPart* SpawnPart(int ChunkIndex, const struct FVector& InitialVel, const struct FVector& InitialAngVel, float RelativeScale, bool bExplosion);
+	class AFracturedStaticMeshPart* SpawnPartMulti(TArray<int> ChunkIndices, const struct FVector& InitialVel, const struct FVector& InitialAngVel, float RelativeScale, unsigned long bExplosion);
+	class AFracturedStaticMeshPart* SpawnPart(int ChunkIndex, const struct FVector& InitialVel, const struct FVector& InitialAngVel, float RelativeScale, unsigned long bExplosion);
 };
 
 
@@ -12587,12 +12587,12 @@ public:
 	}
 
 
-	void BreakOffPartsInRadius(const struct FVector& Origin, float Radius, float RBStrength, bool bWantPhysChunksAndParticles);
+	void BreakOffPartsInRadius(const struct FVector& Origin, float Radius, float RBStrength, unsigned long bWantPhysChunksAndParticles);
 	void Explode();
 	void FellOutOfWorld(class UClass* dmgType);
 	void TryToCleanUp();
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
-	void RecyclePart(bool bAddToFreePool);
+	void RecyclePart(unsigned long bAddToFreePool);
 	void Initialize();
 };
 
@@ -12647,7 +12647,7 @@ public:
 
 
 	void Explode();
-	void TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
+	void TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, unsigned long bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	void NativeTakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	void NativeSpawnEffects();
@@ -12721,7 +12721,7 @@ public:
 	}
 
 
-	void TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
+	void TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, unsigned long bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 };
 
@@ -12752,9 +12752,9 @@ public:
 
 	int GetNumVisibleFragments();
 	int GetNumFragments();
-	bool IsFragmentVisible(int FragmentIndex);
+	unsigned long IsFragmentVisible(int FragmentIndex);
 	TArray<unsigned char> GetVisibleFragments();
-	bool SetStaticMesh(class UStaticMesh* NewMesh, bool bForce);
+	unsigned long SetStaticMesh(class UStaticMesh* NewMesh, unsigned long bForce);
 };
 
 
@@ -12809,9 +12809,9 @@ public:
 	int GetCoreFragmentIndex();
 	struct FVector GetFragmentAverageExteriorNormal(int FragmentIndex);
 	struct FBox GetFragmentBox(int FragmentIndex);
-	bool IsNoPhysFragment(int FragmentIndex);
-	bool IsRootFragment(int FragmentIndex);
-	bool IsFragmentDestroyable(int FragmentIndex);
+	unsigned long IsNoPhysFragment(int FragmentIndex);
+	unsigned long IsRootFragment(int FragmentIndex);
+	unsigned long IsFragmentDestroyable(int FragmentIndex);
 	void SetVisibleFragments(TArray<unsigned char> VisibilityFactors);
 };
 
@@ -12925,8 +12925,8 @@ public:
 	struct FVector GetChunkCentroid(int ChunkIndex);
 	struct FMatrix GetChunkMatrix(int ChunkIndex);
 	void CrumbleChunk(int ChunkIndex);
-	void FractureChunk(int ChunkIndex, const struct FVector& Point, const struct FVector& Impulse, bool bInheritRootVel);
-	bool DamageChunk(int ChunkIndex, const struct FVector& Point, float BaseDamage, float Radius, bool bFullDamage, float DamageFalloffExp, TArray<int>* Output);
+	void FractureChunk(int ChunkIndex, const struct FVector& Point, const struct FVector& Impulse, unsigned long bInheritRootVel);
+	unsigned long DamageChunk(int ChunkIndex, const struct FVector& Point, float BaseDamage, float Radius, unsigned long bFullDamage, float DamageFalloffExp, TArray<int>* Output);
 };
 
 
@@ -15670,8 +15670,8 @@ public:
 	}
 
 
-	bool IsInMapOrTransientPackage();
-	void ClearParameterValues(bool ClearAllExpressions);
+	unsigned long IsInMapOrTransientPackage();
+	void ClearParameterValues(unsigned long ClearAllExpressions);
 	void SetFontParameterValue(const struct FName& ParameterName, class UFont* FontValue, int FontPage);
 	void SetTextureParameterValue(const struct FName& ParameterName, class UTexture* Value);
 	void SetScalarCurveParameterValue(const struct FName& ParameterName, struct FInterpCurveFloat* Value);
@@ -15698,7 +15698,7 @@ public:
 	}
 
 
-	void ClearParameterValues(bool ClearAllExpressions);
+	void ClearParameterValues(unsigned long ClearAllExpressions);
 	void SetFontParameterValue(const struct FName& ParameterName, class UFont* FontValue, int FontPage);
 	void SetVectorParameterValue(const struct FName& ParameterName, struct FLinearColor* Value);
 	void SetTextureParameterValue(const struct FName& ParameterName, class UTexture* Value);
@@ -15727,7 +15727,7 @@ public:
 
 
 	float GetMaxDurationFromAllParameters();
-	void ClearParameterValues(bool ClearAllExpressions);
+	void ClearParameterValues(unsigned long ClearAllExpressions);
 	void SetFontParameterValue(const struct FName& ParameterName, class UFont* FontValue, int FontPage);
 	void SetVectorStartTime(const struct FName& ParameterName, float Value);
 	void SetVectorCurveParameterValue(const struct FName& ParameterName, struct FInterpCurveVector* Value);
@@ -15785,7 +15785,7 @@ public:
 
 
 	void ReplicatedEvent(const struct FName& VarName);
-	void SetTemplate(class UParticleSystem* NewTemplate, bool bDestroyOnFinish);
+	void SetTemplate(class UParticleSystem* NewTemplate, unsigned long bDestroyOnFinish);
 	void Destroyed();
 	void Term();
 };
@@ -15876,15 +15876,15 @@ public:
 	}
 
 
-	void SetStopSpawning(int InEmitterIndex, bool bInStopSpawning);
+	void SetStopSpawning(int InEmitterIndex, unsigned long bInStopSpawning);
 	void ResetToDefaults();
-	void SetActive(bool bNowActive);
+	void SetActive(unsigned long bNowActive);
 	void ClearParameter(const struct FName& ParameterName, TEnumAsByte<EParticleSysParamType> ParameterType);
-	bool GetMaterialParameter(const struct FName& InName, class UMaterialInterface** OutMaterial);
-	bool GetActorParameter(const struct FName& InName, class AActor** OutActor);
-	bool GetColorParameter(const struct FName& InName, struct FColor* OutColor);
-	bool GetVectorParameter(const struct FName& InName, struct FVector* OutVector);
-	bool GetFloatParameter(const struct FName& InName, float* outFloat);
+	unsigned long GetMaterialParameter(const struct FName& InName, class UMaterialInterface** OutMaterial);
+	unsigned long GetActorParameter(const struct FName& InName, class AActor** OutActor);
+	unsigned long GetColorParameter(const struct FName& InName, struct FColor* OutColor);
+	unsigned long GetVectorParameter(const struct FName& InName, struct FVector* OutVector);
+	unsigned long GetFloatParameter(const struct FName& InName, float* outFloat);
 	void SetMaterialParameter(const struct FName& ParameterName, class UMaterialInterface* Param);
 	void SetActorParameter(const struct FName& ParameterName, class AActor* Param);
 	void SetColorParameter(const struct FName& ParameterName, const struct FColor& Param);
@@ -15907,13 +15907,13 @@ public:
 	void SetBeamType(int EmitterIndex, int NewMethod);
 	void RewindEmitterInstances();
 	void RewindEmitterInstance(int EmitterIndex);
-	void SetKillOnCompleted(int EmitterIndex, bool bKill);
-	void SetKillOnDeactivate(int EmitterIndex, bool bKill);
-	bool GetSkipUpdateDynamicDataDuringTick();
-	void SetSkipUpdateDynamicDataDuringTick(bool bInSkipUpdateDynamicDataDuringTick);
+	void SetKillOnCompleted(int EmitterIndex, unsigned long bKill);
+	void SetKillOnDeactivate(int EmitterIndex, unsigned long bKill);
+	unsigned long GetSkipUpdateDynamicDataDuringTick();
+	void SetSkipUpdateDynamicDataDuringTick(unsigned long bInSkipUpdateDynamicDataDuringTick);
 	void KillParticlesForced();
 	void DeactivateSystem();
-	void ActivateSystem(bool bFlagAsJustAttached);
+	void ActivateSystem(unsigned long bFlagAsJustAttached);
 	void SetTemplate(class UParticleSystem* NewTemplate);
 	void OnSystemFinished(class UParticleSystemComponent* PSystem);
 };
@@ -18123,7 +18123,7 @@ public:
 	void Reset();
 	void OnTeleport(class USeqAct_Teleport* inAction);
 	void OnToggle(class USeqAct_Toggle* Action);
-	void TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
+	void TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, unsigned long bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	void ApplyImpulse(const struct FVector& ImpulseDir, float ImpulseMag, const struct FVector& HitLocation, const struct FTraceHitInfo& HitInfo);
 	void ReplicatedEvent(const struct FName& VarName);
@@ -18182,7 +18182,7 @@ public:
 	void DoKismetAttachment(class AActor* Attachment, class USeqAct_AttachToActor* Action);
 	void OnTeleport(class USeqAct_Teleport* inAction);
 	void OnToggle(class USeqAct_Toggle* Action);
-	void TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
+	void TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, unsigned long bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	void ReplicatedEvent(const struct FName& VarName);
 	void SetMeshAndPhysAsset(class USkeletalMesh* NewMesh, class UPhysicsAsset* NewPhysAsset);
@@ -18393,8 +18393,8 @@ public:
 
 	void SetDiedDamageCauser(class AActor* DamageCauser);
 	class AController* GetTrueController();
-	void SetRootMotionInterpCurrentTime(float inTime, float DeltaTime, bool bUpdateSkelPose);
-	void SetCinematicMode(bool bInCinematicMode);
+	void SetRootMotionInterpCurrentTime(float inTime, float DeltaTime, unsigned long bUpdateSkelPose);
+	void SetCinematicMode(unsigned long bInCinematicMode);
 	void ZeroMovementVariables();
 	void ClearPathStep();
 	void DrawPathStep(class UCanvas* C);
@@ -18407,36 +18407,36 @@ public:
 	void ClearConstraints();
 	void SoakPause();
 	void BecomeViewTarget(class APlayerController* PC);
-	void AdjustCameraScale(bool bMoveCameraIn);
+	void AdjustCameraScale(unsigned long bMoveCameraIn);
 	void MessagePlayer(const struct FString& msg);
-	bool EffectIsRelevant(const struct FVector& SpawnLocation, bool bForceDedicated, float CullDistance);
+	unsigned long EffectIsRelevant(const struct FVector& SpawnLocation, unsigned long bForceDedicated, float CullDistance);
 	void OnTeleport(class USeqAct_Teleport* Action);
 	void OnSetMaterial(class USeqAct_SetMaterial* Action);
 	float GetDamageScaling();
 	void DoKismetAttachment(class AActor* Attachment, class USeqAct_AttachToActor* Action);
 	void SpawnedByKismet();
-	bool IsStationary();
+	unsigned long IsStationary();
 	struct FVector GetCollisionExtent();
 	float GetCollisionHeight();
 	float GetCollisionRadius();
-	bool CheatFly();
-	bool CheatGhost();
-	bool CheatWalk();
+	unsigned long CheatFly();
+	unsigned long CheatGhost();
+	unsigned long CheatWalk();
 	void PlayWeaponSwitch(class AWeapon* OldWeapon, class AWeapon* NewWeapon);
 	void SetActiveWeapon(class AWeapon* NewWeapon);
 	void TossInventory(class AInventory* Inv, const struct FVector& ForceVelocity);
 	void ThrowActiveWeapon();
 	void DrawHUD(class AHUD* H);
-	class AInventory* FindInventoryType(class UClass* DesiredClass, bool bAllowSubclass);
-	class AInventory* CreateInventory(class UClass* NewInvClass, bool bDoNotActivate);
+	class AInventory* FindInventoryType(class UClass* DesiredClass, unsigned long bAllowSubclass);
+	class AInventory* CreateInventory(class UClass* NewInvClass, unsigned long bDoNotActivate);
 	void AddDefaultInventory();
 	void StopDriving(class AVehicle* V);
 	void StartDriving(class AVehicle* V);
-	bool CanThrowWeapon();
+	unsigned long CanThrowWeapon();
 	void Suicide();
 	class AVehicle* GetVehicleBase();
 	void PlayLanded(float ImpactVel);
-	bool CannotJumpNow();
+	unsigned long CannotJumpNow();
 	void PlayFootStepSound(int FootDown);
 	void TornOff();
 	void PlayDying(class UClass* DamageType, const struct FVector& HitLoc);
@@ -18444,26 +18444,26 @@ public:
 	void TurnOff();
 	void PlayHit(float Damage, class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FVector& Momentum, const struct FTraceHitInfo& HitInfo);
 	void PlayDyingSound();
-	bool DoJump(bool bUpdating);
-	bool CheckWaterJump(struct FVector* WallNormal);
+	unsigned long DoJump(unsigned long bUpdating);
+	unsigned long CheckWaterJump(struct FVector* WallNormal);
 	void TakeDrowningDamage();
 	void BreathTimer();
-	bool IsInPain();
-	bool TouchingWaterVolume();
+	unsigned long IsInPain();
+	unsigned long TouchingWaterVolume();
 	void HeadVolumeChange(class APhysicsVolume* newHeadVolume);
 	void Landed(const struct FVector& HitNormal, class AActor* FloorActor);
 	void Falling();
-	bool Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	unsigned long Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
 	void ThrowWeaponOnDeath();
-	bool IsSameTeam(class APawn* Other);
+	unsigned long IsSameTeam(class APawn* Other);
 	class ATeamInfo* GetTeam();
 	unsigned char GetTeamNum();
 	void TakeDamage(int Damage, class AController* InstigatedBy, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	class AController* SetKillInstigator(class AController* InstigatedBy, class UClass* DamageType);
 	void NotifyTakeHit(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum);
-	bool TakeRadiusDamageOnBones(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, TArray<struct FName> Bones);
+	unsigned long TakeRadiusDamageOnBones(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, unsigned long bFullDamage, class AActor* DamageCauser, TArray<struct FName> Bones);
 	void PruneDamagedBoneList(TArray<struct FName>* Bones);
-	bool HealDamage(int Amount, class AController* Healer, class UClass* DamageType);
+	unsigned long HealDamage(int Amount, class AController* Healer, class UClass* DamageType);
 	void AdjustDamage(class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class UObject* WhatHitMe, int* inDamage, struct FVector* Momentum);
 	void SetMovementPhysics();
 	void Gasp();
@@ -18474,15 +18474,15 @@ public:
 	void PostBeginPlay();
 	void PreBeginPlay();
 	void Destroyed();
-	void DetachFromController(bool bDestroyController);
+	void DetachFromController(unsigned long bDestroyController);
 	void CrushedBy(class APawn* OtherPawn);
-	bool CanBeBaseForPawn(class APawn* aPawn);
+	unsigned long CanBeBaseForPawn(class APawn* aPawn);
 	void BaseChange();
 	void StuckOnPawn(class APawn* OtherPawn);
 	void JumpOffPawn();
 	void gibbedBy(class AActor* Other);
 	void EncroachedBy(class AActor* Other);
-	bool EncroachingOn(class AActor* Other);
+	unsigned long EncroachingOn(class AActor* Other);
 	void FaceRotation(const struct FRotator& NewRotation, float DeltaTime);
 	void UpdatePawnRotation(const struct FRotator& NewRotation);
 	void ClientSetRotation(const struct FRotator& NewRotation);
@@ -18496,7 +18496,7 @@ public:
 	void RestartPlayer();
 	void StartCrouch(float HeightAdjust);
 	void EndCrouch(float HeightAdjust);
-	void ShouldCrouch(bool bCrouch);
+	void ShouldCrouch(unsigned long bCrouch);
 	void UnCrouch();
 	void OutsideWorldBounds();
 	void FellOutOfWorld(class UClass* dmgType);
@@ -18507,120 +18507,120 @@ public:
 	void ReceiveLocalizedMessage(class UClass* Message, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 	void HandlePickup(class AInventory* Inv);
 	float AdjustedStrength();
-	bool LineOfSightTo(class AActor* Other);
+	unsigned long LineOfSightTo(class AActor* Other);
 	void SetMoveTarget(class AActor* NewTarget);
 	class AActor* GetMoveTarget();
-	bool NearMoveTarget();
-	bool AffectedByHitEffects();
-	bool InGodMode();
-	bool PawnCalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV);
+	unsigned long NearMoveTarget();
+	unsigned long AffectedByHitEffects();
+	unsigned long InGodMode();
+	unsigned long PawnCalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV);
 	void SetViewRotation(const struct FRotator& NewRotation);
 	struct FRotator GetAdjustedAimFor(class AWeapon* W, const struct FVector& StartFireLoc);
-	bool InFreeCam();
+	unsigned long InFreeCam();
 	struct FRotator GetBaseAimRotation();
 	struct FVector GetWeaponStartTraceLocation(class AWeapon* CurrentWeapon);
 	struct FVector GetPawnViewLocation();
 	struct FRotator GetViewRotation();
 	void GetActorEyesViewPoint(struct FVector* out_Location, struct FRotator* out_Rotation);
 	void ProcessViewRotation(float DeltaTime, struct FRotator* out_ViewRotation, struct FRotator* out_DeltaRot);
-	bool IsFirstPerson();
-	bool WasPlayerPawn();
-	bool IsPlayerPawn();
-	bool IsLocallyControlled(class AController* PawnController);
-	bool IsHumanControlled(class AController* PawnController);
+	unsigned long IsFirstPerson();
+	unsigned long WasPlayerPawn();
+	unsigned long IsPlayerPawn();
+	unsigned long IsLocallyControlled(class AController* PawnController);
+	unsigned long IsHumanControlled(class AController* PawnController);
 	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void ClimbLadder(class ALadderVolume* L);
 	void EndClimbLadder(class ALadderVolume* OldLadder);
-	bool CanSplash();
-	void SetWalking(bool bNewIsWalking);
+	unsigned long CanSplash();
+	void SetWalking(unsigned long bNewIsWalking);
 	float RangedAttackTime();
-	bool RecommendLongRangedAttack();
-	bool CanGrabLadder();
+	unsigned long RecommendLongRangedAttack();
+	unsigned long CanGrabLadder();
 	void DropToGround();
 	struct FName GetDefaultCameraMode(class APlayerController* RequestedBy);
 	void UnPossessed();
-	void UpdateControllerOnPossess(bool bVehicleTransition);
-	void PossessedBy(class AController* C, bool bVehicleTransition);
+	void UpdateControllerOnPossess(unsigned long bVehicleTransition);
+	void PossessedBy(class AController* C, unsigned long bVehicleTransition);
 	void NotifyTeamChanged();
-	void PlayTeleportEffect(bool bOut, bool bSound);
+	void PlayTeleportEffect(unsigned long bOut, unsigned long bSound);
 	struct FString GetHumanReadableName();
-	bool NeedToTurn(const struct FVector& targ);
-	bool IsFiring();
-	bool HasRangedAttack();
-	bool FireOnRelease();
-	bool TooCloseToAttack(class AActor* Other);
-	bool CanAttack(class AActor* Other);
+	unsigned long NeedToTurn(const struct FVector& targ);
+	unsigned long IsFiring();
+	unsigned long HasRangedAttack();
+	unsigned long FireOnRelease();
+	unsigned long TooCloseToAttack(class AActor* Other);
+	unsigned long CanAttack(class AActor* Other);
 	unsigned char ChooseFireMode();
-	bool BotFire(bool bFinished);
-	void WeaponStoppedFiring(class AWeapon* InWeapon, bool bViaReplication);
-	void WeaponFired(class AWeapon* InWeapon, bool bViaReplication, const struct FVector& HitLocation);
-	void FlashLocationUpdated(class AWeapon* InWeapon, const struct FVector& InFlashLocation, bool bViaReplication);
+	unsigned long BotFire(unsigned long bFinished);
+	void WeaponStoppedFiring(class AWeapon* InWeapon, unsigned long bViaReplication);
+	void WeaponFired(class AWeapon* InWeapon, unsigned long bViaReplication, const struct FVector& HitLocation);
+	void FlashLocationUpdated(class AWeapon* InWeapon, const struct FVector& InFlashLocation, unsigned long bViaReplication);
 	void Internal_ClearFlashLocation(class AWeapon* InWeapon, struct FVector* out_FlashLocation);
 	void ClearFlashLocation(class AWeapon* InWeapon);
 	void Internal_SetFlashLocation(class AWeapon* InWeapon, unsigned char InFiringMode, const struct FVector& NewLoc, struct FVector* out_FlashLocation);
 	void SetFlashLocation(class AWeapon* InWeapon, unsigned char InFiringMode, const struct FVector& NewLoc);
 	void Internal_ClearFlashCount(class AWeapon* InWeapon, unsigned char* out_FlashCountVar);
 	void ClearFlashCount(class AWeapon* InWeapon);
-	void FlashCountUpdated(class AWeapon* InWeapon, unsigned char InFlashCount, bool bViaReplication);
+	void FlashCountUpdated(class AWeapon* InWeapon, unsigned char InFlashCount, unsigned long bViaReplication);
 	void Internal_IncrementFlashCount(class AWeapon* InWeapon, unsigned char InFiringMode, unsigned char* out_FlashCountVar);
 	void IncrementFlashCount(class AWeapon* InWeapon, unsigned char InFiringMode);
-	void FiringModeUpdated(class AWeapon* InWeapon, unsigned char InFiringMode, bool bViaReplication);
+	void FiringModeUpdated(class AWeapon* InWeapon, unsigned char InFiringMode, unsigned long bViaReplication);
 	void Internal_SetFiringMode(class AWeapon* InWeapon, unsigned char InFiringMode, unsigned char* out_FiringModeVar);
 	void SetFiringMode(class AWeapon* InWeapon, unsigned char InFiringMode);
 	unsigned char GetWeaponFiringMode(class AWeapon* InWeapon);
 	void StopFire(unsigned char FireModeNum);
 	void StartFire(unsigned char FireModeNum);
-	bool StopFiring();
+	unsigned long StopFiring();
 	void Reset();
 	void PlayerChangedTeam();
 	void SetBaseEyeheight();
-	bool SpecialMoveThruEdge(TEnumAsByte<ENavMeshEdgeType> Type, int Dir, const struct FVector& MoveStart, const struct FVector& MoveDest, class AActor* RelActor, int RelItem);
-	bool SpecialMoveTo(class ANavigationPoint* Start, class ANavigationPoint* End, class AActor* Next);
-	bool TermRagdoll();
-	bool InitRagdoll();
-	bool IsValidEnemy();
+	unsigned long SpecialMoveThruEdge(TEnumAsByte<ENavMeshEdgeType> Type, int Dir, const struct FVector& MoveStart, const struct FVector& MoveDest, class AActor* RelActor, int RelItem);
+	unsigned long SpecialMoveTo(class ANavigationPoint* Start, class ANavigationPoint* End, class AActor* Next);
+	unsigned long TermRagdoll();
+	unsigned long InitRagdoll();
+	unsigned long IsValidEnemy();
 	int SpecialCostForPath(class UReachSpec* Path);
 	void GetBoundingCylinder(float* CollisionRadius, float* CollisionHeight);
-	bool ReachedDesiredRotation();
-	void SetPushesRigidBodies(bool NewPush);
+	unsigned long ReachedDesiredRotation();
+	void SetPushesRigidBodies(unsigned long NewPush);
 	void ForceCrouch();
-	bool ReachedPoint(const struct FVector& Point, class AActor* NewAnchor);
-	bool ReachedDestination(class AActor* Goal);
-	class ANavigationPoint* GetBestAnchor(class AActor* TestActor, const struct FVector& TestLocation, bool bStartPoint, bool bOnlyCheckVisible, float* out_Dist);
+	unsigned long ReachedPoint(const struct FVector& Point, class AActor* NewAnchor);
+	unsigned long ReachedDestination(class AActor* Goal);
+	class ANavigationPoint* GetBestAnchor(class AActor* TestActor, const struct FVector& TestLocation, unsigned long bStartPoint, unsigned long bOnlyCheckVisible, float* out_Dist);
 	void SetAnchor(class ANavigationPoint* NewAnchor);
 	void SetRemoteViewPitch(int NewRemoteViewPitch);
-	bool IsInvisible();
-	bool IsValidEnemyTargetFor(class APlayerReplicationInfo* PRI, bool bNoPRIisEnemy);
-	bool IsValidTargetFor(class AController* C);
+	unsigned long IsInvisible();
+	unsigned long IsValidEnemyTargetFor(class APlayerReplicationInfo* PRI, unsigned long bNoPRIisEnemy);
+	unsigned long IsValidTargetFor(class AController* C);
 	float GetFallDuration();
-	bool SuggestJumpVelocity(const struct FVector& Destination, const struct FVector& Start, struct FVector* JumpVelocity);
-	bool ValidAnchor();
+	unsigned long SuggestJumpVelocity(const struct FVector& Destination, const struct FVector& Start, struct FVector* JumpVelocity);
+	unsigned long ValidAnchor();
 	struct FVector AdjustDestination(class AActor* GoalActor, const struct FVector& Dest);
-	bool IsAliveAndWell();
+	unsigned long IsAliveAndWell();
 	void ReplicatedEvent(const struct FName& VarName);
 	void SetSkelControlScale(const struct FName& SkelControlName, float Scale);
 	void SetMorphWeight(const struct FName& MorphNodeName, float MorphWeight);
 	class UFaceFXAsset* GetActorFaceFXAsset();
 	void FaceFXAudioFinished(class UAudioComponent* AC);
 	void OnPlayFaceFXAnim(class USeqAct_PlayFaceFXAnim* inAction);
-	bool CanActorPlayFaceFXAnim();
-	bool IsActorPlayingFaceFXAnim();
+	unsigned long CanActorPlayFaceFXAnim();
+	unsigned long IsActorPlayingFaceFXAnim();
 	class UAudioComponent* GetFaceFXAudioComponent();
 	void StopActorFaceFXAnim();
-	bool PlayActorFaceFXAnim(class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay);
+	unsigned long PlayActorFaceFXAnim(class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay);
 	void MAT_BeginAIGroup(const struct FVector& StartLoc, const struct FRotator& StartRot);
 	void InterpolationFinished(class USeqAct_Interp* InterpAction);
 	void InterpolationStarted(class USeqAct_Interp* InterpAction, class UInterpGroupInst* GroupInst);
 	void MAT_SetSkelControlScale(const struct FName& SkelControlName, float Scale);
 	void MAT_SetMorphWeight(const struct FName& MorphNodeName, float MorphWeight);
 	void MAT_SetAnimWeights(TArray<struct FAnimSlotInfo> SlotInfos);
-	void MAT_SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, bool bFireNotifies, bool bLooping);
-	void SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, bool bFireNotifies, bool bLooping);
+	void MAT_SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, unsigned long bFireNotifies, unsigned long bLooping);
+	void SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, unsigned long bFireNotifies, unsigned long bLooping);
 	void MAT_FinishAnimControl(class UInterpGroup* InInterpGroup);
 	void FinishAnimControl(class UInterpGroup* InInterpGroup);
 	void MAT_BeginAnimControl(class UInterpGroup* InInterpGroup);
 	void BeginAnimControl(class UInterpGroup* InInterpGroup);
-	bool RestoreAnimSetsToDefault();
+	unsigned long RestoreAnimSetsToDefault();
 	void AnimSetListUpdated();
 	void AddAnimSets(TArray<class UAnimSet*>* CustomAnimSets);
 	void BuildScriptAnimSetList();
@@ -18628,12 +18628,12 @@ public:
 	void ClearAnimNodes();
 	void CacheAnimNodes();
 	void PostInitAnimTree(class USkeletalMeshComponent* SkelComp);
-	bool IsDesiredRotationLocked();
-	bool IsDesiredRotationInUse();
+	unsigned long IsDesiredRotationLocked();
+	unsigned long IsDesiredRotationInUse();
 	void CheckDesiredRotation();
 	void ResetDesiredRotation();
-	void LockDesiredRotation(bool Lock, bool InUnlockWhenReached);
-	bool SetDesiredRotation(const struct FRotator& TargetDesiredRotation, bool InLockDesiredRotation, bool InUnlockWhenReached, float InterpolationTime);
+	void LockDesiredRotation(unsigned long Lock, unsigned long InUnlockWhenReached);
+	unsigned long SetDesiredRotation(const struct FRotator& TargetDesiredRotation, unsigned long InLockDesiredRotation, unsigned long InUnlockWhenReached, float InterpolationTime);
 };
 
 
@@ -18691,50 +18691,50 @@ public:
 	void ReplicatedEvent(const struct FName& VarName);
 	void DrivingStatusChanged();
 	void HandleDeadVehicleDriver();
-	void SetDriving(bool B);
+	void SetDriving(unsigned long B);
 	struct FVector GetEntryLocation();
 	void CrushedBy(class APawn* OtherPawn);
 	void PancakeOther(class APawn* Other);
-	bool EncroachingOn(class AActor* Other);
+	unsigned long EncroachingOn(class AActor* Other);
 	class AController* GetCollisionDamageInstigator();
 	void EncroachedBy(class AActor* Other);
 	void FaceRotation(const struct FRotator& NewRotation, float DeltaTime);
 	struct FName GetDefaultCameraMode(class APlayerController* RequestedBy);
 	void PlayDying(class UClass* DamageType, const struct FVector& HitLoc);
 	void DriverDied(class UClass* DamageType);
-	bool Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	unsigned long Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
 	void ThrowActiveWeapon();
 	void AdjustDriverDamage(class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, int* Damage, struct FVector* Momentum);
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
 	class AController* SetKillInstigator(class AController* InstigatedBy, class UClass* DamageType);
 	void UnPossessed();
-	bool TryExitPos(class APawn* ExitingDriver, const struct FVector& ExitPos, bool bMustFindGround);
-	bool FindAutoExit(class APawn* ExitingDriver);
-	bool PlaceExitingDriver(class APawn* ExitingDriver);
+	unsigned long TryExitPos(class APawn* ExitingDriver, const struct FVector& ExitPos, unsigned long bMustFindGround);
+	unsigned long FindAutoExit(class APawn* ExitingDriver);
+	unsigned long PlaceExitingDriver(class APawn* ExitingDriver);
 	void DriverLeft();
 	void SetInputs(float InForward, float InStrafe, float InUp);
-	bool DriverLeave(bool bForceLeave);
+	unsigned long DriverLeave(unsigned long bForceLeave);
 	struct FRotator GetExitRotation(class AController* C);
-	bool ContinueOnFoot();
+	unsigned long ContinueOnFoot();
 	void DetachDriver(class APawn* P);
 	void AttachDriver(class APawn* P);
 	void EntryAnnouncement(class AController* C);
-	void PossessedBy(class AController* C, bool bVehicleTransition);
-	bool DriverEnter(class APawn* P);
-	bool TryToDrive(class APawn* P);
-	bool AnySeatAvailable();
-	bool CanEnterVehicle(class APawn* P);
+	void PossessedBy(class AController* C, unsigned long bVehicleTransition);
+	unsigned long DriverEnter(class APawn* P);
+	unsigned long TryToDrive(class APawn* P);
+	unsigned long AnySeatAvailable();
+	unsigned long CanEnterVehicle(class APawn* P);
 	void Destroyed_HandleDriver();
 	void Destroyed();
-	bool CheatFly();
-	bool CheatGhost();
-	bool CheatWalk();
+	unsigned long CheatFly();
+	unsigned long CheatGhost();
+	unsigned long CheatWalk();
 	void PostBeginPlay();
 	void SetBaseEyeheight();
 	void PlayerChangedTeam();
 	void DriverRadiusDamage(float DamageAmount, float DamageRadius, class AController* EventInstigator, class UClass* DamageType, float Momentum, const struct FVector& HitLocation, class AActor* DamageCauser, float DamageFalloffExponent);
-	void TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
-	struct FVector GetTargetLocation(class AActor* RequestedBy, bool bRequestAlternateLoc);
+	void TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, unsigned long bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
+	struct FVector GetTargetLocation(class AActor* RequestedBy, unsigned long bRequestAlternateLoc);
 	void Suicide();
 	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void NotifyTeamChanged();
@@ -18825,21 +18825,21 @@ public:
 	void StopEngineSound();
 	void StartEngineSoundTimed();
 	void StartEngineSound();
-	bool HasWheelsOnGround();
-	bool TryToDrive(class APawn* P);
+	unsigned long HasWheelsOnGround();
+	unsigned long TryToDrive(class APawn* P);
 	struct FName GetDefaultCameraMode(class APlayerController* RequestedBy);
-	bool CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV);
-	bool Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	unsigned long CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV);
+	unsigned long Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
 	void AddVelocity(const struct FVector& NewVelocity, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo);
-	void InitVehicleRagdoll(class USkeletalMesh* RagdollMesh, class UPhysicsAsset* RagdollPhysAsset, const struct FVector& ActorMove, bool bClearAnimTree);
-	void TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
+	void InitVehicleRagdoll(class USkeletalMesh* RagdollMesh, class UPhysicsAsset* RagdollPhysAsset, const struct FVector& ActorMove, unsigned long bClearAnimTree);
+	void TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, unsigned long bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent, class UObject* WhatHitMe);
 	void StopVehicleSounds();
 	void TurnOff();
 	void Destroyed();
 	void PostInitAnimTree(class USkeletalMeshComponent* SkelComp);
 	void PostBeginPlay();
-	void SetWheelCollision(int WheelNum, bool bCollision);
-	bool IsSleeping();
+	void SetWheelCollision(int WheelNum, unsigned long bCollision);
+	unsigned long IsSleeping();
 	void AddTorque(const struct FVector& Torque);
 	void AddImpulse(const struct FVector& Impulse);
 	void AddForce(const struct FVector& Force);
@@ -18873,7 +18873,7 @@ public:
 	void OnDestroy(class USeqAct_Destroy* Action);
 	void TermConstraint();
 	void InitConstraint(class AActor* Actor1, class AActor* Actor2, const struct FName& Actor1Bone, const struct FName& Actor2Bone, float BreakThreshold);
-	void SetDisableCollision(bool NewDisableCollision);
+	void SetDisableCollision(unsigned long NewDisableCollision);
 };
 
 
@@ -19019,7 +19019,7 @@ public:
 	void SetSmoothLocation(const struct FVector& NewLocation, float MoveTime);
 	void SetLocation(const struct FVector& NewLocation);
 	void ReleaseComponent();
-	void GrabComponent(class UPrimitiveComponent* Component, const struct FName& InBoneName, const struct FVector& GrabLocation, bool bConstrainRotation);
+	void GrabComponent(class UPrimitiveComponent* Component, const struct FName& InBoneName, const struct FVector& GrabLocation, unsigned long bConstrainRotation);
 };
 
 
@@ -19248,18 +19248,18 @@ public:
 
 	class URB_ConstraintInstance* FindConstraintInstance(const struct FName& ConName, class UPhysicsAsset* InAsset);
 	class URB_BodyInstance* FindBodyInstance(const struct FName& BodyName, class UPhysicsAsset* InAsset);
-	void SetFullAnimWeightBonesFixed(bool bNewFixed, class USkeletalMeshComponent* SkelMesh);
-	void SetFullAnimWeightBlockRigidBody(bool bNewBlockRigidBody, class USkeletalMeshComponent* SkelMesh);
-	void SetNamedBodiesBlockRigidBody(bool bNewBlockRigidBody, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMesh);
-	void SetNamedRBBoneSprings(bool bEnable, TArray<struct FName> BoneNames, float InBoneLinearSpring, float InBoneAngularSpring, class USkeletalMeshComponent* SkelMeshComp);
-	void SetNamedMotorsAngularVelocityDrive(bool bEnableSwingDrive, bool bEnableTwistDrive, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMeshComp, bool bSetOtherBodiesToComplement);
-	void SetNamedMotorsAngularPositionDrive(bool bEnableSwingDrive, bool bEnableTwistDrive, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMeshComp, bool bSetOtherBodiesToComplement);
-	void SetAllMotorsAngularDriveParams(float InSpring, float InDamping, float InForceLimit, class USkeletalMeshComponent* SkelMesh, bool bSkipFullAnimWeightBodies);
-	void SetAllMotorsAngularVelocityDrive(bool bEnableSwingDrive, bool bEnableTwistDrive, class USkeletalMeshComponent* SkelMeshComp, bool bSkipFullAnimWeightBodies);
-	void SetAllMotorsAngularPositionDrive(bool bEnableSwingDrive, bool bEnableTwistDrive, class USkeletalMeshComponent* SkelMesh, bool bSkipFullAnimWeightBodies);
+	void SetFullAnimWeightBonesFixed(unsigned long bNewFixed, class USkeletalMeshComponent* SkelMesh);
+	void SetFullAnimWeightBlockRigidBody(unsigned long bNewBlockRigidBody, class USkeletalMeshComponent* SkelMesh);
+	void SetNamedBodiesBlockRigidBody(unsigned long bNewBlockRigidBody, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMesh);
+	void SetNamedRBBoneSprings(unsigned long bEnable, TArray<struct FName> BoneNames, float InBoneLinearSpring, float InBoneAngularSpring, class USkeletalMeshComponent* SkelMeshComp);
+	void SetNamedMotorsAngularVelocityDrive(unsigned long bEnableSwingDrive, unsigned long bEnableTwistDrive, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMeshComp, unsigned long bSetOtherBodiesToComplement);
+	void SetNamedMotorsAngularPositionDrive(unsigned long bEnableSwingDrive, unsigned long bEnableTwistDrive, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMeshComp, unsigned long bSetOtherBodiesToComplement);
+	void SetAllMotorsAngularDriveParams(float InSpring, float InDamping, float InForceLimit, class USkeletalMeshComponent* SkelMesh, unsigned long bSkipFullAnimWeightBodies);
+	void SetAllMotorsAngularVelocityDrive(unsigned long bEnableSwingDrive, unsigned long bEnableTwistDrive, class USkeletalMeshComponent* SkelMeshComp, unsigned long bSkipFullAnimWeightBodies);
+	void SetAllMotorsAngularPositionDrive(unsigned long bEnableSwingDrive, unsigned long bEnableTwistDrive, class USkeletalMeshComponent* SkelMesh, unsigned long bSkipFullAnimWeightBodies);
 	void ForceAllBodiesBelowUnfixed(class UPhysicsAsset* InAsset, class USkeletalMesh* InSkelMesh, struct FName* InBoneName);
-	void SetNamedBodiesFixed(bool bNewFixed, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMesh, bool bSetOtherBodiesToComplement, bool bSkipFullAnimWeightBodies);
-	void SetAllBodiesFixed(bool bNewFixed);
+	void SetNamedBodiesFixed(unsigned long bNewFixed, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMesh, unsigned long bSetOtherBodiesToComplement, unsigned long bSkipFullAnimWeightBodies);
+	void SetAllBodiesFixed(unsigned long bNewFixed);
 	float GetTotalMassBelowBone(const struct FName& InBoneName, class UPhysicsAsset* InAsset, class USkeletalMesh* InSkelMesh);
 	void SetAngularDriveScale(float InAngularSpringScale, float InAngularDampingScale, float InAngularForceLimitScale);
 	void SetLinearDriveScale(float InLinearSpringScale, float InLinearDampingScale, float InLinearForceLimitScale);
@@ -19346,20 +19346,20 @@ public:
 	void UpdateDampingProperties();
 	void UpdateMassProperties(class URB_BodySetup* Setup);
 	void SetContactReportForceThreshold(float Threshold);
-	void EnableCollisionResponse(bool bEnableResponse);
+	void EnableCollisionResponse(unsigned long bEnableResponse);
 	void SetPhysMaterialOverride(class UPhysicalMaterial* NewPhysMaterial);
-	void SetBlockRigidBody(bool bNewBlockRigidBody);
-	void SetBoneSpringTarget(bool bTeleport, struct FMatrix* InBoneTarget);
+	void SetBlockRigidBody(unsigned long bNewBlockRigidBody);
+	void SetBoneSpringTarget(unsigned long bTeleport, struct FMatrix* InBoneTarget);
 	void SetBoneSpringParams(float InLinearSpring, float InLinearDamping, float InAngularSpring, float InAngularDamping);
-	void EnableBoneSpring(bool bInEnableLinear, bool bInEnableAngular, struct FMatrix* InBoneTarget);
+	void EnableBoneSpring(unsigned long bInEnableLinear, unsigned long bInEnableAngular, struct FMatrix* InBoneTarget);
 	struct FVector GetUnrealWorldVelocityAtPoint(const struct FVector& Point);
 	struct FVector GetUnrealWorldAngularVelocity();
 	struct FVector GetUnrealWorldVelocity();
 	struct FMatrix GetUnrealWorldTM();
 	class UPhysicsAssetInstance* GetPhysicsAssetInstance();
-	bool IsValidBodyInstance();
-	bool IsFixed();
-	void SetFixed(bool bNewFixed);
+	unsigned long IsValidBodyInstance();
+	unsigned long IsFixed();
+	void SetFixed(unsigned long bNewFixed);
 	float GetBodyMass();
 };
 
@@ -19416,14 +19416,14 @@ public:
 	void SetLinearDriveParams(float InSpring, float InDamping, float InForceLimit);
 	void SetLinearVelocityTarget(const struct FVector& InVelTarget);
 	void SetLinearPositionTarget(const struct FVector& InPosTarget);
-	void SetAngularVelocityDrive(bool bEnableSwingDrive, bool bEnableTwistDrive);
-	void SetAngularPositionDrive(bool bEnableSwingDrive, bool bEnableTwistDrive);
-	void SetLinearVelocityDrive(bool bEnableXDrive, bool bEnableYDrive, bool bEnableZDrive);
-	void SetLinearPositionDrive(bool bEnableXDrive, bool bEnableYDrive, bool bEnableZDrive);
+	void SetAngularVelocityDrive(unsigned long bEnableSwingDrive, unsigned long bEnableTwistDrive);
+	void SetAngularPositionDrive(unsigned long bEnableSwingDrive, unsigned long bEnableTwistDrive);
+	void SetLinearVelocityDrive(unsigned long bEnableXDrive, unsigned long bEnableYDrive, unsigned long bEnableZDrive);
+	void SetLinearPositionDrive(unsigned long bEnableXDrive, unsigned long bEnableYDrive, unsigned long bEnableZDrive);
 	struct FVector GetConstraintLocation();
 	class UPhysicsAssetInstance* GetPhysicsAssetInstance();
 	void TermConstraint();
-	void InitConstraint(class UPrimitiveComponent* PrimComp1, class UPrimitiveComponent* PrimComp2, class URB_ConstraintSetup* Setup, float Scale, class AActor* InOwner, class UPrimitiveComponent* InPrimComp, bool bMakeKinForBody1);
+	void InitConstraint(class UPrimitiveComponent* PrimComp1, class UPrimitiveComponent* PrimComp2, class URB_ConstraintSetup* Setup, float Scale, class AActor* InOwner, class UPrimitiveComponent* InPrimComp, unsigned long bMakeKinForBody1);
 };
 
 
@@ -19678,7 +19678,7 @@ public:
 	}
 
 
-	bool StopsProjectile(class AProjectile* P);
+	unsigned long StopsProjectile(class AProjectile* P);
 	void PostBeginPlay();
 };
 
@@ -20281,7 +20281,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -20324,10 +20324,10 @@ public:
 	}
 
 
-	void SetEnabled(bool bInEnabled);
+	void SetEnabled(unsigned long bInEnabled);
 	void Reset();
-	void FindSeqObjectsByName(const struct FString& SeqObjName, bool bCheckComment, bool bRecursive, TArray<class USequenceObject*>* OutputObjects);
-	void FindSeqObjectsByClass(class UClass* DesiredClass, bool bRecursive, TArray<class USequenceObject*>* OutputObjects);
+	void FindSeqObjectsByName(const struct FString& SeqObjName, unsigned long bCheckComment, unsigned long bRecursive, TArray<class USequenceObject*>* OutputObjects);
+	void FindSeqObjectsByClass(class UClass* DesiredClass, unsigned long bRecursive, TArray<class USequenceObject*>* OutputObjects);
 };
 
 
@@ -20632,7 +20632,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -20740,7 +20740,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -20760,7 +20760,7 @@ public:
 	}
 
 
-	bool Update(float DeltaTime);
+	unsigned long Update(float DeltaTime);
 	void AbortFor(class AActor* latentActor);
 };
 
@@ -20857,7 +20857,7 @@ public:
 
 	void ResetDelayActive();
 	void Reset();
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -20939,7 +20939,7 @@ public:
 	void Reset();
 	void AddPlayerToDirectorTracks(class APlayerController* PC);
 	void Stop();
-	void SetPosition(float NewPosition, bool bJump);
+	void SetPosition(float NewPosition, unsigned long bJump);
 };
 
 
@@ -21133,7 +21133,7 @@ public:
 
 
 	int STATIC_GetObjClassVersion();
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -21172,7 +21172,7 @@ public:
 
 
 	int STATIC_GetObjClassVersion();
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -21512,7 +21512,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -21890,7 +21890,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -21925,7 +21925,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -21942,7 +21942,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -21984,7 +21984,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -22164,7 +22164,7 @@ public:
 	}
 
 
-	bool CheckLogins();
+	unsigned long CheckLogins();
 };
 
 
@@ -22198,7 +22198,7 @@ public:
 
 	void RemoveValueEntry(int RemoveIndex);
 	void InsertValueEntry(int InsertIndex);
-	bool IsFallThruEnabled(int ValueIndex);
+	unsigned long IsFallThruEnabled(int ValueIndex);
 	void VerifyDefaultCaseValue();
 };
 
@@ -22219,7 +22219,7 @@ public:
 
 	void RemoveValueEntry(int RemoveIndex);
 	void InsertValueEntry(int InsertIndex);
-	bool IsFallThruEnabled(int ValueIndex);
+	unsigned long IsFallThruEnabled(int ValueIndex);
 	void VerifyDefaultCaseValue();
 };
 
@@ -22241,7 +22241,7 @@ public:
 
 	void RemoveValueEntry(int RemoveIndex);
 	void InsertValueEntry(int InsertIndex);
-	bool IsFallThruEnabled(int ValueIndex);
+	unsigned long IsFallThruEnabled(int ValueIndex);
 	void VerifyDefaultCaseValue();
 };
 
@@ -22275,7 +22275,7 @@ public:
 
 	void Toggled();
 	void Reset();
-	bool CheckActivate(class AActor* InOriginator, class AActor* InInstigator, bool bTest, bool bPushTop, TArray<int>* ActivateIndices);
+	unsigned long CheckActivate(class AActor* InOriginator, class AActor* InInstigator, unsigned long bTest, unsigned long bPushTop, TArray<int>* ActivateIndices);
 	void RegisterEvent();
 };
 
@@ -22573,7 +22573,7 @@ public:
 	int STATIC_GetObjClassVersion();
 	void Reset();
 	void HandleDamage(class AActor* InOriginator, class AActor* InInstigator, class UClass* inDamageType, int inAmount);
-	bool IsValidDamageType(class UClass* inDamageType);
+	unsigned long IsValidDamageType(class UClass* inDamageType);
 };
 
 
@@ -22599,8 +22599,8 @@ public:
 	int STATIC_GetObjClassVersion();
 	void NotifyTouchingPawnDied(class APawn* P);
 	void Toggled();
-	bool CheckUnTouchActivate(class AActor* InOriginator, class AActor* InInstigator, bool bTest);
-	bool CheckTouchActivate(class AActor* InOriginator, class AActor* InInstigator, bool bTest);
+	unsigned long CheckUnTouchActivate(class AActor* InOriginator, class AActor* InInstigator, unsigned long bTest);
+	unsigned long CheckTouchActivate(class AActor* InOriginator, class AActor* InInstigator, unsigned long bTest);
 };
 
 
@@ -22639,7 +22639,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -23609,20 +23609,20 @@ public:
 	TScriptInterface<class UOnlinePlayerInterface> STATIC_GetOnlinePlayerInterface();
 	TScriptInterface<class UOnlineGameInterface> STATIC_GetOnlineGameInterface();
 	struct FString STATIC_ConvertWidgetIDToString(class UUIObject* SourceWidget);
-	bool STATIC_GetDataStoreStringValue(const struct FString& InDataStoreMarkup, class UUIScene* OwnerScene, class ULocalPlayer* OwnerPlayer, struct FString* OutStringValue);
-	bool STATIC_GetDataStoreFieldValue(const struct FString& InDataStoreMarkup, class UUIScene* OwnerScene, class ULocalPlayer* OwnerPlayer, struct FUIProviderFieldValue* OutFieldValue);
-	bool STATIC_SetDataStoreStringValue(const struct FString& InDataStoreMarkup, const struct FString& InStringValue, class UUIScene* OwnerScene, class ULocalPlayer* OwnerPlayer);
-	bool STATIC_SetDataStoreFieldValue(const struct FString& InDataStoreMarkup, class UUIScene* OwnerScene, class ULocalPlayer* OwnerPlayer, struct FUIProviderFieldValue* InFieldValue);
+	unsigned long STATIC_GetDataStoreStringValue(const struct FString& InDataStoreMarkup, class UUIScene* OwnerScene, class ULocalPlayer* OwnerPlayer, struct FString* OutStringValue);
+	unsigned long STATIC_GetDataStoreFieldValue(const struct FString& InDataStoreMarkup, class UUIScene* OwnerScene, class ULocalPlayer* OwnerPlayer, struct FUIProviderFieldValue* OutFieldValue);
+	unsigned long STATIC_SetDataStoreStringValue(const struct FString& InDataStoreMarkup, const struct FString& InStringValue, class UUIScene* OwnerScene, class ULocalPlayer* OwnerPlayer);
+	unsigned long STATIC_SetDataStoreFieldValue(const struct FString& InDataStoreMarkup, class UUIScene* OwnerScene, class ULocalPlayer* OwnerPlayer, struct FUIProviderFieldValue* InFieldValue);
 	class UUIDataStore* STATIC_StaticResolveDataStore(const struct FName& DataStoreTag, class UUIScene* OwnerScene, class ULocalPlayer* InPlayerOwner);
-	struct FMatrix STATIC_GetPrimitiveTransform(class UUIObject* Widget, bool bIncludeAnchorPosition, bool bIncudeRotation, bool bIncludeScale);
-	void STATIC_SetMouseCaptureOverride(bool bCaptureMouse);
-	bool STATIC_GetCursorSize(float* CursorXL, float* CursorYL);
-	bool STATIC_GetCursorPosition(class UUIScene* Scene, int* CursorX, int* CursorY);
+	struct FMatrix STATIC_GetPrimitiveTransform(class UUIObject* Widget, unsigned long bIncludeAnchorPosition, unsigned long bIncudeRotation, unsigned long bIncludeScale);
+	void STATIC_SetMouseCaptureOverride(unsigned long bCaptureMouse);
+	unsigned long STATIC_GetCursorSize(float* CursorXL, float* CursorYL);
+	unsigned long STATIC_GetCursorPosition(class UUIScene* Scene, int* CursorX, int* CursorY);
 	TEnumAsByte<EUIOrientation> STATIC_GetFaceOrientation(TEnumAsByte<EUIWidgetFace> Face);
 	class UGameUISceneClient* STATIC_GetSceneClient();
 	class UUIInteraction* STATIC_GetCurrentUIController();
-	bool STATIC_IsEditor();
-	bool STATIC_IsConsole(TEnumAsByte<EConsoleType> ConsoleType);
+	unsigned long STATIC_IsEditor();
+	unsigned long STATIC_IsConsole(TEnumAsByte<EConsoleType> ConsoleType);
 	TEnumAsByte<EInputPlatformType> STATIC_GetInputPlatformType(class ULocalPlayer* OwningPlayer);
 };
 
@@ -23706,8 +23706,8 @@ public:
 	}
 
 
-	bool AllowInputAlias(const struct FName& InputKeyName, const struct FName& InputAliasName);
-	bool AllowNavigationAway(TEnumAsByte<EUIWidgetFace> Direction);
+	unsigned long AllowInputAlias(const struct FName& InputKeyName, const struct FName& InputAliasName);
+	unsigned long AllowNavigationAway(TEnumAsByte<EUIWidgetFace> Direction);
 	void LostFocus();
 	void GainedFocus();
 	struct FName GetFocusGainedName();
@@ -23721,47 +23721,47 @@ public:
 	void Add_UIAnimKeyFrameCompletedHandler(const struct FScriptDelegate& KeyFrameCompletedDelegate);
 	void ActivateTrackCompletedDelegates(class UUIScreenObject* Sender, const struct FName& AnimName, int TrackTypeMask);
 	void ActivateKeyFrameCompletedDelegates(class UUIScreenObject* Sender, const struct FName& AnimName, TEnumAsByte<EUIAnimType> TrackType);
-	void UIAnimationEnded(class UUIScreenObject* Sender, const struct FName& AnimName, int TrackTypeMask, bool bSetAnimatingFlag);
-	void UIAnimationStarted(class UUIScreenObject* Sender, const struct FName& AnimName, int TrackTypeMask, bool bSetAnimatingFlag);
-	bool IsAnimationPaused();
-	void PauseAnimations(bool bPauseAnimation);
-	bool IsAnimating(const struct FName& AnimationSequenceName);
+	void UIAnimationEnded(class UUIScreenObject* Sender, const struct FName& AnimName, int TrackTypeMask, unsigned long bSetAnimatingFlag);
+	void UIAnimationStarted(class UUIScreenObject* Sender, const struct FName& AnimName, int TrackTypeMask, unsigned long bSetAnimatingFlag);
+	unsigned long IsAnimationPaused();
+	void PauseAnimations(unsigned long bPauseAnimation);
+	unsigned long IsAnimating(const struct FName& AnimationSequenceName);
 	void ClearUIAnimationLoop(int SequenceIndex, int TrackTypeMask);
-	void StopUIAnimation(const struct FName& AnimName, class UUIAnimationSeq* AnimSeq, bool bFinalize, int TrackTypeMask);
-	void PlayUIAnimation(const struct FName& AnimName, class UUIAnimationSeq* AnimSeqTemplate, TEnumAsByte<EUIAnimationLoopMode> OverrideLoopMode, float PlaybackRate, float InitialPosition, bool bSetAnimatingFlag);
+	void StopUIAnimation(const struct FName& AnimName, class UUIAnimationSeq* AnimSeq, unsigned long bFinalize, int TrackTypeMask);
+	void PlayUIAnimation(const struct FName& AnimName, class UUIAnimationSeq* AnimSeqTemplate, TEnumAsByte<EUIAnimationLoopMode> OverrideLoopMode, float PlaybackRate, float InitialPosition, unsigned long bSetAnimatingFlag);
 	int FindAnimationSequenceIndex(const struct FName& SequenceName);
 	void TickAnimations(float DeltaTime);
-	bool AnimGetCurrentPPSettings(struct FPostProcessSettings* CurrentSettings);
-	bool Anim_SetValue(TEnumAsByte<EUIAnimType> AnimationType, struct FUIAnimationRawData* NewValue);
-	bool Anim_GetValue(TEnumAsByte<EUIAnimType> AnimationType, struct FUIAnimationRawData* out_CurrentValue);
+	unsigned long AnimGetCurrentPPSettings(struct FPostProcessSettings* CurrentSettings);
+	unsigned long Anim_SetValue(TEnumAsByte<EUIAnimType> AnimationType, struct FUIAnimationRawData* NewValue);
+	unsigned long Anim_GetValue(TEnumAsByte<EUIAnimType> AnimationType, struct FUIAnimationRawData* out_CurrentValue);
 	void OnUIAnim_TrackCompleted(class UUIScreenObject* Sender, const struct FName& AnimName, int TrackTypeMask);
 	void OnUIAnim_KeyFrameCompleted(class UUIScreenObject* Sender, const struct FName& AnimName, TEnumAsByte<EUIAnimType> TrackType);
 	void BecomePrimaryPlayer(int PlayerIndex);
 	TEnumAsByte<ENATType> GetNATType();
-	void STATIC_GetLoggedInControllerIds(bool bRequireOnlineLogin, int MaxPlayersToCheck, TArray<int>* ControllerIds);
-	int STATIC_GetLoggedInPlayerCount(bool bRequireOnlineLogin, int MaxPlayersToCheck);
-	bool CanPlayOnline(int ControllerId);
-	bool STATIC_HasLinkConnection();
+	void STATIC_GetLoggedInControllerIds(unsigned long bRequireOnlineLogin, int MaxPlayersToCheck, TArray<int>* ControllerIds);
+	int STATIC_GetLoggedInPlayerCount(unsigned long bRequireOnlineLogin, int MaxPlayersToCheck);
+	unsigned long CanPlayOnline(int ControllerId);
+	unsigned long STATIC_HasLinkConnection();
 	TEnumAsByte<ELoginStatus> GetLoginStatus(int ControllerId);
 	void OnConsoleCommand(class UUIAction_ConsoleCommand* Action);
-	bool DisableWidget(int PlayerIndex);
-	bool EnableWidget(int PlayerIndex);
+	unsigned long DisableWidget(int PlayerIndex);
+	unsigned long EnableWidget(int PlayerIndex);
 	class UUIScreenObject* GetParent();
-	bool ActivateFocusHint(class UUIObject* FocusHintObject);
+	unsigned long ActivateFocusHint(class UUIObject* FocusHintObject);
 	void GetSupportedUIActionKeyNames(TArray<struct FName>* out_KeyNames);
-	void DisablePlayerInput(unsigned char PlayerIndex, bool bRecurse);
-	void EnablePlayerInput(unsigned char PlayerIndex, bool bRecurse);
-	void SetVisibility(bool bIsVisible);
-	void PrivateSetVisibility(bool bVisible);
-	bool IsGamepadConnected(int ControllerId);
-	bool IsLoggedIn(int ControllerId, bool bRequireOnlineLogin);
+	void DisablePlayerInput(unsigned char PlayerIndex, unsigned long bRecurse);
+	void EnablePlayerInput(unsigned char PlayerIndex, unsigned long bRecurse);
+	void SetVisibility(unsigned long bIsVisible);
+	void PrivateSetVisibility(unsigned long bVisible);
+	unsigned long IsGamepadConnected(int ControllerId);
+	unsigned long IsLoggedIn(int ControllerId, unsigned long bRequireOnlineLogin);
 	void RemovedFromParent(class UUIScreenObject* WidgetOwner);
 	void RemovedChild(class UUIScreenObject* WidgetOwner, class UUIObject* OldChild, TArray<class UUIObject*> ExclusionSet);
 	void AddedChild(class UUIScreenObject* WidgetOwner, class UUIObject* NewChild);
 	void PostInitialize();
 	void Initialized();
 	struct FString GetWidgetPathName();
-	bool ShouldHideForConsole();
+	unsigned long ShouldHideForConsole();
 	float GetAspectRatioAutoScaleFactor(class UFont* BaseFont);
 	struct FMatrix GetInverseCanvasToScreen();
 	struct FMatrix GetCanvasToScreen();
@@ -23774,101 +23774,101 @@ public:
 	struct FVector Project(struct FVector* CanvasPosition);
 	void GetDockedWidgets(TEnumAsByte<EUIWidgetFace> SourceFace, TEnumAsByte<EUIWidgetFace> TargetFace, TArray<class UUIObject*>* out_DockedWidgets);
 	float STATIC_ResolveUIExtent(class UUIScreenObject* OwnerWidget, TEnumAsByte<EUIExtentEvalType> OutputType, struct FUIScreenValue_Extent* ExtentToResolve);
-	struct FVector GetPositionVector(bool bIncludeParentPosition);
-	float GetBounds(TEnumAsByte<EUIOrientation> Dimension, TEnumAsByte<EPositionEvalType> OutputType, bool bIgnoreDockPadding);
-	float GetPosition(TEnumAsByte<EUIWidgetFace> Face, TEnumAsByte<EPositionEvalType> OutputType, bool bIncludeOrigin, bool bIgnoreDockPadding);
-	void SetPosition(float NewValue, TEnumAsByte<EUIWidgetFace> Face, TEnumAsByte<EPositionEvalType> InputType, bool bIncludesViewportOrigin, bool bResolveChange);
-	void InvalidateAllPositions(bool bIgnoreDockedFaces);
+	struct FVector GetPositionVector(unsigned long bIncludeParentPosition);
+	float GetBounds(TEnumAsByte<EUIOrientation> Dimension, TEnumAsByte<EPositionEvalType> OutputType, unsigned long bIgnoreDockPadding);
+	float GetPosition(TEnumAsByte<EUIWidgetFace> Face, TEnumAsByte<EPositionEvalType> OutputType, unsigned long bIncludeOrigin, unsigned long bIgnoreDockPadding);
+	void SetPosition(float NewValue, TEnumAsByte<EUIWidgetFace> Face, TEnumAsByte<EPositionEvalType> InputType, unsigned long bIncludesViewportOrigin, unsigned long bResolveChange);
+	void InvalidateAllPositions(unsigned long bIgnoreDockedFaces);
 	void InvalidatePosition(TEnumAsByte<EUIWidgetFace> Face);
-	int GetPlayerOwnerIndex(bool bRequireValidIndex);
+	int GetPlayerOwnerIndex(unsigned long bRequireValidIndex);
 	int GetBestControllerId();
 	int GetBestPlayerIndex();
 	int GetSupportedPlayerCount();
 	int STATIC_GetActivePlayerCount();
-	void SetInputMask(unsigned char NewInputMask, bool bRecurse, bool bForcedOverride);
-	unsigned char GetInputMask(bool bInheritedMaskOnly, bool bOverrideMaskOnly);
-	bool AcceptsPlayerInput(int PlayerIndex);
-	bool IsRuntimeInstance();
-	bool IsPressed(int PlayerIndex);
-	bool IsActive(int PlayerIndex);
-	bool IsFocused(int PlayerIndex);
-	bool IsDisabled(int PlayerIndex, bool bCheckOwnerChain);
-	bool IsEnabled(int PlayerIndex, bool bCheckOwnerChain);
+	void SetInputMask(unsigned char NewInputMask, unsigned long bRecurse, unsigned long bForcedOverride);
+	unsigned char GetInputMask(unsigned long bInheritedMaskOnly, unsigned long bOverrideMaskOnly);
+	unsigned long AcceptsPlayerInput(int PlayerIndex);
+	unsigned long IsRuntimeInstance();
+	unsigned long IsPressed(int PlayerIndex);
+	unsigned long IsActive(int PlayerIndex);
+	unsigned long IsFocused(int PlayerIndex);
+	unsigned long IsDisabled(int PlayerIndex, unsigned long bCheckOwnerChain);
+	unsigned long IsEnabled(int PlayerIndex, unsigned long bCheckOwnerChain);
 	void OverrideLastFocusedControl(int PlayerIndex, class UUIObject* ChildToFocus);
-	class UUIObject* GetLastFocusedControl(bool bRecurse, int PlayerIndex);
-	class UUIObject* GetFocusedControl(bool bRecurse, int PlayerIndex);
-	bool KillFocus(class UUIScreenObject* Sender, int PlayerIndex);
-	bool SetFocusToChild(class UUIObject* ChildToFocus, int PlayerIndex);
-	bool SetFocus(class UUIScreenObject* Sender, int PlayerIndex);
-	bool CanPropagateFocusFor(class UUIObject* TestChild);
-	bool CanAcceptFocus(int PlayerIndex, bool bIncludeParentVisibility);
-	bool IsNeverFocused();
-	bool NavigateFocus(class UUIScreenObject* Sender, TEnumAsByte<EUIWidgetFace> Direction, int PlayerIndex, unsigned char* bFocusChanged);
-	bool PrevControl(class UUIScreenObject* Sender, int PlayerIndex);
-	bool NextControl(class UUIScreenObject* Sender, int PlayerIndex);
-	bool FocusLastControl(class UUIScreenObject* Sender, int PlayerIndex);
-	bool FocusFirstControl(class UUIScreenObject* Sender, int PlayerIndex, bool GamePadPlayer);
-	bool IsHoldingShift(int ControllerId);
-	bool IsHoldingAlt(int ControllerId);
-	bool IsHoldingCtrl(int ControllerId);
-	bool ConditionalPropagateEnabledState(int PlayerIndex, bool bForce);
-	bool DeactivateStateByClass(class UClass* StateToRemove, int PlayerIndex, class UUIState** StateThatWasRemoved);
-	bool DeactivateState(class UUIState* StateToRemove, int PlayerIndex);
-	bool ActivateStateByClass(class UClass* StateToActivate, int PlayerIndex, class UUIState** StateThatWasAdded);
-	bool ActivateState(class UUIState* StateToActivate, int PlayerIndex);
-	bool HasActiveStateOfClass(class UClass* StateClass, int PlayerIndex, int* StateIndex);
+	class UUIObject* GetLastFocusedControl(unsigned long bRecurse, int PlayerIndex);
+	class UUIObject* GetFocusedControl(unsigned long bRecurse, int PlayerIndex);
+	unsigned long KillFocus(class UUIScreenObject* Sender, int PlayerIndex);
+	unsigned long SetFocusToChild(class UUIObject* ChildToFocus, int PlayerIndex);
+	unsigned long SetFocus(class UUIScreenObject* Sender, int PlayerIndex);
+	unsigned long CanPropagateFocusFor(class UUIObject* TestChild);
+	unsigned long CanAcceptFocus(int PlayerIndex, unsigned long bIncludeParentVisibility);
+	unsigned long IsNeverFocused();
+	unsigned long NavigateFocus(class UUIScreenObject* Sender, TEnumAsByte<EUIWidgetFace> Direction, int PlayerIndex, unsigned char* bFocusChanged);
+	unsigned long PrevControl(class UUIScreenObject* Sender, int PlayerIndex);
+	unsigned long NextControl(class UUIScreenObject* Sender, int PlayerIndex);
+	unsigned long FocusLastControl(class UUIScreenObject* Sender, int PlayerIndex);
+	unsigned long FocusFirstControl(class UUIScreenObject* Sender, int PlayerIndex, unsigned long GamePadPlayer);
+	unsigned long IsHoldingShift(int ControllerId);
+	unsigned long IsHoldingAlt(int ControllerId);
+	unsigned long IsHoldingCtrl(int ControllerId);
+	unsigned long ConditionalPropagateEnabledState(int PlayerIndex, unsigned long bForce);
+	unsigned long DeactivateStateByClass(class UClass* StateToRemove, int PlayerIndex, class UUIState** StateThatWasRemoved);
+	unsigned long DeactivateState(class UUIState* StateToRemove, int PlayerIndex);
+	unsigned long ActivateStateByClass(class UClass* StateToActivate, int PlayerIndex, class UUIState** StateThatWasAdded);
+	unsigned long ActivateState(class UUIState* StateToActivate, int PlayerIndex);
+	unsigned long HasActiveStateOfClass(class UClass* StateClass, int PlayerIndex, int* StateIndex);
 	class UUIState* GetCurrentState(int PlayerIndex);
-	bool SetEnabled(bool bEnabled, int PlayerIndex);
-	void FindEventsOfClass(class UClass* EventClassToFind, class UUIState* LimitScope, bool bExactClass, TArray<class UUIEvent*>* out_EventInstances);
-	void ActivateEventByClass(int PlayerIndex, class UClass* EventClassToActivate, class UObject* InEventActivator, bool bActivateImmediately, TArray<int> IndicesToActivate, TArray<class UUIEvent*>* out_ActivatedEvents);
+	unsigned long SetEnabled(unsigned long bEnabled, int PlayerIndex);
+	void FindEventsOfClass(class UClass* EventClassToFind, class UUIState* LimitScope, unsigned long bExactClass, TArray<class UUIEvent*>* out_EventInstances);
+	void ActivateEventByClass(int PlayerIndex, class UClass* EventClassToActivate, class UObject* InEventActivator, unsigned long bActivateImmediately, TArray<int> IndicesToActivate, TArray<class UUIEvent*>* out_ActivatedEvents);
 	float GetAspectRatio();
 	float GetViewportHeight();
 	float GetViewportWidth();
-	bool GetViewportSize(struct FVector2D* out_ViewportSize);
-	bool GetViewportOrigin(struct FVector2D* out_ViewportOrigin);
+	unsigned long GetViewportSize(struct FVector2D* out_ViewportSize);
+	unsigned long GetViewportOrigin(struct FVector2D* out_ViewportOrigin);
 	float GetViewportScale();
-	bool GetViewportOffset(struct FVector2D* out_ViewportOffset);
-	bool RebuildNavigationLinks();
-	void RequestPrimitiveReview(bool bReinitializePrimitives, bool bReviewPrimitiveUsage);
+	unsigned long GetViewportOffset(struct FVector2D* out_ViewportOffset);
+	unsigned long RebuildNavigationLinks();
+	void RequestPrimitiveReview(unsigned long bReinitializePrimitives, unsigned long bReviewPrimitiveUsage);
 	void RequestSceneInputMaskUpdate();
 	void RequestFormattingUpdate();
-	void RequestSceneUpdate(bool bDockingStackChanged, bool bPositionsChanged, bool bNavLinksOutdated, bool bWidgetStylesChanged);
-	int GetDockClients(bool bDirectDockClientsOnly, TEnumAsByte<EUIWidgetFace> TargetFace, TEnumAsByte<EUIWidgetFace> SourceFace, TArray<class UUIObject*>* DockClients);
+	void RequestSceneUpdate(unsigned long bDockingStackChanged, unsigned long bPositionsChanged, unsigned long bNavLinksOutdated, unsigned long bWidgetStylesChanged);
+	int GetDockClients(unsigned long bDirectDockClientsOnly, TEnumAsByte<EUIWidgetFace> TargetFace, TEnumAsByte<EUIWidgetFace> SourceFace, TArray<class UUIObject*>* DockClients);
 	int GetObjectCount();
-	TArray<class UUIObject*> GetChildren(bool bRecurse, TArray<class UUIObject*> ExclusionSet);
-	bool ContainsChildOfClass(class UClass* SearchClass, bool bRecurse);
-	bool ContainsChild(class UUIObject* Child, bool bRecurse);
+	TArray<class UUIObject*> GetChildren(unsigned long bRecurse, TArray<class UUIObject*> ExclusionSet);
+	unsigned long ContainsChildOfClass(class UClass* SearchClass, unsigned long bRecurse);
+	unsigned long ContainsChild(class UUIObject* Child, unsigned long bRecurse);
 	int FindChildIndex(const struct FName& WidgetName);
-	class UUIObject* FindChildUsingID(const struct FWIDGET_ID& WidgetID, bool bRecurse);
-	class UUIObject* FindChild(const struct FName& WidgetName, bool bRecurse);
-	bool ReplaceChild(class UUIObject* ExistingChild, class UUIObject* NewChild);
-	bool ReparentChildren(TArray<class UUIObject*> ChildrenToReparent, class UUIScreenObject* NewParent, int InsertIndex);
-	bool ReparentChild(class UUIObject* CurrentChild, class UUIScreenObject* NewParent, int InsertIndex);
+	class UUIObject* FindChildUsingID(const struct FWIDGET_ID& WidgetID, unsigned long bRecurse);
+	class UUIObject* FindChild(const struct FName& WidgetName, unsigned long bRecurse);
+	unsigned long ReplaceChild(class UUIObject* ExistingChild, class UUIObject* NewChild);
+	unsigned long ReparentChildren(TArray<class UUIObject*> ChildrenToReparent, class UUIScreenObject* NewParent, int InsertIndex);
+	unsigned long ReparentChild(class UUIObject* CurrentChild, class UUIScreenObject* NewParent, int InsertIndex);
 	TArray<class UUIObject*> RemoveChildren(TArray<class UUIObject*> ChildrenToRemove);
-	bool RemoveChild(class UUIObject* ExistingChild, TArray<class UUIObject*> ExclusionSet);
-	int InsertChild(class UUIObject* NewChild, int InsertIndex, bool bRenameExisting);
+	unsigned long RemoveChild(class UUIObject* ExistingChild, TArray<class UUIObject*> ExclusionSet);
+	int InsertChild(class UUIObject* NewChild, int InsertIndex, unsigned long bRenameExisting);
 	void Initialize(class UUIScene* inOwnerScene, class UUIObject* InOwner);
-	class UUIPrefabInstance* InstanceUIPrefab(class UUIPrefab* SourcePrefab, const struct FName& PrefabInstanceName, int InsertIndex, bool bRenameExisting, struct FVector2D* PlacementLocation);
+	class UUIPrefabInstance* InstanceUIPrefab(class UUIPrefab* SourcePrefab, const struct FName& PrefabInstanceName, int InsertIndex, unsigned long bRenameExisting, struct FVector2D* PlacementLocation);
 	class UUIObject* CreateWidget(class UUIScreenObject* Owner, class UClass* WidgetClass, class UObject* WidgetArchetype, const struct FName& WidgetName);
-	bool STATIC_PlayUISound(const struct FName& SoundCueName, int PlayerIndex);
+	unsigned long STATIC_PlayUISound(const struct FName& SoundCueName, int PlayerIndex);
 	class ULocalPlayer* GetPlayerOwner(int PlayerIndex);
 	void InitializePlayerTracking();
 	void RemovePlayerData(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
 	void CreatePlayerData(int PlayerIndex, class ULocalPlayer* AddedPlayer);
-	void SetZDepth(float NewZDepth, bool bPropagateToChildren);
+	void SetZDepth(float NewZDepth, unsigned long bPropagateToChildren);
 	float GetZDepth();
-	bool IsHidden(bool bIncludeParents);
-	bool IsVisible(bool bIncludeParents);
-	bool IsInitialized();
+	unsigned long IsHidden(unsigned long bIncludeParents);
+	unsigned long IsVisible(unsigned long bIncludeParents);
+	unsigned long IsInitialized();
 	void OnInitialSceneUpdate();
-	void NotifyVisibilityChanged(class UUIScreenObject* SourceWidget, bool bIsVisible);
+	void NotifyVisibilityChanged(class UUIScreenObject* SourceWidget, unsigned long bIsVisible);
 	void NotifyActiveStateChanged(class UUIScreenObject* Sender, int PlayerIndex, class UUIState* NewlyActiveState, class UUIState* PreviouslyActiveState);
 	void NotifyResolutionChanged(struct FVector2D* OldViewportsize, struct FVector2D* NewViewportSize);
 	void NotifyPositionChanged(class UUIScreenObject* Sender);
-	bool OnProcessInputAxis(struct FSubscribedInputEventParameters* EventParms);
-	bool OnProcessInputKey(struct FSubscribedInputEventParameters* EventParms);
-	bool OnRawInputAxis(struct FInputEventParameters* EventParms);
-	bool OnRawInputKey(struct FInputEventParameters* EventParms);
+	unsigned long OnProcessInputAxis(struct FSubscribedInputEventParameters* EventParms);
+	unsigned long OnProcessInputKey(struct FSubscribedInputEventParameters* EventParms);
+	unsigned long OnRawInputAxis(struct FInputEventParameters* EventParms);
+	unsigned long OnRawInputKey(struct FInputEventParameters* EventParms);
 	void NotifyActiveSkinChanged();
 };
 
@@ -23925,7 +23925,7 @@ public:
 
 	void RemoveSequenceObjects(TArray<class USequenceObject*> ObjectsToRemove);
 	void RemoveSequenceObject(class USequenceObject* ObjectToRemove);
-	bool AddSequenceObject(class USequenceObject* NewObj, bool bRecurse);
+	unsigned long AddSequenceObject(class USequenceObject* NewObj, unsigned long bRecurse);
 	void GetUIEvents(class UClass* LimitClass, TArray<class UUIEvent*>* out_Events);
 };
 
@@ -23948,14 +23948,14 @@ public:
 	}
 
 
-	void DebugDumpDataStoreInfo(bool bVerbose);
+	void DebugDumpDataStoreInfo(unsigned long bVerbose);
 	void NotifyGameSessionEnded();
 	class UClass* FindDataStoreClass(class UClass* RequiredMetaClass);
 	void GetPlayerDataStoreClasses(TArray<class UClass*>* out_DataStoreClasses);
 	int FindPlayerDataStoreIndex(class ULocalPlayer* PlayerOwner);
 	void GetAvailableDataStores(class UUIScene* CurrentScene, TArray<class UUIDataStore*>* out_DataStores);
-	bool UnregisterDataStore(class UUIDataStore* DataStore);
-	bool RegisterDataStore(class UUIDataStore* DataStore, class ULocalPlayer* PlayerOwner);
+	unsigned long UnregisterDataStore(class UUIDataStore* DataStore);
+	unsigned long RegisterDataStore(class UUIDataStore* DataStore, class ULocalPlayer* PlayerOwner);
 	class UUIDataStore* CreateDataStore(class UClass* DataStoreClass);
 	class UUIDataStore* FindDataStore(const struct FName& DataStoreTag, class ULocalPlayer* PlayerOwner);
 };
@@ -23986,9 +23986,9 @@ public:
 	void Init();
 	void PostRender(class UCanvas* Canvas);
 	void Tick(float DeltaTime);
-	bool OnReceivedNativeInputChar(int ControllerId, const struct FString& Unicode);
-	bool OnReceivedNativeInputAxis(int ControllerId, const struct FName& Key, float Delta, float DeltaTime, bool bGamepad);
-	bool OnReceivedNativeInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad);
+	unsigned long OnReceivedNativeInputChar(int ControllerId, const struct FString& Unicode);
+	unsigned long OnReceivedNativeInputAxis(int ControllerId, const struct FName& Key, float Delta, float DeltaTime, unsigned long bGamepad);
+	unsigned long OnReceivedNativeInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, unsigned long bGamepad);
 };
 
 
@@ -24040,14 +24040,14 @@ public:
 
 
 	void UpdateCompleteIndices();
-	void BuildRuntimeAutoCompleteList(bool bForce);
+	void BuildRuntimeAutoCompleteList(unsigned long bForce);
 	void AppendInputText(const struct FString& Text);
-	bool ProcessControlKey(const struct FName& Key, TEnumAsByte<EInputEvent> Event);
+	unsigned long ProcessControlKey(const struct FName& Key, TEnumAsByte<EInputEvent> Event);
 	void FlushPlayerInput();
-	bool IsUIMiniConsoleOpen();
-	bool IsUIConsoleOpen();
-	bool InputChar(int ControllerId, const struct FString& Unicode);
-	bool InputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad);
+	unsigned long IsUIMiniConsoleOpen();
+	unsigned long IsUIConsoleOpen();
+	unsigned long InputChar(int ControllerId, const struct FString& Unicode);
+	unsigned long InputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, unsigned long bGamepad);
 	void PostRender_Console(class UCanvas* Canvas);
 	void StartTyping(const struct FString& Text);
 	void OutputText(const struct FString& Text);
@@ -24166,8 +24166,8 @@ public:
 	void PreProcessInput(float DeltaTime);
 	void DrawHUD(class AHUD* H);
 	void SetSensitivity(float F);
-	bool InvertTurn();
-	bool InvertMouse();
+	unsigned long InvertTurn();
+	unsigned long InvertMouse();
 };
 
 
@@ -24229,17 +24229,17 @@ public:
 
 	void NotifyGameSessionEnded();
 	TEnumAsByte<ENATType> STATIC_GetNATType();
-	bool CanAllPlayOnline();
-	bool STATIC_CanPlayOnline(int ControllerId);
+	unsigned long CanAllPlayOnline();
+	unsigned long STATIC_CanPlayOnline(int ControllerId);
 	int STATIC_GetConnectedGamepadCount(TArray<unsigned long> ControllerConnectionStatusOverrides);
-	bool STATIC_IsGamepadConnected(int ControllerId);
+	unsigned long STATIC_IsGamepadConnected(int ControllerId);
 	int STATIC_GetNumGuestsLoggedIn();
-	int STATIC_GetLoggedInPlayerCount(bool bRequireOnlineLogin);
-	bool STATIC_IsGuest(int ControllerId);
-	bool STATIC_IsLoggedIn(int ControllerId, bool bRequireOnlineLogin);
-	bool STATIC_HasLinkConnection();
+	int STATIC_GetLoggedInPlayerCount(unsigned long bRequireOnlineLogin);
+	unsigned long STATIC_IsGuest(int ControllerId);
+	unsigned long STATIC_IsLoggedIn(int ControllerId, unsigned long bRequireOnlineLogin);
+	unsigned long STATIC_HasLinkConnection();
 	TEnumAsByte<ELoginStatus> GetLowestLoginStatusOfControllers();
-	bool STATIC_GetGuestStatus(int ControllerId);
+	unsigned long STATIC_GetGuestStatus(int ControllerId);
 	TEnumAsByte<ELoginStatus> STATIC_GetLoginStatus(int ControllerId);
 	void SetMousePosition(int NewMouseX, int NewMouseY);
 	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
@@ -24247,7 +24247,7 @@ public:
 	class ULocalPlayer* STATIC_GetLocalPlayer(int PlayerIndex);
 	class UUIScene* CreateScene(class UClass* SceneClass, const struct FName& SceneTag, class UUIScene* SceneTemplate);
 	class UUIObject* CreateTransientWidget(class UClass* WidgetClass, const struct FName& WidgetTag, class UUIObject* Owner);
-	bool PlayUISound(const struct FName& SoundCueName, int PlayerIndex);
+	unsigned long PlayUISound(const struct FName& SoundCueName, int PlayerIndex);
 	class UDataStoreClient* STATIC_GetDataStoreClient();
 	int STATIC_GetPlayerControllerId(int PlayerIndex);
 	int STATIC_GetPlayerIndex(int ControllerId);
@@ -24321,18 +24321,18 @@ public:
 	struct FMatrix GetInverseCanvasToScreen(class UUIObject* Widget);
 	struct FMatrix GetCanvasToScreen(class UUIObject* Widget);
 	void UpdateCanvasToScreen();
-	bool ChangeMouseCursor(const struct FName& CursorName);
+	unsigned long ChangeMouseCursor(const struct FName& CursorName);
 	void SetMousePosition(int NewMouseX, int NewMouseY);
-	bool CloseSceneAtIndex(int SceneStackIndex, bool bCloseChildScenes, bool bForceCloseImmediately);
-	bool CloseScene(class UUIScene* Scene, bool bCloseChildScenes, bool bForceCloseImmediately);
-	bool ReplaceSceneAtIndex(int IndexOfSceneToReplace, class UUIScene* SceneToOpen, class ULocalPlayer* SceneOwner, unsigned char ForcedPriority, class UUIScene** OpenedScene);
-	bool ReplaceScene(class UUIScene* SceneInstanceToReplace, class UUIScene* SceneToOpen, class ULocalPlayer* SceneOwner, unsigned char ForcedPriority, class UUIScene** OpenedScene);
-	bool InsertScene(int DesiredInsertIndex, class UUIScene* Scene, class ULocalPlayer* SceneOwner, unsigned char ForcedPriority, class UUIScene** OpenedScene, int* ActualInsertIndex);
-	bool OpenScene(class UUIScene* Scene, class ULocalPlayer* SceneOwner, unsigned char ForcedPriority, class UUIScene** OpenedScene);
-	bool InitializeScene(class UUIScene* Scene, class ULocalPlayer* SceneOwner, class UUIScene** InitializedScene);
-	bool IsSceneInitialized(class UUIScene* Scene);
-	bool IsUIActive(int Flags);
-	bool ChangeActiveSkin(class UUISkin* NewActiveSkin);
+	unsigned long CloseSceneAtIndex(int SceneStackIndex, unsigned long bCloseChildScenes, unsigned long bForceCloseImmediately);
+	unsigned long CloseScene(class UUIScene* Scene, unsigned long bCloseChildScenes, unsigned long bForceCloseImmediately);
+	unsigned long ReplaceSceneAtIndex(int IndexOfSceneToReplace, class UUIScene* SceneToOpen, class ULocalPlayer* SceneOwner, unsigned char ForcedPriority, class UUIScene** OpenedScene);
+	unsigned long ReplaceScene(class UUIScene* SceneInstanceToReplace, class UUIScene* SceneToOpen, class ULocalPlayer* SceneOwner, unsigned char ForcedPriority, class UUIScene** OpenedScene);
+	unsigned long InsertScene(int DesiredInsertIndex, class UUIScene* Scene, class ULocalPlayer* SceneOwner, unsigned char ForcedPriority, class UUIScene** OpenedScene, int* ActualInsertIndex);
+	unsigned long OpenScene(class UUIScene* Scene, class ULocalPlayer* SceneOwner, unsigned char ForcedPriority, class UUIScene** OpenedScene);
+	unsigned long InitializeScene(class UUIScene* Scene, class ULocalPlayer* SceneOwner, class UUIScene** InitializedScene);
+	unsigned long IsSceneInitialized(class UUIScene* Scene);
+	unsigned long IsUIActive(int Flags);
+	unsigned long ChangeActiveSkin(class UUISkin* NewActiveSkin);
 };
 
 
@@ -24358,15 +24358,15 @@ public:
 
 	void RemoveSequenceObjects(TArray<class USequenceObject*>* ObjectsToRemove);
 	void RemoveSequenceObject(class USequenceObject* ObjectToRemove);
-	bool AddSequenceObject(class USequenceObject* NewObj, bool bRecurse);
+	unsigned long AddSequenceObject(class USequenceObject* NewObj, unsigned long bRecurse);
 	void GetUIEvents(class UClass* LimitClass, TArray<class UUIEvent*>* out_Events);
-	bool IsStateAllowed(class UUIScreenObject* Target, class UUIState* NewState, int PlayerIndex);
-	void OnDeactivate(class UUIScreenObject* Target, int PlayerIndex, bool bPoppedState);
-	void OnActivate(class UUIScreenObject* Target, int PlayerIndex, bool bPushedState);
-	bool DeactivateState(class UUIScreenObject* Target, int PlayerIndex);
-	bool ActivateState(class UUIScreenObject* Target, int PlayerIndex);
-	bool IsActiveForPlayer(int PlayerIndex);
-	bool IsWidgetClassSupported(class UClass* WidgetClass);
+	unsigned long IsStateAllowed(class UUIScreenObject* Target, class UUIState* NewState, int PlayerIndex);
+	void OnDeactivate(class UUIScreenObject* Target, int PlayerIndex, unsigned long bPoppedState);
+	void OnActivate(class UUIScreenObject* Target, int PlayerIndex, unsigned long bPushedState);
+	unsigned long DeactivateState(class UUIScreenObject* Target, int PlayerIndex);
+	unsigned long ActivateState(class UUIScreenObject* Target, int PlayerIndex);
+	unsigned long IsActiveForPlayer(int PlayerIndex);
+	unsigned long IsWidgetClassSupported(class UClass* WidgetClass);
 };
 
 
@@ -24384,8 +24384,8 @@ public:
 	}
 
 
-	bool IsStateAllowed(class UUIScreenObject* Target, class UUIState* NewState, int PlayerIndex);
-	bool ActivateState(class UUIScreenObject* Target, int PlayerIndex);
+	unsigned long IsStateAllowed(class UUIScreenObject* Target, class UUIState* NewState, int PlayerIndex);
+	unsigned long ActivateState(class UUIScreenObject* Target, int PlayerIndex);
 };
 
 
@@ -24421,10 +24421,10 @@ public:
 	}
 
 
-	bool ContainsMarkup();
+	unsigned long ContainsMarkup();
 	void GetAutoScaleValue(const struct FVector2D& BoundingRegionSize, const struct FVector2D& StringSize, struct FVector2D* out_AutoScalePercent);
-	struct FString GetValue(bool bReturnProcessedText);
-	bool SetValue(const struct FString& InputString, bool bIgnoreMarkup);
+	struct FString GetValue(unsigned long bReturnProcessedText);
+	unsigned long SetValue(const struct FString& InputString, unsigned long bIgnoreMarkup);
 };
 
 
@@ -24446,19 +24446,19 @@ public:
 
 
 	int ParseTagArrayDelimiter(struct FName* FieldName);
-	bool RemovePropertyNotificationChangeRequest(const struct FScriptDelegate& InDelegate);
-	bool AddPropertyNotificationChangeRequest(const struct FScriptDelegate& InDelegate, bool bAllowDuplicates);
+	unsigned long RemovePropertyNotificationChangeRequest(const struct FScriptDelegate& InDelegate);
+	unsigned long AddPropertyNotificationChangeRequest(const struct FScriptDelegate& InDelegate, unsigned long bAllowDuplicates);
 	void NotifyPropertyChanged(const struct FName& PropTag);
-	bool IsCollectionDataType(TEnumAsByte<EUIDataProviderFieldType> FieldType);
-	bool IsProviderDisabled();
+	unsigned long IsCollectionDataType(TEnumAsByte<EUIDataProviderFieldType> FieldType);
+	unsigned long IsProviderDisabled();
 	struct FString GenerateFillerData(const struct FString& DataTag);
 	struct FString GenerateScriptMarkupString(const struct FName& DataTag);
-	bool SetFieldValue(const struct FString& FieldName, int ArrayIndex, struct FUIProviderScriptFieldValue* FieldValue);
-	bool GetFieldValue(const struct FString& FieldName, int ArrayIndex, struct FUIProviderScriptFieldValue* FieldValue);
-	bool AllowPublishingToField(const struct FString& FieldName, int ArrayIndex);
+	unsigned long SetFieldValue(const struct FString& FieldName, int ArrayIndex, struct FUIProviderScriptFieldValue* FieldValue);
+	unsigned long GetFieldValue(const struct FString& FieldName, int ArrayIndex, struct FUIProviderScriptFieldValue* FieldValue);
+	unsigned long AllowPublishingToField(const struct FString& FieldName, int ArrayIndex);
 	void GetSupportedScriptFields(TArray<struct FUIDataProviderField>* out_Fields);
 	int ParseArrayDelimiter(struct FString* DataTag);
-	bool GetProviderFieldType(const struct FString& DataTag, TEnumAsByte<EUIDataProviderFieldType>* out_ProviderFieldType);
+	unsigned long GetProviderFieldType(const struct FString& DataTag, TEnumAsByte<EUIDataProviderFieldType>* out_ProviderFieldType);
 	void OnDataProviderPropertyChange(class UUIDataProvider* SourceProvider, const struct FName& PropTag);
 };
 
@@ -24481,13 +24481,13 @@ public:
 
 	class UDataStoreClient* GetDataStoreClient();
 	void OnCommit();
-	void RefreshSubscribers(const struct FName& PropertyTag, bool bInvalidateValues, class UUIDataProvider* SourceProvider, int ArrayIndex);
-	bool NotifyGameSessionEnded();
+	void RefreshSubscribers(const struct FName& PropertyTag, unsigned long bInvalidateValues, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	unsigned long NotifyGameSessionEnded();
 	void SubscriberDetached(const TScriptInterface<class UUIDataStoreSubscriber>& Subscriber);
 	void SubscriberAttached(const TScriptInterface<class UUIDataStoreSubscriber>& Subscriber);
 	void Unregistered(class ULocalPlayer* PlayerOwner);
 	void Registered(class ULocalPlayer* PlayerOwner);
-	void OnDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	void OnDataStoreValueUpdated(class UUIDataStore* SourceDataStore, unsigned long bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
 };
 
 
@@ -24514,18 +24514,18 @@ public:
 
 	void SubscriberDetached(const TScriptInterface<class UUIDataStoreSubscriber>& Subscriber);
 	void SubscriberAttached(const TScriptInterface<class UUIDataStoreSubscriber>& Subscriber);
-	void GetStyleGroups(bool bIncludeInheritedGroups, TArray<struct FString>* StyleGroupArray);
+	void GetStyleGroups(unsigned long bIncludeInheritedGroups, TArray<struct FString>* StyleGroupArray);
 	int FindStyleGroupIndex(const struct FString& StyleGroupName);
-	bool RenameStyleGroup(const struct FString& OldStyleGroupName, const struct FString& NewStyleGroupName);
-	bool RemoveStyleGroupName(const struct FString& StyleGroupName);
-	bool AddStyleGroupName(const struct FString& StyleGroupName);
-	bool IsInheritedGroupName(const struct FString& StyleGroupName);
+	unsigned long RenameStyleGroup(const struct FString& OldStyleGroupName, const struct FString& NewStyleGroupName);
+	unsigned long RemoveStyleGroupName(const struct FString& StyleGroupName);
+	unsigned long AddStyleGroupName(const struct FString& StyleGroupName);
+	unsigned long IsInheritedGroupName(const struct FString& StyleGroupName);
 	void GetSkinSoundCues(TArray<struct FUISoundCue>* out_SoundCues);
-	bool GetUISoundCue(const struct FName& SoundCueName, class USoundCue** out_UISoundCue);
-	bool RemoveUISoundCue(const struct FName& SoundCueName);
-	bool AddUISoundCue(const struct FName& SoundCueName, class USoundCue* SoundToPlay);
+	unsigned long GetUISoundCue(const struct FName& SoundCueName, class USoundCue** out_UISoundCue);
+	unsigned long RemoveUISoundCue(const struct FName& SoundCueName);
+	unsigned long AddUISoundCue(const struct FName& SoundCueName, class USoundCue* SoundToPlay);
 	class UUITexture* GetCursorResource(const struct FName& CursorName);
-	void GetAvailableStyles(bool bIncludeInheritedStyles, TArray<class UUIStyle*>* out_Styles);
+	void GetAvailableStyles(unsigned long bIncludeInheritedStyles, TArray<class UUIStyle*>* out_Styles);
 };
 
 
@@ -24612,58 +24612,58 @@ public:
 	}
 
 
-	bool AllowInputAlias(const struct FName& InputKeyName, const struct FName& InputAliasName);
+	unsigned long AllowInputAlias(const struct FName& InputKeyName, const struct FName& InputAliasName);
 	void LogRenderBounds(int Indent);
 	void ClearDockTargets();
 	class UUIScreenObject* GetParent();
 	class UUIObject* GetOwner();
 	class UUIScene* GetScene();
-	bool SetWidgetStyleByName(const struct FName& StyleResolverTagToSet, const struct FName& StyleFriendlyName);
+	unsigned long SetWidgetStyleByName(const struct FName& StyleResolverTagToSet, const struct FName& StyleFriendlyName);
 	int FindStyleSubscriberIndexById(const struct FName& StyleSubscriberId);
 	int FindStyleSubscriberIndex(TScriptInterface<class UUIStyleResolver>* Subscriber);
 	void RemoveStyleSubscriber(const TScriptInterface<class UUIStyleResolver>& Subscriber);
 	void AddStyleSubscriber(const TScriptInterface<class UUIStyleResolver>& Subscriber);
-	float GetPositionExtent(TEnumAsByte<EUIWidgetFace> Face, bool bIncludeRotation, bool bIncludeOrigin);
-	void GetPositionExtents(bool bIncludeRotation, bool bIncludeOrigin, float* MinX, float* MaxX, float* MinY, float* MaxY);
-	bool NeedsActiveCursorUpdates();
-	void SetActiveCursorUpdate(bool bShouldReceiveCursorUpdates);
-	void SetPrivateBehavior(int Behavior, bool Value, bool bRecurse);
-	bool IsPrivateBehaviorSet(int Behavior);
-	bool CanAcceptFocus(int PlayerIndex, bool bIncludeParentVisibility);
-	bool SetForcedNavigationTarget(TEnumAsByte<EUIWidgetFace> Face, class UUIObject* NavTarget, bool bIsNullOverride);
-	bool SetNavigationTarget(TEnumAsByte<EUIWidgetFace> Face, class UUIObject* NewNavTarget);
-	bool IsDockedTo(class UUIScreenObject* TargetWidget, TEnumAsByte<EUIWidgetFace> SourceFace, TEnumAsByte<EUIWidgetFace> TargetFace);
-	bool GetDockParameters(TEnumAsByte<EUIWidgetFace> SourceFace, class UUIScreenObject** TargetWidget, TEnumAsByte<EUIWidgetFace>* TargetFace, float* TargetPadding);
-	bool SetDockParameters(TEnumAsByte<EUIWidgetFace> SourceFace, class UUIScreenObject* Target, TEnumAsByte<EUIWidgetFace> TargetFace, float PaddingValue, TEnumAsByte<EUIDockPaddingEvalType> PaddingInputType, bool bModifyPaddingScaleType);
-	bool SetDockPadding(TEnumAsByte<EUIWidgetFace> SourceFace, float PaddingValue, TEnumAsByte<EUIDockPaddingEvalType> PaddingInputType, bool bModifyPaddingScaleType);
-	bool SetDockTarget(TEnumAsByte<EUIWidgetFace> SourceFace, class UUIScreenObject* Target, TEnumAsByte<EUIWidgetFace> TargetFace);
-	bool IsContainedBy(class UUIObject* TestWidget);
+	float GetPositionExtent(TEnumAsByte<EUIWidgetFace> Face, unsigned long bIncludeRotation, unsigned long bIncludeOrigin);
+	void GetPositionExtents(unsigned long bIncludeRotation, unsigned long bIncludeOrigin, float* MinX, float* MaxX, float* MinY, float* MaxY);
+	unsigned long NeedsActiveCursorUpdates();
+	void SetActiveCursorUpdate(unsigned long bShouldReceiveCursorUpdates);
+	void SetPrivateBehavior(int Behavior, unsigned long Value, unsigned long bRecurse);
+	unsigned long IsPrivateBehaviorSet(int Behavior);
+	unsigned long CanAcceptFocus(int PlayerIndex, unsigned long bIncludeParentVisibility);
+	unsigned long SetForcedNavigationTarget(TEnumAsByte<EUIWidgetFace> Face, class UUIObject* NavTarget, unsigned long bIsNullOverride);
+	unsigned long SetNavigationTarget(TEnumAsByte<EUIWidgetFace> Face, class UUIObject* NewNavTarget);
+	unsigned long IsDockedTo(class UUIScreenObject* TargetWidget, TEnumAsByte<EUIWidgetFace> SourceFace, TEnumAsByte<EUIWidgetFace> TargetFace);
+	unsigned long GetDockParameters(TEnumAsByte<EUIWidgetFace> SourceFace, class UUIScreenObject** TargetWidget, TEnumAsByte<EUIWidgetFace>* TargetFace, float* TargetPadding);
+	unsigned long SetDockParameters(TEnumAsByte<EUIWidgetFace> SourceFace, class UUIScreenObject* Target, TEnumAsByte<EUIWidgetFace> TargetFace, float PaddingValue, TEnumAsByte<EUIDockPaddingEvalType> PaddingInputType, unsigned long bModifyPaddingScaleType);
+	unsigned long SetDockPadding(TEnumAsByte<EUIWidgetFace> SourceFace, float PaddingValue, TEnumAsByte<EUIDockPaddingEvalType> PaddingInputType, unsigned long bModifyPaddingScaleType);
+	unsigned long SetDockTarget(TEnumAsByte<EUIWidgetFace> SourceFace, class UUIScreenObject* Target, TEnumAsByte<EUIWidgetFace> TargetFace);
+	unsigned long IsContainedBy(class UUIObject* TestWidget);
 	void NotifyValueChanged(int PlayerIndex, int NotifyFlags);
-	struct FMatrix GetRotationMatrix(bool bIncludeParentRotations);
-	struct FMatrix GenerateTransformMatrix(bool bIncludeParentTransforms);
-	struct FVector GetAnchorPosition(bool bRelativeToWidget, bool bPixelSpace);
+	struct FMatrix GetRotationMatrix(unsigned long bIncludeParentRotations);
+	struct FMatrix GenerateTransformMatrix(unsigned long bIncludeParentTransforms);
+	struct FVector GetAnchorPosition(unsigned long bRelativeToWidget, unsigned long bPixelSpace);
 	void UpdateRotationMatrix();
-	void RotateWidget(const struct FRotator& NewRotationAmount, bool bAccumulateRotation);
+	void RotateWidget(const struct FRotator& NewRotationAmount, unsigned long bAccumulateRotation);
 	void SetAnchorPosition(const struct FVector& NewAnchorPosition, TEnumAsByte<EPositionEvalType> InputType);
-	bool HasTransform(bool bIncludeParentTransforms);
+	unsigned long HasTransform(unsigned long bIncludeParentTransforms);
 	struct FString GetToolTipValue();
 	struct FString GenerateSceneDataStoreMarkup(const struct FString& Group);
 	void ClearDefaultDataBinding(int BindingIndex);
 	void GetDefaultDataStores(TArray<class UUIDataStore*>* out_BoundDataStores);
-	bool ResolveDefaultDataBinding(int BindingIndex);
+	unsigned long ResolveDefaultDataBinding(int BindingIndex);
 	struct FString GetDefaultDataBinding(int BindingIndex);
 	void SetDefaultDataBinding(const struct FString& MarkupText, int BindingIndex);
 	void OnContextMenuItemSelected(class UUIContextMenu* ContextMenu, int PlayerIndex, int ItemIndex);
 	void OnSubRender(class UCanvas* C, class UUIObject* Object, float X1, float Y1, float X2, float Y2);
 	void OnPostRender(class UCanvas* C, class UUIObject* Object, float X1, float Y1, float X2, float Y2);
-	bool OnCloseContextMenu(class UUIContextMenu* ContextMenu, int PlayerIndex);
-	bool OnOpenContextMenu(class UUIObject* Sender, int PlayerIndex, class UUIContextMenu** CustomContextMenu);
+	unsigned long OnCloseContextMenu(class UUIContextMenu* ContextMenu, int PlayerIndex);
+	unsigned long OnOpenContextMenu(class UUIObject* Sender, int PlayerIndex, class UUIContextMenu** CustomContextMenu);
 	void OnDoubleClick(class UUIScreenObject* EventObject, int PlayerIndex);
-	bool OnClicked(class UUIScreenObject* EventObject, int PlayerIndex);
+	unsigned long OnClicked(class UUIScreenObject* EventObject, int PlayerIndex);
 	void OnPressRelease(class UUIScreenObject* EventObject, int PlayerIndex);
 	void OnPressRepeat(class UUIScreenObject* EventObject, int PlayerIndex);
 	void OnPressed(class UUIScreenObject* EventObject, int PlayerIndex);
-	bool OnRefreshSubscriberValue(class UUIObject* Sender, int BindingIndex);
+	unsigned long OnRefreshSubscriberValue(class UUIObject* Sender, int BindingIndex);
 	void OnValueChanged(class UUIObject* Sender, int PlayerIndex);
 	void OnPostSceneUpdate(class UUIObject* Sender);
 	void OnPreSceneUpdate(class UUIObject* Sender);
@@ -24735,8 +24735,8 @@ public:
 	}
 
 
-	bool NotifyResolveStyle(class UUISkin* ActiveSkin, bool bClearExistingValue, class UUIState* CurrentMenuState, const struct FName& StylePropertyName);
-	bool SetStyleResolverTag(const struct FName& NewResolverTag);
+	unsigned long NotifyResolveStyle(class UUISkin* ActiveSkin, unsigned long bClearExistingValue, class UUIState* CurrentMenuState, const struct FName& StylePropertyName);
+	unsigned long SetStyleResolverTag(const struct FName& NewResolverTag);
 	struct FName GetStyleResolverTag();
 	class USurface* GetImage();
 	void DisableCustomFormatting();
@@ -24784,13 +24784,13 @@ public:
 
 
 	void SetAutoSizePadding(TEnumAsByte<EUIOrientation> Orientation, float NearValue, float FarValue, TEnumAsByte<EUIExtentEvalType> NearScaleType, TEnumAsByte<EUIExtentEvalType> FarScaleType);
-	void EnableAutoSizing(TEnumAsByte<EUIOrientation> Orientation, bool bShouldEnable);
-	bool IsAutoSizeEnabled(TEnumAsByte<EUIOrientation> Orientation);
+	void EnableAutoSizing(TEnumAsByte<EUIOrientation> Orientation, unsigned long bShouldEnable);
+	unsigned long IsAutoSizeEnabled(TEnumAsByte<EUIOrientation> Orientation);
 	void SetAutoSizeExtent(TEnumAsByte<EUIOrientation> Orientation, float MinValue, float MaxValue, TEnumAsByte<EUIExtentEvalType> MinScaleType, TEnumAsByte<EUIExtentEvalType> MaxScaleType);
-	bool NotifyResolveStyle(class UUISkin* ActiveSkin, bool bClearExistingValue, class UUIState* CurrentMenuState, const struct FName& StylePropertyName);
-	bool SetStyleResolverTag(const struct FName& NewResolverTag);
+	unsigned long NotifyResolveStyle(class UUISkin* ActiveSkin, unsigned long bClearExistingValue, class UUIState* CurrentMenuState, const struct FName& StylePropertyName);
+	unsigned long SetStyleResolverTag(const struct FName& NewResolverTag);
 	struct FName GetStyleResolverTag();
-	bool GetFinalStringStyle(struct FUICombinedStyleData* FinalStyleData);
+	unsigned long GetFinalStringStyle(struct FUICombinedStyleData* FinalStyleData);
 	class UUIStyle_Combo* GetAppliedStringStyle(class UUIState* DesiredMenuState);
 	TEnumAsByte<ETextClipMode> GetWrapMode();
 	void DisableCustomSpacingAdjust();
@@ -24818,14 +24818,14 @@ public:
 	void SetSubregionAlignment(TEnumAsByte<EUIOrientation> Orientation, TEnumAsByte<EUIAlignment> NewValue);
 	void SetSubregionOffset(TEnumAsByte<EUIOrientation> Orientation, float NewValue, TEnumAsByte<EUIExtentEvalType> EvalType);
 	void SetSubregionSize(TEnumAsByte<EUIOrientation> Orientation, float NewValue, TEnumAsByte<EUIExtentEvalType> EvalType);
-	void EnableSubregion(TEnumAsByte<EUIOrientation> Orientation, bool bShouldEnable);
+	void EnableSubregion(TEnumAsByte<EUIOrientation> Orientation, unsigned long bShouldEnable);
 	TEnumAsByte<EUIAlignment> GetSubregionAlignment(TEnumAsByte<EUIOrientation> Orientation);
 	float GetSubregionOffset(TEnumAsByte<EUIOrientation> Orientation, TEnumAsByte<EUIExtentEvalType> OutputType);
 	float GetSubregionSize(TEnumAsByte<EUIOrientation> Orientation, TEnumAsByte<EUIExtentEvalType> OutputType);
-	bool IsSubregionEnabled(TEnumAsByte<EUIOrientation> Orientation);
+	unsigned long IsSubregionEnabled(TEnumAsByte<EUIOrientation> Orientation);
 	void RefreshValue();
-	struct FString GetValue(bool bReturnProcessedText);
-	void SetValue(const struct FString& NewText, bool bInlineUpdate);
+	struct FString GetValue(unsigned long bReturnProcessedText);
+	void SetValue(const struct FString& NewText, unsigned long bInlineUpdate);
 };
 
 
@@ -24868,22 +24868,22 @@ public:
 	}
 
 
-	void IgnoreMarkup(bool bShouldIgnoreMarkup);
-	void SetReadOnly(bool bShouldBeReadOnly);
-	bool IsReadOnly();
+	void IgnoreMarkup(unsigned long bShouldIgnoreMarkup);
+	void SetReadOnly(unsigned long bShouldBeReadOnly);
+	unsigned long IsReadOnly();
 	void Initialized();
-	bool SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
+	unsigned long SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
 	void ClearBoundDataStores();
 	void GetBoundDataStores(TArray<class UUIDataStore*>* out_BoundDataStores);
-	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
-	bool RefreshSubscriberValue(int BindingIndex);
+	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, unsigned long bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	unsigned long RefreshSubscriberValue(int BindingIndex);
 	struct FString GetDataStoreBinding(int BindingIndex);
 	void SetDataStoreBinding(const struct FString& MarkupText, int BindingIndex);
 	int CalculateCaretPositionFromCursorLocation(int PlayerIndex);
-	struct FString GetValue(bool bReturnUserText);
-	void SetValue(const struct FString& NewText, int PlayerIndex, bool bSkipNotification);
+	struct FString GetValue(unsigned long bReturnUserText);
+	void SetValue(const struct FString& NewText, int PlayerIndex, unsigned long bSkipNotification);
 	void SetBackgroundImage(class USurface* NewImage);
-	bool OnSubmitText(class UUIEditBox* Sender, int PlayerIndex);
+	unsigned long OnSubmitText(class UUIEditBox* Sender, int PlayerIndex);
 };
 
 
@@ -24911,13 +24911,13 @@ public:
 
 
 	struct FString GetSelectedText();
-	bool GetSelectionRange(int* out_StartIndex, int* out_EndIndex);
-	bool ClearSelection();
-	bool SetSelectionEnd(int EndIndex);
-	bool SetSelectionStart(int StartIndex);
-	bool SetSelectionRange(int StartIndex, int EndIndex);
+	unsigned long GetSelectionRange(int* out_StartIndex, int* out_EndIndex);
+	unsigned long ClearSelection();
+	unsigned long SetSelectionEnd(int EndIndex);
+	unsigned long SetSelectionStart(int StartIndex);
+	unsigned long SetSelectionRange(int StartIndex, int EndIndex);
 	int GetUserTextLength();
-	bool SetUserText(const struct FString& NewValue);
+	unsigned long SetUserText(const struct FString& NewValue);
 };
 
 
@@ -25005,46 +25005,46 @@ public:
 
 	void OnStateChanged(class UUIScreenObject* Sender, int PlayerIndex, class UUIState* NewlyActiveState, class UUIState* PreviouslyActiveState);
 	void ClickedScrollZone(class UUIScrollbar* Sender, float PositionPerc, int PlayerIndex);
-	bool ShouldRenderColumnHeaders();
-	void EnableColumnHeaderRendering(bool bShouldRenderColHeaders);
-	bool IsValueChangeNotificationEnabled();
+	unsigned long ShouldRenderColumnHeaders();
+	void EnableColumnHeaderRendering(unsigned long bShouldRenderColHeaders);
+	unsigned long IsValueChangeNotificationEnabled();
 	void DisableValueChangeNotification();
 	void EnableValueChangeNotification();
-	bool IsSetIndexEnabled();
+	unsigned long IsSetIndexEnabled();
 	void DisableSetIndex();
 	void EnableSetIndex();
-	void DecrementAllMutexes(bool bDispatchUpdates);
+	void DecrementAllMutexes(unsigned long bDispatchUpdates);
 	void IncrementAllMutexes();
-	bool AllMutexesDisabled();
+	unsigned long AllMutexesDisabled();
 	void PostInitialize();
 	void Initialized();
-	bool SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
-	bool IsElementAutoSizingEnabled();
+	unsigned long SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
+	unsigned long IsElementAutoSizingEnabled();
 	void ClearBoundDataStores();
 	void GetBoundDataStores(TArray<class UUIDataStore*>* out_BoundDataStores);
-	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
-	bool RefreshSubscriberValue(int BindingIndex);
+	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, unsigned long bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	unsigned long RefreshSubscriberValue(int BindingIndex);
 	struct FString GetDataStoreBinding(int BindingIndex);
 	void SetDataStoreBinding(const struct FString& MarkupText, int BindingIndex);
-	bool IsHotTrackingEnabled();
-	void SetHotTracking(bool bShouldUpdateItemUnderCursor);
-	bool CanSelectElement(int ElementIndex);
-	bool IsElementSelected(int ElementIndex);
-	bool IsElementEnabled(int ElementIndex);
-	bool SetTopIndex(int NewTopIndex, bool bClampValue);
-	bool NavigateIndex(bool bIncrementIndex, bool bFullPage, bool bHorizontalNavigation);
-	bool SetIndex(int NewIndex, bool bClampValue, bool bSkipNotification);
+	unsigned long IsHotTrackingEnabled();
+	void SetHotTracking(unsigned long bShouldUpdateItemUnderCursor);
+	unsigned long CanSelectElement(int ElementIndex);
+	unsigned long IsElementSelected(int ElementIndex);
+	unsigned long IsElementEnabled(int ElementIndex);
+	unsigned long SetTopIndex(int NewTopIndex, unsigned long bClampValue);
+	unsigned long NavigateIndex(unsigned long bIncrementIndex, unsigned long bFullPage, unsigned long bHorizontalNavigation);
+	unsigned long SetIndex(int NewIndex, unsigned long bClampValue, unsigned long bSkipNotification);
 	int FindItemIndex(const struct FString& ItemValue, int CellIndex);
 	TEnumAsByte<EUIListElementState> GetElementCellState(int ElementIndex);
-	bool SetElementCellState(int ElementIndex, TEnumAsByte<EUIListElementState> NewElementState);
+	unsigned long SetElementCellState(int ElementIndex, TEnumAsByte<EUIListElementState> NewElementState);
 	struct FString GetElementValue(int ElementIndex, int CellIndex);
 	int GetCurrentItem();
 	TArray<int> GetSelectedItems();
 	int GetResizeColumn(struct FCellHitDetectionInfo* ClickedCell);
-	int CalculateIndexFromCursorLocation(bool bRequireValidIndex);
+	int CalculateIndexFromCursorLocation(unsigned long bRequireValidIndex);
 	struct FVector2D GetClientRegion();
-	float GetRowHeight(int RowIndex, bool bColHeader, bool bReturnUnformattedValue);
-	float GetColumnWidth(int ColumnIndex, bool bColHeader, bool bReturnUnformattedValue);
+	float GetRowHeight(int RowIndex, unsigned long bColHeader, unsigned long bReturnUnformattedValue);
+	float GetColumnWidth(int ColumnIndex, unsigned long bColHeader, unsigned long bReturnUnformattedValue);
 	void SetRowCount(int NewRowCount);
 	void SetColumnCount(int NewColumnCount);
 	int GetTotalColumnCount();
@@ -25054,10 +25054,10 @@ public:
 	int GetMaxVisibleElementCount();
 	int GetItemCount();
 	int RemoveElement(int ElementToRemove);
-	bool ScrollVertical(class UUIScrollbar* Sender, float PositionChange, bool bPositionMaxed);
+	unsigned long ScrollVertical(class UUIScrollbar* Sender, float PositionChange, unsigned long bPositionMaxed);
 	TEnumAsByte<EUIListElementState> OnOverrideListElementState(class UUIList* Sender, int ElementIndex, TEnumAsByte<EUIListElementState> CurrentState, TEnumAsByte<EUIListElementState> NewElementState);
 	void OnScrollFailed(int Direction);
-	bool ShouldDisableElement(class UUIList* Sender, int ElementIndex);
+	unsigned long ShouldDisableElement(class UUIList* Sender, int ElementIndex);
 	void OnListElementsSorted(class UUIList* Sender);
 	void OnSubmitSelection(class UUIList* Sender, int PlayerIndex);
 };
@@ -25099,10 +25099,10 @@ public:
 	}
 
 
-	bool ResortItems(bool bCaseSensitive);
-	bool SortItems(int ColumnIndex, bool bSecondarySort, bool bCaseSensitive);
-	void ResetSortColumns(bool bResort);
-	bool OverrideListSort(class UUIList* Sender, const struct FName& CollectionFieldName, struct FUIListSortingParameters* SortParameters, TArray<int>* OrderedIndices);
+	unsigned long ResortItems(unsigned long bCaseSensitive);
+	unsigned long SortItems(int ColumnIndex, unsigned long bSecondarySort, unsigned long bCaseSensitive);
+	void ResetSortColumns(unsigned long bResort);
+	unsigned long OverrideListSort(class UUIList* Sender, const struct FName& CollectionFieldName, struct FUIListSortingParameters* SortParameters, TArray<int>* OrderedIndices);
 };
 
 
@@ -25127,13 +25127,13 @@ public:
 	int GetMaxElementsPerPage();
 	void SetMaxElementsPerPage(int NewMaxVisibleElements);
 	struct FString GetElementValue(int ElementIndex, int CellIndex);
-	void EnableColumnHeaderRendering(bool bShouldRenderColHeaders);
-	bool ShouldRenderColumnHeaders();
-	bool ShouldAdjustListBounds(TEnumAsByte<EUIOrientation> Orientation);
-	void CalculateAutoSizeColumnWidth(int ColIndex, bool bReturnUnformattedValue, float* out_ColWidth, float* out_StylePadding);
-	void CalculateAutoSizeRowHeight(int RowIndex, bool bReturnUnformattedValue, float* out_RowHeight, float* out_StylePadding);
+	void EnableColumnHeaderRendering(unsigned long bShouldRenderColHeaders);
+	unsigned long ShouldRenderColumnHeaders();
+	unsigned long ShouldAdjustListBounds(TEnumAsByte<EUIOrientation> Orientation);
+	void CalculateAutoSizeColumnWidth(int ColIndex, unsigned long bReturnUnformattedValue, float* out_ColWidth, float* out_StylePadding);
+	void CalculateAutoSizeRowHeight(int RowIndex, unsigned long bReturnUnformattedValue, float* out_RowHeight, float* out_StylePadding);
 	float GetSchemaCellPosition(int SchemaCellIndex);
-	bool SetSchemaCellSize(int SchemaCellIndex, float NewCellSize, TEnumAsByte<EUIExtentEvalType> EvalType);
+	unsigned long SetSchemaCellSize(int SchemaCellIndex, float NewCellSize, TEnumAsByte<EUIExtentEvalType> EvalType);
 	float GetSchemaCellSize(int SchemaCellIndex, TEnumAsByte<EUIExtentEvalType> EvalType);
 	int GetSchemaCellCount();
 	TScriptInterface<class UUIListElementCellProvider> GetCellSchemaProvider();
@@ -25199,16 +25199,16 @@ public:
 
 
 	int FindMenuItemIndex(class UUIObject* Widget, const struct FString& ItemToFind);
-	bool GetMenuItem(class UUIObject* Widget, int IndexToGet, struct FString* out_MenuItem);
-	bool GetAllMenuItems(class UUIObject* Widget, TArray<struct FString>* out_MenuItems);
-	bool RemoveMenuItemAtIndex(class UUIObject* Widget, int IndexToRemove);
-	bool RemoveMenuItem(class UUIObject* Widget, const struct FString& ItemToRemove);
-	bool ClearMenuItems(class UUIObject* Widget);
-	bool InsertMenuItem(class UUIObject* Widget, const struct FString& Item, int InsertIndex, bool bAllowDuplicates);
-	bool SetMenuItems(class UUIObject* Widget, TArray<struct FString> NewMenuItems, bool bClearExisting, int InsertIndex);
-	bool Close(int PlayerIndex);
-	bool Open(int PlayerIndex);
-	bool IsActiveContextMenu();
+	unsigned long GetMenuItem(class UUIObject* Widget, int IndexToGet, struct FString* out_MenuItem);
+	unsigned long GetAllMenuItems(class UUIObject* Widget, TArray<struct FString>* out_MenuItems);
+	unsigned long RemoveMenuItemAtIndex(class UUIObject* Widget, int IndexToRemove);
+	unsigned long RemoveMenuItem(class UUIObject* Widget, const struct FString& ItemToRemove);
+	unsigned long ClearMenuItems(class UUIObject* Widget);
+	unsigned long InsertMenuItem(class UUIObject* Widget, const struct FString& Item, int InsertIndex, unsigned long bAllowDuplicates);
+	unsigned long SetMenuItems(class UUIObject* Widget, TArray<struct FString> NewMenuItems, unsigned long bClearExisting, int InsertIndex);
+	unsigned long Close(int PlayerIndex);
+	unsigned long Open(int PlayerIndex);
+	unsigned long IsActiveContextMenu();
 };
 
 
@@ -25289,8 +25289,8 @@ public:
 
 	void ClearBoundDataStores();
 	void GetBoundDataStores(TArray<class UUIDataStore*>* out_BoundDataStores);
-	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
-	bool RefreshSubscriberValue(int BindingIndex);
+	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, unsigned long bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	unsigned long RefreshSubscriberValue(int BindingIndex);
 	struct FString GetDataStoreBinding(int BindingIndex);
 	void SetDataStoreBinding(const struct FString& MarkupText, int BindingIndex);
 };
@@ -25309,7 +25309,7 @@ public:
 	}
 
 
-	bool SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
+	unsigned long SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
 };
 
 
@@ -25360,9 +25360,9 @@ public:
 
 
 	float GetSequenceLength();
-	bool GetTrackLength(int TrackIndex, float* out_TrackLength);
-	bool GetFrameLength(int TrackIndex, int FrameIndex, float* out_FrameLength);
-	bool IsValidFrameIndex(int TrackIndex, int FrameIndex);
+	unsigned long GetTrackLength(int TrackIndex, float* out_TrackLength);
+	unsigned long GetFrameLength(int TrackIndex, int FrameIndex, float* out_FrameLength);
+	unsigned long IsValidFrameIndex(int TrackIndex, int FrameIndex);
 };
 
 
@@ -25514,7 +25514,7 @@ public:
 
 	void RefreshFriendsList();
 	void OnLoginChange(unsigned char LocalUserNum);
-	void OnFriendsReadComplete(bool bWasSuccessful);
+	void OnFriendsReadComplete(unsigned long bWasSuccessful);
 	void OnUnregister();
 	void OnRegister(class ULocalPlayer* InPlayer);
 };
@@ -25588,16 +25588,16 @@ public:
 
 	void OnSettingValueUpdated(const struct FName& SettingName);
 	void ArrayProviderPropertyChanged(class UUIDataProvider* SourceProvider, const struct FName& PropTag);
-	bool SaveStorageData();
+	unsigned long SaveStorageData();
 	void RefreshStorageData();
 	void OnLoginChange(unsigned char LocalUserNum);
-	void OnReadStorageComplete(unsigned char LocalUserNum, bool bWasSuccessful);
+	void OnReadStorageComplete(unsigned char LocalUserNum, unsigned long bWasSuccessful);
 	void OnUnregister();
 	void OnRegister(class ULocalPlayer* InPlayer);
 	void ClearReadCompleteDelegate(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum);
 	void AddReadCompleteDelegate(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum);
-	bool WriteData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage);
-	bool ReadData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage);
+	unsigned long WriteData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage);
+	unsigned long ReadData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage);
 };
 
 
@@ -25616,8 +25616,8 @@ public:
 
 	void ClearReadCompleteDelegate(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum);
 	void AddReadCompleteDelegate(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum);
-	bool WriteData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage);
-	bool ReadData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage);
+	unsigned long WriteData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage);
+	unsigned long ReadData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage);
 };
 
 
@@ -25640,10 +25640,10 @@ public:
 	void OnLoginChange(unsigned char LocalUserNum);
 	void OnUnregister();
 	void OnRegister(class ULocalPlayer* InPlayer);
-	void OnPlayerAchievementUnlocked(bool bWasSuccessful);
+	void OnPlayerAchievementUnlocked(unsigned long bWasSuccessful);
 	void OnPlayerAchievementsChanged(int TitleId);
 	void GetAchievementDetails(int AchievementId, struct FAchievementDetails* OutAchievementDetails);
-	struct FString GetAchievementIconPathName(int AchievementId, bool bReturnLockedIcon);
+	struct FString GetAchievementIconPathName(int AchievementId, unsigned long bReturnLockedIcon);
 	void PopulateAchievementIcons();
 	int GetMaxTotalGamerScore();
 	int GetTotalGamerScore();
@@ -25713,20 +25713,20 @@ public:
 
 	void Registered(class ULocalPlayer* PlayerOwner);
 	void SceneDataFieldChanged(class UUIDataProvider* SourceProvider, const struct FName& PropTag);
-	int FindCollectionValueIndex(const struct FName& FieldName, bool bPersistent, const struct FName& CellTag, struct FString* ValueToFind);
-	bool GetCollectionValue(const struct FName& FieldName, int ValueIndex, bool bPersistent, const struct FName& CellTag, struct FString* out_Value);
-	bool ClearCollectionValueArray(const struct FName& FieldName, bool bPersistent, const struct FName& CellTag);
-	bool ReplaceCollectionValueByIndex(const struct FName& FieldName, int ValueIndex, bool bPersistent, const struct FName& CellTag, struct FString* NewValue);
-	bool ReplaceCollectionValue(const struct FName& FieldName, bool bPersistent, const struct FName& CellTag, struct FString* CurrentValue, struct FString* NewValue);
-	bool RemoveCollectionValueByIndex(const struct FName& FieldName, int ValueIndex, bool bPersistent, const struct FName& CellTag);
-	bool RemoveCollectionValue(const struct FName& FieldName, bool bPersistent, const struct FName& CellTag, struct FString* ValueToRemove);
-	bool InsertCollectionValue(const struct FName& FieldName, int InsertIndex, bool bPersistent, bool bAllowDuplicateValues, const struct FName& CellTag, struct FString* NewValue);
-	bool SetCollectionValueArray(const struct FName& FieldName, bool bClearExisting, int InsertIndex, bool bPersistent, const struct FName& CellTag, TArray<struct FString>* CollectionValues);
-	bool GetCollectionValueArray(const struct FName& FieldName, bool bPersistent, const struct FName& CellTag, TArray<struct FString>* out_DataValueArray);
-	bool ClearFields(bool bReinitializeRuntimeFields);
-	int FindFieldIndex(const struct FName& FieldName, bool bSearchPersistentFields);
-	bool RemoveField(const struct FName& FieldName);
-	bool AddField(const struct FName& FieldName, TEnumAsByte<EUIDataProviderFieldType> FieldType, bool bPersistent, int* out_InsertPosition);
+	int FindCollectionValueIndex(const struct FName& FieldName, unsigned long bPersistent, const struct FName& CellTag, struct FString* ValueToFind);
+	unsigned long GetCollectionValue(const struct FName& FieldName, int ValueIndex, unsigned long bPersistent, const struct FName& CellTag, struct FString* out_Value);
+	unsigned long ClearCollectionValueArray(const struct FName& FieldName, unsigned long bPersistent, const struct FName& CellTag);
+	unsigned long ReplaceCollectionValueByIndex(const struct FName& FieldName, int ValueIndex, unsigned long bPersistent, const struct FName& CellTag, struct FString* NewValue);
+	unsigned long ReplaceCollectionValue(const struct FName& FieldName, unsigned long bPersistent, const struct FName& CellTag, struct FString* CurrentValue, struct FString* NewValue);
+	unsigned long RemoveCollectionValueByIndex(const struct FName& FieldName, int ValueIndex, unsigned long bPersistent, const struct FName& CellTag);
+	unsigned long RemoveCollectionValue(const struct FName& FieldName, unsigned long bPersistent, const struct FName& CellTag, struct FString* ValueToRemove);
+	unsigned long InsertCollectionValue(const struct FName& FieldName, int InsertIndex, unsigned long bPersistent, unsigned long bAllowDuplicateValues, const struct FName& CellTag, struct FString* NewValue);
+	unsigned long SetCollectionValueArray(const struct FName& FieldName, unsigned long bClearExisting, int InsertIndex, unsigned long bPersistent, const struct FName& CellTag, TArray<struct FString>* CollectionValues);
+	unsigned long GetCollectionValueArray(const struct FName& FieldName, unsigned long bPersistent, const struct FName& CellTag, TArray<struct FString>* out_DataValueArray);
+	unsigned long ClearFields(unsigned long bReinitializeRuntimeFields);
+	int FindFieldIndex(const struct FName& FieldName, unsigned long bSearchPersistentFields);
+	unsigned long RemoveField(const struct FName& FieldName);
+	unsigned long AddField(const struct FName& FieldName, TEnumAsByte<EUIDataProviderFieldType> FieldType, unsigned long bPersistent, int* out_InsertPosition);
 };
 
 
@@ -25767,9 +25767,9 @@ public:
 	void Registered(class ULocalPlayer* PlayerOwner);
 	void OnLoginChange(unsigned char LocalUserNum);
 	int FindProviderIndexByFieldValue(const struct FName& ProviderTag, const struct FName& SearchField, struct FUIProviderScriptFieldValue* ValueToSearchFor);
-	bool GetProviderFieldValue(const struct FName& ProviderTag, const struct FName& SearchField, int ProviderIndex, struct FUIProviderScriptFieldValue* out_FieldValue);
-	bool GetResourceProviderFields(const struct FName& ProviderTag, TArray<struct FName>* ProviderFieldTags);
-	bool GetResourceProviders(const struct FName& ProviderTag, TArray<class UUIResourceCombinationProvider*>* out_Providers);
+	unsigned long GetProviderFieldValue(const struct FName& ProviderTag, const struct FName& SearchField, int ProviderIndex, struct FUIProviderScriptFieldValue* out_FieldValue);
+	unsigned long GetResourceProviderFields(const struct FName& ProviderTag, TArray<struct FName>* ProviderFieldTags);
+	unsigned long GetResourceProviders(const struct FName& ProviderTag, TArray<class UUIResourceCombinationProvider*>* out_Providers);
 	int GetProviderCount(const struct FName& ProviderTag);
 	struct FName GenerateProviderAccessTag(int ProviderIndex, int InstanceIndex);
 	int FindProviderTypeIndex(const struct FName& ProviderTag);
@@ -25809,9 +25809,9 @@ public:
 
 	void PostInit();
 	int FindProviderIndexByFieldValue(const struct FName& ProviderTag, const struct FName& SearchField, struct FUIProviderScriptFieldValue* ValueToSearchFor);
-	bool GetProviderFieldValue(const struct FName& ProviderTag, const struct FName& SearchField, int ProviderIndex, struct FUIProviderScriptFieldValue* out_FieldValue);
-	bool GetResourceProviderFields(const struct FName& ProviderTag, TArray<struct FName>* ProviderFieldTags);
-	bool GetResourceProviders(const struct FName& ProviderTag, TArray<class UUIResourceDataProvider*>* out_Providers);
+	unsigned long GetProviderFieldValue(const struct FName& ProviderTag, const struct FName& SearchField, int ProviderIndex, struct FUIProviderScriptFieldValue* out_FieldValue);
+	unsigned long GetResourceProviderFields(const struct FName& ProviderTag, TArray<struct FName>* ProviderFieldTags);
+	unsigned long GetResourceProviders(const struct FName& ProviderTag, TArray<class UUIResourceDataProvider*>* out_Providers);
 	int GetProviderCount(const struct FName& ProviderTag);
 	struct FName GenerateProviderAccessTag(int ProviderIndex, int InstanceIndex);
 	int FindProviderTypeIndex(const struct FName& ProviderTag);
@@ -25857,7 +25857,7 @@ public:
 	}
 
 
-	bool NotifyGameSessionEnded();
+	unsigned long NotifyGameSessionEnded();
 	void OnRefreshDataFieldValue();
 };
 
@@ -25884,7 +25884,7 @@ public:
 
 
 	void OnAddTeamProvider(class UTeamDataProvider* Provider);
-	bool NotifyGameSessionEnded();
+	unsigned long NotifyGameSessionEnded();
 	void RefreshTeamDataProviders();
 	void RefreshPlayerDataProviders();
 	void NotifyTeamChange();
@@ -25923,7 +25923,7 @@ public:
 	}
 
 
-	bool NotifyGameSessionEnded();
+	unsigned long NotifyGameSessionEnded();
 	void ClearDataProviders();
 	void SetPlayerDataProvider(class UPlayerDataProvider* NewPlayerData);
 };
@@ -25978,11 +25978,11 @@ public:
 
 
 	class UOnlinePlaylistProvider* STATIC_GetOnlinePlaylistProvider(const struct FName& ProviderTag, int PlaylistId, int* ProviderIndex);
-	bool GetPlaylistProvider(const struct FName& ProviderTag, int ProviderIndex, class UUIResourceDataProvider** out_Provider);
+	unsigned long GetPlaylistProvider(const struct FName& ProviderTag, int ProviderIndex, class UUIResourceDataProvider** out_Provider);
 	int FindProviderIndexByFieldValue(const struct FName& ProviderTag, const struct FName& SearchField, struct FUIProviderScriptFieldValue* ValueToSearchFor);
-	bool GetProviderFieldValue(const struct FName& ProviderTag, const struct FName& SearchField, int ProviderIndex, struct FUIProviderScriptFieldValue* out_FieldValue);
-	bool GetResourceProviderFields(const struct FName& ProviderTag, TArray<struct FName>* ProviderFieldTags);
-	bool GetResourceProviders(const struct FName& ProviderTag, TArray<class UUIResourceDataProvider*>* out_Providers);
+	unsigned long GetProviderFieldValue(const struct FName& ProviderTag, const struct FName& SearchField, int ProviderIndex, struct FUIProviderScriptFieldValue* out_FieldValue);
+	unsigned long GetResourceProviderFields(const struct FName& ProviderTag, TArray<struct FName>* ProviderFieldTags);
+	unsigned long GetResourceProviders(const struct FName& ProviderTag, TArray<class UUIResourceDataProvider*>* out_Providers);
 	int GetProviderCount(const struct FName& ProviderTag);
 };
 
@@ -26042,20 +26042,20 @@ public:
 
 
 	void ClearAllSearchResults();
-	void MoveToPrevious(bool bInvalidateExistingSearchResults);
-	void MoveToNext(bool bInvalidateExistingSearchResults);
-	void SetCurrentByName(const struct FName& SearchName, bool bInvalidateExistingSearchResults);
-	void SetCurrentByIndex(int NewIndex, bool bInvalidateExistingSearchResults);
+	void MoveToPrevious(unsigned long bInvalidateExistingSearchResults);
+	void MoveToNext(unsigned long bInvalidateExistingSearchResults);
+	void SetCurrentByName(const struct FName& SearchName, unsigned long bInvalidateExistingSearchResults);
+	void SetCurrentByIndex(int NewIndex, unsigned long bInvalidateExistingSearchResults);
 	int FindSearchConfigurationIndex(const struct FName& SearchTag);
 	class UOnlineGameSearch* GetActiveGameSearch();
 	class UOnlineGameSearch* GetCurrentGameSearch();
 	void BuildSearchResults();
-	bool ShowHostGamercard(unsigned char ControllerIndex, int ListIndex);
-	bool GetSearchResultFromIndex(int ListIndex, struct FOnlineGameSearchResult* Result);
-	void OnSearchComplete(bool bWasSuccessful);
-	bool OverrideQuerySubmission(unsigned char ControllerId, class UOnlineGameSearch* Search);
-	bool SubmitGameSearch(unsigned char ControllerIndex, int numParticipatingLocalPlayers, bool bInvalidateExistingSearchResults);
-	bool InvalidateCurrentSearchResults();
+	unsigned long ShowHostGamercard(unsigned char ControllerIndex, int ListIndex);
+	unsigned long GetSearchResultFromIndex(int ListIndex, struct FOnlineGameSearchResult* Result);
+	void OnSearchComplete(unsigned long bWasSuccessful);
+	unsigned long OverrideQuerySubmission(unsigned char ControllerId, class UOnlineGameSearch* Search);
+	unsigned long SubmitGameSearch(unsigned char ControllerIndex, int numParticipatingLocalPlayers, unsigned long bInvalidateExistingSearchResults);
+	unsigned long InvalidateCurrentSearchResults();
 	void Init();
 };
 
@@ -26104,8 +26104,8 @@ public:
 
 	class UOnlinePlayerStorage* STATIC_GetCachedPlayerStorage(int ControllerId);
 	class UOnlineProfileSettings* STATIC_GetCachedPlayerProfile(int ControllerId);
-	bool SaveProfileData();
-	void OnDownloadableContentQueryDone(bool bWasSuccessful);
+	unsigned long SaveProfileData();
+	void OnDownloadableContentQueryDone(unsigned long bWasSuccessful);
 	void ClearDelegates();
 	void RegisterDelegates();
 	void OnPlayerDataChange();
@@ -26143,9 +26143,9 @@ public:
 
 
 	void SortResultsByRank();
-	void OnReadComplete(bool bWasSuccessful);
-	bool ShowGamercard(unsigned char ConrollerIndex, int ListIndex);
-	bool RefreshStats(unsigned char ControllerIndex);
+	void OnReadComplete(unsigned long bWasSuccessful);
+	unsigned long ShowGamercard(unsigned char ConrollerIndex, int ListIndex);
+	unsigned long RefreshStats(unsigned char ControllerIndex);
 	void SetStatsReadInfo();
 	void Init();
 };
@@ -26190,7 +26190,7 @@ public:
 	void SetCurrentByIndex(int NewIndex);
 	class UUIDataProvider_Settings* GetCurrentProvider();
 	class UOnlineGameSettings* GetCurrentGameSettings();
-	bool CreateGame(unsigned char ControllerIndex, TArray<int> participatingLocalPlayers, const struct FName& GameName);
+	unsigned long CreateGame(unsigned char ControllerIndex, TArray<int> participatingLocalPlayers, const struct FName& GameName);
 	void OnSettingProviderChanged(class UUIDataProvider* SourceProvider, const struct FName& SettingsName);
 };
 
@@ -26211,7 +26211,7 @@ public:
 	}
 
 
-	bool NotifyGameSessionEnded();
+	unsigned long NotifyGameSessionEnded();
 	void ClearDataProviders();
 };
 
@@ -26246,10 +26246,10 @@ public:
 	}
 
 
-	bool HasAliasMappingForPlatform(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> DesiredPlatform);
+	unsigned long HasAliasMappingForPlatform(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> DesiredPlatform);
 	int FindInputAliasIndex(const struct FName& DesiredAlias);
-	bool GetAliasInputKeyDataByIndex(int AliasIndex, TEnumAsByte<EInputPlatformType> OverridePlatform, struct FRawInputKeyEventData* out_InputKeyData);
-	bool GetAliasInputKeyData(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> OverridePlatform, struct FRawInputKeyEventData* out_InputKeyData);
+	unsigned long GetAliasInputKeyDataByIndex(int AliasIndex, TEnumAsByte<EInputPlatformType> OverridePlatform, struct FRawInputKeyEventData* out_InputKeyData);
+	unsigned long GetAliasInputKeyData(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> OverridePlatform, struct FRawInputKeyEventData* out_InputKeyData);
 	struct FName GetAliasInputKeyNameByIndex(int AliasIndex, TEnumAsByte<EInputPlatformType> OverridePlatform);
 	struct FName GetAliasInputKeyName(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> OverridePlatform);
 	struct FString GetAliasFontMarkupByIndex(int AliasIndex, TEnumAsByte<EInputPlatformType> OverridePlatform);
@@ -26328,24 +26328,24 @@ public:
 	}
 
 
-	int FindCollectionValueIndex(const struct FName& FieldName, bool bPersistent, const struct FName& CellTag, struct FString* ValueToFind);
-	bool GetCollectionValue(const struct FName& FieldName, int ValueIndex, bool bPersistent, const struct FName& CellTag, struct FString* out_Value);
-	bool ClearCollectionValueArray(const struct FName& FieldName, bool bPersistent, const struct FName& CellTag);
-	bool ReplaceCollectionValueByIndex(const struct FName& FieldName, int ValueIndex, bool bPersistent, const struct FName& CellTag, struct FString* NewValue);
-	bool ReplaceCollectionValue(const struct FName& FieldName, bool bPersistent, const struct FName& CellTag, struct FString* CurrentValue, struct FString* NewValue);
-	bool RemoveCollectionValueByIndex(const struct FName& FieldName, int ValueIndex, bool bPersistent, const struct FName& CellTag);
-	bool RemoveCollectionValue(const struct FName& FieldName, bool bPersistent, const struct FName& CellTag, struct FString* ValueToRemove);
-	bool InsertCollectionValue(const struct FName& FieldName, int InsertIndex, bool bPersistent, bool bAllowDuplicateValues, const struct FName& CellTag, struct FString* NewValue);
-	bool SetCollectionValueArray(const struct FName& FieldName, bool bClearExisting, int InsertIndex, bool bPersistent, const struct FName& CellTag, TArray<struct FString>* CollectionValues);
-	bool GetCollectionValueArray(const struct FName& FieldName, bool bPersistent, const struct FName& CellTag, TArray<struct FString>* out_DataValueArray);
-	bool GetCollectionValueSchema(const struct FName& FieldName, bool bPersistent, TArray<struct FName>* out_CellTagArray);
+	int FindCollectionValueIndex(const struct FName& FieldName, unsigned long bPersistent, const struct FName& CellTag, struct FString* ValueToFind);
+	unsigned long GetCollectionValue(const struct FName& FieldName, int ValueIndex, unsigned long bPersistent, const struct FName& CellTag, struct FString* out_Value);
+	unsigned long ClearCollectionValueArray(const struct FName& FieldName, unsigned long bPersistent, const struct FName& CellTag);
+	unsigned long ReplaceCollectionValueByIndex(const struct FName& FieldName, int ValueIndex, unsigned long bPersistent, const struct FName& CellTag, struct FString* NewValue);
+	unsigned long ReplaceCollectionValue(const struct FName& FieldName, unsigned long bPersistent, const struct FName& CellTag, struct FString* CurrentValue, struct FString* NewValue);
+	unsigned long RemoveCollectionValueByIndex(const struct FName& FieldName, int ValueIndex, unsigned long bPersistent, const struct FName& CellTag);
+	unsigned long RemoveCollectionValue(const struct FName& FieldName, unsigned long bPersistent, const struct FName& CellTag, struct FString* ValueToRemove);
+	unsigned long InsertCollectionValue(const struct FName& FieldName, int InsertIndex, unsigned long bPersistent, unsigned long bAllowDuplicateValues, const struct FName& CellTag, struct FString* NewValue);
+	unsigned long SetCollectionValueArray(const struct FName& FieldName, unsigned long bClearExisting, int InsertIndex, unsigned long bPersistent, const struct FName& CellTag, TArray<struct FString>* CollectionValues);
+	unsigned long GetCollectionValueArray(const struct FName& FieldName, unsigned long bPersistent, const struct FName& CellTag, TArray<struct FString>* out_DataValueArray);
+	unsigned long GetCollectionValueSchema(const struct FName& FieldName, unsigned long bPersistent, TArray<struct FName>* out_CellTagArray);
 	void SavePersistentProviderData();
-	bool SetField(const struct FName& FieldName, bool bChangeExistingOnly, struct FUIProviderScriptFieldValue* FieldValue);
-	bool GetField(const struct FName& FieldName, struct FUIProviderScriptFieldValue* out_Field);
-	bool ClearFields(bool bReinitializeRuntimeFields);
-	int FindFieldIndex(const struct FName& FieldName, bool bSearchPersistentFields);
-	bool RemoveField(const struct FName& FieldName);
-	bool AddField(const struct FName& FieldName, TEnumAsByte<EUIDataProviderFieldType> FieldType, bool bPersistent, int* out_InsertPosition);
+	unsigned long SetField(const struct FName& FieldName, unsigned long bChangeExistingOnly, struct FUIProviderScriptFieldValue* FieldValue);
+	unsigned long GetField(const struct FName& FieldName, struct FUIProviderScriptFieldValue* out_Field);
+	unsigned long ClearFields(unsigned long bReinitializeRuntimeFields);
+	int FindFieldIndex(const struct FName& FieldName, unsigned long bSearchPersistentFields);
+	unsigned long RemoveField(const struct FName& FieldName);
+	unsigned long AddField(const struct FName& FieldName, TEnumAsByte<EUIDataProviderFieldType> FieldType, unsigned long bPersistent, int* out_InsertPosition);
 	void InitializeRuntimeFields();
 };
 
@@ -26365,8 +26365,8 @@ public:
 	}
 
 
-	bool GetCustomPropertyValue(int ArrayIndex, struct FUIProviderScriptFieldValue* PropertyValue);
-	bool CanSupportComplexPropertyType(class UProperty* UnsupportedProperty);
+	unsigned long GetCustomPropertyValue(int ArrayIndex, struct FUIProviderScriptFieldValue* PropertyValue);
+	unsigned long CanSupportComplexPropertyType(class UProperty* UnsupportedProperty);
 };
 
 
@@ -26386,13 +26386,13 @@ public:
 	}
 
 
-	bool CleanupDataProvider();
+	unsigned long CleanupDataProvider();
 	class UObject* GetDataSource();
-	bool IsValidDataSourceClass(class UClass* PotentialDataSourceClass);
+	unsigned long IsValidDataSourceClass(class UClass* PotentialDataSourceClass);
 	void ProviderInstanceUnbound(class UObject* DataSourceInstance);
 	void ProviderInstanceBound(class UObject* DataSourceInstance);
-	bool UnbindProviderInstance();
-	bool BindProviderInstance(class UObject* DataSourceInstance);
+	unsigned long UnbindProviderInstance();
+	unsigned long BindProviderInstance(class UObject* DataSourceInstance);
 };
 
 
@@ -26442,7 +26442,7 @@ public:
 	}
 
 
-	bool IsValidDataSourceClass(class UClass* PotentialDataSourceClass);
+	unsigned long IsValidDataSourceClass(class UClass* PotentialDataSourceClass);
 };
 
 
@@ -26520,7 +26520,7 @@ public:
 	}
 
 
-	bool CleanupDataProvider();
+	unsigned long CleanupDataProvider();
 	void SetPlayerDataProvider(class UPlayerDataProvider* NewPlayerData);
 };
 
@@ -26585,7 +26585,7 @@ public:
 	}
 
 
-	void InitializeProvider(bool bIsEditor);
+	void InitializeProvider(unsigned long bIsEditor);
 };
 
 
@@ -26625,7 +26625,7 @@ public:
 	}
 
 
-	bool IsFiltered();
+	unsigned long IsFiltered();
 };
 
 
@@ -26662,8 +26662,8 @@ public:
 	}
 
 
-	bool CleanupDataProvider();
-	bool OnModifiedProperty(const struct FName& PropertyName, class UUIObject* Widget);
+	unsigned long CleanupDataProvider();
+	unsigned long OnModifiedProperty(const struct FName& PropertyName, class UUIObject* Widget);
 	void SavePropertyValue(const struct FName& PropertyName, class UUIObject* Widget);
 	void LoadPropertyValue(const struct FName& PropertyName, class UUIObject* Widget);
 };
@@ -26685,12 +26685,12 @@ public:
 	}
 
 
-	bool CleanupDataProvider();
-	bool IsValidDataSourceClass(class UClass* PotentialDataSourceClass);
+	unsigned long CleanupDataProvider();
+	unsigned long IsValidDataSourceClass(class UClass* PotentialDataSourceClass);
 	void ProviderClientUnbound(class UClass* DataSourceClass);
 	void ProviderClientBound(class UClass* DataSourceClass);
-	bool UnbindProviderClient();
-	bool BindProviderClient(class UClass* DataSourceClass);
+	unsigned long UnbindProviderClient();
+	unsigned long BindProviderClient(class UClass* DataSourceClass);
 };
 
 
@@ -26711,19 +26711,19 @@ public:
 	}
 
 
-	bool ReplaceProviderCollection(const struct FName& TargetFieldTag, TArray<struct FUIDataProviderField>* out_Fields, TArray<class UUIDataProvider*>* ReplacementProviders);
-	bool ReplaceProviderValue(const struct FName& TargetFieldTag, class UUIDataProvider* ReplacementProvider, TArray<struct FUIDataProviderField>* out_Fields);
+	unsigned long ReplaceProviderCollection(const struct FName& TargetFieldTag, TArray<struct FUIDataProviderField>* out_Fields, TArray<class UUIDataProvider*>* ReplacementProviders);
+	unsigned long ReplaceProviderValue(const struct FName& TargetFieldTag, class UUIDataProvider* ReplacementProvider, TArray<struct FUIDataProviderField>* out_Fields);
 	void ClearProviderReferences();
-	bool GetCellFieldValue(const struct FName& FieldName, const struct FName& CellTag, int ListIndex, int ArrayIndex, struct FUIProviderFieldValue* out_FieldValue);
-	bool GetCellFieldType(const struct FName& FieldName, const struct FName& CellTag, TEnumAsByte<EUIDataProviderFieldType>* FieldType);
+	unsigned long GetCellFieldValue(const struct FName& FieldName, const struct FName& CellTag, int ListIndex, int ArrayIndex, struct FUIProviderFieldValue* out_FieldValue);
+	unsigned long GetCellFieldType(const struct FName& FieldName, const struct FName& CellTag, TEnumAsByte<EUIDataProviderFieldType>* FieldType);
 	void GetElementCellTags(const struct FName& FieldName, TArray<struct FName>* CellFieldTags, TArray<struct FString>* ColumnHeaderDisplayText);
-	bool GetElementCellValueProvider(const struct FName& FieldName, int ListIndex, TScriptInterface<class UUIListElementCellProvider>* out_ValueProvider);
-	bool GetElementCellSchemaProvider(const struct FName& FieldName, TScriptInterface<class UUIListElementCellProvider>* out_SchemaProvider);
-	bool IsElementEnabled(const struct FName& FieldName, int CollectionIndex);
-	bool GetListElements(const struct FName& FieldName, TArray<int>* out_Elements);
+	unsigned long GetElementCellValueProvider(const struct FName& FieldName, int ListIndex, TScriptInterface<class UUIListElementCellProvider>* out_ValueProvider);
+	unsigned long GetElementCellSchemaProvider(const struct FName& FieldName, TScriptInterface<class UUIListElementCellProvider>* out_SchemaProvider);
+	unsigned long IsElementEnabled(const struct FName& FieldName, int CollectionIndex);
+	unsigned long GetListElements(const struct FName& FieldName, TArray<int>* out_Elements);
 	int GetElementCount(const struct FName& FieldName);
 	TArray<struct FName> GetElementProviderTags();
-	void InitializeProvider(bool bIsEditor, class UUIResourceDataProvider* InStaticResourceProvider, class UUIDataProvider_OnlineProfileSettings* InProfileProvider);
+	void InitializeProvider(unsigned long bIsEditor, class UUIResourceDataProvider* InStaticResourceProvider, class UUIDataProvider_OnlineProfileSettings* InProfileProvider);
 };
 
 
@@ -26779,12 +26779,12 @@ public:
 
 	class UUIAnimationSeq* FindUIAnimation(const struct FName& NameOfSequence);
 	void ShowMenuProgression();
-	void ToggleDebugInput(bool bEnable);
+	void ToggleDebugInput(unsigned long bEnable);
 	void ShowMenuStates();
 	void ShowRenderBounds();
 	void ShowDockingStacks();
-	bool STATIC_ClearUIMessageScene(const struct FName& SceneTag, class ULocalPlayer* ScenePlayerOwner, bool bCloseChildScenes);
-	bool STATIC_ShowUIMessage(const struct FName& SceneTag, const struct FString& Title, const struct FString& Message, const struct FString& Question, TArray<struct FName> ButtonAliases, const struct FScriptDelegate& SelectionCallback, class ULocalPlayer* ScenePlayerOwner, unsigned char ForcedPriority, class UUIMessageBoxBase** out_CreatedScene);
+	unsigned long STATIC_ClearUIMessageScene(const struct FName& SceneTag, class ULocalPlayer* ScenePlayerOwner, unsigned long bCloseChildScenes);
+	unsigned long STATIC_ShowUIMessage(const struct FName& SceneTag, const struct FString& Title, const struct FString& Message, const struct FString& Question, TArray<struct FName> ButtonAliases, const struct FScriptDelegate& SelectionCallback, class ULocalPlayer* ScenePlayerOwner, unsigned char ForcedPriority, class UUIMessageBoxBase** out_CreatedScene);
 	class UUIMessageBoxBase* STATIC_CreateUIMessageBox(const struct FName& SceneTag, class UClass* CustomMessageBoxClass, class UUIMessageBoxBase* SceneTemplate);
 	void RestoreMenuProgression(class UUIScene* BaseScene);
 	void ClearMenuProgression();
@@ -26792,30 +26792,30 @@ public:
 	void NotifyStorageDeviceChanged();
 	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
 	void NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
-	void NotifyLinkStatusChanged(bool bConnected);
+	void NotifyLinkStatusChanged(unsigned long bConnected);
 	void NotifyOnlineServiceStatusChanged(TEnumAsByte<EOnlineServerConnectionStatus> NewConnectionStatus);
-	void NotifyControllerChanged(int ControllerId, bool bConnected);
+	void NotifyControllerChanged(int ControllerId, unsigned long bConnected);
 	void OnLoginChange(unsigned char ControllerId);
 	void NotifyGameSessionEnded();
-	void NotifyClientTravel(class APlayerController* TravellingPlayer, const struct FString& TravelURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel);
-	bool IsAllowedToModifyPlayerCount();
-	void SynchronizePlayers(int MaxPlayersAllowed, bool bAllowJoins, bool bAllowRemoval);
+	void NotifyClientTravel(class APlayerController* TravellingPlayer, const struct FString& TravelURL, TEnumAsByte<ETravelType> TravelType, unsigned long bIsSeamlessTravel);
+	unsigned long IsAllowedToModifyPlayerCount();
+	void SynchronizePlayers(int MaxPlayersAllowed, unsigned long bAllowJoins, unsigned long bAllowRemoval);
 	void InitializeSceneClient();
-	bool CanShowToolTips();
-	void PauseGame(bool bDesiredPauseState, int PlayerIndex);
+	unsigned long CanShowToolTips();
+	void PauseGame(unsigned long bDesiredPauseState, int PlayerIndex);
 	void SwapScenesInStack(class UUIScene* sceneOne, class UUIScene* sceneTwo);
-	bool SetActiveControl(class UUIObject* NewActiveControl, int PlayerIndex);
-	bool CanUnpauseInternalUI();
+	unsigned long SetActiveControl(class UUIObject* NewActiveControl, int PlayerIndex);
+	unsigned long CanUnpauseInternalUI();
 	void RequestCursorRenderUpdate();
 	void RequestInputProcessingUpdate();
-	void AllActiveScenes(class UClass* SceneClass, bool bIterateBackwards, int StartingIndex, int SceneFilterMask, class UUIScene** OutScene);
-	class UUIScene* GetNextSceneFromIndex(int StartingSceneIndex, class ULocalPlayer* MatchingPlayerOwner, bool bIgnoreUnfocusedScenes);
-	class UUIScene* GetNextScene(class UUIScene* SourceScene, bool bRequireMatchingPlayerOwner, bool bIgnoreUnfocusedScenes);
-	class UUIScene* GetPreviousInputProcessingScene(class UUIScene* SourceScene, bool bIgnoreUnfocusedScenes);
-	class UUIScene* GetPreviousSceneFromIndex(int StartingSceneIndex, class ULocalPlayer* MatchingPlayerOwner, bool bIgnoreUnfocusedScenes);
-	class UUIScene* GetPreviousScene(class UUIScene* SourceScene, bool bRequireMatchingPlayerOwner, bool bIgnoreUnfocusedScenes);
-	class UUIScene* GetActiveScene(class ULocalPlayer* MatchingPlayerOwner, bool bIgnoreUnfocusedScenes);
-	int GetActiveSceneCount(class ULocalPlayer* MatchingPlayerOwner, bool bIgnoreUnfocusedScenes);
+	void AllActiveScenes(class UClass* SceneClass, unsigned long bIterateBackwards, int StartingIndex, int SceneFilterMask, class UUIScene** OutScene);
+	class UUIScene* GetNextSceneFromIndex(int StartingSceneIndex, class ULocalPlayer* MatchingPlayerOwner, unsigned long bIgnoreUnfocusedScenes);
+	class UUIScene* GetNextScene(class UUIScene* SourceScene, unsigned long bRequireMatchingPlayerOwner, unsigned long bIgnoreUnfocusedScenes);
+	class UUIScene* GetPreviousInputProcessingScene(class UUIScene* SourceScene, unsigned long bIgnoreUnfocusedScenes);
+	class UUIScene* GetPreviousSceneFromIndex(int StartingSceneIndex, class ULocalPlayer* MatchingPlayerOwner, unsigned long bIgnoreUnfocusedScenes);
+	class UUIScene* GetPreviousScene(class UUIScene* SourceScene, unsigned long bRequireMatchingPlayerOwner, unsigned long bIgnoreUnfocusedScenes);
+	class UUIScene* GetActiveScene(class ULocalPlayer* MatchingPlayerOwner, unsigned long bIgnoreUnfocusedScenes);
+	int GetActiveSceneCount(class ULocalPlayer* MatchingPlayerOwner, unsigned long bIgnoreUnfocusedScenes);
 	int FindSceneIndexByTag(const struct FName& SceneTag, class ULocalPlayer* SceneOwner);
 	class UUIScene* GetSceneAtIndex(int SceneIndex);
 	int FindSceneIndex(class UUIScene* SceneToFind);
@@ -26899,15 +26899,15 @@ public:
 	}
 
 
-	void SetValue(bool bShouldBeChecked, int PlayerIndex);
-	bool SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
+	void SetValue(unsigned long bShouldBeChecked, int PlayerIndex);
+	unsigned long SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
 	void ClearBoundDataStores();
 	void GetBoundDataStores(TArray<class UUIDataStore*>* out_BoundDataStores);
-	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
-	bool RefreshSubscriberValue(int BindingIndex);
+	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, unsigned long bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	unsigned long RefreshSubscriberValue(int BindingIndex);
 	struct FString GetDataStoreBinding(int BindingIndex);
 	void SetDataStoreBinding(const struct FString& MarkupText, int BindingIndex);
-	bool IsChecked();
+	unsigned long IsChecked();
 	void SetCheckImage(class USurface* NewImage);
 };
 
@@ -26928,11 +26928,11 @@ public:
 	}
 
 
-	bool SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
+	unsigned long SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
 	void ClearBoundDataStores();
 	void GetBoundDataStores(TArray<class UUIDataStore*>* out_BoundDataStores);
-	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
-	bool RefreshSubscriberValue(int BindingIndex);
+	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, unsigned long bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	unsigned long RefreshSubscriberValue(int BindingIndex);
 	struct FString GetDataStoreBinding(int BindingIndex);
 	void SetDataStoreBinding(const struct FString& MarkupText, int BindingIndex);
 	void SetTextAlignment(TEnumAsByte<EUIAlignment> Horizontal, TEnumAsByte<EUIAlignment> Vertical);
@@ -26961,18 +26961,18 @@ public:
 	}
 
 
-	class UUIEvent_CalloutButtonInputProxy* GetCalloutInputProxy(bool bCreateIfNecessary);
-	bool VerifyDefaultMarkupString();
+	class UUIEvent_CalloutButtonInputProxy* GetCalloutInputProxy(unsigned long bCreateIfNecessary);
+	unsigned long VerifyDefaultMarkupString();
 	class UUICalloutButtonPanel* GetPanelOwner();
 	void RemovedFromParent(class UUIScreenObject* WidgetOwner);
 	void PostInitialize();
 	struct FString GenerateCompleteCaptionMarkup(const struct FName& InputAlias);
 	struct FString GetCalloutMarkupString(const struct FName& AlternateInputAlias);
 	struct FName GetCalloutDataStoreName();
-	bool SetInputAlias(const struct FName& NewInputAlias);
-	bool OnReceivedInputKey(struct FInputEventParameters* EventParms);
-	bool UnsubscribeFromInputProxy(class UUIEvent_CalloutButtonInputProxy* InputProxy, bool bUpdateProxyOutputLinks, int PlayerIndex);
-	bool SubscribeToInputProxy(class UUIEvent_CalloutButtonInputProxy* InputProxy, bool bUpdateProxyOutputLinks, int PlayerIndex);
+	unsigned long SetInputAlias(const struct FName& NewInputAlias);
+	unsigned long OnReceivedInputKey(struct FInputEventParameters* EventParms);
+	unsigned long UnsubscribeFromInputProxy(class UUIEvent_CalloutButtonInputProxy* InputProxy, unsigned long bUpdateProxyOutputLinks, int PlayerIndex);
+	unsigned long SubscribeToInputProxy(class UUIEvent_CalloutButtonInputProxy* InputProxy, unsigned long bUpdateProxyOutputLinks, int PlayerIndex);
 	void SetInputTag(const struct FName& NewInputAlias);
 	class UUIDataStore_InputAlias* GetCalloutDataStore(class ULocalPlayer* AlternatePlayer);
 };
@@ -26995,12 +26995,12 @@ public:
 
 	void OnStateChanged(class UUIScreenObject* Sender, int PlayerIndex, class UUIState* NewlyActiveState, class UUIState* PreviouslyActiveState);
 	class UUITabPage* GetTabPage();
-	bool IsTargeted(int PlayerIndex, int* StateIndex);
-	bool CanActivateButton(int PlayerIndex);
+	unsigned long IsTargeted(int PlayerIndex, int* StateIndex);
+	unsigned long CanActivateButton(int PlayerIndex);
 	void RemovedFromParent(class UUIScreenObject* WidgetOwner);
 	void RemovedChild(class UUIScreenObject* WidgetOwner, class UUIObject* OldChild, TArray<class UUIObject*> ExclusionSet);
 	void AddedChild(class UUIScreenObject* WidgetOwner, class UUIObject* NewChild);
-	bool IsActivationAllowed(class UUITabButton* Sender, int PlayerIndex);
+	unsigned long IsActivationAllowed(class UUITabButton* Sender, int PlayerIndex);
 };
 
 
@@ -27021,9 +27021,9 @@ public:
 	}
 
 
-	bool ButtonClicked(class UUIScreenObject* Sender, int PlayerIndex);
-	void SetValue(bool bShouldBeChecked, int PlayerIndex);
-	bool IsChecked();
+	unsigned long ButtonClicked(class UUIScreenObject* Sender, int PlayerIndex);
+	void SetValue(unsigned long bShouldBeChecked, int PlayerIndex);
+	unsigned long IsChecked();
 	void SetCaption(const struct FString& NewText);
 };
 
@@ -27072,20 +27072,20 @@ public:
 
 
 	void OnStateChanged(class UUIScreenObject* Sender, int PlayerIndex, class UUIState* NewlyActiveState, class UUIState* PreviouslyActiveState);
-	bool OnButtonClicked(class UUIScreenObject* Sender, int PlayerIndex);
+	unsigned long OnButtonClicked(class UUIScreenObject* Sender, int PlayerIndex);
 	void OnPressRepeated(class UUIScreenObject* Sender, int PlayerIndex);
 	void InitializeInternalControls();
 	void Initialized();
 	void Created(class UUIObject* CreatedWidget, class UUIScreenObject* CreatorContainer);
 	void OnMoveSelectionRight(int PlayerIndex);
 	void OnMoveSelectionLeft(int PlayerIndex);
-	bool HasNextValue();
-	bool HasPrevValue();
-	bool SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
+	unsigned long HasNextValue();
+	unsigned long HasPrevValue();
+	unsigned long SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
 	void ClearBoundDataStores();
 	void GetBoundDataStores(TArray<class UUIDataStore*>* out_BoundDataStores);
-	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
-	bool RefreshSubscriberValue(int BindingIndex);
+	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, unsigned long bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	unsigned long RefreshSubscriberValue(int BindingIndex);
 	struct FString GetDataStoreBinding(int BindingIndex);
 	void SetDataStoreBinding(const struct FString& MarkupText, int BindingIndex);
 	class UUIOptionListButton* CreateCustomIncrementButton(class UUIOptionListBase* ButtonOwner);
@@ -27157,7 +27157,7 @@ public:
 	void DragScrollBegin(class UUIScreenObject* Sender, int PlayerIndex);
 	void ScrollDecrement(class UUIScreenObject* Sender, int PlayerIndex);
 	void ScrollIncrement(class UUIScreenObject* Sender, int PlayerIndex);
-	void EnableCornerPadding(bool FlagValue);
+	void EnableCornerPadding(unsigned long FlagValue);
 	void SetNudgeSizePixels(float NudgePixels);
 	void SetNudgeSizePercent(float NudgePercentage);
 	void SetMarkerPosition(float PositionPercentage);
@@ -27166,7 +27166,7 @@ public:
 	float GetScrollZoneExtent(float* ScrollZoneStart);
 	float GetMarkerButtonPosition();
 	void OnClickedScrollZone(class UUIScrollbar* Sender, float PositionPerc, int PlayerIndex);
-	bool OnScrollActivity(class UUIScrollbar* Sender, float PositionChange, bool bPositionMaxed);
+	unsigned long OnScrollActivity(class UUIScrollbar* Sender, float PositionChange, unsigned long bPositionMaxed);
 };
 
 
@@ -27235,21 +27235,21 @@ public:
 	void ListItemSelected(class UUIList* Sender, int PlayerIndex);
 	void SelectedItemChanged(class UUIObject* Sender, int PlayerIndex);
 	void EditboxTextChanged(class UUIObject* Sender, int PlayerIndex);
-	bool ShowListClickHandler(class UUIScreenObject* EventObject, int PlayerIndex);
+	unsigned long ShowListClickHandler(class UUIScreenObject* EventObject, int PlayerIndex);
 	void ButtonPressed(class UUIScreenObject* EventObject, int PlayerIndex);
 	void EditboxPressed(class UUIScreenObject* EventObject, int PlayerIndex);
-	void SetListDocking(bool bDockToButton);
-	bool IsListDockedToButton();
-	void SetEditboxText(const struct FString& NewText, int PlayerIndex, bool bListItemsOnly, bool bSkipNotification);
+	void SetListDocking(unsigned long bDockToButton);
+	unsigned long IsListDockedToButton();
+	void SetEditboxText(const struct FString& NewText, int PlayerIndex, unsigned long bListItemsOnly, unsigned long bSkipNotification);
 	void HideList(int PlayerIndex);
 	void ShowList(int PlayerIndex);
-	void SetVisibility(bool bIsVisible);
+	void SetVisibility(unsigned long bIsVisible);
 	void PostInitialize();
-	bool SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
+	unsigned long SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
 	void ClearBoundDataStores();
 	void GetBoundDataStores(TArray<class UUIDataStore*>* out_BoundDataStores);
-	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
-	bool RefreshSubscriberValue(int BindingIndex);
+	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, unsigned long bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	unsigned long RefreshSubscriberValue(int BindingIndex);
 	struct FString GetDataStoreBinding(int BindingIndex);
 	void SetDataStoreBinding(const struct FString& MarkupText, int BindingIndex);
 	class UUIList* CreateCustomComboList(class UUIComboBox* ListOwner);
@@ -27298,28 +27298,28 @@ public:
 	}
 
 
-	void OnButtonVisibilityChanged(class UUIScreenObject* SourceWidget, bool bIsVisible);
+	void OnButtonVisibilityChanged(class UUIScreenObject* SourceWidget, unsigned long bIsVisible);
 	void InitializeInputProxy();
 	void ConfigureChildButton(class UUICalloutButton* ChildButton);
 	void RemovedFromParent(class UUIScreenObject* WidgetOwner);
 	void PostInitialize();
-	bool CanButtonAcceptFocus(const struct FName& InputAliasTag, int PlayerIndex);
-	bool ContainsButton(const struct FName& ButtonInputAlias);
+	unsigned long CanButtonAcceptFocus(const struct FName& InputAliasTag, int PlayerIndex);
+	unsigned long ContainsButton(const struct FName& ButtonInputAlias);
 	int FindButtonIndex(const struct FName& ButtonInputAlias);
 	class UUICalloutButton* FindButton(const struct FName& ButtonInputAlias);
-	bool EnableButton(const struct FName& ButtonInputAlias, int PlayerIndex, bool bEnableButton, bool bUpdateButtonVisibility);
-	bool ShowButton(const struct FName& ButtonInputAlias, bool bShowButton);
-	bool SetButtonCallback(const struct FName& ButtonInputAlias, const struct FScriptDelegate& NewClickHandler);
-	bool SetButtonInputAlias(const struct FName& ButtonInputAlias, const struct FName& NewButtonInputAlias);
-	bool SetButtonCaption(const struct FName& ButtonInputAlias, const struct FString& NewButtonCaption);
-	bool RemoveAllButtons();
-	bool RemoveButtonByAlias(const struct FName& ButtonInputAlias);
-	bool RemoveButton(class UUICalloutButton* ButtonToRemove);
+	unsigned long EnableButton(const struct FName& ButtonInputAlias, int PlayerIndex, unsigned long bEnableButton, unsigned long bUpdateButtonVisibility);
+	unsigned long ShowButton(const struct FName& ButtonInputAlias, unsigned long bShowButton);
+	unsigned long SetButtonCallback(const struct FName& ButtonInputAlias, const struct FScriptDelegate& NewClickHandler);
+	unsigned long SetButtonInputAlias(const struct FName& ButtonInputAlias, const struct FName& NewButtonInputAlias);
+	unsigned long SetButtonCaption(const struct FName& ButtonInputAlias, const struct FString& NewButtonCaption);
+	unsigned long RemoveAllButtons();
+	unsigned long RemoveButtonByAlias(const struct FName& ButtonInputAlias);
+	unsigned long RemoveButton(class UUICalloutButton* ButtonToRemove);
 	int InsertButton(class UUICalloutButton* NewButton);
-	void RequestButtonDockingUpdate(bool bImmediately);
-	int FindBestInsertionIndex(class UUICalloutButton* ButtonToInsert, bool bSearchChildrenArray);
-	class UUIEvent_CalloutButtonInputProxy* GetCalloutInputProxy(bool bCreateIfNecessary);
-	class UUICalloutButton* CreateCalloutButton(const struct FName& ButtonInputAlias, const struct FName& ButtonName, bool bInsertChild);
+	void RequestButtonDockingUpdate(unsigned long bImmediately);
+	int FindBestInsertionIndex(class UUICalloutButton* ButtonToInsert, unsigned long bSearchChildrenArray);
+	class UUIEvent_CalloutButtonInputProxy* GetCalloutInputProxy(unsigned long bCreateIfNecessary);
+	class UUICalloutButton* CreateCalloutButton(const struct FName& ButtonInputAlias, const struct FName& ButtonName, unsigned long bInsertChild);
 	void GetAvailableCalloutButtonAliases(class ULocalPlayer* PlayerOwner, TArray<struct FName>* AvailableAliases);
 	void RemovedChild(class UUIScreenObject* WidgetOwner, class UUIObject* OldChild, TArray<class UUIObject*> ExclusionSet);
 	void AddedChild(class UUIScreenObject* WidgetOwner, class UUIObject* NewChild);
@@ -27419,11 +27419,11 @@ public:
 	struct FVector2D GetClientRegionPositionVector();
 	float GetClientRegionSize(TEnumAsByte<EUIOrientation> Orientation);
 	float GetClientRegionPosition(TEnumAsByte<EUIOrientation> Orientation);
-	bool SetClientRegionPositionVector(const struct FVector2D& NewPosition);
-	bool SetClientRegionPosition(TEnumAsByte<EUIOrientation> Orientation, float NewPosition);
-	bool ScrollRegion(class UUIScrollbar* Sender, float PositionChange, bool bPositionMaxed);
-	void ReapplyFormatting(bool bImmediately);
-	void RefreshScrollbars(bool bImmediately);
+	unsigned long SetClientRegionPositionVector(const struct FVector2D& NewPosition);
+	unsigned long SetClientRegionPosition(TEnumAsByte<EUIOrientation> Orientation, float NewPosition);
+	unsigned long ScrollRegion(class UUIScrollbar* Sender, float PositionChange, unsigned long bPositionMaxed);
+	void ReapplyFormatting(unsigned long bImmediately);
+	void RefreshScrollbars(unsigned long bImmediately);
 };
 
 
@@ -27446,23 +27446,23 @@ public:
 	}
 
 
-	bool IsActivePage();
+	unsigned long IsActivePage();
 	void SetTabCaption(const struct FString& NewButtonMarkup);
-	bool IsFocusInitializationRequired(int PlayerIndex);
-	bool CanActivatePage(int PlayerIndex);
+	unsigned long IsFocusInitializationRequired(int PlayerIndex);
+	unsigned long CanActivatePage(int PlayerIndex);
 	void AddedToTabControl(class UUITabControl* TabControl);
 	void ClearBoundDataStores();
 	void GetBoundDataStores(TArray<class UUIDataStore*>* out_BoundDataStores);
-	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
-	bool RefreshSubscriberValue(int BindingIndex);
+	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, unsigned long bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	unsigned long RefreshSubscriberValue(int BindingIndex);
 	struct FString GetDataStoreBinding(int BindingIndex);
 	void SetDataStoreBinding(const struct FString& MarkupText, int BindingIndex);
 	class UUITabButton* GetTabButton(class UUITabControl* TabControl);
 	class UUITabControl* GetOwnerTabControl();
 	void RemovedFromParent(class UUIScreenObject* WidgetOwner);
-	bool LinkToTabButton(class UUITabButton* NewButton, class UUITabControl* TabControl);
+	unsigned long LinkToTabButton(class UUITabButton* NewButton, class UUITabControl* TabControl);
 	class UUITabButton* STATIC_CreateTabButton(class UUITabControl* TabControl);
-	bool ActivatePage(int PlayerIndex, bool bActivate, bool bTakeFocus);
+	unsigned long ActivatePage(int PlayerIndex, unsigned long bActivate, unsigned long bTakeFocus);
 };
 
 
@@ -27488,7 +27488,7 @@ public:
 
 
 	float GetNumericValue();
-	bool SetNumericValue(float NewValue, bool bForceRefreshString);
+	unsigned long SetNumericValue(float NewValue, unsigned long bForceRefreshString);
 	void PostInitialize();
 	void Initialized();
 	void DecrementValue(class UUIScreenObject* Sender, int PlayerIndex);
@@ -27512,11 +27512,11 @@ public:
 	}
 
 
-	bool SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
+	unsigned long SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
 	void ClearBoundDataStores();
 	void GetBoundDataStores(TArray<class UUIDataStore*>* out_BoundDataStores);
-	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
-	bool RefreshSubscriberValue(int BindingIndex);
+	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, unsigned long bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	unsigned long RefreshSubscriberValue(int BindingIndex);
 	struct FString GetDataStoreBinding(int BindingIndex);
 	void SetDataStoreBinding(const struct FString& MarkupText, int BindingIndex);
 	void SetValue(class USurface* NewImage);
@@ -27547,17 +27547,17 @@ public:
 
 	struct FString GetMarkupString();
 	void SetIntValue(int Value);
-	void IgnoreMarkup(bool bShouldIgnoreMarkup);
+	void IgnoreMarkup(unsigned long bShouldIgnoreMarkup);
 	struct FString GetValue();
 	void SetArrayValue(TArray<struct FString> ValueArray);
 	void ClearBoundDataStores();
 	void GetBoundDataStores(TArray<class UUIDataStore*>* out_BoundDataStores);
-	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
-	bool RefreshSubscriberValue(int BindingIndex);
+	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, unsigned long bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	unsigned long RefreshSubscriberValue(int BindingIndex);
 	struct FString GetDataStoreBinding(int BindingIndex);
 	void SetDataStoreBinding(const struct FString& MarkupText, int BindingIndex);
 	void SetTextAlignment(TEnumAsByte<EUIAlignment> Horizontal, TEnumAsByte<EUIAlignment> Vertical);
-	void SetValue(const struct FString& NewText, bool bInlineUpdate);
+	void SetValue(const struct FString& NewText, unsigned long bInlineUpdate);
 	void LabelValueChanged(class UUILabel* Sender, const struct FString& OldText, const struct FString& NewText);
 };
 
@@ -27613,8 +27613,8 @@ public:
 	}
 
 
-	float GetValue(bool bPercentageValue);
-	bool SetValue(float NewValue, bool bPercentageValue);
+	float GetValue(unsigned long bPercentageValue);
+	unsigned long SetValue(float NewValue, unsigned long bPercentageValue);
 };
 
 
@@ -27636,11 +27636,11 @@ public:
 
 	void SetCurrentIndex(int NewIndex);
 	int GetCurrentIndex();
-	bool OnIsCurrValueValid();
-	bool IsCurrValueValid();
+	unsigned long OnIsCurrValueValid();
+	unsigned long IsCurrValueValid();
 	void SetNextValue();
 	void SetPrevValue();
-	bool GetListValue(int ListIndex, struct FString* OutValue);
+	unsigned long GetListValue(int ListIndex, struct FString* OutValue);
 };
 
 
@@ -27717,13 +27717,13 @@ public:
 	void SetOverlayImage(class USurface* NewImage);
 	void SetFillImage(class USurface* NewImage);
 	void SetBackgroundImage(class USurface* NewImage);
-	float GetValue(bool bPercentageValue);
-	bool SetValue(float NewValue, bool bPercentageValue);
-	bool SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
+	float GetValue(unsigned long bPercentageValue);
+	unsigned long SetValue(float NewValue, unsigned long bPercentageValue);
+	unsigned long SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
 	void ClearBoundDataStores();
 	void GetBoundDataStores(TArray<class UUIDataStore*>* out_BoundDataStores);
-	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
-	bool RefreshSubscriberValue(int BindingIndex);
+	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, unsigned long bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	unsigned long RefreshSubscriberValue(int BindingIndex);
 	struct FString GetDataStoreBinding(int BindingIndex);
 	void SetDataStoreBinding(const struct FString& MarkupText, int BindingIndex);
 };
@@ -27772,13 +27772,13 @@ public:
 	void SetMarkerImage(class USurface* NewImage);
 	void SetBarImage(class USurface* NewImage);
 	void SetBackgroundImage(class USurface* NewImage);
-	float GetValue(bool bPercentageValue);
-	bool SetValue(float NewValue, bool bPercentageValue);
-	bool SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
+	float GetValue(unsigned long bPercentageValue);
+	unsigned long SetValue(float NewValue, unsigned long bPercentageValue);
+	unsigned long SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
 	void ClearBoundDataStores();
 	void GetBoundDataStores(TArray<class UUIDataStore*>* out_BoundDataStores);
-	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
-	bool RefreshSubscriberValue(int BindingIndex);
+	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, unsigned long bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	unsigned long RefreshSubscriberValue(int BindingIndex);
 	struct FString GetDataStoreBinding(int BindingIndex);
 	void SetDataStoreBinding(const struct FString& MarkupText, int BindingIndex);
 };
@@ -27813,22 +27813,22 @@ public:
 	}
 
 
-	bool TabButtonClicked(class UUIScreenObject* EventObject, int PlayerIndex);
-	bool ProcessInputKey(struct FInputEventParameters* EventParms);
+	unsigned long TabButtonClicked(class UUIScreenObject* EventObject, int PlayerIndex);
+	unsigned long ProcessInputKey(struct FInputEventParameters* EventParms);
 	int FindPageIndexByPageRef(class UUITabPage* SearchPage);
 	int FindPageIndexByButton(class UUITabButton* SearchButton);
-	int FindPageIndexByCaption(const struct FString& PageCaption, bool bMarkupString);
-	bool ActivateBestTab(int PlayerIndex, bool bFocusPage, int StartIndex);
-	bool ActivatePageByCaption(const struct FString& PageCaption, int PlayerIndex, bool bFocusPage);
+	int FindPageIndexByCaption(const struct FString& PageCaption, unsigned long bMarkupString);
+	unsigned long ActivateBestTab(int PlayerIndex, unsigned long bFocusPage, int StartIndex);
+	unsigned long ActivatePageByCaption(const struct FString& PageCaption, int PlayerIndex, unsigned long bFocusPage);
 	void AddedChild(class UUIScreenObject* WidgetOwner, class UUIObject* NewChild);
 	void PostInitialize();
-	bool EnableTabPage(class UUITabPage* PageToEnable, int PlayerIndex, bool bEnablePage, bool bActivatePage, bool bFocusPage);
-	bool ActivatePreviousPage(int PlayerIndex, bool bFocusPage, bool bAllowWrapping);
-	bool ActivateNextPage(int PlayerIndex, bool bFocusPage, bool bAllowWrapping);
-	bool ActivatePage(class UUITabPage* PageToActivate, int PlayerIndex, bool bFocusPage);
-	bool ReplacePage(class UUITabPage* ExistingPage, class UUITabPage* NewPage, int PlayerIndex, bool bFocusPage);
-	bool RemovePage(class UUITabPage* PageToRemove, int PlayerIndex);
-	bool InsertPage(class UUITabPage* PageToInsert, int PlayerIndex, int InsertIndex, bool bActivateImmediately);
+	unsigned long EnableTabPage(class UUITabPage* PageToEnable, int PlayerIndex, unsigned long bEnablePage, unsigned long bActivatePage, unsigned long bFocusPage);
+	unsigned long ActivatePreviousPage(int PlayerIndex, unsigned long bFocusPage, unsigned long bAllowWrapping);
+	unsigned long ActivateNextPage(int PlayerIndex, unsigned long bFocusPage, unsigned long bAllowWrapping);
+	unsigned long ActivatePage(class UUITabPage* PageToActivate, int PlayerIndex, unsigned long bFocusPage);
+	unsigned long ReplacePage(class UUITabPage* ExistingPage, class UUITabPage* NewPage, int PlayerIndex, unsigned long bFocusPage);
+	unsigned long RemovePage(class UUITabPage* PageToRemove, int PlayerIndex);
+	unsigned long InsertPage(class UUITabPage* PageToInsert, int PlayerIndex, int InsertIndex, unsigned long bActivateImmediately);
 	void PrivateActivatePage(class UUITabPage* PageToActivate, int PlayerIndex);
 	class UUITabPage* CreateTabPage(class UClass* TabPageClass, class UUITabPage* PagePrefab);
 	class UUITabButton* FindTargetedTab(int PlayerIndex);
@@ -27943,11 +27943,11 @@ public:
 	}
 
 
-	bool LocksInput(class ULocalPlayer* aPlayerOwner);
+	unsigned long LocksInput(class ULocalPlayer* aPlayerOwner);
 	void OnSwallowedInput(class UUIScreenObject* byWidget, struct FInputEventParameters* EventParms);
-	bool AllowInputAlias(const struct FName& InputKeyName, const struct FName& InputAliasName);
-	bool IsGamepadOwned();
-	bool IsKeyboardOwned();
+	unsigned long AllowInputAlias(const struct FName& InputKeyName, const struct FName& InputAliasName);
+	unsigned long IsGamepadOwned();
+	unsigned long IsKeyboardOwned();
 	void OnNotifyClicked(class UUIObject* Widget);
 	void DebugShowAnimators();
 	void LogCurrentState(int Indent);
@@ -27961,69 +27961,69 @@ public:
 	void BeginSceneRegainedFocusAnimation();
 	void BeginSceneRegainingFocusAnimation();
 	void BeginSceneLostFocusAnimation();
-	bool BeginSceneCloseAnimation(bool bCloseChildScenes);
+	unsigned long BeginSceneCloseAnimation(unsigned long bCloseChildScenes);
 	void BeginSceneOpenAnimation();
-	bool StopSceneAnimation(const struct FName& AnimationSequenceName, bool bFinalize);
-	bool BeginSceneAnimation(const struct FName& AnimationSequenceName, const struct FScriptDelegate& TrackCompletedDelegate);
+	unsigned long StopSceneAnimation(const struct FName& AnimationSequenceName, unsigned long bFinalize);
+	unsigned long BeginSceneAnimation(const struct FName& AnimationSequenceName, const struct FScriptDelegate& TrackCompletedDelegate);
 	int FindAnimatorIndex(class UUIScreenObject* SearchObj);
-	bool CloseScene(class UUIScene* SceneToClose, bool bCloseChildScenes, bool bForceCloseImmediately);
-	class UUIScene* OpenScene(class UUIScene* SceneToOpen, class ULocalPlayer* ScenePlayerOwner, unsigned char ForcedPriority, bool bSkipAnimation, const struct FScriptDelegate& SceneDelegate);
+	unsigned long CloseScene(class UUIScene* SceneToClose, unsigned long bCloseChildScenes, unsigned long bForceCloseImmediately);
+	class UUIScene* OpenScene(class UUIScene* SceneToOpen, class ULocalPlayer* ScenePlayerOwner, unsigned char ForcedPriority, unsigned long bSkipAnimation, const struct FScriptDelegate& SceneDelegate);
 	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
 	void NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
 	void NotifyStorageDeviceChanged();
-	void NotifyLinkStatusChanged(bool bConnected);
+	void NotifyLinkStatusChanged(unsigned long bConnected);
 	void NotifyOnlineServiceStatusChanged(TEnumAsByte<EOnlineServerConnectionStatus> NewConnectionStatus);
-	void NotifyControllerStatusChanged(int ControllerId, bool bConnected);
-	bool NotifyLoginStatusChanged(int ControllerId, TEnumAsByte<ELoginStatus> NewStatus);
+	void NotifyControllerStatusChanged(int ControllerId, unsigned long bConnected);
+	unsigned long NotifyLoginStatusChanged(int ControllerId, TEnumAsByte<ELoginStatus> NewStatus);
 	void NotifyGameSessionEnded();
-	void NotifyPreClientTravel(const struct FString& TravelURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamless);
+	void NotifyPreClientTravel(const struct FString& TravelURL, TEnumAsByte<ETravelType> TravelType, unsigned long bIsSeamless);
 	void SceneCreated(class UUIScene* CreatedScene);
-	void UIAnimationEnded(class UUIScreenObject* Sender, const struct FName& AnimName, int TrackTypeMask, bool bSetAnimatingFlag);
-	void UIAnimationStarted(class UUIScreenObject* Sender, const struct FName& AnimName, int TrackTypeMask, bool bSetAnimatingFlag);
-	void SetVisibility(bool bIsVisible);
+	void UIAnimationEnded(class UUIScreenObject* Sender, const struct FName& AnimName, int TrackTypeMask, unsigned long bSetAnimatingFlag);
+	void UIAnimationStarted(class UUIScreenObject* Sender, const struct FName& AnimName, int TrackTypeMask, unsigned long bSetAnimatingFlag);
+	void SetVisibility(unsigned long bIsVisible);
 	void RemovedChild(class UUIScreenObject* WidgetOwner, class UUIObject* OldChild, TArray<class UUIObject*> ExclusionSet);
 	void AddedChild(class UUIScreenObject* WidgetOwner, class UUIObject* NewChild);
 	void CalculateInputMask();
 	void SceneDeactivated();
-	void SceneActivated(bool bInitialActivation);
+	void SceneActivated(unsigned long bInitialActivation);
 	void MobileKeyboardReturned(const struct FString& keyboardString);
-	class UUIObject* GetFocusHint(bool bQueryOnly);
-	bool CanAcceptFocus(int PlayerIndex, bool bIncludeParentVisibility);
+	class UUIObject* GetFocusHint(unsigned long bQueryOnly);
+	unsigned long CanAcceptFocus(int PlayerIndex, unsigned long bIncludeParentVisibility);
 	struct FMatrix GenerateTransformMatrix();
 	void LogDockingStack();
-	bool SetActiveContextMenu(class UUIContextMenu* NewContextMenu, int PlayerIndex);
+	unsigned long SetActiveContextMenu(class UUIContextMenu* NewContextMenu, int PlayerIndex);
 	class UUIContextMenu* GetActiveContextMenu();
 	class UUIContextMenu* GetDefaultContextMenu();
-	bool IsSceneActive(bool bTopmostScene);
+	unsigned long IsSceneActive(unsigned long bTopmostScene);
 	class AWorldInfo* STATIC_GetWorldInfo();
 	void SetSceneRenderMode(TEnumAsByte<ESplitscreenRenderMode> NewRenderMode);
 	TEnumAsByte<ESplitscreenRenderMode> GetSceneRenderMode();
-	TEnumAsByte<EScreenInputMode> GetSceneInputMode(bool bMemberValueOnly);
+	TEnumAsByte<EScreenInputMode> GetSceneInputMode(unsigned long bMemberValueOnly);
 	void SetSceneInputMode(TEnumAsByte<EScreenInputMode> NewInputMode);
 	TEnumAsByte<EUIPostProcessGroup> GetScenePostProcessGroup();
-	bool ShouldRenderParentScenes();
-	class UUIScene* GetPreviousScene(bool bRequireMatchingPlayerOwner, bool bIgnoreUnfocusedScenes);
-	class UUIScene* GetNextScene(bool bRequireMatchingPlayerOwner, bool bIgnoreUnfocusedScenes);
+	unsigned long ShouldRenderParentScenes();
+	class UUIScene* GetPreviousScene(unsigned long bRequireMatchingPlayerOwner, unsigned long bIgnoreUnfocusedScenes);
+	class UUIScene* GetNextScene(unsigned long bRequireMatchingPlayerOwner, unsigned long bIgnoreUnfocusedScenes);
 	class UUIDataStore* ResolveDataStore(const struct FName& DataStoreTag, class ULocalPlayer* InPlayerOwner);
 	void UnbindSubscribers();
-	void SaveSceneDataValues(bool bUnbindSubscribers);
+	void SaveSceneDataValues(unsigned long bUnbindSubscribers);
 	void LoadSceneDataValues();
 	class USceneDataStore* GetSceneDataStore();
 	int FindTickableObjectIndex(const TScriptInterface<class UUITickableObject>& ObjectToFind);
-	bool UnregisterTickableObject(const TScriptInterface<class UUITickableObject>& ObjectToRemove);
-	bool RegisterTickableObject(const TScriptInterface<class UUITickableObject>& ObjectToRegister, int InsertIndex);
+	unsigned long UnregisterTickableObject(const TScriptInterface<class UUITickableObject>& ObjectToRemove);
+	unsigned long RegisterTickableObject(const TScriptInterface<class UUITickableObject>& ObjectToRegister, int InsertIndex);
 	void ResolveScenePositions();
 	void RebuildDockingStack();
 	void ForceImmediateSceneUpdate();
-	bool OnQueryEndAnimation_EnableInput(const struct FName& AnimationSequenceName, int TrackTypeMask);
-	bool OnQueryBeginAnimation_DisableInput(const struct FName& AnimationSequenceName, int TrackTypeMask);
-	bool ShouldModulateBackgroundAlpha(float* AlphaModulationPercent);
+	unsigned long OnQueryEndAnimation_EnableInput(const struct FName& AnimationSequenceName, int TrackTypeMask);
+	unsigned long OnQueryBeginAnimation_DisableInput(const struct FName& AnimationSequenceName, int TrackTypeMask);
+	unsigned long ShouldModulateBackgroundAlpha(float* AlphaModulationPercent);
 	void OnTopSceneChanged(class UUIScene* NewTopScene);
-	bool OnQueryCloseSceneAllowed(class UUIScene* SceneToDeactivate, bool bCloseChildScenes, bool bForcedClose);
+	unsigned long OnQueryCloseSceneAllowed(class UUIScene* SceneToDeactivate, unsigned long bCloseChildScenes, unsigned long bForcedClose);
 	void OnPostRender(class UCanvas* C);
 	void OnSceneDeactivated(class UUIScene* DeactivatedScene);
-	void OnSceneActivated(class UUIScene* ActivatedScene, bool bInitialActivation);
-	bool OnInterceptRawInputKey(struct FInputEventParameters* EventParms);
+	void OnSceneActivated(class UUIScene* ActivatedScene, unsigned long bInitialActivation);
+	unsigned long OnInterceptRawInputKey(struct FInputEventParameters* EventParms);
 	TEnumAsByte<EScreenInputMode> GetSceneInputModeOverride();
 };
 
@@ -28074,7 +28074,7 @@ public:
 	}
 
 
-	bool ActivateState(class UUIScreenObject* Target, int PlayerIndex);
+	unsigned long ActivateState(class UUIScreenObject* Target, int PlayerIndex);
 };
 
 
@@ -28108,7 +28108,7 @@ public:
 	}
 
 
-	bool IsWidgetClassSupported(class UClass* WidgetClass);
+	unsigned long IsWidgetClassSupported(class UClass* WidgetClass);
 };
 
 
@@ -28161,7 +28161,7 @@ public:
 	}
 
 
-	bool MatchesStyleData(class UUIStyle_Data* OtherStyle);
+	unsigned long MatchesStyleData(class UUIStyle_Data* OtherStyle);
 };
 
 
@@ -28242,7 +28242,7 @@ public:
 
 
 	class USurface* GetSurface();
-	bool HasValidStyleData();
+	unsigned long HasValidStyleData();
 	void SetImageStyle(class UUIStyle_Image* NewImageStyle);
 	class UUIScreenObject* GetOwnerWidget(class UUIComponent** OwnerComponent);
 };
@@ -28298,8 +28298,8 @@ public:
 	}
 
 
-	bool NotifyResolveStyle(class UUISkin* ActiveSkin, bool bClearExistingValue, class UUIState* CurrentMenuState, const struct FName& StylePropertyName);
-	bool SetStyleResolverTag(const struct FName& NewResolverTag);
+	unsigned long NotifyResolveStyle(class UUISkin* ActiveSkin, unsigned long bClearExistingValue, class UUIState* CurrentMenuState, const struct FName& StylePropertyName);
+	unsigned long SetStyleResolverTag(const struct FName& NewResolverTag);
 	struct FName GetStyleResolverTag();
 };
 
@@ -28336,7 +28336,7 @@ public:
 
 	void RemoveSequenceObjects(TArray<class USequenceObject*>* ObjectsToRemove);
 	void RemoveSequenceObject(class USequenceObject* ObjectToRemove);
-	bool AddSequenceObject(class USequenceObject* NewObj, bool bRecurse);
+	unsigned long AddSequenceObject(class USequenceObject* NewObj, unsigned long bRecurse);
 	void GetUIEvents(class UClass* LimitClass, TArray<class UUIEvent*>* out_Events);
 	class UUIScreenObject* GetOwner();
 };
@@ -28374,8 +28374,8 @@ public:
 
 
 	int STATIC_GetObjClassVersion();
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
-	bool IsValidLevelSequenceObject();
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidLevelSequenceObject();
 	class UUIScene* GetOwnerScene();
 	class UUIScreenObject* GetOwner();
 };
@@ -28413,7 +28413,7 @@ public:
 
 
 	int STATIC_GetObjClassVersion();
-	bool IsValidLevelSequenceObject();
+	unsigned long IsValidLevelSequenceObject();
 };
 
 
@@ -28467,7 +28467,7 @@ public:
 	}
 
 
-	bool IsValidLevelSequenceObject();
+	unsigned long IsValidLevelSequenceObject();
 };
 
 
@@ -28492,15 +28492,15 @@ public:
 
 
 	int STATIC_GetObjClassVersion();
-	bool ShouldAlwaysInstance();
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
-	bool IsValidLevelSequenceObject();
-	bool ActivateUIEvent(int ControllerIndex, class UUIScreenObject* InEventOwner, class UObject* InEventActivator, bool bActivateImmediately, TArray<int>* IndicesToActivate);
-	bool ConditionalActivateUIEvent(int ControllerIndex, class UUIScreenObject* InEventOwner, class UObject* InEventActivator, bool bActivateImmediately, TArray<int>* IndicesToActivate);
-	bool CanBeActivated(int ControllerIndex, class UUIScreenObject* InEventOwner, class UObject* InEventActivator, bool bActivateImmediately, TArray<int>* IndicesToActivate);
+	unsigned long ShouldAlwaysInstance();
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidLevelSequenceObject();
+	unsigned long ActivateUIEvent(int ControllerIndex, class UUIScreenObject* InEventOwner, class UObject* InEventActivator, unsigned long bActivateImmediately, TArray<int>* IndicesToActivate);
+	unsigned long ConditionalActivateUIEvent(int ControllerIndex, class UUIScreenObject* InEventOwner, class UObject* InEventActivator, unsigned long bActivateImmediately, TArray<int>* IndicesToActivate);
+	unsigned long CanBeActivated(int ControllerIndex, class UUIScreenObject* InEventOwner, class UObject* InEventActivator, unsigned long bActivateImmediately, TArray<int>* IndicesToActivate);
 	class UUIScene* GetOwnerScene();
 	class UUIScreenObject* GetOwner();
-	bool AllowEventActivation(int ControllerIndex, class UUIScreenObject* InEventOwner, class UObject* InEventActivator, bool bActivateImmediately, TArray<int>* IndicesToActivate);
+	unsigned long AllowEventActivation(int ControllerIndex, class UUIScreenObject* InEventOwner, class UObject* InEventActivator, unsigned long bActivateImmediately, TArray<int>* IndicesToActivate);
 };
 
 
@@ -28519,12 +28519,12 @@ public:
 
 
 	int STATIC_GetObjClassVersion();
-	bool IsPastingIntoUISequenceAllowed();
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsPastingIntoUISequenceAllowed();
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 	int FindButtonAliasIndex(const struct FName& ButtonAliasName);
-	bool ChangeButtonAlias(const struct FName& CurrentAliasName, const struct FName& NewAliasName);
-	bool UnregisterButtonAlias(const struct FName& ButtonAliasName);
-	bool RegisterButtonAlias(const struct FName& ButtonAliasName);
+	unsigned long ChangeButtonAlias(const struct FName& CurrentAliasName, const struct FName& NewAliasName);
+	unsigned long UnregisterButtonAlias(const struct FName& ButtonAliasName);
+	unsigned long RegisterButtonAlias(const struct FName& ButtonAliasName);
 };
 
 
@@ -28542,8 +28542,8 @@ public:
 	}
 
 
-	bool IsPastingIntoUISequenceAllowed();
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsPastingIntoUISequenceAllowed();
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -28591,7 +28591,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -28967,7 +28967,7 @@ public:
 
 	void SetSimulationPosition(const struct FVector& WorldPos);
 	void SetDetailPosition(const struct FVector& WorldPos);
-	void ApplyForce(const struct FVector& WorldPos, float Strength, float Radius, bool bImpulse);
+	void ApplyForce(const struct FVector& WorldPos, float Strength, float Radius, unsigned long bImpulse);
 };
 
 
@@ -29145,7 +29145,7 @@ public:
 	}
 
 
-	void SetIsActive(bool bInIsActive);
+	void SetIsActive(unsigned long bInIsActive);
 	void SetSourceColor(const struct FLinearColor& InSourceColor);
 	void SetTemplate(class ULensFlare* NewTemplate);
 };
@@ -29276,7 +29276,7 @@ public:
 
 	void ResetSourceRegions();
 	void UpdateCompositeTexture(int NumMipsToGenerate);
-	bool SourceTexturesFullyStreamedIn();
+	unsigned long SourceTexturesFullyStreamedIn();
 };
 
 
@@ -29299,8 +29299,8 @@ public:
 	}
 
 
-	class UTexture2DDynamic* STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, bool InIsResolveTarget);
-	void Init(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, bool InIsResolveTarget);
+	class UTexture2DDynamic* STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, unsigned long InIsResolveTarget);
+	void Init(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, unsigned long InIsResolveTarget);
 };
 
 
@@ -29403,7 +29403,7 @@ public:
 	}
 
 
-	class UTextureRenderTarget2D* STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, const struct FLinearColor& InClearColor, bool bOnlyRenderOnce);
+	class UTextureRenderTarget2D* STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, const struct FLinearColor& InClearColor, unsigned long bOnlyRenderOnce);
 };
 
 
@@ -29500,7 +29500,7 @@ public:
 	}
 
 
-	bool SetSoundMode(const struct FName& NewMode);
+	unsigned long SetSoundMode(const struct FName& NewMode);
 };
 
 
@@ -29569,9 +29569,9 @@ public:
 	}
 
 
-	struct FString ConsoleCommand(const struct FString& Command, bool bWriteToLog);
+	struct FString ConsoleCommand(const struct FString& Command, unsigned long bWriteToLog);
 	void ShowDebugSelectedInfo();
-	bool NativeInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad);
+	unsigned long NativeInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, unsigned long bGamepad);
 	void DisableDebugCamera();
 	void NormalSpeed();
 	void MoreSpeed();
@@ -29783,7 +29783,7 @@ public:
 
 	void ApplyCheckpointRecord(struct APointLightToggleable_FCheckpointRecord* Record);
 	void CreateCheckpointRecord(struct APointLightToggleable_FCheckpointRecord* Record);
-	bool ShouldSaveForCheckpoint();
+	unsigned long ShouldSaveForCheckpoint();
 };
 
 
@@ -29877,7 +29877,7 @@ public:
 
 	void ApplyCheckpointRecord(struct ASpotLightToggleable_FCheckpointRecord* Record);
 	void CreateCheckpointRecord(struct ASpotLightToggleable_FCheckpointRecord* Record);
-	bool ShouldSaveForCheckpoint();
+	unsigned long ShouldSaveForCheckpoint();
 };
 
 
@@ -30278,35 +30278,35 @@ public:
 	}
 
 
-	void BreakConstraint(const struct FVector& Impulse, const struct FVector& HitLocation, const struct FName& InBoneName, bool bVelChange);
+	void BreakConstraint(const struct FVector& Impulse, const struct FVector& HitLocation, const struct FName& InBoneName, unsigned long bVelChange);
 	void SkelMeshCompOnParticleSystemFinished(class UParticleSystemComponent* PSC);
 	void PlayParticleEffect(class UAnimNotify_PlayParticleEffect* AnimNotifyData, class UAnimNodeSequence* NodeSeq);
 	void StopAnim();
-	void PlayAnim(const struct FName& AnimName, float Duration, bool bLoop, bool bRestartIfAlreadyPlaying, float StartTime, bool bPlayBackwards);
-	void ShowMaterialSection(int MaterialID, bool bShow);
+	void PlayAnim(const struct FName& AnimName, float Duration, unsigned long bLoop, unsigned long bRestartIfAlreadyPlaying, float StartTime, unsigned long bPlayBackwards);
+	void ShowMaterialSection(int MaterialID, unsigned long bShow);
 	void UpdateMeshForBrokenConstraints();
 	void UnHideBoneByName(const struct FName& BoneName);
 	void HideBoneByName(const struct FName& BoneName, TEnumAsByte<EPhysBodyOp> PhysBodyOption);
-	bool IsBoneHidden(int BoneIndex);
+	unsigned long IsBoneHidden(int BoneIndex);
 	void UnHideBone(int BoneIndex);
 	void HideBone(int BoneIndex, TEnumAsByte<EPhysBodyOp> PhysBodyOption);
 	void SetFaceFXRegisterEx(const struct FString& RegName, TEnumAsByte<EFaceFXRegOp> RegOp, float FirstValue, float FirstInterpDuration, float nextValue, float NextInterpDuration);
 	void SetFaceFXRegister(const struct FString& RegName, float RegVal, TEnumAsByte<EFaceFXRegOp> RegOp, float InterpDuration);
 	float GetFaceFXRegister(const struct FString& RegName);
 	void DeclareFaceFXRegister(const struct FString& RegName);
-	bool IsPlayingFaceFXAnim();
+	unsigned long IsPlayingFaceFXAnim();
 	void StopFaceFXAnim();
-	bool PlayFaceFXAnim(class UFaceFXAnimSet* FaceFXAnimSetRef, const struct FString& AnimName, const struct FString& GroupName, class USoundCue* SoundCueToPlay);
-	void ToggleInstanceVertexWeights(bool bEnable);
+	unsigned long PlayFaceFXAnim(class UFaceFXAnimSet* FaceFXAnimSetRef, const struct FString& AnimName, const struct FString& GroupName, class USoundCue* SoundCueToPlay);
+	void ToggleInstanceVertexWeights(unsigned long bEnable);
 	void UpdateInstanceVertexWeightBones(TArray<struct FBonePair> BonePairs);
 	int FindInstanceVertexweightBonePair(const struct FBonePair& Bones);
 	void RemoveInstanceVertexWeightBoneParented(const struct FName& BoneName);
-	void AddInstanceVertexWeightBoneParented(const struct FName& BoneName, bool bPairWithParent);
-	bool GetBonesWithinRadius(const struct FVector& Origin, float Radius, int TraceFlags, TArray<struct FName>* out_Bones);
+	void AddInstanceVertexWeightBoneParented(const struct FName& BoneName, unsigned long bPairWithParent);
+	unsigned long GetBonesWithinRadius(const struct FVector& Origin, float Radius, int TraceFlags, TArray<struct FName>* out_Bones);
 	void UpdateAnimations();
 	void ForceSkelUpdate();
-	void UpdateRBBonesFromSpaceBases(bool bMoveUnfixedBodies, bool bTeleport);
-	void SetHasPhysicsAssetInstance(bool bHasInstance);
+	void UpdateRBBonesFromSpaceBases(unsigned long bMoveUnfixedBodies, unsigned long bTeleport);
+	void SetHasPhysicsAssetInstance(unsigned long bHasInstance);
 	class URB_BodyInstance* FindBodyInstanceNamed(const struct FName& BoneName);
 	struct FName FindConstraintBoneName(int ConstraintIndex);
 	int FindConstraintIndex(const struct FName& ConstraintName);
@@ -30315,13 +30315,13 @@ public:
 	void UpdateParentBoneMap();
 	void SetParentAnimComponent(class USkeletalMeshComponent* NewParentAnimComp);
 	void SetAnimTreeTemplate(class UAnimTree* NewTemplate);
-	struct FVector GetClosestCollidingBoneLocation(const struct FVector& TestLocation, bool bCheckZeroExtent, bool bCheckNonZeroExtent);
+	struct FVector GetClosestCollidingBoneLocation(const struct FVector& TestLocation, unsigned long bCheckZeroExtent, unsigned long bCheckNonZeroExtent);
 	struct FName FindClosestBone(const struct FVector& TestLocation, float IgnoreScale, struct FVector* BoneLocation);
 	void TransformFromBoneSpace(const struct FName& BoneName, const struct FVector& InPosition, const struct FRotator& InRotation, struct FVector* OutPosition, struct FRotator* OutRotation);
 	void TransformToBoneSpace(const struct FName& BoneName, const struct FVector& InPosition, const struct FRotator& InRotation, struct FVector* OutPosition, struct FRotator* OutRotation);
 	struct FVector GetBoneAxis(const struct FName& BoneName, TEnumAsByte<EAxis> Axis);
 	struct FVector GetRefPosePosition(int BoneIndex);
-	bool BoneIsChildOf(const struct FName& BoneName, const struct FName& ParentBoneName);
+	unsigned long BoneIsChildOf(const struct FName& BoneName, const struct FName& ParentBoneName);
 	void GetBoneNames(TArray<struct FName>* BoneNames);
 	struct FName GetParentBone(const struct FName& BoneName);
 	struct FMatrix GetBoneMatrix(int BoneIndex);
@@ -30340,14 +30340,14 @@ public:
 	void SaveAnimSets();
 	class UAnimSequence* FindAnimSequence(const struct FName& AnimSeqName);
 	void WakeSoftBody();
-	void SetSoftBodyFrozen(bool bNewFrozen);
+	void SetSoftBodyFrozen(unsigned long bNewFrozen);
 	void UpdateSoftBodyParams();
 	void SetClothValidBounds(const struct FVector& ClothValidBoundsMin, const struct FVector& ClothValidBoundsMax);
-	void EnableClothValidBounds(bool IfEnableClothValidBounds);
-	void AttachClothToCollidingShapes(bool AttatchTwoWay, bool AttachTearable);
+	void EnableClothValidBounds(unsigned long IfEnableClothValidBounds);
+	void AttachClothToCollidingShapes(unsigned long AttatchTwoWay, unsigned long AttachTearable);
 	void SetClothVelocity(const struct FVector& VelocityOffSet);
 	void SetClothPosition(const struct FVector& ClothOffSet);
-	void SetClothSleep(bool IfClothSleep);
+	void SetClothSleep(unsigned long IfClothSleep);
 	void SetClothThickness(float ClothThickness);
 	void SetClothTearFactor(float ClothTearFactor);
 	void SetClothStretchingStiffness(float ClothStretchingStiffness);
@@ -30375,20 +30375,20 @@ public:
 	float GetClothAttachmentTearFactor();
 	float GetClothAttachmentResponseCoefficient();
 	void ResetClothVertsToRefPose();
-	void SetAttachClothVertsToBaseBody(bool bAttachVerts);
+	void SetAttachClothVertsToBaseBody(unsigned long bAttachVerts);
 	void SetClothExternalForce(const struct FVector& InForce);
 	void UpdateClothParams();
-	void SetClothFrozen(bool bNewFrozen);
-	void SetEnableClothSimulation(bool bInEnable);
-	void SetForceRefPose(bool bNewForceRefPose);
-	void SetPhysicsAsset(class UPhysicsAsset* NewPhysicsAsset, bool bForceReInit);
-	void SetSkeletalMesh(class USkeletalMesh* NewMesh, bool bKeepSpaceBases, bool InbAlwaysUseInstanceWeights);
+	void SetClothFrozen(unsigned long bNewFrozen);
+	void SetEnableClothSimulation(unsigned long bInEnable);
+	void SetForceRefPose(unsigned long bNewForceRefPose);
+	void SetPhysicsAsset(class UPhysicsAsset* NewPhysicsAsset, unsigned long bForceReInit);
+	void SetSkeletalMesh(class USkeletalMesh* NewMesh, unsigned long bKeepSpaceBases, unsigned long InbAlwaysUseInstanceWeights);
 	void AttachedComponents(class UClass* BaseClass, class UActorComponent** OutComponent);
-	bool IsComponentAttached(class UActorComponent* Component, const struct FName& BoneName);
+	unsigned long IsComponentAttached(class UActorComponent* Component, const struct FName& BoneName);
 	class UActorComponent* FindComponentAttachedToBone(const struct FName& InBoneName);
 	struct FName GetSocketBoneName(const struct FName& InSocketName);
 	class USkeletalMeshSocket* GetSocketByName(const struct FName& InSocketName);
-	bool GetSocketWorldLocationAndRotation(const struct FName& InSocketName, int Space, struct FVector* OutLocation, struct FRotator* OutRotation);
+	unsigned long GetSocketWorldLocationAndRotation(const struct FName& InSocketName, int Space, struct FVector* OutLocation, struct FRotator* OutRotation);
 	void AttachComponentToSocket(class UActorComponent* Component, const struct FName& SocketName);
 	void DetachComponent(class UActorComponent* Component);
 	void AttachComponent(class UActorComponent* Component, const struct FName& BoneName, const struct FVector& RelativeLocation, const struct FRotator& RelativeRotation, const struct FVector& RelativeScale);
@@ -30580,18 +30580,18 @@ public:
 
 	void OnToggle(class USeqAct_Toggle* inAction);
 	void GetAllConnectedSplineActors(TArray<class ASplineActor*>* OutSet);
-	bool FindSplinePathTo(class ASplineActor* Goal, TArray<class ASplineActor*>* OutRoute);
-	class ASplineActor* GetBestConnectionInDirection(const struct FVector& DesiredDir, bool bUseLinksFrom);
-	class ASplineActor* GetRandomConnection(bool bUseLinksFrom);
+	unsigned long FindSplinePathTo(class ASplineActor* Goal, TArray<class ASplineActor*>* OutRoute);
+	class ASplineActor* GetBestConnectionInDirection(const struct FVector& DesiredDir, unsigned long bUseLinksFrom);
+	class ASplineActor* GetRandomConnection(unsigned long bUseLinksFrom);
 	void BreakAllConnectionsFrom();
 	void BreakAllConnections();
 	void BreakConnectionTo(class ASplineActor* NextActor);
 	class ASplineActor* FindTargetForComponent(class USplineComponent* SplineComp);
 	class USplineComponent* FindSplineComponentTo(class ASplineActor* NextActor);
-	bool IsConnectedTo(class ASplineActor* NextActor, bool bCheckForDisableDestination);
+	unsigned long IsConnectedTo(class ASplineActor* NextActor, unsigned long bCheckForDisableDestination);
 	void AddConnectionTo(class ASplineActor* NextActor);
-	void UpdateConnectedSplineComponents(bool bFinish);
-	void UpdateSplineComponents(bool bFinish);
+	void UpdateConnectedSplineComponents(unsigned long bFinish);
+	void UpdateSplineComponents(unsigned long bFinish);
 	struct FVector GetWorldSpaceTangent();
 };
 
@@ -31132,22 +31132,22 @@ public:
 	}
 
 
-	bool ShouldShowGore();
-	bool IsCoopMultiplayerGame();
-	bool IsMultiplayerGame();
+	unsigned long ShouldShowGore();
+	unsigned long IsCoopMultiplayerGame();
+	unsigned long IsMultiplayerGame();
 	void EndGame();
 	void StartMatch();
 	void CleanupGameDataStore();
 	void InitializeGameDataStore();
 	void ReplicatedDataBinding(const struct FName& VarName);
 	void SortPRIArray();
-	bool InOrder(class APlayerReplicationInfo* P1, class APlayerReplicationInfo* P2);
+	unsigned long InOrder(class APlayerReplicationInfo* P1, class APlayerReplicationInfo* P2);
 	void GetPRIArray(TArray<class APlayerReplicationInfo*>* pris);
 	void SetTeam(int Index, class ATeamInfo* TI);
 	void RemovePRI(class APlayerReplicationInfo* PRI);
 	void AddPRI(class APlayerReplicationInfo* PRI);
 	class APlayerReplicationInfo* FindPlayerByID(int PlayerID);
-	bool OnSameTeam(class AActor* A, class AActor* B);
+	unsigned long OnSameTeam(class AActor* A, class AActor* B);
 	void Timer();
 	void Destroyed();
 	void Reset();
@@ -31155,11 +31155,11 @@ public:
 	void ReplicatedEvent(const struct FName& VarName);
 	void PostBeginPlay();
 	int GetMaxPlayers();
-	bool IsAtLobbyLevel();
+	unsigned long IsAtLobbyLevel();
 	int GetFinalWaveNumber();
 	int GetWaveNumber();
-	bool IsInHardCoreMode();
-	int GetGameDifficultyAsInt(bool bClampToInsane);
+	unsigned long IsInHardCoreMode();
+	int GetGameDifficultyAsInt(unsigned long bClampToInsane);
 	struct FString GetLevelFriendlyNameWithoutFormatting();
 };
 
@@ -31225,12 +31225,12 @@ public:
 
 	void UnregisterPlayerFromSession();
 	void RegisterPlayerWithSession();
-	bool IsInvalidName();
+	unsigned long IsInvalidName();
 	unsigned char GetTeamNum();
 	void SetUniqueId(const struct FUniqueNetId& PlayerUniqueId);
 	void ServerSetSplitscreenIndex(unsigned char PlayerIndex);
 	void SetSplitscreenIndex(unsigned char PlayerIndex);
-	bool IsLocalPlayerPRI();
+	unsigned long IsLocalPlayerPRI();
 	void BindPlayerOwnerDataProvider();
 	void NotifyLocalPlayerTeamReceived();
 	void UpdateTeamDataProvider();
@@ -31241,7 +31241,7 @@ public:
 	void CopyProperties(class APlayerReplicationInfo* PRI);
 	void OverrideWith(class APlayerReplicationInfo* PRI);
 	class APlayerReplicationInfo* Duplicate();
-	void SetWaitingPlayer(bool B);
+	void SetWaitingPlayer(unsigned long B);
 	void SetPlayerName(const struct FString& S);
 	void Timer();
 	void DisplayDebug(class AHUD* HUD, float* YL, float* YPos);
@@ -31250,7 +31250,7 @@ public:
 	struct FString GetHumanReadableName();
 	void Reset();
 	void Destroyed();
-	bool ShouldBroadCastWelcomeMessage(bool bExiting);
+	unsigned long ShouldBroadCastWelcomeMessage(unsigned long bExiting);
 	void UpdatePing(float TimeStamp);
 	void ReplicatedDataBinding(const struct FName& VarName);
 	void ReplicatedEvent(const struct FName& VarName);
@@ -31284,7 +31284,7 @@ public:
 	struct FColor GetHUDColor();
 	struct FString GetHumanReadableName();
 	void RemoveFromTeam(class AController* Other);
-	bool AddToTeam(class AController* Other);
+	unsigned long AddToTeam(class AController* Other);
 	void Destroyed();
 	void UnbindTeamDataProvider();
 	class UCurrentGameDataStore* GetCurrentGameDS();
@@ -31394,10 +31394,10 @@ public:
 
 	void SetPlaySpace(TEnumAsByte<ECameraAnimPlaySpace> NewSpace, const struct FRotator& UserPlaySpace);
 	void ApplyTransientScaling(float Scalar);
-	void Stop(bool bImmediate);
-	void AdvanceAnim(float DeltaTime, bool bJump);
+	void Stop(unsigned long bImmediate);
+	void AdvanceAnim(float DeltaTime, unsigned long bJump);
 	void Update(float NewRate, float NewScale, float NewBlendInTime, float NewBlendOutTime, float NewDuration);
-	void Play(class UCameraAnim* Anim, class AActor* CamActor, float InRate, float InScale, float InBlendInTime, float InBlendOutTime, bool bInLoop, bool bRandomStartTime, float Duration);
+	void Play(class UCameraAnim* Anim, class AActor* CamActor, float InRate, float InScale, float InBlendInTime, float InBlendOutTime, unsigned long bInLoop, unsigned long bRandomStartTime, float Duration);
 };
 
 
@@ -31426,14 +31426,14 @@ public:
 
 
 	void UpdateAlpha(class ACamera* Camera, float DeltaTime);
-	bool ProcessViewRotation(class AActor* ViewTarget, float DeltaTime, struct FRotator* out_ViewRotation, struct FRotator* out_DeltaRot);
+	unsigned long ProcessViewRotation(class AActor* ViewTarget, float DeltaTime, struct FRotator* out_ViewRotation, struct FRotator* out_DeltaRot);
 	void ToggleModifier();
 	void EnableModifier();
-	void DisableModifier(bool bImmediate);
-	bool RemoveCameraModifier(class ACamera* Camera);
-	bool AddCameraModifier(class ACamera* Camera);
-	bool IsDisabled();
-	bool ModifyCamera(class ACamera* Camera, float DeltaTime, struct FTPOV* OutPOV);
+	void DisableModifier(unsigned long bImmediate);
+	unsigned long RemoveCameraModifier(class ACamera* Camera);
+	unsigned long AddCameraModifier(class ACamera* Camera);
+	unsigned long IsDisabled();
+	unsigned long ModifyCamera(class ACamera* Camera, float DeltaTime, struct FTPOV* OutPOV);
 	void Init();
 };
 
@@ -31485,7 +31485,7 @@ public:
 	}
 
 
-	bool ModifyCamera(class ACamera* Camera, float DeltaTime, struct FTPOV* OutPOV);
+	unsigned long ModifyCamera(class ACamera* Camera, float DeltaTime, struct FTPOV* OutPOV);
 	void UpdateCameraShake(float DeltaTime, struct FCameraShakeInstance* Shake, struct FTPOV* OutPOV);
 	void RemoveAllCameraShakes();
 	void RemoveCameraShake(class UCameraShake* Shake);
@@ -31534,15 +31534,15 @@ public:
 	}
 
 
-	bool STATIC_PartiallyDuplicates(int Switch1, int Switch2, class UObject* OptionalObject1, class UObject* OptionalObject2);
-	bool STATIC_IsKeyObjectiveMessage(int Switch);
-	bool STATIC_IsConsoleMessage(int Switch);
+	unsigned long STATIC_PartiallyDuplicates(int Switch1, int Switch2, class UObject* OptionalObject1, class UObject* OptionalObject2);
+	unsigned long STATIC_IsKeyObjectiveMessage(int Switch);
+	unsigned long STATIC_IsConsoleMessage(int Switch);
 	float STATIC_GetLifeTime(int Switch);
 	int STATIC_GetFontSize(int Switch, class APlayerReplicationInfo* RelatedPRI1, class APlayerReplicationInfo* RelatedPRI2, class APlayerReplicationInfo* LocalPlayer);
 	float STATIC_GetPos(int Switch, class AHUD* myHUD);
 	struct FColor STATIC_GetColor(int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 	struct FColor STATIC_GetConsoleColor(class APlayerReplicationInfo* RelatedPRI_2);
-	struct FString STATIC_GetString(int Switch, bool bPRI1HUD, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
+	struct FString STATIC_GetString(int Switch, unsigned long bPRI1HUD, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 	void STATIC_ClientReceive(class APlayerController* P, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 };
 
@@ -31616,7 +31616,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -31658,16 +31658,16 @@ public:
 	}
 
 
-	bool ShowCommunitySessionsUI(unsigned char LocalUserNum);
-	bool ShowVoiceChannelUI(unsigned char LocalUserNum);
-	bool ShowPartyUI(unsigned char LocalUserNum);
+	unsigned long ShowCommunitySessionsUI(unsigned char LocalUserNum);
+	unsigned long ShowVoiceChannelUI(unsigned char LocalUserNum);
+	unsigned long ShowPartyUI(unsigned char LocalUserNum);
 	int GetPartyBandwidth();
-	bool SetPartyMemberCustomData(unsigned char LocalUserNum, const struct FQWord& Data1, const struct FQWord& Data2);
-	bool GetPartyMemberInformation(TArray<struct FOnlinePartyMember>* PartyMembers);
+	unsigned long SetPartyMemberCustomData(unsigned char LocalUserNum, const struct FQWord& Data1, const struct FQWord& Data2);
+	unsigned long GetPartyMemberInformation(TArray<struct FOnlinePartyMember>* PartyMembers);
 	void ClearSendPartyGameInvitesCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& SendPartyGameInvitesCompleteDelegate);
 	void AddSendPartyGameInvitesCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& SendPartyGameInvitesCompleteDelegate);
-	void OnSendPartyGameInvitesComplete(bool bWasSuccessful);
-	bool SendPartyGameInvites(unsigned char LocalUserNum);
+	void OnSendPartyGameInvitesComplete(unsigned long bWasSuccessful);
+	unsigned long SendPartyGameInvites(unsigned char LocalUserNum);
 };
 
 
@@ -31688,8 +31688,8 @@ public:
 	struct FString GetNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
 	void ClearReadNewsCompletedDelegate(const struct FScriptDelegate& ReadNewsDelegate);
 	void AddReadNewsCompletedDelegate(const struct FScriptDelegate& ReadNewsDelegate);
-	void OnReadNewsCompleted(bool bWasSuccessful, TEnumAsByte<EOnlineNewsType> NewsType);
-	bool ReadNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
+	void OnReadNewsCompleted(unsigned long bWasSuccessful, TEnumAsByte<EOnlineNewsType> NewsType);
+	unsigned long ReadNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
 };
 
 
@@ -31709,28 +31709,28 @@ public:
 	}
 
 
-	bool RegisterStatGuid(const struct FUniqueNetId& PlayerID, struct FString* ClientStatGuid);
+	unsigned long RegisterStatGuid(const struct FUniqueNetId& PlayerID, struct FString* ClientStatGuid);
 	struct FString GetClientStatGuid();
 	void ClearRegisterHostStatGuidCompleteDelegateDelegate(const struct FScriptDelegate& RegisterHostStatGuidCompleteDelegate);
 	void AddRegisterHostStatGuidCompleteDelegate(const struct FScriptDelegate& RegisterHostStatGuidCompleteDelegate);
-	void OnRegisterHostStatGuidComplete(bool bWasSuccessful);
-	bool RegisterHostStatGuid(struct FString* HostStatGuid);
+	void OnRegisterHostStatGuidComplete(unsigned long bWasSuccessful);
+	unsigned long RegisterHostStatGuid(struct FString* HostStatGuid);
 	struct FString GetHostStatGuid();
-	bool WriteOnlinePlayerScores(const struct FName& SessionName, int LeaderboardId, TArray<struct FOnlinePlayerScore>* PlayerScores);
+	unsigned long WriteOnlinePlayerScores(const struct FName& SessionName, int LeaderboardId, TArray<struct FOnlinePlayerScore>* PlayerScores);
 	void ClearAllFlushOnlineStatsCompleteDelegates();
 	void ClearFlushOnlineStatsCompleteDelegate(const struct FScriptDelegate& FlushOnlineStatsCompleteDelegate);
 	void AddFlushOnlineStatsCompleteDelegate(const struct FScriptDelegate& FlushOnlineStatsCompleteDelegate);
-	void OnFlushOnlineStatsComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool FlushOnlineStats(const struct FName& SessionName);
-	bool WriteOnlineStats(const struct FName& SessionName, const struct FUniqueNetId& Player, class UOnlineStatsWrite* StatsWrite);
+	void OnFlushOnlineStatsComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	unsigned long FlushOnlineStats(const struct FName& SessionName);
+	unsigned long WriteOnlineStats(const struct FName& SessionName, const struct FUniqueNetId& Player, class UOnlineStatsWrite* StatsWrite);
 	void FreeStats(class UOnlineStatsRead* StatsRead);
 	void ClearReadOnlineStatsCompleteDelegate(const struct FScriptDelegate& ReadOnlineStatsCompleteDelegate);
 	void AddReadOnlineStatsCompleteDelegate(const struct FScriptDelegate& ReadOnlineStatsCompleteDelegate);
-	void OnReadOnlineStatsComplete(bool bWasSuccessful);
-	bool ReadOnlineStatsByRankAroundPlayer(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, int NumRows);
-	bool ReadOnlineStatsByRank(class UOnlineStatsRead* StatsRead, int StartIndex, int NumToRead);
-	bool ReadOnlineStatsForFriends(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead);
-	bool ReadOnlineStats(class UOnlineStatsRead* StatsRead, TArray<struct FUniqueNetId>* Players);
+	void OnReadOnlineStatsComplete(unsigned long bWasSuccessful);
+	unsigned long ReadOnlineStatsByRankAroundPlayer(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, int NumRows);
+	unsigned long ReadOnlineStatsByRank(class UOnlineStatsRead* StatsRead, int StartIndex, int NumToRead);
+	unsigned long ReadOnlineStatsForFriends(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead);
+	unsigned long ReadOnlineStats(class UOnlineStatsRead* StatsRead, TArray<struct FUniqueNetId>* Players);
 };
 
 
@@ -31754,19 +31754,19 @@ public:
 	void ClearDeviceFoundDelegate(const struct FScriptDelegate& deviceFoundDelegate);
 	void AddDeviceFoundDelegate(const struct FScriptDelegate& deviceFoundDelegate);
 	void OnDeviceFound();
-	bool HasBeenRegistered();
-	bool SetCaptureVolume(unsigned char LocalUserNum, float NewVolume);
-	bool SetPlaybackVolume(unsigned char LocalUserNum, float NewVolume);
-	bool UnmuteAll(unsigned char LocalUserNum);
-	bool MuteAll(unsigned char LocalUserNum, bool bAllowFriends);
-	bool SetSpeechRecognitionObject(unsigned char LocalUserNum, class USpeechRecognition* SpeechRecogObj);
-	bool SelectVocabulary(unsigned char LocalUserNum, int VocabularyId);
+	unsigned long HasBeenRegistered();
+	unsigned long SetCaptureVolume(unsigned char LocalUserNum, float NewVolume);
+	unsigned long SetPlaybackVolume(unsigned char LocalUserNum, float NewVolume);
+	unsigned long UnmuteAll(unsigned char LocalUserNum);
+	unsigned long MuteAll(unsigned char LocalUserNum, unsigned long bAllowFriends);
+	unsigned long SetSpeechRecognitionObject(unsigned char LocalUserNum, class USpeechRecognition* SpeechRecogObj);
+	unsigned long SelectVocabulary(unsigned char LocalUserNum, int VocabularyId);
 	void ClearRecognitionCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& RecognitionDelegate);
 	void AddRecognitionCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& RecognitionDelegate);
 	void OnRecognitionComplete();
-	bool GetRecognitionResults(unsigned char LocalUserNum, TArray<struct FSpeechRecognizedWord>* words);
-	bool StopSpeechRecognition(unsigned char LocalUserNum);
-	bool StartSpeechRecognition(unsigned char LocalUserNum);
+	unsigned long GetRecognitionResults(unsigned char LocalUserNum, TArray<struct FSpeechRecognizedWord>* words);
+	unsigned long StopSpeechRecognition(unsigned char LocalUserNum);
+	unsigned long StartSpeechRecognition(unsigned char LocalUserNum);
 	void StopNetworkedVoice(unsigned char LocalUserNum);
 	void StartNetworkedVoice(unsigned char LocalUserNum);
 	void ClearPlayerTalkingDelegates();
@@ -31776,16 +31776,16 @@ public:
 	void AddPlayerStartedTalkingDelegate(const struct FScriptDelegate& TalkerDelegate);
 	void OnPlayerStopTalking(const struct FUniqueNetId& Player);
 	void OnPlayerBeginTalking(const struct FUniqueNetId& Player);
-	bool UnmuteRemoteTalker(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
-	bool MuteRemoteTalker(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
-	bool SetRemoteTalkerPriority(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, int Priority);
-	bool IsHeadsetPresent(unsigned char LocalUserNum);
-	bool IsRemotePlayerTalking(const struct FUniqueNetId& PlayerID);
-	bool IsLocalPlayerTalking(unsigned char LocalUserNum);
-	bool UnregisterRemoteTalker(const struct FUniqueNetId& PlayerID);
-	bool RegisterRemoteTalker(const struct FUniqueNetId& PlayerID);
-	bool UnregisterLocalTalker(unsigned char LocalUserNum);
-	bool RegisterLocalTalker(unsigned char LocalUserNum);
+	unsigned long UnmuteRemoteTalker(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
+	unsigned long MuteRemoteTalker(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
+	unsigned long SetRemoteTalkerPriority(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, int Priority);
+	unsigned long IsHeadsetPresent(unsigned char LocalUserNum);
+	unsigned long IsRemotePlayerTalking(const struct FUniqueNetId& PlayerID);
+	unsigned long IsLocalPlayerTalking(unsigned char LocalUserNum);
+	unsigned long UnregisterRemoteTalker(const struct FUniqueNetId& PlayerID);
+	unsigned long RegisterRemoteTalker(const struct FUniqueNetId& PlayerID);
+	unsigned long UnregisterLocalTalker(unsigned char LocalUserNum);
+	unsigned long RegisterLocalTalker(unsigned char LocalUserNum);
 };
 
 
@@ -31808,19 +31808,19 @@ public:
 
 	void ClearQuerySubscribedDownloadsComplete(const struct FScriptDelegate& QueryDownloadsDelegate);
 	void AddQuerySubscribedDownloadsComplete(const struct FScriptDelegate& QueryDownloadsDelegate);
-	void OnQuerySubscribedDownloadsComplete(bool bWasSuccessful);
+	void OnQuerySubscribedDownloadsComplete(unsigned long bWasSuccessful);
 	struct FString SubscribedDownloadsInformation();
-	bool QuerySubscribedDownloads();
+	unsigned long QuerySubscribedDownloads();
 	void GetAvailableDownloadCounts(unsigned char LocalUserNum, int* NewDownloads, int* TotalDownloads);
 	void ClearQueryAvailableDownloadsComplete(unsigned char LocalUserNum, const struct FScriptDelegate& QueryDownloadsDelegate);
 	void AddQueryAvailableDownloadsComplete(unsigned char LocalUserNum, const struct FScriptDelegate& QueryDownloadsDelegate);
-	void OnQueryAvailableDownloadsComplete(bool bWasSuccessful);
-	bool QueryAvailableDownloads(unsigned char LocalUserNum, int CategoryMask);
+	void OnQueryAvailableDownloadsComplete(unsigned long bWasSuccessful);
+	unsigned long QueryAvailableDownloads(unsigned char LocalUserNum, int CategoryMask);
 	TEnumAsByte<EOnlineEnumerationReadState> GetContentList(unsigned char LocalUserNum, TArray<struct FOnlineContent>* ContentList);
-	bool ReadContentList(unsigned char LocalUserNum);
+	unsigned long ReadContentList(unsigned char LocalUserNum);
 	void ClearReadContentComplete(unsigned char LocalUserNum, const struct FScriptDelegate& ReadContentCompleteDelegate);
 	void AddReadContentComplete(unsigned char LocalUserNum, const struct FScriptDelegate& ReadContentCompleteDelegate);
-	void OnReadContentComplete(bool bWasSuccessful);
+	void OnReadContentComplete(unsigned long bWasSuccessful);
 	void ClearContentChangeDelegate(const struct FScriptDelegate& ContentDelegate, unsigned char LocalUserNum);
 	void AddContentChangeDelegate(const struct FScriptDelegate& ContentDelegate, unsigned char LocalUserNum);
 	void OnContentChange();
@@ -31853,65 +31853,65 @@ public:
 
 
 	void CancelPendingAsyncTasks();
-	bool RecalculateSkillRating(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players);
-	bool AcceptGameInvite(unsigned char LocalUserNum, const struct FName& SessionName, TArray<int> participatingPlayerControllerIds);
+	unsigned long RecalculateSkillRating(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players);
+	unsigned long AcceptGameInvite(unsigned char LocalUserNum, const struct FName& SessionName, TArray<int> participatingPlayerControllerIds);
 	void ClearGameInviteAcceptedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate);
 	void AddGameInviteAcceptedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate);
 	void OnGameInviteAccepted(struct FOnlineGameSearchResult* InviteResult);
 	TArray<struct FOnlineArbitrationRegistrant> GetArbitratedPlayers(const struct FName& SessionName);
 	void ClearArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate);
 	void AddArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate);
-	void OnArbitrationRegistrationComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool RegisterForArbitration(const struct FName& SessionName);
+	void OnArbitrationRegistrationComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	unsigned long RegisterForArbitration(const struct FName& SessionName);
 	void ClearEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate);
 	void AddEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate);
-	void OnEndOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool EndOnlineGame(const struct FName& SessionName);
+	void OnEndOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	unsigned long EndOnlineGame(const struct FName& SessionName);
 	void ClearStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate);
 	void AddStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate);
-	void OnStartOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool StartOnlineGame(const struct FName& SessionName);
+	void OnStartOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	unsigned long StartOnlineGame(const struct FName& SessionName);
 	void ClearUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate);
 	void AddUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate);
-	void OnUnregisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful);
-	bool UnregisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID);
+	void OnUnregisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, unsigned long bWasSuccessful);
+	unsigned long UnregisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID);
 	void ClearRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate);
 	void AddRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate);
-	void OnRegisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful);
-	bool RegisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasInvited);
-	bool GetResolvedConnectString(const struct FName& SessionName, struct FString* ConnectInfo);
+	void OnRegisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, unsigned long bWasSuccessful);
+	unsigned long RegisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, unsigned long bWasInvited);
+	unsigned long GetResolvedConnectString(const struct FName& SessionName, struct FString* ConnectInfo);
 	void ClearJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate);
 	void AddJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate);
-	void OnJoinOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool JoinOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, TArray<int> participatingPlayerControllerIds, struct FOnlineGameSearchResult* DesiredGame);
-	bool QueryNonAdvertisedData(int StartAt, int NumberToQuery);
-	bool FreeSearchResults(class UOnlineGameSearch* Search);
+	void OnJoinOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	unsigned long JoinOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, TArray<int> participatingPlayerControllerIds, struct FOnlineGameSearchResult* DesiredGame);
+	unsigned long QueryNonAdvertisedData(int StartAt, int NumberToQuery);
+	unsigned long FreeSearchResults(class UOnlineGameSearch* Search);
 	class UOnlineGameSearch* GetGameSearch();
-	bool BindPlatformSpecificSessionToSearch(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, unsigned char PlatformSpecificInfo);
-	bool ReadPlatformSpecificSessionInfoBySessionName(const struct FName& SessionName, unsigned char* PlatformSpecificInfo);
-	bool ReadPlatformSpecificSessionInfo(struct FOnlineGameSearchResult* DesiredGame, unsigned char* PlatformSpecificInfo);
+	unsigned long BindPlatformSpecificSessionToSearch(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, unsigned char PlatformSpecificInfo);
+	unsigned long ReadPlatformSpecificSessionInfoBySessionName(const struct FName& SessionName, unsigned char* PlatformSpecificInfo);
+	unsigned long ReadPlatformSpecificSessionInfo(struct FOnlineGameSearchResult* DesiredGame, unsigned char* PlatformSpecificInfo);
 	void ClearCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate);
 	void AddCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate);
-	void OnCancelFindOnlineGamesComplete(bool bWasSuccessful);
-	bool CancelFindOnlineGames();
+	void OnCancelFindOnlineGamesComplete(unsigned long bWasSuccessful);
+	unsigned long CancelFindOnlineGames();
 	void ClearFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate);
 	void AddFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate);
-	void OnFindOnlineGamesComplete(bool bWasSuccessful);
-	bool FindOnlineGames(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, int numParticipatingLocalPlayers);
+	void OnFindOnlineGamesComplete(unsigned long bWasSuccessful);
+	unsigned long FindOnlineGames(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, int numParticipatingLocalPlayers);
 	void ClearDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate);
 	void AddDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate);
-	void OnDestroyOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool DestroyOnlineGame(const struct FName& SessionName, bool bShouldCleanupTasks);
+	void OnDestroyOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	unsigned long DestroyOnlineGame(const struct FName& SessionName, unsigned long bShouldCleanupTasks);
 	class UOnlineGameSettings* GetGameSettings(const struct FName& SessionName);
 	void ClearUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate);
 	void AddUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate);
-	void OnUpdateOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool UpdateOnlineGame(const struct FName& SessionName, class UOnlineGameSettings* UpdatedGameSettings, bool bShouldRefreshOnlineData);
+	void OnUpdateOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
+	unsigned long UpdateOnlineGame(const struct FName& SessionName, class UOnlineGameSettings* UpdatedGameSettings, unsigned long bShouldRefreshOnlineData);
 	void ClearCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate);
 	void AddCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate);
-	void OnCreateOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
+	void OnCreateOnlineGameComplete(const struct FName& SessionName, unsigned long bWasSuccessful);
 	int CreateOnlineGameFailureID();
-	bool CreateOnlineGame(unsigned char HostingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings, TArray<int> participatingPlayerControllerIds);
+	unsigned long CreateOnlineGame(unsigned char HostingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings, TArray<int> participatingPlayerControllerIds);
 };
 
 
@@ -31939,13 +31939,13 @@ public:
 	void VerifyStrings(TArray<struct FStringVerificationEntry> stringEntries);
 	void ClearStringVerificationDelegate(const struct FScriptDelegate& stringVerificationComplete);
 	void AddStringVerificationDelegate(const struct FScriptDelegate& stringVerificationComplete);
-	void OnStringVerificationComplete(bool bVerifiedSuccessfully, int StringID, unsigned char StringType);
+	void OnStringVerificationComplete(unsigned long bVerifiedSuccessfully, int StringID, unsigned char StringType);
 	TEnumAsByte<EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
-	bool GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
+	unsigned long GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
 	void ClearReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
 	void AddReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
-	bool ReadTitleFile(const struct FString& FileToRead);
-	void OnReadTitleFileComplete(bool bWasSuccessful, const struct FString& Filename);
+	unsigned long ReadTitleFile(const struct FString& FileToRead);
+	void OnReadTitleFileComplete(unsigned long bWasSuccessful, const struct FString& Filename);
 	void ClearDLCStorageDeviceRemovedDelegate(const struct FScriptDelegate& DLCStorageDeviceRemovedDelegate);
 	void AddDLCStorageDeviceRemovedDelegate(const struct FScriptDelegate& DLCStorageDeviceRemovedDelegate);
 	void OnDLCStorageDeviceRemoved();
@@ -31956,19 +31956,19 @@ public:
 	void ClearConnectionStatusChangeDelegate(const struct FScriptDelegate& ConnectionStatusDelegate);
 	void AddConnectionStatusChangeDelegate(const struct FScriptDelegate& ConnectionStatusDelegate);
 	void OnConnectionStatusChange(TEnumAsByte<EOnlineServerConnectionStatus> ConnectionStatus);
-	bool IsControllerConnected(int ControllerId);
+	unsigned long IsControllerConnected(int ControllerId);
 	void ClearControllerChangeDelegate(const struct FScriptDelegate& ControllerChangeDelegate);
 	void AddControllerChangeDelegate(const struct FScriptDelegate& ControllerChangeDelegate);
-	void OnControllerChange(int ControllerId, bool bIsConnected);
+	void OnControllerChange(int ControllerId, unsigned long bIsConnected);
 	void SetNetworkNotificationPosition(TEnumAsByte<ENetworkNotificationPosition> NewPos);
 	TEnumAsByte<ENetworkNotificationPosition> GetNetworkNotificationPosition();
 	void ClearExternalUIChangeDelegate(const struct FScriptDelegate& ExternalUIDelegate);
 	void AddExternalUIChangeDelegate(const struct FScriptDelegate& ExternalUIDelegate);
-	void OnExternalUIChange(bool bIsOpening);
+	void OnExternalUIChange(unsigned long bIsOpening);
 	void ClearLinkStatusChangeDelegate(const struct FScriptDelegate& LinkStatusDelegate);
 	void AddLinkStatusChangeDelegate(const struct FScriptDelegate& LinkStatusDelegate);
-	void OnLinkStatusChange(bool bIsConnected);
-	bool HasLinkConnection();
+	void OnLinkStatusChange(unsigned long bIsConnected);
+	unsigned long HasLinkConnection();
 };
 
 
@@ -31987,24 +31987,24 @@ public:
 	}
 
 
-	bool ShowCustomPlayersUI(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description, TArray<struct FUniqueNetId>* Players);
-	bool ShowPlayersUI(unsigned char LocalUserNum);
-	bool ShowFriendsInviteUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
+	unsigned long ShowCustomPlayersUI(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description, TArray<struct FUniqueNetId>* Players);
+	unsigned long ShowPlayersUI(unsigned char LocalUserNum);
+	unsigned long ShowFriendsInviteUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
 	void ClearProfileDataChangedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ProfileDataChangedDelegate);
 	void AddProfileDataChangedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ProfileDataChangedDelegate);
 	void OnProfileDataChanged();
-	bool UnlockGamerPicture(unsigned char LocalUserNum, int PictureId);
-	bool IsDeviceValid(int DeviceID, int SizeNeeded);
+	unsigned long UnlockGamerPicture(unsigned char LocalUserNum, int PictureId);
+	unsigned long IsDeviceValid(int DeviceID, int SizeNeeded);
 	int GetDeviceSelectionResults(unsigned char LocalUserNum, struct FString* DeviceName);
 	void ClearDeviceSelectionDoneDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& DeviceDelegate);
 	void AddDeviceSelectionDoneDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& DeviceDelegate);
-	void OnDeviceSelectionComplete(bool bWasSuccessful);
-	bool ShowDeviceSelectionUI(unsigned char LocalUserNum, int SizeNeeded, bool bForceShowUI, bool bManageStorage);
-	bool ShowMembershipMarketplaceUI(unsigned char LocalUserNum);
-	bool ShowContentMarketplaceUI(unsigned char LocalUserNum, int CategoryMask, int OfferId);
-	bool ShowAchievementsUI(unsigned char LocalUserNum);
-	bool ShowMessagesUI(unsigned char LocalUserNum);
-	bool ShowFeedbackUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
+	void OnDeviceSelectionComplete(unsigned long bWasSuccessful);
+	unsigned long ShowDeviceSelectionUI(unsigned char LocalUserNum, int SizeNeeded, unsigned long bForceShowUI, unsigned long bManageStorage);
+	unsigned long ShowMembershipMarketplaceUI(unsigned char LocalUserNum);
+	unsigned long ShowContentMarketplaceUI(unsigned char LocalUserNum, int CategoryMask, int OfferId);
+	unsigned long ShowAchievementsUI(unsigned char LocalUserNum);
+	unsigned long ShowMessagesUI(unsigned char LocalUserNum);
+	unsigned long ShowFeedbackUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
 };
 
 
@@ -32045,81 +32045,81 @@ public:
 
 	void CancelLogin();
 	void ManageInvites();
-	bool FindUniqueNetIdForPlayer(const struct FString& PlayerName);
+	unsigned long FindUniqueNetIdForPlayer(const struct FString& PlayerName);
 	void ClearFindUniqueNetIdForPlayerDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FindDelegate);
 	void AddFindUniqueNetIdForPlayerDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FindDelegate);
-	void OnFindUniqueNetIdForPlayerComplete(bool Found, const struct FString& PlayerName, int Id);
-	bool ShowInviteUI(unsigned char LocalUserNum, const struct FString& InviteText);
-	bool AddToPlayersMetList(const struct FUniqueNetId& PlayerIdToAdd, const struct FString& PlayerName);
-	bool ShowGamerCardUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName);
+	void OnFindUniqueNetIdForPlayerComplete(unsigned long Found, const struct FString& PlayerName, int Id);
+	unsigned long ShowInviteUI(unsigned char LocalUserNum, const struct FString& InviteText);
+	unsigned long AddToPlayersMetList(const struct FUniqueNetId& PlayerIdToAdd, const struct FString& PlayerName);
+	unsigned long ShowGamerCardUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName);
 	TEnumAsByte<EOnlineEnumerationReadState> GetAchievements(unsigned char LocalUserNum, int TitleId, TArray<struct FAchievementDetails>* Achievements);
 	void ClearReadAchievementsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAchievementsCompleteDelegate);
 	void AddReadAchievementsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAchievementsCompleteDelegate);
 	void OnReadAchievementsComplete(int TitleId);
-	bool ReadAchievements(unsigned char LocalUserNum, int TitleId, bool bShouldReadText, bool bShouldReadImages);
+	unsigned long ReadAchievements(unsigned char LocalUserNum, int TitleId, unsigned long bShouldReadText, unsigned long bShouldReadImages);
 	void ClearUnlockAchievementCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& UnlockAchievementCompleteDelegate);
 	void AddUnlockAchievementCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& UnlockAchievementCompleteDelegate);
-	void OnUnlockAchievementComplete(bool bWasSuccessful);
-	bool UnlockAchievement(unsigned char LocalUserNum, int AchievementId);
-	bool DeleteMessage(unsigned char LocalUserNum, int MessageIndex);
+	void OnUnlockAchievementComplete(unsigned long bWasSuccessful);
+	unsigned long UnlockAchievement(unsigned char LocalUserNum, int AchievementId);
+	unsigned long DeleteMessage(unsigned char LocalUserNum, int MessageIndex);
 	void ClearFriendMessageReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& MessageDelegate);
 	void AddFriendMessageReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& MessageDelegate);
 	void OnFriendMessageReceived(unsigned char LocalUserNum, const struct FUniqueNetId& SendingPlayer, const struct FString& SendingNick, const struct FString& Message);
 	void GetFriendMessages(unsigned char LocalUserNum, TArray<struct FOnlineFriendMessage>* FriendMessages);
 	void ClearJoinFriendGameCompleteDelegate(const struct FScriptDelegate& JoinFriendGameCompleteDelegate);
 	void AddJoinFriendGameCompleteDelegate(const struct FScriptDelegate& JoinFriendGameCompleteDelegate);
-	void OnJoinFriendGameComplete(bool bWasSuccessful);
-	bool JoinFriendGame(unsigned char LocalUserNum, const struct FUniqueNetId& Friend);
+	void OnJoinFriendGameComplete(unsigned long bWasSuccessful);
+	unsigned long JoinFriendGame(unsigned char LocalUserNum, const struct FUniqueNetId& Friend);
 	void ClearReceivedGameInviteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReceivedGameInviteDelegate);
 	void AddReceivedGameInviteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReceivedGameInviteDelegate);
 	void OnReceivedGameInvite(unsigned char LocalUserNum, const struct FString& InviterName);
-	bool SendGameInviteToFriends(unsigned char LocalUserNum, TArray<struct FUniqueNetId> Friends, const struct FString& Text);
-	bool SendGameInviteToFriend(unsigned char LocalUserNum, const struct FUniqueNetId& Friend, const struct FString& Text);
-	bool SendMessageToFriend(unsigned char LocalUserNum, const struct FUniqueNetId& Friend, const struct FString& Message);
+	unsigned long SendGameInviteToFriends(unsigned char LocalUserNum, TArray<struct FUniqueNetId> Friends, const struct FString& Text);
+	unsigned long SendGameInviteToFriend(unsigned char LocalUserNum, const struct FUniqueNetId& Friend, const struct FString& Text);
+	unsigned long SendMessageToFriend(unsigned char LocalUserNum, const struct FUniqueNetId& Friend, const struct FString& Message);
 	void ClearFriendInviteReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InviteDelegate);
 	void AddFriendInviteReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InviteDelegate);
 	void OnFriendInviteReceived(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer, const struct FString& RequestingNick, const struct FString& Message);
-	bool RemoveFriend(unsigned char LocalUserNum, const struct FUniqueNetId& FormerFriend);
-	bool DenyFriendInvite(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer);
-	bool AcceptFriendInvite(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer);
+	unsigned long RemoveFriend(unsigned char LocalUserNum, const struct FUniqueNetId& FormerFriend);
+	unsigned long DenyFriendInvite(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer);
+	unsigned long AcceptFriendInvite(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer);
 	void ClearAddFriendByNameCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendDelegate);
 	void AddAddFriendByNameCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendDelegate);
-	void OnAddFriendByNameComplete(bool bWasSuccessful);
-	bool AddFriendByName(unsigned char LocalUserNum, const struct FString& FriendName, const struct FString& Message);
-	bool AddFriend(unsigned char LocalUserNum, const struct FUniqueNetId& NewFriend, const struct FString& Message);
+	void OnAddFriendByNameComplete(unsigned long bWasSuccessful);
+	unsigned long AddFriendByName(unsigned char LocalUserNum, const struct FString& FriendName, const struct FString& Message);
+	unsigned long AddFriend(unsigned char LocalUserNum, const struct FUniqueNetId& NewFriend, const struct FString& Message);
 	struct FString GetKeyboardInputResults(unsigned char* bWasCanceled);
 	void ClearKeyboardInputDoneDelegate(const struct FScriptDelegate& InputDelegate);
 	void AddKeyboardInputDoneDelegate(const struct FScriptDelegate& InputDelegate);
-	void OnKeyboardInputComplete(bool bWasSuccessful);
-	bool ShowKeyboardUI(unsigned char LocalUserNum, const struct FString& TitleText, const struct FString& DescriptionText, bool bIsPassword, bool bShouldValidate, const struct FString& DefaultText, int MaxResultLength, bool bAllowSpaces);
+	void OnKeyboardInputComplete(unsigned long bWasSuccessful);
+	unsigned long ShowKeyboardUI(unsigned char LocalUserNum, const struct FString& TitleText, const struct FString& DescriptionText, unsigned long bIsPassword, unsigned long bShouldValidate, const struct FString& DefaultText, int MaxResultLength, unsigned long bAllowSpaces);
 	void SetOnlineStatus(unsigned char LocalUserNum, int StatusId, TArray<struct FLocalizedStringSetting>* LocalizedStringSettings, TArray<struct FSettingsProperty>* Properties);
 	TEnumAsByte<EOnlineEnumerationReadState> GetFriendsList(unsigned char LocalUserNum, int Count, int StartingAt, TArray<struct FOnlineFriend>* Friends);
 	void ClearReadFriendsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadFriendsCompleteDelegate);
 	void AddReadFriendsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadFriendsCompleteDelegate);
-	void OnReadFriendsComplete(bool bWasSuccessful);
-	bool ReadFriendsList(unsigned char LocalUserNum, int Count, int StartingAt);
+	void OnReadFriendsComplete(unsigned long bWasSuccessful);
+	unsigned long ReadFriendsList(unsigned char LocalUserNum, int Count, int StartingAt);
 	void ClearWritePlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WritePlayerStorageCompleteDelegate);
 	void AddWritePlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WritePlayerStorageCompleteDelegate);
-	void OnWritePlayerStorageComplete(unsigned char LocalUserNum, bool bWasSuccessful);
-	bool WritePlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage);
+	void OnWritePlayerStorageComplete(unsigned char LocalUserNum, unsigned long bWasSuccessful);
+	unsigned long WritePlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage);
 	class UOnlinePlayerStorage* GetPlayerStorage(unsigned char LocalUserNum);
 	void ClearReadPlayerStorageForNetIdCompleteDelegate(const struct FUniqueNetId& NetId, const struct FScriptDelegate& ReadPlayerStorageForNetIdCompleteDelegate);
 	void AddReadPlayerStorageForNetIdCompleteDelegate(const struct FUniqueNetId& NetId, const struct FScriptDelegate& ReadPlayerStorageForNetIdCompleteDelegate);
-	void OnReadPlayerStorageForNetIdComplete(const struct FUniqueNetId& NetId, bool bWasSuccessful);
-	bool ReadPlayerStorageForNetId(const struct FUniqueNetId& NetId, class UOnlinePlayerStorage* PlayerStorage);
+	void OnReadPlayerStorageForNetIdComplete(const struct FUniqueNetId& NetId, unsigned long bWasSuccessful);
+	unsigned long ReadPlayerStorageForNetId(const struct FUniqueNetId& NetId, class UOnlinePlayerStorage* PlayerStorage);
 	void ClearReadPlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadPlayerStorageCompleteDelegate);
 	void AddReadPlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadPlayerStorageCompleteDelegate);
-	void OnReadPlayerStorageComplete(unsigned char LocalUserNum, bool bWasSuccessful);
-	bool ReadPlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage);
+	void OnReadPlayerStorageComplete(unsigned char LocalUserNum, unsigned long bWasSuccessful);
+	unsigned long ReadPlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage);
 	void ClearWriteProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WriteProfileSettingsCompleteDelegate);
 	void AddWriteProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WriteProfileSettingsCompleteDelegate);
-	void OnWriteProfileSettingsComplete(unsigned char LocalUserNum, bool bWasSuccessful);
-	bool WriteProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings);
+	void OnWriteProfileSettingsComplete(unsigned char LocalUserNum, unsigned long bWasSuccessful);
+	unsigned long WriteProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings);
 	class UOnlineProfileSettings* GetProfileSettings(unsigned char LocalUserNum);
 	void ClearReadProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadProfileSettingsCompleteDelegate);
 	void AddReadProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadProfileSettingsCompleteDelegate);
-	void OnReadProfileSettingsComplete(unsigned char LocalUserNum, bool bWasSuccessful);
-	bool ReadProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings);
+	void OnReadProfileSettingsComplete(unsigned char LocalUserNum, unsigned long bWasSuccessful);
+	unsigned long ReadProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings);
 	void ClearFriendsChangeDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendsDelegate);
 	void AddFriendsChangeDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendsDelegate);
 	void ClearMutingChangeDelegate(const struct FScriptDelegate& MutingDelegate);
@@ -32131,31 +32131,31 @@ public:
 	void OnLoginStatusChange(TEnumAsByte<ELoginStatus> NewStatus, const struct FUniqueNetId& NewId);
 	void ClearLoginChangeDelegate(const struct FScriptDelegate& LoginDelegate);
 	void AddLoginChangeDelegate(const struct FScriptDelegate& LoginDelegate);
-	bool ShowFriendsUI(unsigned char LocalUserNum);
-	bool IsMuted(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
-	bool AreAnyFriends(unsigned char LocalUserNum, TArray<struct FFriendsQuery>* Query);
-	bool IsFriend(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
+	unsigned long ShowFriendsUI(unsigned char LocalUserNum);
+	unsigned long IsMuted(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
+	unsigned long AreAnyFriends(unsigned char LocalUserNum, TArray<struct FFriendsQuery>* Query);
+	unsigned long IsFriend(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
 	TEnumAsByte<EFeaturePrivilegeLevel> CanShowPresenceInformation(unsigned char LocalUserNum);
 	TEnumAsByte<EFeaturePrivilegeLevel> CanViewPlayerProfiles(unsigned char LocalUserNum);
 	TEnumAsByte<EFeaturePrivilegeLevel> CanPurchaseContent(unsigned char LocalUserNum);
 	TEnumAsByte<EFeaturePrivilegeLevel> CanDownloadUserContent(unsigned char LocalUserNum);
 	TEnumAsByte<EFeaturePrivilegeLevel> CanCommunicate(unsigned char LocalUserNum);
 	TEnumAsByte<EFeaturePrivilegeLevel> CanPlayOnline(unsigned char LocalUserNum);
-	bool IsLocalLogin(unsigned char LocalUserNum);
-	bool IsGuestLogin(unsigned char LocalUserNum);
+	unsigned long IsLocalLogin(unsigned char LocalUserNum);
+	unsigned long IsGuestLogin(unsigned char LocalUserNum);
 	struct FString GetPlayerNickname(unsigned char LocalUserNum);
-	bool GetUniquePlayerId(unsigned char LocalUserNum, struct FUniqueNetId* PlayerID);
+	unsigned long GetUniquePlayerId(unsigned char LocalUserNum, struct FUniqueNetId* PlayerID);
 	TEnumAsByte<ELoginStatus> GetLoginStatus(unsigned char LocalUserNum);
 	void ClearLogoutCompletedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LogoutDelegate);
 	void AddLogoutCompletedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LogoutDelegate);
-	void OnLogoutCompleted(bool bWasSuccessful);
-	bool Logout(unsigned char LocalUserNum);
+	void OnLogoutCompleted(unsigned long bWasSuccessful);
+	unsigned long Logout(unsigned char LocalUserNum);
 	void ClearLoginFailedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LoginDelegate);
 	void AddLoginFailedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LoginDelegate);
 	void OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode);
-	bool AutoLogin();
-	bool Login(unsigned char LocalUserNum, const struct FString& LoginName, const struct FString& Password, bool bWantsLocalOnly);
-	bool ShowLoginUI(bool bShowOnlineOnly);
+	unsigned long AutoLogin();
+	unsigned long Login(unsigned char LocalUserNum, const struct FString& LoginName, const struct FString& Password, unsigned long bWantsLocalOnly);
+	unsigned long ShowLoginUI(unsigned long bShowOnlineOnly);
 	void OnFriendsChange();
 	void OnMutingChange();
 	void OnLoginCancelled();
@@ -32177,14 +32177,14 @@ public:
 	}
 
 
-	bool GetLocalAccountNames(TArray<struct FString>* Accounts);
-	bool DeleteLocalAccount(const struct FString& UserName, const struct FString& Password);
-	bool RenameLocalAccount(const struct FString& NewUserName, const struct FString& OldUserName, const struct FString& Password);
-	bool CreateLocalAccount(const struct FString& UserName, const struct FString& Password);
+	unsigned long GetLocalAccountNames(TArray<struct FString>* Accounts);
+	unsigned long DeleteLocalAccount(const struct FString& UserName, const struct FString& Password);
+	unsigned long RenameLocalAccount(const struct FString& NewUserName, const struct FString& OldUserName, const struct FString& Password);
+	unsigned long CreateLocalAccount(const struct FString& UserName, const struct FString& Password);
 	void ClearCreateOnlineAccountCompletedDelegate(const struct FScriptDelegate& AccountCreateDelegate);
 	void AddCreateOnlineAccountCompletedDelegate(const struct FScriptDelegate& AccountCreateDelegate);
 	void OnCreateOnlineAccountCompleted(TEnumAsByte<EOnlineAccountCreateStatus> ErrorStatus);
-	bool CreateOnlineAccount(const struct FString& UserName, const struct FString& Password, const struct FString& EmailAddress, const struct FString& ProductKey);
+	unsigned long CreateOnlineAccount(const struct FString& UserName, const struct FString& Password, const struct FString& EmailAddress, const struct FString& ProductKey);
 };
 
 
@@ -32217,24 +32217,24 @@ public:
 
 
 	void WipeKickedPlayers();
-	bool IsIDBanned(struct FUniqueNetId* NetId);
-	bool CheckIPPolicy(const struct FString& Address);
-	void PreLogin(const struct FString& Options, const struct FString& Address, bool bSpectator, struct FString* OutError);
-	bool ValidLogin(const struct FString& UserName, const struct FString& Password);
-	bool ParseAdminOptions(const struct FString& Options);
+	unsigned long IsIDBanned(struct FUniqueNetId* NetId);
+	unsigned long CheckIPPolicy(const struct FString& Address);
+	void PreLogin(const struct FString& Options, const struct FString& Address, unsigned long bSpectator, struct FString* OutError);
+	unsigned long ValidLogin(const struct FString& UserName, const struct FString& Password);
+	unsigned long ParseAdminOptions(const struct FString& Options);
 	void AdminExited(class APlayerController* P);
 	void AdminEntered(class APlayerController* P);
-	bool AdminLogout(class APlayerController* P);
-	bool AdminLogin(class APlayerController* P, const struct FString& Password);
-	bool KickPlayer(class APlayerController* C, const struct FString& KickReason);
-	bool ForceKickPlayer(class APlayerController* C, const struct FString& KickReason);
+	unsigned long AdminLogout(class APlayerController* P);
+	unsigned long AdminLogin(class APlayerController* P, const struct FString& Password);
+	unsigned long KickPlayer(class APlayerController* C, const struct FString& KickReason);
+	unsigned long ForceKickPlayer(class APlayerController* C, const struct FString& KickReason);
 	void KickBan(const struct FString& Target);
 	void Kick(const struct FString& Target);
 	class AController* GetControllerFromString(const struct FString& Target);
-	bool RequiresPassword();
+	unsigned long RequiresPassword();
 	void SetGamePassword(const struct FString& P);
-	bool SetAdminPassword(const struct FString& P);
-	bool IsAdmin(class APlayerController* P);
+	unsigned long SetAdminPassword(const struct FString& P);
+	unsigned long IsAdmin(class APlayerController* P);
 };
 
 
@@ -32281,7 +32281,7 @@ public:
 
 
 	void ReplicatedEvent(const struct FName& VarName);
-	void SetTemplate(class UParticleSystem* NewTemplate, bool bDestroyOnFinish);
+	void SetTemplate(class UParticleSystem* NewTemplate, unsigned long bDestroyOnFinish);
 };
 
 
@@ -32358,7 +32358,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -32375,7 +32375,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -32411,22 +32411,22 @@ public:
 	}
 
 
-	void ClientReceiveLinkDisabledState(int Index, class ACoverLink* Link, bool bLinkDisabled);
+	void ClientReceiveLinkDisabledState(int Index, class ACoverLink* Link, unsigned long bLinkDisabled);
 	void ServerSendLinkDisabledState(int Index);
 	void NotifyLinkDisabledStateChange(class ACoverLink* Link);
-	void ClientReceiveManualCoverTypeSlots(int Index, class ACoverLink* Link, unsigned char NumCoverTypesChanged, const struct FManualCoverTypeInfo& SlotsCoverTypeChanged, bool bDone);
+	void ClientReceiveManualCoverTypeSlots(int Index, class ACoverLink* Link, unsigned char NumCoverTypesChanged, const struct FManualCoverTypeInfo& SlotsCoverTypeChanged, unsigned long bDone);
 	void ServerSendManualCoverTypeSlots(int Index);
 	void NotifySetManualCoverTypeForSlots(class ACoverLink* Link, TEnumAsByte<ECoverType> NewCoverType, TArray<int>* SlotIndices);
-	void ClientReceiveAdjustedSlots(int Index, class ACoverLink* Link, unsigned char NumSlotsAdjusted, unsigned char SlotsAdjusted, bool bDone);
+	void ClientReceiveAdjustedSlots(int Index, class ACoverLink* Link, unsigned char NumSlotsAdjusted, unsigned char SlotsAdjusted, unsigned long bDone);
 	void ServerSendAdjustedSlots(int Index);
 	void NotifyAutoAdjustSlots(class ACoverLink* Link, TArray<int>* SlotIndices);
-	void ClientReceiveDisabledSlots(int Index, class ACoverLink* Link, unsigned char NumSlotsDisabled, unsigned char SlotsDisabled, bool bDone);
+	void ClientReceiveDisabledSlots(int Index, class ACoverLink* Link, unsigned char NumSlotsDisabled, unsigned char SlotsDisabled, unsigned long bDone);
 	void ServerSendDisabledSlots(int Index);
 	void NotifyDisabledSlots(class ACoverLink* Link, TArray<int>* SlotIndices);
-	void ClientReceiveEnabledSlots(int Index, class ACoverLink* Link, unsigned char NumSlotsEnabled, unsigned char SlotsEnabled, bool bDone);
+	void ClientReceiveEnabledSlots(int Index, class ACoverLink* Link, unsigned char NumSlotsEnabled, unsigned char SlotsEnabled, unsigned long bDone);
 	void ServerSendEnabledSlots(int Index);
 	void NotifyEnabledSlots(class ACoverLink* Link, TArray<int>* SlotIndices);
-	void ClientReceiveInitialCoverReplicationInfo(int Index, class ACoverLink* Link, bool bLinkDisabled, unsigned char NumSlotsEnabled, unsigned char SlotsEnabled, unsigned char NumSlotsDisabled, unsigned char SlotsDisabled, unsigned char NumSlotsAdjusted, unsigned char SlotsAdjusted, unsigned char NumCoverTypesChanged, const struct FManualCoverTypeInfo& SlotsCoverTypeChanged, bool bDone);
+	void ClientReceiveInitialCoverReplicationInfo(int Index, class ACoverLink* Link, unsigned long bLinkDisabled, unsigned char NumSlotsEnabled, unsigned char SlotsEnabled, unsigned char NumSlotsDisabled, unsigned char SlotsDisabled, unsigned char NumSlotsAdjusted, unsigned char SlotsAdjusted, unsigned char NumCoverTypesChanged, const struct FManualCoverTypeInfo& SlotsCoverTypeChanged, unsigned long bDone);
 	void ServerSendInitialCoverReplicationInfo(int Index);
 	void ClientSetOwner(class APlayerController* PC);
 	void ReplicateInitialCoverInfo();
@@ -32470,7 +32470,7 @@ public:
 	}
 
 
-	struct FString STATIC_GetString(int Switch, bool bPRI1HUD, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
+	struct FString STATIC_GetString(int Switch, unsigned long bPRI1HUD, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 };
 
 
@@ -32488,9 +32488,9 @@ public:
 	}
 
 
-	void ChangeState(bool bIsVisible);
+	void ChangeState(unsigned long bIsVisible);
 	void UpdateScoreBoard();
-	bool UpdateGRI();
+	unsigned long UpdateGRI();
 	void DrawHUD();
 };
 
@@ -32525,7 +32525,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -32543,7 +32543,7 @@ public:
 
 
 	int STATIC_GetObjClassVersion();
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 };
 
 
@@ -32584,7 +32584,7 @@ public:
 	}
 
 
-	bool IsValidUISequenceObject(class UUIScreenObject* TargetObject);
+	unsigned long IsValidUISequenceObject(class UUIScreenObject* TargetObject);
 	void Activated();
 };
 
@@ -32687,7 +32687,7 @@ public:
 	void Broadcast(class AActor* Sender, const struct FString& msg, const struct FName& Type);
 	void BroadcastLocalized(class AActor* Sender, class APlayerController* Receiver, class UClass* Message, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 	void BroadcastText(class APlayerReplicationInfo* SenderPRI, class APlayerController* Receiver, const struct FString& msg, const struct FName& Type);
-	bool AllowsBroadcast(class AActor* broadcaster, int InLen);
+	unsigned long AllowsBroadcast(class AActor* broadcaster, int InLen);
 	void UpdateSentText();
 };
 
@@ -32772,7 +32772,7 @@ public:
 
 
 	void PostRender();
-	bool DisplayMaterials(float X, float DY, class UMeshComponent* MeshComp, float* Y);
+	unsigned long DisplayMaterials(float X, float DY, class UMeshComponent* MeshComp, float* Y);
 	void PostBeginPlay();
 };
 
@@ -32790,7 +32790,7 @@ public:
 	}
 
 
-	bool InputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad);
+	unsigned long InputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, unsigned long bGamepad);
 };
 
 
@@ -32951,7 +32951,7 @@ public:
 	}
 
 
-	struct FString STATIC_GetString(int Switch, bool bPRI1HUD, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
+	struct FString STATIC_GetString(int Switch, unsigned long bPRI1HUD, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 	int STATIC_GetFailSwitch(const struct FString& FailString);
 };
 
@@ -33014,23 +33014,23 @@ public:
 	}
 
 
-	void HandleSceneActivated(class UUIScene* ActivatedScene, bool bInitialActivation);
-	bool OptionChosen(class UUIScreenObject* EventObject, int PlayerIndex);
+	void HandleSceneActivated(class UUIScene* ActivatedScene, unsigned long bInitialActivation);
+	unsigned long OptionChosen(class UUIScreenObject* EventObject, int PlayerIndex);
 	void SetupDockingRelationships();
 	void LayoutControls();
 	class UUICalloutButtonPanel* GetButtonBar();
 	class UUILabel* GetMessageLabel();
 	class UUILabel* GetTitleLabel();
 	int FindButtonIndex(const struct FName& ButtonAlias);
-	bool HasButton(const struct FName& ButtonAlias);
-	bool RemoveButton(const struct FName& ButtonAlias);
-	bool AddButton(const struct FName& ButtonAlias);
+	unsigned long HasButton(const struct FName& ButtonAlias);
+	unsigned long RemoveButton(const struct FName& ButtonAlias);
+	unsigned long AddButton(const struct FName& ButtonAlias);
 	void SetButtonCallback(class UUICalloutButton* TargetButton);
 	void SetQuestion(const struct FString& NewMessageString);
 	void SetMessage(const struct FString& NewMessageString);
 	void SetTitle(const struct FString& NewTitleString);
 	void SetupMessageBox(const struct FString& Title, const struct FString& Message, const struct FString& Question, TArray<struct FName> ButtonAliases, const struct FScriptDelegate& SelectionCallback);
-	bool OnOptionSelected(class UUIMessageBoxBase* Sender, const struct FName& SelectedInputAlias, int PlayerIndex);
+	unsigned long OnOptionSelected(class UUIMessageBoxBase* Sender, const struct FName& SelectedInputAlias, int PlayerIndex);
 };
 
 
@@ -33157,28 +33157,28 @@ public:
 	void RateContent(unsigned char PlayerNum, int NewRating, struct FCommunityContentFile* FileToRate);
 	void ClearGetContentPayloadCompleteDelegate(const struct FScriptDelegate& GetContentPayloadCompleteDelegate);
 	void AddGetContentPayloadCompleteDelegate(const struct FScriptDelegate& GetContentPayloadCompleteDelegate);
-	void OnGetContentPayloadComplete(bool bWasSuccessful, const struct FCommunityContentFile& FileDownloaded, TArray<unsigned char>* Payload);
-	bool GetContentPayload(unsigned char PlayerNum, struct FCommunityContentFile* FileDownloaded);
+	void OnGetContentPayloadComplete(unsigned long bWasSuccessful, const struct FCommunityContentFile& FileDownloaded, TArray<unsigned char>* Payload);
+	unsigned long GetContentPayload(unsigned char PlayerNum, struct FCommunityContentFile* FileDownloaded);
 	void ClearDownloadContentCompleteDelegate(const struct FScriptDelegate& DownloadContentCompleteDelegate);
 	void AddDownloadContentCompleteDelegate(const struct FScriptDelegate& DownloadContentCompleteDelegate);
-	void OnDownloadContentComplete(bool bWasSuccessful, const struct FCommunityContentFile& FileDownloaded);
-	bool DownloadContent(unsigned char PlayerNum, struct FCommunityContentFile* FileToDownload);
+	void OnDownloadContentComplete(unsigned long bWasSuccessful, const struct FCommunityContentFile& FileDownloaded);
+	unsigned long DownloadContent(unsigned char PlayerNum, struct FCommunityContentFile* FileToDownload);
 	void ClearUploadContentCompleteDelegate(const struct FScriptDelegate& UploadContentCompleteDelegate);
 	void AddUploadContentCompleteDelegate(const struct FScriptDelegate& UploadContentCompleteDelegate);
-	void OnUploadContentComplete(bool bWasSuccessful, const struct FCommunityContentFile& UploadedFile);
-	bool UploadContent(unsigned char PlayerNum, TArray<unsigned char>* Payload, struct FCommunityContentMetadata* MetaData);
-	bool GetFriendsContentList(unsigned char PlayerNum, struct FOnlineFriend* Friend, TArray<struct FCommunityContentFile>* ContentFiles);
+	void OnUploadContentComplete(unsigned long bWasSuccessful, const struct FCommunityContentFile& UploadedFile);
+	unsigned long UploadContent(unsigned char PlayerNum, TArray<unsigned char>* Payload, struct FCommunityContentMetadata* MetaData);
+	unsigned long GetFriendsContentList(unsigned char PlayerNum, struct FOnlineFriend* Friend, TArray<struct FCommunityContentFile>* ContentFiles);
 	void ClearReadFriendsContentListCompleteDelegate(const struct FScriptDelegate& ReadFriendsContentListCompleteDelegate);
 	void AddReadFriendsContentListCompleteDelegate(const struct FScriptDelegate& ReadFriendsContentListCompleteDelegate);
-	void OnReadFriendsContentListComplete(bool bWasSuccessful);
-	bool ReadFriendsContentList(unsigned char PlayerNum, int StartAt, int NumToRead, TArray<struct FOnlineFriend>* Friends);
-	bool GetContentList(unsigned char PlayerNum, TArray<struct FCommunityContentFile>* ContentFiles);
+	void OnReadFriendsContentListComplete(unsigned long bWasSuccessful);
+	unsigned long ReadFriendsContentList(unsigned char PlayerNum, int StartAt, int NumToRead, TArray<struct FOnlineFriend>* Friends);
+	unsigned long GetContentList(unsigned char PlayerNum, TArray<struct FCommunityContentFile>* ContentFiles);
 	void ClearReadContentListCompleteDelegate(const struct FScriptDelegate& ReadContentListCompleteDelegate);
 	void AddReadContentListCompleteDelegate(const struct FScriptDelegate& ReadContentListCompleteDelegate);
-	void OnReadContentListComplete(bool bWasSuccessful);
-	bool ReadContentList(unsigned char PlayerNum, int StartAt, int NumToRead);
+	void OnReadContentListComplete(unsigned long bWasSuccessful);
+	unsigned long ReadContentList(unsigned char PlayerNum, int StartAt, int NumToRead);
 	void Exit();
-	bool Init();
+	unsigned long Init();
 };
 
 
@@ -33195,9 +33195,9 @@ public:
 	}
 
 
-	bool UploadHardwareData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick);
-	bool UploadGameplayEventsData(class UOnlineGameplayEvents* Events);
-	bool UploadProfileData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick, class UOnlineProfileSettings* ProfileSettings);
+	unsigned long UploadHardwareData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick);
+	unsigned long UploadGameplayEventsData(class UOnlineGameplayEvents* Events);
+	unsigned long UploadProfileData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick, class UOnlineProfileSettings* ProfileSettings);
 };
 
 
@@ -33263,10 +33263,10 @@ public:
 
 	int GetCurrentPlayersListCount();
 	void SetCurrentPlayersList(TArray<struct FCurrentPlayerMet> Players);
-	bool ShowCurrentPlayersList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
-	bool ShowLastPartyPlayerList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
-	bool ShowRecentPartiesPlayerList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
-	bool ShowRecentPlayerList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
+	unsigned long ShowCurrentPlayersList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
+	unsigned long ShowLastPartyPlayerList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
+	unsigned long ShowRecentPartiesPlayerList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
+	unsigned long ShowRecentPlayerList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
 	void SetLastParty(const struct FUniqueNetId& PartyLeader, TArray<struct FUniqueNetId>* PartyMembers);
 	int GetTeamForCurrentPlayer(const struct FUniqueNetId& Player);
 	int GetSkillForCurrentPlayer(const struct FUniqueNetId& Player);
@@ -33729,7 +33729,7 @@ public:
 	}
 
 
-	bool SuggestMovePreparation(class APawn* Other);
+	unsigned long SuggestMovePreparation(class APawn* Other);
 	class AActor* SpecialHandling(class APawn* Other);
 	void OnToggle(class USeqAct_Toggle* inAction);
 };
@@ -33770,7 +33770,7 @@ public:
 	}
 
 
-	bool IsProviderDisabled();
+	unsigned long IsProviderDisabled();
 };
 
 
@@ -33787,7 +33787,7 @@ public:
 	}
 
 
-	bool IsValidLevelSequenceObject();
+	unsigned long IsValidLevelSequenceObject();
 };
 
 
@@ -33863,7 +33863,7 @@ public:
 	}
 
 
-	bool IsProviderDisabled();
+	unsigned long IsProviderDisabled();
 };
 
 
@@ -33905,7 +33905,7 @@ public:
 	}
 
 
-	bool IsProviderDisabled();
+	unsigned long IsProviderDisabled();
 };
 
 

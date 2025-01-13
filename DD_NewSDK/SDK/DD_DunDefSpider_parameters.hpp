@@ -37,7 +37,7 @@ struct ADunDefWebProjectile_GetPawnBoostAmount_Params
 struct ADunDefWebProjectile_HasPawnBoostingType_Params
 {
 	TEnumAsByte<EPawnBoostType>                        boostType;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpider.DunDefWebProjectile.Destroyed
@@ -61,7 +61,7 @@ struct ADunDefWebProjectile_AddWebEffect_Params
 struct ADunDefWebProjectile_CanAddWebAffect_Params
 {
 	class AActor*                                      theAct;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpider.DunDefWebProjectile.EndRadiusDamage
@@ -98,7 +98,7 @@ struct ADunDefWebProjectile_GetTowerBoostAmount_Params
 struct ADunDefWebProjectile_HasTowerBoostingType_Params
 {
 	TEnumAsByte<ETowerBoostType>                       checkType;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpider.DunDefWebProjectile.GetTowerBoostingTarget
@@ -110,13 +110,13 @@ struct ADunDefWebProjectile_GetTowerBoostingTarget_Params
 // Function DunDefSpider.DunDefWebProjectile.EndAttachment
 struct ADunDefWebProjectile_EndAttachment_Params
 {
-	bool                                               bClearList;                                               // (Parm)
+	unsigned long                                      bClearList;                                               // (Parm)
 };
 
 // Function DunDefSpider.DunDefWebProjectile.SetScaleTime
 struct ADunDefWebProjectile_SetScaleTime_Params
 {
-	bool                                               bDoScaleUp;                                               // (OptionalParm, Parm)
+	unsigned long                                      bDoScaleUp;                                               // (OptionalParm, Parm)
 };
 
 // Function DunDefSpider.DunDefWebProjectile.AddNewAffected
@@ -181,9 +181,9 @@ struct ADunDefWebProjectile_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -192,7 +192,7 @@ struct ADunDefWebProjectile_ExecReplicatedFunction_Params
 struct ADunDefCrystalCore_PortalDefense_DrawMyHUD_Params
 {
 	class ADunDefHUD*                                  H;                                                        // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpider.DunDefCrystalCore_PortalDefense.MakeInvincible
@@ -214,7 +214,7 @@ struct ADunDefCrystalCore_PortalDefense_OnTeleport_Params
 // Function DunDefSpider.DunDefCrystalCore_PortalDefense.UpdateCrystalCore
 struct ADunDefCrystalCore_PortalDefense_UpdateCrystalCore_Params
 {
-	bool                                               locked;                                                   // (OptionalParm, Parm)
+	unsigned long                                      locked;                                                   // (OptionalParm, Parm)
 };
 
 // Function DunDefSpider.DunDefCrystalCore_PortalDefense.TakeDamage
@@ -277,9 +277,9 @@ struct ADunDefCrystalCore_PortalDefense_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -308,7 +308,7 @@ struct ADunDefGRI_PortalDefense_NotifyPortalHit_Params
 // Function DunDefSpider.DunDefGRI_PortalDefense.SetInCombatPhase
 struct ADunDefGRI_PortalDefense_SetInCombatPhase_Params
 {
-	bool                                               inCombatPhase;                                            // (Parm)
+	unsigned long                                      inCombatPhase;                                            // (Parm)
 };
 
 // Function DunDefSpider.DunDefGRI_PortalDefense.PostBeginPlay
@@ -329,7 +329,7 @@ struct ADunDefSpider_Died_Params
 	class AController*                                 Killer;                                                   // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
 	struct FVector                                     HitLocation;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpider.DunDefSpider.Tick
@@ -416,8 +416,8 @@ struct ADunDefSpider_PlayLungeAnimation_Params
 // Function DunDefSpider.DunDefSpider.UpdateDifficultyValues
 struct ADunDefSpider_UpdateDifficultyValues_Params
 {
-	bool                                               UpdateMaterial;                                           // (OptionalParm, Parm)
-	bool                                               onlyDynamicValues;                                        // (OptionalParm, Parm)
+	unsigned long                                      UpdateMaterial;                                           // (OptionalParm, Parm)
+	unsigned long                                      onlyDynamicValues;                                        // (OptionalParm, Parm)
 };
 
 // Function DunDefSpider.DunDefSpider.PlaySpawnEffect
@@ -450,9 +450,9 @@ struct ADunDefSpider_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -502,7 +502,7 @@ struct AGameInfo_PortalDefense_SetWaveNumber_Params
 // Function DunDefSpider.GameInfo_PortalDefense.DoWaveSkipping
 struct AGameInfo_PortalDefense_DoWaveSkipping_Params
 {
-	bool                                               bAllowArbritraryWaveSkipping;                             // (OptionalParm, Parm)
+	unsigned long                                      bAllowArbritraryWaveSkipping;                             // (OptionalParm, Parm)
 };
 
 // Function DunDefSpider.GameInfo_PortalDefense.PostBeginPlay
@@ -522,7 +522,7 @@ struct ADunDefGRI_VDay_DrawExtraEnemyMinimapIcon_Params
 struct ADunDefGRI_VDay_GenderSpawned_Params
 {
 	class ADunDefEnemy*                                enemyActor;                                               // (Parm)
-	bool                                               isBoy;                                                    // (Parm)
+	unsigned long                                      isBoy;                                                    // (Parm)
 };
 
 // Function DunDefSpider.DunDefGRI_VDay.PairMatched
@@ -547,9 +547,9 @@ struct ADunDefGRI_VDay_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -563,7 +563,7 @@ struct ADunDefSpiderController_GetToolTipAttackRange_Params
 // Function DunDefSpider.DunDefSpiderController.GetTargetableRange
 struct ADunDefSpiderController_GetTargetableRange_Params
 {
-	bool                                               bCheckAttackRange;                                        // (OptionalParm, Parm)
+	unsigned long                                      bCheckAttackRange;                                        // (OptionalParm, Parm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -602,8 +602,8 @@ struct ADunDefSpiderController_IsWithinAttackRange_Params
 {
 	class AActor*                                      Other;                                                    // (Parm)
 	float                                              AttackRangeOffset;                                        // (OptionalParm, Parm)
-	bool                                               bCheckDeltaZ;                                             // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bCheckDeltaZ;                                             // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpider.DunDefSpiderController.ShootWeb
@@ -635,14 +635,14 @@ struct ADunDefSpiderController_CheckForCustomAttacks_Params
 // Function DunDefSpider.DunDefSpiderController.AllowWebAttack
 struct ADunDefSpiderController_AllowWebAttack_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpider.DunDefSpiderController.AddToSwingHurtList
 struct ADunDefSpiderController_AddToSwingHurtList_Params
 {
 	class AActor*                                      newEntry;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpider.DunDefSpiderController.EndMeleeSwing
@@ -666,14 +666,14 @@ struct ADunDefSpiderController_NotifyBump_Params
 {
 	class AActor*                                      Other;                                                    // (Parm)
 	struct FVector                                     HitNormal;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpider.DunDefSpiderQueenController.SetTarget
 struct ADunDefSpiderQueenController_SetTarget_Params
 {
 	class AActor*                                      NewTarget;                                                // (Parm)
-	bool                                               bDontClearIgnoreList;                                     // (OptionalParm, Parm)
+	unsigned long                                      bDontClearIgnoreList;                                     // (OptionalParm, Parm)
 };
 
 // Function DunDefSpider.DunDefSpiderQueenController.ShootWeb
@@ -740,7 +740,7 @@ struct ADunDefSpiderQueenController_ForceWakeUp_Params
 struct ADunDefSpiderQueenController_AddToSwingHurtList_Params
 {
 	class AActor*                                      newEntry;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpider.DunDefSpiderQueenController.EndMeleeSwing
@@ -769,13 +769,13 @@ struct ADunDefSpiderQueen_Died_Params
 	class AController*                                 Killer;                                                   // (Parm)
 	class UClass*                                      DamageType;                                               // (Parm)
 	struct FVector                                     HitLocation;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpider.DunDefSpiderQueen.SetUpperBodyLookAt
 struct ADunDefSpiderQueen_SetUpperBodyLookAt_Params
 {
-	bool                                               bTurnOn;                                                  // (Parm)
+	unsigned long                                      bTurnOn;                                                  // (Parm)
 };
 
 // Function DunDefSpider.DunDefSpiderQueen.Tick
@@ -864,7 +864,7 @@ struct ADunDefSpiderQueen_TakeDamage_Params
 struct ADunDefSpiderQueen_CheckSpecialCoreDmg_Params
 {
 	struct FVector                                     HitLocation;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpider.DunDefSpiderQueen.AdjustDamage
@@ -921,15 +921,15 @@ struct ADunDefSpiderQueen_PlayBabySpawnAnim_Params
 // Function DunDefSpider.DunDefSpiderQueen.GetPawnDamageModifier
 struct ADunDefSpiderQueen_GetPawnDamageModifier_Params
 {
-	bool                                               bDontIncludeAbilities;                                    // (OptionalParm, Parm)
+	unsigned long                                      bDontIncludeAbilities;                                    // (OptionalParm, Parm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpider.DunDefSpiderQueen.UpdateDifficultyValues
 struct ADunDefSpiderQueen_UpdateDifficultyValues_Params
 {
-	bool                                               UpdateMaterial;                                           // (OptionalParm, Parm)
-	bool                                               onlyDynamicValues;                                        // (OptionalParm, Parm)
+	unsigned long                                      UpdateMaterial;                                           // (OptionalParm, Parm)
+	unsigned long                                      onlyDynamicValues;                                        // (OptionalParm, Parm)
 };
 
 // Function DunDefSpider.DunDefSpiderQueen.PostBeginPlay
@@ -956,9 +956,9 @@ struct ADunDefSpiderQueen_ExecReplicatedFunction_Params
 	float                                              floatParam2;                                              // (OptionalParm, Parm)
 	float                                              floatParam3;                                              // (OptionalParm, Parm)
 	float                                              floatParam4;                                              // (OptionalParm, Parm)
-	bool                                               boolParam1;                                               // (OptionalParm, Parm)
-	bool                                               boolParam2;                                               // (OptionalParm, Parm)
-	bool                                               boolParam3;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
 };
@@ -974,7 +974,7 @@ struct UTowerDeboosterObject_GetTowerBoostAmount_Params
 struct UTowerDeboosterObject_HasTowerBoostingType_Params
 {
 	TEnumAsByte<ETowerBoostType>                       checkType;                                                // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpider.TowerDeboosterObject.GetTowerBoostingTarget

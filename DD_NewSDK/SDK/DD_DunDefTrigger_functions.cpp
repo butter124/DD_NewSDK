@@ -97,10 +97,10 @@ void ADunDefTrigger::UpdateActivationTime()
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // class ADunDefPlayerController* PC                             (Parm)
-// bool                           forceActivation                (OptionalParm, Parm)
+// unsigned long                  forceActivation                (OptionalParm, Parm)
 // int                            activationType                 (OptionalParm, Parm)
 
-void ADunDefTrigger::Server_Activate(class ADunDefPlayerController* PC, bool forceActivation, int activationType)
+void ADunDefTrigger::Server_Activate(class ADunDefPlayerController* PC, unsigned long forceActivation, int activationType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefTrigger.DunDefTrigger.Server_Activate");
 
@@ -167,9 +167,9 @@ int ADunDefTrigger::GetToolTipPriority()
 // (Defined, Simulated, Public)
 // Parameters:
 // TScriptInterface<class UDunDefToolTipInterface> otherToolTip                   (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTrigger::TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip)
+unsigned long ADunDefTrigger::TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefTrigger.DunDefTrigger.TakesToolTipPriority");
 
@@ -215,10 +215,10 @@ void ADunDefTrigger::DrawToolTip(class UCanvas* C, int PosX, int PosY, class ULo
 // Function DunDefTrigger.DunDefTrigger.ContinueDrawingToolTip
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ContinueDrawing                (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ContinueDrawing                (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefTrigger::ContinueDrawingToolTip(bool ContinueDrawing)
+unsigned long ADunDefTrigger::ContinueDrawingToolTip(unsigned long ContinueDrawing)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefTrigger.DunDefTrigger.ContinueDrawingToolTip");
 

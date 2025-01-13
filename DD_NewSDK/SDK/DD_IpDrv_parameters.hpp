@@ -36,7 +36,7 @@ struct AInternetLink_StringToIpAddr_Params
 {
 	struct FString                                     Str;                                                      // (Parm, NeedCtorLink)
 	struct FIpAddr                                     Addr;                                                     // (Parm, OutParm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.InternetLink.IpAddrToString
@@ -66,13 +66,13 @@ struct AInternetLink_ParseURL_Params
 	int                                                PortNum;                                                  // (Parm, OutParm)
 	struct FString                                     LevelName;                                                // (Parm, OutParm, NeedCtorLink)
 	struct FString                                     EntryName;                                                // (Parm, OutParm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.InternetLink.IsDataPending
 struct AInternetLink_IsDataPending_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.TcpLink.ReceivedBinary
@@ -142,33 +142,33 @@ struct ATcpLink_SendText_Params
 // Function IpDrv.TcpLink.IsConnected
 struct ATcpLink_IsConnected_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.TcpLink.Close
 struct ATcpLink_Close_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.TcpLink.Open
 struct ATcpLink_Open_Params
 {
 	struct FIpAddr                                     Addr;                                                     // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.TcpLink.Listen
 struct ATcpLink_Listen_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.TcpLink.BindPort
 struct ATcpLink_BindPort_Params
 {
 	int                                                PortNum;                                                  // (OptionalParm, Parm)
-	bool                                               bUseNextAvailable;                                        // (OptionalParm, Parm)
+	unsigned long                                      bUseNextAvailable;                                        // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -177,14 +177,14 @@ struct UOnlineEventsInterfaceMcp_UploadHardwareData_Params
 {
 	struct FUniqueNetId                                UniqueId;                                                 // (Parm)
 	struct FString                                     PlayerNick;                                               // (Parm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineEventsInterfaceMcp.UploadGameplayEventsData
 struct UOnlineEventsInterfaceMcp_UploadGameplayEventsData_Params
 {
 	class UOnlineGameplayEvents*                       Events;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineEventsInterfaceMcp.UploadProfileData
@@ -193,7 +193,7 @@ struct UOnlineEventsInterfaceMcp_UploadProfileData_Params
 	struct FUniqueNetId                                UniqueId;                                                 // (Parm)
 	struct FString                                     PlayerNick;                                               // (Parm, NeedCtorLink)
 	class UOnlineProfileSettings*                      ProfileSettings;                                          // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineNewsInterfaceMcp.GetNews
@@ -219,7 +219,7 @@ struct UOnlineNewsInterfaceMcp_AddReadNewsCompletedDelegate_Params
 // Function IpDrv.OnlineNewsInterfaceMcp.OnReadNewsCompleted
 struct UOnlineNewsInterfaceMcp_OnReadNewsCompleted_Params
 {
-	bool                                               bWasSuccessful;                                           // (Parm)
+	unsigned long                                      bWasSuccessful;                                           // (Parm)
 	TEnumAsByte<EOnlineNewsType>                       NewsType;                                                 // (Parm)
 };
 
@@ -228,13 +228,13 @@ struct UOnlineNewsInterfaceMcp_ReadNews_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (Parm)
 	TEnumAsByte<EOnlineNewsType>                       NewsType;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.ClearDownloadedFiles
 struct UOnlineTitleFileDownloadMcp_ClearDownloadedFiles_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.GetTitleFileState
@@ -249,7 +249,7 @@ struct UOnlineTitleFileDownloadMcp_GetTitleFileContents_Params
 {
 	struct FString                                     Filename;                                                 // (Parm, NeedCtorLink)
 	TArray<unsigned char>                              FileContents;                                             // (Parm, OutParm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.ClearReadTitleFileCompleteDelegate
@@ -268,13 +268,13 @@ struct UOnlineTitleFileDownloadMcp_AddReadTitleFileCompleteDelegate_Params
 struct UOnlineTitleFileDownloadMcp_ReadTitleFile_Params
 {
 	struct FString                                     FileToRead;                                               // (Parm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.OnReadTitleFileComplete
 struct UOnlineTitleFileDownloadMcp_OnReadTitleFileComplete_Params
 {
-	bool                                               bWasSuccessful;                                           // (Parm)
+	unsigned long                                      bWasSuccessful;                                           // (Parm)
 	struct FString                                     Filename;                                                 // (Parm, NeedCtorLink)
 };
 
@@ -286,11 +286,11 @@ struct UMeshBeacon_DestroyBeacon_Params
 // Function IpDrv.MeshBeaconClient.SendHostNewGameSessionResponse
 struct UMeshBeaconClient_SendHostNewGameSessionResponse_Params
 {
-	bool                                               bSuccess;                                                 // (Parm)
+	unsigned long                                      bSuccess;                                                 // (Parm)
 	struct FName                                       SessionName;                                              // (Parm)
 	class UClass*                                      SearchClass;                                              // (Parm)
 	unsigned char                                      PlatformSpecificInfo;                                     // (Const, Parm, OutParm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconClient.OnCreateNewSessionRequestReceived
@@ -334,7 +334,7 @@ struct UMeshBeaconClient_BeginBandwidthTest_Params
 {
 	TEnumAsByte<EMeshBeaconBandwidthTestType>          TestType;                                                 // (Parm)
 	int                                                TestBufferSize;                                           // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconClient.RequestConnection
@@ -342,8 +342,8 @@ struct UMeshBeaconClient_RequestConnection_Params
 {
 	struct FOnlineGameSearchResult                     DesiredHost;                                              // (Const, Parm, OutParm)
 	struct FClientConnectionRequest                    ClientRequest;                                            // (Const, Parm, OutParm, NeedCtorLink)
-	bool                                               bRegisterSecureAddress;                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bRegisterSecureAddress;                                   // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconClient.DestroyBeacon
@@ -354,7 +354,7 @@ struct UMeshBeaconClient_DestroyBeacon_Params
 // Function IpDrv.MeshBeaconHost.OnReceivedClientCreateNewSessionResult
 struct UMeshBeaconHost_OnReceivedClientCreateNewSessionResult_Params
 {
-	bool                                               bSucceeded;                                               // (Parm)
+	unsigned long                                      bSucceeded;                                               // (Parm)
 	struct FName                                       SessionName;                                              // (Parm)
 	class UClass*                                      SearchClass;                                              // (Parm)
 	unsigned char                                      PlatformSpecificInfo;                                     // (Const, Parm, OutParm)
@@ -367,7 +367,7 @@ struct UMeshBeaconHost_RequestClientCreateNewSession_Params
 	struct FName                                       SessionName;                                              // (Parm)
 	class UClass*                                      SearchClass;                                              // (Parm)
 	TArray<struct FPlayerMember>                       Players;                                                  // (Const, Parm, OutParm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconHost.TellClientsToTravel
@@ -387,7 +387,7 @@ struct UMeshBeaconHost_OnAllPendingPlayersConnected_Params
 struct UMeshBeaconHost_AllPlayersConnected_Params
 {
 	TArray<struct FUniqueNetId>                        Players;                                                  // (Const, Parm, OutParm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconHost.GetConnectionIndexForPlayer
@@ -428,7 +428,7 @@ struct UMeshBeaconHost_OnReceivedClientConnectionRequest_Params
 // Function IpDrv.MeshBeaconHost.AllowBandwidthTesting
 struct UMeshBeaconHost_AllowBandwidthTesting_Params
 {
-	bool                                               bEnabled;                                                 // (Parm)
+	unsigned long                                      bEnabled;                                                 // (Parm)
 };
 
 // Function IpDrv.MeshBeaconHost.CancelPendingBandwidthTests
@@ -439,7 +439,7 @@ struct UMeshBeaconHost_CancelPendingBandwidthTests_Params
 // Function IpDrv.MeshBeaconHost.HasPendingBandwidthTest
 struct UMeshBeaconHost_HasPendingBandwidthTest_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconHost.CancelInProgressBandwidthTests
@@ -450,7 +450,7 @@ struct UMeshBeaconHost_CancelInProgressBandwidthTests_Params
 // Function IpDrv.MeshBeaconHost.HasInProgressBandwidthTest
 struct UMeshBeaconHost_HasInProgressBandwidthTest_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconHost.RequestClientBandwidthTest
@@ -459,7 +459,7 @@ struct UMeshBeaconHost_RequestClientBandwidthTest_Params
 	struct FUniqueNetId                                PlayerNetId;                                              // (Parm)
 	TEnumAsByte<EMeshBeaconBandwidthTestType>          TestType;                                                 // (Parm)
 	int                                                TestBufferSize;                                           // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.MeshBeaconHost.DestroyBeacon
@@ -471,7 +471,7 @@ struct UMeshBeaconHost_DestroyBeacon_Params
 struct UMeshBeaconHost_InitHostBeacon_Params
 {
 	struct FUniqueNetId                                InOwningPlayerId;                                         // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineSubsystemCommonImpl.IsPlayerInSession
@@ -479,7 +479,7 @@ struct UOnlineSubsystemCommonImpl_IsPlayerInSession_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
 	struct FUniqueNetId                                PlayerID;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineSubsystemCommonImpl.GetPlayerUniqueNetIdFromIndex
@@ -507,7 +507,7 @@ struct UOnlineGameInterfaceImpl_BindPlatformSpecificSessionToSearch_Params
 	unsigned char                                      SearchingPlayerNum;                                       // (Parm)
 	class UOnlineGameSearch*                           SearchSettings;                                           // (Parm)
 	unsigned char                                      PlatformSpecificInfo;                                     // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ReadPlatformSpecificSessionInfoBySessionName
@@ -515,7 +515,7 @@ struct UOnlineGameInterfaceImpl_ReadPlatformSpecificSessionInfoBySessionName_Par
 {
 	struct FName                                       SessionName;                                              // (Parm)
 	unsigned char                                      PlatformSpecificInfo;                                     // (Parm, OutParm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ReadPlatformSpecificSessionInfo
@@ -523,7 +523,7 @@ struct UOnlineGameInterfaceImpl_ReadPlatformSpecificSessionInfo_Params
 {
 	struct FOnlineGameSearchResult                     DesiredGame;                                              // (Const, Parm, OutParm)
 	unsigned char                                      PlatformSpecificInfo;                                     // (Parm, OutParm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.QueryNonAdvertisedData
@@ -531,7 +531,7 @@ struct UOnlineGameInterfaceImpl_QueryNonAdvertisedData_Params
 {
 	int                                                StartAt;                                                  // (Parm)
 	int                                                NumberToQuery;                                            // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.RecalculateSkillRating
@@ -539,7 +539,7 @@ struct UOnlineGameInterfaceImpl_RecalculateSkillRating_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
 	TArray<struct FUniqueNetId>                        Players;                                                  // (Const, Parm, OutParm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.AcceptGameInvite
@@ -548,7 +548,7 @@ struct UOnlineGameInterfaceImpl_AcceptGameInvite_Params
 	unsigned char                                      LocalUserNum;                                             // (Parm)
 	struct FName                                       SessionName;                                              // (Parm)
 	TArray<int>                                        participatingPlayerControllerIds;                         // (OptionalParm, Parm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearGameInviteAcceptedDelegate
@@ -594,14 +594,14 @@ struct UOnlineGameInterfaceImpl_AddArbitrationRegistrationCompleteDelegate_Param
 struct UOnlineGameInterfaceImpl_OnArbitrationRegistrationComplete_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
-	bool                                               bWasSuccessful;                                           // (Parm)
+	unsigned long                                      bWasSuccessful;                                           // (Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.RegisterForArbitration
 struct UOnlineGameInterfaceImpl_RegisterForArbitration_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearEndOnlineGameCompleteDelegate
@@ -620,14 +620,14 @@ struct UOnlineGameInterfaceImpl_AddEndOnlineGameCompleteDelegate_Params
 struct UOnlineGameInterfaceImpl_OnEndOnlineGameComplete_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
-	bool                                               bWasSuccessful;                                           // (Parm)
+	unsigned long                                      bWasSuccessful;                                           // (Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.EndOnlineGame
 struct UOnlineGameInterfaceImpl_EndOnlineGame_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearStartOnlineGameCompleteDelegate
@@ -646,14 +646,14 @@ struct UOnlineGameInterfaceImpl_AddStartOnlineGameCompleteDelegate_Params
 struct UOnlineGameInterfaceImpl_OnStartOnlineGameComplete_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
-	bool                                               bWasSuccessful;                                           // (Parm)
+	unsigned long                                      bWasSuccessful;                                           // (Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.StartOnlineGame
 struct UOnlineGameInterfaceImpl_StartOnlineGame_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearUnregisterPlayerCompleteDelegate
@@ -673,7 +673,7 @@ struct UOnlineGameInterfaceImpl_OnUnregisterPlayerComplete_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
 	struct FUniqueNetId                                PlayerID;                                                 // (Parm)
-	bool                                               bWasSuccessful;                                           // (Parm)
+	unsigned long                                      bWasSuccessful;                                           // (Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.UnregisterPlayer
@@ -681,7 +681,7 @@ struct UOnlineGameInterfaceImpl_UnregisterPlayer_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
 	struct FUniqueNetId                                PlayerID;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearRegisterPlayerCompleteDelegate
@@ -701,7 +701,7 @@ struct UOnlineGameInterfaceImpl_OnRegisterPlayerComplete_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
 	struct FUniqueNetId                                PlayerID;                                                 // (Parm)
-	bool                                               bWasSuccessful;                                           // (Parm)
+	unsigned long                                      bWasSuccessful;                                           // (Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.RegisterPlayer
@@ -709,8 +709,8 @@ struct UOnlineGameInterfaceImpl_RegisterPlayer_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
 	struct FUniqueNetId                                PlayerID;                                                 // (Parm)
-	bool                                               bWasInvited;                                              // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bWasInvited;                                              // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetResolvedConnectString
@@ -718,7 +718,7 @@ struct UOnlineGameInterfaceImpl_GetResolvedConnectString_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
 	struct FString                                     ConnectInfo;                                              // (Parm, OutParm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearJoinOnlineGameCompleteDelegate
@@ -737,7 +737,7 @@ struct UOnlineGameInterfaceImpl_AddJoinOnlineGameCompleteDelegate_Params
 struct UOnlineGameInterfaceImpl_OnJoinOnlineGameComplete_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
-	bool                                               bWasSuccessful;                                           // (Parm)
+	unsigned long                                      bWasSuccessful;                                           // (Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.JoinOnlineGame
@@ -747,14 +747,14 @@ struct UOnlineGameInterfaceImpl_JoinOnlineGame_Params
 	struct FName                                       SessionName;                                              // (Parm)
 	struct FOnlineGameSearchResult                     DesiredGame;                                              // (Const, Parm, OutParm)
 	TArray<int>                                        participatingPlayerControllerIds;                         // (OptionalParm, Parm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.FreeSearchResults
 struct UOnlineGameInterfaceImpl_FreeSearchResults_Params
 {
 	class UOnlineGameSearch*                           Search;                                                   // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearCancelFindOnlineGamesCompleteDelegate
@@ -772,13 +772,13 @@ struct UOnlineGameInterfaceImpl_AddCancelFindOnlineGamesCompleteDelegate_Params
 // Function IpDrv.OnlineGameInterfaceImpl.OnCancelFindOnlineGamesComplete
 struct UOnlineGameInterfaceImpl_OnCancelFindOnlineGamesComplete_Params
 {
-	bool                                               bWasSuccessful;                                           // (Parm)
+	unsigned long                                      bWasSuccessful;                                           // (Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.CancelFindOnlineGames
 struct UOnlineGameInterfaceImpl_CancelFindOnlineGames_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearFindOnlineGamesCompleteDelegate
@@ -799,7 +799,7 @@ struct UOnlineGameInterfaceImpl_FindOnlineGames_Params
 	unsigned char                                      SearchingPlayerNum;                                       // (Parm)
 	class UOnlineGameSearch*                           SearchSettings;                                           // (Parm)
 	int                                                numParticipatingLocalPlayers;                             // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearDestroyOnlineGameCompleteDelegate
@@ -818,15 +818,15 @@ struct UOnlineGameInterfaceImpl_AddDestroyOnlineGameCompleteDelegate_Params
 struct UOnlineGameInterfaceImpl_OnDestroyOnlineGameComplete_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
-	bool                                               bWasSuccessful;                                           // (Parm)
+	unsigned long                                      bWasSuccessful;                                           // (Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.DestroyOnlineGame
 struct UOnlineGameInterfaceImpl_DestroyOnlineGame_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
-	bool                                               bShouldCleanupTasks;                                      // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bShouldCleanupTasks;                                      // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearUpdateOnlineGameCompleteDelegate
@@ -845,7 +845,7 @@ struct UOnlineGameInterfaceImpl_AddUpdateOnlineGameCompleteDelegate_Params
 struct UOnlineGameInterfaceImpl_OnUpdateOnlineGameComplete_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
-	bool                                               bWasSuccessful;                                           // (Parm)
+	unsigned long                                      bWasSuccessful;                                           // (Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.UpdateOnlineGame
@@ -853,8 +853,8 @@ struct UOnlineGameInterfaceImpl_UpdateOnlineGame_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
 	class UOnlineGameSettings*                         UpdatedGameSettings;                                      // (Parm)
-	bool                                               bShouldRefreshOnlineData;                                 // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      bShouldRefreshOnlineData;                                 // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearCreateOnlineGameCompleteDelegate
@@ -873,7 +873,7 @@ struct UOnlineGameInterfaceImpl_AddCreateOnlineGameCompleteDelegate_Params
 struct UOnlineGameInterfaceImpl_OnCreateOnlineGameComplete_Params
 {
 	struct FName                                       SessionName;                                              // (Parm)
-	bool                                               bWasSuccessful;                                           // (Parm)
+	unsigned long                                      bWasSuccessful;                                           // (Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.CreateOnlineGameFailureID
@@ -889,7 +889,7 @@ struct UOnlineGameInterfaceImpl_CreateOnlineGame_Params
 	struct FName                                       SessionName;                                              // (Parm)
 	class UOnlineGameSettings*                         NewGameSettings;                                          // (Parm)
 	TArray<int>                                        participatingPlayerControllerIds;                         // (OptionalParm, Parm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetGameSearch
@@ -908,7 +908,7 @@ struct UOnlineGameInterfaceImpl_GetGameSettings_Params
 // Function IpDrv.OnlineGameInterfaceImpl.OnFindOnlineGamesComplete
 struct UOnlineGameInterfaceImpl_OnFindOnlineGamesComplete_Params
 {
-	bool                                               bWasSuccessful;                                           // (Parm)
+	unsigned long                                      bWasSuccessful;                                           // (Parm)
 };
 
 // Function IpDrv.PartyBeacon.DestroyBeacon
@@ -925,7 +925,7 @@ struct UPartyBeaconClient_DestroyBeacon_Params
 struct UPartyBeaconClient_CancelReservation_Params
 {
 	struct FUniqueNetId                                CancellingPartyLeader;                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.PartyBeaconClient.RequestReservationUpdate
@@ -934,7 +934,7 @@ struct UPartyBeaconClient_RequestReservationUpdate_Params
 	struct FOnlineGameSearchResult                     DesiredHost;                                              // (Const, Parm, OutParm)
 	struct FUniqueNetId                                RequestingPartyLeader;                                    // (Parm)
 	TArray<struct FPlayerReservation>                  PlayersToAdd;                                             // (Const, Parm, OutParm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.PartyBeaconClient.RequestReservation
@@ -943,7 +943,7 @@ struct UPartyBeaconClient_RequestReservation_Params
 	struct FOnlineGameSearchResult                     DesiredHost;                                              // (Const, Parm, OutParm)
 	struct FUniqueNetId                                RequestingPartyLeader;                                    // (Parm)
 	TArray<struct FPlayerReservation>                  Players;                                                  // (Const, Parm, OutParm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.PartyBeaconClient.OnHostHasCancelled
@@ -1025,7 +1025,7 @@ struct UPartyBeaconHost_RegisterPartyMembers_Params
 // Function IpDrv.PartyBeaconHost.AreReservationsFull
 struct UPartyBeaconHost_AreReservationsFull_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.PartyBeaconHost.TellClientsHostHasCancelled
@@ -1071,7 +1071,7 @@ struct UPartyBeaconHost_OnReservationChange_Params
 struct UPartyBeaconHost_HandlePlayerLogout_Params
 {
 	struct FUniqueNetId                                PlayerID;                                                 // (Parm)
-	bool                                               bMaintainParty;                                           // (Parm)
+	unsigned long                                      bMaintainParty;                                           // (Parm)
 };
 
 // Function IpDrv.PartyBeaconHost.UpdatePartyReservationEntry
@@ -1088,7 +1088,7 @@ struct UPartyBeaconHost_AddPartyReservationEntry_Params
 	struct FUniqueNetId                                PartyLeader;                                              // (Parm)
 	TArray<struct FPlayerReservation>                  PlayerMembers;                                            // (Const, Parm, OutParm, NeedCtorLink)
 	int                                                TeamNum;                                                  // (Parm)
-	bool                                               bIsHost;                                                  // (Parm)
+	unsigned long                                      bIsHost;                                                  // (Parm)
 	TEnumAsByte<EPartyReservationResult>               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -1099,7 +1099,7 @@ struct UPartyBeaconHost_InitHostBeacon_Params
 	int                                                InNumPlayersPerTeam;                                      // (Parm)
 	int                                                InNumReservations;                                        // (Parm)
 	struct FName                                       InSessionName;                                            // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.WebRequest.GetHexDigit
@@ -1201,13 +1201,13 @@ struct UWebRequest_DecodeBase64_Params
 // Function IpDrv.WebResponse.SentResponse
 struct UWebResponse_SentResponse_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.WebResponse.SentText
 struct UWebResponse_SentText_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.WebResponse.Redirect
@@ -1220,7 +1220,7 @@ struct UWebResponse_Redirect_Params
 struct UWebResponse_SendStandardHeaders_Params
 {
 	struct FString                                     ContentType;                                              // (OptionalParm, Parm, NeedCtorLink)
-	bool                                               bCache;                                                   // (OptionalParm, Parm)
+	unsigned long                                      bCache;                                                   // (OptionalParm, Parm)
 };
 
 // Function IpDrv.WebResponse.HTTPError
@@ -1239,7 +1239,7 @@ struct UWebResponse_SendHeaders_Params
 struct UWebResponse_AddHeader_Params
 {
 	struct FString                                     Header;                                                   // (Parm, NeedCtorLink)
-	bool                                               bReplace;                                                 // (OptionalParm, Parm)
+	unsigned long                                      bReplace;                                                 // (OptionalParm, Parm)
 };
 
 // Function IpDrv.WebResponse.HTTPHeader
@@ -1265,7 +1265,7 @@ struct UWebResponse_SendCachedFile_Params
 {
 	struct FString                                     Filename;                                                 // (Parm, NeedCtorLink)
 	struct FString                                     ContentType;                                              // (OptionalParm, Parm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.WebResponse.SendBinary
@@ -1279,7 +1279,7 @@ struct UWebResponse_SendBinary_Params
 struct UWebResponse_SendText_Params
 {
 	struct FString                                     Text;                                                     // (Parm, NeedCtorLink)
-	bool                                               bNoCRLF;                                                  // (OptionalParm, Parm)
+	unsigned long                                      bNoCRLF;                                                  // (OptionalParm, Parm)
 };
 
 // Function IpDrv.WebResponse.Dump
@@ -1305,14 +1305,14 @@ struct UWebResponse_LoadParsedUHTM_Params
 struct UWebResponse_IncludeBinaryFile_Params
 {
 	struct FString                                     Filename;                                                 // (Parm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.WebResponse.IncludeUHTM
 struct UWebResponse_IncludeUHTM_Params
 {
 	struct FString                                     Filename;                                                 // (Parm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.WebResponse.ClearSubst
@@ -1325,14 +1325,14 @@ struct UWebResponse_Subst_Params
 {
 	struct FString                                     Variable;                                                 // (Parm, NeedCtorLink)
 	struct FString                                     Value;                                                    // (Parm, CoerceParm, NeedCtorLink)
-	bool                                               bClear;                                                   // (OptionalParm, Parm)
+	unsigned long                                      bClear;                                                   // (OptionalParm, Parm)
 };
 
 // Function IpDrv.WebResponse.FileExists
 struct UWebResponse_FileExists_Params
 {
 	struct FString                                     Filename;                                                 // (Parm, NeedCtorLink)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.WebApplication.PostQuery
@@ -1354,7 +1354,7 @@ struct UWebApplication_PreQuery_Params
 {
 	class UWebRequest*                                 Request;                                                  // (Parm)
 	class UWebResponse*                                Response;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.WebApplication.CleanupApp
@@ -1441,7 +1441,7 @@ struct UIniLocPatcherMcp_AddReadFileDelegate_Params
 // Function IpDrv.IniLocPatcherMcp.OnReadFileComplete
 struct UIniLocPatcherMcp_OnReadFileComplete_Params
 {
-	bool                                               bWasSuccessful;                                           // (Parm)
+	unsigned long                                      bWasSuccessful;                                           // (Parm)
 	struct FString                                     Filename;                                                 // (Parm, NeedCtorLink)
 };
 
@@ -1458,7 +1458,7 @@ struct UIniLocPatcherMcp_Init_Params
 // Function IpDrv.WebConnection.IsHanging
 struct AWebConnection_IsHanging_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function IpDrv.WebConnection.Cleanup

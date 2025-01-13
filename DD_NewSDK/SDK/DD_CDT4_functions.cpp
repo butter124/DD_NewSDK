@@ -16,13 +16,13 @@ namespace Classes
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // float                          equipmentQuality               (Parm)
-// bool                           doResetStatsToTemplate         (OptionalParm, Parm)
-// bool                           bDontUseMissionRandomizerMultiplier (OptionalParm, Parm)
+// unsigned long                  doResetStatsToTemplate         (OptionalParm, Parm)
+// unsigned long                  bDontUseMissionRandomizerMultiplier (OptionalParm, Parm)
 // float                          RandomizerMultiplierOverride   (OptionalParm, Parm)
-// bool                           bIsForShop                     (OptionalParm, Parm)
-// bool                           bAllowTranscendentGear         (OptionalParm, Parm)
+// unsigned long                  bIsForShop                     (OptionalParm, Parm)
+// unsigned long                  bAllowTranscendentGear         (OptionalParm, Parm)
 
-void UHeroEquipment_Familiar_CoreHealer::AddRandomizeValues(float equipmentQuality, bool doResetStatsToTemplate, bool bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, bool bIsForShop, bool bAllowTranscendentGear)
+void UHeroEquipment_Familiar_CoreHealer::AddRandomizeValues(float equipmentQuality, unsigned long doResetStatsToTemplate, unsigned long bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, unsigned long bIsForShop, unsigned long bAllowTranscendentGear)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT4.HeroEquipment_Familiar_CoreHealer.AddRandomizeValues");
 
@@ -74,10 +74,10 @@ int UHeroEquipment_Familiar_CoreHealer::GetStatLevelUpAmountIterations(TEnumAsBy
 // Parameters:
 // TEnumAsByte<EEquipmentStatType> EQS                            (Parm)
 // int                            statSubIndex                   (OptionalParm, Parm)
-// bool                           SetAsValue                     (OptionalParm, Parm)
+// unsigned long                  SetAsValue                     (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UHeroEquipment_Familiar_CoreHealer::GetNextStatLevelUpValue(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, bool SetAsValue)
+int UHeroEquipment_Familiar_CoreHealer::GetNextStatLevelUpValue(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, unsigned long SetAsValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT4.HeroEquipment_Familiar_CoreHealer.GetNextStatLevelUpValue");
 
@@ -125,9 +125,9 @@ void UHeroEquipment_Familiar_CoreHealer::InitFromNetInfo(const struct FEquipment
 // int                            statSubIndex                   (Parm)
 // int                            EquipmentLevelToCheck          (Parm)
 // float                          Value                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UHeroEquipment_Familiar_CoreHealer::CheckStatLevelUpIterations(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, int EquipmentLevelToCheck, float Value)
+unsigned long UHeroEquipment_Familiar_CoreHealer::CheckStatLevelUpIterations(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, int EquipmentLevelToCheck, float Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT4.HeroEquipment_Familiar_CoreHealer.CheckStatLevelUpIterations");
 
@@ -152,11 +152,11 @@ bool UHeroEquipment_Familiar_CoreHealer::CheckStatLevelUpIterations(TEnumAsByte<
 // Parameters:
 // TEnumAsByte<EEquipmentStatType> EQS                            (Parm)
 // int                            statSubIndex                   (OptionalParm, Parm)
-// bool                           IsInForgeUI                    (OptionalParm, Parm)
-// bool                           bIgnoreManaRequirement         (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  IsInForgeUI                    (OptionalParm, Parm)
+// unsigned long                  bIgnoreManaRequirement         (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UHeroEquipment_Familiar_CoreHealer::AllowStatLevelUp(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, bool IsInForgeUI, bool bIgnoreManaRequirement)
+unsigned long UHeroEquipment_Familiar_CoreHealer::AllowStatLevelUp(TEnumAsByte<EEquipmentStatType> EQS, int statSubIndex, unsigned long IsInForgeUI, unsigned long bIgnoreManaRequirement)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT4.HeroEquipment_Familiar_CoreHealer.AllowStatLevelUp");
 
@@ -223,11 +223,11 @@ void UHeroEquipment_Familiar_CoreHealer::ApplyPrimaryDamageMultiplierDisplay(int
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // TEnumAsByte<EEquipmentStatType> equipmentStatType              (Parm)
-// bool                           returnFinalAddedValue          (OptionalParm, Parm)
-// bool                           includeStatLevelUp             (OptionalParm, Parm)
+// unsigned long                  returnFinalAddedValue          (OptionalParm, Parm)
+// unsigned long                  includeStatLevelUp             (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UHeroEquipment_Familiar_CoreHealer::GetEquipmentStatValue(TEnumAsByte<EEquipmentStatType> equipmentStatType, bool returnFinalAddedValue, bool includeStatLevelUp)
+float UHeroEquipment_Familiar_CoreHealer::GetEquipmentStatValue(TEnumAsByte<EEquipmentStatType> equipmentStatType, unsigned long returnFinalAddedValue, unsigned long includeStatLevelUp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT4.HeroEquipment_Familiar_CoreHealer.GetEquipmentStatValue");
 
@@ -494,9 +494,9 @@ void UHeroEquipment_Familiar_CoreHealer::UpdateRotation(float DeltaTime)
 // Function CDT4.HeroEquipment_Familiar_CoreHealer.ShutDown
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           isDestruction                  (OptionalParm, Parm)
+// unsigned long                  isDestruction                  (OptionalParm, Parm)
 
-void UHeroEquipment_Familiar_CoreHealer::ShutDown(bool isDestruction)
+void UHeroEquipment_Familiar_CoreHealer::ShutDown(unsigned long isDestruction)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT4.HeroEquipment_Familiar_CoreHealer.ShutDown");
 
@@ -590,9 +590,9 @@ void UHeroEquipment_Familiar_MiniQueen::BeginMeleeAttack()
 // (Defined, Public)
 // Parameters:
 // TScriptInterface<class UDunDefTargetableInterface> Target                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UHeroEquipment_Familiar_MiniQueen::CanWebTarget(const TScriptInterface<class UDunDefTargetableInterface>& Target)
+unsigned long UHeroEquipment_Familiar_MiniQueen::CanWebTarget(const TScriptInterface<class UDunDefTargetableInterface>& Target)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CDT4.HeroEquipment_Familiar_MiniQueen.CanWebTarget");
 

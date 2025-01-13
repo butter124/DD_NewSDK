@@ -57,16 +57,16 @@ public:
 	void RemoveCurrentGenieFromLamp();
 	void GiveLampAGenie(class AController* newGenie);
 	int GetToolTipPriority();
-	bool TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip);
-	bool ContinueDrawingToolTip(bool ContinueDrawing);
+	unsigned long TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip);
+	unsigned long ContinueDrawingToolTip(unsigned long ContinueDrawing);
 	void DrawToolTip(class UCanvas* C, int PosX, int PosY, class ULocalPlayer* ForPlayer);
 	float GetActivationOffset();
 	float GetActivationWeighting();
 	void Client_Activate(class ADunDefPlayerController* PC, int activationType);
-	void Server_Activate(class ADunDefPlayerController* PC, bool forceActivation, int activationType);
+	void Server_Activate(class ADunDefPlayerController* PC, unsigned long forceActivation, int activationType);
 	int AllowActivation(class ADunDefPlayerController* PC, int activationType);
 	void PostBeginPlay();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -150,14 +150,14 @@ public:
 
 	void NotifyDjinnDeath(class ADunDefDjinn* deadDjinn);
 	void SpawnDjinn();
-	bool KeepSpawningBabies();
+	unsigned long KeepSpawningBabies();
 	void ClearHitList();
 	void SetTongueSwing();
-	bool AddToSwingHurtList(class AActor* newEntry);
-	bool ShouldDamage(class AActor* act);
-	bool CheckForBurp();
-	bool CheckForMelee();
-	bool CheckForSuperTongue();
+	unsigned long AddToSwingHurtList(class AActor* newEntry);
+	unsigned long ShouldDamage(class AActor* act);
+	unsigned long CheckForBurp();
+	unsigned long CheckForMelee();
+	unsigned long CheckForSuperTongue();
 	void BiteStop();
 	void BiteStart();
 	void DoBurp();
@@ -168,9 +168,9 @@ public:
 	void NotifyLampRubbed(class AActor* newSpawnPoint);
 	void NotifyReformed();
 	void LeaveLamp();
-	bool CheckActiveDamage();
-	bool FindTargetRightEye(bool bSetTarget);
-	bool FindTargetLeftEye(bool bSetTarget);
+	unsigned long CheckActiveDamage();
+	unsigned long FindTargetRightEye(unsigned long bSetTarget);
+	unsigned long FindTargetLeftEye(unsigned long bSetTarget);
 	void TraceRightEye(const struct FVector& beamStartLoc, const struct FVector& BeamEndLoc, class UClass* currentEyeDmgType);
 	void TraceLeftEye(const struct FVector& beamStartLoc, const struct FVector& BeamEndLoc, class UClass* currentEyeDmgType);
 	void ShutDownEyes();
@@ -178,8 +178,8 @@ public:
 	void GoToLamp();
 	void SetRageMode();
 	void NotifyTakeHitEX(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum, class AActor* DamageCauser);
-	bool WantsHurtAnimation();
-	bool ForceIntoLamp();
+	unsigned long WantsHurtAnimation();
+	unsigned long ForceIntoLamp();
 	void SetInitialState();
 	void PostBeginPlay();
 };
@@ -204,7 +204,7 @@ public:
 	void DoActivation(class ADunDefPlayerController* PC);
 	void RemoveCurrentGenieFromLamp();
 	void GiveLampAGenie(class AController* newGenie);
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 };
 
 
@@ -280,20 +280,20 @@ public:
 	void Destroyed();
 	void DoAllyDjinnTimeOut();
 	void NotifyLampRubbed(class AActor* SpawnPoint, class ADunDefPlayerController* RubbedController);
-	bool PickLamp();
-	bool AllowDeath();
+	unsigned long PickLamp();
+	unsigned long AllowDeath();
 	void NotifyFinishedReforming();
 	void LeaveLamp();
 	void NotifyGenieOfDeath(class APawn* inPawn);
 	void PawnDied(class APawn* inPawn);
 	void SetMyGenie(class ADunDefGenieBossController* newGenie);
 	void ForceFlee(class ADunDefPawn* ForceFleeTarget);
-	bool CheckForFlee();
+	unsigned long CheckForFlee();
 	class ADunDefProjectile* GetProjectile();
 	void PickProjectileType();
 	void ShootProjectile();
 	void CheckForCustomAttacks();
-	bool IsValidUpgradeTower(class ADunDefTower* Tower);
+	unsigned long IsValidUpgradeTower(class ADunDefTower* Tower);
 	void CastTowerDestructSpell();
 	class AActor* FindDestroyTower();
 	void DestroyTower();
@@ -302,21 +302,21 @@ public:
 	void HealGoldTarget();
 	void CastGoldEnemySpell();
 	class AActor* FindGoldEnemyTarget();
-	bool CheckValidGoldTarget(class ADunDefEnemy* checkActor);
+	unsigned long CheckValidGoldTarget(class ADunDefEnemy* checkActor);
 	float PlayFinishGoldAnim();
 	void FinishGoldEnemyCast();
 	void CheckCastTimeout();
-	bool CheckForCastingMovement(bool bHasLineOfSight);
+	unsigned long CheckForCastingMovement(unsigned long bHasLineOfSight);
 	void ClearCurrentSpellTarget();
 	void NotifyTakeHitEX(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum, class AActor* DamageCauser);
 	void NotifyDamageTaken(int DamageAmount, class AActor* DamageCauser);
-	bool CheckCurrentCastTarget();
+	unsigned long CheckCurrentCastTarget();
 	void Cough(const struct FName& coughAnimName);
-	void InterruptSpellCast(bool bNoSeeking);
+	void InterruptSpellCast(unsigned long bNoSeeking);
 	void CheckSpellDamageAmount(class AActor* DamageCauser);
-	bool CheckAllowedCastingStart();
-	bool IsWithinCastingRange(class AActor* FollowTarget);
-	class ANavigationPoint* FindNearestFleePoint(bool bIgnoreFleeAngle);
+	unsigned long CheckAllowedCastingStart();
+	unsigned long IsWithinCastingRange(class AActor* FollowTarget);
+	class ANavigationPoint* FindNearestFleePoint(unsigned long bIgnoreFleeAngle);
 	void CheckFleeDistance();
 	void StopFlee();
 	void CheckDirectReachability();
@@ -324,10 +324,10 @@ public:
 	void MoveUnreachable(const struct FVector& AttemptedDest, class AActor* AttemptedTarget);
 	struct FVector GetObstructionJumpForwardDir(const struct FVector& forwardDir);
 	void ObstructionJump(const struct FVector& jumpForwardDir, const struct FVector& jumpSideDir);
-	struct FVector GeneratePathToActor(class AActor* Goal, float WithinDistance, bool bAllowPartialPath);
-	bool MoveAroundBlockade(class AActor* blockadeActor, float BlockadeWidth, const struct FVector& HitNormal, bool SkipBlockingCheck);
-	bool NavActorReachable(class AActor* A);
-	class ANavigationPoint* FindNearestNavPointTo(class AActor* A, bool bCheckVisible);
+	struct FVector GeneratePathToActor(class AActor* Goal, float WithinDistance, unsigned long bAllowPartialPath);
+	unsigned long MoveAroundBlockade(class AActor* blockadeActor, float BlockadeWidth, const struct FVector& HitNormal, unsigned long SkipBlockingCheck);
+	unsigned long NavActorReachable(class AActor* A);
+	class ANavigationPoint* FindNearestNavPointTo(class AActor* A, unsigned long bCheckVisible);
 	float GetTargetingMultiplier(class AActor* ActorRef, float baseDesirability);
 	void PostBeginPlay();
 };
@@ -446,7 +446,7 @@ public:
 	}
 
 
-	float GetPawnDamageModifier(bool bDontIncludeAbilities);
+	float GetPawnDamageModifier(unsigned long bDontIncludeAbilities);
 	class UTexture2D* GetMiniMapIconTexture();
 	void UpdateToTeamMaterial();
 	void NotifyTeamSwitch();
@@ -460,7 +460,7 @@ public:
 	struct FColor GetMiniMapIconColor();
 	void CheckDjinnProximity();
 	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
-	bool AllowTrapSpringing(class ADunDefTower_DetonationType* trap);
+	unsigned long AllowTrapSpringing(class ADunDefTower_DetonationType* trap);
 	void ShutDownAllCastingVFX();
 	float PlayAttackAnimation();
 	void GetProjectileLocAndRot(struct FVector* Position, struct FRotator* Orientation);
@@ -473,7 +473,7 @@ public:
 	float StartTowerDestructCast(class AActor* castTarget);
 	void StartTowerBeam();
 	void UpdateTower();
-	bool Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	unsigned long Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
 	void AdjustDamage(class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class UObject* WhatHitMe, int* inDamage, struct FVector* Momentum);
 	void UnSetGoldenEnemy(class ADunDefEnemy* Enemy);
 	void SetGoldenEnemy(class ADunDefEnemy* Enemy);
@@ -488,7 +488,7 @@ public:
 	void SetMovementPhysics();
 	void DisableSpawnCollision();
 	void PostBeginPlay();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	float GetTowerTargetingDesirability(class ADunDefTower* forTower);
 };
 
@@ -511,11 +511,11 @@ public:
 
 
 	class ADjinnLamp* PickDjinnLamp();
-	bool IsActorAlreadyGold(class AActor* checkActor);
+	unsigned long IsActorAlreadyGold(class AActor* checkActor);
 	void RemoveGoldenActorIndexed(int Index);
 	void RemoveGoldenActor(class AActor* removeActor);
 	void AddGoldenActor(class AActor* NewActor);
-	bool IsActorAlreadyTargeted(class AActor* checkActor);
+	unsigned long IsActorAlreadyTargeted(class AActor* checkActor);
 	void RemoveTargetedActor(class AActor* removeActor);
 	void AddTargetedActor(class AActor* NewActor);
 	void PostBeginPlay();
@@ -604,8 +604,8 @@ public:
 	}
 
 
-	void ForceSkelUpdatingDelayTurnOff(bool Force, float delayTurnOff);
-	void ForceSkelUpdating(bool Force, bool bOnlyForceTickAnimNodes);
+	void ForceSkelUpdatingDelayTurnOff(unsigned long Force, float delayTurnOff);
+	void ForceSkelUpdating(unsigned long Force, unsigned long bOnlyForceTickAnimNodes);
 	void ClearElementalEffect();
 	class UClass* GetElementalDamageType();
 	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
@@ -630,7 +630,7 @@ public:
 	void SpawnMoveToLampVFX(const struct FVector& particleDir);
 	float PlayBabySpawnAnim();
 	float PlayBurpAnim();
-	void PlayDisappearAnim(bool bPlayEffects, class AActor* newLamp);
+	void PlayDisappearAnim(unsigned long bPlayEffects, class AActor* newLamp);
 	float PlayLickAnim();
 	float PlaySuperLickAnim();
 	void PlayEyeBeamLoop();
@@ -641,7 +641,7 @@ public:
 	void StartEyeDamage();
 	void SetLeftEyeTarget(class AActor* newLeftEyeTarget);
 	void SetRightEyeTarget(class AActor* newRightEyeTarget);
-	float PlayEyeAttackStart(bool bIgnoreEyeTracking);
+	float PlayEyeAttackStart(unsigned long bIgnoreEyeTracking);
 	void StartUpEyes(float DamageTime);
 	void AdjustDamage(class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class UObject* WhatHitMe, int* inDamage, struct FVector* Momentum);
 	void UnHideHead();
@@ -656,10 +656,10 @@ public:
 	void UpdateHeadLookAt(float DeltaTime);
 	void SetMovementPhysics();
 	void Tick(float DeltaTime);
-	void SetOnAllOverlappingAuras(bool bSet);
+	void SetOnAllOverlappingAuras(unsigned long bSet);
 	void SetInitialState();
 	void PostBeginPlay();
-	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 

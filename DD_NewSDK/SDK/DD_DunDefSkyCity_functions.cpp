@@ -173,9 +173,9 @@ void ADunDefProjectile_Meteor::PostBeginPlay()
 // Function DunDefSkyCity.DropOffPoint.GetIsBeingUsed
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADropOffPoint::GetIsBeingUsed()
+unsigned long ADropOffPoint::GetIsBeingUsed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DropOffPoint.GetIsBeingUsed");
 
@@ -194,9 +194,9 @@ bool ADropOffPoint::GetIsBeingUsed()
 // Function DunDefSkyCity.DropOffPoint.SetBeingUsed
 // (Defined, Public)
 // Parameters:
-// bool                           bNowBeingUsed                  (Parm)
+// unsigned long                  bNowBeingUsed                  (Parm)
 
-void ADropOffPoint::SetBeingUsed(bool bNowBeingUsed)
+void ADropOffPoint::SetBeingUsed(unsigned long bNowBeingUsed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DropOffPoint.SetBeingUsed");
 
@@ -215,9 +215,9 @@ void ADropOffPoint::SetBeingUsed(bool bNowBeingUsed)
 // (Defined, Simulated, Public)
 // Parameters:
 // class AProjectile*             P                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_DamagingInterpActor::StopsProjectile(class AProjectile* P)
+unsigned long ADunDef_DamagingInterpActor::StopsProjectile(class AProjectile* P)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_DamagingInterpActor.StopsProjectile");
 
@@ -279,9 +279,9 @@ void ADunDef_DamagingInterpActor::RanInto(class AActor* Other)
 // (Defined, Event, Public)
 // Parameters:
 // class AActor*                  Other                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_DamagingInterpActor::EncroachingOn(class AActor* Other)
+unsigned long ADunDef_DamagingInterpActor::EncroachingOn(class AActor* Other)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_DamagingInterpActor.EncroachingOn");
 
@@ -318,10 +318,10 @@ void ADunDef_DamagingInterpActor::ClearDamageList()
 // Function DunDefSkyCity.DunDef_DamagingInterpActor.SetDoDamage
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           bSetDamage                     (Parm)
-// bool                           bToggleCollision               (OptionalParm, Parm)
+// unsigned long                  bSetDamage                     (Parm)
+// unsigned long                  bToggleCollision               (OptionalParm, Parm)
 
-void ADunDef_DamagingInterpActor::SetDoDamage(bool bSetDamage, bool bToggleCollision)
+void ADunDef_DamagingInterpActor::SetDoDamage(unsigned long bSetDamage, unsigned long bToggleCollision)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_DamagingInterpActor.SetDoDamage");
 
@@ -340,9 +340,9 @@ void ADunDef_DamagingInterpActor::SetDoDamage(bool bSetDamage, bool bToggleColli
 // Function DunDefSkyCity.DunDef_OldOne.ForceLineOfSight
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::ForceLineOfSight()
+unsigned long ADunDef_OldOne::ForceLineOfSight()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.ForceLineOfSight");
 
@@ -382,9 +382,9 @@ float ADunDef_OldOne::GetLightningTowerDamagePercent()
 // Function DunDefSkyCity.DunDef_OldOne.setIsWebbed
 // (Defined, Public)
 // Parameters:
-// bool                           isWebbed                       (Parm)
+// unsigned long                  isWebbed                       (Parm)
 
-void ADunDef_OldOne::setIsWebbed(bool isWebbed)
+void ADunDef_OldOne::setIsWebbed(unsigned long isWebbed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.setIsWebbed");
 
@@ -402,9 +402,9 @@ void ADunDef_OldOne::setIsWebbed(bool isWebbed)
 // Function DunDefSkyCity.DunDef_OldOne.isWebbed
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::isWebbed()
+unsigned long ADunDef_OldOne::isWebbed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.isWebbed");
 
@@ -423,9 +423,9 @@ bool ADunDef_OldOne::isWebbed()
 // Function DunDefSkyCity.DunDef_OldOne.GetChainIgnore
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::GetChainIgnore()
+unsigned long ADunDef_OldOne::GetChainIgnore()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.GetChainIgnore");
 
@@ -444,9 +444,9 @@ bool ADunDef_OldOne::GetChainIgnore()
 // Function DunDefSkyCity.DunDef_OldOne.SetChainIgnore
 // (Defined, Public)
 // Parameters:
-// bool                           ignore                         (Parm)
+// unsigned long                  ignore                         (Parm)
 
-void ADunDef_OldOne::SetChainIgnore(bool ignore)
+void ADunDef_OldOne::SetChainIgnore(unsigned long ignore)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.SetChainIgnore");
 
@@ -465,9 +465,9 @@ void ADunDef_OldOne::SetChainIgnore(bool ignore)
 // (Defined, Public)
 // Parameters:
 // class ADunDefTower_ChainLightning* Tower                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::IsBeingChainedBy(class ADunDefTower_ChainLightning* Tower)
+unsigned long ADunDef_OldOne::IsBeingChainedBy(class ADunDefTower_ChainLightning* Tower)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.IsBeingChainedBy");
 
@@ -527,9 +527,9 @@ void ADunDef_OldOne::AddToChainingTowers(class ADunDefTower_ChainLightning* Towe
 // Function DunDefSkyCity.DunDef_OldOne.AllowSuction
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::AllowSuction()
+unsigned long ADunDef_OldOne::AllowSuction()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.AllowSuction");
 
@@ -550,9 +550,9 @@ bool ADunDef_OldOne::AllowSuction()
 // Parameters:
 // struct FName                   inAnim                         (Parm)
 // float                          TimeFromEndToConsiderFinished  (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::IsPlayingCustomAnim(const struct FName& inAnim, float TimeFromEndToConsiderFinished)
+unsigned long ADunDef_OldOne::IsPlayingCustomAnim(const struct FName& inAnim, float TimeFromEndToConsiderFinished)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.IsPlayingCustomAnim");
 
@@ -654,9 +654,9 @@ void ADunDef_OldOne::NotifyHealthLevel(class ADunDef_OldOneCrystals* healthCryst
 // float                          HealPct                        (Parm)
 // class AController*             Healer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
-// bool                           bShowFloatingNumbers           (OptionalParm, Parm)
+// unsigned long                  bShowFloatingNumbers           (OptionalParm, Parm)
 
-void ADunDef_OldOne::HealPctOfMaxHealth(float HealPct, class AController* Healer, class UClass* DamageType, bool bShowFloatingNumbers)
+void ADunDef_OldOne::HealPctOfMaxHealth(float HealPct, class AController* Healer, class UClass* DamageType, unsigned long bShowFloatingNumbers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.HealPctOfMaxHealth");
 
@@ -698,10 +698,10 @@ float ADunDef_OldOne::GetHealthPercent()
 // Function DunDefSkyCity.DunDef_OldOne.GetHealth
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
-// bool                           bGetMax                        (OptionalParm, Parm)
+// unsigned long                  bGetMax                        (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int ADunDef_OldOne::GetHealth(bool bGetMax)
+int ADunDef_OldOne::GetHealth(unsigned long bGetMax)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.GetHealth");
 
@@ -723,9 +723,9 @@ int ADunDef_OldOne::GetHealth(bool bGetMax)
 // Parameters:
 // class AActor*                  Mover                          (Parm)
 // struct FVector                 NewLoc                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::ForceMoveActor(class AActor* Mover, const struct FVector& NewLoc)
+unsigned long ADunDef_OldOne::ForceMoveActor(class AActor* Mover, const struct FVector& NewLoc)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.ForceMoveActor");
 
@@ -788,9 +788,9 @@ float ADunDef_OldOne::GetMass()
 // Function DunDefSkyCity.DunDef_OldOne.AllowDarknessIgnorance
 // (Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::AllowDarknessIgnorance()
+unsigned long ADunDef_OldOne::AllowDarknessIgnorance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.AllowDarknessIgnorance");
 
@@ -810,9 +810,9 @@ bool ADunDef_OldOne::AllowDarknessIgnorance()
 // (HasOptionalParms, Public)
 // Parameters:
 // class AActor*                  Target                         (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::ForceFriendlyFire(class AActor* Target)
+unsigned long ADunDef_OldOne::ForceFriendlyFire(class AActor* Target)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.ForceFriendlyFire");
 
@@ -975,9 +975,9 @@ float ADunDef_OldOne::GetAttackRangeOffset()
 // Parameters:
 // TScriptInterface<class UDunDefTargetableInterface> instigatorActor                (Parm)
 // class AController*             OptionalController             (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::IgnoreFriendlyFireDamage(const TScriptInterface<class UDunDefTargetableInterface>& instigatorActor, class AController* OptionalController)
+unsigned long ADunDef_OldOne::IgnoreFriendlyFireDamage(const TScriptInterface<class UDunDefTargetableInterface>& instigatorActor, class AController* OptionalController)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.IgnoreFriendlyFireDamage");
 
@@ -1865,9 +1865,9 @@ void ADunDef_OldOne::DoPhaseShift()
 // Parameters:
 // struct FVector                 LocCheck                       (Parm)
 // float                          distCheck                      (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::ArePlayersWithinRange(const struct FVector& LocCheck, float distCheck)
+unsigned long ADunDef_OldOne::ArePlayersWithinRange(const struct FVector& LocCheck, float distCheck)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.ArePlayersWithinRange");
 
@@ -1905,9 +1905,9 @@ void ADunDef_OldOne::DoDeath()
 // Function DunDefSkyCity.DunDef_OldOne.CheckCrystalDeaths
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::CheckCrystalDeaths()
+unsigned long ADunDef_OldOne::CheckCrystalDeaths()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.CheckCrystalDeaths");
 
@@ -1997,9 +1997,9 @@ void ADunDef_OldOne::RightHandProjectile()
 // Function DunDefSkyCity.DunDef_OldOne.PickSmashAttack
 // (Defined, Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::PickSmashAttack()
+unsigned long ADunDef_OldOne::PickSmashAttack()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.PickSmashAttack");
 
@@ -2035,9 +2035,9 @@ void ADunDef_OldOne::DoProjectileAttack()
 // Function DunDefSkyCity.DunDef_OldOne.CheckProjectileAttack
 // (Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::CheckProjectileAttack()
+unsigned long ADunDef_OldOne::CheckProjectileAttack()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.CheckProjectileAttack");
 
@@ -2056,9 +2056,9 @@ bool ADunDef_OldOne::CheckProjectileAttack()
 // Function DunDefSkyCity.DunDef_OldOne.CheckForTaunt
 // (Simulated, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::CheckForTaunt()
+unsigned long ADunDef_OldOne::CheckForTaunt()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.CheckForTaunt");
 
@@ -2077,9 +2077,9 @@ bool ADunDef_OldOne::CheckForTaunt()
 // Function DunDefSkyCity.DunDef_OldOne.CheckForBeamAttack
 // (Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::CheckForBeamAttack()
+unsigned long ADunDef_OldOne::CheckForBeamAttack()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.CheckForBeamAttack");
 
@@ -2210,9 +2210,9 @@ void ADunDef_OldOne::StartMeteorAttack()
 // Function DunDefSkyCity.DunDef_OldOne.CheckForMeteorAttack
 // (Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::CheckForMeteorAttack()
+unsigned long ADunDef_OldOne::CheckForMeteorAttack()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.CheckForMeteorAttack");
 
@@ -2231,9 +2231,9 @@ bool ADunDef_OldOne::CheckForMeteorAttack()
 // Function DunDefSkyCity.DunDef_OldOne.CheckForFlame
 // (Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::CheckForFlame()
+unsigned long ADunDef_OldOne::CheckForFlame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.CheckForFlame");
 
@@ -2252,9 +2252,9 @@ bool ADunDef_OldOne::CheckForFlame()
 // Function DunDefSkyCity.DunDef_OldOne.CheckForLazer
 // (Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::CheckForLazer()
+unsigned long ADunDef_OldOne::CheckForLazer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.CheckForLazer");
 
@@ -2273,9 +2273,9 @@ bool ADunDef_OldOne::CheckForLazer()
 // Function DunDefSkyCity.DunDef_OldOne.CheckForSweep
 // (Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::CheckForSweep()
+unsigned long ADunDef_OldOne::CheckForSweep()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.CheckForSweep");
 
@@ -2294,9 +2294,9 @@ bool ADunDef_OldOne::CheckForSweep()
 // Function DunDefSkyCity.DunDef_OldOne.EndAttack
 // (HasOptionalParms, Public)
 // Parameters:
-// bool                           bDontEndState                  (OptionalParm, Parm)
+// unsigned long                  bDontEndState                  (OptionalParm, Parm)
 
-void ADunDef_OldOne::EndAttack(bool bDontEndState)
+void ADunDef_OldOne::EndAttack(unsigned long bDontEndState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.EndAttack");
 
@@ -2567,11 +2567,11 @@ void ADunDef_OldOne::PickAttack()
 // Parameters:
 // float                          blendTimeOut                   (OptionalParm, Parm)
 // struct FName                   CustomAnimationToStop          (OptionalParm, Parm)
-// bool                           bReplicate                     (OptionalParm, Parm)
-// bool                           bForceReplication              (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bReplicate                     (OptionalParm, Parm)
+// unsigned long                  bForceReplication              (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOne::StopCustomAnim(float blendTimeOut, const struct FName& CustomAnimationToStop, bool bReplicate, bool bForceReplication)
+unsigned long ADunDef_OldOne::StopCustomAnim(float blendTimeOut, const struct FName& CustomAnimationToStop, unsigned long bReplicate, unsigned long bForceReplication)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.StopCustomAnim");
 
@@ -2596,16 +2596,16 @@ bool ADunDef_OldOne::StopCustomAnim(float blendTimeOut, const struct FName& Cust
 // Parameters:
 // struct FName                   inAnim                         (Parm)
 // float                          blendTimeIn                    (OptionalParm, Parm)
-// bool                           Looping                        (OptionalParm, Parm)
+// unsigned long                  Looping                        (OptionalParm, Parm)
 // float                          Speed                          (OptionalParm, Parm)
 // float                          BlendOutTime                   (OptionalParm, Parm)
-// bool                           bOverride                      (OptionalParm, Parm)
-// bool                           Replicate                      (OptionalParm, Parm)
-// bool                           bUninterruptable               (OptionalParm, Parm)
-// bool                           bReplicateToOwners             (OptionalParm, Parm)
+// unsigned long                  bOverride                      (OptionalParm, Parm)
+// unsigned long                  Replicate                      (OptionalParm, Parm)
+// unsigned long                  bUninterruptable               (OptionalParm, Parm)
+// unsigned long                  bReplicateToOwners             (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float ADunDef_OldOne::PlayCustomAnim(const struct FName& inAnim, float blendTimeIn, bool Looping, float Speed, float BlendOutTime, bool bOverride, bool Replicate, bool bUninterruptable, bool bReplicateToOwners)
+float ADunDef_OldOne::PlayCustomAnim(const struct FName& inAnim, float blendTimeIn, unsigned long Looping, float Speed, float BlendOutTime, unsigned long bOverride, unsigned long Replicate, unsigned long bUninterruptable, unsigned long bReplicateToOwners)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.PlayCustomAnim");
 
@@ -2712,13 +2712,13 @@ void ADunDef_OldOne::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDef_OldOne::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDef_OldOne::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.ExecReplicatedFunction");
 
@@ -2801,9 +2801,9 @@ float ADunDef_OldOneCrystals::DTGetTowerTargetingDesirability(class ADunDefTower
 // Parameters:
 // TScriptInterface<class UDunDefTargetableInterface> instigatorActor                (Parm)
 // class AController*             OptionalController             (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOneCrystals::IgnoreFriendlyFireDamage(const TScriptInterface<class UDunDefTargetableInterface>& instigatorActor, class AController* OptionalController)
+unsigned long ADunDef_OldOneCrystals::IgnoreFriendlyFireDamage(const TScriptInterface<class UDunDefTargetableInterface>& instigatorActor, class AController* OptionalController)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOneCrystals.IgnoreFriendlyFireDamage");
 
@@ -2825,9 +2825,9 @@ bool ADunDef_OldOneCrystals::IgnoreFriendlyFireDamage(const TScriptInterface<cla
 // (Defined, Simulated, Public, HasDefaults)
 // Parameters:
 // class ADunDefHUD*              H                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOneCrystals::DrawMyHUD(class ADunDefHUD* H)
+unsigned long ADunDef_OldOneCrystals::DrawMyHUD(class ADunDefHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOneCrystals.DrawMyHUD");
 
@@ -2965,9 +2965,9 @@ void ADunDef_OldOneCrystals::RepairCrystal()
 // (Defined, Simulated, Public)
 // Parameters:
 // class AProjectile*             P                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDef_OldOneCrystals::StopsProjectile(class AProjectile* P)
+unsigned long ADunDef_OldOneCrystals::StopsProjectile(class AProjectile* P)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOneCrystals.StopsProjectile");
 
@@ -3230,10 +3230,10 @@ void ADunDef_OldOneCrystals::ReplicatedEvent(const struct FName& VarName)
 // struct FVector                 HurtOrigin                     (Parm)
 // class AActor*                  IgnoredActor                   (OptionalParm, Parm)
 // class AController*             InstigatedByController         (OptionalParm, Parm)
-// bool                           bDoFullDamage                  (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bDoFullDamage                  (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefOldOneBreath::HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, bool bDoFullDamage)
+unsigned long ADunDefOldOneBreath::HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, unsigned long bDoFullDamage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefOldOneBreath.HurtRadius");
 
@@ -3267,10 +3267,10 @@ bool ADunDefOldOneBreath::HurtRadius(float BaseDamage, float DamageRadius, class
 // struct FVector                 HurtOrigin                     (Parm)
 // class AActor*                  IgnoredActor                   (OptionalParm, Parm)
 // class AController*             InstigatedByController         (OptionalParm, Parm)
-// bool                           bDoFullDamage                  (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bDoFullDamage                  (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefEmitterShockwave::RingHurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, bool bDoFullDamage)
+unsigned long ADunDefEmitterShockwave::RingHurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, unsigned long bDoFullDamage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefEmitterShockwave.RingHurtRadius");
 
@@ -3320,9 +3320,9 @@ void ADunDefEmitterShockwave::Tick(float DeltaTime)
 // class AActor*                  theArchetype                   (Parm)
 // struct FVector                 theLoc                         (Parm)
 // struct FRotator                theRot                         (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefEmitterShockwave::STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot)
+unsigned long ADunDefEmitterShockwave::STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefEmitterShockwave.AllowSpawn");
 
@@ -3351,10 +3351,10 @@ bool ADunDefEmitterShockwave::STATIC_AllowSpawn(class AActor* theArchetype, cons
 // struct FVector                 HurtOrigin                     (Parm)
 // class AActor*                  IgnoredActor                   (OptionalParm, Parm)
 // class AController*             InstigatedByController         (OptionalParm, Parm)
-// bool                           bDoFullDamage                  (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bDoFullDamage                  (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefEmitterShockwave::HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, bool bDoFullDamage)
+unsigned long ADunDefEmitterShockwave::HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, unsigned long bDoFullDamage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefEmitterShockwave.HurtRadius");
 
@@ -3536,10 +3536,10 @@ void ADunDefGoblinCopter::CheckGCopterProximity()
 // Function DunDefSkyCity.DunDefGoblinCopter.UpdateDifficultyValues
 // (Defined, HasOptionalParms, Public)
 // Parameters:
-// bool                           UpdateMaterial                 (OptionalParm, Parm)
-// bool                           onlyDynamicValues              (OptionalParm, Parm)
+// unsigned long                  UpdateMaterial                 (OptionalParm, Parm)
+// unsigned long                  onlyDynamicValues              (OptionalParm, Parm)
 
-void ADunDefGoblinCopter::UpdateDifficultyValues(bool UpdateMaterial, bool onlyDynamicValues)
+void ADunDefGoblinCopter::UpdateDifficultyValues(unsigned long UpdateMaterial, unsigned long onlyDynamicValues)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefGoblinCopter.UpdateDifficultyValues");
 
@@ -3622,9 +3622,9 @@ void ADunDefGoblinCopter::PlayDying(class UClass* DamageType, const struct FVect
 // class AController*             Killer                         (Parm)
 // class UClass*                  DamageType                     (Parm)
 // struct FVector                 HitLocation                    (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGoblinCopter::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
+unsigned long ADunDefGoblinCopter::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefGoblinCopter.Died");
 
@@ -3840,9 +3840,9 @@ void ADunDefGoblinCopter::SetMovementPhysics()
 // (Defined, Simulated, Public)
 // Parameters:
 // class APawn*                   aPawn                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGoblinCopter::CanBeBaseForPawn(class APawn* aPawn)
+unsigned long ADunDefGoblinCopter::CanBeBaseForPawn(class APawn* aPawn)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefGoblinCopter.CanBeBaseForPawn");
 
@@ -4023,13 +4023,13 @@ void ADunDefGoblinCopter::PostBeginPlay()
 // float                          floatParam2                    (OptionalParm, Parm)
 // float                          floatParam3                    (OptionalParm, Parm)
 // float                          floatParam4                    (OptionalParm, Parm)
-// bool                           boolParam1                     (OptionalParm, Parm)
-// bool                           boolParam2                     (OptionalParm, Parm)
-// bool                           boolParam3                     (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
 // struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
 // class UObject*                 objectParam1                   (OptionalParm, Parm)
 
-void ADunDefGoblinCopter::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, bool boolParam1, bool boolParam2, bool boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+void ADunDefGoblinCopter::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefGoblinCopter.ExecReplicatedFunction");
 
@@ -4123,9 +4123,9 @@ float ADunDefGoblinCopterController::PlayMissileShootAnim()
 // Function DunDefSkyCity.DunDefGoblinCopterController.IsWithinDropRange
 // (Defined, Public)
 // Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGoblinCopterController::IsWithinDropRange()
+unsigned long ADunDefGoblinCopterController::IsWithinDropRange()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefGoblinCopterController.IsWithinDropRange");
 
@@ -4145,9 +4145,9 @@ bool ADunDefGoblinCopterController::IsWithinDropRange()
 // (Defined, Public)
 // Parameters:
 // class AActor*                  Other                          (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGoblinCopterController::CheckDropOffLoS(class AActor* Other)
+unsigned long ADunDefGoblinCopterController::CheckDropOffLoS(class AActor* Other)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefGoblinCopterController.CheckDropOffLoS");
 
@@ -4220,10 +4220,10 @@ void ADunDefGoblinCopterController::CheckAttackSight()
 // Parameters:
 // class AActor*                  Other                          (Parm)
 // float                          AttackRangeOffset              (OptionalParm, Parm)
-// bool                           bCheckDeltaZ                   (OptionalParm, Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  bCheckDeltaZ                   (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGoblinCopterController::IsWithinAttackRange(class AActor* Other, float AttackRangeOffset, bool bCheckDeltaZ)
+unsigned long ADunDefGoblinCopterController::IsWithinAttackRange(class AActor* Other, float AttackRangeOffset, unsigned long bCheckDeltaZ)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefGoblinCopterController.IsWithinAttackRange");
 
@@ -4358,10 +4358,10 @@ void ADunDefGoblinCopterController::CheckIndirectReachability()
 // Parameters:
 // class AActor*                  Goal                           (Parm)
 // float                          WithinDistance                 (OptionalParm, Parm)
-// bool                           bAllowPartialPath              (OptionalParm, Parm)
+// unsigned long                  bAllowPartialPath              (OptionalParm, Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector ADunDefGoblinCopterController::GeneratePathToActor(class AActor* Goal, float WithinDistance, bool bAllowPartialPath)
+struct FVector ADunDefGoblinCopterController::GeneratePathToActor(class AActor* Goal, float WithinDistance, unsigned long bAllowPartialPath)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefGoblinCopterController.GeneratePathToActor");
 
@@ -4384,9 +4384,9 @@ struct FVector ADunDefGoblinCopterController::GeneratePathToActor(class AActor* 
 // (Defined, Public)
 // Parameters:
 // class AActor*                  A                              (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ADunDefGoblinCopterController::NavActorReachable(class AActor* A)
+unsigned long ADunDefGoblinCopterController::NavActorReachable(class AActor* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefGoblinCopterController.NavActorReachable");
 
@@ -4407,10 +4407,10 @@ bool ADunDefGoblinCopterController::NavActorReachable(class AActor* A)
 // (Defined, HasOptionalParms, Public)
 // Parameters:
 // class AActor*                  A                              (Parm)
-// bool                           bCheckVisible                  (OptionalParm, Parm)
+// unsigned long                  bCheckVisible                  (OptionalParm, Parm)
 // class ANavigationPoint*        ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class ANavigationPoint* ADunDefGoblinCopterController::FindNearestNavPointTo(class AActor* A, bool bCheckVisible)
+class ANavigationPoint* ADunDefGoblinCopterController::FindNearestNavPointTo(class AActor* A, unsigned long bCheckVisible)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefGoblinCopterController.FindNearestNavPointTo");
 
@@ -4449,9 +4449,9 @@ void ADunDefGoblinCopterController::SetMyPawn()
 // (Defined, Event, Public)
 // Parameters:
 // class APawn*                   inPawn                         (Parm)
-// bool                           bVehicleTransition             (Parm)
+// unsigned long                  bVehicleTransition             (Parm)
 
-void ADunDefGoblinCopterController::Possess(class APawn* inPawn, bool bVehicleTransition)
+void ADunDefGoblinCopterController::Possess(class APawn* inPawn, unsigned long bVehicleTransition)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDefGoblinCopterController.Possess");
 
