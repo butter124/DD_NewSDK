@@ -460,7 +460,6 @@ void MenuMain::ItemModding() {
     ImGuiTArrayOfItems(pHeroManager->ItemBoxEquipments, "Forge");
 
   {
-
     if (ImGui::TreeNode("Spawn items")) {
       if (ImGui::Button("Scan for items"))
         config.vHeroEquipmentStrings = config.ScanForAllItems();
