@@ -78,7 +78,6 @@ public:
   Classes::FVector vacPos = {0, 0, 0};
   Classes::FVector playerTeleportPos = {0, 0, 0};
 
-  /* useful functions */
   // register a function to be hooked in process events
   std::unordered_map<std::string, std::function<void(PROCESS_EVENT_ARGS)>>
       hookedFuncMap;
@@ -91,7 +90,7 @@ public:
   bool ShouldLootItem(Classes::UHeroEquipment *item);
 
   // item giving
-  // handling item giving stops a crash from happening
+  // handling item giving in process event stops a crash from happening
   std::vector<std::string> vHeroEquipmentStrings;
   std::queue<Classes::UHeroEquipment *> qItemsToGive;
   std::mutex queueMutex;
