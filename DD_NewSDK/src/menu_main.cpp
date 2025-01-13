@@ -804,7 +804,7 @@ void MenuMain::ImGuiTArrayOfItems(
   }
 
   if (ImGui::TreeNode(foldName.c_str())) {
-    for (int i = 0; i < items.Num(); i++) {
+    for (size_t i = 0; i < items.Num(); i++) {
       if (!items.IsValidIndex(i))
         continue;
 
