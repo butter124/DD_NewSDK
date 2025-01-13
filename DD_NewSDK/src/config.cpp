@@ -18,6 +18,22 @@ bool Config::Init() {
                            AutoLootHookFunc);
   REGISTER_HOOKED_FUNCTION("Function UDKGame.DunDef_SeqAct_GiveEquipmentToPlayers.Activated",
                            PlayerRewardHookFunc);
+  REGISTER_HOOKED_FUNCTION(
+      "Function UDKGame.DunDefTreasureChest.SpawningIn.Tick",
+      [this](PROCESS_EVENT_ARGS) {
+      auto pPawn = GetPlayerPawn();
+        if (bAutoOpenChest && pPawn)
+      {
+          ((Classes::ADunDefTreasureChest *)obj)
+              ->Bump(pPawn, nullptr, {0, 0, 0});
+      }
+      });
+  //if (strcmp(funcName.c_str(),
+  //           "Function UDKGame.DunDefTreasureChest.SpawningIn.Tick") == 0) {
+  //  Classes::FVector f = {0, 0, 0};
+  //  ((Classes::ADunDefTreasureChest *)pObject)
+  //      ->Bump(config.GetPlayerPawn(), nullptr, f);
+  //}
 
   RegisterKeybind("Toggle menu",Config::KeyBinds::ToggleKey,519,[this](){bShowMenu = !bShowMenu;});
   RegisterKeybind("End menu",Config::KeyBinds::EndKey,520,[this](){bEndMenu = true;});

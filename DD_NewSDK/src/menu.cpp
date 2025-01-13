@@ -314,19 +314,19 @@ WNDPROC oWndProc;
 void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
                          Classes::UFunction *pFunction, void *pParms,
                          void *pResult) {
-  std::string szName = pFunction->GetFullName().c_str();
+  std::string funcName = pFunction->GetFullName().c_str();
   std::string objectName = pObject->Name.GetName();
 
 #ifdef LOGGING
   bool print = true;
   for (auto s : filterarray) {
-    if (szName == s) {
+    if (funcName == s) {
       print = false;
       break;
     }
   }
   if (print)
-    std::cout << szName.c_str() << "\n";
+    std::cout << funcName.c_str() << "\n";
 #endif
 
   // block input when menu is shown
@@ -337,19 +337,19 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
   }
 
   // anti cheat
-  if (strcmp(szName.c_str(), "Function UDKGame.Main.RunAntiCheat") == 0) {
+  if (strcmp(funcName.c_str(), "Function UDKGame.Main.RunAntiCheat") == 0) {
     return;
   }
-  if (strcmp(szName.c_str(), "Function UDKGame.Main.HandleCheater") == 0) {
+  if (strcmp(funcName.c_str(), "Function UDKGame.Main.HandleCheater") == 0) {
     return;
   }
   // hooked functions
-  if (config.hookedFuncMap.find(szName) != config.hookedFuncMap.end()) {
-    config.hookedFuncMap[szName](pObject, edx, pFunction, pParms, pResult);
+  if (config.hookedFuncMap.find(funcName) != config.hookedFuncMap.end()) {
+    config.hookedFuncMap[funcName](pObject, edx, pFunction, pParms, pResult);
   }
   // blocked functions
-  if (config.blockedFuncMap.find(szName) == config.blockedFuncMap.end()) {
-    if (config.blockedFuncMap[szName] == true)
+  if (config.blockedFuncMap.find(funcName) == config.blockedFuncMap.end()) {
+    if (config.blockedFuncMap[funcName] == true)
       return;
   }
 
