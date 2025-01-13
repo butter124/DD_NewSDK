@@ -75,6 +75,9 @@ public:
   float fNoClipSpeed = 10;
   bool bMultiplyReward = false;
   int MultiplyRewardsBy = 10;
+  int iManaForTowers = 9000;
+  bool bUnlimitedManaTowers = false;
+  bool bUnlimitedManaShop = false;
 
   Classes::FVector vacPos = {0, 0, 0};
   Classes::FVector playerTeleportPos = {0, 0, 0};

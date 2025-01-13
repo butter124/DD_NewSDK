@@ -120,6 +120,8 @@ void MenuMain::RenderUI() {
 
 void MenuMain::Thread() {
   // any thing in this function will be handled in proc events
+
+  // handle keybinds
   for (auto &pair : config.keyBindsmap) {
     if (ImGui::IsKeyPressed((ImGuiKey)pair.second.key, false) &&
         !pair.second.bShouldChange) {
@@ -127,6 +129,21 @@ void MenuMain::Thread() {
     }
   }
   NoClipHandleInput();
+
+  // handle mana
+  auto pController = config.GetADunDefPlayerController();
+  if (!pController)
+    return;
+
+  // unlimited mana for towers
+  if (config.bUnlimitedManaTowers)
+    pController->ManaPower = config.iManaForTowers;
+
+  // unlimited mana for shops
+  if (config.bUnlimitedManaShop) {
+    Classes::FHighDigitInt tmp = {1, 1, 1, 1};
+    pController->SetBankedMana(tmp, 0, 1);
+  }
 }
 
 void MenuMain::NoClipHandleInput() {
@@ -231,6 +248,8 @@ void MenuMain::BasicCheats() {
     ImGui::Checkbox("One kill to advance", &config.bKillOneToAdvance);
     ImGui::Checkbox("Enemys drop items", &config.bLootShower);
     ImGui::Checkbox("Auto open chest", &config.bAutoOpenChest);
+    ImGui::Checkbox("Unlimited mana for towers", &config.bUnlimitedManaTowers);
+    ImGui::Checkbox("Unlimited mana for shop", &config.bUnlimitedManaShop);
     if (ImGui::Checkbox("NoClip", &config.bNoClip)) {
       auto pPlayerPawn = config.GetADunDefPlayerController();
       if (config.bNoClip) {
