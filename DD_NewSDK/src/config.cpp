@@ -601,8 +601,8 @@ void Config::SaveKeybinds() {
 
 Classes::FVector Config::GetForward(float yaw, float pitch) {
   // Convert to radians (assuming 360 degrees = 65536 range)
-  float radPitch = pitch * (3.14159 / 32768.0f);
-  float radYaw = yaw * (3.14159 / 32768.0f);
+  float radPitch = pitch * (3.14159f / 32768.0f);
+  float radYaw = yaw * (3.14159f / 32768.0f);
 
   // Calculate forward direction
   float outX = cos(radYaw) * cos(radPitch);
@@ -737,14 +737,14 @@ std::vector<std::string> Config::ScanForAllItems() {
   // make new one the correct one
   pItemSelectable = newItemSelectable;
   // make sure the memeory is zeroed
-  for (int i = 0; i < retVec.size(); i++)
+  for (size_t i = 0; i < retVec.size(); i++)
     pItemSelectable[i] = false;
 
   return retVec;
 }
 
 bool Config::GiveSelectedItems() {
-  for (int i = 0; i < vHeroEquipmentStrings.size(); i++) {
+  for (size_t i = 0; i < vHeroEquipmentStrings.size(); i++) {
     if (!pItemSelectable[i])
       continue;
     PushItemToQueueWithString(vHeroEquipmentStrings[i]);
