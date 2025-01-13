@@ -41,7 +41,6 @@ bool Config::Init() {
   RegisterKeybind("Vacuum pos",Config::KeyBinds::UpdateVacuumPos,522,[this](){SetVacPos(GetPlayerPos());});
   RegisterKeybind("No clip",Config::KeyBinds::ToggleNoClipKeybind,523,[this](){bNoClip = !bNoClip;});
 
-  RegisterBlockedFunction("UIState_Pressed", bBlockInput);
   bool invert= !bPlayerGodMode;
   RegisterBlockedFunction("Function DunDefPlayerController.Dead.BeginState", invert);
   // clang-format on
@@ -144,6 +143,21 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
     // doing this one at a time should give a better user experience
     auto item = PopItemFromQueue();
     GiveItem(item);
+  }
+
+  // handle mana
+  auto pController = config.GetADunDefPlayerController();
+  if (!pController)
+    return;
+
+  // unlimited mana for towers
+  if (config.bUnlimitedManaTowers)
+    pController->ManaPower = config.iManaForTowers;
+
+  // unlimited mana for shops
+  if (config.bUnlimitedManaShop) {
+    Classes::FHighDigitInt tmp = {1, 1, 1, 1};
+    pController->SetBankedMana(tmp, 0, 1);
   }
 }
 

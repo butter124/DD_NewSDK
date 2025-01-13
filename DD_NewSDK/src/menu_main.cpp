@@ -129,21 +129,6 @@ void MenuMain::Thread() {
     }
   }
   NoClipHandleInput();
-
-  // handle mana
-  auto pController = config.GetADunDefPlayerController();
-  if (!pController)
-    return;
-
-  // unlimited mana for towers
-  if (config.bUnlimitedManaTowers)
-    pController->ManaPower = config.iManaForTowers;
-
-  // unlimited mana for shops
-  if (config.bUnlimitedManaShop) {
-    Classes::FHighDigitInt tmp = {1, 1, 1, 1};
-    pController->SetBankedMana(tmp, 0, 1);
-  }
 }
 
 void MenuMain::NoClipHandleInput() {
