@@ -62,6 +62,7 @@ public:
   int waveToSkipTo = 0;
   bool bLootShower = false;
   bool bAutoLoot = false;
+  bool bAutoOpenChest = false;
   int itemsLooted = 0;
   int itemsChecked = 0;
   int lootFilter[0xB] = {};

@@ -230,6 +230,7 @@ void MenuMain::BasicCheats() {
     ImGui::Checkbox("Auto Loot", &config.bAutoLoot);
     ImGui::Checkbox("One kill to advance", &config.bKillOneToAdvance);
     ImGui::Checkbox("Enemys drop items", &config.bLootShower);
+    ImGui::Checkbox("Auto open chest", &config.bAutoOpenChest);
     if (ImGui::Checkbox("NoClip", &config.bNoClip)) {
       auto pPlayerPawn = config.GetADunDefPlayerController();
       if (config.bNoClip) {
