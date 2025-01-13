@@ -12,6 +12,7 @@
 #define PROCESS_EVENT_ARGS                                                     \
   Classes::UObject *obj, void *edx, Classes::UFunction *pFunction,             \
       void *pParms, void *pResult
+
 #define REGISTER_HOOKED_FUNCTION(key, func)                                    \
   RegisterHookedFunction(key, [this](Classes::UObject *obj, void *edx,         \
                                      Classes::UFunction *pFunction,            \
@@ -41,7 +42,6 @@ struct KeybindsStruct {
 };
 
 class Config {
-private:
 public:
   bool Init();
   bool Cleanup();
