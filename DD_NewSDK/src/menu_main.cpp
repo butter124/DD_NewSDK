@@ -329,10 +329,6 @@ void MenuMain::PlayerCheats() {
       pController->RepairAllTowers();
     }
 
-    if (ImGui::Button("Max shop mana")) {
-      Classes::FHighDigitInt tmp = {1, 1, 1, 1};
-      pController->SetBankedMana(tmp, 0, 1);
-    }
     // TArray<class ADunDefPlayerAbility*>                PlayerAbilities; //
     // 0x097C(0x000C) (NeedCtorLink) TArray<int> statsData; // 0x0654(0x000C)
     // (NeedCtorLink) TArray<int> playerStatsData; // 0x0660(0x000C)
@@ -363,6 +359,7 @@ void MenuMain::PlayerCheats() {
     static float c2[4] = {0, 0, 0, 0};
     static float c3[4] = {0, 0, 0, 0};
 
+    ImGui::Separator();
     ImGui::InputFloat4("C1", c1);
     ImGui::InputFloat4("C2", c2);
     ImGui::InputFloat4("C3", c3);
@@ -371,7 +368,7 @@ void MenuMain::PlayerCheats() {
     Classes::FLinearColor cLiner2 = {c2[0], c2[1], c2[2], c2[3]};
     Classes::FLinearColor cLiner3 = {c3[0], c3[1], c3[2], c3[3]};
 
-    if (ImGui::Button("Set color")) {
+    if (ImGui::Button("Set player color")) {
       pController->myHero->SetColors(cLiner1, cLiner2, cLiner3);
     }
 
@@ -415,19 +412,21 @@ void MenuMain::PlayerCheats() {
     ImGui::InputInt("Max Health", &pController->Pawn->HealthMax);
 
     static float loc[3] = {0, 0, 0};
-    ImGui::InputFloat3("Position", loc);
+    ImGui::InputFloat3("##Position", loc);
+    ImGui::SameLine();
     if (ImGui::Button("Update position")) {
       Classes::FVector temp = {loc[0], loc[1], loc[2]};
       pController->Pawn->Location = temp;
     }
 
     static float drawScale[3] = {0, 0, 0};
-    ImGui::InputFloat3("Draw scale", drawScale);
+    ImGui::InputFloat3("##Draw scale", drawScale);
+    ImGui::SameLine();
     if (ImGui::Button("Update 3d draw scale")) {
       Classes::FVector temp = {drawScale[0], drawScale[1], drawScale[2]};
       pController->Pawn->DrawScale3D = temp;
     }
-    ImGui::InputFloat("Draw scale", &pController->DrawScale);
+    ImGui::InputFloat("Draw scale", &pController->Pawn->DrawScale);
     // ImGui::InputFloat("Tick frequency", &pController->TickFrequency);
     ImGui::InputFloat("Gravity", &pController->Pawn->GravityZMultiplier);
     ImGui::InputFloat("Jump height", &pController->Pawn->JumpZ);
@@ -456,14 +455,33 @@ void MenuMain::ItemModding() {
   if (!pPlayerController)
     return;
 
-  if (pPlayerController->myHero)
+  if (pPlayerController->myHero) {
     ImGuiTArrayOfItems(pPlayerController->myHero->HeroEquipments, "Equipment");
+    ImGui::Separator();
+  } else {
+    ImGui::Text("No player hero found.");
+  }
 
   // This crashes the game for some reason
   //  // Item box
   auto pHeroManager = config.GetHeroManager();
-  if (pHeroManager)
+  if (pHeroManager) {
     ImGuiTArrayOfItems(pHeroManager->ItemBoxEquipments, "Forge");
+    // if (ImGui::Button("Make all items sellable")) {
+    //   for (int i = 0; i < pHeroManager->ItemBoxEquipments.Num(); i++) {
+    //     if (!pHeroManager->ItemBoxEquipments.IsValidIndex(i))
+    //       continue;
+
+    //    auto item = pHeroManager->ItemBoxEquipments[i];
+
+    //    item->bCantBeDropped = 0;
+    //    item->bCantBeSold = 0;
+    //  }
+    //}
+    ImGui::Separator();
+  } else {
+    ImGui::Text("No HeroManager found.");
+  }
 
   {
     if (ImGui::TreeNode("Spawn items")) {

@@ -29,13 +29,14 @@ bool Config::Init() {
       }
       });
 
+  // TODO: register keybinds needs to be changed in a way that handles a single point of definition
   RegisterKeybind("Toggle menu",Config::KeyBinds::ToggleKey,519,[this](){bShowMenu = !bShowMenu;});
   RegisterKeybind("End menu",Config::KeyBinds::EndKey,520,[this](){bEndMenu = true;});
   RegisterKeybind("Teleport players",Config::KeyBinds::TeleportPlayers,521,[this](){bTeleportPlayers = !bTeleportPlayers;});
   RegisterKeybind("Vacuum pos",Config::KeyBinds::UpdateVacuumPos,522,[this](){SetVacPos(GetPlayerPos());});
   RegisterKeybind("No clip",Config::KeyBinds::ToggleNoClipKeybind,523,[this](){bNoClip = !bNoClip;});
 
-  bool invert= !bPlayerGodMode;
+  bool invert = !bPlayerGodMode;
   RegisterBlockedFunction("Function DunDefPlayerController.Dead.BeginState", invert);
   // clang-format on
 
