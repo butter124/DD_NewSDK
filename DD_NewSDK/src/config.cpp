@@ -494,6 +494,13 @@ void Config::KillPawn(Classes::ADunDefPawn *pawn) {
                    NULL);
 }
 
+void Config::KillPawn(Classes::ADunDefDamageableTarget *pawn) {
+  Classes::FVector tempVec = Classes::FVector();
+  Classes::FTraceHitInfo tempHit = Classes::FTraceHitInfo();
+  pawn->TakeDamage(pawn->MaxHealth, NULL, tempVec, tempVec, NULL, tempHit, NULL,
+                   NULL);
+}
+
 void Config::KillAllEnemyPawns() {
   PawnLoop([this](Classes::ADunDefPawn *curPawn) { KillPawn(curPawn); }, true,
            false);

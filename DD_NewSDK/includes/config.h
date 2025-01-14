@@ -160,6 +160,7 @@ public:
   void PawnLoop(const std::function<void(Classes::ADunDefPawn *)> &func,
                 bool applyToEnemy, bool applyToPlayer);
   void KillPawn(Classes::ADunDefPawn *pawn);
+  void KillPawn(Classes::ADunDefDamageableTarget *pawn);
   void KillAllEnemyPawns();
   void MovePawn(Classes::ADunDefPawn *pawn, Classes::FVector pos);
   void MoveEnemyPawns(Classes::FVector pos);

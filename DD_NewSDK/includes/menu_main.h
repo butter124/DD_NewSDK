@@ -41,6 +41,7 @@ protected:
   void Debug();
   void NoClipHandleInput();
   void ImGuiPawn(Classes::ADunDefPawn *pPawn);
+  void ImGuiTargetableActor(Classes::ADunDefDamageableTarget *pPawn);
   void ImGuiItem(Classes::UHeroEquipment *item);
   void ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
                  Classes::FString CurrentSelected, unsigned char &_changeChar,
