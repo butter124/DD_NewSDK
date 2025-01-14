@@ -956,10 +956,13 @@ void MenuMain::ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
   // Begin the combo box
   if (ImGui::BeginCombo((comboName).c_str(), CurrentSelected.c_str())) {
     for (int i = 0; i < names.Count; i++) {
-      if (!(names.Data[i].StringValue.Data))
-        continue;
+      std::string ComboName;
+      if (!(names.Data[i].StringValue.Data)) {
+        ComboName = "< blank >";
+      } else {
+        ComboName = names.Data[i].StringValue.ToString();
+      }
 
-      std::string ComboName = names.Data[i].StringValue.ToString();
       const bool is_selected = (CurrentSelectedIndex == i);
 
       if (ImGui::Selectable((ComboName + "##" + std::to_string(i)).c_str(),
