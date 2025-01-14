@@ -3,10 +3,6 @@
 // #define LOGGING 1
 // #define IMGUIDEMO
 
-#include <format>
-#include <iostream>
-#include <string_view>
-
 #include "SDK.hpp"
 #include "includes/Hooking.h"
 #include "includes/menu_item.h"
@@ -37,7 +33,6 @@ extern Hooking ProcEventHook;
 
 class Menu {
 private:
-  FILE *f;
   LPDIRECT3DDEVICE9 d3Device;
   void *d3d9Device[119];
 
@@ -54,15 +49,6 @@ public:
 
   void AttachConsole();
   void DettachConsole();
-
-  template <typename... Args>
-  static void PrintToConsole(const std::string &format, Args... args) {
-#ifdef LOGGING
-    std::cout << std::vformat(
-                     format, std::make_format_args(std::forward<Args>(args)...))
-              << std::endl;
-#endif
-  }
 
   MenuMain main;
 };
