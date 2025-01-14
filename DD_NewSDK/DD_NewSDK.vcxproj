@@ -174,7 +174,6 @@
     <ClInclude Include="includes\menu_main.h" />
     <ClInclude Include="includes\menu.h" />
     <ClInclude Include="includes\menu_template.h" />
-    <ClInclude Include="includes\menu_item.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SDK.hpp" />
   </ItemGroup>
@@ -187,7 +186,6 @@
     <ClCompile Include="includes\ImGui\imgui_impl_win32.cpp" />
     <ClCompile Include="includes\ImGui\imgui_tables.cpp" />
     <ClCompile Include="includes\ImGui\imgui_widgets.cpp" />
-    <ClCompile Include="src\menu_item.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

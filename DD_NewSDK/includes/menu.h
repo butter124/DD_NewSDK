@@ -5,7 +5,6 @@
 
 #include "SDK.hpp"
 #include "includes/Hooking.h"
-#include "includes/menu_item.h"
 #include "includes/menu_main.h"
 typedef HRESULT(APIENTRY *tEndScene)(LPDIRECT3DDEVICE9 pDevice);
 

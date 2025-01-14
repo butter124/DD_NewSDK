@@ -1,7 +1,9 @@
 #pragma once
 
-#include "menu_item.h"
+#include "SDK.hpp"
 #include "menu_template.h"
+#include <functional>
+#include <string>
 #include <vector>
 
 class MenuMain : public Menu_template {
@@ -20,7 +22,6 @@ public:
 
 private:
   Menus selectedMenu = Menus::MenuBasic;
-  std::vector<MenuItem> itemsVec;
 
   void RenderMenuButton(std::string name, std::function<void()> func,
                         bool isSelected);

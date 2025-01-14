@@ -2,6 +2,7 @@
 // clang-format off
 #include "pch.h"
 #include "includes/menu_main.h"
+#include "includes/config.h"
 // clang-format on
 
 #define IMGUI_BITFIELD(s, item)                                                \
