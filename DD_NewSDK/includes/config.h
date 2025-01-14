@@ -47,11 +47,6 @@ struct KeybindsStruct {
 class Config {
 private:
   FILE *f = nullptr;
-#if LOGGING
-  bool bConsoleAttached = true;
-#else
-  bool bConsoleAttached = false;
-#endif // LOGGING
 
 public:
   bool Init();
@@ -60,7 +55,12 @@ public:
   HWND gameHWND;
   bool bEndMenu = false;
   bool bShowMenu = true;
-  bool bLogging = false;
+#if LOGGING
+  bool bConsoleAttached = true;
+#else
+  bool bConsoleAttached = false;
+#endif // LOGGING
+
   bool bLoggingProcessEvents = false;
 
   bool bBlockInput = true;
@@ -184,14 +184,6 @@ public:
 
   void AttachConsole();
   void DettachConsole();
-
-  template <typename... Args>
-  void PrintToConsole(const std::string &format, Args... args) {
-    if (!bConsoleAttached)
-      return;
-    std::cout << std::vformat(
-                     format, std::make_format_args(std::forward<Args>(args)...))
-              << std::endl;
-  }
+  void PrintToConsole(const std::string &s);
 };
 extern Config config;

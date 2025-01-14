@@ -41,9 +41,6 @@ bool Config::Init() {
 
   GetKeybinds();
 
-  if (bLogging)
-    AttachConsole();
-
   return true;
 }
 
@@ -443,8 +440,14 @@ Classes::UDunDefHeroManager *Config::GetHeroManager() {
 
   static Classes::UDunDefHeroManager *obj = nullptr;
 
-  if (!obj)
+  if (!obj) {
     obj = pController->GetHeroManager();
+
+    if (bConsoleAttached) {
+      std::string format = std::format("Found HeroManager : {:p}", (void *)obj);
+      PrintToConsole(format);
+    }
+  }
 
   return obj;
 }
@@ -773,4 +776,10 @@ void Config::DettachConsole() {
   fclose(f);
   FreeConsole();
   bConsoleAttached = false;
+}
+
+void Config::PrintToConsole(const std::string &s) {
+  if (!bConsoleAttached)
+    return;
+  std::cout << s << std::endl;
 }

@@ -460,9 +460,9 @@ void MenuMain::ItemModding() {
 
   // This crashes the game for some reason
   //  // Item box
-  //  auto pHeroManager = config.GetHeroManager();
-  //  if (pHeroManager)
-  //    ImGuiTArrayOfItems(pHeroManager->ItemBoxEquipments, "Forge");
+  auto pHeroManager = config.GetHeroManager();
+  if (pHeroManager)
+    ImGuiTArrayOfItems(pHeroManager->ItemBoxEquipments, "Forge");
 
   {
     if (ImGui::TreeNode("Spawn items")) {
@@ -895,8 +895,8 @@ void MenuMain::Config() {
   }
 
   if (ImGui::TreeNode("Logging")) {
-    if (ImGui::Checkbox("Attach console", &config.bLogging)) {
-      if (config.bLogging) {
+    if (ImGui::Checkbox("Attach console", &config.bConsoleAttached)) {
+      if (config.bConsoleAttached) {
         config.AttachConsole();
       } else {
         config.DettachConsole();

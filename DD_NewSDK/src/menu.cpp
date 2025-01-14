@@ -317,7 +317,7 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
   std::string funcName = pFunction->GetFullName().c_str();
   std::string objectName = pObject->Name.GetName();
 
-  if (config.bLoggingProcessEvents) {
+  if (config.bConsoleAttached && config.bLoggingProcessEvents) {
     bool print = true;
     for (auto s : filterarray) {
       if (funcName == s) {
