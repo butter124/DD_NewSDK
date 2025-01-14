@@ -372,25 +372,25 @@ void MenuMain::PlayerCheats() {
   // player hero
   {
 
-    ImGui::Text("myHero");
     ImGui::InputInt("Hero level", &pController->myHero->HeroLevel);
     ImGui::InputInt("Hero Experience", &pController->myHero->HeroExperience);
     ImGui::InputInt("Mana power", &pController->myHero->ManaPower);
-    static float c1[4] = {0, 0, 0, 0};
-    static float c2[4] = {0, 0, 0, 0};
-    static float c3[4] = {0, 0, 0, 0};
 
-    ImGui::Separator();
-    ImGui::InputFloat4("C1", c1);
-    ImGui::InputFloat4("C2", c2);
-    ImGui::InputFloat4("C3", c3);
-
-    Classes::FLinearColor cLiner1 = {c1[0], c1[1], c1[2], c1[3]};
-    Classes::FLinearColor cLiner2 = {c2[0], c2[1], c2[2], c2[3]};
-    Classes::FLinearColor cLiner3 = {c3[0], c3[1], c3[2], c3[3]};
-
-    if (ImGui::Button("Set player color")) {
-      pController->myHero->SetColors(cLiner1, cLiner2, cLiner3);
+    // scale this down so it manageable
+    if (ImGui::TreeNode("Colors")) {
+      ImGui::PushItemWidth(ImGui::GetContentRegionAvail().x * .15f);
+      ImGui::ColorPicker4("color 1",
+                          &(*(float *)&pController->myHero->color1.R));
+      ImGui::SameLine();
+      ImGui::ColorPicker4("color 2",
+                          &(*(float *)&pController->myHero->color2.R));
+      ImGui::SameLine();
+      ImGui::ColorPicker4("color 3",
+                          &(*(float *)&pController->myHero->color3.R));
+      ImGui::PopItemWidth();
+      ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f),
+                         "Swap hero for color changes take effect");
+      ImGui::TreePop();
     }
 
     if (ImGui::TreeNode("Player abilitys")) {
@@ -473,43 +473,15 @@ void MenuMain::PlayerCheats() {
       }
       ImGui::TreePop();
     }
-
-    // TArray<class UHeroEquipment*>                      HeroEquipments; //
-    // 0x056C(0x000C) (NeedCtorLink)
-    // player hero
-    //	unsigned long                                      bHasCompleteArmorSet
-    //: 1;                                 // 0x004C(0x0004) 	int
-    // CurrentCostumeIndex;                                      //
-    // 0x0114(0x0004) (Edit) 	TArray<struct FHeroCostumeTemplate>
-    // HeroCostumes; // 0x0214(0x000C) (Edit, NeedCtorLink) 	int
-    // HeroHealthModifier; // 0x04C0(0x0004) 	int HeroSpeedModifier; //
-    // 0x04C4(0x0004) 	int HeroDamageModifier; // 0x04C8(0x0004) 	int
-    // HeroCastingModifier; // 0x04CC(0x0004) 	int HeroAbilityOneModifier; //
-    // 0x04D0(0x0004) 	int HeroAbilityTwoModifier; // 0x04D4(0x0004) 	int
-    // HeroDefenseHealthModifier;                                //
-    // 0x04D8(0x0004) 	int HeroDefenseAttackRateModifier; // 0x04DC(0x0004)
-    // int HeroDefenseDamageModifier;                                //
-    // 0x04E0(0x0004) 	int HeroDefenseAreaOfEffectModifier; // 0x04E4(0x0004)
-    //	TArray<class ADunDefTower*>                        HeroTowers; //
-    // 0x0578(0x000C) (NeedCtorLink) 	class UHeroEquipment*
-    // HeroWeaponEquipment;
-    //// 0x0584(0x0004) 	bool IsHeroUnlocked(class ULocalPlayer*
-    /// ForPlayer, int*
-    // lockedByDemo); 	bool IsCostumeUnlocked(class ULocalPlayer* ForPlayer,
-    // int costumeIndex); 	int GetNextUnlockedCostumeIndex(class
-    // ULocalPlayer* ForPlayer, int CurrentIndex); 	int
-    // GetNumberOfUnlockedCostumes(class ULocalPlayer* ForPlayer); 	void
-    // SetName(const struct FString& NewName);
-    //	void DoLevelUp(int NumLevelsToAdd, bool dontSaveHero);
-    //	void AddExperience(int experience);
-    //	bool HeroLevelUp();
-    //	bool ReachedLevelCap();
   }
 
   if (!pController->Pawn)
     return;
   // player pawn
   {
+    ImGui::Separator();
+    ImGui::Text("Player pawn");
+
     ImGui::InputInt("Health", &pController->Pawn->Health);
     ImGui::InputInt("Max Health", &pController->Pawn->HealthMax);
 
