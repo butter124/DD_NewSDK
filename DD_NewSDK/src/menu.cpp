@@ -325,8 +325,9 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
         break;
       }
     }
-    if (print)
-      std::cout << funcName.c_str() << "\n";
+    if (print) {
+      std::cout << std::format("{:<50} | {}", objectName, funcName) << "\n";
+    }
   }
 
   // block input when menu is shown
