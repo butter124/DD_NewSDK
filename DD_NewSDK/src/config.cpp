@@ -736,6 +736,8 @@ std::vector<std::string> Config::ScanForAllItems() {
     }
   }
 
+  std::sort(retVec.begin(), retVec.end());
+
   // setup bool array for imgui menu
   bool *newItemSelectable = new bool[retVec.size()];
   if (!newItemSelectable) {
