@@ -888,7 +888,7 @@ void MenuMain::Config() {
       config.itemsChecked = 0;
     }
 
-    ImGui::Checkbox("Always loot?", &config.bAutoLootULT);
+    ImGui::Checkbox("Always loot quality >= selected?", &config.bAutoLootULT);
     ImGui::Combo("Always loot Quality", &config.itemFilterQualityULT,
                  itemQualitys, IM_ARRAYSIZE(itemQualitys));
 
