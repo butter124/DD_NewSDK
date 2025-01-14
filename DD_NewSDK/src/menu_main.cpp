@@ -1,5 +1,6 @@
 
 // clang-format off
+#include "ImGui/imgui.h"
 #include "pch.h"
 #include "includes/menu_main.h"
 #include "includes/config.h"
@@ -11,6 +12,18 @@
     if (ImGui::Checkbox(#s, &bs))                                              \
       item->s = bs;                                                            \
   }
+// https://stackoverflow.com/questions/154136/why-use-apparently-meaningless-do-while-and-if-else-statements-in-macros
+#define IMGUI_FVECTOR(s, item)                                                 \
+  do {                                                                         \
+    if ((item) != nullptr) {                                                   \
+      float values[3] = {(item)->s.X, (item)->s.Y, (item)->s.Z};               \
+      if (ImGui::InputFloat3(#s, values)) {                                    \
+        (item)->s.X = values[0];                                               \
+        (item)->s.Y = values[1];                                               \
+        (item)->s.Z = values[2];                                               \
+      }                                                                        \
+    }                                                                          \
+  } while (0);
 
 void MenuMain::Init() {
   // AddItem(config.GetADunDefPlayerController()->myHero->HeroEquipments[0]);
@@ -81,6 +94,9 @@ void MenuMain::RenderUI() {
         "Item Modding", [this]() { selectedMenu = Menus::MenuModding; },
         selectedMenu == Menus::MenuModding);
     RenderMenuButton(
+        "World", [this]() { selectedMenu = Menus::MenuWorld; },
+        selectedMenu == Menus::MenuWorld);
+    RenderMenuButton(
         "Config", [this]() { selectedMenu = Menus::MenuConfig; },
         selectedMenu == Menus::MenuConfig);
 
@@ -108,6 +124,10 @@ void MenuMain::RenderUI() {
 
     case Menus::MenuModding:
       ItemModding();
+      break;
+
+    case Menus::MenuWorld:
+      WorldCheats();
       break;
 
     default:
@@ -352,6 +372,7 @@ void MenuMain::PlayerCheats() {
   // player hero
   {
 
+    ImGui::Text("myHero");
     ImGui::InputInt("Hero level", &pController->myHero->HeroLevel);
     ImGui::InputInt("Hero Experience", &pController->myHero->HeroExperience);
     ImGui::InputInt("Mana power", &pController->myHero->ManaPower);
@@ -370,6 +391,87 @@ void MenuMain::PlayerCheats() {
 
     if (ImGui::Button("Set player color")) {
       pController->myHero->SetColors(cLiner1, cLiner2, cLiner3);
+    }
+
+    if (ImGui::TreeNode("Player abilitys")) {
+
+      for (size_t i = 0; i < pController->PlayerAbilities.Num(); i++) {
+        if (!pController->PlayerAbilities.IsValidIndex(i))
+          continue;
+        auto ability = pController->PlayerAbilities[i];
+
+        if (ImGui::TreeNode(ability->GetName().c_str())) {
+
+          ImGui::InputFloat("ActivationInterval", &ability->ActivationInterval);
+          ImGui::InputFloat("CastRateHeroHeroStatExponent",
+                            &ability->CastRateHeroHeroStatExponent);
+          ImGui::InputFloat("CastingCharacterAnimationBlendInTime",
+                            &ability->CastingCharacterAnimationBlendInTime);
+          ImGui::InputFloat("CastingCharacterAnimationBlendOutTime",
+                            &ability->CastingCharacterAnimationBlendOutTime);
+          ImGui::InputFloat("CastingColorFlashIntensity",
+                            &ability->CastingColorFlashIntensity);
+          ImGui::InputFloat("CastingColorFlashPower",
+                            &ability->CastingColorFlashPower);
+          ImGui::InputFloat("CastingColorFlashSpeed",
+                            &ability->CastingColorFlashSpeed);
+          ImGui::InputFloat("ColorFlashingBasePercent",
+                            &ability->ColorFlashingBasePercent);
+          ImGui::InputFloat("FlashingCounter", &ability->FlashingCounter);
+          ImGui::InputFloat("LastActivationTime", &ability->LastActivationTime);
+          ImGui::InputFloat("LastCompletionTime", &ability->LastCompletionTime);
+          ImGui::InputFloat("LastFailedActivationTime",
+                            &ability->LastFailedActivationTime);
+          ImGui::InputFloat("LastSuccessfulActivationTime",
+                            &ability->LastSuccessfulActivationTime);
+          ImGui::InputFloat("LastUnprocessedRequestActivationTime",
+                            &ability->LastUnprocessedRequestActivationTime);
+          ImGui::InputFloat("LobbyActivationInterval",
+                            &ability->LobbyActivationInterval);
+          ImGui::InputFloat("ManaAttractionRadiusMultiplier",
+                            &ability->ManaAttractionRadiusMultiplier);
+          ImGui::InputFloat("MinimumReactivationInterval",
+                            &ability->MinimumReactivationInterval);
+          ImGui::InputFloat("MinimumRefireTime", &ability->MinimumRefireTime);
+          ImGui::InputFloat("SizeFlashingPercent",
+                            &ability->SizeFlashingPercent);
+          ImGui::InputFloat("SizeFlashingPower", &ability->SizeFlashingPower);
+          ImGui::InputFloat("SizeFlashingSpeed", &ability->SizeFlashingSpeed);
+          ImGui::InputFloat("TimeFromEndToFinishFullBodyAnimation",
+                            &ability->TimeFromEndToFinishFullBodyAnimation);
+          ImGui::InputInt("RequiredHeroLevel", &ability->RequiredHeroLevel);
+
+          IMGUI_BITFIELD(InitializedForOwner, ability);
+          IMGUI_BITFIELD(bAllowNegativeStatusAffects, ability);
+          IMGUI_BITFIELD(bDisableAbilityInBuildPhase, ability);
+          IMGUI_BITFIELD(bDisableAbilityInCombatPhase, ability);
+          IMGUI_BITFIELD(bDisableInPureStrategy, ability);
+          IMGUI_BITFIELD(bForceAllowInBuildPhase, ability);
+          IMGUI_BITFIELD(bForceDisableAbilitiesInOverlord, ability);
+          IMGUI_BITFIELD(bIgnoreAbilityCoolDownReset, ability);
+          IMGUI_BITFIELD(bIgnoreLevelVictoryCancel, ability);
+          IMGUI_BITFIELD(bIgnoreMomentumWhileCasting, ability);
+          IMGUI_BITFIELD(bIgnorePureStratDisabling, ability);
+          IMGUI_BITFIELD(bInitialCooldownOnCreation, ability);
+          IMGUI_BITFIELD(bInvincibleAbility, ability);
+          IMGUI_BITFIELD(bInvincibleWhileCasting, ability);
+          IMGUI_BITFIELD(bOnlyExtendManaAttractionRadiusWhileCasting, ability);
+          IMGUI_BITFIELD(bPlayFullBodyAnimation, ability);
+          IMGUI_BITFIELD(bPressAndHoldAbility, ability);
+          IMGUI_BITFIELD(bRemoveBuffsOnCompletion, ability);
+          IMGUI_BITFIELD(bRemoveBuffsOnDeactivate, ability);
+          IMGUI_BITFIELD(bRequiresWalking, ability);
+          IMGUI_BITFIELD(bSetAsOverlordCastingAbility, ability);
+          IMGUI_BITFIELD(bSimulateLocally, ability);
+          IMGUI_BITFIELD(bUseManaAttractionMultiplier, ability);
+          IMGUI_BITFIELD(bWaitingOnFullBodyAnimation, ability);
+          IMGUI_BITFIELD(bWasCoolingDown, ability);
+          IMGUI_BITFIELD(bWasUnderRequiredLevel, ability);
+
+          ImGui::TreePop();
+        }
+      }
+      ImGui::TreePop();
     }
 
     // TArray<class UHeroEquipment*>                      HeroEquipments; //
@@ -444,6 +546,89 @@ void MenuMain::PlayerCheats() {
   }
 
   return;
+}
+
+void MenuMain::WorldCheats() {
+  ImGui::Text("World settings");
+  ImGui::Separator();
+
+  auto pWorld = config.GetGameInfo();
+
+  if (!pWorld)
+    return;
+
+  if (ImGui::TreeNode("Targetable actors")) {
+    for (size_t i = 0; i < pWorld->TargetableActors.Num(); i++) {
+      if (!pWorld->TargetableActors.IsValidIndex(i))
+        continue;
+      auto pActor = pWorld->TargetableActors[i];
+      if (ImGui::TreeNode(
+              (pActor->GetName() + "##" + std::to_string(i)).c_str())) {
+        ImGuiPawn(reinterpret_cast<Classes::ADunDefPawn *>(pActor));
+        ImGui::TreePop();
+      }
+    }
+    ImGui::TreePop();
+  }
+
+  if (ImGui::TreeNode("World settings")) {
+    ImGui::InputInt("DunDefMaxPlayers", &pWorld->DunDefMaxPlayers);
+    ImGui::InputInt("MaxNumberOfDroppedMana", &pWorld->MaxNumberOfDroppedMana);
+    ImGui::InputInt("MaxNumberOfDroppedManaOnline",
+                    &pWorld->MaxNumberOfDroppedManaOnline);
+    ImGui::InputInt("NightmareAdditionalMaxEnemies",
+                    &pWorld->NightmareAdditionalMaxEnemies);
+    ImGui::InputInt("StartWave", &pWorld->StartWave);
+    {
+      IMGUI_BITFIELD(bPlayersAreInvincible, pWorld);
+      IMGUI_BITFIELD(bCrystalCoreInvincible, pWorld);
+      IMGUI_BITFIELD(bTowersInvincible, pWorld);
+      IMGUI_BITFIELD(AllowFriendlyFire, pWorld);
+      IMGUI_BITFIELD(bDisableAddingXP, pWorld);
+      IMGUI_BITFIELD(bDisableItemDrops, pWorld);
+      IMGUI_BITFIELD(bDisableWaveScalingForNumPlayers, pWorld);
+      IMGUI_BITFIELD(bDoSpawnNotifications, pWorld);
+      IMGUI_BITFIELD(bDropManaUponDeath, pWorld);
+      IMGUI_BITFIELD(bGiveEquipmentRewardsOnFirstWave, pWorld);
+      IMGUI_BITFIELD(bIgnoreEnemyStuckChecks, pWorld);
+      IMGUI_BITFIELD(bRandomExcludeLastSpawnPoint, pWorld);
+      IMGUI_BITFIELD(bRandomSpawnPoints, pWorld);
+      IMGUI_BITFIELD(bRandomWithoutReplacementSpawnPoints, pWorld);
+      IMGUI_BITFIELD(bScaleBossHealths, pWorld);
+      IMGUI_BITFIELD(bSurvivalTimeLimitMap, pWorld);
+    }
+
+    {
+      ImGui::InputFloat("CrystalCoreHealthMultiplier",
+                        &pWorld->CrystalCoreHealthMultiplier);
+      ImGui::InputFloat("EnemyLifeSpanMultiplier",
+                        &pWorld->EnemyLifeSpanMultiplier);
+      ImGui::InputFloat("EquipmentQualityOverlayMultiplier",
+                        &pWorld->EquipmentQualityOverlayMultiplier);
+      ImGui::InputFloat("GameOverTimer", &pWorld->GameOverTimer);
+      ImGui::InputFloat("GlobalEnemyDamageMultiplier",
+                        &pWorld->GlobalEnemyDamageMultiplier);
+      ImGui::InputFloat("GlobalEnemyDifficultyOffset",
+                        &pWorld->GlobalEnemyDifficultyOffset);
+      ImGui::InputFloat("GlobalEnemyHealthMultiplier",
+                        &pWorld->GlobalEnemyHealthMultiplier);
+      ImGui::InputFloat("GlobalEquipmentQualityMultiplier",
+                        &pWorld->GlobalEquipmentQualityMultiplier);
+      ImGui::InputFloat("GlobalPhysicalTowerHealthMultiplier",
+                        &pWorld->GlobalPhysicalTowerHealthMultiplier);
+      ImGui::InputFloat("GlobalTowerDamageMultiplier",
+                        &pWorld->GlobalTowerDamageMultiplier);
+      ImGui::InputFloat("GlobalTowerHealthMultiplier",
+                        &pWorld->GlobalTowerHealthMultiplier);
+      ImGui::InputFloat("JumpZMultiplier", &pWorld->JumpZMultiplier);
+      ImGui::InputFloat("MaxNumberOfEnemiesMultiplier",
+                        &pWorld->MaxNumberOfEnemiesMultiplier);
+      ImGui::InputFloat("PlayerNetUpdateFrequency",
+                        &pWorld->PlayerNetUpdateFrequency);
+    }
+
+    ImGui::TreePop();
+  }
 }
 
 void MenuMain::ItemModding() {
@@ -1003,4 +1188,143 @@ std::string MenuMain::ToLower(const std::string &str) {
   std::string lowerStr = str;
   std::transform(lowerStr.begin(), lowerStr.end(), lowerStr.begin(), ::tolower);
   return lowerStr;
+}
+
+void MenuMain::ImGuiPawn(Classes::ADunDefPawn *pPawn) {
+  if (pPawn == nullptr)
+    return;
+  // ImGui::Text("%s", pPawn->GetName().c_str());
+  // ImGui::Separator();
+
+  ImGui::InputInt("Health", &pPawn->Health);
+  ImGui::InputInt("HealthMax", &pPawn->HealthMax);
+  // ImGui::InputFloat("AIMaxFallSpeedFactor", &pPawn->AIMaxFallSpeedFactor);
+  ImGui::InputFloat("AccelRate", &pPawn->AccelRate);
+  ImGui::InputFloat("AirControl", &pPawn->AirControl);
+  ImGui::InputFloat("AirSpeed", &pPawn->AirSpeed);
+  // ImGui::InputFloat("Alertness", &pPawn->Alertness);
+  // ImGui::InputFloat("AlwaysRelevantDistanceSquared",
+  //&pPawn->AlwaysRelevantDistanceSquared);
+  // ImGui::InputFloat("AvgPhysicsTime", &pPawn->AvgPhysicsTime);
+  // ImGui::InputFloat("BaseEyeHeight", &pPawn->BaseEyeHeight);
+  // ImGui::InputFloat("BreathTime", &pPawn->BreathTime);
+  // ImGui::InputFloat("Buoyancy", &pPawn->Buoyancy);
+  // ImGui::InputFloat("CreationTime", &pPawn->CreationTime);
+  // ImGui::InputFloat("CrouchHeight", &pPawn->CrouchHeight);
+  // ImGui::InputFloat("CrouchRadius", &pPawn->CrouchRadius);
+  // ImGui::InputFloat("CrouchedPct", &pPawn->CrouchedPct);
+  ImGui::InputFloat("CustomTimeDilation", &pPawn->CustomTimeDilation);
+  // ImGui::InputFloat("DamageScaling", &pPawn->DamageScaling);
+  // ImGui::InputFloat("DesiredSpeed", &pPawn->DesiredSpeed);
+  // ImGui::InputFloat("DestinationOffset", &pPawn->DestinationOffset);
+  ImGui::InputFloat("DrawScale", &pPawn->DrawScale);
+  // ImGui::InputFloat("EyeHeight", &pPawn->EyeHeight);
+  // ImGui::InputFloat("FindAnchorFailedTime", &pPawn->FindAnchorFailedTime);
+  ImGui::InputFloat("FlatAcceleration", &pPawn->FlatAcceleration);
+  ImGui::InputFloat("GravityZMultiplier", &pPawn->GravityZMultiplier);
+  ImGui::InputFloat("GroundSpeed", &pPawn->GroundSpeed);
+  // ImGui::InputFloat("HearingThreshold", &pPawn->HearingThreshold);
+  ImGui::InputFloat("JumpZ", &pPawn->JumpZ);
+  // ImGui::InputFloat("LadderSpeed", &pPawn->LadderSpeed);
+  // ImGui::InputFloat("LastNetUpdateTime", &pPawn->LastNetUpdateTime);
+  // ImGui::InputFloat("LastPainTime", &pPawn->LastPainTime);
+  // ImGui::InputFloat("LastRenderTime", &pPawn->LastRenderTime);
+  // ImGui::InputFloat("LastStartTime", &pPawn->LastStartTime);
+  // ImGui::InputFloat("LastValidAnchorTime", &pPawn->LastValidAnchorTime);
+  // ImGui::InputFloat("LatentFloat", &pPawn->LatentFloat);
+  // ImGui::InputFloat("LedgeCheckThreshold", &pPawn->LedgeCheckThreshold);
+  // ImGui::InputFloat("LifeSpan", &pPawn->LifeSpan);
+  ImGui::InputFloat("Mass", &pPawn->Mass);
+  ImGui::InputFloat("MaxDesiredSpeed", &pPawn->MaxDesiredSpeed);
+  ImGui::InputFloat("MaxFallSpeed", &pPawn->MaxFallSpeed);
+  ImGui::InputFloat("MaxJumpHeight", &pPawn->MaxJumpHeight);
+  // ImGui::InputFloat("MaxOutOfWaterStepHeight",
+  // &pPawn->MaxOutOfWaterStepHeight); ImGui::InputFloat("MaxStepHeight",
+  // &pPawn->MaxStepHeight);
+  // ImGui::InputFloat("MeleeRange", &pPawn->MeleeRange);
+  // ImGui::InputFloat("NetFrequencyMultiplier",
+  // &pPawn->NetFrequencyMultiplier); ImGui::InputFloat("NetPriority",
+  // &pPawn->NetPriority); ImGui::InputFloat("NetRelevancyTime",
+  // &pPawn->NetRelevancyTime); ImGui::InputFloat("NetUpdateFrequency",
+  // &pPawn->NetUpdateFrequency); ImGui::InputFloat("NetUpdateTime",
+  // &pPawn->NetUpdateTime); ImGui::InputFloat("NextPathRadius",
+  // &pPawn->NextPathRadius);
+  // ImGui::InputFloat("NonPreferredVehiclePathMultiplier",
+  //&pPawn->NonPreferredVehiclePathMultiplier);
+  // ImGui::InputFloat("OldZ", &pPawn->OldZ);
+  // ImGui::InputFloat("OutofWaterZ", &pPawn->OutofWaterZ);
+  // ImGui::InputFloat("PeripheralVision", &pPawn->PeripheralVision);
+  // ImGui::InputFloat("RBPushRadius", &pPawn->RBPushRadius);
+  // ImGui::InputFloat("RBPushStrength", &pPawn->RBPushStrength);
+  // ImGui::InputFloat("RootMotionInterpCurrentTime",
+  //&pPawn->RootMotionInterpCurrentTime);
+  // ImGui::InputFloat("RootMotionInterpRate", &pPawn->RootMotionInterpRate);
+  // ImGui::InputFloat("SerpentineDist", &pPawn->SerpentineDist);
+  // ImGui::InputFloat("SerpentineTime", &pPawn->SerpentineTime);
+  // ImGui::InputFloat("SightRadius", &pPawn->SightRadius);
+  // ImGui::InputFloat("SmallNetDeltaSize", &pPawn->SmallNetDeltaSize);
+  // ImGui::InputFloat("SoundDampening", &pPawn->SoundDampening);
+  // ImGui::InputFloat("SpawnTime", &pPawn->SpawnTime);
+  // ImGui::InputFloat("SplashTime", &pPawn->SplashTime);
+  // ImGui::InputFloat("TickFrequency", &pPawn->TickFrequency);
+  // ImGui::InputFloat("TickFrequencyAtEndDistance",
+  //&pPawn->TickFrequencyAtEndDistance);
+  // ImGui::InputFloat("TickFrequencyDecreaseDistanceEnd",
+  //&pPawn->TickFrequencyDecreaseDistanceEnd);
+  // ImGui::InputFloat("TickFrequencyDecreaseDistanceStart",
+  //&pPawn->TickFrequencyDecreaseDistanceStart);
+  // ImGui::InputFloat(
+  //"TickFrequencyLastSeenTimeBeforeForcingMaxTickFrequency",
+  //&pPawn->TickFrequencyLastSeenTimeBeforeForcingMaxTickFrequency);
+  // ImGui::InputFloat("TimeSinceLastTick", &pPawn->TimeSinceLastTick);
+  // ImGui::InputFloat("UncrouchTime", &pPawn->UncrouchTime);
+  // ImGui::InputFloat("UnderWaterTime", &pPawn->UnderWaterTime);
+  // ImGui::InputFloat("VehicleCheckRadius", &pPawn->VehicleCheckRadius);
+  // ImGui::InputFloat("ViewPitchMax", &pPawn->ViewPitchMax);
+  // ImGui::InputFloat("ViewPitchMin", &pPawn->ViewPitchMin);
+  // ImGui::InputFloat("WalkableFloorZ", &pPawn->WalkableFloorZ);
+  // ImGui::InputFloat("WalkingPct", &pPawn->WalkingPct);
+  // ImGui::InputFloat("WaterSpeed", &pPawn->WaterSpeed);
+  // ImGui::InputFloat("noise1loudness", &pPawn->noise1loudness);
+  // ImGui::InputFloat("noise1time", &pPawn->noise1time);
+  // ImGui::InputFloat("noise2loudness", &pPawn->noise2loudness);
+  // ImGui::InputFloat("noise2time", &pPawn->noise2time);
+  // ImGui::InputInt("AllowedYawError", &pPawn->AllowedYawError);
+  // ImGui::InputInt("AnchorItem", &pPawn->AnchorItem);
+  // ImGui::InputInt("FailedLandingCount", &pPawn->FailedLandingCount);
+  // ImGui::InputInt("FullHeight", &pPawn->FullHeight);
+  // ImGui::InputInt("IgnoreCollisionGroups", &pPawn->IgnoreCollisionGroups);
+  // ImGui::InputInt("MaxPitchLimit", &pPawn->MaxPitchLimit);
+  // ImGui::InputInt("MulticastQueueMessageTypeLimitDefault",
+  //&pPawn->MulticastQueueMessageTypeLimitDefault);
+  // ImGui::InputInt("MyCollisionGroups", &pPawn->MyCollisionGroups);
+  // ImGui::InputInt("NetTag", &pPawn->NetTag);
+  // ImGui::InputInt("OctreeCollectionGroup", &pPawn->OctreeCollectionGroup);
+  // ImGui::InputInt("OverlapTag", &pPawn->OverlapTag);
+  // ImGui::InputInt("ShotCount", &pPawn->ShotCount);
+  // ImGui::InputInt("maxVisiblePlayers", &pPawn->maxVisiblePlayers);
+  IMGUI_FVECTOR(Acceleration, pPawn);
+  // IMGUI_FVECTOR(AngularVelocity, pPawn);
+  IMGUI_FVECTOR(DrawScale3D, pPawn);
+  // IMGUI_FVECTOR(FlashLocation, pPawn);
+  // IMGUI_FVECTOR(Floor, pPawn);
+  // IMGUI_FVECTOR(InterpolatedVelocity, pPawn);
+  // IMGUI_FVECTOR(LastBumpLocation, pPawn);
+  // IMGUI_FVECTOR(LastFiringFlashLocation, pPawn);
+  IMGUI_FVECTOR(Location, pPawn);
+  // IMGUI_FVECTOR(LookAtTargetOffset, pPawn);
+  // IMGUI_FVECTOR(ManaTokenImpulseUpOffset, pPawn);
+  // IMGUI_FVECTOR(MeshInterpLoc, pPawn);
+  // IMGUI_FVECTOR(PrePivot, pPawn);
+  // IMGUI_FVECTOR(PreviousLocation, pPawn);
+  // IMGUI_FVECTOR(RMVelocity, pPawn);
+  // IMGUI_FVECTOR(RelativeLocation, pPawn);
+  // IMGUI_FVECTOR(RootMotionInterpCurveLastValue, pPawn);
+  // IMGUI_FVECTOR(SerpentineDir, pPawn);
+  // IMGUI_FVECTOR(TakeHitLocation, pPawn);
+  // IMGUI_FVECTOR(TargetingLocationOffset, pPawn);
+  // IMGUI_FVECTOR(TearOffMomentum, pPawn);
+  IMGUI_FVECTOR(Velocity, pPawn);
+  // IMGUI_FVECTOR(noise1spot, pPawn);
+  // IMGUI_FVECTOR(noise2spot, pPawn);
 }

@@ -14,6 +14,7 @@ public:
     MenuPlayer,
     MenuModding,
     MenuConfig,
+    MenuWorld,
   };
   void Init() override;
   void OnBegin() override;
@@ -36,8 +37,10 @@ protected:
   void BasicCheats();
   void Config();
   void PlayerCheats();
+  void WorldCheats();
   void Debug();
   void NoClipHandleInput();
+  void ImGuiPawn(Classes::ADunDefPawn *pPawn);
   void ImGuiItem(Classes::UHeroEquipment *item);
   void ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
                  Classes::FString CurrentSelected, unsigned char &_changeChar,
