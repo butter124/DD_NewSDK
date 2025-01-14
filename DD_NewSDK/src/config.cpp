@@ -583,6 +583,8 @@ void Config::GetKeybinds() {
   SettingsFile >> keyBindsmap[KeyBinds::UpdateVacuumPos].key;
   SettingsFile >> keyBindsmap[KeyBinds::ToggleNoClipKeybind].key;
   SettingsFile.close();
+
+  PrintToConsole("Loaded keybinds");
 }
 
 void Config::SaveKeybinds() {
@@ -597,14 +599,16 @@ void Config::SaveKeybinds() {
   SettingsFile << "\n";
   SettingsFile << keyBindsmap[KeyBinds::ToggleNoClipKeybind].key;
   SettingsFile.close();
+
+  PrintToConsole("Saved keybinds");
 }
 
 Classes::FVector Config::GetForward(float yaw, float pitch) {
-  // Convert to radians (assuming 360 degrees = 65536 range)
+  // convert to radians (assuming 360 degrees = 65536 range)
   float radPitch = pitch * (3.14159f / 32768.0f);
   float radYaw = yaw * (3.14159f / 32768.0f);
 
-  // Calculate forward direction
+  // calculate forward direction
   float outX = cos(radYaw) * cos(radPitch);
   float outY = sin(radYaw) * cos(radPitch);
   float outZ = sin(radPitch);
