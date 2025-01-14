@@ -317,17 +317,17 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
   std::string funcName = pFunction->GetFullName().c_str();
   std::string objectName = pObject->Name.GetName();
 
-#ifdef LOGGING
-  bool print = true;
-  for (auto s : filterarray) {
-    if (funcName == s) {
-      print = false;
-      break;
+  if (config.bLoggingProcessEvents) {
+    bool print = true;
+    for (auto s : filterarray) {
+      if (funcName == s) {
+        print = false;
+        break;
+      }
     }
+    if (print)
+      std::cout << funcName.c_str() << "\n";
   }
-  if (print)
-    std::cout << funcName.c_str() << "\n";
-#endif
 
   // block input when menu is shown
   if (config.bShowMenu) {
@@ -431,12 +431,11 @@ bool Menu::Init() {
 #endif
 
   main.Init();
-  // item.SetItem(config.GetADunDefPlayerController()->myHero->HeroEquipments[0]);
+
   return true;
 }
 
 bool Menu::Cleanup() {
-  // UnhookDirectXDevice();
 
   EndSceneHook.UnHookFunction();
 
@@ -501,14 +500,3 @@ void Menu::ImGuiMenu() {
 }
 
 void Menu::ImGuiCheats() {}
-
-void Menu::AttachConsole() {
-  AllocConsole();
-  freopen_s(&f, "CONOUT$", "w", stdout);
-  std::cout << "[+] Successfully attached to process.\n";
-}
-
-void Menu::DettachConsole() {
-  fclose(f);
-  FreeConsole();
-}

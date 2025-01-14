@@ -458,10 +458,11 @@ void MenuMain::ItemModding() {
   if (pPlayerController->myHero)
     ImGuiTArrayOfItems(pPlayerController->myHero->HeroEquipments, "Equipment");
 
-  // Item box
-  auto pHeroManager = config.GetHeroManager();
-  if (pHeroManager)
-    ImGuiTArrayOfItems(pHeroManager->ItemBoxEquipments, "Forge");
+  // This crashes the game for some reason
+  //  // Item box
+  //  auto pHeroManager = config.GetHeroManager();
+  //  if (pHeroManager)
+  //    ImGuiTArrayOfItems(pHeroManager->ItemBoxEquipments, "Forge");
 
   {
     if (ImGui::TreeNode("Spawn items")) {
@@ -472,7 +473,7 @@ void MenuMain::ItemModding() {
         config.GiveSelectedItems();
 
       ImGui::SameLine();
-      static char FilterItemsBuffer[255];
+      static char FilterItemsBuffer[255]{0};
       ImGui::InputText("##Filter Items", FilterItemsBuffer,
                        sizeof(FilterItemsBuffer));
 
@@ -483,9 +484,7 @@ void MenuMain::ItemModding() {
       ImGui::BeginChild("Items", ImVec2(0, 0), true);
 
       ImGui::Columns(3, NULL, false);
-      int MAX_ITEMS = 25; // Maximum number of items to render
       int itemCount = config.vHeroEquipmentStrings.size();
-      int renderCount = 0;
       for (int n = 0; n < itemCount; ++n) {
         std::string itemLower = config.vHeroEquipmentStrings[n];
         std::transform(itemLower.begin(), itemLower.end(), itemLower.begin(),
@@ -493,16 +492,13 @@ void MenuMain::ItemModding() {
 
         // Check if the item matches the filter
         if (itemLower.find(FilterItemsBuffer) != std::string::npos) {
-          // Render items only if within the maximum limit
-          if (renderCount < MAX_ITEMS) {
-            if (ImGui::Selectable(config.vHeroEquipmentStrings[n].c_str(),
-                                  config.pItemSelectable[n])) {
-              if (!ImGui::GetIO().KeyCtrl) {
-                memset(config.pItemSelectable, 0,
-                       config.vHeroEquipmentStrings.size());
-              }
-              config.pItemSelectable[n] ^= 1;
+          if (ImGui::Selectable(config.vHeroEquipmentStrings[n].c_str(),
+                                config.pItemSelectable[n])) {
+            if (!ImGui::GetIO().KeyCtrl) {
+              memset(config.pItemSelectable, 0,
+                     config.vHeroEquipmentStrings.size() * sizeof(bool));
             }
+            config.pItemSelectable[n] ^= 1;
           }
 
           ImGui::NextColumn();
@@ -537,13 +533,6 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
   if (ImGui::Button(("Give##%ls" + item->GetName()).c_str())) {
     config.PushItemToQueue(item);
   }
-  ImGui::Text("InternalName : %s", item->GetName().c_str());
-
-  if (item->EquipmentName.Data) {
-    ImGui::Text("EquipmentName     :  %ls", item->EquipmentName.c_str());
-  } else {
-    ImGui::Text("EquipmentName     :  ");
-  }
 
   ImGui::Text("ItemAddr          :  0x%p", item);
   ImGui::SameLine();
@@ -557,6 +546,13 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
     ImGui::LogFinish();
   }
   ImGui::PopStyleVar(); // Restore previous style
+  ImGui::Text("InternalName      :  %s", item->GetName().c_str());
+
+  if (item->EquipmentName.Data) {
+    ImGui::Text("EquipmentName     :  %ls", item->EquipmentName.c_str());
+  } else {
+    ImGui::Text("EquipmentName     :  ");
+  }
 
   // item name
   if (item->UserEquipmentName.Data) {
@@ -564,7 +560,7 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
     ImGui::Text("UserEquipmentName :  %ls", item->UserEquipmentName.c_str());
     static char charBuff[32];
     ImGui::PushItemWidth(ImGui::GetWindowWidth() * .25f);
-    ImGui::InputText("Name  ", charBuff, sizeof(charBuff),
+    ImGui::InputText("##ItemName", charBuff, sizeof(charBuff),
                      IM_ARRAYSIZE(charBuff));
     ImGui::PopItemWidth();
     ImGui::SameLine();
@@ -583,7 +579,7 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
     // change forger name
     ImGui::PushItemWidth(ImGui::GetWindowWidth() * .25f);
     static char ncharBuff[32];
-    ImGui::InputText("Forger", ncharBuff, sizeof(ncharBuff),
+    ImGui::InputText("##ItemForger", ncharBuff, sizeof(ncharBuff),
                      IM_ARRAYSIZE(ncharBuff));
     ImGui::PopItemWidth();
     ImGui::SameLine();
@@ -894,6 +890,20 @@ void MenuMain::Config() {
     ImGui::Checkbox("Always loot?", &config.bAutoLootULT);
     ImGui::Combo("Always loot Quality", &config.itemFilterQualityULT,
                  itemQualitys, IM_ARRAYSIZE(itemQualitys));
+
+    ImGui::TreePop();
+  }
+
+  if (ImGui::TreeNode("Logging")) {
+    if (ImGui::Checkbox("Attach console", &config.bLogging)) {
+      if (config.bLogging) {
+        config.AttachConsole();
+      } else {
+        config.DettachConsole();
+      }
+    }
+    ImGui::SameLine();
+    ImGui::Checkbox("Log process events", &config.bLoggingProcessEvents);
 
     ImGui::TreePop();
   }

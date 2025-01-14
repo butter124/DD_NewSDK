@@ -28,12 +28,6 @@ bool Config::Init() {
               ->Bump(pPawn, nullptr, {0, 0, 0});
       }
       });
-  //if (strcmp(funcName.c_str(),
-  //           "Function UDKGame.DunDefTreasureChest.SpawningIn.Tick") == 0) {
-  //  Classes::FVector f = {0, 0, 0};
-  //  ((Classes::ADunDefTreasureChest *)pObject)
-  //      ->Bump(config.GetPlayerPawn(), nullptr, f);
-  //}
 
   RegisterKeybind("Toggle menu",Config::KeyBinds::ToggleKey,519,[this](){bShowMenu = !bShowMenu;});
   RegisterKeybind("End menu",Config::KeyBinds::EndKey,520,[this](){bEndMenu = true;});
@@ -46,6 +40,9 @@ bool Config::Init() {
   // clang-format on
 
   GetKeybinds();
+
+  if (bLogging)
+    AttachConsole();
 
   return true;
 }
@@ -62,6 +59,9 @@ bool Config::Cleanup() {
   }
   // cleanup the equipment vector before closing
   vHeroEquipmentStrings.clear();
+
+  if (bConsoleAttached)
+    DettachConsole();
 
   return true;
 }
@@ -441,12 +441,12 @@ Classes::UDunDefHeroManager *Config::GetHeroManager() {
   if (!pController)
     return nullptr;
 
-  Classes::UDunDefHeroManager *pManager = pController->GetHeroManager();
+  static Classes::UDunDefHeroManager *obj = nullptr;
 
-  if (!pManager)
-    return nullptr;
+  if (!obj)
+    obj = pController->GetHeroManager();
 
-  return pManager;
+  return obj;
 }
 
 Classes::UDunDefSceneClient *Config::GetClientManager() {
@@ -731,14 +731,19 @@ std::vector<std::string> Config::ScanForAllItems() {
 
   // setup bool array for imgui menu
   bool *newItemSelectable = new bool[retVec.size()];
+  if (!newItemSelectable) {
+    return std::vector<std::string>{};
+  }
   // delete old one
-  if (pItemSelectable)
+  if (pItemSelectable) {
     delete[] pItemSelectable;
+    pItemSelectable = nullptr;
+  }
   // make new one the correct one
   pItemSelectable = newItemSelectable;
-  // make sure the memeory is zeroed
-  for (size_t i = 0; i < retVec.size(); i++)
-    pItemSelectable[i] = false;
+
+  // zero it out
+  memset(pItemSelectable, 0, retVec.size() * sizeof(bool));
 
   return retVec;
 }
@@ -750,4 +755,18 @@ bool Config::GiveSelectedItems() {
     PushItemToQueueWithString(vHeroEquipmentStrings[i]);
   }
   return true;
+}
+
+void Config::AttachConsole() {
+  AllocConsole();
+  freopen_s(&f, "CONOUT$", "w", stdout);
+  std::cout << "[+] Successfully attached to process.\n";
+
+  bConsoleAttached = true;
+}
+
+void Config::DettachConsole() {
+  fclose(f);
+  FreeConsole();
+  bConsoleAttached = false;
 }

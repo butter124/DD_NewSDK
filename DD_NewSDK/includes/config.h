@@ -2,10 +2,13 @@
 
 #include "SDK.hpp"
 #include <algorithm>
+#include <format>
 #include <functional>
+#include <iostream>
 #include <mutex>
 #include <queue>
 #include <string>
+#include <string_view>
 #include <unordered_map>
 #include <windows.h>
 
@@ -42,6 +45,14 @@ struct KeybindsStruct {
 };
 
 class Config {
+private:
+  FILE *f = nullptr;
+#if LOGGING
+  bool bConsoleAttached = true;
+#else
+  bool bConsoleAttached = false;
+#endif // LOGGING
+
 public:
   bool Init();
   bool Cleanup();
@@ -49,6 +60,9 @@ public:
   HWND gameHWND;
   bool bEndMenu = false;
   bool bShowMenu = true;
+  bool bLogging = false;
+  bool bLoggingProcessEvents = false;
+
   bool bBlockInput = true;
   bool bPlayerGodMode = false;
   bool bCrystalGodMode = false;
@@ -104,6 +118,7 @@ public:
   bool GiveItem(Classes::UHeroEquipment *item);
   bool GiveSelectedItems();
   void PushItemToQueueWithString(std::string s);
+  std::vector<std::string> ScanForAllItems();
 
   // handle key presses
   enum KeyBinds {
@@ -166,6 +181,17 @@ public:
   Classes::FString StringToFString(std::string s);
   Classes::FVector GetForward(float yaw, float pitch);
   Classes::FVector AddFVector(Classes::FVector vec1, Classes::FVector vec2);
-  std::vector<std::string> ScanForAllItems();
+
+  void AttachConsole();
+  void DettachConsole();
+
+  template <typename... Args>
+  void PrintToConsole(const std::string &format, Args... args) {
+    if (!bConsoleAttached)
+      return;
+    std::cout << std::vformat(
+                     format, std::make_format_args(std::forward<Args>(args)...))
+              << std::endl;
+  }
 };
 extern Config config;
