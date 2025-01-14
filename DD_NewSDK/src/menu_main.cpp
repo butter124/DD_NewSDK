@@ -4,6 +4,7 @@
 #include "pch.h"
 #include "includes/menu_main.h"
 #include "includes/config.h"
+#include <SDK/DD_UDKGame_classes.hpp>
 // clang-format on
 
 #define IMGUI_BITFIELD(s, item)                                                \
@@ -330,15 +331,6 @@ void MenuMain::PlayerCheats() {
     return;
   // player controller
   {
-    // ImGui::InputInt("Player mana", &pController->ManaPower);
-    // float vec[3] = {pController->Pawn->Location.X,
-    //                 pController->Pawn->Location.Y,
-    //                 pController->Pawn->Location.Z};
-    // if (ImGui::InputFloat3("Player pos", vec)) {
-    //   pController->Pawn->Location.X = vec[0];
-    //   pController->Pawn->Location.Y = vec[1];
-    //   pController->Pawn->Location.Z = vec[2];
-    // }
     // ImGui::InputInt("Score", &pController->Score);
 
     if (ImGui::Button("Max all towers")) {
@@ -348,34 +340,12 @@ void MenuMain::PlayerCheats() {
     if (ImGui::Button("Repair all towers")) {
       pController->RepairAllTowers();
     }
-
-    // TArray<class ADunDefPlayerAbility*>                PlayerAbilities; //
-    // 0x097C(0x000C) (NeedCtorLink) TArray<int> statsData; // 0x0654(0x000C)
-    // (NeedCtorLink) TArray<int> playerStatsData; // 0x0660(0x000C)
-    // (NeedCtorLink) TArray<int> myStatsData; // 0x066C(0x000C) (NeedCtorLink)
-    ////
-    // void SkipToWave(int Wave);
-    // void UpgradeAllTowers(int numLevels);
-    // void DowngradeAllTowers(int numLevels);
-    // void DropAllMana();
-    // void STATIC_DistributeManaAmongPlayers(float ManaAmount, int
-    // numRecursions, bool bAllowBanking, bool bOnlyPutInBank); void
-    // ClientDoUnlockAchievment(TEnumAsByte<EAchievement> Achievement); void
-    // ClientAddManaToBank(float ManaAmount, bool bIgnoreBankLimit); bool
-    // AddBankMana(float mana, bool bIgnoreBankLimit, bool bAddFromHeroMana);
-    // void StopHovering(); void StartHovering(); void
-    // ClientSetUserNickname(const struct FString& NickName);
   }
 
   if (!pController->myHero)
     return;
   // player hero
   {
-
-    ImGui::InputInt("Hero level", &pController->myHero->HeroLevel);
-    ImGui::InputInt("Hero Experience", &pController->myHero->HeroExperience);
-    ImGui::InputInt("Mana power", &pController->myHero->ManaPower);
-
     // scale this down so it manageable
     if (ImGui::TreeNode("Colors")) {
       ImGui::PushItemWidth(ImGui::GetContentRegionAvail().x * .15f);
@@ -477,11 +447,10 @@ void MenuMain::PlayerCheats() {
 
   if (!pController->Pawn)
     return;
-  // player pawn
-  {
-    ImGui::Separator();
-    ImGui::Text("Player pawn");
-
+  if (ImGui::TreeNode("Player pawn")) {
+    ImGui::InputInt("Hero level", &pController->myHero->HeroLevel);
+    ImGui::InputInt("Hero Experience", &pController->myHero->HeroExperience);
+    ImGui::InputInt("Mana power", &pController->myHero->ManaPower);
     ImGui::InputInt("Health", &pController->Pawn->Health);
     ImGui::InputInt("Max Health", &pController->Pawn->HealthMax);
 
@@ -515,6 +484,7 @@ void MenuMain::PlayerCheats() {
     // if (ImGui::Checkbox("Collide world", &tempCollideWorld)) {
     //   pController->Pawn->bCollideWorld = tempCollideWorld;
     // }
+    ImGui::TreePop();
   }
 
   return;
@@ -530,13 +500,39 @@ void MenuMain::WorldCheats() {
     return;
 
   if (ImGui::TreeNode("Targetable actors")) {
+
+    if (ImGui::Button("Kill all but players")) {
+
+      for (size_t i = 0; i < pWorld->TargetableActors.Num(); i++) {
+        if (!pWorld->TargetableActors.IsValidIndex(i))
+          continue;
+
+        auto pActor = pWorld->TargetableActors[i];
+
+        if (pActor->IsPlayerOwned())
+          continue;
+
+        if (!pActor->IsA(Classes::ADunDefDamageableTarget::StaticClass()))
+          continue;
+        config.KillPawn(
+            reinterpret_cast<Classes::ADunDefDamageableTarget *>(pActor));
+      }
+    }
+
     for (size_t i = 0; i < pWorld->TargetableActors.Num(); i++) {
       if (!pWorld->TargetableActors.IsValidIndex(i))
         continue;
       auto pActor = pWorld->TargetableActors[i];
       if (ImGui::TreeNode(
               (pActor->GetName() + "##" + std::to_string(i)).c_str())) {
-        ImGuiPawn(reinterpret_cast<Classes::ADunDefPawn *>(pActor));
+
+        if (!pActor->IsA(Classes::ADunDefDamageableTarget::StaticClass()))
+          continue;
+        if (pActor->IsPlayerOwned())
+          continue;
+
+        ImGuiTargetableActor(
+            reinterpret_cast<Classes::ADunDefDamageableTarget *>(pActor));
         ImGui::TreePop();
       }
     }
@@ -1299,4 +1295,15 @@ void MenuMain::ImGuiPawn(Classes::ADunDefPawn *pPawn) {
   IMGUI_FVECTOR(Velocity, pPawn);
   // IMGUI_FVECTOR(noise1spot, pPawn);
   // IMGUI_FVECTOR(noise2spot, pPawn);
+}
+
+void MenuMain::ImGuiTargetableActor(Classes::ADunDefDamageableTarget *pPawn) {
+  if (ImGui::Button("Kill")) {
+    config.KillPawn(pPawn);
+  }
+  ImGui::InputInt("Life", &pPawn->Health);
+  ImGui::InputInt("MaxLife", &pPawn->MaxHealth);
+  IMGUI_FVECTOR(Location, pPawn);
+  IMGUI_FVECTOR(DrawScale3D, pPawn);
+  // ImGui::InputFloat("Gravity", &pPawn->GravityZMultiplier);
 }
