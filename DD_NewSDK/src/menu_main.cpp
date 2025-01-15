@@ -5,6 +5,7 @@
 #include "includes/menu_main.h"
 #include "includes/config.h"
 #include <SDK/DD_UDKGame_classes.hpp>
+#include <string>
 // clang-format on
 
 #define IMGUI_BITFIELD(s, item)                                                \
@@ -495,46 +496,55 @@ void MenuMain::WorldCheats() {
   ImGui::Separator();
 
   auto pWorld = config.GetGameInfo();
+  auto pInfo = config.GetWorldInfo();
 
-  if (!pWorld)
+  if (!pWorld || !pInfo)
     return;
 
+  ImGui::Text("TimeSeconds     : %f", pInfo->TimeSeconds);
+  ImGui::Text("RealTimeSeconds : %f", pInfo->RealTimeSeconds);
+  ImGui::Text("AudioTimeSeconds: %f", pInfo->AudioTimeSeconds);
+
   if (ImGui::TreeNode("Targetable actors")) {
-
-    if (ImGui::Button("Kill all but players")) {
-
-      for (size_t i = 0; i < pWorld->TargetableActors.Num(); i++) {
-        if (!pWorld->TargetableActors.IsValidIndex(i))
-          continue;
-
-        auto pActor = pWorld->TargetableActors[i];
-
-        if (pActor->IsPlayerOwned())
-          continue;
-
-        if (!pActor->IsA(Classes::ADunDefDamageableTarget::StaticClass()))
-          continue;
-        config.KillPawn(
-            reinterpret_cast<Classes::ADunDefDamageableTarget *>(pActor));
-      }
-    }
-
     for (size_t i = 0; i < pWorld->TargetableActors.Num(); i++) {
       if (!pWorld->TargetableActors.IsValidIndex(i))
         continue;
       auto pActor = pWorld->TargetableActors[i];
+
+      if (!pActor->IsA(Classes::ADunDefDamageableTarget::StaticClass())) {
+        continue;
+      }
+
       if (ImGui::TreeNode(
               (pActor->GetName() + "##" + std::to_string(i)).c_str())) {
-
-        if (!pActor->IsA(Classes::ADunDefDamageableTarget::StaticClass()))
-          continue;
-        if (pActor->IsPlayerOwned())
-          continue;
 
         ImGuiTargetableActor(
             reinterpret_cast<Classes::ADunDefDamageableTarget *>(pActor));
         ImGui::TreePop();
       }
+    }
+    ImGui::TreePop();
+  }
+
+  if (ImGui::TreeNode("Pawns")) {
+    Classes::APawn *pFirstPawn = config.GetFirstPawnInList();
+    int i = 0;
+    while (pFirstPawn != nullptr) {
+      if (!pFirstPawn->IsA(Classes::ADunDefPawn::StaticClass())) {
+        pFirstPawn = pFirstPawn->NextPawn;
+        continue;
+      }
+
+      Classes::ADunDefPawn *pCurPawn = (Classes::ADunDefPawn *)pFirstPawn;
+      bool isPlayer = pFirstPawn->IsPlayerPawn();
+
+      if (ImGui::TreeNode(
+              (pCurPawn->GetName() + "##" + std::to_string(i)).c_str())) {
+        ImGuiPawn(pCurPawn);
+        ImGui::TreePop();
+      }
+
+      pFirstPawn = (Classes::ADunDefPawn *)pFirstPawn->NextPawn;
     }
     ImGui::TreePop();
   }
@@ -1164,6 +1174,8 @@ void MenuMain::ImGuiPawn(Classes::ADunDefPawn *pPawn) {
   // ImGui::Text("%s", pPawn->GetName().c_str());
   // ImGui::Separator();
 
+  ImGui::Text("Creation span : %f", pPawn->CreationTime);
+  ImGui::Text("Spawn span : %f", pPawn->SpawnTime);
   ImGui::InputInt("Health", &pPawn->Health);
   ImGui::InputInt("HealthMax", &pPawn->HealthMax);
   // ImGui::InputFloat("AIMaxFallSpeedFactor", &pPawn->AIMaxFallSpeedFactor);
@@ -1301,6 +1313,11 @@ void MenuMain::ImGuiTargetableActor(Classes::ADunDefDamageableTarget *pPawn) {
   if (ImGui::Button("Kill")) {
     config.KillPawn(pPawn);
   }
+
+  ImGui::Text("TargetingTeam: %d", pPawn->TargetingTeam);
+  ImGui::Text("LifeSpan: %f", pPawn->LifeSpan);
+  ImGui::Text("CreationTime: %f", pPawn->CreationTime);
+
   ImGui::InputInt("Life", &pPawn->Health);
   ImGui::InputInt("MaxLife", &pPawn->MaxHealth);
   IMGUI_FVECTOR(Location, pPawn);

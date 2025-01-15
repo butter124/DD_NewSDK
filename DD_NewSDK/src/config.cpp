@@ -402,12 +402,14 @@ Classes::APawn *Config::GetFirstPawnInList() {
 }
 
 Classes::AWorldInfo *Config::GetWorldInfo() {
-  Classes::UEngine *engine = GetEngine();
+  Classes::AWorldInfo *worldinfo = nullptr;
 
+  Classes::UEngine *engine = GetEngine();
   if (!engine)
     return nullptr;
 
-  auto worldinfo = engine->STATIC_GetCurrentWorldInfo();
+  worldinfo = engine->STATIC_GetCurrentWorldInfo();
+  // PrintToConsole("Found world info.");
 
   return worldinfo;
 }
@@ -502,6 +504,30 @@ void Config::KillPawn(Classes::ADunDefDamageableTarget *pawn) {
 }
 
 void Config::KillAllEnemyPawns() {
+
+  auto pWorld = config.GetGameInfo();
+  auto pInfo = config.GetWorldInfo();
+
+  if (!pWorld || pWorld->TargetableActors.Data == nullptr || pInfo == nullptr)
+    return;
+
+  for (size_t i = 0; i < pWorld->TargetableActors.Num(); i++) {
+    if (!pWorld->TargetableActors.IsValidIndex(i))
+      continue;
+
+    auto pActor = pWorld->TargetableActors[i];
+    if (pActor == nullptr || pActor->IsPlayerOwned())
+      continue;
+
+    // wait 1 second for object to init before killing it
+    if (pActor->CreationTime + 5 > pInfo->TimeSeconds)
+      if (((Classes::ADunDefDamageableTarget *)pActor)->TargetingTeam ==
+          TARGET_TEAM::PLAYERS) {
+        config.KillPawn(
+            reinterpret_cast<Classes::ADunDefDamageableTarget *>(pActor));
+      }
+  }
+
   PawnLoop([this](Classes::ADunDefPawn *curPawn) { KillPawn(curPawn); }, true,
            false);
 }

@@ -36,6 +36,7 @@ enum Stats {
   eTDamage,
   eTRange
 };
+enum TARGET_TEAM { NONE, ENEMYS, PLAYERS };
 
 struct KeybindsStruct {
   int key;
