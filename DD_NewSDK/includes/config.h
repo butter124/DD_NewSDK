@@ -23,6 +23,13 @@
     func(obj, edx, pFunction, pParms, pResult);                                \
   })
 
+#define REGISTER_HOOKED_OBJECT(key, func)                                      \
+  RegisterHookedObject(key, [this](Classes::UObject *obj, void *edx,           \
+                                   Classes::UFunction *pFunction,              \
+                                   void *pParms, void *pResult) {              \
+    func(obj, edx, pFunction, pParms, pResult);                                \
+  })
+
 enum Stats {
   eUnknown,
   eHHealth,
@@ -102,11 +109,18 @@ public:
       hookedFuncMap;
   void RegisterHookedFunction(const std::string &key,
                               std::function<void(PROCESS_EVENT_ARGS)> func);
+  std::unordered_map<std::string, std::function<void(PROCESS_EVENT_ARGS)>>
+      hookedObjects;
+  void RegisterHookedObject(const std::string &key,
+                            std::function<void(PROCESS_EVENT_ARGS)> func);
 
   // block functions from running in process event
   std::unordered_map<std::string, bool> blockedFuncMap;
   void RegisterBlockedFunction(const std::string &key, bool &flag);
-  bool ShouldLootItem(Classes::UHeroEquipment *item);
+
+  std::unordered_map<std::string, bool> vProcessEventFunctionFilter;
+  std::unordered_map<std::string, bool> vProcessEventObjectFilter;
+  void SetupFilter();
 
   // item giving
   // handling item giving in process event stops a crash from happening
@@ -120,6 +134,7 @@ public:
   bool GiveSelectedItems();
   void PushItemToQueueWithString(std::string s);
   std::vector<std::string> ScanForAllItems();
+  bool ShouldLootItem(Classes::UHeroEquipment *item);
 
   // handle key presses
   enum KeyBinds {
@@ -141,6 +156,7 @@ public:
   void WaveSkipHookFunc(PROCESS_EVENT_ARGS);
   void AutoLootHookFunc(PROCESS_EVENT_ARGS);
   void PlayerRewardHookFunc(PROCESS_EVENT_ARGS);
+  void OpenChest(PROCESS_EVENT_ARGS);
 
   void NoClip();
   void ToggleNoClip();

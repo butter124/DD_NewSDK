@@ -18,16 +18,8 @@ bool Config::Init() {
                            AutoLootHookFunc);
   REGISTER_HOOKED_FUNCTION("Function UDKGame.DunDef_SeqAct_GiveEquipmentToPlayers.Activated",
                            PlayerRewardHookFunc);
-  REGISTER_HOOKED_FUNCTION(
-      "Function UDKGame.DunDefTreasureChest.SpawningIn.Tick",
-      [this](PROCESS_EVENT_ARGS) {
-      auto pPawn = GetPlayerPawn();
-        if (bAutoOpenChest && pPawn)
-      {
-          ((Classes::ADunDefTreasureChest *)obj)
-              ->Bump(pPawn, nullptr, {0, 0, 0});
-      }
-      });
+  REGISTER_HOOKED_OBJECT("DunDefTreasureChest", 
+                         OpenChest);
 
   // TODO: register keybinds needs to be changed in a way that handles a single point of definition
   RegisterKeybind("Toggle menu",Config::KeyBinds::ToggleKey,519,[this](){bShowMenu = !bShowMenu;});
@@ -41,6 +33,7 @@ bool Config::Init() {
   // clang-format on
 
   GetKeybinds();
+  SetupFilter();
 
   return true;
 }
@@ -65,11 +58,15 @@ bool Config::Cleanup() {
 }
 
 void Config::RegisterHookedFunction(
-    const std::string &key,
-    std::function<void(Classes::UObject *, void *, Classes::UFunction *, void *,
-                       void *)>
-        func) {
+    const std::string &key, std::function<void(PROCESS_EVENT_ARGS)> func) {
   hookedFuncMap[key] = func;
+}
+
+void Config::RegisterHookedObject(
+    // if you call a class method of obj it will enter an infinite loop
+    // the caller must account for that
+    const std::string &key, std::function<void(PROCESS_EVENT_ARGS)> func) {
+  hookedObjects[key] = func;
 }
 
 void Config::RegisterBlockedFunction(const std::string &key, bool &flag) {
@@ -203,6 +200,15 @@ void Config::PlayerRewardHookFunc(PROCESS_EVENT_ARGS) {
     // tmpItemEntry = rewarditems->GiveEquipmentEntries;
   } else {
     currentRewardInteration = 0;
+  }
+}
+
+void Config::OpenChest(PROCESS_EVENT_ARGS) {
+  if (pFunction->GetName().find("Tick") == std::string::npos)
+    return;
+  auto pPawn = GetPlayerPawn();
+  if (bAutoOpenChest && pPawn) {
+    ((Classes::ADunDefTreasureChest *)obj)->Bump(pPawn, nullptr, {0, 0, 0});
   }
 }
 
@@ -520,7 +526,7 @@ void Config::KillAllEnemyPawns() {
       continue;
 
     // wait 1 second for object to init before killing it
-    if (pActor->CreationTime + 5 > pInfo->TimeSeconds)
+    if (pActor->CreationTime + 5 < pInfo->TimeSeconds)
       if (((Classes::ADunDefDamageableTarget *)pActor)->TargetingTeam ==
           TARGET_TEAM::PLAYERS) {
         config.KillPawn(
@@ -818,4 +824,302 @@ void Config::PrintToConsole(const std::string &s) {
   if (!bConsoleAttached)
     return;
   std::cout << s << std::endl;
+}
+
+void Config::SetupFilter() {
+  // clang-format off
+  //vProcessEventFilter
+      vProcessEventFunctionFilter["Function Core.Object.EndState"] = true;
+      vProcessEventFunctionFilter["Function DunDefArabia.DunDefDjinnManager.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.AllowSpawn"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.AnimTreeUpdated"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.Attach"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.BecomeViewTarget"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.EndViewTarget"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.GainedChild"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.InterpolationChanged"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.InterpolationFinished"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.InterpolationStarted"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.IsPlayerOwned"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.ModifyHearSoundComponent"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.OnDestroy"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.PhysicsVolumeChange"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.PostInitAnimTree"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.PreBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.ReceivedNewEvent"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.SetInitialState"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.SpawnedByKismet"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.Touch"] = true;
+      vProcessEventFunctionFilter["Function Engine.AnimNode.OnBecomeRelevant"] = true;
+      vProcessEventFunctionFilter["Function Engine.AnimNode.OnCeaseRelevant"] = true;
+      vProcessEventFunctionFilter["Function Engine.AnimNode.OnInit"] = true;
+      vProcessEventFunctionFilter["Function Engine.AnimNotify_ViewShake.Notify"] = true;
+      vProcessEventFunctionFilter["Function Engine.Camera.UpdateCamera"] = true;
+      vProcessEventFunctionFilter["Function Engine.Canvas.Reset"] = true;
+      vProcessEventFunctionFilter["Function Engine.Console.InputChar"] = true;
+      vProcessEventFunctionFilter["Function Engine.Console.InputKey"] = true;
+      vProcessEventFunctionFilter["Function Engine.DecalManager.DecalFinished"] = true;
+      vProcessEventFunctionFilter["Function Engine.Emitter.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.Engine.GetCurrentWorldInfo"] = true;
+      vProcessEventFunctionFilter["Function Engine.GameInfo.OnStartOnlineGameComplete"] = true;
+      vProcessEventFunctionFilter["Function Engine.GameInfo.Timer"] = true;
+      vProcessEventFunctionFilter["Function Engine.GameInfoDataProvider.ProviderInstanceBound"] = true;
+      vProcessEventFunctionFilter["Function Engine.GameReplicationInfo.ShouldShowGore"] = true;
+      vProcessEventFunctionFilter["Function Engine.GameReplicationInfo.Timer"] = true;
+      vProcessEventFunctionFilter["Function Engine.GameViewportClient.GetSubtitleRegion"] = true;
+      vProcessEventFunctionFilter["Function Engine.GameViewportClient.LayoutPlayers"] = true;
+      vProcessEventFunctionFilter["Function Engine.HeightFog.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.Interaction.PostRender"] = true;
+      vProcessEventFunctionFilter["Function Engine.Interaction.Tick"] = true;
+      vProcessEventFunctionFilter["Function Engine.InterpActor.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.InventoryManager.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.LocalPlayer.PreHUDRender"] = true;
+      vProcessEventFunctionFilter["Function Engine.MatineeActor.Update"] = true;
+      vProcessEventFunctionFilter["Function Engine.Pawn.BecomeViewTarget"] = true;
+      vProcessEventFunctionFilter["Function Engine.Pawn.HeadVolumeChange"] = true;
+      vProcessEventFunctionFilter["Function Engine.Pawn.IsPlayerPawn"] = true;
+      vProcessEventFunctionFilter["Function Engine.Pawn.PostInitAnimTree"] = true;
+      vProcessEventFunctionFilter["Function Engine.Pawn.PreBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.PhysicsVolume.ActorEnteredVolume"] = true;
+      vProcessEventFunctionFilter["Function Engine.PhysicsVolume.ActorLeavingVolume"] = true;
+      vProcessEventFunctionFilter["Function Engine.PhysicsVolume.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.PlayerController.ClientHearSound"] = true;
+      vProcessEventFunctionFilter["Function Engine.PlayerController.ClientSetViewTarget"] = true;
+      vProcessEventFunctionFilter["Function Engine.PlayerController.Destroyed"] = true;
+      vProcessEventFunctionFilter["Function Engine.PlayerController.GetFOVAngle"] = true;
+      vProcessEventFunctionFilter["Function Engine.PlayerController.HearSoundFinished"] = true;
+      vProcessEventFunctionFilter["Function Engine.PlayerController.InitInputSystem"] = true;
+      vProcessEventFunctionFilter["Function Engine.PlayerController.Kismet_ClientPlaySound"] = true;
+      vProcessEventFunctionFilter["Function Engine.PlayerController.NotifyLanded"] = true;
+      vProcessEventFunctionFilter["Function Engine.PlayerController.PreRender"] = true;
+      vProcessEventFunctionFilter["Function Engine.PlayerController.ServerNotifyLoadedWorld"] = true;
+      vProcessEventFunctionFilter["Function Engine.PlayerController.StartAltFire"] = true;
+      vProcessEventFunctionFilter["Function Engine.PlayerController.StopAltFire"] = true;
+      vProcessEventFunctionFilter["Function Engine.PlayerController.StopFire"] = true;
+      vProcessEventFunctionFilter["Function Engine.Projectile.PreBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.SceneDataStore.Registered"] = true;
+      vProcessEventFunctionFilter["Function Engine.SequenceEvent.RegisterEvent"] = true;
+      vProcessEventFunctionFilter["Function Engine.SequenceOp.Activated"] = true;
+      vProcessEventFunctionFilter["Function Engine.SequenceOp.Deactivated"] = true;
+      vProcessEventFunctionFilter["Function Engine.SkeletalMeshActor.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIDataStore.Registered"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIDataStore.SubscriberAttached"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIDataStore.SubscriberDetached"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIDataStore.Unregistered"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIDynamicDataProvider.ProviderInstanceBound"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIDynamicDataProvider.ProviderInstanceUnbound"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIEvent.ShouldAlwaysInstance"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIEvent_SceneActivated.Deactivated"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIInteraction.GetLoginStatus"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIList.Initialized"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIList.OnStateChanged"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIList.PostInitialize"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIObject.AllowInputAlias"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScene.AddedChild"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScene.CalculateInputMask"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScene.GetFocusHint"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScene.RemovedChild"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScene.UIAnimationEnded"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScene.UIAnimationStarted"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScreenObject.ActivateFocusHint"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScreenObject.ActivateKeyFrameCompletedDelegates"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScreenObject.AddedChild"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScreenObject.Initialized"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScreenObject.PostInitialize"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScreenObject.RemovedChild"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScreenObject.RemovedFromParent"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScreenObject.SetVisibility"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScreenObject.UIAnimationEnded"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScreenObject.UIAnimationStarted"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScrollbar.Initialized"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIScrollbar.PostInitialize"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIState.ActivateState"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIState.DeactivateState"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIState.IsStateAllowed"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIState.OnActivate"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIState.OnDeactivate"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIState_Disabled.ActivateState"] = true;
+      vProcessEventFunctionFilter["Function Engine.UIState_Focused.ActivateState"] = true;
+      vProcessEventFunctionFilter["Function Engine.Volume.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.VolumeTimer.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.VolumeTimer.Timer"] = true;
+      vProcessEventFunctionFilter["Function Engine.Weapon.RefireCheckTimer"] = true;
+      vProcessEventFunctionFilter["Function Engine.Weapon.WeaponEquipping.BeginState"] = true;
+      vProcessEventFunctionFilter["Function Engine.Weapon.WeaponEquipping.EndState"] = true;
+      vProcessEventFunctionFilter["Function Engine.WorldInfo.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.WorldInfo.PreBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefBasePlayerController.CheckMovie"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefBasePlayerController.PostSpawn"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefBasePlayerController.ServerCheckMovie"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefBasePlayerController.SkippedMovie"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefBuffManager.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefBuffManager.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefCagedPet.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefCrystalCore.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefCustomNode.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefDamageableTarget.SpawnDefaultBuffs"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefDroppedEquipment.RotateSkelMesh"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefEmitterSpawnable.AllowSpawn"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefEmitterSpawnable.Destroyed"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefEmitterSpawnable.OnParticleSystemFinished"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefEmitterSpawnable.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefEmitterSpawnable.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefForge.CheckCombatPhase"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefForge.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefForge.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefGameReplicationInfo.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefGameReplicationInfo.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefHUD.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefHUD.PostRender"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefLocalPlayer.PostHUDRender"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefMiniMap.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefNPC_BarKeep.PlayIdleQuipSound"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefNPC_BarKeep.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefNativeUIScene.IsKeyboardOwned"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPawn.BaseChange"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPawn.PlayFootStepSound"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayer.DoKnockback"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayer.Landed"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayer.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayer.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerAbility.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerAbility_BuildTower.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerAbility_RepairTower.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerAbility_SellTower.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerAbility_UpgradeTower.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerCamera.CalculateSpinOffset"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerCamera.OverTheShoulder.BeginState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerCamera.OverTheShoulder.EndState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerCamera.OverTheShoulder.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerCamera.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerCamera.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.CheckForStartWave"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.CheckRespawn"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.CreateHUD"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.GetHeroManager"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.GetPlayerViewPoint"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.GetSeamlessTravelActorList"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.InCinematic.PlayerTick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.InCinematic.PoppedState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.InCinematic.PushedState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.InCinematic.StartFire"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.IncreasePlacementTowerRadius"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.JumpPressed"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.JumpReleased"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.LockedMovement.PlayerTick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.LockedMovement.PoppedState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.LockedMovement.PushedState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.NotifyDirectorControl"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.NotifyLoadedWorld"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.Pause"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.PlayerWaiting.BeginState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.PlayerWaiting.EndState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.PlayerWaiting.PlayerTick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.PlayerWalking.BeginState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.PlayerWalking.ContinuedState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.PlayerWalking.PausedState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.PlayerWalking.PlayerTick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.PlayerWalking.StartFire"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.ReceivedPlayer"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerController.SpawnPlayerCamera"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerReplicationInfo.Destroyed"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerReplicationInfo.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerReplicationInfo.Timer"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPracticeDummy.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefProjectile.Destroyed"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefProjectile.HitWall"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefProjectile.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefProjectile.RefreshSpeedLifeSpan"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefSceneClient.PauseGame"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefTowerAllowanceVolume.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefTowerPreventionRadius.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefTowerPreventionRadius.Touch"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefTowerPreventionVolume.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefTreasureChest.Destroyed"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefTreasureChest.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefTreasureChest.SpawningIn.BeginState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefTreasureChest.SpawningIn.EndState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefTreasureChest.SpawningIn.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefUIController.InputKey"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefUIScene.OnInterceptedInputKey"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefUIScene.OnLabelChange"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefUIScene.PostInitialSceneUpdate"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefUIScene.RenderGamepadKey"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefUIScene.SceneActivated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefUIScene.SceneDeactivated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefViewportClient.GameSessionEnded"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefViewportClient.OnInputAxis"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefViewportClient.PostRender"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefViewportClient.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefWaveBillboard.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon.WeaponEquipping.WeaponEquipped"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MagicStaff.Active.BeginState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MagicStaff.Active.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MagicStaff.AltFiring.BeginState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MagicStaff.AltFiring.EndState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MagicStaff.AltFiring.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MagicStaff.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MagicStaff.WeaponFiring.BeginState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MagicStaff.WeaponFiring.EndState"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MagicStaff.WeaponFiring.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MeleeSword.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_AppPurchased.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_CheckForLevelUps.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_GameplayMovie.Update"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_GetGameSettings.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_GetMissionSwitchValue.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_LockContent.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_OpenBuildUI.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_OpenBuildUI.Update"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_RefreshWaveEntries.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_RegisterEnemyWaveEntry.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_ResetEnemyWaveEntries.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_ResetEnemyWaveEntries.Update"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_RessurectPlayers.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_ScaleEnemyWave.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_ScaleFloatForPlayerCount.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_SetFinalWaveNumber.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_SetMixEnemies.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_SetNightmareUnlocked.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_SetWaveBillboardSpawnPoints.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_SetWaveNumber.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_ShowNotification.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_UnlockCostumes.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_UnlockMission.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqCond_DifficultySwitch.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqCond_GetMultiplayerMode.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqCond_IntSwitch.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqCond_IsAchievementUnlocked.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqCond_IsInCombatPhase.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqCond_IsInVolume.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqCond_IsPureStrategy.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqCond_ShowTutorial.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDef_UIAction_PlaySound.Activated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.HUDWidgetScene.SceneActivated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.HUDWidgetScene.SceneDeactivated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.HUDWidgetScene.UIPostRender"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.Main.GetSeamlessTravelActorList"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.Main.Heartbeat"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.Main.InitGame"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.Main.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.Main.PostSeamlessTravel"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.Main.PreBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.Main.RunAntiCheat"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.Main.SetGameType"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.Main.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.PlayerShopManager.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.UIButton_Scripted.ActiveStateChanged"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.UIScriptWidget_Button.RenderGame"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.UIScriptWidget_HeroPlayerListButton.RenderGame"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.UIScript_ActionWheelHotkey.RenderGame"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.UI_BuildTimer.SceneActivated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.UI_GameSetup.UIPostRender"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.UI_GlobalHUD.SceneActivated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.UI_PauseMenu.OnReceivedInputKey"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.UI_PauseMenu.PostInitialSceneUpdate"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.UI_PauseMenu.SceneActivated"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.UI_PauseMenu.SceneDeactivated"] = true;
+  // clang-format on
 }

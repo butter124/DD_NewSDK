@@ -1087,6 +1087,107 @@ void MenuMain::Config() {
     ImGui::SameLine();
     ImGui::Checkbox("Log process events", &config.bLoggingProcessEvents);
 
+    // unordered_map menu
+    // TODO: THIS COULD BE DONE ALOT BETTER
+    { // function filter
+      if (ImGui::TreeNode("Process events function filter")) {
+        static char buff[255] = {0};
+        ImGui::InputText("filter", buff, sizeof(buff));
+        ImGui::Columns(2); // Create two columns for side-by-side tables
+        // Expose a few Borders related flags interactively
+        enum ContentsType { CT_Text, CT_FillButton };
+        static ImGuiTableFlags flags =
+            ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg;
+        if (ImGui::BeginTable("table1", 2, flags)) {
+          // Set up columns for the table (optional but useful for proper
+          // layout)
+          ImGui::TableSetupColumn("Filter Name",
+                                  ImGuiTableColumnFlags_WidthStretch);
+          ImGui::TableSetupColumn("Active", ImGuiTableColumnFlags_WidthFixed);
+
+          ImGui::TableHeadersRow();
+
+          for (auto &s : config.vProcessEventFunctionFilter) {
+            if (s.second == false)
+              continue;
+
+            if (s.first.find(buff) == std::string::npos)
+              continue;
+            ImGui::TableNextRow();
+            ImGui::TableNextColumn();
+            ImGui::TextUnformatted(s.first.c_str());
+
+            ImGui::TableNextColumn();
+            ImGui::Checkbox(("bFilter##" + s.first).c_str(), &s.second);
+          }
+
+          ImGui::EndTable();
+        }
+        ImGui::NextColumn();
+        if (ImGui::BeginTable("table2", 2, flags)) {
+          // Set up columns for the table (optional but useful for proper
+          // layout)
+          ImGui::TableSetupColumn("Filter Name#2",
+                                  ImGuiTableColumnFlags_WidthStretch);
+          ImGui::TableSetupColumn("Active#2", ImGuiTableColumnFlags_WidthFixed);
+          ImGui::TableHeadersRow();
+
+          for (auto &s : config.vProcessEventFunctionFilter) {
+            if (s.second == true)
+              continue;
+
+            if (s.first.find(buff) == std::string::npos)
+              continue;
+            ImGui::TableNextRow();
+            ImGui::TableNextColumn();
+            ImGui::TextUnformatted(s.first.c_str());
+
+            ImGui::TableNextColumn();
+            ImGui::Checkbox(("bFilter##" + s.first).c_str(), &s.second);
+          }
+
+          ImGui::EndTable();
+        }
+
+        ImGui::TreePop();
+      }
+    }
+
+    { // object filter
+      if (ImGui::TreeNode("Process events object filter")) {
+        static char buff[255] = {0};
+        ImGui::InputText("object filter", buff, sizeof(buff));
+        // Expose a few Borders related flags interactively
+        enum ContentsType { CT_Text, CT_FillButton };
+        static ImGuiTableFlags flags =
+            ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg;
+        if (ImGui::BeginTable("tableobject", 2, flags)) {
+          // Set up columns for the table (optional but useful for proper
+          // layout)
+          ImGui::TableSetupColumn("Filter Name",
+                                  ImGuiTableColumnFlags_WidthStretch);
+          ImGui::TableSetupColumn("Active", ImGuiTableColumnFlags_WidthFixed);
+
+          ImGui::TableHeadersRow();
+
+          for (auto &s : config.vProcessEventObjectFilter) {
+
+            if (s.first.find(buff) == std::string::npos)
+              continue;
+            ImGui::TableNextRow();
+            ImGui::TableNextColumn();
+            ImGui::TextUnformatted(s.first.c_str());
+
+            ImGui::TableNextColumn();
+            ImGui::Checkbox(("bFilter##" + s.first).c_str(), &s.second);
+          }
+
+          ImGui::EndTable();
+        }
+
+        ImGui::TreePop();
+      }
+    }
     ImGui::TreePop();
   }
 }
