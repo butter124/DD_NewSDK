@@ -501,9 +501,9 @@ void MenuMain::WorldCheats() {
   if (!pWorld || !pInfo)
     return;
 
-  ImGui::Text("TimeSeconds     : %f", pInfo->TimeSeconds);
-  ImGui::Text("RealTimeSeconds : %f", pInfo->RealTimeSeconds);
-  ImGui::Text("AudioTimeSeconds: %f", pInfo->AudioTimeSeconds);
+  // ImGui::Text("TimeSeconds     : %f", pInfo->TimeSeconds);
+  // ImGui::Text("RealTimeSeconds : %f", pInfo->RealTimeSeconds);
+  // ImGui::Text("AudioTimeSeconds: %f", pInfo->AudioTimeSeconds);
 
   if (ImGui::TreeNode("Targetable actors")) {
     for (size_t i = 0; i < pWorld->TargetableActors.Num(); i++) {
