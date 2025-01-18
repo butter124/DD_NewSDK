@@ -510,10 +510,10 @@ void MenuMain::WorldCheats() {
   ImGui::Text("World settings");
   ImGui::Separator();
 
-  auto pWorld = config.GetGameInfo();
-  auto pInfo = config.GetWorldInfo();
+  auto pGameInfo = config.GetGameInfo();
+  auto pWorldInfo = config.GetWorldInfo();
 
-  if (!pWorld || !pInfo)
+  if (!pGameInfo || !pWorldInfo)
     return;
 
   // ImGui::Text("TimeSeconds     : %f", pInfo->TimeSeconds);
@@ -521,10 +521,10 @@ void MenuMain::WorldCheats() {
   // ImGui::Text("AudioTimeSeconds: %f", pInfo->AudioTimeSeconds);
 
   if (ImGui::TreeNode("Targetable actors")) {
-    for (size_t i = 0; i < pWorld->TargetableActors.Num(); i++) {
-      if (!pWorld->TargetableActors.IsValidIndex(i))
+    for (size_t i = 0; i < pGameInfo->TargetableActors.Num(); i++) {
+      if (!pGameInfo->TargetableActors.IsValidIndex(i))
         continue;
-      auto pActor = pWorld->TargetableActors[i];
+      auto pActor = pGameInfo->TargetableActors[i];
 
       if (!pActor->IsA(Classes::ADunDefDamageableTarget::StaticClass())) {
         continue;
@@ -565,59 +565,60 @@ void MenuMain::WorldCheats() {
   }
 
   if (ImGui::TreeNode("World settings")) {
-    ImGui::InputInt("DunDefMaxPlayers", &pWorld->DunDefMaxPlayers);
-    ImGui::InputInt("MaxNumberOfDroppedMana", &pWorld->MaxNumberOfDroppedMana);
+    ImGui::InputInt("DunDefMaxPlayers", &pGameInfo->DunDefMaxPlayers);
+    ImGui::InputInt("MaxNumberOfDroppedMana",
+                    &pGameInfo->MaxNumberOfDroppedMana);
     ImGui::InputInt("MaxNumberOfDroppedManaOnline",
-                    &pWorld->MaxNumberOfDroppedManaOnline);
+                    &pGameInfo->MaxNumberOfDroppedManaOnline);
     ImGui::InputInt("NightmareAdditionalMaxEnemies",
-                    &pWorld->NightmareAdditionalMaxEnemies);
-    ImGui::InputInt("StartWave", &pWorld->StartWave);
+                    &pGameInfo->NightmareAdditionalMaxEnemies);
+    ImGui::InputInt("StartWave", &pGameInfo->StartWave);
     {
-      IMGUI_BITFIELD(bPlayersAreInvincible, pWorld);
-      IMGUI_BITFIELD(bCrystalCoreInvincible, pWorld);
-      IMGUI_BITFIELD(bTowersInvincible, pWorld);
-      IMGUI_BITFIELD(AllowFriendlyFire, pWorld);
-      IMGUI_BITFIELD(bDisableAddingXP, pWorld);
-      IMGUI_BITFIELD(bDisableItemDrops, pWorld);
-      IMGUI_BITFIELD(bDisableWaveScalingForNumPlayers, pWorld);
-      IMGUI_BITFIELD(bDoSpawnNotifications, pWorld);
-      IMGUI_BITFIELD(bDropManaUponDeath, pWorld);
-      IMGUI_BITFIELD(bGiveEquipmentRewardsOnFirstWave, pWorld);
-      IMGUI_BITFIELD(bIgnoreEnemyStuckChecks, pWorld);
-      IMGUI_BITFIELD(bRandomExcludeLastSpawnPoint, pWorld);
-      IMGUI_BITFIELD(bRandomSpawnPoints, pWorld);
-      IMGUI_BITFIELD(bRandomWithoutReplacementSpawnPoints, pWorld);
-      IMGUI_BITFIELD(bScaleBossHealths, pWorld);
-      IMGUI_BITFIELD(bSurvivalTimeLimitMap, pWorld);
+      IMGUI_BITFIELD(bPlayersAreInvincible, pGameInfo);
+      IMGUI_BITFIELD(bCrystalCoreInvincible, pGameInfo);
+      IMGUI_BITFIELD(bTowersInvincible, pGameInfo);
+      IMGUI_BITFIELD(AllowFriendlyFire, pGameInfo);
+      IMGUI_BITFIELD(bDisableAddingXP, pGameInfo);
+      IMGUI_BITFIELD(bDisableItemDrops, pGameInfo);
+      IMGUI_BITFIELD(bDisableWaveScalingForNumPlayers, pGameInfo);
+      IMGUI_BITFIELD(bDoSpawnNotifications, pGameInfo);
+      IMGUI_BITFIELD(bDropManaUponDeath, pGameInfo);
+      IMGUI_BITFIELD(bGiveEquipmentRewardsOnFirstWave, pGameInfo);
+      IMGUI_BITFIELD(bIgnoreEnemyStuckChecks, pGameInfo);
+      IMGUI_BITFIELD(bRandomExcludeLastSpawnPoint, pGameInfo);
+      IMGUI_BITFIELD(bRandomSpawnPoints, pGameInfo);
+      IMGUI_BITFIELD(bRandomWithoutReplacementSpawnPoints, pGameInfo);
+      IMGUI_BITFIELD(bScaleBossHealths, pGameInfo);
+      IMGUI_BITFIELD(bSurvivalTimeLimitMap, pGameInfo);
     }
 
     {
       ImGui::InputFloat("CrystalCoreHealthMultiplier",
-                        &pWorld->CrystalCoreHealthMultiplier);
+                        &pGameInfo->CrystalCoreHealthMultiplier);
       ImGui::InputFloat("EnemyLifeSpanMultiplier",
-                        &pWorld->EnemyLifeSpanMultiplier);
+                        &pGameInfo->EnemyLifeSpanMultiplier);
       ImGui::InputFloat("EquipmentQualityOverlayMultiplier",
-                        &pWorld->EquipmentQualityOverlayMultiplier);
-      ImGui::InputFloat("GameOverTimer", &pWorld->GameOverTimer);
+                        &pGameInfo->EquipmentQualityOverlayMultiplier);
+      ImGui::InputFloat("GameOverTimer", &pGameInfo->GameOverTimer);
       ImGui::InputFloat("GlobalEnemyDamageMultiplier",
-                        &pWorld->GlobalEnemyDamageMultiplier);
+                        &pGameInfo->GlobalEnemyDamageMultiplier);
       ImGui::InputFloat("GlobalEnemyDifficultyOffset",
-                        &pWorld->GlobalEnemyDifficultyOffset);
+                        &pGameInfo->GlobalEnemyDifficultyOffset);
       ImGui::InputFloat("GlobalEnemyHealthMultiplier",
-                        &pWorld->GlobalEnemyHealthMultiplier);
+                        &pGameInfo->GlobalEnemyHealthMultiplier);
       ImGui::InputFloat("GlobalEquipmentQualityMultiplier",
-                        &pWorld->GlobalEquipmentQualityMultiplier);
+                        &pGameInfo->GlobalEquipmentQualityMultiplier);
       ImGui::InputFloat("GlobalPhysicalTowerHealthMultiplier",
-                        &pWorld->GlobalPhysicalTowerHealthMultiplier);
+                        &pGameInfo->GlobalPhysicalTowerHealthMultiplier);
       ImGui::InputFloat("GlobalTowerDamageMultiplier",
-                        &pWorld->GlobalTowerDamageMultiplier);
+                        &pGameInfo->GlobalTowerDamageMultiplier);
       ImGui::InputFloat("GlobalTowerHealthMultiplier",
-                        &pWorld->GlobalTowerHealthMultiplier);
-      ImGui::InputFloat("JumpZMultiplier", &pWorld->JumpZMultiplier);
+                        &pGameInfo->GlobalTowerHealthMultiplier);
+      ImGui::InputFloat("JumpZMultiplier", &pGameInfo->JumpZMultiplier);
       ImGui::InputFloat("MaxNumberOfEnemiesMultiplier",
-                        &pWorld->MaxNumberOfEnemiesMultiplier);
+                        &pGameInfo->MaxNumberOfEnemiesMultiplier);
       ImGui::InputFloat("PlayerNetUpdateFrequency",
-                        &pWorld->PlayerNetUpdateFrequency);
+                        &pGameInfo->PlayerNetUpdateFrequency);
     }
 
     ImGui::TreePop();
