@@ -43,29 +43,36 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
   // block input when menu is shown
   if (config.bShowMenu) {
     if (strcmp(objectName.c_str(), "UIState_Pressed") == 0) {
+      config.PrintToConsole("Blocked input");
       return;
     }
   }
 
   // anti cheat
   if (strcmp(funcName.c_str(), "Function UDKGame.Main.RunAntiCheat") == 0) {
+    config.PrintToConsole("Blocked Function UDKGame.Main.RunAntiCheat");
     return;
   }
   if (strcmp(funcName.c_str(), "Function UDKGame.Main.HandleCheater") == 0) {
+    config.PrintToConsole("Blocked Function UDKGame.Main.HandleCheater");
     return;
   }
   // hooked functions
   if (config.hookedFuncMap.find(funcName) != config.hookedFuncMap.end()) {
+    // config.PrintToConsole(std::format("Hooked {}", funcName));
     config.hookedFuncMap[funcName](pObject, edx, pFunction, pParms, pResult);
   }
   // hooked objects
   if (config.hookedObjects.find(objectName) != config.hookedObjects.end()) {
+    // config.PrintToConsole(std::format("Hooked {}", objectName));
     config.hookedObjects[objectName](pObject, edx, pFunction, pParms, pResult);
   }
   // blocked functions
   if (config.blockedFuncMap.find(funcName) == config.blockedFuncMap.end()) {
-    if (config.blockedFuncMap[funcName] == true)
+    if (config.blockedFuncMap[funcName] == true) {
+      // config.PrintToConsole(std::format("Blocked {}", funcName));
       return;
+    }
   }
 
   // Call Original PE
