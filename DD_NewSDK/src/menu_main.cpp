@@ -669,9 +669,9 @@ void MenuMain::WorldCheats() {
       IMGUI_BITFIELD(bDisableInvisibility, pGRI);
       IMGUI_BITFIELD(bDisableLightningStance, pGRI);
       IMGUI_BITFIELD(bDisableManaBombForAssault, pGRI);
+      ImGui::NextColumn();
       IMGUI_BITFIELD(bDisableMiniMapEnemyIcons, pGRI);
       IMGUI_BITFIELD(bDisableMoveTower, pGRI);
-      ImGui::NextColumn();
       IMGUI_BITFIELD(bDisableOvercharge, pGRI);
       IMGUI_BITFIELD(bDisablePetHealing, pGRI);
       IMGUI_BITFIELD(bDisablePhaseShift, pGRI);
@@ -705,8 +705,8 @@ void MenuMain::WorldCheats() {
       IMGUI_BITFIELD(bIsPureStrategy, pGRI);
       IMGUI_BITFIELD(bIsRestrictedDifficultyMission, pGRI);
       IMGUI_BITFIELD(bIsRuthlessMode, pGRI);
-      IMGUI_BITFIELD(bIsSpecialMission, pGRI);
       ImGui::NextColumn();
+      IMGUI_BITFIELD(bIsSpecialMission, pGRI);
       IMGUI_BITFIELD(bIsTBR, pGRI);
       IMGUI_BITFIELD(bLevelStartedWithBuildTimer, pGRI);
       IMGUI_BITFIELD(bLimitPetHealing, pGRI);
