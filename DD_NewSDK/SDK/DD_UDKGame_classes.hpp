@@ -22908,355 +22908,335 @@ public:
 
 // Class UDKGame.UI_SearchFilters
 // 0x00F8 (0x0734 - 0x063C)
-class UUI_SearchFilters : public UDunDefUIScene
-{
+class UUI_SearchFilters : public UDunDefUIScene {
 public:
-	class UUIPanel_DataList*                           CampaignMapDataList;                                      // 0x063C(0x0004) (Edit)
-	class UUIPanel_DataList*                           ChallengeMapDataList;                                     // 0x0640(0x0004) (Edit)
-	class UUICheckBox_Scripted*                        CampaignsCheckbox;                                        // 0x0644(0x0004) (Edit)
-	class UUICheckBox_Scripted*                        ChallengesCheckbox;                                       // 0x0648(0x0004) (Edit)
-	class UUICheckBox_Scripted*                        EasyCheckbox;                                             // 0x064C(0x0004) (Edit)
-	class UUICheckBox_Scripted*                        MediumCheckbox;                                           // 0x0650(0x0004) (Edit)
-	class UUICheckBox_Scripted*                        HardCheckbox;                                             // 0x0654(0x0004) (Edit)
-	class UUICheckBox_Scripted*                        InsaneCheckbox;                                           // 0x0658(0x0004) (Edit)
-	class UUICheckBox_Scripted*                        NightmareCheckbox;                                        // 0x065C(0x0004) (Edit)
-	class UUICheckBox_Scripted*                        RuthlessCheckbox;                                         // 0x0660(0x0004) (Edit)
-	class UUIScriptWidget_ToggleButton*                BuildOn;                                                  // 0x0664(0x0004) (Edit)
-	class UUIScriptWidget_ToggleButton*                BuildOff;                                                 // 0x0668(0x0004) (Edit)
-	class UUIScriptWidget_ToggleButton*                BuildAny;                                                 // 0x066C(0x0004) (Edit)
-	class UUIScriptWidget_ToggleButton*                SurvivalOn;                                               // 0x0670(0x0004) (Edit)
-	class UUIScriptWidget_ToggleButton*                SurvivalOff;                                              // 0x0674(0x0004) (Edit)
-	class UUIScriptWidget_ToggleButton*                SurvivalAny;                                              // 0x0678(0x0004) (Edit)
-	class UUIScriptWidget_ToggleButton*                StrategyOn;                                               // 0x067C(0x0004) (Edit)
-	class UUIScriptWidget_ToggleButton*                StrategyOff;                                              // 0x0680(0x0004) (Edit)
-	class UUIScriptWidget_ToggleButton*                StrategyAny;                                              // 0x0684(0x0004) (Edit)
-	class UUIButton*                                   ButtonCycleBuild;                                         // 0x0688(0x0004) (Edit)
-	class UUIButton*                                   ButtonCycleSurvival;                                      // 0x068C(0x0004) (Edit)
-	class UUIButton*                                   ButtonCycleStrategy;                                      // 0x0690(0x0004) (Edit)
-	class UUICheckBox_Scripted*                        filterHostLevel;                                          // 0x0694(0x0004) (Edit)
-	class UUIPanel*                                    HostLevelContainer;                                       // 0x0698(0x0004) (Edit)
-	class UUINumericOptionList*                        FilterHostLevelStartList;                                 // 0x069C(0x0004) (Edit)
-	class UUINumericOptionList*                        FilterHostLevelEndList;                                   // 0x06A0(0x0004) (Edit)
-	class UUILabel*                                    HeroClassLabel;                                           // 0x06A4(0x0004) (Edit)
-	class UUIScriptWidget_Button*                      HeroClassPrev;                                            // 0x06A8(0x0004) (Edit)
-	class UUIScriptWidget_Button*                      HeroClassNext;                                            // 0x06AC(0x0004) (Edit)
-	class UUIPanel*                                    OptionsPanel1;                                            // 0x06B0(0x0004) (Edit)
-	class UUIPanel*                                    OptionsPanel2;                                            // 0x06B4(0x0004) (Edit)
-	class UUIScriptWidget_Button*                      MoreOptionsButton;                                        // 0x06B8(0x0004) (Edit)
-	struct FString                                     MSG_OneDifficultyRequiredTitle;                           // 0x06BC(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     MSG_OneDifficultyRequiredDescription;                     // 0x06C8(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     AnyString;                                                // 0x06D4(0x000C) (Edit, Localized, NeedCtorLink)
-	class UUIScriptWidget_Button*                      AcceptButton;                                             // 0x06E0(0x0004) (Edit)
-	class UUIScriptWidget_Button*                      CancelButton;                                             // 0x06E4(0x0004) (Edit)
-	class UUI_NetworkMultiplayer*                      MultiplayerUI;                                            // 0x06E8(0x0004) (Transient)
-	unsigned long                                      readyForFilterInit : 1;                                   // 0x06EC(0x0004) (Transient)
-	unsigned long                                      switchOptions : 1;                                        // 0x06EC(0x0004)
-	class UUIImage*                                    survivalContainer;                                        // 0x06F0(0x0004) (Edit)
-	class UUIImage*                                    buildContainer;                                           // 0x06F4(0x0004) (Edit)
-	class UUIImage*                                    strategyContainer;                                        // 0x06F8(0x0004) (Edit)
-	unsigned char                                      savedSurvivalValue;                                       // 0x06FC(0x0001) (Transient)
-	unsigned char                                      savedBuildValue;                                          // 0x06FD(0x0001) (Transient)
-	unsigned char                                      savedStrategyValue;                                       // 0x06FE(0x0001) (Transient)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x06FF(0x0001) MISSED OFFSET
-	struct FSearchFilterSettings                       originalSettings;                                         // 0x0700(0x0024) (Transient, NeedCtorLink)
-	TArray<struct UUI_SearchFilters_FHeroClassInfo>    heroClasses;                                              // 0x0724(0x000C) (NeedCtorLink)
-	int                                                selectedHeroClassIndex;                                   // 0x0730(0x0004)
+  class UUIPanel_DataList *CampaignMapDataList;         // 0x063C(0x0004) (Edit)
+  class UUIPanel_DataList *ChallengeMapDataList;        // 0x0640(0x0004) (Edit)
+  class UUICheckBox_Scripted *CampaignsCheckbox;        // 0x0644(0x0004) (Edit)
+  class UUICheckBox_Scripted *ChallengesCheckbox;       // 0x0648(0x0004) (Edit)
+  class UUICheckBox_Scripted *EasyCheckbox;             // 0x064C(0x0004) (Edit)
+  class UUICheckBox_Scripted *MediumCheckbox;           // 0x0650(0x0004) (Edit)
+  class UUICheckBox_Scripted *HardCheckbox;             // 0x0654(0x0004) (Edit)
+  class UUICheckBox_Scripted *InsaneCheckbox;           // 0x0658(0x0004) (Edit)
+  class UUICheckBox_Scripted *NightmareCheckbox;        // 0x065C(0x0004) (Edit)
+  class UUICheckBox_Scripted *RuthlessCheckbox;         // 0x0660(0x0004) (Edit)
+  class UUIScriptWidget_ToggleButton *BuildOn;          // 0x0664(0x0004) (Edit)
+  class UUIScriptWidget_ToggleButton *BuildOff;         // 0x0668(0x0004) (Edit)
+  class UUIScriptWidget_ToggleButton *BuildAny;         // 0x066C(0x0004) (Edit)
+  class UUIScriptWidget_ToggleButton *SurvivalOn;       // 0x0670(0x0004) (Edit)
+  class UUIScriptWidget_ToggleButton *SurvivalOff;      // 0x0674(0x0004) (Edit)
+  class UUIScriptWidget_ToggleButton *SurvivalAny;      // 0x0678(0x0004) (Edit)
+  class UUIScriptWidget_ToggleButton *StrategyOn;       // 0x067C(0x0004) (Edit)
+  class UUIScriptWidget_ToggleButton *StrategyOff;      // 0x0680(0x0004) (Edit)
+  class UUIScriptWidget_ToggleButton *StrategyAny;      // 0x0684(0x0004) (Edit)
+  class UUIButton *ButtonCycleBuild;                    // 0x0688(0x0004) (Edit)
+  class UUIButton *ButtonCycleSurvival;                 // 0x068C(0x0004) (Edit)
+  class UUIButton *ButtonCycleStrategy;                 // 0x0690(0x0004) (Edit)
+  class UUICheckBox_Scripted *filterHostLevel;          // 0x0694(0x0004) (Edit)
+  class UUIPanel *HostLevelContainer;                   // 0x0698(0x0004) (Edit)
+  class UUINumericOptionList *FilterHostLevelStartList; // 0x069C(0x0004) (Edit)
+  class UUINumericOptionList *FilterHostLevelEndList;   // 0x06A0(0x0004) (Edit)
+  class UUILabel *HeroClassLabel;                       // 0x06A4(0x0004) (Edit)
+  class UUIScriptWidget_Button *HeroClassPrev;          // 0x06A8(0x0004) (Edit)
+  class UUIScriptWidget_Button *HeroClassNext;          // 0x06AC(0x0004) (Edit)
+  class UUIPanel *OptionsPanel1;                        // 0x06B0(0x0004) (Edit)
+  class UUIPanel *OptionsPanel2;                        // 0x06B4(0x0004) (Edit)
+  class UUIScriptWidget_Button *MoreOptionsButton;      // 0x06B8(0x0004) (Edit)
+  struct FString MSG_OneDifficultyRequiredTitle;        // 0x06BC(0x000C) (Edit,
+                                                 // Localized, NeedCtorLink)
+  struct FString
+      MSG_OneDifficultyRequiredDescription; // 0x06C8(0x000C) (Edit, Localized,
+                                            // NeedCtorLink)
+  struct FString AnyString; // 0x06D4(0x000C) (Edit, Localized, NeedCtorLink)
+  class UUIScriptWidget_Button *AcceptButton;  // 0x06E0(0x0004) (Edit)
+  class UUIScriptWidget_Button *CancelButton;  // 0x06E4(0x0004) (Edit)
+  class UUI_NetworkMultiplayer *MultiplayerUI; // 0x06E8(0x0004) (Transient)
+  unsigned long readyForFilterInit : 1;        // 0x06EC(0x0004) (Transient)
+  unsigned long switchOptions : 1;             // 0x06EC(0x0004)
+  class UUIImage *survivalContainer;           // 0x06F0(0x0004) (Edit)
+  class UUIImage *buildContainer;              // 0x06F4(0x0004) (Edit)
+  class UUIImage *strategyContainer;           // 0x06F8(0x0004) (Edit)
+  unsigned char savedSurvivalValue;            // 0x06FC(0x0001) (Transient)
+  unsigned char savedBuildValue;               // 0x06FD(0x0001) (Transient)
+  unsigned char savedStrategyValue;            // 0x06FE(0x0001) (Transient)
+  unsigned char UnknownData00[0x1];            // 0x06FF(0x0001) MISSED OFFSET
+  struct FSearchFilterSettings
+      originalSettings; // 0x0700(0x0024) (Transient, NeedCtorLink)
+  TArray<struct UUI_SearchFilters_FHeroClassInfo>
+      heroClasses;            // 0x0724(0x000C) (NeedCtorLink)
+  int selectedHeroClassIndex; // 0x0730(0x0004)
 
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class UDKGame.UI_SearchFilters");
-		return ptr;
-	}
+  static UClass *StaticClass() {
+    static auto ptr = UObject::FindClass("Class UDKGame.UI_SearchFilters");
+    return ptr;
+  }
 
-
-	unsigned long OnReceivedInputKey(struct FInputEventParameters* EventParms);
-	unsigned long IsGamepadOwned();
-	unsigned long IsKeyboardOwned();
-	void RestoreRadialValues();
-	void SaveRadialValues();
-	void Update(float DeltaTime);
-	unsigned long HasCampaignMissionsSelected();
-	void CheckDifficultyChange(class UUICheckBox_Scripted* Widget);
-	void SwitchOptionsPanel();
-	unsigned long NotifyWidgetClicked(class UUIObject* Widget);
-	void SearchFiltersSelectionChanged(class UUIObject* Widget, unsigned long bFromMouseClick);
-	void ChangeAllDataListSelectionEntries(class UUICheckBox_Scripted* ParentBox, class UUIPanel_DataList* DataList, unsigned long bSelect, unsigned long bOnlyAffectTop);
-	void UncheckAll(class UUIObject* theException);
-	void ApplyFilterSettings(unsigned long doSave);
-	void LoadFilterSettings();
-	void AfterDataListUpdate(class UUIPanel_DataList* aDataList);
-	void BeforeDataListUpdate(class UUIPanel_DataList* aDataList);
-	void PostInitialSceneUpdate();
-	void RefreshedChallengeList();
-	void BeforeRefreshedChallengeList();
-	void RefreshedCampaignList();
-	void BeforeRefreshedCampaignList();
+  unsigned long OnReceivedInputKey(struct FInputEventParameters *EventParms);
+  unsigned long IsGamepadOwned();
+  unsigned long IsKeyboardOwned();
+  void RestoreRadialValues();
+  void SaveRadialValues();
+  void Update(float DeltaTime);
+  unsigned long HasCampaignMissionsSelected();
+  void CheckDifficultyChange(class UUICheckBox_Scripted *Widget);
+  void SwitchOptionsPanel();
+  unsigned long NotifyWidgetClicked(class UUIObject *Widget);
+  void SearchFiltersSelectionChanged(class UUIObject *Widget,
+                                     unsigned long bFromMouseClick);
+  void ChangeAllDataListSelectionEntries(class UUICheckBox_Scripted *ParentBox,
+                                         class UUIPanel_DataList *DataList,
+                                         unsigned long bSelect,
+                                         unsigned long bOnlyAffectTop);
+  void UncheckAll(class UUIObject *theException);
+  void ApplyFilterSettings(unsigned long doSave);
+  void LoadFilterSettings();
+  void AfterDataListUpdate(class UUIPanel_DataList *aDataList);
+  void BeforeDataListUpdate(class UUIPanel_DataList *aDataList);
+  void PostInitialSceneUpdate();
+  void RefreshedChallengeList();
+  void BeforeRefreshedChallengeList();
+  void RefreshedCampaignList();
+  void BeforeRefreshedCampaignList();
 };
-
 
 // Class UDKGame.UICheckBox_Scripted
 // 0x0000 (0x04E0 - 0x04E0)
-class UUICheckBox_Scripted : public UUICheckbox
-{
+class UUICheckBox_Scripted : public UUICheckbox {
 public:
+  static UClass *StaticClass() {
+    static auto ptr = UObject::FindClass("Class UDKGame.UICheckBox_Scripted");
+    return ptr;
+  }
 
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class UDKGame.UICheckBox_Scripted");
-		return ptr;
-	}
-
-
-	unsigned long ButtonClicked(class UUIScreenObject* Sender, int PlayerIndex);
+  unsigned long ButtonClicked(class UUIScreenObject *Sender, int PlayerIndex);
 };
-
 
 // Class UDKGame.UILabel_KeyBinding
 // 0x0034 (0x0500 - 0x04CC)
-class UUILabel_KeyBinding : public UUILabel
-{
+class UUILabel_KeyBinding : public UUILabel {
 public:
-	struct FString                                     DisplayBindingDescriptionForBindingName;                  // 0x04CC(0x000C) (Edit, NeedCtorLink)
-	struct FName                                       DisplayBindingDescriptionForKeyName;                      // 0x04D8(0x0008) (Edit)
-	struct FString                                     DisplayKeyDescriptionForBindingName;                      // 0x04E0(0x000C) (Edit, NeedCtorLink)
-	struct FName                                       DisplayKeyDescriptionForKeyName;                          // 0x04EC(0x0008) (Edit)
-	struct FString                                     forActiveHeroArchetypePath;                               // 0x04F4(0x000C) (Edit, NeedCtorLink)
+  struct FString
+      DisplayBindingDescriptionForBindingName;        // 0x04CC(0x000C) (Edit,
+                                                      // NeedCtorLink)
+  struct FName DisplayBindingDescriptionForKeyName;   // 0x04D8(0x0008) (Edit)
+  struct FString DisplayKeyDescriptionForBindingName; // 0x04E0(0x000C) (Edit,
+                                                      // NeedCtorLink)
+  struct FName DisplayKeyDescriptionForKeyName;       // 0x04EC(0x0008) (Edit)
+  struct FString
+      forActiveHeroArchetypePath; // 0x04F4(0x000C) (Edit, NeedCtorLink)
 
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class UDKGame.UILabel_KeyBinding");
-		return ptr;
-	}
+  static UClass *StaticClass() {
+    static auto ptr = UObject::FindClass("Class UDKGame.UILabel_KeyBinding");
+    return ptr;
+  }
 
-
-	void DoInit();
+  void DoInit();
 };
-
 
 // Class UDKGame.UIButton_SessionBrowser_Entry
 // 0x0000 (0x0508 - 0x0508)
-class UUIButton_SessionBrowser_Entry : public UUIToggleButton
-{
+class UUIButton_SessionBrowser_Entry : public UUIToggleButton {
 public:
+  static UClass *StaticClass() {
+    static auto ptr =
+        UObject::FindClass("Class UDKGame.UIButton_SessionBrowser_Entry");
+    return ptr;
+  }
 
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class UDKGame.UIButton_SessionBrowser_Entry");
-		return ptr;
-	}
-
-
-	unsigned long ButtonClicked(class UUIScreenObject* Sender, int PlayerIndex);
+  unsigned long ButtonClicked(class UUIScreenObject *Sender, int PlayerIndex);
 };
-
 
 // Class UDKGame.UIDataContainer_EquipmentOverlay
 // 0x0000 (0x0488 - 0x0488)
-class UUIDataContainer_EquipmentOverlay : public UUIDataContainer_Equipment
-{
+class UUIDataContainer_EquipmentOverlay : public UUIDataContainer_Equipment {
 public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class UDKGame.UIDataContainer_EquipmentOverlay");
-		return ptr;
-	}
-
+  static UClass *StaticClass() {
+    static auto ptr =
+        UObject::FindClass("Class UDKGame.UIDataContainer_EquipmentOverlay");
+    return ptr;
+  }
 };
-
 
 // Class UDKGame.UIScript_ActionWheelHotkey
 // 0x0040 (0x050C - 0x04CC)
-class UUIScript_ActionWheelHotkey : public UUIScriptWidget
-{
+class UUIScript_ActionWheelHotkey : public UUIScriptWidget {
 public:
-	int                                                hotKeyIndex;                                              // 0x04CC(0x0004) (Edit)
-	class UTexture2D*                                  emptyTexture;                                             // 0x04D0(0x0004) (Edit)
-	unsigned long                                      bDrawHotkeyNumber : 1;                                    // 0x04D4(0x0004) (Edit)
-	unsigned long                                      bSetString : 1;                                           // 0x04D4(0x0004) (Transient)
-	struct FVector                                     HotKeyNumberOffset;                                       // 0x04D8(0x000C) (Edit)
-	class UFont*                                       HotKeyNumberFont;                                         // 0x04E4(0x0004) (Edit)
-	struct FColor                                      HotKeyNumberColor;                                        // 0x04E8(0x0004) (Edit)
-	float                                              HotKeyNumberScale;                                        // 0x04EC(0x0004) (Edit)
-	struct FLinearColor                                HotKeyNumberBottomColor;                                  // 0x04F0(0x0010) (Edit)
-	struct FString                                     numberString;                                             // 0x0500(0x000C) (Transient, NeedCtorLink)
+  int hotKeyIndex;                             // 0x04CC(0x0004) (Edit)
+  class UTexture2D *emptyTexture;              // 0x04D0(0x0004) (Edit)
+  unsigned long bDrawHotkeyNumber : 1;         // 0x04D4(0x0004) (Edit)
+  unsigned long bSetString : 1;                // 0x04D4(0x0004) (Transient)
+  struct FVector HotKeyNumberOffset;           // 0x04D8(0x000C) (Edit)
+  class UFont *HotKeyNumberFont;               // 0x04E4(0x0004) (Edit)
+  struct FColor HotKeyNumberColor;             // 0x04E8(0x0004) (Edit)
+  float HotKeyNumberScale;                     // 0x04EC(0x0004) (Edit)
+  struct FLinearColor HotKeyNumberBottomColor; // 0x04F0(0x0010) (Edit)
+  struct FString numberString; // 0x0500(0x000C) (Transient, NeedCtorLink)
 
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class UDKGame.UIScript_ActionWheelHotkey");
-		return ptr;
-	}
+  static UClass *StaticClass() {
+    static auto ptr =
+        UObject::FindClass("Class UDKGame.UIScript_ActionWheelHotkey");
+    return ptr;
+  }
 
-
-	void RenderGame(class UCanvas* C, float X1, float X2, float Y1, float Y2);
-	void RenderEditor(class UCanvas* C, float X1, float X2, float Y1, float Y2);
+  void RenderGame(class UCanvas *C, float X1, float X2, float Y1, float Y2);
+  void RenderEditor(class UCanvas *C, float X1, float X2, float Y1, float Y2);
 };
-
 
 // Class UDKGame.UIScriptWidget_ButtonMultiImage
 // 0x001C (0x0634 - 0x0618)
-class UUIScriptWidget_ButtonMultiImage : public UUIButton_DataListEntry
-{
+class UUIScriptWidget_ButtonMultiImage : public UUIButton_DataListEntry {
 public:
-	float                                              widgetBaseScaleX;                                         // 0x0618(0x0004) (Edit)
-	float                                              widgetBaseScaleY;                                         // 0x061C(0x0004) (Edit)
-	int                                                MultiImageIndexToSetFromDataObject;                       // 0x0620(0x0004) (Edit)
-	unsigned long                                      bSetDisplayStringFromDataObject : 1;                      // 0x0624(0x0004) (Edit)
-	unsigned long                                      bSetBackgroundImageFromDataObject : 1;                    // 0x0624(0x0004) (Edit)
-	TArray<struct FMultiImageEntry>                    MultiImageEntries;                                        // 0x0628(0x000C) (Edit, NeedCtorLink)
+  float widgetBaseScaleX;                              // 0x0618(0x0004) (Edit)
+  float widgetBaseScaleY;                              // 0x061C(0x0004) (Edit)
+  int MultiImageIndexToSetFromDataObject;              // 0x0620(0x0004) (Edit)
+  unsigned long bSetDisplayStringFromDataObject : 1;   // 0x0624(0x0004) (Edit)
+  unsigned long bSetBackgroundImageFromDataObject : 1; // 0x0624(0x0004) (Edit)
+  TArray<struct FMultiImageEntry>
+      MultiImageEntries; // 0x0628(0x000C) (Edit, NeedCtorLink)
 
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class UDKGame.UIScriptWidget_ButtonMultiImage");
-		return ptr;
-	}
+  static UClass *StaticClass() {
+    static auto ptr =
+        UObject::FindClass("Class UDKGame.UIScriptWidget_ButtonMultiImage");
+    return ptr;
+  }
 
-
-	void RenderGame(class UCanvas* C, float X1, float X2, float Y1, float Y2);
-	void InitializeFromDataListEntry(class UUIPanel_DataList* DataList, const TScriptInterface<class UDataListEntryInterface>& Entry);
+  void RenderGame(class UCanvas *C, float X1, float X2, float Y1, float Y2);
+  void InitializeFromDataListEntry(
+      class UUIPanel_DataList *DataList,
+      const TScriptInterface<class UDataListEntryInterface> &Entry);
 };
-
 
 // Class UDKGame.UIScriptWidget_HealthManaIcon
 // 0x0070 (0x053C - 0x04CC)
-class UUIScriptWidget_HealthManaIcon : public UUIScriptWidget
-{
+class UUIScriptWidget_HealthManaIcon : public UUIScriptWidget {
 public:
-	float                                              widgetBaseScaleX;                                         // 0x04CC(0x0004) (Edit)
-	float                                              widgetBaseScaleY;                                         // 0x04D0(0x0004) (Edit)
-	float                                              TextMinCenterOffsetX;                                     // 0x04D4(0x0004) (Edit)
-	float                                              TextMinCenterOffsetY;                                     // 0x04D8(0x0004) (Edit)
-	float                                              TextMaxCenterOffsetX;                                     // 0x04DC(0x0004) (Edit)
-	float                                              TextMaxCenterOffsetY;                                     // 0x04E0(0x0004) (Edit)
-	float                                              IconCenterOffsetX;                                        // 0x04E4(0x0004) (Edit)
-	float                                              IconCenterOffsetY;                                        // 0x04E8(0x0004) (Edit)
-	float                                              IconSizeX;                                                // 0x04EC(0x0004) (Edit)
-	float                                              IconSizeY;                                                // 0x04F0(0x0004) (Edit)
-	struct FColor                                      BackgroundColor;                                          // 0x04F4(0x0004) (Edit)
-	class USurface*                                    IconTex;                                                  // 0x04F8(0x0004) (Edit)
-	class USurface*                                    BackgroundTex;                                            // 0x04FC(0x0004) (Edit)
-	float                                              TextScale;                                                // 0x0500(0x0004) (Edit)
-	struct FColor                                      TextMinDrawColor;                                         // 0x0504(0x0004) (Edit)
-	struct FColor                                      TextMaxDrawColor;                                         // 0x0508(0x0004) (Edit)
-	class UFont*                                       TextFont;                                                 // 0x050C(0x0004) (Edit)
-	struct FLinearColor                                TextMinGradientColor;                                     // 0x0510(0x0010) (Edit)
-	struct FLinearColor                                TextMaxGradientColor;                                     // 0x0520(0x0010) (Edit)
-	float                                              TextShadowScaleMultiplier;                                // 0x0530(0x0004) (Edit)
-	unsigned long                                      IsHealthIndicator : 1;                                    // 0x0534(0x0004) (Edit)
-	unsigned long                                      isEditorRender : 1;                                       // 0x0534(0x0004)
-	class UDunDefHero*                                 myHero;                                                   // 0x0538(0x0004)
+  float widgetBaseScaleX;                   // 0x04CC(0x0004) (Edit)
+  float widgetBaseScaleY;                   // 0x04D0(0x0004) (Edit)
+  float TextMinCenterOffsetX;               // 0x04D4(0x0004) (Edit)
+  float TextMinCenterOffsetY;               // 0x04D8(0x0004) (Edit)
+  float TextMaxCenterOffsetX;               // 0x04DC(0x0004) (Edit)
+  float TextMaxCenterOffsetY;               // 0x04E0(0x0004) (Edit)
+  float IconCenterOffsetX;                  // 0x04E4(0x0004) (Edit)
+  float IconCenterOffsetY;                  // 0x04E8(0x0004) (Edit)
+  float IconSizeX;                          // 0x04EC(0x0004) (Edit)
+  float IconSizeY;                          // 0x04F0(0x0004) (Edit)
+  struct FColor BackgroundColor;            // 0x04F4(0x0004) (Edit)
+  class USurface *IconTex;                  // 0x04F8(0x0004) (Edit)
+  class USurface *BackgroundTex;            // 0x04FC(0x0004) (Edit)
+  float TextScale;                          // 0x0500(0x0004) (Edit)
+  struct FColor TextMinDrawColor;           // 0x0504(0x0004) (Edit)
+  struct FColor TextMaxDrawColor;           // 0x0508(0x0004) (Edit)
+  class UFont *TextFont;                    // 0x050C(0x0004) (Edit)
+  struct FLinearColor TextMinGradientColor; // 0x0510(0x0010) (Edit)
+  struct FLinearColor TextMaxGradientColor; // 0x0520(0x0010) (Edit)
+  float TextShadowScaleMultiplier;          // 0x0530(0x0004) (Edit)
+  unsigned long IsHealthIndicator : 1;      // 0x0534(0x0004) (Edit)
+  unsigned long isEditorRender : 1;         // 0x0534(0x0004)
+  class UDunDefHero *myHero;                // 0x0538(0x0004)
 
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class UDKGame.UIScriptWidget_HealthManaIcon");
-		return ptr;
-	}
+  static UClass *StaticClass() {
+    static auto ptr =
+        UObject::FindClass("Class UDKGame.UIScriptWidget_HealthManaIcon");
+    return ptr;
+  }
 
-
-	void RenderGame(class UCanvas* C, float X1, float X2, float Y1, float Y2);
-	void RenderEditor(class UCanvas* C, float X1, float X2, float Y1, float Y2);
-	class ADunDefPlayer* GetPlayer();
-	class UDunDefHero* GetHero();
+  void RenderGame(class UCanvas *C, float X1, float X2, float Y1, float Y2);
+  void RenderEditor(class UCanvas *C, float X1, float X2, float Y1, float Y2);
+  class ADunDefPlayer *GetPlayer();
+  class UDunDefHero *GetHero();
 };
-
 
 // Class UDKGame.UIScriptWidget_HeroIcon
 // 0x000C (0x04D8 - 0x04CC)
-class UUIScriptWidget_HeroIcon : public UUIScriptWidget
-{
+class UUIScriptWidget_HeroIcon : public UUIScriptWidget {
 public:
-	struct FColor                                      iconColor;                                                // 0x04CC(0x0004) (Edit)
-	class UDunDefHero*                                 myHero;                                                   // 0x04D0(0x0004)
-	unsigned long                                      isEditorRender : 1;                                       // 0x04D4(0x0004)
+  struct FColor iconColor;          // 0x04CC(0x0004) (Edit)
+  class UDunDefHero *myHero;        // 0x04D0(0x0004)
+  unsigned long isEditorRender : 1; // 0x04D4(0x0004)
 
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class UDKGame.UIScriptWidget_HeroIcon");
-		return ptr;
-	}
+  static UClass *StaticClass() {
+    static auto ptr =
+        UObject::FindClass("Class UDKGame.UIScriptWidget_HeroIcon");
+    return ptr;
+  }
 
-
-	struct FColor GetIconColor();
-	class USurface* GetIcon();
-	void RenderGame(class UCanvas* C, float X1, float X2, float Y1, float Y2);
-	void RenderEditor(class UCanvas* C, float X1, float X2, float Y1, float Y2);
-	class UDunDefHero* GetHero();
+  struct FColor GetIconColor();
+  class USurface *GetIcon();
+  void RenderGame(class UCanvas *C, float X1, float X2, float Y1, float Y2);
+  void RenderEditor(class UCanvas *C, float X1, float X2, float Y1, float Y2);
+  class UDunDefHero *GetHero();
 };
-
 
 // Class UDKGame.UIScriptWidget_HeroSelectionButton
 // 0x008C (0x06A4 - 0x0618)
-class UUIScriptWidget_HeroSelectionButton : public UUIButton_DataListEntry
-{
+class UUIScriptWidget_HeroSelectionButton : public UUIButton_DataListEntry {
 public:
-	float                                              TextYPadding;                                             // 0x0618(0x0004) (Edit)
-	float                                              BottomTextYPadding;                                       // 0x061C(0x0004) (Edit)
-	float                                              HeroNameTextScale;                                        // 0x0620(0x0004) (Edit)
-	float                                              HeroLevelTextScale;                                       // 0x0624(0x0004) (Edit)
-	float                                              HealthAndManaTextScale;                                   // 0x0628(0x0004) (Edit)
-	struct FString                                     LevelString;                                              // 0x062C(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     HealthString;                                             // 0x0638(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     manaString;                                               // 0x0644(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     MaxManaString;                                            // 0x0650(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     MaxHealthString;                                          // 0x065C(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FColor                                      healthColor;                                              // 0x0668(0x0004) (Edit)
-	struct FColor                                      ManaColor;                                                // 0x066C(0x0004) (Edit)
-	float                                              HeroIconWidth;                                            // 0x0670(0x0004) (Edit)
-	float                                              HeroIconHeight;                                           // 0x0674(0x0004) (Edit)
-	float                                              HealthManaShadowScale;                                    // 0x0678(0x0004) (Edit)
-	float                                              LevelShadowScale;                                         // 0x067C(0x0004) (Edit)
-	float                                              NameShadowScale;                                          // 0x0680(0x0004) (Edit)
-	float                                              widgetBaseScaleX;                                         // 0x0684(0x0004) (Edit)
-	float                                              widgetBaseScaleY;                                         // 0x0688(0x0004) (Edit)
-	float                                              LevelStringYOffset;                                       // 0x068C(0x0004) (Edit)
-	class UTexture2D*                                  MuteIcon;                                                 // 0x0690(0x0004) (Edit)
-	unsigned long                                      bAlwaysDrawMuteIcon : 1;                                  // 0x0694(0x0004) (Edit)
-	unsigned long                                      bDontFlush : 1;                                           // 0x0694(0x0004) (Transient)
-	float                                              MuteIconSize;                                             // 0x0698(0x0004) (Edit)
-	float                                              MuteIconOffsetX;                                          // 0x069C(0x0004) (Edit)
-	float                                              MuteIconOffsetY;                                          // 0x06A0(0x0004) (Edit)
+  float TextYPadding;           // 0x0618(0x0004) (Edit)
+  float BottomTextYPadding;     // 0x061C(0x0004) (Edit)
+  float HeroNameTextScale;      // 0x0620(0x0004) (Edit)
+  float HeroLevelTextScale;     // 0x0624(0x0004) (Edit)
+  float HealthAndManaTextScale; // 0x0628(0x0004) (Edit)
+  struct FString LevelString;  // 0x062C(0x000C) (Edit, Localized, NeedCtorLink)
+  struct FString HealthString; // 0x0638(0x000C) (Edit, Localized, NeedCtorLink)
+  struct FString manaString;   // 0x0644(0x000C) (Edit, Localized, NeedCtorLink)
+  struct FString
+      MaxManaString; // 0x0650(0x000C) (Edit, Localized, NeedCtorLink)
+  struct FString
+      MaxHealthString;         // 0x065C(0x000C) (Edit, Localized, NeedCtorLink)
+  struct FColor healthColor;   // 0x0668(0x0004) (Edit)
+  struct FColor ManaColor;     // 0x066C(0x0004) (Edit)
+  float HeroIconWidth;         // 0x0670(0x0004) (Edit)
+  float HeroIconHeight;        // 0x0674(0x0004) (Edit)
+  float HealthManaShadowScale; // 0x0678(0x0004) (Edit)
+  float LevelShadowScale;      // 0x067C(0x0004) (Edit)
+  float NameShadowScale;       // 0x0680(0x0004) (Edit)
+  float widgetBaseScaleX;      // 0x0684(0x0004) (Edit)
+  float widgetBaseScaleY;      // 0x0688(0x0004) (Edit)
+  float LevelStringYOffset;    // 0x068C(0x0004) (Edit)
+  class UTexture2D *MuteIcon;  // 0x0690(0x0004) (Edit)
+  unsigned long bAlwaysDrawMuteIcon : 1; // 0x0694(0x0004) (Edit)
+  unsigned long bDontFlush : 1;          // 0x0694(0x0004) (Transient)
+  float MuteIconSize;                    // 0x0698(0x0004) (Edit)
+  float MuteIconOffsetX;                 // 0x069C(0x0004) (Edit)
+  float MuteIconOffsetY;                 // 0x06A0(0x0004) (Edit)
 
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class UDKGame.UIScriptWidget_HeroSelectionButton");
-		return ptr;
-	}
+  static UClass *StaticClass() {
+    static auto ptr =
+        UObject::FindClass("Class UDKGame.UIScriptWidget_HeroSelectionButton");
+    return ptr;
+  }
 
-
-	void RenderGame(class UCanvas* C, float X1, float X2, float Y1, float Y2);
-	class UDunDefHero* GetHero();
+  void RenderGame(class UCanvas *C, float X1, float X2, float Y1, float Y2);
+  class UDunDefHero *GetHero();
 };
-
 
 // Class UDKGame.UIScriptWidget_HeroPlayerListButton
 // 0x0034 (0x06D8 - 0x06A4)
-class UUIScriptWidget_HeroPlayerListButton : public UUIScriptWidget_HeroSelectionButton
-{
+class UUIScriptWidget_HeroPlayerListButton
+    : public UUIScriptWidget_HeroSelectionButton {
 public:
-	struct FColor                                      PlayerNameTextColor;                                      // 0x06A4(0x0004) (Edit)
-	struct FLinearColor                                PlayerNameTextGradientColor;                              // 0x06A8(0x0010) (Edit)
-	float                                              PlayerNameTextYPadding;                                   // 0x06B8(0x0004) (Edit)
-	float                                              PlayerNameTextScale;                                      // 0x06BC(0x0004) (Edit)
-	float                                              PlayerNameTextShadowScale;                                // 0x06C0(0x0004) (Edit)
-	float                                              MinPlayerNameScaler;                                      // 0x06C4(0x0004) (Edit)
-	struct FString                                     EditorDisplayString;                                      // 0x06C8(0x000C) (Edit, NeedCtorLink)
-	unsigned long                                      bClearValueOnLostFocus : 1;                               // 0x06D4(0x0004) (Edit)
+  struct FColor PlayerNameTextColor;               // 0x06A4(0x0004) (Edit)
+  struct FLinearColor PlayerNameTextGradientColor; // 0x06A8(0x0010) (Edit)
+  float PlayerNameTextYPadding;                    // 0x06B8(0x0004) (Edit)
+  float PlayerNameTextScale;                       // 0x06BC(0x0004) (Edit)
+  float PlayerNameTextShadowScale;                 // 0x06C0(0x0004) (Edit)
+  float MinPlayerNameScaler;                       // 0x06C4(0x0004) (Edit)
+  struct FString EditorDisplayString; // 0x06C8(0x000C) (Edit, NeedCtorLink)
+  unsigned long bClearValueOnLostFocus : 1; // 0x06D4(0x0004) (Edit)
 
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class UDKGame.UIScriptWidget_HeroPlayerListButton");
-		return ptr;
-	}
+  static UClass *StaticClass() {
+    static auto ptr =
+        UObject::FindClass("Class UDKGame.UIScriptWidget_HeroPlayerListButton");
+    return ptr;
+  }
 
-
-	void LostFocus();
-	void RenderGame(class UCanvas* C, float X1, float X2, float Y1, float Y2);
-	class UDunDefHero* GetHero();
+  void LostFocus();
+  void RenderGame(class UCanvas *C, float X1, float X2, float Y1, float Y2);
+  class UDunDefHero *GetHero();
 };
 
-
-}
+} // namespace Classes
 
 #ifdef _MSC_VER
-	#pragma pack(pop)
+#pragma pack(pop)
 #endif

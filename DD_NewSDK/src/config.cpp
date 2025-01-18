@@ -153,13 +153,22 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
     return;
 
   // unlimited mana for towers
-  if (config.bUnlimitedManaTowers)
+  if (bUnlimitedManaTowers)
     pController->ManaPower = config.iManaForTowers;
 
   // unlimited mana for shops
-  if (config.bUnlimitedManaShop) {
+  if (bUnlimitedManaShop) {
     Classes::FHighDigitInt tmp = {1, 1, 1, 1};
     pController->SetBankedMana(tmp, 0, 1);
+  }
+
+  // god mode
+  auto pWorld = config.GetGameInfo();
+  if (pWorld) {
+    pWorld->bPlayersAreInvincible = bPlayerGodMode;
+    pWorld->bCrystalCoreInvincible = bPlayerGodMode;
+    pController->bGodMode = bPlayerGodMode;
+    pWorld->bPlayersAreInvincible = bPlayerGodMode;
   }
 }
 
@@ -460,14 +469,11 @@ Classes::AMain *Config::GetGameInfo() {
 
 Classes::ADunDefGameReplicationInfo *Config::GetGRI() {
 
-  auto playerController = GetADunDefPlayerController();
-  if (playerController == nullptr)
+  auto pWorldInfo = GetWorldInfo();
+  if (pWorldInfo == nullptr)
     return nullptr;
 
-  Classes::ADunDefGameReplicationInfo *GRI = nullptr;
-  GRI = playerController->GetGRI();
-
-  return GRI;
+  return (Classes::ADunDefGameReplicationInfo *)pWorldInfo->GRI;
 }
 
 Classes::UDunDefHeroManager *Config::GetHeroManager() {
