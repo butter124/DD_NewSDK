@@ -87,6 +87,11 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   // noclip
   NoClip();
 
+  // unlock all achievements
+  if (bUnlockAllAchievments) {
+    UnlockAllAchievements();
+  }
+
   // show mouse cursor
   if (bShowMenu) {
     GetClientManager()->bRenderCursor = 1;
@@ -240,10 +245,12 @@ void Config::AutoLootHookFunc(PROCESS_EVENT_ARGS) {
 bool Config::TogglePlayerGodMode() {
   Classes::ADunDefPlayerController *playerController =
       GetADunDefPlayerController();
-  if (!playerController)
+  auto pWorld = config.GetGameInfo();
+  if (!playerController || !pWorld)
     return false;
 
   playerController->bGodMode = bPlayerGodMode;
+  pWorld->bPlayersAreInvincible = bPlayerGodMode;
   ToggleCrystalGodMode();
 
   return bPlayerGodMode;
@@ -257,9 +264,29 @@ bool Config::ToggleCrystalGodMode() {
   if (!gameInfo)
     return false;
 
+  bCrystalGodMode = !bCrystalGodMode;
   gameInfo->bCrystalCoreInvincible = bCrystalGodMode;
 
   return gameInfo->bCrystalCoreInvincible;
+}
+
+bool Config::UnlockAllAchievements() {
+  auto pAchievementManager = config.GetAchievementManager();
+  auto pController = config.GetADunDefPlayerController();
+
+  if (!pAchievementManager || !pController)
+    return false;
+
+  for (size_t i = 0; i < pAchievementManager->AchievementEntries.Num(); i++) {
+    if (!pAchievementManager->AchievementEntries.IsValidIndex(i))
+      continue;
+
+    pAchievementManager->DoUnlockAchivement(
+        pController, pAchievementManager->AchievementEntries[i].AchievementId,
+        1, 0, 0, 0);
+  }
+  bUnlockAllAchievments = false;
+  return true;
 }
 
 bool Config::TurnOffPlayerGodMod() {
@@ -727,6 +754,17 @@ Classes::ADunDefForge *Config::GetForge() {
 
   if (!obj)
     return nullptr;
+
+  return obj;
+}
+
+Classes::UDunDefAchievementManager *Config::GetAchievementManager() {
+
+  static Classes::UDunDefAchievementManager *obj = nullptr;
+  if (!obj)
+    obj = ((Classes::UDunDefAchievementManager *)
+               Classes::UDunDefAchievementManager::StaticClass())
+              ->STATIC_GetAchievementManager();
 
   return obj;
 }

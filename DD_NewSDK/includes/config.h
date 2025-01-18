@@ -100,6 +100,7 @@ public:
   int iManaForTowers = 9000;
   bool bUnlimitedManaTowers = false;
   bool bUnlimitedManaShop = false;
+  bool bUnlockAllAchievments = false;
 
   Classes::FVector vacPos = {0, 0, 0};
   Classes::FVector playerTeleportPos = {0, 0, 0};
@@ -163,6 +164,7 @@ public:
   bool TogglePlayerGodMode();
   bool TurnOffPlayerGodMod();
   bool ToggleCrystalGodMode();
+  bool UnlockAllAchievements();
   Classes::UEngine *GetEngine();
   Classes::ADunDefPlayerController *GetADunDefPlayerController();
   Classes::ADunDefPawn *GetPlayerPawn();
@@ -174,6 +176,7 @@ public:
   Classes::UDunDefSceneClient *GetClientManager();
   Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *GetEquipmentGiver();
   Classes::ADunDefForge *GetForge();
+  Classes::UDunDefAchievementManager *GetAchievementManager();
   void PawnLoop(const std::function<void(Classes::ADunDefPawn *)> &func,
                 bool applyToEnemy, bool applyToPlayer);
   void KillPawn(Classes::ADunDefPawn *pawn);
