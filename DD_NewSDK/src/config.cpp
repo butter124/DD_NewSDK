@@ -30,6 +30,8 @@ bool Config::Init() {
 
   bool invert = !bPlayerGodMode;
   RegisterBlockedFunction("Function DunDefPlayerController.Dead.BeginState", invert);
+  RegisterBlockedFunction("Function UDKGame.DunDefPlayer.Dying.BeginState", invert);
+
   // clang-format on
 
   GetKeybinds();
@@ -861,7 +863,7 @@ void Config::DettachConsole() {
 void Config::PrintToConsole(const std::string &s) {
   if (!bConsoleAttached)
     return;
-  std::cout << s << std::endl;
+  std::cout << s << "\n";
 }
 
 void Config::SetupFilter() {
