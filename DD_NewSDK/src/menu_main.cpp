@@ -5,6 +5,7 @@
 #include "includes/menu_main.h"
 #include "includes/config.h"
 #include <SDK/DD_UDKGame_classes.hpp>
+#include <cstddef>
 #include <string>
 // clang-format on
 
@@ -24,6 +25,19 @@
         (item)->s.Y = values[1];                                               \
         (item)->s.Z = values[2];                                               \
       }                                                                        \
+    }                                                                          \
+  } while (0);
+
+#define IMGUI_T_ARRAY_STRINGS(stringName, item)                                \
+  do {                                                                         \
+    if (item->stringName.Data != nullptr)                                      \
+      for (size_t i = 0; i < item->stringName.Num(); i++) {                    \
+        auto string = item->stringName[i];                                     \
+        if (string.Data)                                                       \
+          ImGui::Text("%s", string.ToString().c_str());                        \
+      }                                                                        \
+    else {                                                                     \
+      ImGui::Text("%s", "None");                                               \
     }                                                                          \
   } while (0);
 
@@ -258,6 +272,7 @@ void MenuMain::BasicCheats() {
     ImGui::Checkbox("Auto open chest", &config.bAutoOpenChest);
     ImGui::Checkbox("Unlimited mana for towers", &config.bUnlimitedManaTowers);
     ImGui::Checkbox("Unlimited mana for shop", &config.bUnlimitedManaShop);
+
     if (ImGui::Checkbox("NoClip", &config.bNoClip)) {
       auto pPlayerPawn = config.GetADunDefPlayerController();
       if (config.bNoClip) {
@@ -285,12 +300,14 @@ void MenuMain::BasicCheats() {
     ImGui::Checkbox("Level skip", &config.bSkipWave);
     ImGui::SameLine();
     ImGui::Checkbox("lock level", &config.bLockWave);
-  }
 
-  // multiply rewards
-  ImGui::InputInt("##reward count", &config.MultiplyRewardsBy);
-  ImGui::SameLine();
-  ImGui::Checkbox("Multiply Wave rewards", &config.bMultiplyReward);
+    // multiply rewards
+    ImGui::InputInt("##reward count", &config.MultiplyRewardsBy);
+    ImGui::SameLine();
+    ImGui::Checkbox("Multiply Wave rewards", &config.bMultiplyReward);
+    if (ImGui::Button("Unlock all achievments"))
+      config.bUnlockAllAchievments = true;
+  }
 
   // teleport cheats
   {
@@ -505,6 +522,8 @@ void MenuMain::WorldCheats() {
   // ImGui::Text("RealTimeSeconds : %f", pInfo->RealTimeSeconds);
   // ImGui::Text("AudioTimeSeconds: %f", pInfo->AudioTimeSeconds);
 
+  ImGui::PushItemWidth(200);
+
   if (ImGui::TreeNode("Targetable actors")) {
     for (size_t i = 0; i < pWorld->TargetableActors.Num(); i++) {
       if (!pWorld->TargetableActors.IsValidIndex(i))
@@ -607,6 +626,8 @@ void MenuMain::WorldCheats() {
 
     ImGui::TreePop();
   }
+
+  ImGui::PopItemWidth();
 }
 
 void MenuMain::ItemModding() {
@@ -704,9 +725,42 @@ void MenuMain::Debug() {
   auto pPlayerPawn = config.GetPlayerPawn();
   auto pController = config.GetADunDefPlayerController();
   auto pEngine = config.GetEngine();
+  auto pAchievementManager = config.GetAchievementManager();
 
-  if (!pPlayerPawn || !pController || !pEngine)
+  if (!pPlayerPawn || !pController || !pEngine || !pAchievementManager)
     return;
+
+  // for (size_t i = 0; i < pAchievementManager->AchievementEntries.Num(); i++)
+  // {
+  //   if (!pAchievementManager->AchievementEntries.IsValidIndex(i))
+  //     continue;
+  //   auto entry = pAchievementManager->AchievementEntries[i];
+  //   std::string aName = entry.AchievementName.Data != nullptr
+  //                           ? entry.AchievementName.ToString()
+  //                           : "None";
+  //   ImGui::Text("%s", aName.c_str());
+  //   ImGui::SameLine();
+  //   std::string aDesc = entry.AchievementDescription.Data != nullptr
+  //                           ? entry.AchievementDescription.ToString()
+  //                           : "None";
+  //   ImGui::Text("%s", aDesc.c_str());
+  // }
+
+  // IMGUI_T_ARRAY_STRINGS(Area1_Tags, pAchievementManager)
+  // IMGUI_T_ARRAY_STRINGS(Area2_Tags, pAchievementManager);
+  // IMGUI_T_ARRAY_STRINGS(Area3_Tags, pAchievementManager);
+  // IMGUI_T_ARRAY_STRINGS(AllArea_Tags, pAchievementManager);
+  // IMGUI_T_ARRAY_STRINGS(Challenge_Tags, pAchievementManager);
+  // IMGUI_T_ARRAY_STRINGS(FamiliarTypes, pAchievementManager);
+  //// TArray<struct FFamiliarTypeAlias>
+  //// FamiliarAliases; // 0x00B0(0x000C) (Edit, NeedCtorLink)
+  // IMGUI_T_ARRAY_STRINGS(AllFamiliarTypes, pAchievementManager);
+  //// TArray<struct FFamiliarTypeAlias> AllFamiliarAliases; // 0x00C8(0x000C)
+  //// (Edit, NeedCtorLink) TArray<unsigned char> HeroClassUniqueIDs; //
+  //// 0x00D4(0x000C) (Edit, NeedCtorLink)
+  // IMGUI_T_ARRAY_STRINGS(TranscendentSurvivalistAreaTags,
+  // pAchievementManager); IMGUI_T_ARRAY_STRINGS(MasterRTSAreaTags,
+  // pAchievementManager);
 
   return;
 }
@@ -1077,6 +1131,8 @@ void MenuMain::Config() {
   }
 
   if (ImGui::TreeNode("Logging")) {
+    ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f),
+                       "This is for debugging purposes");
     if (ImGui::Checkbox("Attach console", &config.bConsoleAttached)) {
       if (config.bConsoleAttached) {
         config.AttachConsole();
@@ -1152,6 +1208,8 @@ void MenuMain::Config() {
         ImGui::TreePop();
       }
     }
+
+    ImGui::Columns(1);
 
     { // object filter
       if (ImGui::TreeNode("Process events object filter")) {
