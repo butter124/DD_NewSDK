@@ -46,6 +46,7 @@ void MenuMain::Init() {
 }
 
 void MenuMain::OnBegin() {
+
   ImGui::Begin("MainMenu");
 
   // for (auto item : itemsVec) {
@@ -116,6 +117,7 @@ void MenuMain::RenderUI() {
         "Config", [this]() { selectedMenu = Menus::MenuConfig; },
         selectedMenu == Menus::MenuConfig);
 
+
     ImGui::EndChild();
   }
   ImGui::SameLine();
@@ -125,6 +127,7 @@ void MenuMain::RenderUI() {
     ImGui::BeginGroup();
     ImGui::BeginChild("item view");
     // ImVec2(0, -ImGui::GetWindowHeight())); // Leave room for 1
+    ImGui::PushItemWidth(200);
     switch (selectedMenu) {
     case Menus::MenuBasic:
       BasicCheats();
@@ -150,6 +153,7 @@ void MenuMain::RenderUI() {
       BasicCheats();
       break;
     }
+    ImGui::PopItemWidth();
     ImGui::EndChild();
     ImGui::EndGroup();
   }
@@ -259,7 +263,6 @@ void MenuMain::NoClipHandleInput() {
 
 void MenuMain::BasicCheats() {
   {
-    ImGui::PushItemWidth(75);
     ImGui::Text("Basic cheats");
     ImGui::Separator();
     if (ImGui::Checkbox("Godmode", &config.bPlayerGodMode)) {
@@ -335,8 +338,6 @@ void MenuMain::BasicCheats() {
 #ifdef _DEBUG
   Debug();
 #endif
-
-  ImGui::PopItemWidth();
 }
 
 void MenuMain::PlayerCheats() {
@@ -366,7 +367,6 @@ void MenuMain::PlayerCheats() {
   {
     // scale this down so it manageable
     if (ImGui::TreeNode("Colors")) {
-      ImGui::PushItemWidth(ImGui::GetContentRegionAvail().x * .15f);
       ImGui::ColorPicker4("color 1",
                           &(*(float *)&pController->myHero->color1.R));
       ImGui::SameLine();
@@ -375,7 +375,6 @@ void MenuMain::PlayerCheats() {
       ImGui::SameLine();
       ImGui::ColorPicker4("color 3",
                           &(*(float *)&pController->myHero->color3.R));
-      ImGui::PopItemWidth();
       ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f),
                          "Swap hero for color changes take effect");
       ImGui::TreePop();
@@ -522,8 +521,6 @@ void MenuMain::WorldCheats() {
   // ImGui::Text("RealTimeSeconds : %f", pInfo->RealTimeSeconds);
   // ImGui::Text("AudioTimeSeconds: %f", pInfo->AudioTimeSeconds);
 
-  ImGui::PushItemWidth(200);
-
   if (ImGui::TreeNode("Targetable actors")) {
     for (size_t i = 0; i < pWorld->TargetableActors.Num(); i++) {
       if (!pWorld->TargetableActors.IsValidIndex(i))
@@ -626,8 +623,6 @@ void MenuMain::WorldCheats() {
 
     ImGui::TreePop();
   }
-
-  ImGui::PopItemWidth();
 }
 
 void MenuMain::ItemModding() {
@@ -795,10 +790,8 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
     // change item name
     ImGui::Text("UserEquipmentName :  %ls", item->UserEquipmentName.c_str());
     static char charBuff[32];
-    ImGui::PushItemWidth(ImGui::GetWindowWidth() * .25f);
     ImGui::InputText("##ItemName", charBuff, sizeof(charBuff),
                      IM_ARRAYSIZE(charBuff));
-    ImGui::PopItemWidth();
     ImGui::SameLine();
 
     if (ImGui::Button("Change Name")) {
@@ -813,11 +806,9 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
     ImGui::Text("UserForgerName    :  %ls", item->UserForgerName.c_str());
 
     // change forger name
-    ImGui::PushItemWidth(ImGui::GetWindowWidth() * .25f);
     static char ncharBuff[32];
     ImGui::InputText("##ItemForger", ncharBuff, sizeof(ncharBuff),
                      IM_ARRAYSIZE(ncharBuff));
-    ImGui::PopItemWidth();
     ImGui::SameLine();
 
     if (ImGui::Button("Change Forger Name")) {
@@ -830,7 +821,6 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
   if (ImGui::TreeNode("___Main___")) {
     ImGui::Text("___Name___");
 
-    ImGui::PushItemWidth(ImGui::GetWindowWidth() * .25f);
     if (item->RandomBaseNames.Data)
       ShowCombo(item->RandomBaseNames,
                 item->RandomBaseNames.Data[item->NameIndex_Base].StringValue,
@@ -856,14 +846,12 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
 
     ImGui::InputFloat("WeaponDrawScaleMultiplier",
                       &item->WeaponDrawScaleMultiplier, 1, 100, "%.3f");
-    ImGui::PopItemWidth();
 
     ImGui::Text("___Color___");
-    ImGui::PushItemWidth(ImGui::GetWindowWidth() * .25f);
-    // ImGui::InputFloat("R1", &item->PrimaryColorOverride.R, 1, 100, "%.3f");
-    // ImGui::SameLine(); ImGui::InputFloat("G1",
-    // &item->PrimaryColorOverride.G, 1, 100, "%.3f"); ImGui::SameLine();
-    // ImGui::InputFloat("B1", &item->PrimaryColorOverride.B, 1, 100, "%.3f");
+    //  ImGui::InputFloat("R1", &item->PrimaryColorOverride.R, 1, 100, "%.3f");
+    //  ImGui::SameLine(); ImGui::InputFloat("G1",
+    //  &item->PrimaryColorOverride.G, 1, 100, "%.3f"); ImGui::SameLine();
+    //  ImGui::InputFloat("B1", &item->PrimaryColorOverride.B, 1, 100, "%.3f");
 
     // ImGui::InputFloat("R2", &item->SecondaryColorOverride.R, 1, 100,
     // "%.3f"); ImGui::SameLine(); ImGui::InputFloat("G2",
@@ -875,8 +863,6 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
     ImGui::SameLine();
     ImGui::ColorPicker4("Secondary",
                         &(*(float *)&item->SecondaryColorOverride.R));
-
-    ImGui::PopItemWidth();
 
     ImGui::TreePop();
   }
@@ -968,7 +954,6 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
 
   if (ImGui::TreeNode("___Other___")) {
 
-    ImGui::PushItemWidth(ImGui::GetWindowWidth() * .25f);
     ImGui::InputInt("MaxEquipmentLevel    ", &(item->MaxEquipmentLevel));
     ImGui::InputInt("DamageReductions1    ",
                     &(item->DamageReductions[0].PercentageReduction));
@@ -1024,7 +1009,6 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
     ImGui::InputInt("EquipmentID1", &item->EquipmentID1);
     ImGui::InputInt("EquipmentID2", &item->EquipmentID2);
 
-    ImGui::PopItemWidth();
     ImGui::TreePop();
   }
   item->bIsNameOnlineVerified = 1;
