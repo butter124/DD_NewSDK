@@ -117,7 +117,6 @@ void MenuMain::RenderUI() {
         "Config", [this]() { selectedMenu = Menus::MenuConfig; },
         selectedMenu == Menus::MenuConfig);
 
-
     ImGui::EndChild();
   }
   ImGui::SameLine();
@@ -619,6 +618,253 @@ void MenuMain::WorldCheats() {
                         &pWorld->MaxNumberOfEnemiesMultiplier);
       ImGui::InputFloat("PlayerNetUpdateFrequency",
                         &pWorld->PlayerNetUpdateFrequency);
+    }
+
+    ImGui::TreePop();
+  }
+
+  auto pGRI = config.GetGRI();
+
+  if (!pGRI)
+    return;
+
+  if (ImGui::TreeNode("GRI")) {
+
+    // #define IMGUI_BITFIELD(s, item)
+
+    if (ImGui::TreeNode("Bools##GRIBools")) {
+      ImGui::Columns(3, NULL, false);
+      IMGUI_BITFIELD(AllowFriendlyFire, pGRI);
+      IMGUI_BITFIELD(EnemyWaveEntriesSetupInProgress, pGRI);
+      IMGUI_BITFIELD(IsGameplayLevel, pGRI);
+      IMGUI_BITFIELD(IsInCombatPhase, pGRI);
+      IMGUI_BITFIELD(IsInfiniteWaveMode, pGRI);
+      IMGUI_BITFIELD(IsLobbyLevel, pGRI);
+      IMGUI_BITFIELD(IsMixMode, pGRI);
+      IMGUI_BITFIELD(LockTavernDefenses, pGRI);
+      IMGUI_BITFIELD(LockTavernItemDrops, pGRI);
+      IMGUI_BITFIELD(PrevInCombatPhase, pGRI);
+      IMGUI_BITFIELD(SendingStats, pGRI);
+      IMGUI_BITFIELD(UseBuildTimer, pGRI);
+      IMGUI_BITFIELD(UseTBRTimer, pGRI);
+      IMGUI_BITFIELD(bAllowClientsToProceedToNextLevel, pGRI);
+      IMGUI_BITFIELD(bAllowFreeLookSpectator, pGRI);
+      IMGUI_BITFIELD(bAllowNonOwnerItemPickups, pGRI);
+      IMGUI_BITFIELD(bAllowPlayerSpawns, pGRI);
+      IMGUI_BITFIELD(bAllowRespawns, pGRI);
+      IMGUI_BITFIELD(bAllowSpawnInCombatPhase, pGRI);
+      IMGUI_BITFIELD(bCheckForTokensAtMaxMana, pGRI);
+      IMGUI_BITFIELD(bDisableArmorBuffs, pGRI);
+      IMGUI_BITFIELD(bDisableBloodRage, pGRI);
+      IMGUI_BITFIELD(bDisableCircularSlice, pGRI);
+      IMGUI_BITFIELD(bDisableEnemyDrain, pGRI);
+      IMGUI_BITFIELD(bDisableEnemyInitialInvincibility, pGRI);
+      IMGUI_BITFIELD(bDisableEnemyInvincibility, pGRI);
+      IMGUI_BITFIELD(bDisableFairy, pGRI);
+      IMGUI_BITFIELD(bDisableFamiliarAbilities, pGRI);
+      IMGUI_BITFIELD(bDisableHawkStance, pGRI);
+      IMGUI_BITFIELD(bDisableHeroBoost, pGRI);
+      IMGUI_BITFIELD(bDisableInstantUpgrade, pGRI);
+      IMGUI_BITFIELD(bDisableInvincibilityAbilities, pGRI);
+      IMGUI_BITFIELD(bDisableInvisibility, pGRI);
+      IMGUI_BITFIELD(bDisableLightningStance, pGRI);
+      IMGUI_BITFIELD(bDisableManaBombForAssault, pGRI);
+      IMGUI_BITFIELD(bDisableMiniMapEnemyIcons, pGRI);
+      IMGUI_BITFIELD(bDisableMoveTower, pGRI);
+      ImGui::NextColumn();
+      IMGUI_BITFIELD(bDisableOvercharge, pGRI);
+      IMGUI_BITFIELD(bDisablePetHealing, pGRI);
+      IMGUI_BITFIELD(bDisablePhaseShift, pGRI);
+      IMGUI_BITFIELD(bDisablePiercingShot, pGRI);
+      IMGUI_BITFIELD(bDisableProtonBlast, pGRI);
+      IMGUI_BITFIELD(bDisableRemoteBoost, pGRI);
+      IMGUI_BITFIELD(bDisableSiphonStance, pGRI);
+      IMGUI_BITFIELD(bDisableSlamDash, pGRI);
+      IMGUI_BITFIELD(bDisableTowerAbilities, pGRI);
+      IMGUI_BITFIELD(bDisableTowerBoost, pGRI);
+      IMGUI_BITFIELD(bDisableTowerPlacementAndRepair, pGRI);
+      IMGUI_BITFIELD(bDisableWeaponry, pGRI);
+      IMGUI_BITFIELD(bDisableWheelOfFortuna, pGRI);
+      IMGUI_BITFIELD(bDoLevelVictory, pGRI);
+      IMGUI_BITFIELD(bDontHurtRespawningPlayers, pGRI);
+      IMGUI_BITFIELD(bDropEquipmentUponPlayerDeath, pGRI);
+      IMGUI_BITFIELD(bFinishedWaveScaling, pGRI);
+      IMGUI_BITFIELD(bForceAllowEnemyInvincibility, pGRI);
+      IMGUI_BITFIELD(bForceBuildTimer, pGRI);
+      IMGUI_BITFIELD(bForceDrawEnemyTowerMiniMapIcons, pGRI);
+      IMGUI_BITFIELD(bForceHostSkip, pGRI);
+      IMGUI_BITFIELD(bForceOldDamageAllBehaviorOnRuthless, pGRI);
+      IMGUI_BITFIELD(bForceSpeedyBuild, pGRI);
+      IMGUI_BITFIELD(bGiveAwardScores, pGRI);
+      IMGUI_BITFIELD(bHideForgeMiniMapInCombatPhase, pGRI);
+      IMGUI_BITFIELD(bIsAFKShopMode, pGRI);
+      IMGUI_BITFIELD(bIsCompetitive, pGRI);
+      IMGUI_BITFIELD(bIsGameActive, pGRI);
+      IMGUI_BITFIELD(bIsGameOver, pGRI);
+      IMGUI_BITFIELD(bIsHardcoreMode, pGRI);
+      IMGUI_BITFIELD(bIsPureStrategy, pGRI);
+      IMGUI_BITFIELD(bIsRestrictedDifficultyMission, pGRI);
+      IMGUI_BITFIELD(bIsRuthlessMode, pGRI);
+      IMGUI_BITFIELD(bIsSpecialMission, pGRI);
+      ImGui::NextColumn();
+      IMGUI_BITFIELD(bIsTBR, pGRI);
+      IMGUI_BITFIELD(bLevelStartedWithBuildTimer, pGRI);
+      IMGUI_BITFIELD(bLimitPetHealing, pGRI);
+      IMGUI_BITFIELD(bLimitProjectileDistancesUsePlayerRangeMultiplier, pGRI);
+      IMGUI_BITFIELD(bLimitProjectilesDistance, pGRI);
+      IMGUI_BITFIELD(bLimitTowerProjectileDistances, pGRI);
+      IMGUI_BITFIELD(bMatchHasBegun, pGRI);
+      IMGUI_BITFIELD(bMatchIsOver, pGRI);
+      IMGUI_BITFIELD(bNextLevelIsRestartLevel, pGRI);
+      IMGUI_BITFIELD(bNoElementalEnemies, pGRI);
+      IMGUI_BITFIELD(bNonAFKShopExpired, pGRI);
+      IMGUI_BITFIELD(bOverridePlayerAbilityStatus, pGRI);
+      IMGUI_BITFIELD(bPreventDetonatingEnemyTraps, pGRI);
+      IMGUI_BITFIELD(bPreventRemoteActivateCrystal, pGRI);
+      IMGUI_BITFIELD(bPreventTowersFromTargetingPlayers, pGRI);
+      IMGUI_BITFIELD(bPrintGlobalDeathMessages, pGRI);
+      IMGUI_BITFIELD(bRespawnInHardcoreMode, pGRI);
+      IMGUI_BITFIELD(bSetTowerUnitCosts, pGRI);
+      IMGUI_BITFIELD(bShowFloatingDamageNumbers, pGRI);
+      IMGUI_BITFIELD(bSimulateNightmareMode, pGRI);
+      IMGUI_BITFIELD(bSimulateRuthlessMode, pGRI);
+      IMGUI_BITFIELD(bSpawnAcceleration, pGRI);
+      IMGUI_BITFIELD(bStopCountDown, pGRI);
+      IMGUI_BITFIELD(bTriggerPRIEvents, pGRI);
+      IMGUI_BITFIELD(bUseBuildTimerOnInsane, pGRI);
+      IMGUI_BITFIELD(bUseCompetitivePlayerMiniMapIcons, pGRI);
+      IMGUI_BITFIELD(bUseCompetitiveTargets, pGRI);
+      IMGUI_BITFIELD(bUseDamageMult, pGRI);
+      IMGUI_BITFIELD(bUseMapInfoObjectiveText, pGRI);
+      IMGUI_BITFIELD(bValidForRTSAward, pGRI);
+      IMGUI_BITFIELD(bVerticalMover_TowerCacheDirty, pGRI);
+      IMGUI_BITFIELD(bWantToSave, pGRI);
+      IMGUI_BITFIELD(bWasDestroyed, pGRI);
+      IMGUI_BITFIELD(stoppedCollectingStats, pGRI);
+      ImGui::Columns(1);
+
+      ImGui::TreePop();
+    }
+
+    if (ImGui::TreeNode("Other##GRIinputs")) {
+      // clang-format off
+      ImGui::InputFloat("BuildPhaseRespawnTime", &pGRI->BuildPhaseRespawnTime);
+      ImGui::InputFloat("CompetitiveFloatingNameDistanceMultiplier",&pGRI->CompetitiveFloatingNameDistanceMultiplier);
+      ImGui::InputFloat("DeathSpectatorActivateInterval", &pGRI->DeathSpectatorActivateInterval);
+	    ImGui::InputFloat("EnemyLifeSpanMultiplier",&pGRI->EnemyLifeSpanMultiplier);
+      ImGui::InputFloat("EnemyNetUpdateFrequencyMultiplier",&pGRI->EnemyNetUpdateFrequencyMultiplier);
+      ImGui::InputFloat("EnemyTargetingDistanceLimit",&pGRI->EnemyTargetingDistanceLimit);
+      ImGui::InputFloat("ForceMaxBuildTime",&pGRI->ForceMaxBuildTime);
+      ImGui::InputFloat("GamePlayerDamageMultiplier",&pGRI->GamePlayerDamageMultiplier);
+      ImGui::InputFloat("GameStatsDelay",&pGRI->GameStatsDelay);
+      ImGui::InputFloat("GlobalAuraDamageMultiplier",&pGRI->GlobalAuraDamageMultiplier);
+      ImGui::InputFloat("GlobalAuraHealthMultiplier",&pGRI->GlobalAuraHealthMultiplier);
+      ImGui::InputFloat("GlobalAuraRangeMultiplier",&pGRI->GlobalAuraRangeMultiplier);
+      ImGui::InputFloat("GlobalAuraStrengthDrainMultiplier",&pGRI->GlobalAuraStrengthDrainMultiplier);
+      ImGui::InputFloat("GlobalPhysicalTowerDamageMultiplier",&pGRI->GlobalPhysicalTowerDamageMultiplier);
+      ImGui::InputFloat("GlobalTowerUnitLimitMultiplier",&pGRI->GlobalTowerUnitLimitMultiplier);
+      ImGui::InputFloat("GlobalTrapDamageMultiplier",&pGRI->GlobalTrapDamageMultiplier);
+      ImGui::InputFloat("GlobalTrapDetonationResetTimeMultiplier",&pGRI->GlobalTrapDetonationResetTimeMultiplier);
+      ImGui::InputFloat("GlobalTrapHealthMultiplier",&pGRI->GlobalTrapHealthMultiplier);
+      ImGui::InputFloat("GlobalTrapRangeMultiplier",&pGRI->GlobalTrapRangeMultiplier);
+      ImGui::InputFloat("HardcoreScoreBonusMultiplier",&pGRI->HardcoreScoreBonusMultiplier);
+      ImGui::InputFloat("JumpZMultiplier",&pGRI->JumpZMultiplier);
+      ImGui::InputFloat("LastCombatBeginTime",&pGRI->LastCombatBeginTime);
+      ImGui::InputFloat("LastItemDropExtraRarity",&pGRI->LastItemDropExtraRarity);
+      ImGui::InputFloat("LastItemDropQuality",&pGRI->LastItemDropQuality);
+      ImGui::InputFloat("LastPlayerJoinedTime",&pGRI->LastPlayerJoinedTime);
+      ImGui::InputFloat("LastWaveSetupTime",&pGRI->LastWaveSetupTime);
+      ImGui::InputFloat("LevelVictoryMusicDelay",&pGRI->LevelVictoryMusicDelay);
+      ImGui::InputFloat("LimitPetHealingAmount",&pGRI->LimitPetHealingAmount);
+      ImGui::InputFloat("LimitProjectilesDistanceAmount",&pGRI->LimitProjectilesDistanceAmount);
+      ImGui::InputFloat("LobbyForceAFKShopTime",&pGRI->LobbyForceAFKShopTime);
+      ImGui::InputFloat("MaxEnemySpeedMultiplier",&pGRI->MaxEnemySpeedMultiplier);
+      ImGui::InputFloat("MaxFloatingDamageViewRange",&pGRI->MaxFloatingDamageViewRange);
+      ImGui::InputFloat("MaxOverlordHeight",&pGRI->MaxOverlordHeight);
+      ImGui::InputFloat("MinFloatingDamageCameraDot",&pGRI->MinFloatingDamageCameraDot);
+      ImGui::InputFloat("MinOverlordHeight",&pGRI->MinOverlordHeight);
+      ImGui::InputFloat("NightmareMinimumEquipmentDropQualityMultiplier",&pGRI->NightmareMinimumEquipmentDropQualityMultiplier);
+      ImGui::InputFloat("NightmareModeAuraDamageMultiplier",&pGRI->NightmareModeAuraDamageMultiplier);
+      ImGui::InputFloat("NightmareModeAuraHealthMultiplier",&pGRI->NightmareModeAuraHealthMultiplier);
+      ImGui::InputFloat("NightmareModeAuraRangeMultiplier",&pGRI->NightmareModeAuraRangeMultiplier);
+      ImGui::InputFloat("NightmareModeCrystalCoreHealthMultiplier",&pGRI->NightmareModeCrystalCoreHealthMultiplier);
+      ImGui::InputFloat("NightmareModeEnemyDamageMultiplier",&pGRI->NightmareModeEnemyDamageMultiplier);
+      ImGui::InputFloat("NightmareModeEnemyHealthMultiplier",&pGRI->NightmareModeEnemyHealthMultiplier);
+      ImGui::InputFloat("NightmareModeEnemySpeedMultiplier",&pGRI->NightmareModeEnemySpeedMultiplier);
+      ImGui::InputFloat("NightmareModeHeroDamageMultiplier",&pGRI->NightmareModeHeroDamageMultiplier);
+      ImGui::InputFloat("NightmareModePhysicalTowerDamageMultiplier",&pGRI->NightmareModePhysicalTowerDamageMultiplier);
+      ImGui::InputFloat("NightmareModePhysicalTowerHealthMultiplier",&pGRI->NightmareModePhysicalTowerHealthMultiplier);
+      ImGui::InputFloat("NightmareModePlayerHealCostMultiplier",&pGRI->NightmareModePlayerHealCostMultiplier);
+      ImGui::InputFloat("NightmareModePlayerHealthMultiplier",&pGRI->NightmareModePlayerHealthMultiplier);
+      ImGui::InputFloat("NightmareModePlayerReceiveDamageMultiplier",&pGRI->NightmareModePlayerReceiveDamageMultiplier);
+      ImGui::InputFloat("NightmareModeStrengthDrainDamageLerp",&pGRI->NightmareModeStrengthDrainDamageLerp);
+      ImGui::InputFloat("NightmareModeStrengthDrainMultiplier",&pGRI->NightmareModeStrengthDrainMultiplier);
+      ImGui::InputFloat("NightmareModeTrapDamageMultiplier",&pGRI->NightmareModeTrapDamageMultiplier);
+      ImGui::InputFloat("NightmareModeTrapHealthMultiplier",&pGRI->NightmareModeTrapHealthMultiplier);
+      ImGui::InputFloat("NightmareModeTrapRangeMultiplier",&pGRI->NightmareModeTrapRangeMultiplier);
+      ImGui::InputFloat("NightmareModeWeaponProjectileSpeedBonusMultiplier",&pGRI->NightmareModeWeaponProjectileSpeedBonusMultiplier);
+      ImGui::InputFloat("NightmarePlayerDamageResistanceMultiplier",&pGRI->NightmarePlayerDamageResistanceMultiplier);
+      ImGui::InputFloat("NightmareRespawnTimeMultiplier",&pGRI->NightmareRespawnTimeMultiplier);
+      ImGui::InputFloat("NonAFKShopExpireTime",&pGRI->NonAFKShopExpireTime);
+      ImGui::InputFloat("PlayerDamageResistanceMultiplier",&pGRI->PlayerDamageResistanceMultiplier);
+      ImGui::InputFloat("PlayerElementalWeaponDamageMultiplier",&pGRI->PlayerElementalWeaponDamageMultiplier);
+      ImGui::InputFloat("PlayerHealCostMultiplier",&pGRI->PlayerHealCostMultiplier);
+      ImGui::InputFloat("PlayerHealthMultiplier",&pGRI->PlayerHealthMultiplier);
+      ImGui::InputFloat("PlayerKnockbackMomentumMultiplier",&pGRI->PlayerKnockbackMomentumMultiplier);
+      ImGui::InputFloat("PlayerRespawnTime",&pGRI->PlayerRespawnTime);
+      ImGui::InputFloat("PlayerSpawnImmunityTime",&pGRI->PlayerSpawnImmunityTime);
+      ImGui::InputFloat("PostVictorySellTowerDelay",&pGRI->PostVictorySellTowerDelay);
+      ImGui::InputFloat("RespawnTimeMultiplier",&pGRI->RespawnTimeMultiplier);
+      ImGui::InputFloat("SurvivalEnemyGroupsIncreasePerWaveOriginalValue",&pGRI->SurvivalEnemyGroupsIncreasePerWaveOriginalValue);
+      ImGui::InputFloat("SurvivalEnemyGroupsOriginalValue",&pGRI->SurvivalEnemyGroupsOriginalValue);
+      ImGui::InputFloat("SurvivalEnemyNumbersIncreasePerWaveOriginalValue",&pGRI->SurvivalEnemyNumbersIncreasePerWaveOriginalValue);
+      ImGui::InputFloat("SurvivalEnemyNumbersOriginalValue",&pGRI->SurvivalEnemyNumbersOriginalValue);
+      ImGui::InputFloat("TotalBuildTime",&pGRI->TotalBuildTime);
+      ImGui::InputFloat("WeaponProjectileSpeedBonusMultiplier",&pGRI->WeaponProjectileSpeedBonusMultiplier);
+      ImGui::InputFloat("statReceiveProgress",&pGRI->statReceiveProgress);
+      ImGui::InputFloat("totalCombatTime",&pGRI->totalCombatTime);
+      ImGui::InputInt("CoreHealWaveInterval",&pGRI->CoreHealWaveInterval);
+      ImGui::InputInt("CurrentAltTowerUnits",&pGRI->CurrentAltTowerUnits);
+      ImGui::InputInt("CurrentTowerUnits",&pGRI->CurrentTowerUnits);
+      ImGui::InputInt("ElapsedTime",&pGRI->ElapsedTime);
+      ImGui::InputInt("FinalWaveNumber",&pGRI->FinalWaveNumber);
+      ImGui::InputInt("GRIHostRandomID",&pGRI->GRIHostRandomID);
+      ImGui::InputInt("GameplayInstanceID",&pGRI->GameplayInstanceID);
+      ImGui::InputInt("GoalScore",&pGRI->GoalScore);
+      ImGui::InputInt("IntervalForInfiniteWaveShopRoll",&pGRI->IntervalForInfiniteWaveShopRoll);
+      ImGui::InputInt("MaxNumberOfEmitterSpawnable",&pGRI->MaxNumberOfEmitterSpawnable);
+      ImGui::InputInt("MaxRestrictedMissionDifficulty",&pGRI->MaxRestrictedMissionDifficulty);
+      ImGui::InputInt("MaxRestrictedMissionDifficultyHardcore",&pGRI->MaxRestrictedMissionDifficultyHardcore);
+      ImGui::InputInt("MaxTowerUnits",&pGRI->MaxTowerUnits);
+      ImGui::InputInt("Myth",&pGRI->Myth);
+      ImGui::InputInt("NumActivePlayersForLatestWave",&pGRI->NumActivePlayersForLatestWave);
+      ImGui::InputInt("NumberOfEmitterSpawnable",&pGRI->NumberOfEmitterSpawnable);
+      ImGui::InputInt("OriginalFinalWaveNumber",&pGRI->OriginalFinalWaveNumber);
+      ImGui::InputInt("PhaseCycleID",&pGRI->PhaseCycleID);
+      ImGui::InputInt("PrevNumActivePlayers",&pGRI->PrevNumActivePlayers);
+      ImGui::InputInt("RemainingMinute",&pGRI->RemainingMinute);
+      ImGui::InputInt("RemainingTime",&pGRI->RemainingTime);
+      ImGui::InputInt("Sup",&pGRI->Sup);
+      ImGui::InputInt("SurvivalMaximumWaveGroups",&pGRI->SurvivalMaximumWaveGroups);
+      ImGui::InputInt("TheStartWave",&pGRI->TheStartWave);
+      ImGui::InputInt("TimeLimit",&pGRI->TimeLimit);
+      ImGui::InputInt("TotalNumber",&pGRI->TotalNumber);
+      ImGui::InputInt("TowerIterator",&pGRI->TowerIterator);
+      ImGui::InputInt("TowerUpdatesPerFrame",&pGRI->TowerUpdatesPerFrame);
+      ImGui::InputInt("Trans",&pGRI->Trans);
+      ImGui::InputInt("Ult",&pGRI->Ult);
+      ImGui::InputInt("Ultninetythree",&pGRI->Ultninetythree);
+      ImGui::InputInt("Ultplus",&pGRI->Ultplus);
+      ImGui::InputInt("Ultplusplus",&pGRI->Ultplusplus);
+      ImGui::InputInt("WavesPlayed",&pGRI->WavesPlayed);
+      ImGui::InputInt("missionSwitch",&pGRI->missionSwitch);
+      ImGui::InputInt("totalArmourNumUps",&pGRI->totalArmourNumUps);
+      ImGui::InputInt("totalItemNumUps",&pGRI->totalItemNumUps);
+      ImGui::InputInt("totalWaveArmours",&pGRI->totalWaveArmours);
+      ImGui::InputInt("totalWaveItems",&pGRI->totalWaveItems);
+      ImGui::InputInt("waveNumber",&pGRI->waveNumber);
+      // clang-format on
+      ImGui::TreePop();
     }
 
     ImGui::TreePop();
