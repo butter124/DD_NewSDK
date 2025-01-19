@@ -1,6 +1,7 @@
 // clang-format off
 #include "pch.h"
 #include "includes/config.h"
+#include <SDK/DD_UDKGame_classes.hpp>
 #include <fstream>
 // clang-format on
 
@@ -148,7 +149,7 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   }
 
   // handle mana
-  auto pController = config.GetADunDefPlayerController();
+  auto pController = GetADunDefPlayerController();
   if (!pController)
     return;
 
@@ -163,12 +164,20 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   }
 
   // god mode
-  auto pWorld = config.GetGameInfo();
+  auto pWorld = GetGameInfo();
   if (pWorld) {
     pWorld->bPlayersAreInvincible = bPlayerGodMode;
     pWorld->bCrystalCoreInvincible = bPlayerGodMode;
     pController->bGodMode = bPlayerGodMode;
     pWorld->bPlayersAreInvincible = bPlayerGodMode;
+  }
+
+  // spawn enemys
+  std::set<Classes::UObject *> templates = GetEnemyTemplates();
+  for (size_t i = 0; i < qEnemysToSpawn.size(); i++) {
+    auto front = qEnemysToSpawn.front();
+    qEnemysToSpawn.pop();
+    SpawnEnemyAt(front, vacPos);
   }
 }
 
@@ -332,6 +341,27 @@ bool Config::ShouldLootItem(Classes::UHeroEquipment *item) {
     return false;
 
   return true;
+}
+
+void Config::SpawnEnemyAt(Classes::ADunDefEnemy *enemy, Classes::FVector pos) {
+  auto pMain = GetGameInfo();
+  auto pSpawner = GetWaveSpawner();
+
+  if (!pSpawner || !pMain)
+    return;
+
+  pMain->WaveSpawnerCreateEnemy(pSpawner, enemy, pos, {0, 0, 0});
+}
+
+void Config::SpawnEnemyAt(std::string s, Classes::FVector pos) {
+  auto pEnemy = (Classes::ADunDefEnemy *)GetInstanceByName(
+      Classes::ADunDefEnemy::StaticClass(), s);
+  SpawnEnemyAt(pEnemy, pos);
+}
+
+Classes::ADunDefEnemy *Config::GetEnemyTemplate(std::string s) {
+  return (Classes::ADunDefEnemy *)GetInstanceByName(
+      Classes::ADunDefEnemy::StaticClass(), s);
 }
 
 std::string Config::FStringToString(Classes::FString s) {
@@ -775,6 +805,32 @@ Classes::UDunDefAchievementManager *Config::GetAchievementManager() {
               ->STATIC_GetAchievementManager();
 
   return obj;
+}
+
+Classes::UDunDef_SeqAct_EnemyWaveSpawner *Config::GetWaveSpawner() {
+  static Classes::UDunDef_SeqAct_EnemyWaveSpawner *obj = nullptr;
+
+  if (!obj)
+    obj = (Classes::UDunDef_SeqAct_EnemyWaveSpawner *)GetInstanceOf(
+        Classes::UDunDef_SeqAct_EnemyWaveSpawner::StaticClass());
+
+  return obj;
+}
+
+std::set<Classes::UObject *> Config::GetEnemyTemplates() {
+  static std::set<Classes::UObject *> rSet = {};
+
+  if (rSet.size() == 0) {
+    auto enemys = GetAllInstanceOf(Classes::ADunDefEnemy::StaticClass());
+    for (auto e : enemys) {
+      // if (e->ObjectArchetype->GetName().find("Default") != std::string::npos)
+      // continue;
+      rSet.insert(e);
+      sEnemyTemplates.insert(e->GetName());
+    }
+  }
+
+  return rSet;
 }
 
 void Config::PushItemToQueue(Classes::UHeroEquipment *item) {
