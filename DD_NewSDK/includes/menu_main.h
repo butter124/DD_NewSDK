@@ -48,6 +48,7 @@ protected:
                  std::string comboName);
   void ImGuiTArrayOfItems(Classes::TArray<Classes::UHeroEquipment *> items,
                           std::string foldname);
+  void HelpMarker(std::string s);
 
   void ChangeFString(Classes::FString &str, char *to);
   void ItemModding();

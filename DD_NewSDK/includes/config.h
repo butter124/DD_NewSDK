@@ -1,6 +1,8 @@
 #pragma once
 
 #include "SDK.hpp"
+#include <SDK/DD_Core_structs.hpp>
+#include <SDK/DD_UDKGame_classes.hpp>
 #include <algorithm>
 #include <format>
 #include <functional>
@@ -94,7 +96,7 @@ public:
   bool bTeleportPlayers = false;
   bool bShowPlayerTeleportPos = false;
   bool bNoClip = false;
-  float fNoClipSpeed = 10;
+  float fNoClipSpeed = 35;
   bool bMultiplyReward = false;
   int MultiplyRewardsBy = 10;
   int iManaForTowers = 9000;
@@ -137,6 +139,15 @@ public:
   std::vector<std::string> ScanForAllItems();
   bool ShouldLootItem(Classes::UHeroEquipment *item);
 
+  // spawning enemys
+  bool GotEnemyTemplates = false;
+  std::set<std::string> sEnemyTemplates;
+  std::queue<std::string> qEnemysToSpawn;
+  void SpawnEnemyAt(Classes::ADunDefEnemy *enemy, Classes::FVector pos);
+  void SpawnEnemyAt(std::string s, Classes::FVector pos);
+  Classes::ADunDefEnemy *GetEnemyTemplate(std::string s);
+  std::set<Classes::UObject *> GetEnemyTemplates();
+
   // handle key presses
   enum KeyBinds {
     ToggleKey,
@@ -177,6 +188,8 @@ public:
   Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *GetEquipmentGiver();
   Classes::ADunDefForge *GetForge();
   Classes::UDunDefAchievementManager *GetAchievementManager();
+  Classes::UDunDef_SeqAct_EnemyWaveSpawner *GetWaveSpawner();
+
   void PawnLoop(const std::function<void(Classes::ADunDefPawn *)> &func,
                 bool applyToEnemy, bool applyToPlayer);
   void KillPawn(Classes::ADunDefPawn *pawn);

@@ -260,6 +260,17 @@ void MenuMain::NoClipHandleInput() {
   }
 }
 
+void MenuMain::HelpMarker(std::string s) {
+  ImGui::SameLine();
+  ImGui::TextDisabled("(?)");
+  if (ImGui::BeginItemTooltip()) {
+    ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
+    ImGui::TextUnformatted(s.c_str());
+    ImGui::PopTextWrapPos();
+    ImGui::EndTooltip();
+  }
+}
+
 void MenuMain::BasicCheats() {
   {
     ImGui::Text("Basic cheats");
@@ -269,9 +280,13 @@ void MenuMain::BasicCheats() {
     }
     ImGui::Checkbox("Auto Kill", &config.bKillAllEnemys);
     ImGui::Checkbox("Auto Loot", &config.bAutoLoot);
+    HelpMarker("Will loot anything that is equal to or higher\n in the "
+               "configuration settings");
     ImGui::Checkbox("One kill to advance", &config.bKillOneToAdvance);
     ImGui::Checkbox("Enemys drop items", &config.bLootShower);
     ImGui::Checkbox("Auto open chest", &config.bAutoOpenChest);
+    HelpMarker("only works with chest that respawn");
+
     ImGui::Checkbox("Unlimited mana for towers", &config.bUnlimitedManaTowers);
     ImGui::Checkbox("Unlimited mana for shop", &config.bUnlimitedManaShop);
 
@@ -294,7 +309,7 @@ void MenuMain::BasicCheats() {
       }
     }
 
-    ImGui::InputFloat("No clip speed", &config.fNoClipSpeed);
+    ImGui::SliderFloat("No clip speed", &config.fNoClipSpeed, 1.0f, 100.0f);
 
     // level cheats
     ImGui::InputInt("##waveskip", &config.waveToSkipTo);
@@ -624,6 +639,23 @@ void MenuMain::WorldCheats() {
     ImGui::TreePop();
   }
 
+  if (ImGui::TreeNode("Spawn Enemys")) {
+    // class ADunDefEnemy* WaveSpawnerCreateEnemy ( class
+    // UDunDef_SeqAct_EnemyWaveSpawner* aSpawner,
+    // class ADunDefEnemy* EnemyTemplate,
+    // struct FVector SpawnLocation,
+    // struct FRotator SpawnRotation );
+
+    for (const auto &enemy : config.sEnemyTemplates) {
+      if (ImGui::Button(("Spawn " + enemy).c_str())) {
+        config.qEnemysToSpawn.push(enemy);
+      }
+    }
+
+    // code here
+    ImGui::TreePop();
+  }
+
   auto pGRI = config.GetGRI();
 
   if (!pGRI)
@@ -888,8 +920,6 @@ void MenuMain::ItemModding() {
     ImGui::Text("No player hero found.");
   }
 
-  // This crashes the game for some reason
-  //  // Item box
   auto pHeroManager = config.GetHeroManager();
   if (pHeroManager) {
     ImGuiTArrayOfItems(pHeroManager->ItemBoxEquipments, "Forge");
@@ -1346,6 +1376,12 @@ void MenuMain::Config() {
     ImGui::Combo("Quality", &config.itemFilterQuality, itemQualitys,
                  IM_ARRAYSIZE(itemQualitys));
 
+    ImGui::Checkbox("Always loot quality >= selected?", &config.bAutoLootULT);
+    HelpMarker("This requires the auto loot setting and\n will bypass the "
+               "above settings");
+    ImGui::Combo("Always loot Quality", &config.itemFilterQualityULT,
+                 itemQualitys, IM_ARRAYSIZE(itemQualitys));
+
     ImGui::Text("Items Added : %d   |  Items Filtered : %d", config.itemsLooted,
                 config.itemsChecked);
     ImGui::SameLine();
@@ -1353,10 +1389,6 @@ void MenuMain::Config() {
       config.itemsLooted = 0;
       config.itemsChecked = 0;
     }
-
-    ImGui::Checkbox("Always loot quality >= selected?", &config.bAutoLootULT);
-    ImGui::Combo("Always loot Quality", &config.itemFilterQualityULT,
-                 itemQualitys, IM_ARRAYSIZE(itemQualitys));
 
     ImGui::TreePop();
   }
@@ -1563,6 +1595,10 @@ void MenuMain::ImGuiPawn(Classes::ADunDefPawn *pPawn) {
     return;
   // ImGui::Text("%s", pPawn->GetName().c_str());
   // ImGui::Separator();
+
+  if (ImGui::Button(("Kill##" + pPawn->GetName()).c_str())) {
+    config.KillPawn(pPawn);
+  }
 
   ImGui::Text("Creation span : %f", pPawn->CreationTime);
   ImGui::Text("Spawn span : %f", pPawn->SpawnTime);
