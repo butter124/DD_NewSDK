@@ -3,6 +3,7 @@
 #include "includes/config.h"
 #include <SDK/DD_UDKGame_classes.hpp>
 #include <fstream>
+#include <regex>
 // clang-format on
 
 bool Config::Init() {
@@ -356,7 +357,8 @@ void Config::SpawnEnemyAt(Classes::ADunDefEnemy *enemy, Classes::FVector pos) {
 void Config::SpawnEnemyAt(std::string s, Classes::FVector pos) {
   auto pEnemy = (Classes::ADunDefEnemy *)GetInstanceByName(
       Classes::ADunDefEnemy::StaticClass(), s);
-  SpawnEnemyAt(pEnemy, pos);
+  if (pEnemy)
+    SpawnEnemyAt(pEnemy, pos);
 }
 
 Classes::ADunDefEnemy *Config::GetEnemyTemplate(std::string s) {
@@ -818,16 +820,20 @@ Classes::UDunDef_SeqAct_EnemyWaveSpawner *Config::GetWaveSpawner() {
 }
 
 std::set<Classes::UObject *> Config::GetEnemyTemplates() {
-  static std::set<Classes::UObject *> rSet = {};
+  // TODO: THERE IS A BETTER WAY TO DO THIS
 
-  if (rSet.size() == 0) {
-    auto enemys = GetAllInstanceOf(Classes::ADunDefEnemy::StaticClass());
-    for (auto e : enemys) {
-      // if (e->ObjectArchetype->GetName().find("Default") != std::string::npos)
-      // continue;
-      rSet.insert(e);
-      sEnemyTemplates.insert(e->GetName());
-    }
+  static std::set<Classes::UObject *> rSet = {};
+  sEnemyTemplates.clear();
+
+  auto enemys = GetAllInstanceOf(Classes::ADunDefEnemy::StaticClass());
+
+  for (auto e : enemys) {
+
+    if (ContainsNumber(e->GetName()))
+      continue;
+
+    rSet.insert(e);
+    sEnemyTemplates.insert(e->GetName());
   }
 
   return rSet;
@@ -852,8 +858,10 @@ void Config::PushItemToQueueWithString(std::string s) {
   Classes::UHeroEquipment *instance =
       (Classes::UHeroEquipment *)GetInstanceByName(
           Classes::UHeroEquipmentNative::StaticClass(), s);
+
   if (!instance)
     return;
+
   std::lock_guard<std::mutex> lock(queueMutex);
   qItemsToGive.push(instance);
 }
@@ -1224,4 +1232,9 @@ void Config::SetupFilter() {
       vProcessEventFunctionFilter["Function UDKGame.UI_PauseMenu.SceneActivated"] = true;
       vProcessEventFunctionFilter["Function UDKGame.UI_PauseMenu.SceneDeactivated"] = true;
   // clang-format on
+}
+
+bool Config::ContainsNumber(const std::string &str) {
+  std::regex pattern("\\d");
+  return std::regex_search(str, pattern);
 }

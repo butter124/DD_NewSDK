@@ -140,6 +140,8 @@ public:
   bool ShouldLootItem(Classes::UHeroEquipment *item);
 
   // spawning enemys
+  // TODO: put a mutix lock on this
+  // TODO: find a better way to handle this
   bool GotEnemyTemplates = false;
   std::set<std::string> sEnemyTemplates;
   std::queue<std::string> qEnemysToSpawn;
@@ -215,7 +217,7 @@ public:
   Classes::FString StringToFString(std::string s);
   Classes::FVector GetForward(float yaw, float pitch);
   Classes::FVector AddFVector(Classes::FVector vec1, Classes::FVector vec2);
-
+  bool ContainsNumber(const std::string &str);
   void AttachConsole();
   void DettachConsole();
   void PrintToConsole(const std::string &s);
