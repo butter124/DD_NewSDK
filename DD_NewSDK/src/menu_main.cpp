@@ -646,9 +646,13 @@ void MenuMain::WorldCheats() {
     // struct FVector SpawnLocation,
     // struct FRotator SpawnRotation );
 
+    static int ammount = 1;
+    ImGui::InputInt("Spawn ammount", &ammount);
     for (const auto &enemy : config.sEnemyTemplates) {
       if (ImGui::Button(("Spawn " + enemy).c_str())) {
-        config.qEnemysToSpawn.push(enemy);
+        for (int i = 0; i < ammount; i++) {
+          config.qEnemysToSpawn.push(enemy);
+        }
       }
     }
 
