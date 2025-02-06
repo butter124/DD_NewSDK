@@ -62,9 +62,9 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
   }
   // hooked functions
   if (config.hookedFuncMap.find(funcName) != config.hookedFuncMap.end()) {
-    std::string s = std::format("Hooked Function {}", funcName);
-    config.LogToFile(s);
-    // config.PrintToConsole();
+    // std::string s = std::format("Hooked Function {}", funcName);
+    // config.LogToFile(s);
+    //  config.PrintToConsole();
     config.hookedFuncMap[funcName](pObject, edx, pFunction, pParms, pResult);
   }
   // hooked objects
