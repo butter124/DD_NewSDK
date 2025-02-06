@@ -74,6 +74,7 @@ public:
 #endif // LOGGING
 
   bool bLoggingProcessEvents = false;
+  bool bLoggingToFile = false;
 
   bool bBlockInput = true;
   bool bPlayerGodMode = false;
@@ -223,6 +224,8 @@ public:
   void AttachConsole();
   void DettachConsole();
   void PrintToConsole(const std::string &s);
+  void InitLog();
+  void CleanLog();
   void LogToFile(const std::string &s);
 };
 extern Config config;
