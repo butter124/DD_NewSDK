@@ -1409,6 +1409,13 @@ void MenuMain::Config() {
     }
     ImGui::SameLine();
     ImGui::Checkbox("Log process events", &config.bLoggingProcessEvents);
+    ImGui::SameLine();
+    if (ImGui::Checkbox("Log to file", &config.bLoggingToFile)) {
+      if (config.bLoggingToFile)
+        config.InitLog();
+      else
+        config.CleanLog();
+    }
 
     // unordered_map menu
     // TODO: THIS COULD BE DONE ALOT BETTER
