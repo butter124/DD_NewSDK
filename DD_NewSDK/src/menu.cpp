@@ -35,9 +35,12 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
     config.vProcessEventObjectFilter[objectName] = false;
   }
 
+  // logging process events
   if (config.bConsoleAttached && config.bLoggingProcessEvents) {
-    if (!config.vProcessEventFunctionFilter[funcName])
-      std::cout << std::format("{:<50} | {}", objectName, funcName) << "\n";
+    if (!config.vProcessEventFunctionFilter[funcName]) {
+      std::string s = std::format("{:<50} | {}", objectName, funcName);
+      std::cout << s << "\n";
+    }
   }
 
   // block input when menu is shown
@@ -59,17 +62,23 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
   }
   // hooked functions
   if (config.hookedFuncMap.find(funcName) != config.hookedFuncMap.end()) {
-    // config.PrintToConsole(std::format("Hooked {}", funcName));
+    std::string s = std::format("Hooked Function {}", funcName);
+    config.LogToFile(s);
+    // config.PrintToConsole();
     config.hookedFuncMap[funcName](pObject, edx, pFunction, pParms, pResult);
   }
   // hooked objects
   if (config.hookedObjects.find(objectName) != config.hookedObjects.end()) {
+    std::string s = std::format("Hooked Object {}", objectName);
+    config.LogToFile(s);
     // config.PrintToConsole(std::format("Hooked {}", objectName));
     config.hookedObjects[objectName](pObject, edx, pFunction, pParms, pResult);
   }
   // blocked functions
   if (config.blockedFuncMap.find(funcName) == config.blockedFuncMap.end()) {
     if (config.blockedFuncMap[funcName] == true) {
+      std::string s = std::format("Blocked Function {}", funcName);
+      config.LogToFile(s);
       // config.PrintToConsole(std::format("Blocked {}", funcName));
       return;
     }

@@ -1538,6 +1538,7 @@ bool MenuMain::HandleKeyChange(int &key, bool &shouldChange) {
     } else {
       shouldChange = false;
       key = keyDown;
+      config.LogToFile("Saved keybind change.");
       config.SaveKeybinds();
       return true;
     }

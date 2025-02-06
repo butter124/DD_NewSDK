@@ -740,6 +740,8 @@ bool Config::GiveItem(Classes::UHeroEquipment *item) {
       GetEquipmentGiver();
   Classes::ADunDefPlayerController *pController = GetADunDefPlayerController();
 
+  config.LogToFile("Giving item " + item->GetName());
+
   if (!pItemGiver || !pController)
     return false;
 
@@ -775,6 +777,7 @@ bool Config::GiveItem(Classes::UHeroEquipment *item) {
   // cleanup templates
   pItemGiver->GiveEquipmentEntries.Data[0] = oldtemp;
 
+  config.LogToFile("Gave item " + item->GetName());
   return true;
 }
 
@@ -782,6 +785,8 @@ Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *Config::GetEquipmentGiver() {
   Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *obj;
   obj = (Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *)GetInstanceOf(
       Classes::UDunDef_SeqAct_GiveEquipmentToPlayers::StaticClass());
+  config.LogToFile(
+      "Found UDunDef_SeqAct_GiveEquipmentToPlayers for GetEquipmentGiver()");
   return obj;
 }
 
