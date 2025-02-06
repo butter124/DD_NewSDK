@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SDK.hpp"
+#include "includes/logger.h"
 #include <SDK/DD_Core_structs.hpp>
 #include <SDK/DD_UDKGame_classes.hpp>
 #include <algorithm>
@@ -57,6 +58,7 @@ struct KeybindsStruct {
 class Config {
 private:
   FILE *f = nullptr;
+  Logger *logger;
 
 public:
   bool Init();
@@ -221,5 +223,6 @@ public:
   void AttachConsole();
   void DettachConsole();
   void PrintToConsole(const std::string &s);
+  void LogToFile(const std::string &s);
 };
 extern Config config;

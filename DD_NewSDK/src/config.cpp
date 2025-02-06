@@ -39,6 +39,9 @@ bool Config::Init() {
   GetKeybinds();
   SetupFilter();
 
+  logger = new Logger("log.txt");
+  logger->log("Init logger.");
+
   return true;
 }
 
@@ -57,6 +60,9 @@ bool Config::Cleanup() {
 
   if (bConsoleAttached)
     DettachConsole();
+
+  logger->log("Cleanup()");
+  delete logger;
 
   return true;
 }
@@ -935,6 +941,8 @@ void Config::PrintToConsole(const std::string &s) {
     return;
   std::cout << s << "\n";
 }
+
+void PrintToConsole(const std::string &s) {}
 
 void Config::SetupFilter() {
   // clang-format off
