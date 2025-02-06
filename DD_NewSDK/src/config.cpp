@@ -58,6 +58,9 @@ bool Config::Cleanup() {
   if (bConsoleAttached)
     DettachConsole();
 
+  if (bLoggingToFile)
+    CleanLog();
+
   return true;
 }
 
