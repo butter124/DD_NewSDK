@@ -47,7 +47,8 @@ protected:
                  Classes::FString CurrentSelected, unsigned char &_changeChar,
                  std::string comboName);
   void ImGuiTArrayOfItems(Classes::TArray<Classes::UHeroEquipment *> items,
-                          std::string foldname);
+                          std::string foldname,
+                          std::function<void()> func = nullptr);
   void HelpMarker(std::string s);
 
   void ChangeFString(Classes::FString &str, char *to);

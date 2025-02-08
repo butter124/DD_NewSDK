@@ -927,18 +927,23 @@ void MenuMain::ItemModding() {
 
   auto pHeroManager = config.GetHeroManager();
   if (pHeroManager) {
-    ImGuiTArrayOfItems(pHeroManager->ItemBoxEquipments, "Forge");
-    // if (ImGui::Button("Make all items sellable")) {
-    //   for (int i = 0; i < pHeroManager->ItemBoxEquipments.Num(); i++) {
-    //     if (!pHeroManager->ItemBoxEquipments.IsValidIndex(i))
-    //       continue;
 
-    //    auto item = pHeroManager->ItemBoxEquipments[i];
+    auto fixUnsellableItems = [&]() {
+      if (ImGui::Button("Make all items sellable/droppable")) {
+        for (size_t i = 0; i < pHeroManager->ItemBoxEquipments.Num(); i++) {
+          if (!pHeroManager->ItemBoxEquipments.IsValidIndex(i))
+            continue;
 
-    //    item->bCantBeDropped = 0;
-    //    item->bCantBeSold = 0;
-    //  }
-    //}
+          auto item = pHeroManager->ItemBoxEquipments[i];
+
+          item->bCantBeDropped = 0;
+          item->bCantBeSold = 0;
+        }
+      }
+    };
+
+    ImGuiTArrayOfItems(pHeroManager->ItemBoxEquipments, "Forge",
+                       fixUnsellableItems);
     ImGui::Separator();
   } else {
     ImGui::Text("No HeroManager found.");
@@ -1278,7 +1283,8 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
 }
 
 void MenuMain::ImGuiTArrayOfItems(
-    Classes::TArray<Classes::UHeroEquipment *> items, std::string foldName) {
+    Classes::TArray<Classes::UHeroEquipment *> items, std::string foldName,
+    std::function<void()> func) {
 
   if (!items.Data) {
     ImGui::Text("%s", (foldName + " is empty").c_str());
@@ -1286,6 +1292,8 @@ void MenuMain::ImGuiTArrayOfItems(
   }
 
   if (ImGui::TreeNode(foldName.c_str())) {
+    if (func)
+      func();
     for (size_t i = 0; i < items.Num(); i++) {
       if (!items.IsValidIndex(i))
         continue;
