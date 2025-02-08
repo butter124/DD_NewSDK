@@ -91,6 +91,11 @@ void Config::RegisterKeybind(std::string name, Config::KeyBinds keyBindName,
 }
 
 void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
+
+  auto pMapInfo = ((Classes::UDunDefMapInfo *)(GetWorldInfo()->MyMapInfo));
+  if (pMapInfo->IsLoadingLevel)
+    return;
+
   // noclip
   NoClip();
 
@@ -153,7 +158,7 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   }
 
   // handle mana
-  auto pController = GetADunDefPlayerController();
+  Classes::ADunDefPlayerController *pController = GetADunDefPlayerController();
   if (!pController)
     return;
 
@@ -182,6 +187,11 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
     auto front = qEnemysToSpawn.front();
     qEnemysToSpawn.pop();
     SpawnEnemyAt(front, vacPos);
+  }
+
+  // auto ready
+  if (bAutoReady && !pMapInfo->IsLobbyLevel) {
+    pController->ActivateCrystal();
   }
 }
 
@@ -493,6 +503,12 @@ Classes::AWorldInfo *Config::GetWorldInfo() {
   // PrintToConsole("Found world info.");
 
   return worldinfo;
+}
+
+Classes::UDunDefViewportClient *Config::GetViewportClient() {
+  return ((Classes::UDunDefViewportClient
+               *)(Classes::UDunDefViewportClient::StaticClass()))
+      ->STATIC_GetViewportClient();
 }
 
 Classes::AMain *Config::GetGameInfo() {
@@ -987,6 +1003,7 @@ void Config::SetupFilter() {
       vProcessEventFunctionFilter["Function Engine.Actor.ModifyHearSoundComponent"] = true;
       vProcessEventFunctionFilter["Function Engine.Actor.OnDestroy"] = true;
       vProcessEventFunctionFilter["Function Engine.Actor.PhysicsVolumeChange"] = true;
+      vProcessEventFunctionFilter["Function Engine.Actor.PlayParticleEffect"] = true;
       vProcessEventFunctionFilter["Function Engine.Actor.PostBeginPlay"] = true;
       vProcessEventFunctionFilter["Function Engine.Actor.PostInitAnimTree"] = true;
       vProcessEventFunctionFilter["Function Engine.Actor.PreBeginPlay"] = true;
@@ -1004,6 +1021,7 @@ void Config::SetupFilter() {
       vProcessEventFunctionFilter["Function Engine.Console.InputKey"] = true;
       vProcessEventFunctionFilter["Function Engine.DecalManager.DecalFinished"] = true;
       vProcessEventFunctionFilter["Function Engine.Emitter.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.EmitterPool.OnParticleSystemFinished"] = true;
       vProcessEventFunctionFilter["Function Engine.Engine.GetCurrentWorldInfo"] = true;
       vProcessEventFunctionFilter["Function Engine.GameInfo.OnStartOnlineGameComplete"] = true;
       vProcessEventFunctionFilter["Function Engine.GameInfo.Timer"] = true;
@@ -1046,6 +1064,7 @@ void Config::SetupFilter() {
       vProcessEventFunctionFilter["Function Engine.SequenceOp.Activated"] = true;
       vProcessEventFunctionFilter["Function Engine.SequenceOp.Deactivated"] = true;
       vProcessEventFunctionFilter["Function Engine.SkeletalMeshActor.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function Engine.SkeletalMeshComponent.PlayParticleEffect"] = true;
       vProcessEventFunctionFilter["Function Engine.UIDataStore.Registered"] = true;
       vProcessEventFunctionFilter["Function Engine.UIDataStore.SubscriberAttached"] = true;
       vProcessEventFunctionFilter["Function Engine.UIDataStore.SubscriberDetached"] = true;
@@ -1120,8 +1139,12 @@ void Config::SetupFilter() {
       vProcessEventFunctionFilter["Function UDKGame.DunDefNPC_BarKeep.PlayIdleQuipSound"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefNPC_BarKeep.Tick"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefNativeUIScene.IsKeyboardOwned"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPawn.AnimNotify_ResetWeaponSwingDamage"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPawn.AnimNotify_StartWeaponSwingDamage"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPawn.AnimNotify_StopWeaponSwingDamage"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefPawn.BaseChange"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefPawn.PlayFootStepSound"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPlayer.Bump"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefPlayer.DoKnockback"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefPlayer.Landed"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefPlayer.PostBeginPlay"] = true;
@@ -1171,6 +1194,7 @@ void Config::SetupFilter() {
       vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerReplicationInfo.PostBeginPlay"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefPlayerReplicationInfo.Timer"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefPracticeDummy.PostBeginPlay"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefPracticeDummy.StartTimer"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefProjectile.Destroyed"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefProjectile.HitWall"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefProjectile.PostBeginPlay"] = true;
@@ -1207,6 +1231,7 @@ void Config::SetupFilter() {
       vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MagicStaff.WeaponFiring.BeginState"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MagicStaff.WeaponFiring.EndState"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MagicStaff.WeaponFiring.Tick"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MeleeSword.CheckUpdateBlocking"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDefWeapon_MeleeSword.Tick"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_AppPurchased.Activated"] = true;
       vProcessEventFunctionFilter["Function UDKGame.DunDef_SeqAct_CheckForLevelUps.Activated"] = true;

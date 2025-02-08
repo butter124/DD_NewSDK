@@ -62,28 +62,28 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
   }
   // hooked functions
   if (config.hookedFuncMap.find(funcName) != config.hookedFuncMap.end()) {
-    // std::string s = std::format("Hooked Function {}", funcName);
-    // config.LogToFile(s);
     //  config.PrintToConsole();
     config.hookedFuncMap[funcName](pObject, edx, pFunction, pParms, pResult);
   }
   // hooked objects
   if (config.hookedObjects.find(objectName) != config.hookedObjects.end()) {
-    std::string s = std::format("Hooked Object {}", objectName);
-    config.LogToFile(s);
-    // config.PrintToConsole(std::format("Hooked {}", objectName));
+    // std::string s = std::format("Hooked Object {}", objectName);
+    // config.LogToFile(s);
+    //  config.PrintToConsole(std::format("Hooked {}", objectName));
     config.hookedObjects[objectName](pObject, edx, pFunction, pParms, pResult);
   }
   // blocked functions
   if (config.blockedFuncMap.find(funcName) == config.blockedFuncMap.end()) {
     if (config.blockedFuncMap[funcName] == true) {
-      std::string s = std::format("Blocked Function {}", funcName);
-      config.LogToFile(s);
-      // config.PrintToConsole(std::format("Blocked {}", funcName));
+      // std::string s = std::format("Blocked Function {}", funcName);
+      // config.LogToFile(s);
+      //  config.PrintToConsole(std::format("Blocked {}", funcName));
       return;
     }
   }
 
+  std::string s = std::format("Hooked {:<50} | {}", funcName, objectName);
+  config.LogToFile(s);
   // Call Original PE
   ((tProcessEvent)(ProcEventHook.HookAddr))(pObject, pFunction, pParms,
                                             pResult);

@@ -280,12 +280,13 @@ void MenuMain::BasicCheats() {
     }
     ImGui::Checkbox("Auto Kill", &config.bKillAllEnemys);
     ImGui::Checkbox("Auto Loot", &config.bAutoLoot);
-    HelpMarker("Will loot anything that is equal to or higher\n in the "
+    HelpMarker("Will loot anything that is equal to or higher\nin the "
                "configuration settings");
+    ImGui::Checkbox("Auto Ready", &config.bAutoReady);
     ImGui::Checkbox("One kill to advance", &config.bKillOneToAdvance);
     ImGui::Checkbox("Enemys drop items", &config.bLootShower);
     ImGui::Checkbox("Auto open chest", &config.bAutoOpenChest);
-    HelpMarker("only works with chest that respawn");
+    HelpMarker("Only works with chest that respawn");
 
     ImGui::Checkbox("Unlimited mana for towers", &config.bUnlimitedManaTowers);
     ImGui::Checkbox("Unlimited mana for shop", &config.bUnlimitedManaShop);
@@ -1005,41 +1006,20 @@ void MenuMain::Debug() {
   auto pController = config.GetADunDefPlayerController();
   auto pEngine = config.GetEngine();
   auto pAchievementManager = config.GetAchievementManager();
+  auto pWorldInfo = config.GetWorldInfo();
+  auto pMapInfo = config.GetWorldInfo()->GetMapInfo();
+  auto pViewportClient = config.GetViewportClient();
 
   if (!pPlayerPawn || !pController || !pEngine || !pAchievementManager)
     return;
 
-  // for (size_t i = 0; i < pAchievementManager->AchievementEntries.Num(); i++)
-  // {
-  //   if (!pAchievementManager->AchievementEntries.IsValidIndex(i))
-  //     continue;
-  //   auto entry = pAchievementManager->AchievementEntries[i];
-  //   std::string aName = entry.AchievementName.Data != nullptr
-  //                           ? entry.AchievementName.ToString()
-  //                           : "None";
-  //   ImGui::Text("%s", aName.c_str());
-  //   ImGui::SameLine();
-  //   std::string aDesc = entry.AchievementDescription.Data != nullptr
-  //                           ? entry.AchievementDescription.ToString()
-  //                           : "None";
-  //   ImGui::Text("%s", aDesc.c_str());
-  // }
+  if (!pWorldInfo || pViewportClient)
+    return;
+  ImGui::Text("%s", pWorldInfo->GetName().c_str());
+  ImGui::Text("%s", pWorldInfo->GetMapInfo()->GetName().c_str());
 
-  // IMGUI_T_ARRAY_STRINGS(Area1_Tags, pAchievementManager)
-  // IMGUI_T_ARRAY_STRINGS(Area2_Tags, pAchievementManager);
-  // IMGUI_T_ARRAY_STRINGS(Area3_Tags, pAchievementManager);
-  // IMGUI_T_ARRAY_STRINGS(AllArea_Tags, pAchievementManager);
-  // IMGUI_T_ARRAY_STRINGS(Challenge_Tags, pAchievementManager);
-  // IMGUI_T_ARRAY_STRINGS(FamiliarTypes, pAchievementManager);
-  //// TArray<struct FFamiliarTypeAlias>
-  //// FamiliarAliases; // 0x00B0(0x000C) (Edit, NeedCtorLink)
-  // IMGUI_T_ARRAY_STRINGS(AllFamiliarTypes, pAchievementManager);
-  //// TArray<struct FFamiliarTypeAlias> AllFamiliarAliases; // 0x00C8(0x000C)
-  //// (Edit, NeedCtorLink) TArray<unsigned char> HeroClassUniqueIDs; //
-  //// 0x00D4(0x000C) (Edit, NeedCtorLink)
-  // IMGUI_T_ARRAY_STRINGS(TranscendentSurvivalistAreaTags,
-  // pAchievementManager); IMGUI_T_ARRAY_STRINGS(MasterRTSAreaTags,
-  // pAchievementManager);
+  if (ImGui::Button("Activate"))
+    pController->ServerActivateCrystal();
 
   return;
 }
@@ -1073,9 +1053,8 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
   if (item->UserEquipmentName.Data) {
     // change item name
     ImGui::Text("UserEquipmentName :  %ls", item->UserEquipmentName.c_str());
-    static char charBuff[255];
-    ImGui::InputText("##ItemName", charBuff, sizeof(charBuff),
-                     IM_ARRAYSIZE(charBuff));
+    static char charBuff[255] = {0};
+    ImGui::InputText("##ItemName", charBuff, sizeof(charBuff));
     ImGui::SameLine();
 
     if (ImGui::Button("Change Name")) {
@@ -1090,9 +1069,8 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
     ImGui::Text("UserForgerName    :  %ls", item->UserForgerName.c_str());
 
     // change forger name
-    static char ncharBuff[255];
-    ImGui::InputText("##ItemForger", ncharBuff, sizeof(ncharBuff),
-                     IM_ARRAYSIZE(ncharBuff));
+    static char ncharBuff[255] = {0};
+    ImGui::InputText("##ItemForger", ncharBuff, sizeof(ncharBuff));
     ImGui::SameLine();
 
     if (ImGui::Button("Change Forger Name")) {
@@ -1384,7 +1362,7 @@ void MenuMain::Config() {
                  IM_ARRAYSIZE(itemQualitys));
 
     ImGui::Checkbox("Always loot quality >= selected?", &config.bAutoLootULT);
-    HelpMarker("This requires the auto loot setting and\n will bypass the "
+    HelpMarker("This requires the auto loot setting and\nwill bypass the "
                "above settings");
     ImGui::Combo("Always loot Quality", &config.itemFilterQualityULT,
                  itemQualitys, IM_ARRAYSIZE(itemQualitys));
