@@ -6819,6 +6819,26 @@ struct ADunDefPlayerAbility_WheeloFortuna_DoTowerUpgrades_Params
 	struct FGlyphPattern                               thePattern;                                               // (Parm, NeedCtorLink)
 };
 
+// Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.SortStuff
+struct ADunDefPlayerAbility_WheeloFortuna_SortStuff_Params
+{
+	TArray<float>                                      arrayin;                                                  // (Parm, NeedCtorLink)
+	int                                                Size;                                                     // (Parm)
+	TArray<float>                                      arrayout;                                                 // (Parm, OutParm, NeedCtorLink)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.CoreDMG
+struct ADunDefPlayerAbility_WheeloFortuna_CoreDMG_Params
+{
+	struct FGlyphPattern                               thePattern;                                               // (Parm, NeedCtorLink)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.CoreHeal
+struct ADunDefPlayerAbility_WheeloFortuna_CoreHeal_Params
+{
+	struct FGlyphPattern                               thePattern;                                               // (Parm, NeedCtorLink)
+};
+
 // Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.PlayerTeleport
 struct ADunDefPlayerAbility_WheeloFortuna_PlayerTeleport_Params
 {

@@ -1178,6 +1178,23 @@ void UDunDefBuff_Shield::DoDamageEffects(class AController* fromController, clas
 }
 
 
+// Function DunDefBuff.DunDefBuff_Shield.DeactivateBuff
+// (Defined, Simulated, Public)
+
+void UDunDefBuff_Shield::DeactivateBuff()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDefBuff_Shield.DeactivateBuff");
+
+	UDunDefBuff_Shield_DeactivateBuff_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function DunDefBuff.DunDefBuff_Shield.AdjustTargetDamage
 // (Defined, HasOptionalParms, Public, HasOutParms)
 // Parameters:

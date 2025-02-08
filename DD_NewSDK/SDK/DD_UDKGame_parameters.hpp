@@ -247,6 +247,18 @@ struct UDataListEntryInterface_GetEntryEnabled_Params
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.HeroEquipment.setStackSize
+struct UHeroEquipment_setStackSize_Params
+{
+	int                                                stackSize;                                                // (Parm)
+};
+
+// Function UDKGame.HeroEquipment.getStackSize
+struct UHeroEquipment_getStackSize_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.HeroEquipment.GenerateStatObject
 struct UHeroEquipment_GenerateStatObject_Params
 {
@@ -1165,6 +1177,18 @@ struct UHeroEquipment_GenerateRandomizerValue_Params
 	float                                              equipmentQuality;                                         // (Parm)
 	struct FEG_StatRandomizer                          randomizer;                                               // (Const, Parm, OutParm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment.HandleConsumables
+struct UHeroEquipment_HandleConsumables_Params
+{
+	class UHeroEquipment*                              consumable;                                               // (Parm)
+};
+
+// Function UDKGame.HeroEquipment.AcceptConsumables
+struct UHeroEquipment_AcceptConsumables_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function UDKGame.HeroEquipment.GetEquipmentWeaponTemplate
@@ -2890,6 +2914,24 @@ struct UDunDefHeroManager_CanStoreInItemBox_Params
 	class UHeroEquipment*                              Equipment;                                                // (Parm)
 	int                                                UserID;                                                   // (Parm)
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefHeroManager.AddStackedEquipmentToItemBox
+struct UDunDefHeroManager_AddStackedEquipmentToItemBox_Params
+{
+	class UDunDefHero*                                 hero;                                                     // (Parm)
+	struct FEquipmentNetInfo                           netInfo;                                                  // (Const, Parm, OutParm, NeedCtorLink)
+	unsigned long                                      bAutoLock;                                                // (OptionalParm, Parm)
+	unsigned long                                      bDontRefreshItemBoxLists;                                 // (OptionalParm, Parm)
+	class UHeroEquipment*                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefHeroManager.AddStackedEquipmentObjectToItemBox
+struct UDunDefHeroManager_AddStackedEquipmentObjectToItemBox_Params
+{
+	class UDunDefHero*                                 hero;                                                     // (Parm)
+	class UHeroEquipment*                              theEquipment;                                             // (Parm)
+	unsigned long                                      bAutoLock;                                                // (OptionalParm, Parm)
 };
 
 // Function UDKGame.DunDefHeroManager.AddEquipmentToItemBox
@@ -8340,6 +8382,12 @@ struct UDunDefBuff_IsFriend_Params
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.DunDefBuff.GetRemainingShieldHealth
+struct UDunDefBuff_GetRemainingShieldHealth_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.DunDefBuff.GetTargetingTeam
 struct UDunDefBuff_GetTargetingTeam_Params
 {
@@ -9075,6 +9123,11 @@ struct ADunDefBasePlayerController_PostSpawn_Params
 
 // Function UDKGame.DunDefBasePlayerController.PostBeginPlay
 struct ADunDefBasePlayerController_PostBeginPlay_Params
+{
+};
+
+// Function UDKGame.DunDefPlayerController.PrintOwnerBuffs
+struct ADunDefPlayerController_PrintOwnerBuffs_Params
 {
 };
 
@@ -10943,6 +10996,11 @@ struct ADunDefPlayerController_DropAllEquipment_Params
 
 // Function UDKGame.DunDefPlayerController.DoRespawnEffect
 struct ADunDefPlayerController_DoRespawnEffect_Params
+{
+};
+
+// Function UDKGame.DunDefPlayerController.NotifyShieldChange
+struct ADunDefPlayerController_NotifyShieldChange_Params
 {
 };
 
@@ -13566,6 +13624,11 @@ struct ADunDefHUD_NotifyExperienceChange_Params
 {
 };
 
+// Function UDKGame.DunDefHUD.NotifyShieldChange
+struct ADunDefHUD_NotifyShieldChange_Params
+{
+};
+
 // Function UDKGame.DunDefHUD.NotifyHealthChange
 struct ADunDefHUD_NotifyHealthChange_Params
 {
@@ -14353,6 +14416,12 @@ struct UUI_PlayerHUD_NotifyHealthChange_Params
 	unsigned long                                      DontPlayAnimation;                                        // (OptionalParm, Parm)
 };
 
+// Function UDKGame.UI_PlayerHUD.NotifyShieldChange
+struct UUI_PlayerHUD_NotifyShieldChange_Params
+{
+	unsigned long                                      DontPlayAnimation;                                        // (OptionalParm, Parm)
+};
+
 // Function UDKGame.UI_PlayerHUD.RefreshPostEffectBinding
 struct UUI_PlayerHUD_RefreshPostEffectBinding_Params
 {
@@ -14995,6 +15064,18 @@ struct AMain_PreBeginPlay_Params
 struct AMain_ShowGameOver_Params
 {
 	int                                                gameOverDescriptionReason;                                // (Parm)
+};
+
+// Function UDKGame.Main.GetCurrentEnemyKillSpeed
+struct AMain_GetCurrentEnemyKillSpeed_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.Main.GetCurrentKillCount
+struct AMain_GetCurrentKillCount_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function UDKGame.Main.GetNumLocalPlayers
@@ -18130,6 +18211,18 @@ struct ADunDefPlayer_PlayWaveStartAnimation_Params
 // Function UDKGame.DunDefPlayer.PlayPickupItemAnimation
 struct ADunDefPlayer_PlayPickupItemAnimation_Params
 {
+};
+
+// Function UDKGame.DunDefPlayer.AddAbsorbShield
+struct ADunDefPlayer_AddAbsorbShield_Params
+{
+	int                                                Amount;                                                   // (Parm)
+};
+
+// Function UDKGame.DunDefPlayer.GetTotalShield
+struct ADunDefPlayer_GetTotalShield_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function UDKGame.DunDefPlayer.AddHealth
@@ -21835,6 +21928,12 @@ struct UUI_GameSetup_SetStartAtWave_Params
 struct UUI_GameSetup_SetHardcore_Params
 {
 	unsigned long                                      bIsHardcore;                                              // (Parm)
+};
+
+// Function UDKGame.UI_GameSetup.SetMayHem
+struct UUI_GameSetup_SetMayHem_Params
+{
+	unsigned long                                      bisMayHem;                                                // (Parm)
 };
 
 // Function UDKGame.UI_GameSetup.SetUseBuildTimer
@@ -28711,6 +28810,101 @@ struct UUI_KillCount_ExecReplicatedUIMessage_Params
 	class UObject*                                     objectParam1;                                             // (Parm)
 };
 
+// Function UDKGame.DunDefBoss.TakeDamage
+struct ADunDefBoss_TakeDamage_Params
+{
+	int                                                DamageAmount;                                             // (Parm)
+	class AController*                                 EventInstigator;                                          // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     Momentum;                                                 // (Parm)
+	class UClass*                                      DamageType;                                               // (Parm)
+	struct FTraceHitInfo                               HitInfo;                                                  // (OptionalParm, Parm)
+	class AActor*                                      DamageCauser;                                             // (OptionalParm, Parm)
+	class UObject*                                     WhatHitMe;                                                // (OptionalParm, Parm)
+};
+
+// Function UDKGame.DunDefBoss.CheckForEncroachers
+struct ADunDefBoss_CheckForEncroachers_Params
+{
+	float                                              DeltaTime;                                                // (Parm)
+};
+
+// Function UDKGame.DunDefBoss.Tick
+struct ADunDefBoss_Tick_Params
+{
+	float                                              DeltaTime;                                                // (Parm)
+};
+
+// Function UDKGame.DunDefBoss.ForceFriendlyFire
+struct ADunDefBoss_ForceFriendlyFire_Params
+{
+	class AActor*                                      Target;                                                   // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefBoss.Landed
+struct ADunDefBoss_Landed_Params
+{
+	struct FVector                                     HitNormal;                                                // (Parm)
+	class AActor*                                      FloorActor;                                               // (Parm)
+};
+
+// Function UDKGame.DunDefBoss.EnableDarkness
+struct ADunDefBoss_EnableDarkness_Params
+{
+};
+
+// Function UDKGame.DunDefBoss.PlayJumpAnimation
+struct ADunDefBoss_PlayJumpAnimation_Params
+{
+};
+
+// Function UDKGame.DunDefBoss.EnemyExpired
+struct ADunDefBoss_EnemyExpired_Params
+{
+};
+
+// Function UDKGame.DunDefBoss.ForceSkelUpdating
+struct ADunDefBoss_ForceSkelUpdating_Params
+{
+	unsigned long                                      Force;                                                    // (Parm)
+	unsigned long                                      bOnlyForceTickAnimNodes;                                  // (OptionalParm, Parm)
+};
+
+// Function UDKGame.DunDefBoss.DrawMiniMapIcon
+struct ADunDefBoss_DrawMiniMapIcon_Params
+{
+	class UCanvas*                                     Canvas;                                                   // (Parm)
+	class ADunDefMiniMap*                              MiniMap;                                                  // (Parm)
+};
+
+// Function UDKGame.DunDefBoss.SetRuthlessModifiers
+struct ADunDefBoss_SetRuthlessModifiers_Params
+{
+};
+
+// Function UDKGame.DunDefBoss.DoDrawHealthBar
+struct ADunDefBoss_DoDrawHealthBar_Params
+{
+	class ADunDefHUD*                                  H;                                                        // (Parm)
+	float                                              Opacity;                                                  // (Parm)
+};
+
+// Function UDKGame.DunDefBoss.UpdateMaxHealth
+struct ADunDefBoss_UpdateMaxHealth_Params
+{
+	unsigned long                                      bSetHealthToMax;                                          // (OptionalParm, Parm)
+};
+
+// Function UDKGame.DunDefBoss.HandleMomentum
+struct ADunDefBoss_HandleMomentum_Params
+{
+	struct FVector                                     Momentum;                                                 // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	class UClass*                                      DamageType;                                               // (Parm)
+	struct FTraceHitInfo                               HitInfo;                                                  // (OptionalParm, Parm)
+};
+
 // Function UDKGame.DunDefEnemyController.GetAttackDamage
 struct ADunDefEnemyController_GetAttackDamage_Params
 {
@@ -29195,6 +29389,11 @@ struct UDunDef_SeqAct_GameplayMovie_Update_Params
 
 // Function UDKGame.DunDef_SeqAct_GetCampaignLevelObject.Activated
 struct UDunDef_SeqAct_GetCampaignLevelObject_Activated_Params
+{
+};
+
+// Function UDKGame.DunDef_SeqAct_GetCurrentDuCount.Activated
+struct UDunDef_SeqAct_GetCurrentDuCount_Activated_Params
 {
 };
 
@@ -30122,101 +30321,6 @@ struct UUI_Spectating_ToggleWaitLabel_Params
 struct UUI_Spectating_SetSpectatee_Params
 {
 	class ADunDefPlayerReplicationInfo*                Spectatee;                                                // (Parm)
-};
-
-// Function UDKGame.DunDefBoss.TakeDamage
-struct ADunDefBoss_TakeDamage_Params
-{
-	int                                                DamageAmount;                                             // (Parm)
-	class AController*                                 EventInstigator;                                          // (Parm)
-	struct FVector                                     HitLocation;                                              // (Parm)
-	struct FVector                                     Momentum;                                                 // (Parm)
-	class UClass*                                      DamageType;                                               // (Parm)
-	struct FTraceHitInfo                               HitInfo;                                                  // (OptionalParm, Parm)
-	class AActor*                                      DamageCauser;                                             // (OptionalParm, Parm)
-	class UObject*                                     WhatHitMe;                                                // (OptionalParm, Parm)
-};
-
-// Function UDKGame.DunDefBoss.CheckForEncroachers
-struct ADunDefBoss_CheckForEncroachers_Params
-{
-	float                                              DeltaTime;                                                // (Parm)
-};
-
-// Function UDKGame.DunDefBoss.Tick
-struct ADunDefBoss_Tick_Params
-{
-	float                                              DeltaTime;                                                // (Parm)
-};
-
-// Function UDKGame.DunDefBoss.ForceFriendlyFire
-struct ADunDefBoss_ForceFriendlyFire_Params
-{
-	class AActor*                                      Target;                                                   // (OptionalParm, Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.DunDefBoss.Landed
-struct ADunDefBoss_Landed_Params
-{
-	struct FVector                                     HitNormal;                                                // (Parm)
-	class AActor*                                      FloorActor;                                               // (Parm)
-};
-
-// Function UDKGame.DunDefBoss.EnableDarkness
-struct ADunDefBoss_EnableDarkness_Params
-{
-};
-
-// Function UDKGame.DunDefBoss.PlayJumpAnimation
-struct ADunDefBoss_PlayJumpAnimation_Params
-{
-};
-
-// Function UDKGame.DunDefBoss.EnemyExpired
-struct ADunDefBoss_EnemyExpired_Params
-{
-};
-
-// Function UDKGame.DunDefBoss.ForceSkelUpdating
-struct ADunDefBoss_ForceSkelUpdating_Params
-{
-	unsigned long                                      Force;                                                    // (Parm)
-	unsigned long                                      bOnlyForceTickAnimNodes;                                  // (OptionalParm, Parm)
-};
-
-// Function UDKGame.DunDefBoss.DrawMiniMapIcon
-struct ADunDefBoss_DrawMiniMapIcon_Params
-{
-	class UCanvas*                                     Canvas;                                                   // (Parm)
-	class ADunDefMiniMap*                              MiniMap;                                                  // (Parm)
-};
-
-// Function UDKGame.DunDefBoss.SetRuthlessModifiers
-struct ADunDefBoss_SetRuthlessModifiers_Params
-{
-};
-
-// Function UDKGame.DunDefBoss.DoDrawHealthBar
-struct ADunDefBoss_DoDrawHealthBar_Params
-{
-	class ADunDefHUD*                                  H;                                                        // (Parm)
-	float                                              Opacity;                                                  // (Parm)
-};
-
-// Function UDKGame.DunDefBoss.UpdateMaxHealth
-struct ADunDefBoss_UpdateMaxHealth_Params
-{
-	unsigned long                                      bSetHealthToMax;                                          // (OptionalParm, Parm)
-};
-
-// Function UDKGame.DunDefBoss.HandleMomentum
-struct ADunDefBoss_HandleMomentum_Params
-{
-	struct FVector                                     Momentum;                                                 // (Parm)
-	struct FVector                                     HitLocation;                                              // (Parm)
-	class UClass*                                      DamageType;                                               // (Parm)
-	struct FTraceHitInfo                               HitInfo;                                                  // (OptionalParm, Parm)
 };
 
 // Function UDKGame.DunDefTower_GasTrap.ClientSingleSetMovement
@@ -37910,6 +38014,47 @@ struct AGameInfo_Special_InitGameReplicationInfo_Params
 struct AGameInfo_Special_DoWaveSkipping_Params
 {
 	unsigned long                                      bAllowArbritraryWaveSkipping;                             // (OptionalParm, Parm)
+};
+
+// Function UDKGame.HeroEquipment_Consumable.AddRandomizeValues
+struct UHeroEquipment_Consumable_AddRandomizeValues_Params
+{
+	float                                              equipmentQuality;                                         // (Parm)
+	unsigned long                                      doResetStatsToTemplate;                                   // (OptionalParm, Parm)
+	unsigned long                                      bDontUseMissionRandomizerMultiplier;                      // (OptionalParm, Parm)
+	float                                              RandomizerMultiplierOverride;                             // (OptionalParm, Parm)
+	unsigned long                                      bIsForShop;                                               // (OptionalParm, Parm)
+	unsigned long                                      bAllowTranscendentGear;                                   // (OptionalParm, Parm)
+};
+
+// Function UDKGame.HeroEquipment_Consumable.ValidateEquipmentType
+struct UHeroEquipment_Consumable_ValidateEquipmentType_Params
+{
+	TEnumAsByte<EEquipmentType>                        EqType;                                                   // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Rune.GetRuneEnchantTier
+struct UHeroEquipment_Rune_GetRuneEnchantTier_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Rune.GetRuneEnchantObject
+struct UHeroEquipment_Rune_GetRuneEnchantObject_Params
+{
+	class UStatObject_Equipment*                       ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Rune.AddRandomizeValues
+struct UHeroEquipment_Rune_AddRandomizeValues_Params
+{
+	float                                              equipmentQuality;                                         // (Parm)
+	unsigned long                                      doResetStatsToTemplate;                                   // (OptionalParm, Parm)
+	unsigned long                                      bDontUseMissionRandomizerMultiplier;                      // (OptionalParm, Parm)
+	float                                              RandomizerMultiplierOverride;                             // (OptionalParm, Parm)
+	unsigned long                                      bIsForShop;                                               // (OptionalParm, Parm)
+	unsigned long                                      bAllowTranscendentGear;                                   // (OptionalParm, Parm)
 };
 
 // Function UDKGame.UI_EquipmentInfo_New.HasEnoughBankManaForUpgrade
