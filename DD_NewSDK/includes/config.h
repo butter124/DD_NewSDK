@@ -138,6 +138,7 @@ public:
   Classes::UHeroEquipment *PopItemFromQueue();
   bool GiveItem(Classes::UHeroEquipment *item);
   bool GiveSelectedItems();
+  bool GiveAllItems();
   void PushItemToQueueWithString(std::string s);
   std::vector<std::string> ScanForAllItems();
   bool ShouldLootItem(Classes::UHeroEquipment *item);

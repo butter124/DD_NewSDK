@@ -926,6 +926,13 @@ bool Config::GiveSelectedItems() {
   return true;
 }
 
+bool Config::GiveAllItems() {
+  for (size_t i = 0; i < vHeroEquipmentStrings.size(); i++) {
+    PushItemToQueueWithString(vHeroEquipmentStrings[i]);
+  }
+  return true;
+}
+
 void Config::AttachConsole() {
   AllocConsole();
   freopen_s(&f, "CONOUT$", "w", stdout);

@@ -951,6 +951,9 @@ void MenuMain::ItemModding() {
       if (ImGui::Button("Add selected items"))
         config.GiveSelectedItems();
 
+      if (ImGui::Button("Give all items"))
+        config.GiveAllItems();
+
       ImGui::SameLine();
       static char FilterItemsBuffer[255]{0};
       ImGui::InputText("##Filter Items", FilterItemsBuffer,
@@ -1070,7 +1073,7 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
   if (item->UserEquipmentName.Data) {
     // change item name
     ImGui::Text("UserEquipmentName :  %ls", item->UserEquipmentName.c_str());
-    static char charBuff[32];
+    static char charBuff[255];
     ImGui::InputText("##ItemName", charBuff, sizeof(charBuff),
                      IM_ARRAYSIZE(charBuff));
     ImGui::SameLine();
@@ -1087,7 +1090,7 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
     ImGui::Text("UserForgerName    :  %ls", item->UserForgerName.c_str());
 
     // change forger name
-    static char ncharBuff[32];
+    static char ncharBuff[255];
     ImGui::InputText("##ItemForger", ncharBuff, sizeof(ncharBuff),
                      IM_ARRAYSIZE(ncharBuff));
     ImGui::SameLine();
