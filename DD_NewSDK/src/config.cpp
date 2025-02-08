@@ -330,7 +330,8 @@ bool Config::ShouldLootItem(Classes::UHeroEquipment *item) {
     return false;
 
   // always loot above a certain quality
-  if (item->NameIndex_QualityDescriptor >= itemFilterQualityULT + 12)
+  if (bAutoLootULT &&
+      item->NameIndex_QualityDescriptor >= itemFilterQualityULT + 12)
     return true;
 
   // if any of the stats are below the filter and the filter is valid
@@ -341,7 +342,8 @@ bool Config::ShouldLootItem(Classes::UHeroEquipment *item) {
   }
 
   // check for item filter
-  if (item->NameIndex_QualityDescriptor < itemFilterQuality + 12)
+  if (itemFilterQuality &&
+      item->NameIndex_QualityDescriptor < itemFilterQuality + 12)
     return false;
 
   return true;
