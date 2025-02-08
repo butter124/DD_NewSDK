@@ -58,13 +58,16 @@ struct KeybindsStruct {
 class Config {
 private:
   FILE *f = nullptr;
-  Logger *logger;
+  std::string logFileName;
 
 public:
+  Config();
+  ~Config();
+  Logger logger;
   bool Init();
   bool Cleanup();
 
-  HWND gameHWND;
+  HWND gameHWND = 0;
   bool bEndMenu = false;
   bool bShowMenu = true;
 #if LOGGING
@@ -93,8 +96,8 @@ public:
   int itemsLooted = 0;
   int itemsChecked = 0;
   int lootFilter[0xB] = {};
-  int itemFilterQuality;
-  int itemFilterQualityULT;
+  int itemFilterQuality = 0;
+  int itemFilterQualityULT = 0;
   bool bAutoLootULT = false;
   bool bTeleportPlayers = false;
   bool bShowPlayerTeleportPos = false;

@@ -5,6 +5,11 @@
 #include <fstream>
 #include <regex>
 // clang-format on
+Config config;
+// Config::Config() : logFileName("log.txt"), logger(logFileName) {}
+Config::Config() : logFileName("log.txt"), logger(logFileName) {}
+
+Config::~Config() {}
 
 bool Config::Init() {
 
@@ -971,18 +976,19 @@ void Config::PrintToConsole(const std::string &s) {
 
 void Config::InitLog() {
   bLoggingToFile = true;
-  logger = new Logger("log.txt");
-  logger->log("Init logger.");
+  logger.openfile();
+  logger.log("Init logger.");
 }
 
 void Config::CleanLog() {
-  logger->log("CleanLog()");
-  delete logger;
+  bLoggingToFile = false;
+  logger.log("Cleanup()");
+  logger.closefile();
 }
 
 void Config::LogToFile(const std::string &s) {
   if (bLoggingToFile)
-    logger->log(s);
+    logger.log(s);
 }
 
 void Config::SetupFilter() {

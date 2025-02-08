@@ -8,8 +8,18 @@
 #include <ctime>
 // clang-format on
 
-Logger::Logger(const std::string &filename)
-    : logFile(filename, std::ios::app) {}
+// std::ofstream Logger::logFile;
+// std::string Logger::fileName;
+
+Logger::Logger(std::string filename) {
+  setfilename(filename);
+  return;
+}
+
+void Logger::setfilename(std::string &filename) {
+  fileName = filename;
+  return;
+}
 
 void Logger::log(const std::string &msg) {
   if (logFile) {
@@ -30,6 +40,28 @@ void Logger::log(const std::string &msg) {
   }
 }
 
+void Logger::openfile(bool clear) {
+  if (!logFile.is_open() || clear) {
+    // Clear file if 'clear' is true, or reopen if not open
+    logFile.open(fileName,
+                 clear ? std::ios::trunc | std::ios::app : std::ios::app);
+  }
+}
+
+void Logger::closefile() { logFile.close(); }
+
+// LONG WINAPI Logger::ExceptionHandler(EXCEPTION_POINTERS *pExceptionInfo) {
+//   if (!logFile.is_open())
+//     openfile(false);
+//   std::stringstream ss;
+//   ss << "Crash detected! Exception Code: 0x" << std::hex
+//      << pExceptionInfo->ExceptionRecord->ExceptionCode;
+//
+//   log(ss.str()); // Convert to string and log
+//   return EXCEPTION_EXECUTE_HANDLER;
+// }
+
 Logger::~Logger() {
   // File closes automatically when logFile goes out of scope
+  closefile();
 }

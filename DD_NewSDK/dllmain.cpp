@@ -2,6 +2,8 @@
 #include "pch.h"
 #include "includes/config.h"
 #include "includes/menu.h"
+#include <errhandlingapi.h>
+#include "includes/logger.h"
 #include <memory>
 // clang-format on
 
@@ -15,13 +17,13 @@
     bkey = false;                                                              \
   }
 
-Config config;
 Menu menu;
 
 DWORD WINAPI MainThread_Initialize(LPVOID param) {
   config.Init();
   menu.Init();
 
+  // SetUnhandledExceptionFilter(config.logger.ExceptionHandler);
   while (!config.bEndMenu) {
     // KEYBIND(config.ToggleKey, config.bShowMenu, keyDownMenu);
     // KEYBIND(VK_F2, config.bEndMenu, keyDownEnd);
