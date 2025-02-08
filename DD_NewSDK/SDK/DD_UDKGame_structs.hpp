@@ -130,7 +130,7 @@ namespace Classes
 #define CONST_MAX_FOLDER_DEPTH                                   5
 #define CONST_Main_PROPS_MATCHCOMPLETE                           0x10000076
 #define CONST_Main_FILTER_BUILD                                  0x1000005B
-#define CONST_MAX_LOADED_HEROES                                  40
+#define CONST_MAX_LOADED_HEROES                                  48
 #define CONST_UI_MultiplayerMenu_GS_EMAIL_MAXLENGTH              50
 #define CONST_LIGHTING_EXPENSIVE_FUNCTION                        2
 #define CONST_MAX_EQUIPMENT_SLOTS                                5
@@ -927,6 +927,17 @@ enum class ESortingFilter : uint8_t
 };
 
 
+// Enum UDKGame._DataTypes.ConsumableType
+enum class EConsumableType : uint8_t
+{
+	CON_RUNE                       = 0,
+	CON_EX                         = 1,
+	CON_AN                         = 2,
+	CON_VAL                        = 3,
+	CON_MAX                        = 4
+};
+
+
 // Enum UDKGame._DataTypes.EGraphicsQuality
 enum class EGraphicsQuality : uint8_t
 {
@@ -1210,7 +1221,9 @@ enum class EAchievement : uint8_t
 	EA_RUTHLESS_DEFENDER           = 151,
 	EA_SPOOK3                      = 152,
 	EA_FROSTDALEWONDERLAND         = 153,
-	EA_MAX                         = 154
+	EA_VALENTINECITADEL            = 154,
+	EA_LOVEMACHINE                 = 155,
+	EA_MAX                         = 156
 };
 
 

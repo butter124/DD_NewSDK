@@ -432,6 +432,8 @@ public:
 	unsigned long                                      bCantSave : 1;                                            // 0x0364(0x0004) (Edit)
 	unsigned long                                      bCantPutInItemBox : 1;                                    // 0x0368(0x0004) (Edit)
 	unsigned long                                      ProvideHealOnBlock : 1;                                   // 0x0368(0x0004) (Edit)
+	unsigned long                                      bIsConsumable : 1;                                        // 0x0368(0x0004) (Edit)
+	unsigned long                                      isStackable : 1;                                          // 0x0368(0x0004) (Edit)
 	unsigned long                                      bSetRandomizerMultipliers : 1;                            // 0x0368(0x0004) (Transient)
 	unsigned long                                      bPlayerShopPurchasePending : 1;                           // 0x0368(0x0004) (Transient)
 	unsigned long                                      bEnchantmentsInitalized : 1;                              // 0x0368(0x0004) (Transient)
@@ -633,6 +635,8 @@ public:
 	}
 
 
+	void setStackSize(int stackSize);
+	int getStackSize();
 	class UStatObject_Equipment* GenerateStatObject(class UStatObject_Equipment* StatObjectTemplate);
 	void LoadEnchantments(class ADunDefPlayer* tPlayer, unsigned long bisDropped, class AActor* DroppedActor);
 	void ClearEnchantments();
@@ -768,6 +772,8 @@ public:
 	int GetIndexOfRandomStatName(const struct FString& stringName, TArray<struct FEG_StatMatchingString>* StatStringArray);
 	void ResetStatsToTemplate();
 	float GenerateRandomizerValue(float equipmentQuality, struct FEG_StatRandomizer* randomizer);
+	void HandleConsumables(class UHeroEquipment* consumable);
+	unsigned long AcceptConsumables();
 	class ADunDefWeapon* GetEquipmentWeaponTemplate();
 	int GetStatValueAndSign(TEnumAsByte<ELevelUpValueType> valueType, unsigned long includeStatLevelUp, int* signType);
 	int GetDamageResistanceAndSign(class UClass* DamageType, unsigned long includeStatLevelUp, int* signType);
@@ -1409,6 +1415,8 @@ public:
 	unsigned long STATIC_IsMacAppStore();
 	unsigned long STATIC_IsMacOSGameSpy();
 	unsigned long CanStoreInItemBox(class UHeroEquipment* Equipment, int UserID);
+	class UHeroEquipment* AddStackedEquipmentToItemBox(class UDunDefHero* hero, unsigned long bAutoLock, unsigned long bDontRefreshItemBoxLists, struct FEquipmentNetInfo* netInfo);
+	void AddStackedEquipmentObjectToItemBox(class UDunDefHero* hero, class UHeroEquipment* theEquipment, unsigned long bAutoLock);
 	class UHeroEquipment* AddEquipmentToItemBox(class UDunDefHero* hero, unsigned long bAutoLock, unsigned long bDontRefreshItemBoxLists, struct FEquipmentNetInfo* netInfo);
 	void AddEquipmentObjectToItemBox(class UDunDefHero* hero, class UHeroEquipment* theEquipment, unsigned long bAutoLock);
 	class UHeroEquipment* TransferEquipmentToItemBox(class UDunDefHero* hero, class UHeroEquipment* Equipment, int insertAtIndex, unsigned long bAutoLock);
@@ -3514,6 +3522,7 @@ public:
 	void ResetTimer();
 	unsigned long IsEnemy(class AActor* pActor);
 	unsigned long IsFriend(class AActor* pActor);
+	int GetRemainingShieldHealth();
 	int GetTargetingTeam();
 	void DrawDebugCone(const struct FVector& Origin, const struct FVector& Direction, float Length, float AngleWidth, float AngleHeight, int NumSides, const struct FColor& DrawColor, unsigned long bPersistentLines);
 	void DrawDebugLine(const struct FVector& LineStart, const struct FVector& LineEnd, unsigned char R, unsigned char G, unsigned char B, unsigned long bPersistentLines);
@@ -4104,6 +4113,7 @@ public:
 	}
 
 
+	void PrintOwnerBuffs();
 	void SetGlobalEnemyHealth(int Health, unsigned long HurtEnemies, unsigned long UpdateEnemyStats, int HurtAmount);
 	void EnableBuffDebug(unsigned long bEnable);
 	void SpawnRandomItem(float Quality, float Multiplier);
@@ -4403,6 +4413,7 @@ public:
 	void PlayerTick(float DeltaTime);
 	void DropAllEquipment();
 	void DoRespawnEffect();
+	void NotifyShieldChange();
 	void NotifyHealthChange();
 	void ClientNotifyTakeHit(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum);
 	void NotifyTakeHit(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum);
@@ -4616,6 +4627,7 @@ public:
 	unsigned long                                      PrevInCombatPhase : 1;                                    // 0x02C4(0x0004)
 	unsigned long                                      bForceDrawEnemyTowerMiniMapIcons : 1;                     // 0x02C4(0x0004)
 	unsigned long                                      bIsPureStrategy : 1;                                      // 0x02C4(0x0004) (Net)
+	unsigned long                                      bisMayHem : 1;                                            // 0x02C4(0x0004) (Net)
 	unsigned long                                      bUseMapInfoObjectiveText : 1;                             // 0x02C4(0x0004)
 	unsigned long                                      bFinishedWaveScaling : 1;                                 // 0x02C4(0x0004)
 	unsigned long                                      IsLobbyLevel : 1;                                         // 0x02C4(0x0004)
@@ -4638,7 +4650,7 @@ public:
 	unsigned long                                      bIsRuthlessMode : 1;                                      // 0x02C4(0x0004) (Net, Transient)
 	unsigned long                                      bSpawnAcceleration : 1;                                   // 0x02C4(0x0004) (Net, Transient)
 	unsigned long                                      UseTBRTimer : 1;                                          // 0x02C4(0x0004)
-	unsigned long                                      bIsSpecialMission : 1;                                    // 0x02C4(0x0004) (Net, Transient)
+	unsigned long                                      bIsSpecialMission : 1;                                    // 0x02C8(0x0004) (Net, Transient)
 	unsigned long                                      bIsRestrictedDifficultyMission : 1;                       // 0x02C8(0x0004) (Net, Transient)
 	unsigned long                                      bDropEquipmentUponPlayerDeath : 1;                        // 0x02C8(0x0004) (Net)
 	unsigned long                                      LockTavernItemDrops : 1;                                  // 0x02C8(0x0004) (Net)
@@ -5115,6 +5127,7 @@ public:
 	void ShowMajorNotificationLabel(const struct FString& LabelText, const struct FLinearColor& LabelColor, float LabelScale, float LabelTimer, unsigned long bForce);
 	void ShowProgressBar(float Percent, const struct FLinearColor& ProgressBarColor, unsigned long bPlayCompletedAnimation);
 	void NotifyExperienceChange();
+	void NotifyShieldChange();
 	void NotifyHealthChange();
 	void NotifyUpdateManaPower();
 	void ResetValues();
@@ -5278,7 +5291,7 @@ public:
 
 
 // Class UDKGame.UI_PlayerHUD
-// 0x018C (0x07C8 - 0x063C)
+// 0x0190 (0x07CC - 0x063C)
 class UUI_PlayerHUD : public UDunDefUIScene
 {
 public:
@@ -5287,72 +5300,73 @@ public:
 	class UUIImage_ProgressBar*                        ProgressBar;                                              // 0x0644(0x0004) (Edit)
 	class UUIImage_HealthBar*                          ExperienceBar;                                            // 0x0648(0x0004) (Edit)
 	class UUIImage_HealthBar*                          AmmoBar;                                                  // 0x064C(0x0004) (Edit)
-	TArray<class UUILabel*>                            MajorNotificationLabels;                                  // 0x0650(0x000C) (Edit, NeedCtorLink)
-	class UUILabel_ScoreIndicator*                     ScoreLabel;                                               // 0x065C(0x0004) (Edit)
-	class UUILabel*                                    LevelLabel;                                               // 0x0660(0x0004) (Edit)
-	struct FString                                     LevelString;                                              // 0x0664(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FName                                       LevelUpNotAvailableAnimation;                             // 0x0670(0x0008) (Edit)
-	struct FName                                       LevelUpAvailableAnimation;                                // 0x0678(0x0008) (Edit)
-	class USurface*                                    ActionWheelOpenTexture;                                   // 0x0680(0x0004) (Edit)
-	class USurface*                                    ActionWheelCloseTexture;                                  // 0x0684(0x0004) (Edit)
-	float                                              NotificationSizeScalarLerpSpeed;                          // 0x0688(0x0004) (Edit)
-	struct FName                                       BuildPhaseActiveAnimation;                                // 0x068C(0x0008) (Edit)
-	struct FName                                       CombatPhaseActiveAnimation;                               // 0x0694(0x0008) (Edit)
-	struct FName                                       DiedAnimation;                                            // 0x069C(0x0008) (Edit)
-	struct FName                                       RespawnedAnimation;                                       // 0x06A4(0x0008) (Edit)
-	class UUILabel*                                    BuildPhaseReadyLabel;                                     // 0x06AC(0x0004) (Edit)
-	struct FLinearColor                                BuildPhaseReadyColor;                                     // 0x06B0(0x0010) (Edit)
-	struct FLinearColor                                BuildPhaseNotReadyColor;                                  // 0x06C0(0x0010) (Edit)
-	struct FLinearColor                                BankedManaColor;                                          // 0x06D0(0x0010) (Edit)
-	struct FString                                     BuildPhaseReadyString;                                    // 0x06E0(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     BuildPhaseNotReadyString;                                 // 0x06EC(0x000C) (Edit, Localized, NeedCtorLink)
-	TArray<class UObject*>                             AdditionalResources;                                      // 0x06F8(0x000C) (Edit, NeedCtorLink)
-	class UUIScriptWidget_Button*                      DDMobile_ActionWheelButton;                               // 0x0704(0x0004) (Edit)
-	class UUIScriptWidget_Button*                      DDMobile_MenuButton;                                      // 0x0708(0x0004) (Edit)
-	class UUIScriptWidget_Button*                      DDMobile_CameraLeftButton;                                // 0x070C(0x0004) (Edit)
-	class UUIScriptWidget_Button*                      DDMobile_CameraRightButton;                               // 0x0710(0x0004) (Edit)
-	class UUIScriptWidget_Button*                      DDMobile_MiniMapButton;                                   // 0x0714(0x0004) (Edit)
-	class UUIScriptWidget_Button*                      DDMobile_FireButton;                                      // 0x0718(0x0004) (Edit)
-	class UUIScriptWidget_Button*                      DDMobile_AltFireButton;                                   // 0x071C(0x0004) (Edit)
-	class UUIScriptWidget_Button*                      DDMobile_AltActivationButton;                             // 0x0720(0x0004) (Edit)
-	class UUIScriptWidget_Button*                      DDMobile_ShowInventoryButton;                             // 0x0724(0x0004) (Edit)
-	class USoundCue*                                   SoundLevelUpAvailable;                                    // 0x0728(0x0004) (Edit)
-	struct FString                                     LevelUpAvailableMessageString;                            // 0x072C(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FColor                                      LevelUpAvailableMessageColor;                             // 0x0738(0x0004)
-	class UUILabel*                                    RespawnTimerLabel;                                        // 0x073C(0x0004) (Edit)
-	float                                              Mobile_MaxQuickReleaseTime;                               // 0x0740(0x0004) (Edit, Config)
-	float                                              Mobile_MinHoldTime;                                       // 0x0744(0x0004) (Edit, Config)
-	unsigned long                                      bAllowAllMobileKeys : 1;                                  // 0x0748(0x0004) (Edit, Config)
-	unsigned long                                      bPlayedDeathAnimation : 1;                                // 0x0748(0x0004)
-	unsigned long                                      ShowingBuildPhasePanel : 1;                               // 0x0748(0x0004)
-	unsigned long                                      ShowingLevelUp : 1;                                       // 0x0748(0x0004)
-	unsigned long                                      bTriggeredAltFirePress : 1;                               // 0x0748(0x0004)
-	unsigned long                                      bTriggeredFirePress : 1;                                  // 0x0748(0x0004)
-	unsigned long                                      ProgressBarShown : 1;                                     // 0x0748(0x0004)
-	unsigned long                                      HasDisplayedMissionObjective : 1;                         // 0x0748(0x0004)
-	unsigned long                                      HealthBlipFadingIn : 1;                                   // 0x0748(0x0004) (Transient)
-	unsigned long                                      bIsStatusPanelHidden : 1;                                 // 0x0748(0x0004) (Transient)
-	unsigned long                                      bTouchIsDown : 1;                                         // 0x0748(0x0004) (Transient)
-	unsigned long                                      bActivatedMobileTouchHold : 1;                            // 0x0748(0x0004) (Transient)
-	unsigned long                                      bSetBuildPhaseReadyLabel : 1;                             // 0x0748(0x0004) (Transient)
-	struct FString                                     AddedBankManaString;                                      // 0x074C(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     BankedManaString;                                         // 0x0758(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FLinearColor                                AddedBankManaColor;                                       // 0x0764(0x0010) (Edit)
-	int                                                LastMajorNotificationLabelIndex;                          // 0x0774(0x0004)
-	int                                                LastMajorNotificationLabelHiddenIndex;                    // 0x0778(0x0004)
-	class ADunDefPlayerController*                     MyPC;                                                     // 0x077C(0x0004)
-	struct FLinearColor                                LastOriginalNotificationColor;                            // 0x0780(0x0010) (Transient)
-	struct FString                                     LastDisplayedLabelText;                                   // 0x0790(0x000C) (NeedCtorLink)
-	float                                              CurrentOverlayHealthPercent;                              // 0x079C(0x0004) (Transient)
-	float                                              OverlayTargetHealthPercent;                               // 0x07A0(0x0004) (Transient)
-	class UMaterialEffect*                             LowHealthOverlayEffect;                                   // 0x07A4(0x0004) (Transient)
-	class UMaterialEffect*                             HealthBlipOverlayEffect;                                  // 0x07A8(0x0004) (Transient)
-	float                                              CurrentHealthBlipAmount;                                  // 0x07AC(0x0004) (Transient)
-	float                                              CurrentHealthBlipFadeOutSpeed;                            // 0x07B0(0x0004) (Transient)
-	float                                              LastLabelTimer;                                           // 0x07B4(0x0004) (Transient)
-	float                                              MissionObjectiveTimer;                                    // 0x07B8(0x0004)
-	struct FVector2D                                   MobileTouchCoordinates;                                   // 0x07BC(0x0008) (Transient)
-	float                                              LastTouchPressTime;                                       // 0x07C4(0x0004) (Transient)
+	class UUIImage_HealthBar*                          ShieldBar;                                                // 0x0650(0x0004) (Edit)
+	TArray<class UUILabel*>                            MajorNotificationLabels;                                  // 0x0654(0x000C) (Edit, NeedCtorLink)
+	class UUILabel_ScoreIndicator*                     ScoreLabel;                                               // 0x0660(0x0004) (Edit)
+	class UUILabel*                                    LevelLabel;                                               // 0x0664(0x0004) (Edit)
+	struct FString                                     LevelString;                                              // 0x0668(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FName                                       LevelUpNotAvailableAnimation;                             // 0x0674(0x0008) (Edit)
+	struct FName                                       LevelUpAvailableAnimation;                                // 0x067C(0x0008) (Edit)
+	class USurface*                                    ActionWheelOpenTexture;                                   // 0x0684(0x0004) (Edit)
+	class USurface*                                    ActionWheelCloseTexture;                                  // 0x0688(0x0004) (Edit)
+	float                                              NotificationSizeScalarLerpSpeed;                          // 0x068C(0x0004) (Edit)
+	struct FName                                       BuildPhaseActiveAnimation;                                // 0x0690(0x0008) (Edit)
+	struct FName                                       CombatPhaseActiveAnimation;                               // 0x0698(0x0008) (Edit)
+	struct FName                                       DiedAnimation;                                            // 0x06A0(0x0008) (Edit)
+	struct FName                                       RespawnedAnimation;                                       // 0x06A8(0x0008) (Edit)
+	class UUILabel*                                    BuildPhaseReadyLabel;                                     // 0x06B0(0x0004) (Edit)
+	struct FLinearColor                                BuildPhaseReadyColor;                                     // 0x06B4(0x0010) (Edit)
+	struct FLinearColor                                BuildPhaseNotReadyColor;                                  // 0x06C4(0x0010) (Edit)
+	struct FLinearColor                                BankedManaColor;                                          // 0x06D4(0x0010) (Edit)
+	struct FString                                     BuildPhaseReadyString;                                    // 0x06E4(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     BuildPhaseNotReadyString;                                 // 0x06F0(0x000C) (Edit, Localized, NeedCtorLink)
+	TArray<class UObject*>                             AdditionalResources;                                      // 0x06FC(0x000C) (Edit, NeedCtorLink)
+	class UUIScriptWidget_Button*                      DDMobile_ActionWheelButton;                               // 0x0708(0x0004) (Edit)
+	class UUIScriptWidget_Button*                      DDMobile_MenuButton;                                      // 0x070C(0x0004) (Edit)
+	class UUIScriptWidget_Button*                      DDMobile_CameraLeftButton;                                // 0x0710(0x0004) (Edit)
+	class UUIScriptWidget_Button*                      DDMobile_CameraRightButton;                               // 0x0714(0x0004) (Edit)
+	class UUIScriptWidget_Button*                      DDMobile_MiniMapButton;                                   // 0x0718(0x0004) (Edit)
+	class UUIScriptWidget_Button*                      DDMobile_FireButton;                                      // 0x071C(0x0004) (Edit)
+	class UUIScriptWidget_Button*                      DDMobile_AltFireButton;                                   // 0x0720(0x0004) (Edit)
+	class UUIScriptWidget_Button*                      DDMobile_AltActivationButton;                             // 0x0724(0x0004) (Edit)
+	class UUIScriptWidget_Button*                      DDMobile_ShowInventoryButton;                             // 0x0728(0x0004) (Edit)
+	class USoundCue*                                   SoundLevelUpAvailable;                                    // 0x072C(0x0004) (Edit)
+	struct FString                                     LevelUpAvailableMessageString;                            // 0x0730(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FColor                                      LevelUpAvailableMessageColor;                             // 0x073C(0x0004)
+	class UUILabel*                                    RespawnTimerLabel;                                        // 0x0740(0x0004) (Edit)
+	float                                              Mobile_MaxQuickReleaseTime;                               // 0x0744(0x0004) (Edit, Config)
+	float                                              Mobile_MinHoldTime;                                       // 0x0748(0x0004) (Edit, Config)
+	unsigned long                                      bAllowAllMobileKeys : 1;                                  // 0x074C(0x0004) (Edit, Config)
+	unsigned long                                      bPlayedDeathAnimation : 1;                                // 0x074C(0x0004)
+	unsigned long                                      ShowingBuildPhasePanel : 1;                               // 0x074C(0x0004)
+	unsigned long                                      ShowingLevelUp : 1;                                       // 0x074C(0x0004)
+	unsigned long                                      bTriggeredAltFirePress : 1;                               // 0x074C(0x0004)
+	unsigned long                                      bTriggeredFirePress : 1;                                  // 0x074C(0x0004)
+	unsigned long                                      ProgressBarShown : 1;                                     // 0x074C(0x0004)
+	unsigned long                                      HasDisplayedMissionObjective : 1;                         // 0x074C(0x0004)
+	unsigned long                                      HealthBlipFadingIn : 1;                                   // 0x074C(0x0004) (Transient)
+	unsigned long                                      bIsStatusPanelHidden : 1;                                 // 0x074C(0x0004) (Transient)
+	unsigned long                                      bTouchIsDown : 1;                                         // 0x074C(0x0004) (Transient)
+	unsigned long                                      bActivatedMobileTouchHold : 1;                            // 0x074C(0x0004) (Transient)
+	unsigned long                                      bSetBuildPhaseReadyLabel : 1;                             // 0x074C(0x0004) (Transient)
+	struct FString                                     AddedBankManaString;                                      // 0x0750(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     BankedManaString;                                         // 0x075C(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FLinearColor                                AddedBankManaColor;                                       // 0x0768(0x0010) (Edit)
+	int                                                LastMajorNotificationLabelIndex;                          // 0x0778(0x0004)
+	int                                                LastMajorNotificationLabelHiddenIndex;                    // 0x077C(0x0004)
+	class ADunDefPlayerController*                     MyPC;                                                     // 0x0780(0x0004)
+	struct FLinearColor                                LastOriginalNotificationColor;                            // 0x0784(0x0010) (Transient)
+	struct FString                                     LastDisplayedLabelText;                                   // 0x0794(0x000C) (NeedCtorLink)
+	float                                              CurrentOverlayHealthPercent;                              // 0x07A0(0x0004) (Transient)
+	float                                              OverlayTargetHealthPercent;                               // 0x07A4(0x0004) (Transient)
+	class UMaterialEffect*                             LowHealthOverlayEffect;                                   // 0x07A8(0x0004) (Transient)
+	class UMaterialEffect*                             HealthBlipOverlayEffect;                                  // 0x07AC(0x0004) (Transient)
+	float                                              CurrentHealthBlipAmount;                                  // 0x07B0(0x0004) (Transient)
+	float                                              CurrentHealthBlipFadeOutSpeed;                            // 0x07B4(0x0004) (Transient)
+	float                                              LastLabelTimer;                                           // 0x07B8(0x0004) (Transient)
+	float                                              MissionObjectiveTimer;                                    // 0x07BC(0x0004)
+	struct FVector2D                                   MobileTouchCoordinates;                                   // 0x07C0(0x0008) (Transient)
+	float                                              LastTouchPressTime;                                       // 0x07C8(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -5383,6 +5397,7 @@ public:
 	void NotifyLevelUp(unsigned long DontPlayAnimation);
 	class UDunDefHero* GetHero();
 	void NotifyHealthChange(unsigned long DontPlayAnimation);
+	void NotifyShieldChange(unsigned long DontPlayAnimation);
 	void RefreshPostEffectBinding();
 	void NotifyLocalPlayerRemoved(int PlayerIndex, class ULocalPlayer* AddedPlayer);
 	void NotifyLocalPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
@@ -5587,6 +5602,8 @@ public:
 	void PostBeginPlay();
 	void PreBeginPlay();
 	void ShowGameOver(int gameOverDescriptionReason);
+	float GetCurrentEnemyKillSpeed();
+	int GetCurrentKillCount();
 	int GetNumLocalPlayers();
 	int GetMaximumNumberOfEnemies();
 	int GetMaximumNumberOfManaTokens();
@@ -5803,7 +5820,7 @@ public:
 
 
 // Class UDKGame.DunDefPawn
-// 0x0294 (0x0800 - 0x056C)
+// 0x029C (0x0808 - 0x056C)
 class ADunDefPawn : public AUDKGamePawn
 {
 public:
@@ -5888,44 +5905,46 @@ public:
 	TArray<class UMaterialInstanceConstant*>           MyDamageMatInstances;                                     // 0x0698(0x000C) (Transient, NeedCtorLink)
 	TArray<struct FName>                               FootBoneNames;                                            // 0x06A4(0x000C) (Edit, NeedCtorLink)
 	float                                              PawnDamageResistanceModifier;                             // 0x06B0(0x0004) (Edit)
-	float                                              LastFlashingDamageTime;                                   // 0x06B4(0x0004) (Transient)
-	class AActor*                                      LastPlayHurtDamageCauser;                                 // 0x06B8(0x0004) (Transient)
-	float                                              LastPlayHurtTime;                                         // 0x06BC(0x0004) (Transient)
-	float                                              LastDarknessTime;                                         // 0x06C0(0x0004)
-	float                                              LastTakeDamageTime;                                       // 0x06C4(0x0004)
-	float                                              LastFloatingTakeDamageTime;                               // 0x06C8(0x0004)
-	int                                                NumVeryRecentDamages;                                     // 0x06CC(0x0004) (Transient)
-	float                                              DamageMultiplierAdditional;                               // 0x06D0(0x0004) (Net)
-	TArray<unsigned char>                              IsPlayingUninterruptableAnimation;                        // 0x06D4(0x000C) (NeedCtorLink)
-	float                                              LastSpikyBlockadeDamageTime;                              // 0x06E0(0x0004) (Transient)
-	float                                              LastHurtEffectTime;                                       // 0x06E4(0x0004) (Transient)
-	float                                              LastTookDamageTime;                                       // 0x06E8(0x0004) (Transient)
-	float                                              DiedTime;                                                 // 0x06EC(0x0004) (Transient)
-	class USoundCue*                                   OverridePawnFootStepSound;                                // 0x06F0(0x0004) (Transient)
-	class UParticleSystem*                             OverridePawnFootStepParticle;                             // 0x06F4(0x0004) (Transient)
-	class UClass*                                      DiedFromDamageType;                                       // 0x06F8(0x0004) (Transient)
-	struct FAuraEffect                                 AuraEffects[0xA];                                         // 0x06FC(0x0008)
-	class UParticleSystemComponent*                    AuraPSC[0xA];                                             // 0x074C(0x0004) (ExportObject, Component, EditInline)
-	TArray<class ADunDefTower_Aura*>                   MyAffectingAuras;                                         // 0x0774(0x000C) (NeedCtorLink)
-	struct FName                                       AuraEffectSocket;                                         // 0x0780(0x0008) (Edit)
-	float                                              AuraEffectScale;                                          // 0x0788(0x0004) (Edit)
-	float                                              GlobalAuraEffectScale;                                    // 0x078C(0x0004) (Edit)
-	float                                              AnimSpeedMultiplier;                                      // 0x0790(0x0004) (Edit, Net)
-	float                                              DamageMultiplierStrengthDrain;                            // 0x0794(0x0004) (Net)
-	unsigned char                                      KillerProjectileIndex;                                    // 0x0798(0x0001)
-	TEnumAsByte<EStatusEffect>                         CurrentStatusEffect;                                      // 0x0799(0x0001) (Net, Transient)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x079A(0x0002) MISSED OFFSET
-	struct FLinearColor                                HealDamageTextColor;                                      // 0x079C(0x0010) (Edit)
-	float                                              LightningTowerDamagePercent;                              // 0x07AC(0x0004) (Edit)
-	float                                              PawnDrainDamageMultiplier;                                // 0x07B0(0x0004) (Net)
-	float                                              PawnDrainDamageResistanceMultiplier;                      // 0x07B4(0x0004)
-	TArray<TScriptInterface<class UPawnBoosterInterface>> PawnBoosters;                                             // 0x07B8(0x000C) (Transient, NeedCtorLink)
-	TArray<TScriptInterface<class UPawnBoosterInterface>> PawnDeBoosters;                                           // 0x07C4(0x000C) (Transient, NeedCtorLink)
-	TArray<class ADunDefTower_ChainLightning*>         ChainingTowers;                                           // 0x07D0(0x000C) (Transient, NeedCtorLink)
-	struct FVector                                     LastBumpLocation;                                         // 0x07DC(0x000C) (Transient)
-	int                                                TicksStuckInAnotherActor;                                 // 0x07E8(0x0004) (Transient)
-	int                                                MinTicksStuckBeforeUncolliding;                           // 0x07EC(0x0004) (Edit)
-	struct FsLastDamageInfo                            LastDamageInfo;                                           // 0x07F0(0x0010) (Transient)
+	float                                              PawnEnemyDrainEffectivenessMultiplier;                    // 0x06B4(0x0004) (Edit)
+	float                                              PawnEnemyDrainResistanceEffectivenessMultiplier;          // 0x06B8(0x0004) (Edit)
+	float                                              LastFlashingDamageTime;                                   // 0x06BC(0x0004) (Transient)
+	class AActor*                                      LastPlayHurtDamageCauser;                                 // 0x06C0(0x0004) (Transient)
+	float                                              LastPlayHurtTime;                                         // 0x06C4(0x0004) (Transient)
+	float                                              LastDarknessTime;                                         // 0x06C8(0x0004)
+	float                                              LastTakeDamageTime;                                       // 0x06CC(0x0004)
+	float                                              LastFloatingTakeDamageTime;                               // 0x06D0(0x0004)
+	int                                                NumVeryRecentDamages;                                     // 0x06D4(0x0004) (Transient)
+	float                                              DamageMultiplierAdditional;                               // 0x06D8(0x0004) (Net)
+	TArray<unsigned char>                              IsPlayingUninterruptableAnimation;                        // 0x06DC(0x000C) (NeedCtorLink)
+	float                                              LastSpikyBlockadeDamageTime;                              // 0x06E8(0x0004) (Transient)
+	float                                              LastHurtEffectTime;                                       // 0x06EC(0x0004) (Transient)
+	float                                              LastTookDamageTime;                                       // 0x06F0(0x0004) (Transient)
+	float                                              DiedTime;                                                 // 0x06F4(0x0004) (Transient)
+	class USoundCue*                                   OverridePawnFootStepSound;                                // 0x06F8(0x0004) (Transient)
+	class UParticleSystem*                             OverridePawnFootStepParticle;                             // 0x06FC(0x0004) (Transient)
+	class UClass*                                      DiedFromDamageType;                                       // 0x0700(0x0004) (Transient)
+	struct FAuraEffect                                 AuraEffects[0xA];                                         // 0x0704(0x0008)
+	class UParticleSystemComponent*                    AuraPSC[0xA];                                             // 0x0754(0x0004) (ExportObject, Component, EditInline)
+	TArray<class ADunDefTower_Aura*>                   MyAffectingAuras;                                         // 0x077C(0x000C) (NeedCtorLink)
+	struct FName                                       AuraEffectSocket;                                         // 0x0788(0x0008) (Edit)
+	float                                              AuraEffectScale;                                          // 0x0790(0x0004) (Edit)
+	float                                              GlobalAuraEffectScale;                                    // 0x0794(0x0004) (Edit)
+	float                                              AnimSpeedMultiplier;                                      // 0x0798(0x0004) (Edit, Net)
+	float                                              DamageMultiplierStrengthDrain;                            // 0x079C(0x0004) (Net)
+	unsigned char                                      KillerProjectileIndex;                                    // 0x07A0(0x0001)
+	TEnumAsByte<EStatusEffect>                         CurrentStatusEffect;                                      // 0x07A1(0x0001) (Net, Transient)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x07A2(0x0002) MISSED OFFSET
+	struct FLinearColor                                HealDamageTextColor;                                      // 0x07A4(0x0010) (Edit)
+	float                                              LightningTowerDamagePercent;                              // 0x07B4(0x0004) (Edit)
+	float                                              PawnDrainDamageMultiplier;                                // 0x07B8(0x0004) (Net)
+	float                                              PawnDrainDamageResistanceMultiplier;                      // 0x07BC(0x0004)
+	TArray<TScriptInterface<class UPawnBoosterInterface>> PawnBoosters;                                             // 0x07C0(0x000C) (Transient, NeedCtorLink)
+	TArray<TScriptInterface<class UPawnBoosterInterface>> PawnDeBoosters;                                           // 0x07CC(0x000C) (Transient, NeedCtorLink)
+	TArray<class ADunDefTower_ChainLightning*>         ChainingTowers;                                           // 0x07D8(0x000C) (Transient, NeedCtorLink)
+	struct FVector                                     LastBumpLocation;                                         // 0x07E4(0x000C) (Transient)
+	int                                                TicksStuckInAnotherActor;                                 // 0x07F0(0x0004) (Transient)
+	int                                                MinTicksStuckBeforeUncolliding;                           // 0x07F4(0x0004) (Edit)
+	struct FsLastDamageInfo                            LastDamageInfo;                                           // 0x07F8(0x0010) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -6394,256 +6413,257 @@ public:
 
 
 // Class UDKGame.DunDefPlayer
-// 0x058C (0x0D8C - 0x0800)
+// 0x0590 (0x0D98 - 0x0808)
 class ADunDefPlayer : public ADunDefPawn
 {
 public:
-	struct FLinearColor                                BlackColor;                                               // 0x0800(0x0010) (Const)
-	struct FLinearColor                                HealthyColor;                                             // 0x0810(0x0010) (Edit)
-	struct FLinearColor                                UnhealthyColor;                                           // 0x0820(0x0010) (Edit)
-	TArray<struct FOverlayEffectEntry>                 OverlayEffectEntries;                                     // 0x0830(0x000C) (NeedCtorLink)
-	float                                              CurrentOverlayEffectOpacity;                              // 0x083C(0x0004)
-	struct FLinearColor                                CurrentOverlayEffectColor;                                // 0x0840(0x0010)
-	float                                              OverlayEffectOpacityInterpSpeed;                          // 0x0850(0x0004) (Edit)
-	float                                              RotationInterpSpeed;                                      // 0x0854(0x0004) (Edit)
-	float                                              ChaseCamRotationInterpSpeed;                              // 0x0858(0x0004) (Edit)
-	float                                              PlayerInvisTargetableMaximumRange;                        // 0x085C(0x0004) (Edit)
-	struct FName                                       LookAtSkelControlName;                                    // 0x0860(0x0008) (Edit)
-	float                                              MaxAutoAimRange;                                          // 0x0868(0x0004) (Edit)
-	float                                              MinAutoAimDot;                                            // 0x086C(0x0004) (Edit)
-	float                                              AutoAimDotWeight;                                         // 0x0870(0x0004) (Edit)
-	float                                              ManaTokenAttractionRadius;                                // 0x0874(0x0004) (Edit)
-	float                                              LobbyManaTokenAttractionRadius;                           // 0x0878(0x0004) (Edit)
-	float                                              NightmareModePlayerHealthMultiplier;                      // 0x087C(0x0004) (Edit)
-	float                                              WaveStartAnimBlendTime;                                   // 0x0880(0x0004) (Edit)
-	float                                              ManaTokenCollectionRadius;                                // 0x0884(0x0004) (Edit)
-	float                                              RemoteManaTokenCollectionRadius;                          // 0x0888(0x0004) (Edit)
-	float                                              HoverInterval;                                            // 0x088C(0x0004) (Edit)
-	float                                              InversePlayerSkelLookAtYawMultiplier;                     // 0x0890(0x0004) (Edit)
-	float                                              InversePlayerSkelLookAtPitchMultiplier;                   // 0x0894(0x0004) (Edit)
-	float                                              ManaTokenAttractionForce;                                 // 0x0898(0x0004) (Edit)
-	float                                              MaxCompetitiveFloatingNameDistance;                       // 0x089C(0x0004) (Edit)
-	float                                              AutoPickTargetDotWeight;                                  // 0x08A0(0x0004) (Edit)
-	float                                              AbsoluteMaxAutoAimRange;                                  // 0x08A4(0x0004) (Edit)
-	float                                              CostOfRepairMaxHealthMultiplier;                          // 0x08A8(0x0004) (Edit)
-	float                                              CostOfRepairMaxManaMultiplier;                            // 0x08AC(0x0004) (Edit)
-	float                                              HeroTalkingSize;                                          // 0x08B0(0x0004) (Edit)
-	float                                              MyHeroTalkingOffset;                                      // 0x08B4(0x0004) (Edit)
-	float                                              GameLimitProjectilesRangeMultiplier;                      // 0x08B8(0x0004) (Edit)
-	float                                              DamageResistanceMomentumReductionExponent;                // 0x08BC(0x0004) (Edit)
-	float                                              InfiniteBuildPhaseSpeedMultiplier;                        // 0x08C0(0x0004) (Edit)
-	struct FVector                                     FloatingNameOffset;                                       // 0x08C4(0x000C) (Edit)
-	float                                              CostOfTotalRepair;                                        // 0x08D0(0x0004) (Edit)
-	float                                              SelfHealRepairTimeExponent;                               // 0x08D4(0x0004) (Edit)
-	float                                              TimeOfTotalRepair;                                        // 0x08D8(0x0004) (Edit)
-	struct FName                                       ShootAnimation;                                           // 0x08DC(0x0008) (Edit)
-	struct FName                                       BigShootAnimation;                                        // 0x08E4(0x0008) (Edit)
-	struct FName                                       RespawnAnimation;                                         // 0x08EC(0x0008) (Edit)
-	struct FName                                       DetonateTrapsAnimation;                                   // 0x08F4(0x0008) (Edit)
-	struct FName                                       SellTowerAnimation;                                       // 0x08FC(0x0008) (Edit)
-	struct FName                                       PickupItemAnimation;                                      // 0x0904(0x0008) (Edit)
-	struct FName                                       ReloadAnimation;                                          // 0x090C(0x0008) (Edit)
-	struct FName                                       CallOutAnimation;                                         // 0x0914(0x0008) (Edit)
-	struct FName                                       TowerPlacingAnimation;                                    // 0x091C(0x0008) (Edit)
-	struct FName                                       LevelUpAnimation;                                         // 0x0924(0x0008) (Edit)
-	struct FName                                       FlagAttachmentSocket;                                     // 0x092C(0x0008) (Edit)
-	struct FName                                       InversePlayerSkelLookAtControllerName;                    // 0x0934(0x0008) (Edit)
-	class ADunDefEmitterSpawnable*                     RespawnEffect;                                            // 0x093C(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     DestroyedEffect;                                          // 0x0940(0x0004) (Edit)
-	class USoundCue*                                   LandedSound;                                              // 0x0944(0x0004) (Edit)
-	class USoundCue*                                   PlayerSpawnYell;                                          // 0x0948(0x0004) (Edit)
-	float                                              MaxZVelocityForLandedSound;                               // 0x094C(0x0004) (Edit)
-	unsigned long                                      UseCorrectSkelControlAxes : 1;                            // 0x0950(0x0004) (Edit)
-	unsigned long                                      UseNegativeRollAndPositiveLookAxes : 1;                   // 0x0950(0x0004) (Edit)
-	unsigned long                                      UseAltIncorrectSkelControlAxes : 1;                       // 0x0950(0x0004) (Edit)
-	unsigned long                                      bAllowHover : 1;                                          // 0x0950(0x0004) (Edit)
-	unsigned long                                      bDoesShootAnimOverride : 1;                               // 0x0950(0x0004) (Edit)
-	unsigned long                                      bIsHostPlayer : 1;                                        // 0x0950(0x0004) (Net, Transient)
-	unsigned long                                      bIsPureStrategy : 1;                                      // 0x0950(0x0004) (Net, Transient)
-	unsigned long                                      bDisableJumpAnimation : 1;                                // 0x0950(0x0004) (Net, Transient)
-	unsigned long                                      bDisableSkelControl : 1;                                  // 0x0950(0x0004) (Net, Transient)
-	unsigned long                                      bDisableMeleeAttacking : 1;                               // 0x0950(0x0004) (Net, Transient)
-	unsigned long                                      bBlockedLastHit : 1;                                      // 0x0950(0x0004) (Transient)
-	unsigned long                                      bCleaningUpPlayer : 1;                                    // 0x0950(0x0004) (Transient)
-	unsigned long                                      bPlayedDestroyedEffect : 1;                               // 0x0950(0x0004) (Transient)
-	unsigned long                                      bWantsHovering : 1;                                       // 0x0950(0x0004) (Transient)
-	unsigned long                                      bCanHover : 1;                                            // 0x0950(0x0004) (Transient)
-	unsigned long                                      bIsHovering : 1;                                          // 0x0950(0x0004) (Transient)
-	unsigned long                                      bAllowCollectingOwnTokens : 1;                            // 0x0950(0x0004) (Transient)
-	unsigned long                                      bSupportsWeaponSwap : 1;                                  // 0x0950(0x0004)
-	unsigned long                                      DoRespawn : 1;                                            // 0x0950(0x0004) (Net)
-	unsigned long                                      bDisableJump : 1;                                         // 0x0950(0x0004) (Edit, Net)
-	unsigned long                                      bPlayedRespawnEffect : 1;                                 // 0x0950(0x0004) (Transient)
-	unsigned long                                      bCallingOut : 1;                                          // 0x0950(0x0004) (Net)
-	unsigned long                                      bForceWeaponSpellEffectSocket : 1;                        // 0x0950(0x0004) (Edit)
-	unsigned long                                      bWantsHitInfo : 1;                                        // 0x0950(0x0004) (Edit)
-	unsigned long                                      bShowWeapons : 1;                                         // 0x0950(0x0004) (Edit)
-	unsigned long                                      bUseOverrideCalloutLoc : 1;                               // 0x0950(0x0004) (Transient)
-	unsigned long                                      bAllowOverlordPickup : 1;                                 // 0x0950(0x0004) (Edit)
-	float                                              PlayerGroundSpeed;                                        // 0x0954(0x0004) (Edit, Net)
-	class UFont*                                       FloatingPlayerNameFont;                                   // 0x0958(0x0004) (Edit)
-	float                                              FloatingPlayerNameScale;                                  // 0x095C(0x0004) (Edit)
-	float                                              SelectHeroMeshScale;                                      // 0x0960(0x0004) (Edit)
-	struct FVector                                     SelectHeroTranslationOffset;                              // 0x0964(0x000C) (Edit)
-	class ADunDefHUD*                                  HudTemplate;                                              // 0x0970(0x0004) (Edit)
-	TArray<struct FString>                             HUDDeathStrings;                                          // 0x0974(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FColor                                      DiedMessageColor;                                         // 0x0980(0x0004) (Edit)
-	float                                              StatMultInitial_HeroCastingRate;                          // 0x0984(0x0004) (Edit)
-	float                                              StatExpInitial_HeroCastingRate;                           // 0x0988(0x0004) (Edit)
-	float                                              StatMultFull_HeroCastingRate;                             // 0x098C(0x0004) (Edit)
-	float                                              StatExpFull_HeroCastingRate;                              // 0x0990(0x0004) (Edit)
-	float                                              StatMultInitial_HeroCastingRate_Competitive;              // 0x0994(0x0004) (Edit)
-	float                                              StatExpInitial_HeroCastingRate_Competitive;               // 0x0998(0x0004) (Edit)
-	float                                              StatMultFull_HeroCastingRate_Competitive;                 // 0x099C(0x0004) (Edit)
-	float                                              StatExpFull_HeroCastingRate_Competitive;                  // 0x09A0(0x0004) (Edit)
-	struct FString                                     ActivationString;                                         // 0x09A4(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FColor                                      ActivationStringColor;                                    // 0x09B0(0x0004) (Edit)
-	struct FColor                                      AltActivationStringColor;                                 // 0x09B4(0x0004) (Edit)
-	struct FColor                                      CallOutArrowColor;                                        // 0x09B8(0x0004) (Edit)
-	class UForceFeedbackWaveform*                      MidLowHealthHurtForceFeedbackWaveForm;                    // 0x09BC(0x0004) (Edit, EditInline)
-	class UForceFeedbackWaveform*                      LowLowHealthHurtForceFeedbackWaveForm;                    // 0x09C0(0x0004) (Edit, EditInline)
-	float                                              MidLowHealthFFThresholdPercent;                           // 0x09C4(0x0004) (Edit)
-	float                                              LowLowHealthFFThresholdPercent;                           // 0x09C8(0x0004) (Edit)
-	float                                              MidLowHealthFFInterval;                                   // 0x09CC(0x0004) (Edit)
-	float                                              LowLowHealthFFInterval;                                   // 0x09D0(0x0004) (Edit)
-	float                                              LastLowHealthFFTime;                                      // 0x09D4(0x0004) (Transient)
-	class AActor*                                      autoAimTarget;                                            // 0x09D8(0x0004) (Net)
-	class USkelControlSingleBone*                      PlayerSkelControlLookAt;                                  // 0x09DC(0x0004)
-	class USkelControlSingleBone*                      InversePlayerSkelControlLookAt;                           // 0x09E0(0x0004)
-	struct FName                                       TowerSummonInProgressAnimation;                           // 0x09E4(0x0008) (Edit)
-	struct FName                                       SpellCompleteAnimation;                                   // 0x09EC(0x0008) (Edit)
-	struct FName                                       RepairingTowerAnimation;                                  // 0x09F4(0x0008) (Edit)
-	struct FName                                       UpgradingTowerAnimation;                                  // 0x09FC(0x0008) (Edit)
-	struct FName                                       HealSelfAnimation;                                        // 0x0A04(0x0008) (Edit)
-	struct FName                                       MagicStaffUpgradeAnimation;                               // 0x0A0C(0x0008) (Edit)
-	struct FName                                       WaveStartAnimation;                                       // 0x0A14(0x0008) (Edit)
-	struct FName                                       WaveVictoryAnimation;                                     // 0x0A1C(0x0008) (Edit)
-	struct FName                                       GameOverAnimation;                                        // 0x0A24(0x0008) (Edit)
-	struct FName                                       LowHealthBlenderName;                                     // 0x0A2C(0x0008) (Edit)
-	float                                              LowHealthBlenderPercentThreshold;                         // 0x0A34(0x0004) (Edit)
-	struct FName                                       StaffKnockBackAnimation;                                  // 0x0A38(0x0008) (Edit)
-	struct FName                                       MinStaffKnockbackChargeAnimation;                         // 0x0A40(0x0008) (Edit)
-	struct FName                                       MaxStaffKnockbackChargeAnimation;                         // 0x0A48(0x0008) (Edit)
-	struct FName                                       MinStaffChargeAnimation;                                  // 0x0A50(0x0008) (Edit)
-	struct FName                                       MaxStaffChargeAnimation;                                  // 0x0A58(0x0008) (Edit)
-	int                                                MaxMeshPitchMag;                                          // 0x0A60(0x0004) (Edit)
-	int                                                MaxMeshYawMag;                                            // 0x0A64(0x0004) (Edit)
-	struct FString                                     InitiateTradeString;                                      // 0x0A68(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     ViewTradeString;                                          // 0x0A74(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     CantTradeString;                                          // 0x0A80(0x000C) (Edit, Localized, NeedCtorLink)
-	float                                              BigShootAnimBlendInTime;                                  // 0x0A8C(0x0004) (Edit)
-	float                                              ShootAnimBlendInTime;                                     // 0x0A90(0x0004) (Edit)
-	float                                              ShootAnimBlendOutTime;                                    // 0x0A94(0x0004) (Edit)
-	float                                              ShootAnimSpeed;                                           // 0x0A98(0x0004) (Edit)
-	float                                              ExtraPlayerDamageMultiplier;                              // 0x0A9C(0x0004) (Edit)
-	float                                              PlayerWeaponDamageMultiplier;                             // 0x0AA0(0x0004)
-	TArray<unsigned char>                              IsPlayingUninterruptableUpperBodyAnimation;               // 0x0AA4(0x000C) (NeedCtorLink)
-	TArray<struct FName>                               UpperBodyCustomAnimNodeNames;                             // 0x0AB0(0x000C) (Edit, NeedCtorLink)
-	struct FName                                       UpperBodyCustomAnimBlenderName;                           // 0x0ABC(0x0008) (Edit)
-	class UAnimNodeBlend*                              UpperBodyCustomAnimBlender;                               // 0x0AC4(0x0004)
-	class UAnimNodeBlend*                              LowHealthBlender;                                         // 0x0AC8(0x0004)
-	int                                                LastUpperBodyCustomAnimNodePlayIndex;                     // 0x0ACC(0x0004)
-	class ADunDefEmitterSpawnable*                     LevelUpCompleteEmitterTemplate;                           // 0x0AD0(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     HealSelfEmitterTemplate;                                  // 0x0AD4(0x0004) (Edit)
-	class UParticleSystemComponent*                    CallOutParticle;                                          // 0x0AD8(0x0004) (Edit, ExportObject, Component, EditInline)
-	struct FLinearColor                                TargetingParticleNormalColor;                             // 0x0ADC(0x0010) (Edit)
-	struct FLinearColor                                TargetingParticleEnemyColor;                              // 0x0AEC(0x0010) (Edit)
-	struct FLinearColor                                TargetingParticleNewEnemyColor;                           // 0x0AFC(0x0010) (Edit)
-	struct FLinearColor                                MiniMapIconDeadColor;                                     // 0x0B0C(0x0010) (Edit)
-	struct FLinearColor                                MiniMapIconLiveColor;                                     // 0x0B1C(0x0010) (Edit)
-	class UMaterialInstanceConstant*                   TargetingCursorMaterial;                                  // 0x0B2C(0x0004) (Edit)
-	float                                              BaseTargetingCursorScaleMin;                              // 0x0B30(0x0004) (Edit)
-	float                                              BaseTargetingCursorScaleMax;                              // 0x0B34(0x0004) (Edit)
-	float                                              BaseTargetingCursorScaleDistance;                         // 0x0B38(0x0004) (Edit)
-	float                                              TargetingCursorScaleDistanceExponent;                     // 0x0B3C(0x0004) (Edit)
-	float                                              BaseTargetingCursorSize;                                  // 0x0B40(0x0004) (Edit)
-	float                                              TargetingIndicatorEnemyScale;                             // 0x0B44(0x0004) (Edit)
-	float                                              TargetingIndicatorNormalScale;                            // 0x0B48(0x0004) (Edit)
-	float                                              TargetingIndicatorScaleSpeed;                             // 0x0B4C(0x0004) (Edit)
-	TArray<class UMaterialInterface*>                  LocalPlayerMaterialOverrides;                             // 0x0B50(0x000C) (Edit, NeedCtorLink)
-	float                                              StepTowardsTargetGroundSpeed;                             // 0x0B5C(0x0004) (Edit)
-	float                                              StepTowardsTargetAccelRate;                               // 0x0B60(0x0004) (Edit)
-	class UTexture2D*                                  MiniMapIconTexture;                                       // 0x0B64(0x0004) (Edit)
-	float                                              MiniMapIconSize;                                          // 0x0B68(0x0004) (Edit)
-	float                                              CharacterMiniMapIconSize;                                 // 0x0B6C(0x0004) (Edit)
-	class UTexture2D*                                  MiniMapSelectedIconTexture;                               // 0x0B70(0x0004) (Edit)
-	struct FColor                                      MiniMapIconMyPlayerColor;                                 // 0x0B74(0x0004) (Edit)
-	struct FColor                                      MiniMapIconFriendlyPlayerColor;                           // 0x0B78(0x0004) (Edit)
-	struct FColor                                      MiniMapIconEnemyPlayerColor;                              // 0x0B7C(0x0004) (Edit)
-	float                                              MiniMapIconSelectionFlashSpeed;                           // 0x0B80(0x0004) (Edit)
-	struct FString                                     HealthString;                                             // 0x0B84(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     manaString;                                               // 0x0B90(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FColor                                      ToolTipHealthColor;                                       // 0x0B9C(0x0004) (Edit)
-	struct FColor                                      ToolTipManaColor;                                         // 0x0BA0(0x0004) (Edit)
-	float                                              CallOutExpirationTime;                                    // 0x0BA4(0x0004) (Edit)
-	struct FVector                                     CallOutLocationOffset;                                    // 0x0BA8(0x000C) (Edit)
-	struct FVector                                     FPVCameraOffset;                                          // 0x0BB4(0x000C) (Edit)
-	struct FVector                                     PlayerSpawnLocationOffset;                                // 0x0BC0(0x000C) (Edit)
-	class UTexture2D*                                  CallOutArrow;                                             // 0x0BCC(0x0004) (Edit)
-	class UTexture2D*                                  CallOutOffScreenFrame;                                    // 0x0BD0(0x0004) (Edit)
-	class UTexture2D*                                  CallOutOnScreenFrame;                                     // 0x0BD4(0x0004) (Edit)
-	struct FLinearColor                                CallOutFlashColor;                                        // 0x0BD8(0x0010) (Edit)
-	float                                              CallOutArrowScale;                                        // 0x0BE8(0x0004) (Edit)
-	float                                              CalloutArrowOffset;                                       // 0x0BEC(0x0004) (Edit)
-	float                                              CallOutOffScreenFrameScale;                               // 0x0BF0(0x0004) (Edit)
-	float                                              CallOutOnScreenFrameScale;                                // 0x0BF4(0x0004) (Edit)
-	float                                              CallOutMiniMapScale;                                      // 0x0BF8(0x0004) (Edit)
-	int                                                InverseSkelLookAtPitchClampMax;                           // 0x0BFC(0x0004) (Edit)
-	int                                                InverseSkelLookAtPitchClampMin;                           // 0x0C00(0x0004) (Edit)
-	float                                              RepairIncrementFloat;                                     // 0x0C04(0x0004) (Transient)
-	float                                              CachedRespawnAnimationTime;                               // 0x0C08(0x0004) (Transient)
-	float                                              StartHoveringFlyingTime;                                  // 0x0C0C(0x0004) (Transient)
-	float                                              StartHoveringLocationZ;                                   // 0x0C10(0x0004) (Transient)
-	int                                                StartRepairHealth;                                        // 0x0C14(0x0004) (Transient)
-	int                                                ForcedMaxHealth;                                          // 0x0C18(0x0004) (Transient)
-	int                                                TargetingTeam;                                            // 0x0C1C(0x0004) (Net, Transient)
-	struct FRotator                                    OldRotation;                                              // 0x0C20(0x000C) (Transient)
-	struct FVector                                     RemoteLookDir;                                            // 0x0C2C(0x000C) (Transient)
-	class UMaterialInstanceConstant*                   TargetingCursorMaterialInstance;                          // 0x0C38(0x0004) (Transient)
-	struct FVector                                     MyTargetLocation;                                         // 0x0C3C(0x000C)
-	struct FVector                                     ReplicatedTargetLocation;                                 // 0x0C48(0x000C) (Net)
-	int                                                RepHealthMax;                                             // 0x0C54(0x0004) (Net)
-	float                                              ReplicatedJumpZ;                                          // 0x0C58(0x0004) (Net)
-	struct FVector                                     MyTargetOffset;                                           // 0x0C5C(0x000C)
-	float                                              LastTargetLocationUpdate;                                 // 0x0C68(0x0004)
-	struct FCustomColorContainer                       customColors;                                             // 0x0C6C(0x0038) (Net)
-	class AActor*                                      LastSentAutoAimTarget;                                    // 0x0CA4(0x0004)
-	class AActor*                                      StepTowardsTarget;                                        // 0x0CA8(0x0004)
-	float                                              LastStepTowardsTargetTime;                                // 0x0CAC(0x0004)
-	int                                                ManaPower;                                                // 0x0CB0(0x0004) (Net)
-	int                                                MaxManaPower;                                             // 0x0CB4(0x0004) (Net)
-	struct FHighDigitInt                               bankedMana;                                               // 0x0CB8(0x0010) (Net)
-	float                                              MinFallingTimeForAirJump;                                 // 0x0CC8(0x0004) (Edit)
-	struct FVector                                     LastLocation;                                             // 0x0CCC(0x000C)
-	float                                              DistanceTravelled;                                        // 0x0CD8(0x0004)
-	int                                                HeroBoostHealAmount;                                      // 0x0CDC(0x0004)
-	float                                              HeroBoostSpeedMultiplier;                                 // 0x0CE0(0x0004)
-	float                                              HeroDodgeChance;                                          // 0x0CE4(0x0004)
-	float                                              HeroBonusPetDamageMultiplier;                             // 0x0CE8(0x0004)
-	float                                              AdditionalSpeedMultiplier;                                // 0x0CEC(0x0004)
-	float                                              LastServerTargetLocationUpdate;                           // 0x0CF0(0x0004)
-	class AController*                                 MyCachedController;                                       // 0x0CF4(0x0004) (Transient)
-	struct FRotator                                    LastTargetRotation;                                       // 0x0CF8(0x000C) (Transient)
-	struct FVector                                     CallOutHoldPosition;                                      // 0x0D04(0x000C)
-	float                                              CallOutExpirationTimer;                                   // 0x0D10(0x0004)
-	float                                              LastCallOutActivationTime;                                // 0x0D14(0x0004)
-	float                                              CallOutOpacity;                                           // 0x0D18(0x0004)
-	float                                              CallOutOnScreenSize;                                      // 0x0D1C(0x0004)
-	float                                              CallOutOffScreenSize;                                     // 0x0D20(0x0004)
-	float                                              CallOutOffScreenTotalScale;                               // 0x0D24(0x0004)
-	float                                              LastTimeInWalkingState;                                   // 0x0D28(0x0004)
-	class UDunDefHero*                                 MyPlayerHero;                                             // 0x0D2C(0x0004) (Transient)
-	class UFont*                                       MiniMapNameFont;                                          // 0x0D30(0x0004) (Edit)
-	class USoundCue*                                   ToggleAbilityTurnOnSoundOverride;                         // 0x0D34(0x0004) (Edit)
-	int                                                PersonalMaxTowerUnits;                                    // 0x0D38(0x0004) (Edit)
-	struct FName                                       ForceWeaponSpellEffectSocketName;                         // 0x0D3C(0x0008) (Edit)
-	TArray<struct FMeleeSwingInfo>                     MeleeSwingInfoMultipliers;                                // 0x0D44(0x000C) (Edit, NeedCtorLink)
-	struct FName                                       CastingCancelAnimName;                                    // 0x0D50(0x0008) (Edit)
-	TArray<class ADunDefPlayerAbility*>                PlayerAbilities;                                          // 0x0D58(0x000C) (NeedCtorLink)
-	TArray<class ADunDefPlayerAbility*>                LocallySimulatedPlayerAbilities;                          // 0x0D64(0x000C) (NeedCtorLink)
-	struct FVector                                     CalloutOverrideLoc;                                       // 0x0D70(0x000C) (Transient)
-	float                                              LastHoverUpdateTime;                                      // 0x0D7C(0x0004) (Transient)
-	TArray<class UDunDefBuff*>                         DefaultBuffsToSpawn;                                      // 0x0D80(0x000C) (Edit, NeedCtorLink)
+	struct FLinearColor                                BlackColor;                                               // 0x0808(0x0010) (Const)
+	struct FLinearColor                                HealthyColor;                                             // 0x0818(0x0010) (Edit)
+	struct FLinearColor                                UnhealthyColor;                                           // 0x0828(0x0010) (Edit)
+	TArray<struct FOverlayEffectEntry>                 OverlayEffectEntries;                                     // 0x0838(0x000C) (NeedCtorLink)
+	float                                              CurrentOverlayEffectOpacity;                              // 0x0844(0x0004)
+	struct FLinearColor                                CurrentOverlayEffectColor;                                // 0x0848(0x0010)
+	float                                              OverlayEffectOpacityInterpSpeed;                          // 0x0858(0x0004) (Edit)
+	float                                              RotationInterpSpeed;                                      // 0x085C(0x0004) (Edit)
+	float                                              ChaseCamRotationInterpSpeed;                              // 0x0860(0x0004) (Edit)
+	float                                              PlayerInvisTargetableMaximumRange;                        // 0x0864(0x0004) (Edit)
+	struct FName                                       LookAtSkelControlName;                                    // 0x0868(0x0008) (Edit)
+	float                                              MaxAutoAimRange;                                          // 0x0870(0x0004) (Edit)
+	float                                              MinAutoAimDot;                                            // 0x0874(0x0004) (Edit)
+	float                                              AutoAimDotWeight;                                         // 0x0878(0x0004) (Edit)
+	float                                              ManaTokenAttractionRadius;                                // 0x087C(0x0004) (Edit)
+	float                                              LobbyManaTokenAttractionRadius;                           // 0x0880(0x0004) (Edit)
+	float                                              NightmareModePlayerHealthMultiplier;                      // 0x0884(0x0004) (Edit)
+	float                                              WaveStartAnimBlendTime;                                   // 0x0888(0x0004) (Edit)
+	float                                              ManaTokenCollectionRadius;                                // 0x088C(0x0004) (Edit)
+	float                                              RemoteManaTokenCollectionRadius;                          // 0x0890(0x0004) (Edit)
+	float                                              HoverInterval;                                            // 0x0894(0x0004) (Edit)
+	float                                              InversePlayerSkelLookAtYawMultiplier;                     // 0x0898(0x0004) (Edit)
+	float                                              InversePlayerSkelLookAtPitchMultiplier;                   // 0x089C(0x0004) (Edit)
+	float                                              ManaTokenAttractionForce;                                 // 0x08A0(0x0004) (Edit)
+	float                                              MaxCompetitiveFloatingNameDistance;                       // 0x08A4(0x0004) (Edit)
+	float                                              AutoPickTargetDotWeight;                                  // 0x08A8(0x0004) (Edit)
+	float                                              AbsoluteMaxAutoAimRange;                                  // 0x08AC(0x0004) (Edit)
+	float                                              CostOfRepairMaxHealthMultiplier;                          // 0x08B0(0x0004) (Edit)
+	float                                              CostOfRepairMaxManaMultiplier;                            // 0x08B4(0x0004) (Edit)
+	float                                              HeroTalkingSize;                                          // 0x08B8(0x0004) (Edit)
+	float                                              MyHeroTalkingOffset;                                      // 0x08BC(0x0004) (Edit)
+	float                                              GameLimitProjectilesRangeMultiplier;                      // 0x08C0(0x0004) (Edit)
+	float                                              DamageResistanceMomentumReductionExponent;                // 0x08C4(0x0004) (Edit)
+	float                                              InfiniteBuildPhaseSpeedMultiplier;                        // 0x08C8(0x0004) (Edit)
+	struct FVector                                     FloatingNameOffset;                                       // 0x08CC(0x000C) (Edit)
+	float                                              CostOfTotalRepair;                                        // 0x08D8(0x0004) (Edit)
+	float                                              SelfHealRepairTimeExponent;                               // 0x08DC(0x0004) (Edit)
+	float                                              TimeOfTotalRepair;                                        // 0x08E0(0x0004) (Edit)
+	struct FName                                       ShootAnimation;                                           // 0x08E4(0x0008) (Edit)
+	struct FName                                       BigShootAnimation;                                        // 0x08EC(0x0008) (Edit)
+	struct FName                                       RespawnAnimation;                                         // 0x08F4(0x0008) (Edit)
+	struct FName                                       DetonateTrapsAnimation;                                   // 0x08FC(0x0008) (Edit)
+	struct FName                                       SellTowerAnimation;                                       // 0x0904(0x0008) (Edit)
+	struct FName                                       PickupItemAnimation;                                      // 0x090C(0x0008) (Edit)
+	struct FName                                       ReloadAnimation;                                          // 0x0914(0x0008) (Edit)
+	struct FName                                       CallOutAnimation;                                         // 0x091C(0x0008) (Edit)
+	struct FName                                       TowerPlacingAnimation;                                    // 0x0924(0x0008) (Edit)
+	struct FName                                       LevelUpAnimation;                                         // 0x092C(0x0008) (Edit)
+	struct FName                                       FlagAttachmentSocket;                                     // 0x0934(0x0008) (Edit)
+	struct FName                                       InversePlayerSkelLookAtControllerName;                    // 0x093C(0x0008) (Edit)
+	class ADunDefEmitterSpawnable*                     RespawnEffect;                                            // 0x0944(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     DestroyedEffect;                                          // 0x0948(0x0004) (Edit)
+	class USoundCue*                                   LandedSound;                                              // 0x094C(0x0004) (Edit)
+	class USoundCue*                                   PlayerSpawnYell;                                          // 0x0950(0x0004) (Edit)
+	float                                              MaxZVelocityForLandedSound;                               // 0x0954(0x0004) (Edit)
+	unsigned long                                      UseCorrectSkelControlAxes : 1;                            // 0x0958(0x0004) (Edit)
+	unsigned long                                      UseNegativeRollAndPositiveLookAxes : 1;                   // 0x0958(0x0004) (Edit)
+	unsigned long                                      UseAltIncorrectSkelControlAxes : 1;                       // 0x0958(0x0004) (Edit)
+	unsigned long                                      bAllowHover : 1;                                          // 0x0958(0x0004) (Edit)
+	unsigned long                                      bDoesShootAnimOverride : 1;                               // 0x0958(0x0004) (Edit)
+	unsigned long                                      bIsHostPlayer : 1;                                        // 0x0958(0x0004) (Net, Transient)
+	unsigned long                                      bIsPureStrategy : 1;                                      // 0x0958(0x0004) (Net, Transient)
+	unsigned long                                      bDisableJumpAnimation : 1;                                // 0x0958(0x0004) (Net, Transient)
+	unsigned long                                      bDisableSkelControl : 1;                                  // 0x0958(0x0004) (Net, Transient)
+	unsigned long                                      bDisableMeleeAttacking : 1;                               // 0x0958(0x0004) (Net, Transient)
+	unsigned long                                      bBlockedLastHit : 1;                                      // 0x0958(0x0004) (Transient)
+	unsigned long                                      bCleaningUpPlayer : 1;                                    // 0x0958(0x0004) (Transient)
+	unsigned long                                      bPlayedDestroyedEffect : 1;                               // 0x0958(0x0004) (Transient)
+	unsigned long                                      bWantsHovering : 1;                                       // 0x0958(0x0004) (Transient)
+	unsigned long                                      bCanHover : 1;                                            // 0x0958(0x0004) (Transient)
+	unsigned long                                      bIsHovering : 1;                                          // 0x0958(0x0004) (Transient)
+	unsigned long                                      bAllowCollectingOwnTokens : 1;                            // 0x0958(0x0004) (Transient)
+	unsigned long                                      bSupportsWeaponSwap : 1;                                  // 0x0958(0x0004)
+	unsigned long                                      DoRespawn : 1;                                            // 0x0958(0x0004) (Net)
+	unsigned long                                      bDisableJump : 1;                                         // 0x0958(0x0004) (Edit, Net)
+	unsigned long                                      bPlayedRespawnEffect : 1;                                 // 0x0958(0x0004) (Transient)
+	unsigned long                                      bCallingOut : 1;                                          // 0x0958(0x0004) (Net)
+	unsigned long                                      bForceWeaponSpellEffectSocket : 1;                        // 0x0958(0x0004) (Edit)
+	unsigned long                                      bWantsHitInfo : 1;                                        // 0x0958(0x0004) (Edit)
+	unsigned long                                      bShowWeapons : 1;                                         // 0x0958(0x0004) (Edit)
+	unsigned long                                      bUseOverrideCalloutLoc : 1;                               // 0x0958(0x0004) (Transient)
+	unsigned long                                      bAllowOverlordPickup : 1;                                 // 0x0958(0x0004) (Edit)
+	float                                              PlayerGroundSpeed;                                        // 0x095C(0x0004) (Edit, Net)
+	class UFont*                                       FloatingPlayerNameFont;                                   // 0x0960(0x0004) (Edit)
+	float                                              FloatingPlayerNameScale;                                  // 0x0964(0x0004) (Edit)
+	float                                              SelectHeroMeshScale;                                      // 0x0968(0x0004) (Edit)
+	struct FVector                                     SelectHeroTranslationOffset;                              // 0x096C(0x000C) (Edit)
+	class ADunDefHUD*                                  HudTemplate;                                              // 0x0978(0x0004) (Edit)
+	TArray<struct FString>                             HUDDeathStrings;                                          // 0x097C(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FColor                                      DiedMessageColor;                                         // 0x0988(0x0004) (Edit)
+	float                                              StatMultInitial_HeroCastingRate;                          // 0x098C(0x0004) (Edit)
+	float                                              StatExpInitial_HeroCastingRate;                           // 0x0990(0x0004) (Edit)
+	float                                              StatMultFull_HeroCastingRate;                             // 0x0994(0x0004) (Edit)
+	float                                              StatExpFull_HeroCastingRate;                              // 0x0998(0x0004) (Edit)
+	float                                              StatMultInitial_HeroCastingRate_Competitive;              // 0x099C(0x0004) (Edit)
+	float                                              StatExpInitial_HeroCastingRate_Competitive;               // 0x09A0(0x0004) (Edit)
+	float                                              StatMultFull_HeroCastingRate_Competitive;                 // 0x09A4(0x0004) (Edit)
+	float                                              StatExpFull_HeroCastingRate_Competitive;                  // 0x09A8(0x0004) (Edit)
+	struct FString                                     ActivationString;                                         // 0x09AC(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FColor                                      ActivationStringColor;                                    // 0x09B8(0x0004) (Edit)
+	struct FColor                                      AltActivationStringColor;                                 // 0x09BC(0x0004) (Edit)
+	struct FColor                                      CallOutArrowColor;                                        // 0x09C0(0x0004) (Edit)
+	class UForceFeedbackWaveform*                      MidLowHealthHurtForceFeedbackWaveForm;                    // 0x09C4(0x0004) (Edit, EditInline)
+	class UForceFeedbackWaveform*                      LowLowHealthHurtForceFeedbackWaveForm;                    // 0x09C8(0x0004) (Edit, EditInline)
+	float                                              MidLowHealthFFThresholdPercent;                           // 0x09CC(0x0004) (Edit)
+	float                                              LowLowHealthFFThresholdPercent;                           // 0x09D0(0x0004) (Edit)
+	float                                              MidLowHealthFFInterval;                                   // 0x09D4(0x0004) (Edit)
+	float                                              LowLowHealthFFInterval;                                   // 0x09D8(0x0004) (Edit)
+	float                                              LastLowHealthFFTime;                                      // 0x09DC(0x0004) (Transient)
+	class AActor*                                      autoAimTarget;                                            // 0x09E0(0x0004) (Net)
+	class USkelControlSingleBone*                      PlayerSkelControlLookAt;                                  // 0x09E4(0x0004)
+	class USkelControlSingleBone*                      InversePlayerSkelControlLookAt;                           // 0x09E8(0x0004)
+	struct FName                                       TowerSummonInProgressAnimation;                           // 0x09EC(0x0008) (Edit)
+	struct FName                                       SpellCompleteAnimation;                                   // 0x09F4(0x0008) (Edit)
+	struct FName                                       RepairingTowerAnimation;                                  // 0x09FC(0x0008) (Edit)
+	struct FName                                       UpgradingTowerAnimation;                                  // 0x0A04(0x0008) (Edit)
+	struct FName                                       HealSelfAnimation;                                        // 0x0A0C(0x0008) (Edit)
+	struct FName                                       MagicStaffUpgradeAnimation;                               // 0x0A14(0x0008) (Edit)
+	struct FName                                       WaveStartAnimation;                                       // 0x0A1C(0x0008) (Edit)
+	struct FName                                       WaveVictoryAnimation;                                     // 0x0A24(0x0008) (Edit)
+	struct FName                                       GameOverAnimation;                                        // 0x0A2C(0x0008) (Edit)
+	struct FName                                       LowHealthBlenderName;                                     // 0x0A34(0x0008) (Edit)
+	float                                              LowHealthBlenderPercentThreshold;                         // 0x0A3C(0x0004) (Edit)
+	struct FName                                       StaffKnockBackAnimation;                                  // 0x0A40(0x0008) (Edit)
+	struct FName                                       MinStaffKnockbackChargeAnimation;                         // 0x0A48(0x0008) (Edit)
+	struct FName                                       MaxStaffKnockbackChargeAnimation;                         // 0x0A50(0x0008) (Edit)
+	struct FName                                       MinStaffChargeAnimation;                                  // 0x0A58(0x0008) (Edit)
+	struct FName                                       MaxStaffChargeAnimation;                                  // 0x0A60(0x0008) (Edit)
+	int                                                MaxMeshPitchMag;                                          // 0x0A68(0x0004) (Edit)
+	int                                                MaxMeshYawMag;                                            // 0x0A6C(0x0004) (Edit)
+	struct FString                                     InitiateTradeString;                                      // 0x0A70(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     ViewTradeString;                                          // 0x0A7C(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     CantTradeString;                                          // 0x0A88(0x000C) (Edit, Localized, NeedCtorLink)
+	float                                              BigShootAnimBlendInTime;                                  // 0x0A94(0x0004) (Edit)
+	float                                              ShootAnimBlendInTime;                                     // 0x0A98(0x0004) (Edit)
+	float                                              ShootAnimBlendOutTime;                                    // 0x0A9C(0x0004) (Edit)
+	float                                              ShootAnimSpeed;                                           // 0x0AA0(0x0004) (Edit)
+	float                                              ExtraPlayerDamageMultiplier;                              // 0x0AA4(0x0004) (Edit)
+	float                                              PlayerWeaponDamageMultiplier;                             // 0x0AA8(0x0004)
+	TArray<unsigned char>                              IsPlayingUninterruptableUpperBodyAnimation;               // 0x0AAC(0x000C) (NeedCtorLink)
+	TArray<struct FName>                               UpperBodyCustomAnimNodeNames;                             // 0x0AB8(0x000C) (Edit, NeedCtorLink)
+	struct FName                                       UpperBodyCustomAnimBlenderName;                           // 0x0AC4(0x0008) (Edit)
+	class UAnimNodeBlend*                              UpperBodyCustomAnimBlender;                               // 0x0ACC(0x0004)
+	class UAnimNodeBlend*                              LowHealthBlender;                                         // 0x0AD0(0x0004)
+	int                                                LastUpperBodyCustomAnimNodePlayIndex;                     // 0x0AD4(0x0004)
+	class ADunDefEmitterSpawnable*                     LevelUpCompleteEmitterTemplate;                           // 0x0AD8(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     HealSelfEmitterTemplate;                                  // 0x0ADC(0x0004) (Edit)
+	class UParticleSystemComponent*                    CallOutParticle;                                          // 0x0AE0(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FLinearColor                                TargetingParticleNormalColor;                             // 0x0AE4(0x0010) (Edit)
+	struct FLinearColor                                TargetingParticleEnemyColor;                              // 0x0AF4(0x0010) (Edit)
+	struct FLinearColor                                TargetingParticleNewEnemyColor;                           // 0x0B04(0x0010) (Edit)
+	struct FLinearColor                                MiniMapIconDeadColor;                                     // 0x0B14(0x0010) (Edit)
+	struct FLinearColor                                MiniMapIconLiveColor;                                     // 0x0B24(0x0010) (Edit)
+	class UMaterialInstanceConstant*                   TargetingCursorMaterial;                                  // 0x0B34(0x0004) (Edit)
+	float                                              BaseTargetingCursorScaleMin;                              // 0x0B38(0x0004) (Edit)
+	float                                              BaseTargetingCursorScaleMax;                              // 0x0B3C(0x0004) (Edit)
+	float                                              BaseTargetingCursorScaleDistance;                         // 0x0B40(0x0004) (Edit)
+	float                                              TargetingCursorScaleDistanceExponent;                     // 0x0B44(0x0004) (Edit)
+	float                                              BaseTargetingCursorSize;                                  // 0x0B48(0x0004) (Edit)
+	float                                              TargetingIndicatorEnemyScale;                             // 0x0B4C(0x0004) (Edit)
+	float                                              TargetingIndicatorNormalScale;                            // 0x0B50(0x0004) (Edit)
+	float                                              TargetingIndicatorScaleSpeed;                             // 0x0B54(0x0004) (Edit)
+	TArray<class UMaterialInterface*>                  LocalPlayerMaterialOverrides;                             // 0x0B58(0x000C) (Edit, NeedCtorLink)
+	float                                              StepTowardsTargetGroundSpeed;                             // 0x0B64(0x0004) (Edit)
+	float                                              StepTowardsTargetAccelRate;                               // 0x0B68(0x0004) (Edit)
+	class UTexture2D*                                  MiniMapIconTexture;                                       // 0x0B6C(0x0004) (Edit)
+	float                                              MiniMapIconSize;                                          // 0x0B70(0x0004) (Edit)
+	float                                              CharacterMiniMapIconSize;                                 // 0x0B74(0x0004) (Edit)
+	class UTexture2D*                                  MiniMapSelectedIconTexture;                               // 0x0B78(0x0004) (Edit)
+	struct FColor                                      MiniMapIconMyPlayerColor;                                 // 0x0B7C(0x0004) (Edit)
+	struct FColor                                      MiniMapIconFriendlyPlayerColor;                           // 0x0B80(0x0004) (Edit)
+	struct FColor                                      MiniMapIconEnemyPlayerColor;                              // 0x0B84(0x0004) (Edit)
+	float                                              MiniMapIconSelectionFlashSpeed;                           // 0x0B88(0x0004) (Edit)
+	struct FString                                     HealthString;                                             // 0x0B8C(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     manaString;                                               // 0x0B98(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FColor                                      ToolTipHealthColor;                                       // 0x0BA4(0x0004) (Edit)
+	struct FColor                                      ToolTipManaColor;                                         // 0x0BA8(0x0004) (Edit)
+	float                                              CallOutExpirationTime;                                    // 0x0BAC(0x0004) (Edit)
+	struct FVector                                     CallOutLocationOffset;                                    // 0x0BB0(0x000C) (Edit)
+	struct FVector                                     FPVCameraOffset;                                          // 0x0BBC(0x000C) (Edit)
+	struct FVector                                     PlayerSpawnLocationOffset;                                // 0x0BC8(0x000C) (Edit)
+	class UTexture2D*                                  CallOutArrow;                                             // 0x0BD4(0x0004) (Edit)
+	class UTexture2D*                                  CallOutOffScreenFrame;                                    // 0x0BD8(0x0004) (Edit)
+	class UTexture2D*                                  CallOutOnScreenFrame;                                     // 0x0BDC(0x0004) (Edit)
+	struct FLinearColor                                CallOutFlashColor;                                        // 0x0BE0(0x0010) (Edit)
+	float                                              CallOutArrowScale;                                        // 0x0BF0(0x0004) (Edit)
+	float                                              CalloutArrowOffset;                                       // 0x0BF4(0x0004) (Edit)
+	float                                              CallOutOffScreenFrameScale;                               // 0x0BF8(0x0004) (Edit)
+	float                                              CallOutOnScreenFrameScale;                                // 0x0BFC(0x0004) (Edit)
+	float                                              CallOutMiniMapScale;                                      // 0x0C00(0x0004) (Edit)
+	int                                                InverseSkelLookAtPitchClampMax;                           // 0x0C04(0x0004) (Edit)
+	int                                                InverseSkelLookAtPitchClampMin;                           // 0x0C08(0x0004) (Edit)
+	float                                              RepairIncrementFloat;                                     // 0x0C0C(0x0004) (Transient)
+	float                                              CachedRespawnAnimationTime;                               // 0x0C10(0x0004) (Transient)
+	float                                              StartHoveringFlyingTime;                                  // 0x0C14(0x0004) (Transient)
+	float                                              StartHoveringLocationZ;                                   // 0x0C18(0x0004) (Transient)
+	int                                                StartRepairHealth;                                        // 0x0C1C(0x0004) (Transient)
+	int                                                ForcedMaxHealth;                                          // 0x0C20(0x0004) (Transient)
+	int                                                TargetingTeam;                                            // 0x0C24(0x0004) (Net, Transient)
+	struct FRotator                                    OldRotation;                                              // 0x0C28(0x000C) (Transient)
+	struct FVector                                     RemoteLookDir;                                            // 0x0C34(0x000C) (Transient)
+	class UMaterialInstanceConstant*                   TargetingCursorMaterialInstance;                          // 0x0C40(0x0004) (Transient)
+	struct FVector                                     MyTargetLocation;                                         // 0x0C44(0x000C)
+	struct FVector                                     ReplicatedTargetLocation;                                 // 0x0C50(0x000C) (Net)
+	int                                                RepHealthMax;                                             // 0x0C5C(0x0004) (Net)
+	float                                              ReplicatedJumpZ;                                          // 0x0C60(0x0004) (Net)
+	int                                                TotalAbsorbShield;                                        // 0x0C64(0x0004) (Net)
+	struct FVector                                     MyTargetOffset;                                           // 0x0C68(0x000C)
+	float                                              LastTargetLocationUpdate;                                 // 0x0C74(0x0004)
+	struct FCustomColorContainer                       customColors;                                             // 0x0C78(0x0038) (Net)
+	class AActor*                                      LastSentAutoAimTarget;                                    // 0x0CB0(0x0004)
+	class AActor*                                      StepTowardsTarget;                                        // 0x0CB4(0x0004)
+	float                                              LastStepTowardsTargetTime;                                // 0x0CB8(0x0004)
+	int                                                ManaPower;                                                // 0x0CBC(0x0004) (Net)
+	int                                                MaxManaPower;                                             // 0x0CC0(0x0004) (Net)
+	struct FHighDigitInt                               bankedMana;                                               // 0x0CC4(0x0010) (Net)
+	float                                              MinFallingTimeForAirJump;                                 // 0x0CD4(0x0004) (Edit)
+	struct FVector                                     LastLocation;                                             // 0x0CD8(0x000C)
+	float                                              DistanceTravelled;                                        // 0x0CE4(0x0004)
+	int                                                HeroBoostHealAmount;                                      // 0x0CE8(0x0004)
+	float                                              HeroBoostSpeedMultiplier;                                 // 0x0CEC(0x0004)
+	float                                              HeroDodgeChance;                                          // 0x0CF0(0x0004)
+	float                                              HeroBonusPetDamageMultiplier;                             // 0x0CF4(0x0004)
+	float                                              AdditionalSpeedMultiplier;                                // 0x0CF8(0x0004)
+	float                                              LastServerTargetLocationUpdate;                           // 0x0CFC(0x0004)
+	class AController*                                 MyCachedController;                                       // 0x0D00(0x0004) (Transient)
+	struct FRotator                                    LastTargetRotation;                                       // 0x0D04(0x000C) (Transient)
+	struct FVector                                     CallOutHoldPosition;                                      // 0x0D10(0x000C)
+	float                                              CallOutExpirationTimer;                                   // 0x0D1C(0x0004)
+	float                                              LastCallOutActivationTime;                                // 0x0D20(0x0004)
+	float                                              CallOutOpacity;                                           // 0x0D24(0x0004)
+	float                                              CallOutOnScreenSize;                                      // 0x0D28(0x0004)
+	float                                              CallOutOffScreenSize;                                     // 0x0D2C(0x0004)
+	float                                              CallOutOffScreenTotalScale;                               // 0x0D30(0x0004)
+	float                                              LastTimeInWalkingState;                                   // 0x0D34(0x0004)
+	class UDunDefHero*                                 MyPlayerHero;                                             // 0x0D38(0x0004) (Transient)
+	class UFont*                                       MiniMapNameFont;                                          // 0x0D3C(0x0004) (Edit)
+	class USoundCue*                                   ToggleAbilityTurnOnSoundOverride;                         // 0x0D40(0x0004) (Edit)
+	int                                                PersonalMaxTowerUnits;                                    // 0x0D44(0x0004) (Edit)
+	struct FName                                       ForceWeaponSpellEffectSocketName;                         // 0x0D48(0x0008) (Edit)
+	TArray<struct FMeleeSwingInfo>                     MeleeSwingInfoMultipliers;                                // 0x0D50(0x000C) (Edit, NeedCtorLink)
+	struct FName                                       CastingCancelAnimName;                                    // 0x0D5C(0x0008) (Edit)
+	TArray<class ADunDefPlayerAbility*>                PlayerAbilities;                                          // 0x0D64(0x000C) (NeedCtorLink)
+	TArray<class ADunDefPlayerAbility*>                LocallySimulatedPlayerAbilities;                          // 0x0D70(0x000C) (NeedCtorLink)
+	struct FVector                                     CalloutOverrideLoc;                                       // 0x0D7C(0x000C) (Transient)
+	float                                              LastHoverUpdateTime;                                      // 0x0D88(0x0004) (Transient)
+	TArray<class UDunDefBuff*>                         DefaultBuffsToSpawn;                                      // 0x0D8C(0x000C) (Edit, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -6767,6 +6787,8 @@ public:
 	void PlayWaveVictoryAnimation();
 	void PlayWaveStartAnimation();
 	void PlayPickupItemAnimation();
+	void AddAbsorbShield(int Amount);
+	int GetTotalShield();
 	unsigned long AddHealth(int howMuch, unsigned long bDontDisplayFloatingNumber);
 	float IncrementRepair(float CurrentMana, float DeltaTime);
 	float GetCurrentRepairPercentage();
@@ -8363,7 +8385,7 @@ public:
 
 
 // Class UDKGame.UI_GameSetup
-// 0x0258 (0x0894 - 0x063C)
+// 0x025C (0x0898 - 0x063C)
 class UUI_GameSetup : public UDunDefUIScene
 {
 public:
@@ -8378,99 +8400,100 @@ public:
 	class UUICheckbox*                                 SurvivalCheckBox;                                         // 0x0654(0x0004) (Edit)
 	class UUICheckbox*                                 MixModeCheckbox;                                          // 0x0658(0x0004) (Edit)
 	class UUICheckbox*                                 HardcoreCheckbox;                                         // 0x065C(0x0004) (Edit)
-	class UUILabel*                                    StartAtWaveLabel;                                         // 0x0660(0x0004) (Edit)
-	class UUIButton*                                   StartAtWaveIncreaseButton;                                // 0x0664(0x0004) (Edit)
-	class UUIButton*                                   StartAtWaveDecreaseButton;                                // 0x0668(0x0004) (Edit)
-	float                                              waveChangeTimer;                                          // 0x066C(0x0004) (Transient)
-	class UDunDefUIScene*                              DLCSplashUITemplate;                                      // 0x0670(0x0004) (Edit)
-	class UUIScreenObject*                             MinimumLevelPanel;                                        // 0x0674(0x0004) (Edit)
-	class UUILabel*                                    MinimumLevelLabel;                                        // 0x0678(0x0004) (Transient)
-	class UUIButton*                                   MinimumLevelIncreaseButton;                               // 0x067C(0x0004) (Transient)
-	class UUIButton*                                   MinimumLevelDecreaseButton;                               // 0x0680(0x0004) (Transient)
-	float                                              levelChangeTimer;                                         // 0x0684(0x0004) (Transient)
-	int                                                CurrentMinimumLevel;                                      // 0x0688(0x0004) (Transient)
-	class UUIButton*                                   ResetButton;                                              // 0x068C(0x0004) (Edit)
-	class UUICheckbox*                                 UseBuildTimerCheckbox;                                    // 0x0690(0x0004) (Edit)
-	class UUICheckbox*                                 LockTavernItemPickups;                                    // 0x0694(0x0004) (Edit)
-	class UUIButton*                                   CampaignMissions;                                         // 0x0698(0x0004) (Edit)
-	class UUIButton*                                   DLCCampaignMissions;                                      // 0x069C(0x0004) (Edit)
-	class UUIButton*                                   ModMissions;                                              // 0x06A0(0x0004) (Edit)
-	class UUIButton*                                   GetModMissionsButton;                                     // 0x06A4(0x0004) (Edit)
-	class UUIButton*                                   LostQuestsButton;                                         // 0x06A8(0x0004) (Edit)
-	class UUIButton*                                   SpecialMissions;                                          // 0x06AC(0x0004) (Edit)
-	class UUILabel*                                    InfiniteBuildLabel;                                       // 0x06B0(0x0004) (Edit)
-	class UUILabel*                                    RecommendedHeroLevelLabel;                                // 0x06B4(0x0004) (Edit)
-	class UUILabel*                                    NightmareLabel;                                           // 0x06B8(0x0004) (Edit)
-	class UUILabel*                                    RuthlessLabel;                                            // 0x06BC(0x0004) (Edit)
-	class UUIScreenObject*                             StartAtWaveDescriptionLabel;                              // 0x06C0(0x0004) (Edit)
-	class UUIScreenObject*                             MainPanel;                                                // 0x06C4(0x0004) (Edit)
-	class UUIScreenObject*                             SecondaryPanel;                                           // 0x06C8(0x0004) (Edit)
-	class UUIScreenObject*                             ToggleSurvivalButtonIcon;                                 // 0x06CC(0x0004) (Edit)
-	class UUIImage*                                    MissionPreviewImageControl;                               // 0x06D0(0x0004) (Edit)
-	class UUILabel*                                    MissionNameLabel;                                         // 0x06D4(0x0004) (Edit)
-	class UUILabel*                                    MissionDescriptionLabel;                                  // 0x06D8(0x0004) (Edit)
-	class UUIScreenObject*                             NewMissionIndicator;                                      // 0x06DC(0x0004) (Edit)
-	class UUIScreenObject*                             NewMissionIndicatorSpecial;                               // 0x06E0(0x0004) (Edit)
-	class UUIScreenObject*                             NewMissionIndicatorExpansion;                             // 0x06E4(0x0004) (Edit)
-	TArray<struct FMissionPreviewImageInfo>            MissionPreviewInfos;                                      // 0x06E8(0x000C) (Edit, NeedCtorLink)
-	struct FMissionPreviewImageInfo                    UnknownMissionPreviewInfo;                                // 0x06F4(0x0010) (Edit, NeedCtorLink)
-	class UUIScreenObject*                             InfiniteBuildTimePanel;                                   // 0x0704(0x0004) (Edit)
-	class UUIScreenObject*                             SurvivalModePanel;                                        // 0x0708(0x0004) (Edit)
-	TArray<class UUIScriptWidget_ToggleButton*>        DifficultyButtons;                                        // 0x070C(0x000C) (Edit, NeedCtorLink)
-	TArray<class UUILabel*>                            DifficultyLabels;                                         // 0x0718(0x000C) (Edit, NeedCtorLink)
-	class UFont*                                       GameSettingsOverlayFont;                                  // 0x0724(0x0004) (Edit)
-	struct FColor                                      GameSettingsOverlayColor;                                 // 0x0728(0x0004) (Edit)
-	struct FColor                                      LockedMissionGetColor;                                    // 0x072C(0x0004) (Edit)
-	struct FLinearColor                                GameSettingsOverlayGradientColor;                         // 0x0730(0x0010) (Edit)
-	class UUIButton*                                   DifficultyHarder;                                         // 0x0740(0x0004) (Edit)
-	class UUIButton*                                   DifficultyEasier;                                         // 0x0744(0x0004) (Edit)
-	class USoundCue*                                   StartGameSound;                                           // 0x0748(0x0004) (Edit)
-	class USoundCue*                                   ToggleSurvivalModeSound;                                  // 0x074C(0x0004) (Edit)
-	class UUIObject*                                   OptionalPanelTitle;                                       // 0x0750(0x0004) (Edit)
-	struct FString                                     ChallengeString;                                          // 0x0754(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     LevelString;                                              // 0x0760(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     DifficultyString;                                         // 0x076C(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     InfiniteBuildTimeString;                                  // 0x0778(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     SurvivalModeString;                                       // 0x0784(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     StartingWaveString;                                       // 0x0790(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     TavernItemPickupString;                                   // 0x079C(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     PureStrategyModeString;                                   // 0x07A8(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     MSG_DLCWarningDescription1;                               // 0x07B4(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     MSG_DLCWarningDescription2;                               // 0x07C0(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     MSG_DLCWarningDescription3;                               // 0x07CC(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     MSG_DLCWarningTitle;                                      // 0x07D8(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     StringYes;                                                // 0x07E4(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     StringNo;                                                 // 0x07F0(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     AllowMobilePlayersString;                                 // 0x07FC(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     NightmareLockedTitle;                                     // 0x0808(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     NightmareLockedDescription;                               // 0x0814(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     NightmareLockedDescriptionGameSpyMac;                     // 0x0820(0x000C) (Edit, Localized, NeedCtorLink)
-	TArray<struct FString>                             OnStrings;                                                // 0x082C(0x000C) (Edit, Localized, NeedCtorLink)
-	TArray<class UUIImage*>                            DifficultyImages;                                         // 0x0838(0x000C) (Edit, NeedCtorLink)
-	TArray<class UUIImage*>                            HardcoreImages;                                           // 0x0844(0x000C) (Edit, NeedCtorLink)
-	class UUILabel*                                    BestOfOneLabel;                                           // 0x0850(0x0004) (Edit)
-	class UUILabel*                                    BestOfTwoLabel;                                           // 0x0854(0x0004) (Edit)
-	class UUILabel*                                    BestOfOneValue;                                           // 0x0858(0x0004) (Edit)
-	class UUILabel*                                    BestOfTwoValue;                                           // 0x085C(0x0004) (Edit)
-	class UUILabel*                                    MixModeLabel;                                             // 0x0860(0x0004) (Edit)
-	struct FString                                     LockIconPath;                                             // 0x0864(0x000C) (Edit, NeedCtorLink)
-	struct FString                                     GetMissionString;                                         // 0x0870(0x000C) (Edit, NeedCtorLink)
-	float                                              HeartbeatInterval;                                        // 0x087C(0x0004) (Edit)
-	float                                              InitialHeartbeatInterval;                                 // 0x0880(0x0004) (Edit)
-	float                                              MultiplayerModeIconSize;                                  // 0x0884(0x0004) (Edit)
-	unsigned long                                      DLCSplashMacOnly : 1;                                     // 0x0888(0x0004) (Edit)
-	unsigned long                                      RecentlyUnhidden : 1;                                     // 0x0888(0x0004)
-	unsigned long                                      showingSpecialMissions : 1;                               // 0x0888(0x0004)
-	unsigned long                                      showingModMissions : 1;                                   // 0x0888(0x0004)
-	unsigned long                                      showingDLCCampaign : 1;                                   // 0x0888(0x0004)
-	unsigned long                                      showingLostMissions : 1;                                  // 0x0888(0x0004)
-	unsigned long                                      oldDisplayCursor : 1;                                     // 0x0888(0x0004)
-	unsigned long                                      hasAutoSelected : 1;                                      // 0x0888(0x0004)
-	unsigned long                                      bClientHasEntryObject : 1;                                // 0x0888(0x0004)
-	unsigned long                                      bHideSetupOverlay : 1;                                    // 0x0888(0x0004) (Transient)
-	unsigned long                                      bWasShowingMiniMap : 1;                                   // 0x0888(0x0004) (Transient)
-	float                                              LaunchMapTimer;                                           // 0x088C(0x0004)
-	float                                              HeartbeatTimer;                                           // 0x0890(0x0004)
+	class UUICheckbox*                                 MayhemCheckbox;                                           // 0x0660(0x0004) (Edit)
+	class UUILabel*                                    StartAtWaveLabel;                                         // 0x0664(0x0004) (Edit)
+	class UUIButton*                                   StartAtWaveIncreaseButton;                                // 0x0668(0x0004) (Edit)
+	class UUIButton*                                   StartAtWaveDecreaseButton;                                // 0x066C(0x0004) (Edit)
+	float                                              waveChangeTimer;                                          // 0x0670(0x0004) (Transient)
+	class UDunDefUIScene*                              DLCSplashUITemplate;                                      // 0x0674(0x0004) (Edit)
+	class UUIScreenObject*                             MinimumLevelPanel;                                        // 0x0678(0x0004) (Edit)
+	class UUILabel*                                    MinimumLevelLabel;                                        // 0x067C(0x0004) (Transient)
+	class UUIButton*                                   MinimumLevelIncreaseButton;                               // 0x0680(0x0004) (Transient)
+	class UUIButton*                                   MinimumLevelDecreaseButton;                               // 0x0684(0x0004) (Transient)
+	float                                              levelChangeTimer;                                         // 0x0688(0x0004) (Transient)
+	int                                                CurrentMinimumLevel;                                      // 0x068C(0x0004) (Transient)
+	class UUIButton*                                   ResetButton;                                              // 0x0690(0x0004) (Edit)
+	class UUICheckbox*                                 UseBuildTimerCheckbox;                                    // 0x0694(0x0004) (Edit)
+	class UUICheckbox*                                 LockTavernItemPickups;                                    // 0x0698(0x0004) (Edit)
+	class UUIButton*                                   CampaignMissions;                                         // 0x069C(0x0004) (Edit)
+	class UUIButton*                                   DLCCampaignMissions;                                      // 0x06A0(0x0004) (Edit)
+	class UUIButton*                                   ModMissions;                                              // 0x06A4(0x0004) (Edit)
+	class UUIButton*                                   GetModMissionsButton;                                     // 0x06A8(0x0004) (Edit)
+	class UUIButton*                                   LostQuestsButton;                                         // 0x06AC(0x0004) (Edit)
+	class UUIButton*                                   SpecialMissions;                                          // 0x06B0(0x0004) (Edit)
+	class UUILabel*                                    InfiniteBuildLabel;                                       // 0x06B4(0x0004) (Edit)
+	class UUILabel*                                    RecommendedHeroLevelLabel;                                // 0x06B8(0x0004) (Edit)
+	class UUILabel*                                    NightmareLabel;                                           // 0x06BC(0x0004) (Edit)
+	class UUILabel*                                    RuthlessLabel;                                            // 0x06C0(0x0004) (Edit)
+	class UUIScreenObject*                             StartAtWaveDescriptionLabel;                              // 0x06C4(0x0004) (Edit)
+	class UUIScreenObject*                             MainPanel;                                                // 0x06C8(0x0004) (Edit)
+	class UUIScreenObject*                             SecondaryPanel;                                           // 0x06CC(0x0004) (Edit)
+	class UUIScreenObject*                             ToggleSurvivalButtonIcon;                                 // 0x06D0(0x0004) (Edit)
+	class UUIImage*                                    MissionPreviewImageControl;                               // 0x06D4(0x0004) (Edit)
+	class UUILabel*                                    MissionNameLabel;                                         // 0x06D8(0x0004) (Edit)
+	class UUILabel*                                    MissionDescriptionLabel;                                  // 0x06DC(0x0004) (Edit)
+	class UUIScreenObject*                             NewMissionIndicator;                                      // 0x06E0(0x0004) (Edit)
+	class UUIScreenObject*                             NewMissionIndicatorSpecial;                               // 0x06E4(0x0004) (Edit)
+	class UUIScreenObject*                             NewMissionIndicatorExpansion;                             // 0x06E8(0x0004) (Edit)
+	TArray<struct FMissionPreviewImageInfo>            MissionPreviewInfos;                                      // 0x06EC(0x000C) (Edit, NeedCtorLink)
+	struct FMissionPreviewImageInfo                    UnknownMissionPreviewInfo;                                // 0x06F8(0x0010) (Edit, NeedCtorLink)
+	class UUIScreenObject*                             InfiniteBuildTimePanel;                                   // 0x0708(0x0004) (Edit)
+	class UUIScreenObject*                             SurvivalModePanel;                                        // 0x070C(0x0004) (Edit)
+	TArray<class UUIScriptWidget_ToggleButton*>        DifficultyButtons;                                        // 0x0710(0x000C) (Edit, NeedCtorLink)
+	TArray<class UUILabel*>                            DifficultyLabels;                                         // 0x071C(0x000C) (Edit, NeedCtorLink)
+	class UFont*                                       GameSettingsOverlayFont;                                  // 0x0728(0x0004) (Edit)
+	struct FColor                                      GameSettingsOverlayColor;                                 // 0x072C(0x0004) (Edit)
+	struct FColor                                      LockedMissionGetColor;                                    // 0x0730(0x0004) (Edit)
+	struct FLinearColor                                GameSettingsOverlayGradientColor;                         // 0x0734(0x0010) (Edit)
+	class UUIButton*                                   DifficultyHarder;                                         // 0x0744(0x0004) (Edit)
+	class UUIButton*                                   DifficultyEasier;                                         // 0x0748(0x0004) (Edit)
+	class USoundCue*                                   StartGameSound;                                           // 0x074C(0x0004) (Edit)
+	class USoundCue*                                   ToggleSurvivalModeSound;                                  // 0x0750(0x0004) (Edit)
+	class UUIObject*                                   OptionalPanelTitle;                                       // 0x0754(0x0004) (Edit)
+	struct FString                                     ChallengeString;                                          // 0x0758(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     LevelString;                                              // 0x0764(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     DifficultyString;                                         // 0x0770(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     InfiniteBuildTimeString;                                  // 0x077C(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     SurvivalModeString;                                       // 0x0788(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     StartingWaveString;                                       // 0x0794(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     TavernItemPickupString;                                   // 0x07A0(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     PureStrategyModeString;                                   // 0x07AC(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     MSG_DLCWarningDescription1;                               // 0x07B8(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     MSG_DLCWarningDescription2;                               // 0x07C4(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     MSG_DLCWarningDescription3;                               // 0x07D0(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     MSG_DLCWarningTitle;                                      // 0x07DC(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     StringYes;                                                // 0x07E8(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     StringNo;                                                 // 0x07F4(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     AllowMobilePlayersString;                                 // 0x0800(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     NightmareLockedTitle;                                     // 0x080C(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     NightmareLockedDescription;                               // 0x0818(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     NightmareLockedDescriptionGameSpyMac;                     // 0x0824(0x000C) (Edit, Localized, NeedCtorLink)
+	TArray<struct FString>                             OnStrings;                                                // 0x0830(0x000C) (Edit, Localized, NeedCtorLink)
+	TArray<class UUIImage*>                            DifficultyImages;                                         // 0x083C(0x000C) (Edit, NeedCtorLink)
+	TArray<class UUIImage*>                            HardcoreImages;                                           // 0x0848(0x000C) (Edit, NeedCtorLink)
+	class UUILabel*                                    BestOfOneLabel;                                           // 0x0854(0x0004) (Edit)
+	class UUILabel*                                    BestOfTwoLabel;                                           // 0x0858(0x0004) (Edit)
+	class UUILabel*                                    BestOfOneValue;                                           // 0x085C(0x0004) (Edit)
+	class UUILabel*                                    BestOfTwoValue;                                           // 0x0860(0x0004) (Edit)
+	class UUILabel*                                    MixModeLabel;                                             // 0x0864(0x0004) (Edit)
+	struct FString                                     LockIconPath;                                             // 0x0868(0x000C) (Edit, NeedCtorLink)
+	struct FString                                     GetMissionString;                                         // 0x0874(0x000C) (Edit, NeedCtorLink)
+	float                                              HeartbeatInterval;                                        // 0x0880(0x0004) (Edit)
+	float                                              InitialHeartbeatInterval;                                 // 0x0884(0x0004) (Edit)
+	float                                              MultiplayerModeIconSize;                                  // 0x0888(0x0004) (Edit)
+	unsigned long                                      DLCSplashMacOnly : 1;                                     // 0x088C(0x0004) (Edit)
+	unsigned long                                      RecentlyUnhidden : 1;                                     // 0x088C(0x0004)
+	unsigned long                                      showingSpecialMissions : 1;                               // 0x088C(0x0004)
+	unsigned long                                      showingModMissions : 1;                                   // 0x088C(0x0004)
+	unsigned long                                      showingDLCCampaign : 1;                                   // 0x088C(0x0004)
+	unsigned long                                      showingLostMissions : 1;                                  // 0x088C(0x0004)
+	unsigned long                                      oldDisplayCursor : 1;                                     // 0x088C(0x0004)
+	unsigned long                                      hasAutoSelected : 1;                                      // 0x088C(0x0004)
+	unsigned long                                      bClientHasEntryObject : 1;                                // 0x088C(0x0004)
+	unsigned long                                      bHideSetupOverlay : 1;                                    // 0x088C(0x0004) (Transient)
+	unsigned long                                      bWasShowingMiniMap : 1;                                   // 0x088C(0x0004) (Transient)
+	float                                              LaunchMapTimer;                                           // 0x0890(0x0004)
+	float                                              HeartbeatTimer;                                           // 0x0894(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -8515,6 +8538,7 @@ public:
 	void UpdateMinimumLevelLevel(int Direction);
 	void SetStartAtWave(int StartAtWave);
 	void SetHardcore(unsigned long bIsHardcore);
+	void SetMayHem(unsigned long bisMayHem);
 	void SetUseBuildTimer(unsigned long buildTimer);
 	void SetPureStrategy(unsigned long pureStrategy);
 	void SetInfiniteWaves(unsigned long infiniteWaves, unsigned long bRecursive);
@@ -8541,6 +8565,7 @@ public:
 	unsigned long                                      InfiniteWaveMode : 1;                                     // 0x003C(0x0004)
 	unsigned long                                      PureStrategyMode : 1;                                     // 0x003C(0x0004)
 	unsigned long                                      MixMode : 1;                                              // 0x003C(0x0004)
+	unsigned long                                      MayhemMode : 1;                                           // 0x003C(0x0004)
 	unsigned long                                      MinimumLevelManuallySet : 1;                              // 0x003C(0x0004)
 	unsigned long                                      UseBuildTimer : 1;                                        // 0x003C(0x0004) (Edit)
 	unsigned long                                      AllowMobilePlayers : 1;                                   // 0x003C(0x0004) (Edit)
@@ -8952,255 +8977,255 @@ public:
 
 
 // Class UDKGame.DunDefEnemy
-// 0x0504 (0x0D04 - 0x0800)
+// 0x0504 (0x0D0C - 0x0808)
 class ADunDefEnemy : public ADunDefPawn
 {
 public:
-	unsigned long                                      bDisableRuthlessModifiers : 1;                            // 0x0800(0x0004) (Edit)
-	unsigned long                                      bIgnoreGlobalEnemyDropQualityMultiplier : 1;              // 0x0800(0x0004) (Edit)
-	unsigned long                                      bInvincibleWhileSpawningIn : 1;                           // 0x0800(0x0004) (Edit)
-	unsigned long                                      bUnclampDifficultyHealthMultiplier : 1;                   // 0x0800(0x0004) (Edit)
-	unsigned long                                      bUnclampDifficultySpeedMultiplier : 1;                    // 0x0800(0x0004) (Edit)
-	unsigned long                                      bTopLayerMiniMapIcon : 1;                                 // 0x0800(0x0004) (Edit)
-	unsigned long                                      DropEquipmentDuringBossFight : 1;                         // 0x0800(0x0004) (Edit)
-	unsigned long                                      bScaleDroppedEquipmentWithLevel : 1;                      // 0x0800(0x0004) (Edit)
-	unsigned long                                      bAffectWaveBonusDamageCauser : 1;                         // 0x0800(0x0004) (Edit)
-	unsigned long                                      bAllowDarkness : 1;                                       // 0x0800(0x0004) (Edit)
-	unsigned long                                      bZeroVelocityOnAttack : 1;                                // 0x0800(0x0004) (Edit)
-	unsigned long                                      bUseItemValuesForShop : 1;                                // 0x0800(0x0004) (Edit)
-	unsigned long                                      bAttackForceClientZeroVelocity : 1;                       // 0x0800(0x0004) (Edit)
-	unsigned long                                      bIgnoreAllTowerDamage : 1;                                // 0x0800(0x0004) (Edit)
-	unsigned long                                      bDontUseInvincibleRadius : 1;                             // 0x0800(0x0004) (Edit)
-	unsigned long                                      bAllowTargetingWhileInvincible : 1;                       // 0x0800(0x0004) (Edit)
-	unsigned long                                      bClampDifficultyToInsane : 1;                             // 0x0800(0x0004) (Edit)
-	unsigned long                                      bIgnoreTargetingCore : 1;                                 // 0x0800(0x0004) (Edit)
-	unsigned long                                      bForceKillCountSubtraction : 1;                           // 0x0800(0x0004) (Edit)
-	unsigned long                                      bStumbleBackUponDeath : 1;                                // 0x0800(0x0004) (Edit)
-	unsigned long                                      bForceDropEquipment : 1;                                  // 0x0800(0x0004) (Edit)
-	unsigned long                                      bInitiallyInvincible : 1;                                 // 0x0800(0x0004) (Edit)
-	unsigned long                                      bAllowBasingOnTowers : 1;                                 // 0x0800(0x0004) (Edit)
-	unsigned long                                      bNoRandomElementalEffect : 1;                             // 0x0800(0x0004) (Edit)
-	unsigned long                                      UseDjinnSpawnClamping : 1;                                // 0x0800(0x0004) (Edit)
-	unsigned long                                      UseSharkenSpawnClamping : 1;                              // 0x0800(0x0004) (Edit)
-	unsigned long                                      UseCopterSpawnClamping : 1;                               // 0x0800(0x0004) (Edit)
-	unsigned long                                      UseRuthlessOgreSpawnClamping : 1;                         // 0x0800(0x0004) (Edit)
-	unsigned long                                      bEvenlySpaceWaveSpawns : 1;                               // 0x0800(0x0004) (Edit)
-	unsigned long                                      bDontEvenSpaceInMixMode : 1;                              // 0x0800(0x0004) (Edit)
-	unsigned long                                      bDontUseStatsInSurvival : 1;                              // 0x0800(0x0004) (Edit)
-	unsigned long                                      bUseSurvivalExtraDifficulty : 1;                          // 0x0800(0x0004) (Edit)
-	unsigned long                                      bSetRelativeTransformOnDeath : 1;                         // 0x0804(0x0004) (Transient)
-	unsigned long                                      bWroteSpawnedStat : 1;                                    // 0x0804(0x0004) (Transient)
-	unsigned long                                      bAllowInvincibility : 1;                                  // 0x0804(0x0004) (Edit)
-	unsigned long                                      bAllowCoughing : 1;                                       // 0x0804(0x0004) (Edit)
-	unsigned long                                      bAllowShocking : 1;                                       // 0x0804(0x0004) (Edit)
-	unsigned long                                      bAllowEnsnare : 1;                                        // 0x0804(0x0004) (Edit)
-	unsigned long                                      bAllowEnrage : 1;                                         // 0x0804(0x0004) (Edit)
-	unsigned long                                      bAddToEnemyCap : 1;                                       // 0x0804(0x0004) (Edit)
-	unsigned long                                      bDropMana : 1;                                            // 0x0804(0x0004) (Edit)
-	unsigned long                                      bDropEquipment : 1;                                       // 0x0804(0x0004) (Edit)
-	unsigned long                                      bAllowEnemyDrain : 1;                                     // 0x0804(0x0004) (Edit)
-	unsigned long                                      bDontScaleUpOnSpawnIn : 1;                                // 0x0804(0x0004) (Edit)
-	unsigned long                                      bDoSpawnNotification : 1;                                 // 0x0804(0x0004) (Edit)
-	unsigned long                                      bIgnoreStats : 1;                                         // 0x0804(0x0004) (Edit)
-	unsigned long                                      bKillOnBuildPhase : 1;                                    // 0x0804(0x0004) (Edit)
-	unsigned long                                      ScaleDownForDestruction : 1;                              // 0x0804(0x0004) (Transient)
-	unsigned long                                      NotifiedSpawnerOfDeath : 1;                               // 0x0804(0x0004) (Transient)
-	unsigned long                                      NotifiedStatsOfDeath : 1;                                 // 0x0804(0x0004) (Transient)
-	unsigned long                                      bPlayerCausedLastDamage : 1;                              // 0x0804(0x0004) (Transient)
-	unsigned long                                      bFullySpawned : 1;                                        // 0x0804(0x0004) (Net, Transient)
-	unsigned long                                      bWasEverInvincible : 1;                                   // 0x0804(0x0004) (Transient)
-	unsigned long                                      bInvincible : 1;                                          // 0x0804(0x0004) (Net)
-	unsigned long                                      bIsPureStrategy : 1;                                      // 0x0804(0x0004) (Net)
-	unsigned long                                      bWasInvincible : 1;                                       // 0x0804(0x0004)
-	unsigned long                                      DrawHealthBar : 1;                                        // 0x0804(0x0004) (Edit)
-	unsigned long                                      IsPlayerAlly : 1;                                         // 0x0804(0x0004) (Edit)
-	unsigned long                                      bForceFriendlyFire : 1;                                   // 0x0804(0x0004) (Edit)
-	unsigned long                                      bForceInvincible : 1;                                     // 0x0804(0x0004) (Edit)
-	unsigned long                                      bNetworkReliableAttackAnimations : 1;                     // 0x0804(0x0004) (Edit)
-	unsigned long                                      bProcessedFromRPC : 1;                                    // 0x0804(0x0004) (Transient)
-	unsigned long                                      bIgnoreDifficultyScaling : 1;                             // 0x0804(0x0004) (Edit)
-	unsigned long                                      bUseEnemyGlobalMultipliers : 1;                           // 0x0804(0x0004) (Edit)
-	unsigned long                                      bDoMaterialModificationOnDeath : 1;                       // 0x0808(0x0004) (Edit)
-	unsigned long                                      bClearAttachmentsOnDeath : 1;                             // 0x0808(0x0004) (Edit)
-	unsigned long                                      bNoDrawMiniMapIcon : 1;                                   // 0x0808(0x0004) (Edit)
-	unsigned long                                      bGolded : 1;                                              // 0x0808(0x0004) (Transient)
-	unsigned long                                      bUseGoldIcon : 1;                                         // 0x0808(0x0004) (Transient)
-	unsigned long                                      CountedAsAlive : 1;                                       // 0x0808(0x0004) (Transient)
-	unsigned long                                      CountedAsDead : 1;                                        // 0x0808(0x0004) (Transient)
-	unsigned long                                      bAllowSlowByHero : 1;                                     // 0x0808(0x0004) (Edit)
-	unsigned long                                      bAllowWeakenByHero : 1;                                   // 0x0808(0x0004) (Edit)
-	unsigned long                                      IsStunned : 1;                                            // 0x0808(0x0004) (Net, Transient)
-	struct FEnemyRuthlessModifiers                     RuthlessEnemyModifiers;                                   // 0x080C(0x0018) (Edit)
-	float                                              GlobalEnemyDropQualityMultiplier;                         // 0x0824(0x0004) (Const)
-	TArray<struct FEnemyElementalEntry>                ElementalEntries;                                         // 0x0828(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FElementalDamageModifier>            ElementalDamageModifiers;                                 // 0x0834(0x000C) (Edit, NeedCtorLink)
-	int                                                UseElementalEntry;                                        // 0x0840(0x0004) (Edit, Net)
-	TArray<struct FName>                               AttackAnimations;                                         // 0x0844(0x000C) (Edit, NeedCtorLink)
-	class ADunDefEnemyController*                      AIControllerTemplate;                                     // 0x0850(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     DestructionEffectTemplate;                                // 0x0854(0x0004) (Edit)
-	TArray<class USoundCue*>                           AttackSounds;                                             // 0x0858(0x000C) (Edit, NeedCtorLink)
-	float                                              EnemyLifeSpan;                                            // 0x0864(0x0004) (Edit)
-	float                                              ClientMaxStepHeight;                                      // 0x0868(0x0004) (Edit)
-	float                                              EnemyNetUpdateFrequency;                                  // 0x086C(0x0004) (Edit)
-	float                                              EnemyNetPriority;                                         // 0x0870(0x0004) (Edit)
-	float                                              ElementalChanceMultiplier;                                // 0x0874(0x0004) (Edit)
-	float                                              MinCoughInterval;                                         // 0x0878(0x0004) (Edit)
-	float                                              EnemyPlayerFavoringMultiplier;                            // 0x087C(0x0004) (Edit)
-	float                                              AttackAnimSpeedMultiplier;                                // 0x0880(0x0004) (Edit)
-	TEnumAsByte<EGameDifficulty>                       MinimumDifficultyForRandomElementalEffect;                // 0x0884(0x0001) (Edit)
-	TEnumAsByte<EnemyClassification>                   MyClassification;                                         // 0x0885(0x0001) (Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x0886(0x0002) MISSED OFFSET
-	struct FString                                     DescriptiveName;                                          // 0x0888(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FName                                       AnimCough;                                                // 0x0894(0x0008) (Edit)
-	struct FName                                       AnimShock;                                                // 0x089C(0x0008) (Edit)
-	class UAudioComponent*                             MyAudioComponent;                                         // 0x08A4(0x0004) (Edit, ExportObject, Component, EditInline)
-	TArray<struct FEquipmentDropEntry>                 CustomEquipmentDrops;                                     // 0x08A8(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      DifficultyOffsetMultipliers;                              // 0x08B4(0x000C) (Edit, NeedCtorLink)
-	float                                              CustomEquipmentDropChanceThreshold;                       // 0x08C0(0x0004) (Edit)
-	float                                              CustomEquipmentDropValueMin;                              // 0x08C4(0x0004) (Edit)
-	float                                              CustomEquipmentDropValueMax;                              // 0x08C8(0x0004) (Edit)
-	float                                              MaxInvincibilityDrawDistance;                             // 0x08CC(0x0004) (Edit)
-	float                                              CustomEquipmentDropQuality;                               // 0x08D0(0x0004) (Edit)
-	int                                                NumCustomEquipmentDropChances;                            // 0x08D4(0x0004) (Edit)
-	float                                              GlobalEquipmentDropChanceThreshold;                       // 0x08D8(0x0004) (Edit)
-	float                                              GlobalEquipmentDropValueMin;                              // 0x08DC(0x0004) (Edit)
-	float                                              ExtraNightmareHealthMultiplier;                           // 0x08E0(0x0004) (Edit)
-	float                                              GlobalEquipmentDropValueMax;                              // 0x08E4(0x0004) (Edit)
-	float                                              InvincibilityExpirationTime;                              // 0x08E8(0x0004) (Edit)
-	float                                              MaxDifficultySpeedMultiplier;                             // 0x08EC(0x0004) (Edit)
-	float                                              GlobalEquipmentDropQuality;                               // 0x08F0(0x0004) (Edit)
-	float                                              MaxElementalEffectDistance;                               // 0x08F4(0x0004) (Edit)
-	float                                              InitialInvincibilityTimeOut;                              // 0x08F8(0x0004) (Edit)
-	float                                              NightmareDamageMultiplier;                                // 0x08FC(0x0004) (Edit)
-	int                                                NumGlobalEquipmentDropChances;                            // 0x0900(0x0004) (Edit)
-	int                                                KillCountMultiplier;                                      // 0x0904(0x0004) (Edit)
-	int                                                NumGlobalEquipmentDropChancesRuthless;                    // 0x0908(0x0004) (Edit)
-	float                                              MaxWaveEquipmentQualityMultiplier;                        // 0x090C(0x0004) (Edit)
-	int                                                EquipmentQualityMultiplierMaxWave;                        // 0x0910(0x0004) (Edit)
-	int                                                CustomEnemyTag;                                           // 0x0914(0x0004) (Edit)
-	int                                                SurvivalPartOneWaveTreshold;                              // 0x0918(0x0004) (Edit)
-	int                                                SurvivalPartTwoWaveTreshold;                              // 0x091C(0x0004) (Edit)
-	float                                              AbsoluteMaxEquipmentDropQuality;                          // 0x0920(0x0004) (Edit)
-	float                                              AttackForceClientZeroVelocityInterpSpeed;                 // 0x0924(0x0004) (Edit)
-	float                                              SurvivalPartOneDifficultyMultiplier;                      // 0x0928(0x0004) (Edit)
-	float                                              SurvivalPartTwoDifficultyMultiplier;                      // 0x092C(0x0004) (Edit)
-	float                                              MaxGroundSpeed;                                           // 0x0930(0x0004) (Edit)
-	struct FVector                                     StumbleBackDeathVelocity;                                 // 0x0934(0x000C) (Edit)
-	TArray<float>                                      DifficultyEquipmentRarityWeightings;                      // 0x0940(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      DifficultyEquipmentQualityMultipliers;                    // 0x094C(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      DifficultySpeedMultipliers;                               // 0x0958(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      DifficultyHealthMultipliers;                              // 0x0964(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      DifficultyDamageMultipliers;                              // 0x0970(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      ExtraDifficultyHealthMultipliers;                         // 0x097C(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      ExtraDifficultyDamageMultipliers;                         // 0x0988(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      DifficultyManaMultipliers;                                // 0x0994(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      DifficultyScoreMultipliers;                               // 0x09A0(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      DifficultySetWaveOffsetThresholds;                        // 0x09AC(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      NumPlayerHealthMultipliers;                               // 0x09B8(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      GoldenEnemyDifficultyOffset;                              // 0x09C4(0x000C) (Edit, NeedCtorLink)
-	int                                                MaxDifficultySets;                                        // 0x09D0(0x0004) (Edit)
-	int                                                SpawnClumpAbsoluteAmount;                                 // 0x09D4(0x0004) (Edit)
-	int                                                SpawnClumpMaximumAmount;                                  // 0x09D8(0x0004) (Edit)
-	TArray<int>                                        MaxSimultaneousAllowedForPlayers;                         // 0x09DC(0x000C) (Edit, NeedCtorLink)
-	int                                                DifficultySetOffset;                                      // 0x09E8(0x0004) (Edit)
-	int                                                MinimumStartWaveDifferenceForEquipment;                   // 0x09EC(0x0004) (Edit)
-	float                                              MoveAroundMeMaximumSpeed;                                 // 0x09F0(0x0004) (Edit)
-	float                                              SpawnClumpRelativePercent;                                // 0x09F4(0x0004) (Edit)
-	float                                              GlobalDropChanceThresholdMultiplier;                      // 0x09F8(0x0004) (Edit)
-	float                                              DifficultySetWaveOffset;                                  // 0x09FC(0x0004) (Edit)
-	float                                              FadeOutOriginalMeshDrawScale;                             // 0x0A00(0x0004) (Transient)
-	float                                              FadeOutDrawScalePercent;                                  // 0x0A04(0x0004) (Transient)
-	float                                              LastCoughTime;                                            // 0x0A08(0x0004) (Transient)
-	float                                              AnotherExtraStrengthMultiplier;                           // 0x0A0C(0x0004) (Transient)
-	class UParticleSystem*                             InvincibilityEffectTemplate;                              // 0x0A10(0x0004) (Edit)
-	float                                              InvincibilityEffectScale;                                 // 0x0A14(0x0004) (Edit)
-	struct FName                                       InvincibilityEffectSocket;                                // 0x0A18(0x0008) (Edit)
-	struct FName                                       ElementalEffectSocket;                                    // 0x0A20(0x0008) (Edit)
-	float                                              LifeSpanAfterDeath;                                       // 0x0A28(0x0004) (Edit)
-	float                                              KnockbackAllowanceInterval;                               // 0x0A2C(0x0004) (Edit)
-	float                                              MaxNightmareMomentumMagnitude;                            // 0x0A30(0x0004) (Edit)
-	float                                              FadeOutAfterDeathDelay;                                   // 0x0A34(0x0004) (Edit)
-	float                                              UpgradeLevelIconSize;                                     // 0x0A38(0x0004) (Edit)
-	float                                              HealthBarEnemyIconSize;                                   // 0x0A3C(0x0004) (Edit)
-	TArray<class UMaterialInterface*>                  DifficultyMaterials;                                      // 0x0A40(0x000C) (Edit, NeedCtorLink)
-	TArray<int>                                        MeshDifficultyMaterialIndices;                            // 0x0A4C(0x000C) (Edit, NeedCtorLink)
-	class UFont*                                       HealthBarNumbersFont;                                     // 0x0A58(0x0004) (Edit)
-	TArray<class UTexture2D*>                          difficultyIcons;                                          // 0x0A5C(0x000C) (Edit, NeedCtorLink)
-	class ADunDefEnemy*                                RelatedArchetype;                                         // 0x0A68(0x0004) (Edit)
-	class UParticleSystemComponent*                    InvincibilityEffect;                                      // 0x0A6C(0x0004) (ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    ElementalParticleEffect;                                  // 0x0A70(0x0004) (ExportObject, Component, EditInline)
-	float                                              HealthBarWidth;                                           // 0x0A74(0x0004) (Edit)
-	float                                              HealthBarHeight;                                          // 0x0A78(0x0004) (Edit)
-	class UTexture2D*                                  StatIcon;                                                 // 0x0A7C(0x0004) (Edit)
-	float                                              Variance_MovementSpeedPercent;                            // 0x0A80(0x0004) (Edit)
-	float                                              Variance_FatnessPercent;                                  // 0x0A84(0x0004) (Edit)
-	float                                              Variance_HeightPercent;                                   // 0x0A88(0x0004) (Edit)
-	float                                              Variance_ColorPercent;                                    // 0x0A8C(0x0004) (Edit)
-	float                                              Variance_NumColors;                                       // 0x0A90(0x0004) (Edit)
-	TArray<float>                                      VarianceGlobalIntensities;                                // 0x0A94(0x000C) (Edit, NeedCtorLink)
-	struct FVector                                     HealthBarScreenPosOffset;                                 // 0x0AA0(0x000C) (Edit)
-	float                                              SpawnInScaleTime;                                         // 0x0AAC(0x0004) (Edit)
-	TArray<class ADunDefEmitterSpawnable*>             SmallHurtEffectTemplate_DifficultyOverrides;              // 0x0AB0(0x000C) (Edit, NeedCtorLink)
-	TArray<class ADunDefEmitterSpawnable*>             DeathEffectTemplate_DifficultyOverrides;                  // 0x0ABC(0x000C) (Edit, NeedCtorLink)
-	class ADunDefEmitterSpawnable*                     DeathEffectTemplate;                                      // 0x0AC8(0x0004) (Edit)
-	struct FLinearColor                                SpawnNotificationColor;                                   // 0x0ACC(0x0010) (Edit)
-	class USoundCue*                                   SpawnNotificationSound;                                   // 0x0ADC(0x0004) (Edit)
-	struct FString                                     SpawnNotificationString;                                  // 0x0AE0(0x000C) (Edit, NeedCtorLink)
-	float                                              SpawnNotiifcationHideTime;                                // 0x0AEC(0x0004) (Edit)
-	int                                                VariedColorMIC;                                           // 0x0AF0(0x0004) (Net, Transient)
-	TArray<class UMaterialInstanceConstant*>           VarianceColorMICS;                                        // 0x0AF4(0x000C) (Transient, NeedCtorLink)
-	struct FVector                                     ReplicatedDrawScale;                                      // 0x0B00(0x000C) (Net, Transient)
-	struct FVector                                     OriginalMeshTranslation;                                  // 0x0B0C(0x000C) (Transient)
-	int                                                LastAttackAnimation;                                      // 0x0B18(0x0004) (Transient)
-	float                                              LastKnockedBackTime;                                      // 0x0B1C(0x0004) (Transient)
-	struct FName                                       EnemyPathName;                                            // 0x0B20(0x0008) (Transient)
-	class AActor*                                      DiedDamageCauser;                                         // 0x0B28(0x0004) (Transient)
-	class UDunDef_SeqAct_EnemyWaveSpawner*             WaveSpawner;                                              // 0x0B2C(0x0004)
-	int                                                InvincibleEffectCounter;                                  // 0x0B30(0x0004)
-	int                                                TeamIndex;                                                // 0x0B34(0x0004)
-	int                                                difficultyIndex;                                          // 0x0B38(0x0004) (Net)
-	class ADunDefEnemyController*                      MyCreator;                                                // 0x0B3C(0x0004)
-	float                                              HealthBarScale;                                           // 0x0B40(0x0004) (Edit)
-	struct FVector                                     HealthBarPositionOffset;                                  // 0x0B44(0x000C) (Edit)
-	struct FVector                                     HealthyColor;                                             // 0x0B50(0x000C) (Edit)
-	struct FVector                                     UnhealthyColor;                                           // 0x0B5C(0x000C) (Edit)
-	float                                              HealthBarPositionHeightScale;                             // 0x0B68(0x0004) (Edit)
-	TArray<class UTexture2D*>                          MiniMapIconTextures;                                      // 0x0B6C(0x000C) (Edit, NeedCtorLink)
-	class UTexture2D*                                  MiniMapGoldIconTexture;                                   // 0x0B78(0x0004) (Edit)
-	float                                              MiniMapIconSize;                                          // 0x0B7C(0x0004) (Edit)
-	float                                              ElementalIconSize;                                        // 0x0B80(0x0004) (Edit)
-	float                                              GoldMiniMapIconSizeMultiplier;                            // 0x0B84(0x0004) (Edit)
-	struct FColor                                      MiniMapIconColor;                                         // 0x0B88(0x0004) (Edit)
-	struct FColor                                      MiniMapIconColorDead;                                     // 0x0B8C(0x0004) (Edit)
-	struct FColor                                      MiniMapIconHurtColor;                                     // 0x0B90(0x0004) (Edit)
-	float                                              AdditionalDifficultyOffsetDamageMultiplier;               // 0x0B94(0x0004) (Edit)
-	float                                              AdditionalDifficultyOffsetHealthMultiplier;               // 0x0B98(0x0004) (Edit)
-	float                                              AdditionalDifficultyOffsetSpeedMultiplier;                // 0x0B9C(0x0004) (Edit)
-	class AActor*                                      lastDamageCauser;                                         // 0x0BA0(0x0004)
-	float                                              MiniMapIconOpacity;                                       // 0x0BA4(0x0004)
-	float                                              DifficultyDamageMultiplier;                               // 0x0BA8(0x0004)
-	float                                              DifficultySpeedMultiplier;                                // 0x0BAC(0x0004)
-	float                                              DifficultyHealthMultiplier;                               // 0x0BB0(0x0004)
-	float                                              RuthlessDamageMultiplier;                                 // 0x0BB4(0x0004)
-	float                                              RuthlessSpeedMultiplier;                                  // 0x0BB8(0x0004)
-	float                                              RuthlessHealthMultiplier;                                 // 0x0BBC(0x0004)
-	float                                              RuthessPawnDamageResistanceMultiplier;                    // 0x0BC0(0x0004)
-	float                                              RuthlessTowerDamageResistanceMultiplier;                  // 0x0BC4(0x0004)
-	int                                                TargetingTeam;                                            // 0x0BC8(0x0004) (Net, Transient)
-	struct FVector                                     ReplicatedStumbleBackDeathVelocity;                       // 0x0BCC(0x000C) (Net, Transient)
-	struct FVector                                     SpawnLocation;                                            // 0x0BD8(0x000C) (Transient)
-	class AActor*                                      TrueDamageCauser;                                         // 0x0BE4(0x0004) (Transient)
-	class AController*                                 TrueKiller;                                               // 0x0BE8(0x0004) (Transient)
-	struct FName                                       OnDeathMateralParamName;                                  // 0x0BEC(0x0008) (Edit)
-	float                                              OnDeathMatInterpTime;                                     // 0x0BF4(0x0004) (Edit)
-	float                                              WheelOfFortuneDamageMultiplier;                           // 0x0BF8(0x0004) (Edit)
-	float                                              WheelOfFortuneDamageMultiplierDynamic;                    // 0x0BFC(0x0004) (Net)
-	TArray<class UMaterialInstanceConstant*>           DeathMaterialMICs;                                        // 0x0C00(0x000C) (Transient, NeedCtorLink)
-	int                                                HighestProxDamage;                                        // 0x0C0C(0x0004) (Transient)
-	class AController*                                 HighProxDamageController;                                 // 0x0C10(0x0004) (Transient)
-	class AActor*                                      HighProxDamageCauser;                                     // 0x0C14(0x0004) (Transient)
-	struct FActorLevelUpStatModifier                   enemyStats[0x7];                                          // 0x0C18(0x0020) (Edit)
-	TArray<struct FActorLevelUpStatModifier>           CurrentActorLevelUpStatModifiers;                         // 0x0CF8(0x000C) (Transient, NeedCtorLink)
+	unsigned long                                      bDisableRuthlessModifiers : 1;                            // 0x0808(0x0004) (Edit)
+	unsigned long                                      bIgnoreGlobalEnemyDropQualityMultiplier : 1;              // 0x0808(0x0004) (Edit)
+	unsigned long                                      bInvincibleWhileSpawningIn : 1;                           // 0x0808(0x0004) (Edit)
+	unsigned long                                      bUnclampDifficultyHealthMultiplier : 1;                   // 0x0808(0x0004) (Edit)
+	unsigned long                                      bUnclampDifficultySpeedMultiplier : 1;                    // 0x0808(0x0004) (Edit)
+	unsigned long                                      bTopLayerMiniMapIcon : 1;                                 // 0x0808(0x0004) (Edit)
+	unsigned long                                      DropEquipmentDuringBossFight : 1;                         // 0x0808(0x0004) (Edit)
+	unsigned long                                      bScaleDroppedEquipmentWithLevel : 1;                      // 0x0808(0x0004) (Edit)
+	unsigned long                                      bAffectWaveBonusDamageCauser : 1;                         // 0x0808(0x0004) (Edit)
+	unsigned long                                      bAllowDarkness : 1;                                       // 0x0808(0x0004) (Edit)
+	unsigned long                                      bZeroVelocityOnAttack : 1;                                // 0x0808(0x0004) (Edit)
+	unsigned long                                      bUseItemValuesForShop : 1;                                // 0x0808(0x0004) (Edit)
+	unsigned long                                      bAttackForceClientZeroVelocity : 1;                       // 0x0808(0x0004) (Edit)
+	unsigned long                                      bIgnoreAllTowerDamage : 1;                                // 0x0808(0x0004) (Edit)
+	unsigned long                                      bDontUseInvincibleRadius : 1;                             // 0x0808(0x0004) (Edit)
+	unsigned long                                      bAllowTargetingWhileInvincible : 1;                       // 0x0808(0x0004) (Edit)
+	unsigned long                                      bClampDifficultyToInsane : 1;                             // 0x0808(0x0004) (Edit)
+	unsigned long                                      bIgnoreTargetingCore : 1;                                 // 0x0808(0x0004) (Edit)
+	unsigned long                                      bForceKillCountSubtraction : 1;                           // 0x0808(0x0004) (Edit)
+	unsigned long                                      bStumbleBackUponDeath : 1;                                // 0x0808(0x0004) (Edit)
+	unsigned long                                      bForceDropEquipment : 1;                                  // 0x0808(0x0004) (Edit)
+	unsigned long                                      bInitiallyInvincible : 1;                                 // 0x0808(0x0004) (Edit)
+	unsigned long                                      bAllowBasingOnTowers : 1;                                 // 0x0808(0x0004) (Edit)
+	unsigned long                                      bNoRandomElementalEffect : 1;                             // 0x0808(0x0004) (Edit)
+	unsigned long                                      UseDjinnSpawnClamping : 1;                                // 0x0808(0x0004) (Edit)
+	unsigned long                                      UseSharkenSpawnClamping : 1;                              // 0x0808(0x0004) (Edit)
+	unsigned long                                      UseCopterSpawnClamping : 1;                               // 0x0808(0x0004) (Edit)
+	unsigned long                                      UseRuthlessOgreSpawnClamping : 1;                         // 0x0808(0x0004) (Edit)
+	unsigned long                                      bEvenlySpaceWaveSpawns : 1;                               // 0x0808(0x0004) (Edit)
+	unsigned long                                      bDontEvenSpaceInMixMode : 1;                              // 0x0808(0x0004) (Edit)
+	unsigned long                                      bDontUseStatsInSurvival : 1;                              // 0x0808(0x0004) (Edit)
+	unsigned long                                      bUseSurvivalExtraDifficulty : 1;                          // 0x0808(0x0004) (Edit)
+	unsigned long                                      bSetRelativeTransformOnDeath : 1;                         // 0x080C(0x0004) (Transient)
+	unsigned long                                      bWroteSpawnedStat : 1;                                    // 0x080C(0x0004) (Transient)
+	unsigned long                                      bAllowInvincibility : 1;                                  // 0x080C(0x0004) (Edit)
+	unsigned long                                      bAllowCoughing : 1;                                       // 0x080C(0x0004) (Edit)
+	unsigned long                                      bAllowShocking : 1;                                       // 0x080C(0x0004) (Edit)
+	unsigned long                                      bAllowEnsnare : 1;                                        // 0x080C(0x0004) (Edit)
+	unsigned long                                      bAllowEnrage : 1;                                         // 0x080C(0x0004) (Edit)
+	unsigned long                                      bAddToEnemyCap : 1;                                       // 0x080C(0x0004) (Edit)
+	unsigned long                                      bDropMana : 1;                                            // 0x080C(0x0004) (Edit)
+	unsigned long                                      bDropEquipment : 1;                                       // 0x080C(0x0004) (Edit)
+	unsigned long                                      bAllowEnemyDrain : 1;                                     // 0x080C(0x0004) (Edit)
+	unsigned long                                      bDontScaleUpOnSpawnIn : 1;                                // 0x080C(0x0004) (Edit)
+	unsigned long                                      bDoSpawnNotification : 1;                                 // 0x080C(0x0004) (Edit)
+	unsigned long                                      bIgnoreStats : 1;                                         // 0x080C(0x0004) (Edit)
+	unsigned long                                      bKillOnBuildPhase : 1;                                    // 0x080C(0x0004) (Edit)
+	unsigned long                                      ScaleDownForDestruction : 1;                              // 0x080C(0x0004) (Transient)
+	unsigned long                                      NotifiedSpawnerOfDeath : 1;                               // 0x080C(0x0004) (Transient)
+	unsigned long                                      NotifiedStatsOfDeath : 1;                                 // 0x080C(0x0004) (Transient)
+	unsigned long                                      bPlayerCausedLastDamage : 1;                              // 0x080C(0x0004) (Transient)
+	unsigned long                                      bFullySpawned : 1;                                        // 0x080C(0x0004) (Net, Transient)
+	unsigned long                                      bWasEverInvincible : 1;                                   // 0x080C(0x0004) (Transient)
+	unsigned long                                      bInvincible : 1;                                          // 0x080C(0x0004) (Net)
+	unsigned long                                      bIsPureStrategy : 1;                                      // 0x080C(0x0004) (Net)
+	unsigned long                                      bWasInvincible : 1;                                       // 0x080C(0x0004)
+	unsigned long                                      DrawHealthBar : 1;                                        // 0x080C(0x0004) (Edit)
+	unsigned long                                      IsPlayerAlly : 1;                                         // 0x080C(0x0004) (Edit)
+	unsigned long                                      bForceFriendlyFire : 1;                                   // 0x080C(0x0004) (Edit)
+	unsigned long                                      bForceInvincible : 1;                                     // 0x080C(0x0004) (Edit)
+	unsigned long                                      bNetworkReliableAttackAnimations : 1;                     // 0x080C(0x0004) (Edit)
+	unsigned long                                      bProcessedFromRPC : 1;                                    // 0x080C(0x0004) (Transient)
+	unsigned long                                      bIgnoreDifficultyScaling : 1;                             // 0x080C(0x0004) (Edit)
+	unsigned long                                      bUseEnemyGlobalMultipliers : 1;                           // 0x080C(0x0004) (Edit)
+	unsigned long                                      bDoMaterialModificationOnDeath : 1;                       // 0x0810(0x0004) (Edit)
+	unsigned long                                      bClearAttachmentsOnDeath : 1;                             // 0x0810(0x0004) (Edit)
+	unsigned long                                      bNoDrawMiniMapIcon : 1;                                   // 0x0810(0x0004) (Edit)
+	unsigned long                                      bGolded : 1;                                              // 0x0810(0x0004) (Transient)
+	unsigned long                                      bUseGoldIcon : 1;                                         // 0x0810(0x0004) (Transient)
+	unsigned long                                      CountedAsAlive : 1;                                       // 0x0810(0x0004) (Transient)
+	unsigned long                                      CountedAsDead : 1;                                        // 0x0810(0x0004) (Transient)
+	unsigned long                                      bAllowSlowByHero : 1;                                     // 0x0810(0x0004) (Edit)
+	unsigned long                                      bAllowWeakenByHero : 1;                                   // 0x0810(0x0004) (Edit)
+	unsigned long                                      IsStunned : 1;                                            // 0x0810(0x0004) (Net, Transient)
+	struct FEnemyRuthlessModifiers                     RuthlessEnemyModifiers;                                   // 0x0814(0x0018) (Edit)
+	float                                              GlobalEnemyDropQualityMultiplier;                         // 0x082C(0x0004) (Const)
+	TArray<struct FEnemyElementalEntry>                ElementalEntries;                                         // 0x0830(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FElementalDamageModifier>            ElementalDamageModifiers;                                 // 0x083C(0x000C) (Edit, NeedCtorLink)
+	int                                                UseElementalEntry;                                        // 0x0848(0x0004) (Edit, Net)
+	TArray<struct FName>                               AttackAnimations;                                         // 0x084C(0x000C) (Edit, NeedCtorLink)
+	class ADunDefEnemyController*                      AIControllerTemplate;                                     // 0x0858(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     DestructionEffectTemplate;                                // 0x085C(0x0004) (Edit)
+	TArray<class USoundCue*>                           AttackSounds;                                             // 0x0860(0x000C) (Edit, NeedCtorLink)
+	float                                              EnemyLifeSpan;                                            // 0x086C(0x0004) (Edit)
+	float                                              ClientMaxStepHeight;                                      // 0x0870(0x0004) (Edit)
+	float                                              EnemyNetUpdateFrequency;                                  // 0x0874(0x0004) (Edit)
+	float                                              EnemyNetPriority;                                         // 0x0878(0x0004) (Edit)
+	float                                              ElementalChanceMultiplier;                                // 0x087C(0x0004) (Edit)
+	float                                              MinCoughInterval;                                         // 0x0880(0x0004) (Edit)
+	float                                              EnemyPlayerFavoringMultiplier;                            // 0x0884(0x0004) (Edit)
+	float                                              AttackAnimSpeedMultiplier;                                // 0x0888(0x0004) (Edit)
+	TEnumAsByte<EGameDifficulty>                       MinimumDifficultyForRandomElementalEffect;                // 0x088C(0x0001) (Edit)
+	TEnumAsByte<EnemyClassification>                   MyClassification;                                         // 0x088D(0x0001) (Edit)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x088E(0x0002) MISSED OFFSET
+	struct FString                                     DescriptiveName;                                          // 0x0890(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FName                                       AnimCough;                                                // 0x089C(0x0008) (Edit)
+	struct FName                                       AnimShock;                                                // 0x08A4(0x0008) (Edit)
+	class UAudioComponent*                             MyAudioComponent;                                         // 0x08AC(0x0004) (Edit, ExportObject, Component, EditInline)
+	TArray<struct FEquipmentDropEntry>                 CustomEquipmentDrops;                                     // 0x08B0(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      DifficultyOffsetMultipliers;                              // 0x08BC(0x000C) (Edit, NeedCtorLink)
+	float                                              CustomEquipmentDropChanceThreshold;                       // 0x08C8(0x0004) (Edit)
+	float                                              CustomEquipmentDropValueMin;                              // 0x08CC(0x0004) (Edit)
+	float                                              CustomEquipmentDropValueMax;                              // 0x08D0(0x0004) (Edit)
+	float                                              MaxInvincibilityDrawDistance;                             // 0x08D4(0x0004) (Edit)
+	float                                              CustomEquipmentDropQuality;                               // 0x08D8(0x0004) (Edit)
+	int                                                NumCustomEquipmentDropChances;                            // 0x08DC(0x0004) (Edit)
+	float                                              GlobalEquipmentDropChanceThreshold;                       // 0x08E0(0x0004) (Edit)
+	float                                              GlobalEquipmentDropValueMin;                              // 0x08E4(0x0004) (Edit)
+	float                                              ExtraNightmareHealthMultiplier;                           // 0x08E8(0x0004) (Edit)
+	float                                              GlobalEquipmentDropValueMax;                              // 0x08EC(0x0004) (Edit)
+	float                                              InvincibilityExpirationTime;                              // 0x08F0(0x0004) (Edit)
+	float                                              MaxDifficultySpeedMultiplier;                             // 0x08F4(0x0004) (Edit)
+	float                                              GlobalEquipmentDropQuality;                               // 0x08F8(0x0004) (Edit)
+	float                                              MaxElementalEffectDistance;                               // 0x08FC(0x0004) (Edit)
+	float                                              InitialInvincibilityTimeOut;                              // 0x0900(0x0004) (Edit)
+	float                                              NightmareDamageMultiplier;                                // 0x0904(0x0004) (Edit)
+	int                                                NumGlobalEquipmentDropChances;                            // 0x0908(0x0004) (Edit)
+	int                                                KillCountMultiplier;                                      // 0x090C(0x0004) (Edit)
+	int                                                NumGlobalEquipmentDropChancesRuthless;                    // 0x0910(0x0004) (Edit)
+	float                                              MaxWaveEquipmentQualityMultiplier;                        // 0x0914(0x0004) (Edit)
+	int                                                EquipmentQualityMultiplierMaxWave;                        // 0x0918(0x0004) (Edit)
+	int                                                CustomEnemyTag;                                           // 0x091C(0x0004) (Edit)
+	int                                                SurvivalPartOneWaveTreshold;                              // 0x0920(0x0004) (Edit)
+	int                                                SurvivalPartTwoWaveTreshold;                              // 0x0924(0x0004) (Edit)
+	float                                              AbsoluteMaxEquipmentDropQuality;                          // 0x0928(0x0004) (Edit)
+	float                                              AttackForceClientZeroVelocityInterpSpeed;                 // 0x092C(0x0004) (Edit)
+	float                                              SurvivalPartOneDifficultyMultiplier;                      // 0x0930(0x0004) (Edit)
+	float                                              SurvivalPartTwoDifficultyMultiplier;                      // 0x0934(0x0004) (Edit)
+	float                                              MaxGroundSpeed;                                           // 0x0938(0x0004) (Edit)
+	struct FVector                                     StumbleBackDeathVelocity;                                 // 0x093C(0x000C) (Edit)
+	TArray<float>                                      DifficultyEquipmentRarityWeightings;                      // 0x0948(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      DifficultyEquipmentQualityMultipliers;                    // 0x0954(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      DifficultySpeedMultipliers;                               // 0x0960(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      DifficultyHealthMultipliers;                              // 0x096C(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      DifficultyDamageMultipliers;                              // 0x0978(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      ExtraDifficultyHealthMultipliers;                         // 0x0984(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      ExtraDifficultyDamageMultipliers;                         // 0x0990(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      DifficultyManaMultipliers;                                // 0x099C(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      DifficultyScoreMultipliers;                               // 0x09A8(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      DifficultySetWaveOffsetThresholds;                        // 0x09B4(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      NumPlayerHealthMultipliers;                               // 0x09C0(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      GoldenEnemyDifficultyOffset;                              // 0x09CC(0x000C) (Edit, NeedCtorLink)
+	int                                                MaxDifficultySets;                                        // 0x09D8(0x0004) (Edit)
+	int                                                SpawnClumpAbsoluteAmount;                                 // 0x09DC(0x0004) (Edit)
+	int                                                SpawnClumpMaximumAmount;                                  // 0x09E0(0x0004) (Edit)
+	TArray<int>                                        MaxSimultaneousAllowedForPlayers;                         // 0x09E4(0x000C) (Edit, NeedCtorLink)
+	int                                                DifficultySetOffset;                                      // 0x09F0(0x0004) (Edit)
+	int                                                MinimumStartWaveDifferenceForEquipment;                   // 0x09F4(0x0004) (Edit)
+	float                                              MoveAroundMeMaximumSpeed;                                 // 0x09F8(0x0004) (Edit)
+	float                                              SpawnClumpRelativePercent;                                // 0x09FC(0x0004) (Edit)
+	float                                              GlobalDropChanceThresholdMultiplier;                      // 0x0A00(0x0004) (Edit)
+	float                                              DifficultySetWaveOffset;                                  // 0x0A04(0x0004) (Edit)
+	float                                              FadeOutOriginalMeshDrawScale;                             // 0x0A08(0x0004) (Transient)
+	float                                              FadeOutDrawScalePercent;                                  // 0x0A0C(0x0004) (Transient)
+	float                                              LastCoughTime;                                            // 0x0A10(0x0004) (Transient)
+	float                                              AnotherExtraStrengthMultiplier;                           // 0x0A14(0x0004) (Transient)
+	class UParticleSystem*                             InvincibilityEffectTemplate;                              // 0x0A18(0x0004) (Edit)
+	float                                              InvincibilityEffectScale;                                 // 0x0A1C(0x0004) (Edit)
+	struct FName                                       InvincibilityEffectSocket;                                // 0x0A20(0x0008) (Edit)
+	struct FName                                       ElementalEffectSocket;                                    // 0x0A28(0x0008) (Edit)
+	float                                              LifeSpanAfterDeath;                                       // 0x0A30(0x0004) (Edit)
+	float                                              KnockbackAllowanceInterval;                               // 0x0A34(0x0004) (Edit)
+	float                                              MaxNightmareMomentumMagnitude;                            // 0x0A38(0x0004) (Edit)
+	float                                              FadeOutAfterDeathDelay;                                   // 0x0A3C(0x0004) (Edit)
+	float                                              UpgradeLevelIconSize;                                     // 0x0A40(0x0004) (Edit)
+	float                                              HealthBarEnemyIconSize;                                   // 0x0A44(0x0004) (Edit)
+	TArray<class UMaterialInterface*>                  DifficultyMaterials;                                      // 0x0A48(0x000C) (Edit, NeedCtorLink)
+	TArray<int>                                        MeshDifficultyMaterialIndices;                            // 0x0A54(0x000C) (Edit, NeedCtorLink)
+	class UFont*                                       HealthBarNumbersFont;                                     // 0x0A60(0x0004) (Edit)
+	TArray<class UTexture2D*>                          difficultyIcons;                                          // 0x0A64(0x000C) (Edit, NeedCtorLink)
+	class ADunDefEnemy*                                RelatedArchetype;                                         // 0x0A70(0x0004) (Edit)
+	class UParticleSystemComponent*                    InvincibilityEffect;                                      // 0x0A74(0x0004) (ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    ElementalParticleEffect;                                  // 0x0A78(0x0004) (ExportObject, Component, EditInline)
+	float                                              HealthBarWidth;                                           // 0x0A7C(0x0004) (Edit)
+	float                                              HealthBarHeight;                                          // 0x0A80(0x0004) (Edit)
+	class UTexture2D*                                  StatIcon;                                                 // 0x0A84(0x0004) (Edit)
+	float                                              Variance_MovementSpeedPercent;                            // 0x0A88(0x0004) (Edit)
+	float                                              Variance_FatnessPercent;                                  // 0x0A8C(0x0004) (Edit)
+	float                                              Variance_HeightPercent;                                   // 0x0A90(0x0004) (Edit)
+	float                                              Variance_ColorPercent;                                    // 0x0A94(0x0004) (Edit)
+	float                                              Variance_NumColors;                                       // 0x0A98(0x0004) (Edit)
+	TArray<float>                                      VarianceGlobalIntensities;                                // 0x0A9C(0x000C) (Edit, NeedCtorLink)
+	struct FVector                                     HealthBarScreenPosOffset;                                 // 0x0AA8(0x000C) (Edit)
+	float                                              SpawnInScaleTime;                                         // 0x0AB4(0x0004) (Edit)
+	TArray<class ADunDefEmitterSpawnable*>             SmallHurtEffectTemplate_DifficultyOverrides;              // 0x0AB8(0x000C) (Edit, NeedCtorLink)
+	TArray<class ADunDefEmitterSpawnable*>             DeathEffectTemplate_DifficultyOverrides;                  // 0x0AC4(0x000C) (Edit, NeedCtorLink)
+	class ADunDefEmitterSpawnable*                     DeathEffectTemplate;                                      // 0x0AD0(0x0004) (Edit)
+	struct FLinearColor                                SpawnNotificationColor;                                   // 0x0AD4(0x0010) (Edit)
+	class USoundCue*                                   SpawnNotificationSound;                                   // 0x0AE4(0x0004) (Edit)
+	struct FString                                     SpawnNotificationString;                                  // 0x0AE8(0x000C) (Edit, NeedCtorLink)
+	float                                              SpawnNotiifcationHideTime;                                // 0x0AF4(0x0004) (Edit)
+	int                                                VariedColorMIC;                                           // 0x0AF8(0x0004) (Net, Transient)
+	TArray<class UMaterialInstanceConstant*>           VarianceColorMICS;                                        // 0x0AFC(0x000C) (Transient, NeedCtorLink)
+	struct FVector                                     ReplicatedDrawScale;                                      // 0x0B08(0x000C) (Net, Transient)
+	struct FVector                                     OriginalMeshTranslation;                                  // 0x0B14(0x000C) (Transient)
+	int                                                LastAttackAnimation;                                      // 0x0B20(0x0004) (Transient)
+	float                                              LastKnockedBackTime;                                      // 0x0B24(0x0004) (Transient)
+	struct FName                                       EnemyPathName;                                            // 0x0B28(0x0008) (Transient)
+	class AActor*                                      DiedDamageCauser;                                         // 0x0B30(0x0004) (Transient)
+	class UDunDef_SeqAct_EnemyWaveSpawner*             WaveSpawner;                                              // 0x0B34(0x0004)
+	int                                                InvincibleEffectCounter;                                  // 0x0B38(0x0004)
+	int                                                TeamIndex;                                                // 0x0B3C(0x0004)
+	int                                                difficultyIndex;                                          // 0x0B40(0x0004) (Net)
+	class ADunDefEnemyController*                      MyCreator;                                                // 0x0B44(0x0004)
+	float                                              HealthBarScale;                                           // 0x0B48(0x0004) (Edit)
+	struct FVector                                     HealthBarPositionOffset;                                  // 0x0B4C(0x000C) (Edit)
+	struct FVector                                     HealthyColor;                                             // 0x0B58(0x000C) (Edit)
+	struct FVector                                     UnhealthyColor;                                           // 0x0B64(0x000C) (Edit)
+	float                                              HealthBarPositionHeightScale;                             // 0x0B70(0x0004) (Edit)
+	TArray<class UTexture2D*>                          MiniMapIconTextures;                                      // 0x0B74(0x000C) (Edit, NeedCtorLink)
+	class UTexture2D*                                  MiniMapGoldIconTexture;                                   // 0x0B80(0x0004) (Edit)
+	float                                              MiniMapIconSize;                                          // 0x0B84(0x0004) (Edit)
+	float                                              ElementalIconSize;                                        // 0x0B88(0x0004) (Edit)
+	float                                              GoldMiniMapIconSizeMultiplier;                            // 0x0B8C(0x0004) (Edit)
+	struct FColor                                      MiniMapIconColor;                                         // 0x0B90(0x0004) (Edit)
+	struct FColor                                      MiniMapIconColorDead;                                     // 0x0B94(0x0004) (Edit)
+	struct FColor                                      MiniMapIconHurtColor;                                     // 0x0B98(0x0004) (Edit)
+	float                                              AdditionalDifficultyOffsetDamageMultiplier;               // 0x0B9C(0x0004) (Edit)
+	float                                              AdditionalDifficultyOffsetHealthMultiplier;               // 0x0BA0(0x0004) (Edit)
+	float                                              AdditionalDifficultyOffsetSpeedMultiplier;                // 0x0BA4(0x0004) (Edit)
+	class AActor*                                      lastDamageCauser;                                         // 0x0BA8(0x0004)
+	float                                              MiniMapIconOpacity;                                       // 0x0BAC(0x0004)
+	float                                              DifficultyDamageMultiplier;                               // 0x0BB0(0x0004)
+	float                                              DifficultySpeedMultiplier;                                // 0x0BB4(0x0004)
+	float                                              DifficultyHealthMultiplier;                               // 0x0BB8(0x0004)
+	float                                              RuthlessDamageMultiplier;                                 // 0x0BBC(0x0004)
+	float                                              RuthlessSpeedMultiplier;                                  // 0x0BC0(0x0004)
+	float                                              RuthlessHealthMultiplier;                                 // 0x0BC4(0x0004)
+	float                                              RuthessPawnDamageResistanceMultiplier;                    // 0x0BC8(0x0004)
+	float                                              RuthlessTowerDamageResistanceMultiplier;                  // 0x0BCC(0x0004)
+	int                                                TargetingTeam;                                            // 0x0BD0(0x0004) (Net, Transient)
+	struct FVector                                     ReplicatedStumbleBackDeathVelocity;                       // 0x0BD4(0x000C) (Net, Transient)
+	struct FVector                                     SpawnLocation;                                            // 0x0BE0(0x000C) (Transient)
+	class AActor*                                      TrueDamageCauser;                                         // 0x0BEC(0x0004) (Transient)
+	class AController*                                 TrueKiller;                                               // 0x0BF0(0x0004) (Transient)
+	struct FName                                       OnDeathMateralParamName;                                  // 0x0BF4(0x0008) (Edit)
+	float                                              OnDeathMatInterpTime;                                     // 0x0BFC(0x0004) (Edit)
+	float                                              WheelOfFortuneDamageMultiplier;                           // 0x0C00(0x0004) (Edit)
+	float                                              WheelOfFortuneDamageMultiplierDynamic;                    // 0x0C04(0x0004) (Net)
+	TArray<class UMaterialInstanceConstant*>           DeathMaterialMICs;                                        // 0x0C08(0x000C) (Transient, NeedCtorLink)
+	int                                                HighestProxDamage;                                        // 0x0C14(0x0004) (Transient)
+	class AController*                                 HighProxDamageController;                                 // 0x0C18(0x0004) (Transient)
+	class AActor*                                      HighProxDamageCauser;                                     // 0x0C1C(0x0004) (Transient)
+	struct FActorLevelUpStatModifier                   enemyStats[0x7];                                          // 0x0C20(0x0020) (Edit)
+	TArray<struct FActorLevelUpStatModifier>           CurrentActorLevelUpStatModifiers;                         // 0x0D00(0x000C) (Transient, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -12577,6 +12602,51 @@ public:
 };
 
 
+// Class UDKGame.DunDefBoss
+// 0x0034 (0x0D40 - 0x0D0C)
+class ADunDefBoss : public ADunDefEnemy
+{
+public:
+	float                                              MiniMapCoordinateScale;                                   // 0x0D0C(0x0004) (Edit)
+	unsigned long                                      bDunDefCheckForEncroachers : 1;                           // 0x0D10(0x0004) (Edit)
+	unsigned long                                      bDunDefEncroachersOnlyCheckEnemies : 1;                   // 0x0D10(0x0004) (Edit)
+	unsigned long                                      bDrawRotatedMiniMapIcon : 1;                              // 0x0D10(0x0004) (Edit)
+	unsigned long                                      UseMultipleHealthBars : 1;                                // 0x0D10(0x0004) (Edit)
+	unsigned long                                      bAllowBuffs : 1;                                          // 0x0D10(0x0004) (Edit)
+	float                                              BumpTowerDamage;                                          // 0x0D14(0x0004) (Edit)
+	float                                              EncroachmentExtraRadius;                                  // 0x0D18(0x0004) (Edit)
+	float                                              PawnPushBackSpeed;                                        // 0x0D1C(0x0004) (Edit)
+	float                                              TowerPushBackSpeed;                                       // 0x0D20(0x0004) (Edit)
+	struct FRotator                                    MiniMapIconRotationOffset;                                // 0x0D24(0x000C) (Edit)
+	float                                              ProtonChargeBlastDamageMultiplier;                        // 0x0D30(0x0004) (Edit)
+	int                                                NumberOfHealthBars;                                       // 0x0D34(0x0004) (Edit)
+	int                                                MaximumNumberOfHealthBars;                                // 0x0D38(0x0004) (Net, Transient)
+	int                                                NumberOfRemainingHealthBars;                              // 0x0D3C(0x0004) (Net, Transient)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.DunDefBoss");
+		return ptr;
+	}
+
+
+	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
+	void CheckForEncroachers(float DeltaTime);
+	void Tick(float DeltaTime);
+	unsigned long ForceFriendlyFire(class AActor* Target);
+	void Landed(const struct FVector& HitNormal, class AActor* FloorActor);
+	void EnableDarkness();
+	void PlayJumpAnimation();
+	void EnemyExpired();
+	void ForceSkelUpdating(unsigned long Force, unsigned long bOnlyForceTickAnimNodes);
+	void DrawMiniMapIcon(class UCanvas* Canvas, class ADunDefMiniMap* MiniMap);
+	void SetRuthlessModifiers();
+	void DoDrawHealthBar(class ADunDefHUD* H, float Opacity);
+	void UpdateMaxHealth(unsigned long bSetHealthToMax);
+	void HandleMomentum(const struct FVector& Momentum, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo);
+};
+
+
 // Class UDKGame.DunDefEnemyController
 // 0x01D4 (0x060C - 0x0438)
 class ADunDefEnemyController : public ANativeDunDefEnemyController
@@ -12872,6 +12942,24 @@ public:
 	static UClass* StaticClass()
 	{
 		static auto ptr = UObject::FindClass("Class UDKGame.DunDef_SeqAct_GetCampaignLevelObject");
+		return ptr;
+	}
+
+
+	void Activated();
+};
+
+
+// Class UDKGame.DunDef_SeqAct_GetCurrentDuCount
+// 0x0004 (0x00EC - 0x00E8)
+class UDunDef_SeqAct_GetCurrentDuCount : public USequenceAction
+{
+public:
+	unsigned long                                      GetMUinstead : 1;                                         // 0x00E8(0x0004) (Edit)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.DunDef_SeqAct_GetCurrentDuCount");
 		return ptr;
 	}
 
@@ -14230,51 +14318,6 @@ public:
 };
 
 
-// Class UDKGame.DunDefBoss
-// 0x0034 (0x0D38 - 0x0D04)
-class ADunDefBoss : public ADunDefEnemy
-{
-public:
-	float                                              MiniMapCoordinateScale;                                   // 0x0D04(0x0004) (Edit)
-	unsigned long                                      bDunDefCheckForEncroachers : 1;                           // 0x0D08(0x0004) (Edit)
-	unsigned long                                      bDunDefEncroachersOnlyCheckEnemies : 1;                   // 0x0D08(0x0004) (Edit)
-	unsigned long                                      bDrawRotatedMiniMapIcon : 1;                              // 0x0D08(0x0004) (Edit)
-	unsigned long                                      UseMultipleHealthBars : 1;                                // 0x0D08(0x0004) (Edit)
-	unsigned long                                      bAllowBuffs : 1;                                          // 0x0D08(0x0004) (Edit)
-	float                                              BumpTowerDamage;                                          // 0x0D0C(0x0004) (Edit)
-	float                                              EncroachmentExtraRadius;                                  // 0x0D10(0x0004) (Edit)
-	float                                              PawnPushBackSpeed;                                        // 0x0D14(0x0004) (Edit)
-	float                                              TowerPushBackSpeed;                                       // 0x0D18(0x0004) (Edit)
-	struct FRotator                                    MiniMapIconRotationOffset;                                // 0x0D1C(0x000C) (Edit)
-	float                                              ProtonChargeBlastDamageMultiplier;                        // 0x0D28(0x0004) (Edit)
-	int                                                NumberOfHealthBars;                                       // 0x0D2C(0x0004) (Edit)
-	int                                                MaximumNumberOfHealthBars;                                // 0x0D30(0x0004) (Net, Transient)
-	int                                                NumberOfRemainingHealthBars;                              // 0x0D34(0x0004) (Net, Transient)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class UDKGame.DunDefBoss");
-		return ptr;
-	}
-
-
-	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
-	void CheckForEncroachers(float DeltaTime);
-	void Tick(float DeltaTime);
-	unsigned long ForceFriendlyFire(class AActor* Target);
-	void Landed(const struct FVector& HitNormal, class AActor* FloorActor);
-	void EnableDarkness();
-	void PlayJumpAnimation();
-	void EnemyExpired();
-	void ForceSkelUpdating(unsigned long Force, unsigned long bOnlyForceTickAnimNodes);
-	void DrawMiniMapIcon(class UCanvas* Canvas, class ADunDefMiniMap* MiniMap);
-	void SetRuthlessModifiers();
-	void DoDrawHealthBar(class ADunDefHUD* H, float Opacity);
-	void UpdateMaxHealth(unsigned long bSetHealthToMax);
-	void HandleMomentum(const struct FVector& Momentum, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo);
-};
-
-
 // Class UDKGame.DunDefTower_GasTrap
 // 0x0044 (0x0934 - 0x08F0)
 class ADunDefTower_GasTrap : public ADunDefTower_DetonationType
@@ -14433,27 +14476,27 @@ public:
 
 
 // Class UDKGame.DunDefOgre
-// 0x0060 (0x0D98 - 0x0D38)
+// 0x0060 (0x0DA0 - 0x0D40)
 class ADunDefOgre : public ADunDefBoss
 {
 public:
-	struct FName                                       PoundGroundAnimation;                                     // 0x0D38(0x0008) (Edit)
-	struct FName                                       ShootPoisonAnimation;                                     // 0x0D40(0x0008) (Edit)
-	struct FName                                       MajorHurtAnimation;                                       // 0x0D48(0x0008) (Edit)
-	class ADunDefEmitterSpawnable*                     PoundImpactEffect;                                        // 0x0D50(0x0004) (Edit)
-	struct FVector                                     PoundImpactEffectOffset;                                  // 0x0D54(0x000C) (Edit)
-	struct FName                                       ProjectileSpawnSocketName;                                // 0x0D60(0x0008) (Edit)
-	struct FName                                       GloveEffectSocketName;                                    // 0x0D68(0x0008) (Edit)
-	class UParticleSystemComponent*                    PoisonGloveEffectComponent;                               // 0x0D70(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UMaterialInterface*                          InDangerHUDWaypointMat;                                   // 0x0D74(0x0004) (Edit)
-	float                                              IndicateDamageTime;                                       // 0x0D78(0x0004) (Edit)
-	class UMaterialInstanceConstant*                   EnemyHealthBarMaterialTemplate;                           // 0x0D7C(0x0004) (Edit)
-	TArray<float>                                      OgreJouseKnockbackMultipliers;                            // 0x0D80(0x000C) (Edit, NeedCtorLink)
-	class USoundCue*                                   LandedSound;                                              // 0x0D8C(0x0004) (Edit)
-	unsigned long                                      bWantsAllyHUD : 1;                                        // 0x0D90(0x0004) (Edit)
-	unsigned long                                      bNoAllowAllyHeal : 1;                                     // 0x0D90(0x0004) (Edit)
-	unsigned long                                      bPlayLandedSoundOnce : 1;                                 // 0x0D90(0x0004) (Edit)
-	class UMaterialInstanceConstant*                   MyUniqueHealthBarMIC;                                     // 0x0D94(0x0004) (Transient)
+	struct FName                                       PoundGroundAnimation;                                     // 0x0D40(0x0008) (Edit)
+	struct FName                                       ShootPoisonAnimation;                                     // 0x0D48(0x0008) (Edit)
+	struct FName                                       MajorHurtAnimation;                                       // 0x0D50(0x0008) (Edit)
+	class ADunDefEmitterSpawnable*                     PoundImpactEffect;                                        // 0x0D58(0x0004) (Edit)
+	struct FVector                                     PoundImpactEffectOffset;                                  // 0x0D5C(0x000C) (Edit)
+	struct FName                                       ProjectileSpawnSocketName;                                // 0x0D68(0x0008) (Edit)
+	struct FName                                       GloveEffectSocketName;                                    // 0x0D70(0x0008) (Edit)
+	class UParticleSystemComponent*                    PoisonGloveEffectComponent;                               // 0x0D78(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UMaterialInterface*                          InDangerHUDWaypointMat;                                   // 0x0D7C(0x0004) (Edit)
+	float                                              IndicateDamageTime;                                       // 0x0D80(0x0004) (Edit)
+	class UMaterialInstanceConstant*                   EnemyHealthBarMaterialTemplate;                           // 0x0D84(0x0004) (Edit)
+	TArray<float>                                      OgreJouseKnockbackMultipliers;                            // 0x0D88(0x000C) (Edit, NeedCtorLink)
+	class USoundCue*                                   LandedSound;                                              // 0x0D94(0x0004) (Edit)
+	unsigned long                                      bWantsAllyHUD : 1;                                        // 0x0D98(0x0004) (Edit)
+	unsigned long                                      bNoAllowAllyHeal : 1;                                     // 0x0D98(0x0004) (Edit)
+	unsigned long                                      bPlayLandedSoundOnce : 1;                                 // 0x0D98(0x0004) (Edit)
+	class UMaterialInstanceConstant*                   MyUniqueHealthBarMIC;                                     // 0x0D9C(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -16967,17 +17010,17 @@ public:
 
 
 // Class UDKGame.DunDefDarkElf
-// 0x003C (0x0D40 - 0x0D04)
+// 0x003C (0x0D48 - 0x0D0C)
 class ADunDefDarkElf : public ADunDefEnemy
 {
 public:
-	struct FName                                       ProjectileSpawnSocketName;                                // 0x0D04(0x0008) (Edit)
-	struct FName                                       ArrowAttachmentSocketName;                                // 0x0D0C(0x0008) (Edit)
-	class USkeletalMesh*                               ArrowMesh;                                                // 0x0D14(0x0004) (Edit)
-	struct FVector                                     ArrowMeshTranslationOffset;                               // 0x0D18(0x000C) (Edit)
-	struct FRotator                                    ArrowMeshRotationOffset;                                  // 0x0D24(0x000C) (Edit)
-	struct FVector                                     ArrowMeshScale;                                           // 0x0D30(0x000C) (Edit)
-	class USkeletalMeshComponent*                      ArrowMeshComponent;                                       // 0x0D3C(0x0004) (ExportObject, Transient, Component, EditInline)
+	struct FName                                       ProjectileSpawnSocketName;                                // 0x0D0C(0x0008) (Edit)
+	struct FName                                       ArrowAttachmentSocketName;                                // 0x0D14(0x0008) (Edit)
+	class USkeletalMesh*                               ArrowMesh;                                                // 0x0D1C(0x0004) (Edit)
+	struct FVector                                     ArrowMeshTranslationOffset;                               // 0x0D20(0x000C) (Edit)
+	struct FRotator                                    ArrowMeshRotationOffset;                                  // 0x0D2C(0x000C) (Edit)
+	struct FVector                                     ArrowMeshScale;                                           // 0x0D38(0x000C) (Edit)
+	class USkeletalMeshComponent*                      ArrowMeshComponent;                                       // 0x0D44(0x0004) (ExportObject, Transient, Component, EditInline)
 
 	static UClass* StaticClass()
 	{
@@ -17063,19 +17106,19 @@ public:
 
 
 // Class UDKGame.DunDefDarkElfMage
-// 0x0038 (0x0D78 - 0x0D40)
+// 0x0038 (0x0D80 - 0x0D48)
 class ADunDefDarkElfMage : public ADunDefDarkElf
 {
 public:
-	struct FName                                       SpawnAnimName;                                            // 0x0D40(0x0008) (Edit)
-	struct FName                                       HealAnimName;                                             // 0x0D48(0x0008) (Edit)
-	class ADunDefEmitterSpawnable*                     HealRadiusEffect;                                         // 0x0D50(0x0004) (Edit)
-	class UParticleSystem*                             HealEffectPawns;                                          // 0x0D54(0x0004) (Edit)
-	float                                              RadiusEffectDivisor;                                      // 0x0D58(0x0004) (Edit)
-	class UParticleSystemComponent*                    StaffParticleComponent;                                   // 0x0D5C(0x0004) (Edit, ExportObject, Component, EditInline)
-	struct FName                                       StaffEffectSocketName;                                    // 0x0D60(0x0008) (Edit)
-	int                                                StaffMaterialIndex;                                       // 0x0D68(0x0004) (Edit)
-	TArray<class UParticleSystem*>                     StaffDifficultyParticleFX;                                // 0x0D6C(0x000C) (Edit, NeedCtorLink)
+	struct FName                                       SpawnAnimName;                                            // 0x0D48(0x0008) (Edit)
+	struct FName                                       HealAnimName;                                             // 0x0D50(0x0008) (Edit)
+	class ADunDefEmitterSpawnable*                     HealRadiusEffect;                                         // 0x0D58(0x0004) (Edit)
+	class UParticleSystem*                             HealEffectPawns;                                          // 0x0D5C(0x0004) (Edit)
+	float                                              RadiusEffectDivisor;                                      // 0x0D60(0x0004) (Edit)
+	class UParticleSystemComponent*                    StaffParticleComponent;                                   // 0x0D64(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FName                                       StaffEffectSocketName;                                    // 0x0D68(0x0008) (Edit)
+	int                                                StaffMaterialIndex;                                       // 0x0D70(0x0004) (Edit)
+	TArray<class UParticleSystem*>                     StaffDifficultyParticleFX;                                // 0x0D74(0x000C) (Edit, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -17183,22 +17226,22 @@ public:
 
 
 // Class UDKGame.DunDefSkeleton
-// 0x0040 (0x0D44 - 0x0D04)
+// 0x0040 (0x0D4C - 0x0D0C)
 class ADunDefSkeleton : public ADunDefEnemy
 {
 public:
-	int                                                Lives;                                                    // 0x0D04(0x0004) (Edit)
-	float                                              ResurrectionTimer;                                        // 0x0D08(0x0004) (Edit)
-	struct FName                                       ResurrectionAnimName;                                     // 0x0D0C(0x0008) (Edit)
-	struct FName                                       MeleeSwingSocketAName;                                    // 0x0D14(0x0008) (Edit)
-	struct FName                                       MeleeSwingSocketBName;                                    // 0x0D1C(0x0008) (Edit)
-	class ADunDefEmitterSpawnable*                     DeathEmitterTemplate;                                     // 0x0D24(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     RezEmitterTemplate;                                       // 0x0D28(0x0004) (Edit)
-	class UParticleSystem*                             SpawnEffect;                                              // 0x0D2C(0x0004) (Edit)
-	class USoundCue*                                   SpawnSound;                                               // 0x0D30(0x0004) (Edit)
-	TArray<class UClass*>                              DeathDealingDmgTypes;                                     // 0x0D34(0x000C) (Edit, NeedCtorLink)
-	unsigned long                                      bTempDead : 1;                                            // 0x0D40(0x0004) (Net)
-	unsigned long                                      bResurrect : 1;                                           // 0x0D40(0x0004) (Net)
+	int                                                Lives;                                                    // 0x0D0C(0x0004) (Edit)
+	float                                              ResurrectionTimer;                                        // 0x0D10(0x0004) (Edit)
+	struct FName                                       ResurrectionAnimName;                                     // 0x0D14(0x0008) (Edit)
+	struct FName                                       MeleeSwingSocketAName;                                    // 0x0D1C(0x0008) (Edit)
+	struct FName                                       MeleeSwingSocketBName;                                    // 0x0D24(0x0008) (Edit)
+	class ADunDefEmitterSpawnable*                     DeathEmitterTemplate;                                     // 0x0D2C(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     RezEmitterTemplate;                                       // 0x0D30(0x0004) (Edit)
+	class UParticleSystem*                             SpawnEffect;                                              // 0x0D34(0x0004) (Edit)
+	class USoundCue*                                   SpawnSound;                                               // 0x0D38(0x0004) (Edit)
+	TArray<class UClass*>                              DeathDealingDmgTypes;                                     // 0x0D3C(0x000C) (Edit, NeedCtorLink)
+	unsigned long                                      bTempDead : 1;                                            // 0x0D48(0x0004) (Net)
+	unsigned long                                      bResurrect : 1;                                           // 0x0D48(0x0004) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -17233,30 +17276,30 @@ public:
 
 
 // Class UDKGame.DunDefDarkElfWarrior
-// 0x0080 (0x0D84 - 0x0D04)
+// 0x0080 (0x0D8C - 0x0D0C)
 class ADunDefDarkElfWarrior : public ADunDefEnemy
 {
 public:
-	float                                              DashSpeed;                                                // 0x0D04(0x0004) (Edit)
-	float                                              DashAccelRate;                                            // 0x0D08(0x0004) (Edit)
-	float                                              CrushedDamageInterval;                                    // 0x0D0C(0x0004) (Edit)
-	float                                              CrushedDamageMultiplier;                                  // 0x0D10(0x0004) (Edit)
-	struct FRotator                                    DashRotationRate;                                         // 0x0D14(0x000C) (Edit)
-	struct FName                                       DashAnimName;                                             // 0x0D20(0x0008) (Edit)
-	struct FName                                       DashLoopAnimName;                                         // 0x0D28(0x0008) (Edit)
-	struct FName                                       DashAttackAnimName;                                       // 0x0D30(0x0008) (Edit)
-	struct FName                                       MeleeSwingSocketAName;                                    // 0x0D38(0x0008) (Edit)
-	struct FName                                       MeleeSwingSocketBName;                                    // 0x0D40(0x0008) (Edit)
-	struct FName                                       LeapStartAnimName;                                        // 0x0D48(0x0008) (Edit)
-	struct FName                                       LeapLandAnimName;                                         // 0x0D50(0x0008) (Edit)
-	class ADunDefEmitterSpawnable*                     ShockwaveEffect;                                          // 0x0D58(0x0004) (Edit)
-	class USoundCue*                                   StartDashSound;                                           // 0x0D5C(0x0004) (Edit)
-	TArray<struct FName>                               UpperBodyCustomAnimNodeNames;                             // 0x0D60(0x000C) (Edit, NeedCtorLink)
-	struct FName                                       UpperBodyCustomAnimBlenderName;                           // 0x0D6C(0x0008) (Edit)
-	class UAnimNodeBlend*                              UpperBodyCustomAnimBlender;                               // 0x0D74(0x0004)
-	int                                                LastUpperBodyCustomAnimNodePlayIndex;                     // 0x0D78(0x0004)
-	float                                              LastCrushedDamageTime;                                    // 0x0D7C(0x0004) (Transient)
-	unsigned long                                      bLeaping : 1;                                             // 0x0D80(0x0004)
+	float                                              DashSpeed;                                                // 0x0D0C(0x0004) (Edit)
+	float                                              DashAccelRate;                                            // 0x0D10(0x0004) (Edit)
+	float                                              CrushedDamageInterval;                                    // 0x0D14(0x0004) (Edit)
+	float                                              CrushedDamageMultiplier;                                  // 0x0D18(0x0004) (Edit)
+	struct FRotator                                    DashRotationRate;                                         // 0x0D1C(0x000C) (Edit)
+	struct FName                                       DashAnimName;                                             // 0x0D28(0x0008) (Edit)
+	struct FName                                       DashLoopAnimName;                                         // 0x0D30(0x0008) (Edit)
+	struct FName                                       DashAttackAnimName;                                       // 0x0D38(0x0008) (Edit)
+	struct FName                                       MeleeSwingSocketAName;                                    // 0x0D40(0x0008) (Edit)
+	struct FName                                       MeleeSwingSocketBName;                                    // 0x0D48(0x0008) (Edit)
+	struct FName                                       LeapStartAnimName;                                        // 0x0D50(0x0008) (Edit)
+	struct FName                                       LeapLandAnimName;                                         // 0x0D58(0x0008) (Edit)
+	class ADunDefEmitterSpawnable*                     ShockwaveEffect;                                          // 0x0D60(0x0004) (Edit)
+	class USoundCue*                                   StartDashSound;                                           // 0x0D64(0x0004) (Edit)
+	TArray<struct FName>                               UpperBodyCustomAnimNodeNames;                             // 0x0D68(0x000C) (Edit, NeedCtorLink)
+	struct FName                                       UpperBodyCustomAnimBlenderName;                           // 0x0D74(0x0008) (Edit)
+	class UAnimNodeBlend*                              UpperBodyCustomAnimBlender;                               // 0x0D7C(0x0004)
+	int                                                LastUpperBodyCustomAnimNodePlayIndex;                     // 0x0D80(0x0004)
+	float                                              LastCrushedDamageTime;                                    // 0x0D84(0x0004) (Transient)
+	unsigned long                                      bLeaping : 1;                                             // 0x0D88(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -17401,27 +17444,27 @@ public:
 
 
 // Class UDKGame.DunDefDemon
-// 0x0078 (0x0DB0 - 0x0D38)
+// 0x0078 (0x0DB8 - 0x0D40)
 class ADunDefDemon : public ADunDefBoss
 {
 public:
-	struct FName                                       PoundGroundAnimation;                                     // 0x0D38(0x0008) (Edit)
-	struct FName                                       SummonFlameLineAnimation;                                 // 0x0D40(0x0008) (Edit)
-	struct FName                                       ShootFireballAnimation;                                   // 0x0D48(0x0008) (Edit)
-	struct FName                                       MajorHurtAnimation;                                       // 0x0D50(0x0008) (Edit)
-	struct FName                                       LandingAnimation;                                         // 0x0D58(0x0008) (Edit)
-	struct FName                                       TakeoffAnimation;                                         // 0x0D60(0x0008) (Edit)
-	struct FName                                       ShockedInAirAnimation;                                    // 0x0D68(0x0008) (Edit)
-	struct FName                                       ShockedOnGroundAnimation;                                 // 0x0D70(0x0008) (Edit)
-	struct FName                                       ShockedLandingAnimation;                                  // 0x0D78(0x0008) (Edit)
-	class ADunDefEmitterSpawnable*                     PoundImpactEffect;                                        // 0x0D80(0x0004) (Edit)
-	class UParticleSystemComponent*                    ShockedParticleEffect;                                    // 0x0D84(0x0004) (Edit, ExportObject, Component, EditInline)
-	struct FVector                                     PoundImpactEffectOffset;                                  // 0x0D88(0x000C) (Edit)
-	struct FName                                       ProjectileSpawnSocketName;                                // 0x0D94(0x0008) (Edit)
-	struct FName                                       DivingToLandAnimation;                                    // 0x0D9C(0x0008) (Edit)
-	class USoundCue*                                   ElectrocutedSound;                                        // 0x0DA4(0x0004) (Edit)
-	float                                              FlameLineAnimSpeed;                                       // 0x0DA8(0x0004) (Edit)
-	unsigned long                                      bIsShocked : 1;                                           // 0x0DAC(0x0004) (Net)
+	struct FName                                       PoundGroundAnimation;                                     // 0x0D40(0x0008) (Edit)
+	struct FName                                       SummonFlameLineAnimation;                                 // 0x0D48(0x0008) (Edit)
+	struct FName                                       ShootFireballAnimation;                                   // 0x0D50(0x0008) (Edit)
+	struct FName                                       MajorHurtAnimation;                                       // 0x0D58(0x0008) (Edit)
+	struct FName                                       LandingAnimation;                                         // 0x0D60(0x0008) (Edit)
+	struct FName                                       TakeoffAnimation;                                         // 0x0D68(0x0008) (Edit)
+	struct FName                                       ShockedInAirAnimation;                                    // 0x0D70(0x0008) (Edit)
+	struct FName                                       ShockedOnGroundAnimation;                                 // 0x0D78(0x0008) (Edit)
+	struct FName                                       ShockedLandingAnimation;                                  // 0x0D80(0x0008) (Edit)
+	class ADunDefEmitterSpawnable*                     PoundImpactEffect;                                        // 0x0D88(0x0004) (Edit)
+	class UParticleSystemComponent*                    ShockedParticleEffect;                                    // 0x0D8C(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FVector                                     PoundImpactEffectOffset;                                  // 0x0D90(0x000C) (Edit)
+	struct FName                                       ProjectileSpawnSocketName;                                // 0x0D9C(0x0008) (Edit)
+	struct FName                                       DivingToLandAnimation;                                    // 0x0DA4(0x0008) (Edit)
+	class USoundCue*                                   ElectrocutedSound;                                        // 0x0DAC(0x0004) (Edit)
+	float                                              FlameLineAnimSpeed;                                       // 0x0DB0(0x0004) (Edit)
+	unsigned long                                      bIsShocked : 1;                                           // 0x0DB4(0x0004) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -17565,48 +17608,48 @@ public:
 
 
 // Class UDKGame.DunDefDragonBoss
-// 0x00E0 (0x0E18 - 0x0D38)
+// 0x00E0 (0x0E20 - 0x0D40)
 class ADunDefDragonBoss : public ADunDefBoss
 {
 public:
-	struct FName                                       ProjectileSpawnSocketName;                                // 0x0D38(0x0008) (Edit)
-	struct FName                                       ShootingFireballAnimationLeft;                            // 0x0D40(0x0008) (Edit)
-	struct FName                                       ShootingFireballAnimationRight;                           // 0x0D48(0x0008) (Edit)
-	float                                              StrafingSpeed;                                            // 0x0D50(0x0004) (Edit)
-	float                                              MaxStrafingDistance;                                      // 0x0D54(0x0004) (Edit)
-	struct FName                                       HitByHarpoonAnimation;                                    // 0x0D58(0x0008) (Edit)
-	struct FName                                       BitingAnimation;                                          // 0x0D60(0x0008) (Edit)
-	struct FName                                       FlamethrowerAnimation;                                    // 0x0D68(0x0008) (Edit)
-	float                                              FaceToFaceInterpolationTime;                              // 0x0D70(0x0004) (Edit)
-	float                                              LookAtLocationInterpSpeed;                                // 0x0D74(0x0004) (Edit)
-	float                                              ShootFireballAnimSpeed;                                   // 0x0D78(0x0004) (Edit)
-	struct FVector                                     LookAtOffset;                                             // 0x0D7C(0x000C) (Edit)
-	struct FName                                       FlamethrowerSocketName;                                   // 0x0D88(0x0008) (Edit)
-	struct FName                                       LandedShootingFireballAnimation;                          // 0x0D90(0x0008) (Edit)
-	struct FName                                       LandingFinishAnimation;                                   // 0x0D98(0x0008) (Edit)
-	struct FName                                       LandingLetGoAnimation;                                    // 0x0DA0(0x0008) (Edit)
-	int                                                KilledByHeroClassType;                                    // 0x0DA8(0x0004) (Edit)
-	TArray<float>                                      AirSpeedMultipliers;                                      // 0x0DAC(0x000C) (Edit, NeedCtorLink)
-	unsigned long                                      bOnlyTargetableWhenFaceToFace : 1;                        // 0x0DB8(0x0004) (Edit)
-	unsigned long                                      bUseFallingBlender : 1;                                   // 0x0DB8(0x0004) (Net)
-	unsigned long                                      bIsStrafing : 1;                                          // 0x0DB8(0x0004) (Net)
-	unsigned long                                      StrafingRight : 1;                                        // 0x0DB8(0x0004)
-	unsigned long                                      StrafeSwitchedDirection : 1;                              // 0x0DB8(0x0004)
-	unsigned long                                      bUsingFaceToFaceBlender : 1;                              // 0x0DB8(0x0004) (Net)
-	unsigned long                                      IsInFaceToFaceInterp : 1;                                 // 0x0DB8(0x0004)
-	struct FVector                                     FlyingTargetingLocationOffset;                            // 0x0DBC(0x000C)
-	struct FVector                                     StrafingCenterPoint;                                      // 0x0DC8(0x000C)
-	struct FRotator                                    StrafeStartingRotation;                                   // 0x0DD4(0x000C)
-	struct FVector                                     FaceToFaceInterpStart;                                    // 0x0DE0(0x000C)
-	struct FVector                                     FaceToFaceInterpEnd;                                      // 0x0DEC(0x000C)
-	float                                              FaceToFaceInterpSpeed;                                    // 0x0DF8(0x0004)
-	class UAnimNodeBlend*                              FallingBlender;                                           // 0x0DFC(0x0004)
-	class UAnimNodeBlend*                              FaceToFaceBlender;                                        // 0x0E00(0x0004)
-	class USkelControlLookAt*                          LookAtController;                                         // 0x0E04(0x0004)
-	class USkelControlLookAt*                          AltLookAtController;                                      // 0x0E08(0x0004)
-	class USkelControlSingleBone*                      NeckPitchController;                                      // 0x0E0C(0x0004)
-	class USkelControlSingleBone*                      AltNeckPitchController;                                   // 0x0E10(0x0004)
-	class AActor*                                      MyLookAtTarget;                                           // 0x0E14(0x0004) (Net)
+	struct FName                                       ProjectileSpawnSocketName;                                // 0x0D40(0x0008) (Edit)
+	struct FName                                       ShootingFireballAnimationLeft;                            // 0x0D48(0x0008) (Edit)
+	struct FName                                       ShootingFireballAnimationRight;                           // 0x0D50(0x0008) (Edit)
+	float                                              StrafingSpeed;                                            // 0x0D58(0x0004) (Edit)
+	float                                              MaxStrafingDistance;                                      // 0x0D5C(0x0004) (Edit)
+	struct FName                                       HitByHarpoonAnimation;                                    // 0x0D60(0x0008) (Edit)
+	struct FName                                       BitingAnimation;                                          // 0x0D68(0x0008) (Edit)
+	struct FName                                       FlamethrowerAnimation;                                    // 0x0D70(0x0008) (Edit)
+	float                                              FaceToFaceInterpolationTime;                              // 0x0D78(0x0004) (Edit)
+	float                                              LookAtLocationInterpSpeed;                                // 0x0D7C(0x0004) (Edit)
+	float                                              ShootFireballAnimSpeed;                                   // 0x0D80(0x0004) (Edit)
+	struct FVector                                     LookAtOffset;                                             // 0x0D84(0x000C) (Edit)
+	struct FName                                       FlamethrowerSocketName;                                   // 0x0D90(0x0008) (Edit)
+	struct FName                                       LandedShootingFireballAnimation;                          // 0x0D98(0x0008) (Edit)
+	struct FName                                       LandingFinishAnimation;                                   // 0x0DA0(0x0008) (Edit)
+	struct FName                                       LandingLetGoAnimation;                                    // 0x0DA8(0x0008) (Edit)
+	int                                                KilledByHeroClassType;                                    // 0x0DB0(0x0004) (Edit)
+	TArray<float>                                      AirSpeedMultipliers;                                      // 0x0DB4(0x000C) (Edit, NeedCtorLink)
+	unsigned long                                      bOnlyTargetableWhenFaceToFace : 1;                        // 0x0DC0(0x0004) (Edit)
+	unsigned long                                      bUseFallingBlender : 1;                                   // 0x0DC0(0x0004) (Net)
+	unsigned long                                      bIsStrafing : 1;                                          // 0x0DC0(0x0004) (Net)
+	unsigned long                                      StrafingRight : 1;                                        // 0x0DC0(0x0004)
+	unsigned long                                      StrafeSwitchedDirection : 1;                              // 0x0DC0(0x0004)
+	unsigned long                                      bUsingFaceToFaceBlender : 1;                              // 0x0DC0(0x0004) (Net)
+	unsigned long                                      IsInFaceToFaceInterp : 1;                                 // 0x0DC0(0x0004)
+	struct FVector                                     FlyingTargetingLocationOffset;                            // 0x0DC4(0x000C)
+	struct FVector                                     StrafingCenterPoint;                                      // 0x0DD0(0x000C)
+	struct FRotator                                    StrafeStartingRotation;                                   // 0x0DDC(0x000C)
+	struct FVector                                     FaceToFaceInterpStart;                                    // 0x0DE8(0x000C)
+	struct FVector                                     FaceToFaceInterpEnd;                                      // 0x0DF4(0x000C)
+	float                                              FaceToFaceInterpSpeed;                                    // 0x0E00(0x0004)
+	class UAnimNodeBlend*                              FallingBlender;                                           // 0x0E04(0x0004)
+	class UAnimNodeBlend*                              FaceToFaceBlender;                                        // 0x0E08(0x0004)
+	class USkelControlLookAt*                          LookAtController;                                         // 0x0E0C(0x0004)
+	class USkelControlLookAt*                          AltLookAtController;                                      // 0x0E10(0x0004)
+	class USkelControlSingleBone*                      NeckPitchController;                                      // 0x0E14(0x0004)
+	class USkelControlSingleBone*                      AltNeckPitchController;                                   // 0x0E18(0x0004)
+	class AActor*                                      MyLookAtTarget;                                           // 0x0E1C(0x0004) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -18018,7 +18061,7 @@ public:
 
 
 // Class UDKGame.DunDefForestGolem
-// 0x0000 (0x0D98 - 0x0D98)
+// 0x0000 (0x0DA0 - 0x0DA0)
 class ADunDefForestGolem : public ADunDefOgre
 {
 public:
@@ -18066,11 +18109,11 @@ public:
 
 
 // Class UDKGame.DunDefGoblin
-// 0x0008 (0x0D0C - 0x0D04)
+// 0x0008 (0x0D14 - 0x0D0C)
 class ADunDefGoblin : public ADunDefEnemy
 {
 public:
-	struct FName                                       MeleeSwingSocketName;                                     // 0x0D04(0x0008) (Edit)
+	struct FName                                       MeleeSwingSocketName;                                     // 0x0D0C(0x0008) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -18116,40 +18159,40 @@ public:
 
 
 // Class UDKGame.DunDefGoblinMech
-// 0x008C (0x0DC4 - 0x0D38)
+// 0x008C (0x0DCC - 0x0D40)
 class ADunDefGoblinMech : public ADunDefBoss
 {
 public:
-	class UParticleSystemComponent*                    ExhaustEffectComponent;                                   // 0x0D38(0x0004) (Edit, ExportObject, Component, EditInline)
-	float                                              SuperHurtDamageMultiplier;                                // 0x0D3C(0x0004) (Edit)
-	float                                              ExhaustOnDuration;                                        // 0x0D40(0x0004) (Edit)
-	float                                              ExhaustOffInterval;                                       // 0x0D44(0x0004) (Edit)
-	float                                              MinimumAngleDotForSuperHit;                               // 0x0D48(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     SuperHurtEffectTemplate;                                  // 0x0D4C(0x0004) (Edit)
-	struct FName                                       ExhaustSocketName;                                        // 0x0D50(0x0008) (Edit)
-	struct FName                                       FireProjectileAnimName;                                   // 0x0D58(0x0008) (Edit)
-	struct FName                                       RocketSocketLeftName;                                     // 0x0D60(0x0008) (Edit)
-	struct FName                                       RocketSocketRightName;                                    // 0x0D68(0x0008) (Edit)
-	float                                              TurretInterpSpeed;                                        // 0x0D70(0x0004) (Edit)
-	struct FName                                       MajorHurtAnimation;                                       // 0x0D74(0x0008) (Edit)
-	class UParticleSystemComponent*                    MediumHealthEffectComp;                                   // 0x0D7C(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    LowHealthEffectComp;                                      // 0x0D80(0x0004) (Edit, ExportObject, Component, EditInline)
-	struct FName                                       MediumHealthEffectCompSocket;                             // 0x0D84(0x0008) (Edit)
-	struct FName                                       LowHealthEffectCompSocket;                                // 0x0D8C(0x0008) (Edit)
-	class UParticleSystemComponent*                    CigarSmokingEffectComp;                                   // 0x0D94(0x0004) (Edit, ExportObject, Component, EditInline)
-	struct FName                                       CigarSmokingEffectCompSocket;                             // 0x0D98(0x0008) (Edit)
-	class USoundCue*                                   FurnaseOpenSound;                                         // 0x0DA0(0x0004) (Edit)
-	class USoundCue*                                   FurnaceCloseSound;                                        // 0x0DA4(0x0004) (Edit)
-	class UAudioComponent*                             FurnaceLoopSound;                                         // 0x0DA8(0x0004) (Edit, ExportObject, Component, EditInline)
-	float                                              DamageFromTowersMultiplier;                               // 0x0DAC(0x0004) (Edit)
-	class USkelControlSingleBone*                      UpperBodyTwistControl;                                    // 0x0DB0(0x0004)
-	class USkelControlSingleBone*                      FurnaceBoneControl;                                       // 0x0DB4(0x0004)
-	class AActor*                                      UpperBodyFocus;                                           // 0x0DB8(0x0004) (Net)
-	class AActor*                                      TheLastDamageCauser;                                      // 0x0DBC(0x0004)
-	unsigned long                                      bIsExhaustOpen : 1;                                       // 0x0DC0(0x0004) (Net)
-	unsigned long                                      bLookAtTarget : 1;                                        // 0x0DC0(0x0004) (Net)
-	unsigned long                                      bEnableMediumHealthEffect : 1;                            // 0x0DC0(0x0004) (Net)
-	unsigned long                                      bEnableLowHealthEffect : 1;                               // 0x0DC0(0x0004) (Net)
+	class UParticleSystemComponent*                    ExhaustEffectComponent;                                   // 0x0D40(0x0004) (Edit, ExportObject, Component, EditInline)
+	float                                              SuperHurtDamageMultiplier;                                // 0x0D44(0x0004) (Edit)
+	float                                              ExhaustOnDuration;                                        // 0x0D48(0x0004) (Edit)
+	float                                              ExhaustOffInterval;                                       // 0x0D4C(0x0004) (Edit)
+	float                                              MinimumAngleDotForSuperHit;                               // 0x0D50(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     SuperHurtEffectTemplate;                                  // 0x0D54(0x0004) (Edit)
+	struct FName                                       ExhaustSocketName;                                        // 0x0D58(0x0008) (Edit)
+	struct FName                                       FireProjectileAnimName;                                   // 0x0D60(0x0008) (Edit)
+	struct FName                                       RocketSocketLeftName;                                     // 0x0D68(0x0008) (Edit)
+	struct FName                                       RocketSocketRightName;                                    // 0x0D70(0x0008) (Edit)
+	float                                              TurretInterpSpeed;                                        // 0x0D78(0x0004) (Edit)
+	struct FName                                       MajorHurtAnimation;                                       // 0x0D7C(0x0008) (Edit)
+	class UParticleSystemComponent*                    MediumHealthEffectComp;                                   // 0x0D84(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    LowHealthEffectComp;                                      // 0x0D88(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FName                                       MediumHealthEffectCompSocket;                             // 0x0D8C(0x0008) (Edit)
+	struct FName                                       LowHealthEffectCompSocket;                                // 0x0D94(0x0008) (Edit)
+	class UParticleSystemComponent*                    CigarSmokingEffectComp;                                   // 0x0D9C(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FName                                       CigarSmokingEffectCompSocket;                             // 0x0DA0(0x0008) (Edit)
+	class USoundCue*                                   FurnaseOpenSound;                                         // 0x0DA8(0x0004) (Edit)
+	class USoundCue*                                   FurnaceCloseSound;                                        // 0x0DAC(0x0004) (Edit)
+	class UAudioComponent*                             FurnaceLoopSound;                                         // 0x0DB0(0x0004) (Edit, ExportObject, Component, EditInline)
+	float                                              DamageFromTowersMultiplier;                               // 0x0DB4(0x0004) (Edit)
+	class USkelControlSingleBone*                      UpperBodyTwistControl;                                    // 0x0DB8(0x0004)
+	class USkelControlSingleBone*                      FurnaceBoneControl;                                       // 0x0DBC(0x0004)
+	class AActor*                                      UpperBodyFocus;                                           // 0x0DC0(0x0004) (Net)
+	class AActor*                                      TheLastDamageCauser;                                      // 0x0DC4(0x0004)
+	unsigned long                                      bIsExhaustOpen : 1;                                       // 0x0DC8(0x0004) (Net)
+	unsigned long                                      bLookAtTarget : 1;                                        // 0x0DC8(0x0004) (Net)
+	unsigned long                                      bEnableMediumHealthEffect : 1;                            // 0x0DC8(0x0004) (Net)
+	unsigned long                                      bEnableLowHealthEffect : 1;                               // 0x0DC8(0x0004) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -18333,24 +18376,24 @@ public:
 
 
 // Class UDKGame.DunDefKobold
-// 0x0038 (0x0D3C - 0x0D04)
+// 0x0038 (0x0D44 - 0x0D0C)
 class ADunDefKobold : public ADunDefEnemy
 {
 public:
-	unsigned long                                      bIsLightingFuse : 1;                                      // 0x0D04(0x0004)
-	unsigned long                                      bFuseLit : 1;                                             // 0x0D04(0x0004) (Net)
-	unsigned long                                      ImmediatelyKamikaze : 1;                                  // 0x0D04(0x0004) (Edit)
-	struct FName                                       LightFuseAnimName;                                        // 0x0D08(0x0008) (Edit)
-	class ADunDefEmitterSpawnable*                     ExplodeEffect;                                            // 0x0D10(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     InsaneExplodeEffect;                                      // 0x0D14(0x0004) (Edit)
-	class UParticleSystem*                             FuseEffectTemplate;                                       // 0x0D18(0x0004) (Edit)
-	struct FName                                       FuseEffectSocket;                                         // 0x0D1C(0x0008) (Edit)
-	float                                              KamikazeExplosionTimeout;                                 // 0x0D24(0x0004) (Edit)
-	float                                              KamikazeHealthThreshold;                                  // 0x0D28(0x0004) (Edit)
-	float                                              StopLightingFuseFailsafeDelay;                            // 0x0D2C(0x0004) (Edit)
-	class UAudioComponent*                             FuseLoopSound;                                            // 0x0D30(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UAudioComponent*                             ScreamLoopSound;                                          // 0x0D34(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    FuseEffect;                                               // 0x0D38(0x0004) (ExportObject, Component, EditInline)
+	unsigned long                                      bIsLightingFuse : 1;                                      // 0x0D0C(0x0004)
+	unsigned long                                      bFuseLit : 1;                                             // 0x0D0C(0x0004) (Net)
+	unsigned long                                      ImmediatelyKamikaze : 1;                                  // 0x0D0C(0x0004) (Edit)
+	struct FName                                       LightFuseAnimName;                                        // 0x0D10(0x0008) (Edit)
+	class ADunDefEmitterSpawnable*                     ExplodeEffect;                                            // 0x0D18(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     InsaneExplodeEffect;                                      // 0x0D1C(0x0004) (Edit)
+	class UParticleSystem*                             FuseEffectTemplate;                                       // 0x0D20(0x0004) (Edit)
+	struct FName                                       FuseEffectSocket;                                         // 0x0D24(0x0008) (Edit)
+	float                                              KamikazeExplosionTimeout;                                 // 0x0D2C(0x0004) (Edit)
+	float                                              KamikazeHealthThreshold;                                  // 0x0D30(0x0004) (Edit)
+	float                                              StopLightingFuseFailsafeDelay;                            // 0x0D34(0x0004) (Edit)
+	class UAudioComponent*                             FuseLoopSound;                                            // 0x0D38(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UAudioComponent*                             ScreamLoopSound;                                          // 0x0D3C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    FuseEffect;                                               // 0x0D40(0x0004) (ExportObject, Component, EditInline)
 
 	static UClass* StaticClass()
 	{
@@ -18662,7 +18705,7 @@ public:
 
 
 // Class UDKGame.DunDefOrc
-// 0x0000 (0x0D04 - 0x0D04)
+// 0x0000 (0x0D0C - 0x0D0C)
 class ADunDefOrc : public ADunDefEnemy
 {
 public:
@@ -18755,20 +18798,20 @@ public:
 
 
 // Class UDKGame.DunDefWyvern
-// 0x0034 (0x0D38 - 0x0D04)
+// 0x0034 (0x0D40 - 0x0D0C)
 class ADunDefWyvern : public ADunDefEnemy
 {
 public:
-	struct FName                                       RangedAttackAnimation;                                    // 0x0D04(0x0008)
-	unsigned long                                      bPlayedDeathAnim : 1;                                     // 0x0D0C(0x0004)
-	unsigned long                                      bPlayedFinalDeathAnim : 1;                                // 0x0D0C(0x0004) (Transient)
-	struct FName                                       ProjectileSpawnSocketName;                                // 0x0D10(0x0008) (Edit)
-	struct FName                                       MeleeSwingSocketName;                                     // 0x0D18(0x0008) (Edit)
-	struct FName                                       FinalDeathAnim;                                           // 0x0D20(0x0008) (Edit)
-	float                                              WyvernFallTimeout;                                        // 0x0D28(0x0004) (Edit)
-	float                                              AllowObstructionJumpAfterSpawnTime;                       // 0x0D2C(0x0004) (Edit)
-	float                                              WyvernObsJumpMinDistFromSpawnLocation;                    // 0x0D30(0x0004) (Edit)
-	int                                                wyvernNumber;                                             // 0x0D34(0x0004)
+	struct FName                                       RangedAttackAnimation;                                    // 0x0D0C(0x0008)
+	unsigned long                                      bPlayedDeathAnim : 1;                                     // 0x0D14(0x0004)
+	unsigned long                                      bPlayedFinalDeathAnim : 1;                                // 0x0D14(0x0004) (Transient)
+	struct FName                                       ProjectileSpawnSocketName;                                // 0x0D18(0x0008) (Edit)
+	struct FName                                       MeleeSwingSocketName;                                     // 0x0D20(0x0008) (Edit)
+	struct FName                                       FinalDeathAnim;                                           // 0x0D28(0x0008) (Edit)
+	float                                              WyvernFallTimeout;                                        // 0x0D30(0x0004) (Edit)
+	float                                              AllowObstructionJumpAfterSpawnTime;                       // 0x0D34(0x0004) (Edit)
+	float                                              WyvernObsJumpMinDistFromSpawnLocation;                    // 0x0D38(0x0004) (Edit)
+	int                                                wyvernNumber;                                             // 0x0D3C(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -18799,13 +18842,13 @@ public:
 
 
 // Class UDKGame.DunDefPhoenixMiniV2
-// 0x000C (0x0D44 - 0x0D38)
+// 0x000C (0x0D4C - 0x0D40)
 class ADunDefPhoenixMiniV2 : public ADunDefWyvern
 {
 public:
-	class ADunDefGasCloud*                             ExplodeEffect;                                            // 0x0D38(0x0004) (Edit)
-	float                                              LifespanBeforeExplosion;                                  // 0x0D3C(0x0004) (Edit)
-	class ADunDefPhoenixControllerV3*                  Phoenix;                                                  // 0x0D40(0x0004) (Transient)
+	class ADunDefGasCloud*                             ExplodeEffect;                                            // 0x0D40(0x0004) (Edit)
+	float                                              LifespanBeforeExplosion;                                  // 0x0D44(0x0004) (Edit)
+	class ADunDefPhoenixControllerV3*                  Phoenix;                                                  // 0x0D48(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -18823,57 +18866,57 @@ public:
 
 
 // Class UDKGame.DunDefPhoenixV3
-// 0x0160 (0x0E98 - 0x0D38)
+// 0x0160 (0x0EA0 - 0x0D40)
 class ADunDefPhoenixV3 : public ADunDefBoss
 {
 public:
-	struct FName                                       ProjectileSpawnSocketName;                                // 0x0D38(0x0008) (Edit)
-	struct FName                                       FlamethrowerSocketName;                                   // 0x0D40(0x0008) (Edit)
-	struct FName                                       DropSocketName;                                           // 0x0D48(0x0008) (Edit)
-	float                                              StrafingSpeed;                                            // 0x0D50(0x0004) (Edit)
-	float                                              MaxStrafingDistance;                                      // 0x0D54(0x0004) (Edit)
-	TArray<float>                                      AirSpeedMultipliers;                                      // 0x0D58(0x000C) (Edit, NeedCtorLink)
-	struct FName                                       DashLoopAnim;                                             // 0x0D64(0x0008) (Edit)
-	struct FName                                       DashStartAnim;                                            // 0x0D6C(0x0008) (Edit)
-	struct FName                                       DashEndAnim;                                              // 0x0D74(0x0008) (Edit)
-	struct FName                                       FlightMortarLoopAnim;                                     // 0x0D7C(0x0008) (Edit)
-	struct FName                                       FlightMortarStartAnim;                                    // 0x0D84(0x0008) (Edit)
-	struct FName                                       FlightMortarEndAnim;                                      // 0x0D8C(0x0008) (Edit)
-	struct FName                                       GlideBreathAnim;                                          // 0x0D94(0x0008) (Edit)
-	struct FName                                       GlideLoopAnim;                                            // 0x0D9C(0x0008) (Edit)
-	struct FName                                       GlideStartAnim;                                           // 0x0DA4(0x0008) (Edit)
-	struct FName                                       GlideEndAnim;                                             // 0x0DAC(0x0008) (Edit)
-	struct FName                                       FlightConeOfFireAnim;                                     // 0x0DB4(0x0008) (Edit)
-	struct FName                                       FlightDeathAnim;                                          // 0x0DBC(0x0008) (Edit)
-	struct FName                                       FlightEndAnim;                                            // 0x0DC4(0x0008) (Edit)
-	struct FName                                       FlightFlameburstAnim;                                     // 0x0DCC(0x0008) (Edit)
-	struct FName                                       FlightIdleAnim;                                           // 0x0DD4(0x0008) (Edit)
-	struct FName                                       FlightIgniteScaffoldingAnim;                              // 0x0DDC(0x0008) (Edit)
-	struct FName                                       FlightLandingAnim;                                        // 0x0DE4(0x0008) (Edit)
-	struct FName                                       FlightLoopAnim;                                           // 0x0DEC(0x0008) (Edit)
-	struct FName                                       FlightStartAnim;                                          // 0x0DF4(0x0008) (Edit)
-	struct FName                                       FlightStunnedAnim;                                        // 0x0DFC(0x0008) (Edit)
-	struct FName                                       FlightStrafeBackAnim;                                     // 0x0E04(0x0008) (Edit)
-	struct FName                                       FlightStrafeLeftAnim;                                     // 0x0E0C(0x0008) (Edit)
-	struct FName                                       FlightStrafeRightAnim;                                    // 0x0E14(0x0008) (Edit)
-	struct FName                                       DescendLavaLoopAnim;                                      // 0x0E1C(0x0008) (Edit)
-	struct FName                                       DescendLavaStartAnim;                                     // 0x0E24(0x0008) (Edit)
-	struct FName                                       EmergeLavaLoopAnim;                                       // 0x0E2C(0x0008) (Edit)
-	struct FName                                       EmergeLavaEndAnim;                                        // 0x0E34(0x0008) (Edit)
-	struct FName                                       GroundConeOfFireAnim;                                     // 0x0E3C(0x0008) (Edit)
-	struct FName                                       GroundFlameburstAnim;                                     // 0x0E44(0x0008) (Edit)
-	struct FName                                       GroundIgniteScaffoldingAnim;                              // 0x0E4C(0x0008) (Edit)
-	struct FName                                       GroundTakeOffAnim;                                        // 0x0E54(0x0008) (Edit)
-	struct FName                                       GroundMortarLoopAnim;                                     // 0x0E5C(0x0008) (Edit)
-	struct FName                                       GroundMortarStartAnim;                                    // 0x0E64(0x0008) (Edit)
-	struct FName                                       GroundMortarEndAnim;                                      // 0x0E6C(0x0008) (Edit)
-	class UAnimNodeBlend*                              LoopingBlender;                                           // 0x0E74(0x0004) (Transient)
-	class UAnimNodeSequence*                           LoopingAnimation;                                         // 0x0E78(0x0004) (Transient)
-	float                                              DashStartTime;                                            // 0x0E7C(0x0004) (Transient)
-	float                                              DashAirSpeed;                                             // 0x0E80(0x0004) (Transient)
-	struct FRotator                                    DashRot;                                                  // 0x0E84(0x000C) (Transient)
-	int                                                it;                                                       // 0x0E90(0x0004) (Transient)
-	class UPlayer*                                     aTarget;                                                  // 0x0E94(0x0004) (Transient)
+	struct FName                                       ProjectileSpawnSocketName;                                // 0x0D40(0x0008) (Edit)
+	struct FName                                       FlamethrowerSocketName;                                   // 0x0D48(0x0008) (Edit)
+	struct FName                                       DropSocketName;                                           // 0x0D50(0x0008) (Edit)
+	float                                              StrafingSpeed;                                            // 0x0D58(0x0004) (Edit)
+	float                                              MaxStrafingDistance;                                      // 0x0D5C(0x0004) (Edit)
+	TArray<float>                                      AirSpeedMultipliers;                                      // 0x0D60(0x000C) (Edit, NeedCtorLink)
+	struct FName                                       DashLoopAnim;                                             // 0x0D6C(0x0008) (Edit)
+	struct FName                                       DashStartAnim;                                            // 0x0D74(0x0008) (Edit)
+	struct FName                                       DashEndAnim;                                              // 0x0D7C(0x0008) (Edit)
+	struct FName                                       FlightMortarLoopAnim;                                     // 0x0D84(0x0008) (Edit)
+	struct FName                                       FlightMortarStartAnim;                                    // 0x0D8C(0x0008) (Edit)
+	struct FName                                       FlightMortarEndAnim;                                      // 0x0D94(0x0008) (Edit)
+	struct FName                                       GlideBreathAnim;                                          // 0x0D9C(0x0008) (Edit)
+	struct FName                                       GlideLoopAnim;                                            // 0x0DA4(0x0008) (Edit)
+	struct FName                                       GlideStartAnim;                                           // 0x0DAC(0x0008) (Edit)
+	struct FName                                       GlideEndAnim;                                             // 0x0DB4(0x0008) (Edit)
+	struct FName                                       FlightConeOfFireAnim;                                     // 0x0DBC(0x0008) (Edit)
+	struct FName                                       FlightDeathAnim;                                          // 0x0DC4(0x0008) (Edit)
+	struct FName                                       FlightEndAnim;                                            // 0x0DCC(0x0008) (Edit)
+	struct FName                                       FlightFlameburstAnim;                                     // 0x0DD4(0x0008) (Edit)
+	struct FName                                       FlightIdleAnim;                                           // 0x0DDC(0x0008) (Edit)
+	struct FName                                       FlightIgniteScaffoldingAnim;                              // 0x0DE4(0x0008) (Edit)
+	struct FName                                       FlightLandingAnim;                                        // 0x0DEC(0x0008) (Edit)
+	struct FName                                       FlightLoopAnim;                                           // 0x0DF4(0x0008) (Edit)
+	struct FName                                       FlightStartAnim;                                          // 0x0DFC(0x0008) (Edit)
+	struct FName                                       FlightStunnedAnim;                                        // 0x0E04(0x0008) (Edit)
+	struct FName                                       FlightStrafeBackAnim;                                     // 0x0E0C(0x0008) (Edit)
+	struct FName                                       FlightStrafeLeftAnim;                                     // 0x0E14(0x0008) (Edit)
+	struct FName                                       FlightStrafeRightAnim;                                    // 0x0E1C(0x0008) (Edit)
+	struct FName                                       DescendLavaLoopAnim;                                      // 0x0E24(0x0008) (Edit)
+	struct FName                                       DescendLavaStartAnim;                                     // 0x0E2C(0x0008) (Edit)
+	struct FName                                       EmergeLavaLoopAnim;                                       // 0x0E34(0x0008) (Edit)
+	struct FName                                       EmergeLavaEndAnim;                                        // 0x0E3C(0x0008) (Edit)
+	struct FName                                       GroundConeOfFireAnim;                                     // 0x0E44(0x0008) (Edit)
+	struct FName                                       GroundFlameburstAnim;                                     // 0x0E4C(0x0008) (Edit)
+	struct FName                                       GroundIgniteScaffoldingAnim;                              // 0x0E54(0x0008) (Edit)
+	struct FName                                       GroundTakeOffAnim;                                        // 0x0E5C(0x0008) (Edit)
+	struct FName                                       GroundMortarLoopAnim;                                     // 0x0E64(0x0008) (Edit)
+	struct FName                                       GroundMortarStartAnim;                                    // 0x0E6C(0x0008) (Edit)
+	struct FName                                       GroundMortarEndAnim;                                      // 0x0E74(0x0008) (Edit)
+	class UAnimNodeBlend*                              LoopingBlender;                                           // 0x0E7C(0x0004) (Transient)
+	class UAnimNodeSequence*                           LoopingAnimation;                                         // 0x0E80(0x0004) (Transient)
+	float                                              DashStartTime;                                            // 0x0E84(0x0004) (Transient)
+	float                                              DashAirSpeed;                                             // 0x0E88(0x0004) (Transient)
+	struct FRotator                                    DashRot;                                                  // 0x0E8C(0x000C) (Transient)
+	int                                                it;                                                       // 0x0E98(0x0004) (Transient)
+	class UPlayer*                                     aTarget;                                                  // 0x0E9C(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -19266,7 +19309,7 @@ public:
 
 
 // Class UDKGame.DunDefPlayerAbility_Recruit_HeroBoost
-// 0x0028 (0x0500 - 0x04D8)
+// 0x002C (0x0504 - 0x04D8)
 class ADunDefPlayerAbility_Recruit_HeroBoost : public ADunDefPlayerAbility_AreaOfEffect
 {
 public:
@@ -19277,9 +19320,10 @@ public:
 	float                                              GroundSpeedMultiplier;                                    // 0x04E8(0x0004) (Edit)
 	float                                              OwnerGroundSpeedMultiplier;                               // 0x04EC(0x0004) (Edit)
 	float                                              OwnerHeroStatGroundSpeedExponent;                         // 0x04F0(0x0004) (Edit)
-	float                                              OwnerDamageResistanceMultiplier;                          // 0x04F4(0x0004) (Edit)
-	float                                              OwnerHeroStatDamageResistanceExponent;                    // 0x04F8(0x0004) (Edit)
-	float                                              NightmareHealingMultiplier;                               // 0x04FC(0x0004) (Edit)
+	float                                              OwnerAdditionalDamageMultiplier;                          // 0x04F4(0x0004) (Edit)
+	float                                              OwnerDamageResistanceMultiplier;                          // 0x04F8(0x0004) (Edit)
+	float                                              OwnerHeroStatDamageResistanceExponent;                    // 0x04FC(0x0004) (Edit)
+	float                                              NightmareHealingMultiplier;                               // 0x0500(0x0004) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -20577,7 +20621,7 @@ public:
 
 
 // Class UDKGame.DunDefWeapon_MagicStaff
-// 0x012E (0x0618 - 0x04EA)
+// 0x0132 (0x061C - 0x04EA)
 class ADunDefWeapon_MagicStaff : public ADunDefWeapon
 {
 public:
@@ -20653,8 +20697,9 @@ public:
 	float                                              TimeFromLastFire;                                         // 0x05FC(0x0004)
 	float                                              LastFullChargeFireTime;                                   // 0x0600(0x0004)
 	float                                              CurrentKnockbackRange;                                    // 0x0604(0x0004)
-	TArray<TScriptInterface<class UDunDefTargetableInterface>> KnockbackVictims;                                         // 0x0608(0x000C) (NeedCtorLink)
-	float                                              MaximumKnockbackRange;                                    // 0x0614(0x0004) (Edit)
+	int                                                AbilityCooldownTime;                                      // 0x0608(0x0004)
+	TArray<TScriptInterface<class UDunDefTargetableInterface>> KnockbackVictims;                                         // 0x060C(0x000C) (NeedCtorLink)
+	float                                              MaximumKnockbackRange;                                    // 0x0618(0x0004) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -20771,6 +20816,57 @@ public:
 
 	void InitGameReplicationInfo();
 	void DoWaveSkipping(unsigned long bAllowArbritraryWaveSkipping);
+};
+
+
+// Class UDKGame.HeroEquipment_Consumable
+// 0x0010 (0x0A04 - 0x09F4)
+class UHeroEquipment_Consumable : public UHeroEquipment
+{
+public:
+	TEnumAsByte<EConsumableType>                       Type;                                                     // 0x09F4(0x0001) (Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x09F5(0x0003) MISSED OFFSET
+	TArray<TEnumAsByte<EEquipmentType>>                ValidEquipmentTypes;                                      // 0x09F8(0x000C) (Edit, NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.HeroEquipment_Consumable");
+		return ptr;
+	}
+
+
+	void AddRandomizeValues(float equipmentQuality, unsigned long doResetStatsToTemplate, unsigned long bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, unsigned long bIsForShop, unsigned long bAllowTranscendentGear);
+	unsigned long ValidateEquipmentType(TEnumAsByte<EEquipmentType> EqType);
+};
+
+
+// Class UDKGame.HeroEquipment_Rune
+// 0x002C (0x0A30 - 0x0A04)
+class UHeroEquipment_Rune : public UHeroEquipment_Consumable
+{
+public:
+	float                                              TransChance;                                              // 0x0A04(0x0004) (Edit)
+	float                                              SupremeChance;                                            // 0x0A08(0x0004) (Edit)
+	float                                              UltChance;                                                // 0x0A0C(0x0004) (Edit)
+	float                                              UltPlusChance;                                            // 0x0A10(0x0004) (Edit)
+	float                                              UltPlusPlusChance;                                        // 0x0A14(0x0004) (Edit)
+	class UStatObject_Equipment*                       MythEnchantTier;                                          // 0x0A18(0x0004) (Edit)
+	class UStatObject_Equipment*                       TransEnchantTier;                                         // 0x0A1C(0x0004) (Edit)
+	class UStatObject_Equipment*                       SupEnchantTier;                                           // 0x0A20(0x0004) (Edit)
+	class UStatObject_Equipment*                       UltEnchantTier;                                           // 0x0A24(0x0004) (Edit)
+	class UStatObject_Equipment*                       UltPlusEnchantTier;                                       // 0x0A28(0x0004) (Edit)
+	class UStatObject_Equipment*                       UltPlusPlusEnchantTier;                                   // 0x0A2C(0x0004) (Edit)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.HeroEquipment_Rune");
+		return ptr;
+	}
+
+
+	int GetRuneEnchantTier();
+	class UStatObject_Equipment* GetRuneEnchantObject();
+	void AddRandomizeValues(float equipmentQuality, unsigned long doResetStatsToTemplate, unsigned long bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, unsigned long bIsForShop, unsigned long bAllowTranscendentGear);
 };
 
 
@@ -22510,7 +22606,7 @@ public:
 
 
 // Class UDKGame.UIScriptWidget_EquipmentIconButton
-// 0x01CC (0x07E4 - 0x0618)
+// 0x01E0 (0x07F8 - 0x0618)
 class UUIScriptWidget_EquipmentIconButton : public UUIButton_DataListEntry
 {
 public:
@@ -22547,61 +22643,63 @@ public:
 	TEnumAsByte<EEquipmentType>                        MyEquipmentType;                                          // 0x0668(0x0001) (Edit)
 	unsigned char                                      UnknownData00[0x3];                                       // 0x0669(0x0003) MISSED OFFSET
 	struct FColor                                      EquipmentWorthTextColor;                                  // 0x066C(0x0004) (Edit)
-	float                                              EquipmentWorthTextScale;                                  // 0x0670(0x0004) (Edit)
-	float                                              EquipmentWorthTextOffsetX;                                // 0x0674(0x0004) (Edit)
-	float                                              EquipmentWorthTextOffsetY;                                // 0x0678(0x0004) (Edit)
-	struct FLinearColor                                EquipmentWorthTextGradientColor;                          // 0x067C(0x0010) (Edit)
-	struct FLinearColor                                DenialTextLevelGradientColor;                             // 0x068C(0x0010) (Edit)
-	struct FLinearColor                                DenialTextClassGradientColor;                             // 0x069C(0x0010) (Edit)
-	struct FColor                                      DenialLevelSelectedTextColor;                             // 0x06AC(0x0004) (Edit)
-	struct FColor                                      DenialLevelTextColor;                                     // 0x06B0(0x0004) (Edit)
-	struct FColor                                      DenialClassSelectedTextColor;                             // 0x06B4(0x0004) (Edit)
-	struct FColor                                      DenialClassTextColor;                                     // 0x06B8(0x0004) (Edit)
-	class UUIPrefab*                                   ToolTipOverlayPrefab;                                     // 0x06BC(0x0004) (Edit)
-	class USurface*                                    FullEquipmentSetOverlay;                                  // 0x06C0(0x0004) (Edit)
-	class USurface*                                    LockedOverlay;                                            // 0x06C4(0x0004) (Edit)
-	class USurface*                                    TradeOverlay;                                             // 0x06C8(0x0004) (Edit)
-	class USurface*                                    ActiveFolderOverlay;                                      // 0x06CC(0x0004) (Edit)
-	float                                              LockedOverlaySizeX;                                       // 0x06D0(0x0004) (Edit)
-	float                                              LockedOverlaySizeY;                                       // 0x06D4(0x0004) (Edit)
-	float                                              LockedOverlayOffsetX;                                     // 0x06D8(0x0004) (Edit)
-	float                                              LockedOverlayOffsetY;                                     // 0x06DC(0x0004) (Edit)
-	float                                              TradeOverlaySizeX;                                        // 0x06E0(0x0004) (Edit)
-	float                                              TradeOverlaySizeY;                                        // 0x06E4(0x0004) (Edit)
-	float                                              TradeOverlayOffsetX;                                      // 0x06E8(0x0004) (Edit)
-	float                                              TradeOverlayOffsetY;                                      // 0x06EC(0x0004) (Edit)
-	float                                              textBoxPaddingX;                                          // 0x06F0(0x0004) (Edit)
-	float                                              textBoxPaddingY;                                          // 0x06F4(0x0004) (Edit)
-	float                                              FullEquipmentSetOverlaySizeX;                             // 0x06F8(0x0004) (Edit)
-	float                                              FullEquipmentSetOverlaySizeY;                             // 0x06FC(0x0004) (Edit)
-	float                                              FullEquipmentSetOverlayOffsetX;                           // 0x0700(0x0004) (Edit)
-	float                                              FullEquipmentSetOverlayOffsetY;                           // 0x0704(0x0004) (Edit)
-	float                                              ComparisonToolTipFocusTime;                               // 0x0708(0x0004) (Edit)
-	struct FVector                                     ToolTipScale;                                             // 0x070C(0x000C) (Edit)
-	struct FVector                                     ToolTipTranslationOffset;                                 // 0x0718(0x000C) (Edit)
-	struct FVector                                     ComparisonToolTipTranslationOffset;                       // 0x0724(0x000C) (Edit)
-	TArray<class USurface*>                            QCIcons;                                                  // 0x0730(0x000C) (Edit, NeedCtorLink)
-	float                                              QCIconOffsetX;                                            // 0x073C(0x0004) (Edit)
-	float                                              QCIconOffsetY;                                            // 0x0740(0x0004) (Edit)
-	float                                              QCIconSize;                                               // 0x0744(0x0004) (Edit)
-	class USurface*                                    DefaultFolderTexture;                                     // 0x0748(0x0004) (Edit)
-	class USoundCue*                                   NavigateToFolderSound;                                    // 0x074C(0x0004) (Edit)
-	class UDunDefHero*                                 myHero;                                                   // 0x0750(0x0004)
-	class UUIDataContainer_Equipment*                  MyDataContainer;                                          // 0x0754(0x0004)
-	float                                              LastFocusedTime;                                          // 0x0758(0x0004)
-	int                                                itemsInFolder;                                            // 0x075C(0x0004) (Transient)
-	class UMaterialInstanceConstant*                   QualityOutline;                                           // 0x0760(0x0004) (Edit)
-	struct FLinearColor                                QualityLinearColor;                                       // 0x0764(0x0010) (Edit)
-	float                                              QualityOutlineSizeX;                                      // 0x0774(0x0004) (Edit)
-	float                                              QualityOutlineSizeY;                                      // 0x0778(0x0004) (Edit)
-	float                                              QualityOutlineOffsetX;                                    // 0x077C(0x0004) (Edit)
-	float                                              QualityOutlineOffsetY;                                    // 0x0780(0x0004) (Edit)
-	struct FLinearColor                                MythicalOutlineLinearColor;                               // 0x0784(0x0010) (Edit, Const)
-	struct FLinearColor                                TranscendentOutlineLinearColor;                           // 0x0794(0x0010) (Edit, Const)
-	struct FLinearColor                                SupremeOutlineLinearColor;                                // 0x07A4(0x0010) (Edit, Const)
-	struct FLinearColor                                UltimateOutlineLinearColor;                               // 0x07B4(0x0010) (Edit, Const)
-	struct FLinearColor                                UltimatePlusOutlineLinearColor;                           // 0x07C4(0x0010) (Edit, Const)
-	struct FLinearColor                                UltimatePlusPlusOutlineLinearColor;                       // 0x07D4(0x0010) (Edit, Const)
+	struct FColor                                      EquipmentStackSizeTextColor;                              // 0x0670(0x0004) (Edit)
+	float                                              EquipmentWorthTextScale;                                  // 0x0674(0x0004) (Edit)
+	float                                              EquipmentWorthTextOffsetX;                                // 0x0678(0x0004) (Edit)
+	float                                              EquipmentWorthTextOffsetY;                                // 0x067C(0x0004) (Edit)
+	struct FLinearColor                                EquipmentWorthTextGradientColor;                          // 0x0680(0x0010) (Edit)
+	struct FLinearColor                                DenialTextLevelGradientColor;                             // 0x0690(0x0010) (Edit)
+	struct FLinearColor                                DenialTextClassGradientColor;                             // 0x06A0(0x0010) (Edit)
+	struct FLinearColor                                EquipmentStackSizeTextGradientColor;                      // 0x06B0(0x0010) (Edit)
+	struct FColor                                      DenialLevelSelectedTextColor;                             // 0x06C0(0x0004) (Edit)
+	struct FColor                                      DenialLevelTextColor;                                     // 0x06C4(0x0004) (Edit)
+	struct FColor                                      DenialClassSelectedTextColor;                             // 0x06C8(0x0004) (Edit)
+	struct FColor                                      DenialClassTextColor;                                     // 0x06CC(0x0004) (Edit)
+	class UUIPrefab*                                   ToolTipOverlayPrefab;                                     // 0x06D0(0x0004) (Edit)
+	class USurface*                                    FullEquipmentSetOverlay;                                  // 0x06D4(0x0004) (Edit)
+	class USurface*                                    LockedOverlay;                                            // 0x06D8(0x0004) (Edit)
+	class USurface*                                    TradeOverlay;                                             // 0x06DC(0x0004) (Edit)
+	class USurface*                                    ActiveFolderOverlay;                                      // 0x06E0(0x0004) (Edit)
+	float                                              LockedOverlaySizeX;                                       // 0x06E4(0x0004) (Edit)
+	float                                              LockedOverlaySizeY;                                       // 0x06E8(0x0004) (Edit)
+	float                                              LockedOverlayOffsetX;                                     // 0x06EC(0x0004) (Edit)
+	float                                              LockedOverlayOffsetY;                                     // 0x06F0(0x0004) (Edit)
+	float                                              TradeOverlaySizeX;                                        // 0x06F4(0x0004) (Edit)
+	float                                              TradeOverlaySizeY;                                        // 0x06F8(0x0004) (Edit)
+	float                                              TradeOverlayOffsetX;                                      // 0x06FC(0x0004) (Edit)
+	float                                              TradeOverlayOffsetY;                                      // 0x0700(0x0004) (Edit)
+	float                                              textBoxPaddingX;                                          // 0x0704(0x0004) (Edit)
+	float                                              textBoxPaddingY;                                          // 0x0708(0x0004) (Edit)
+	float                                              FullEquipmentSetOverlaySizeX;                             // 0x070C(0x0004) (Edit)
+	float                                              FullEquipmentSetOverlaySizeY;                             // 0x0710(0x0004) (Edit)
+	float                                              FullEquipmentSetOverlayOffsetX;                           // 0x0714(0x0004) (Edit)
+	float                                              FullEquipmentSetOverlayOffsetY;                           // 0x0718(0x0004) (Edit)
+	float                                              ComparisonToolTipFocusTime;                               // 0x071C(0x0004) (Edit)
+	struct FVector                                     ToolTipScale;                                             // 0x0720(0x000C) (Edit)
+	struct FVector                                     ToolTipTranslationOffset;                                 // 0x072C(0x000C) (Edit)
+	struct FVector                                     ComparisonToolTipTranslationOffset;                       // 0x0738(0x000C) (Edit)
+	TArray<class USurface*>                            QCIcons;                                                  // 0x0744(0x000C) (Edit, NeedCtorLink)
+	float                                              QCIconOffsetX;                                            // 0x0750(0x0004) (Edit)
+	float                                              QCIconOffsetY;                                            // 0x0754(0x0004) (Edit)
+	float                                              QCIconSize;                                               // 0x0758(0x0004) (Edit)
+	class USurface*                                    DefaultFolderTexture;                                     // 0x075C(0x0004) (Edit)
+	class USoundCue*                                   NavigateToFolderSound;                                    // 0x0760(0x0004) (Edit)
+	class UDunDefHero*                                 myHero;                                                   // 0x0764(0x0004)
+	class UUIDataContainer_Equipment*                  MyDataContainer;                                          // 0x0768(0x0004)
+	float                                              LastFocusedTime;                                          // 0x076C(0x0004)
+	int                                                itemsInFolder;                                            // 0x0770(0x0004) (Transient)
+	class UMaterialInstanceConstant*                   QualityOutline;                                           // 0x0774(0x0004) (Edit)
+	struct FLinearColor                                QualityLinearColor;                                       // 0x0778(0x0010) (Edit)
+	float                                              QualityOutlineSizeX;                                      // 0x0788(0x0004) (Edit)
+	float                                              QualityOutlineSizeY;                                      // 0x078C(0x0004) (Edit)
+	float                                              QualityOutlineOffsetX;                                    // 0x0790(0x0004) (Edit)
+	float                                              QualityOutlineOffsetY;                                    // 0x0794(0x0004) (Edit)
+	struct FLinearColor                                MythicalOutlineLinearColor;                               // 0x0798(0x0010) (Edit, Const)
+	struct FLinearColor                                TranscendentOutlineLinearColor;                           // 0x07A8(0x0010) (Edit, Const)
+	struct FLinearColor                                SupremeOutlineLinearColor;                                // 0x07B8(0x0010) (Edit, Const)
+	struct FLinearColor                                UltimateOutlineLinearColor;                               // 0x07C8(0x0010) (Edit, Const)
+	struct FLinearColor                                UltimatePlusOutlineLinearColor;                           // 0x07D8(0x0010) (Edit, Const)
+	struct FLinearColor                                UltimatePlusPlusOutlineLinearColor;                       // 0x07E8(0x0010) (Edit, Const)
 
 	static UClass* StaticClass()
 	{
@@ -22908,335 +23006,355 @@ public:
 
 // Class UDKGame.UI_SearchFilters
 // 0x00F8 (0x0734 - 0x063C)
-class UUI_SearchFilters : public UDunDefUIScene {
+class UUI_SearchFilters : public UDunDefUIScene
+{
 public:
-  class UUIPanel_DataList *CampaignMapDataList;         // 0x063C(0x0004) (Edit)
-  class UUIPanel_DataList *ChallengeMapDataList;        // 0x0640(0x0004) (Edit)
-  class UUICheckBox_Scripted *CampaignsCheckbox;        // 0x0644(0x0004) (Edit)
-  class UUICheckBox_Scripted *ChallengesCheckbox;       // 0x0648(0x0004) (Edit)
-  class UUICheckBox_Scripted *EasyCheckbox;             // 0x064C(0x0004) (Edit)
-  class UUICheckBox_Scripted *MediumCheckbox;           // 0x0650(0x0004) (Edit)
-  class UUICheckBox_Scripted *HardCheckbox;             // 0x0654(0x0004) (Edit)
-  class UUICheckBox_Scripted *InsaneCheckbox;           // 0x0658(0x0004) (Edit)
-  class UUICheckBox_Scripted *NightmareCheckbox;        // 0x065C(0x0004) (Edit)
-  class UUICheckBox_Scripted *RuthlessCheckbox;         // 0x0660(0x0004) (Edit)
-  class UUIScriptWidget_ToggleButton *BuildOn;          // 0x0664(0x0004) (Edit)
-  class UUIScriptWidget_ToggleButton *BuildOff;         // 0x0668(0x0004) (Edit)
-  class UUIScriptWidget_ToggleButton *BuildAny;         // 0x066C(0x0004) (Edit)
-  class UUIScriptWidget_ToggleButton *SurvivalOn;       // 0x0670(0x0004) (Edit)
-  class UUIScriptWidget_ToggleButton *SurvivalOff;      // 0x0674(0x0004) (Edit)
-  class UUIScriptWidget_ToggleButton *SurvivalAny;      // 0x0678(0x0004) (Edit)
-  class UUIScriptWidget_ToggleButton *StrategyOn;       // 0x067C(0x0004) (Edit)
-  class UUIScriptWidget_ToggleButton *StrategyOff;      // 0x0680(0x0004) (Edit)
-  class UUIScriptWidget_ToggleButton *StrategyAny;      // 0x0684(0x0004) (Edit)
-  class UUIButton *ButtonCycleBuild;                    // 0x0688(0x0004) (Edit)
-  class UUIButton *ButtonCycleSurvival;                 // 0x068C(0x0004) (Edit)
-  class UUIButton *ButtonCycleStrategy;                 // 0x0690(0x0004) (Edit)
-  class UUICheckBox_Scripted *filterHostLevel;          // 0x0694(0x0004) (Edit)
-  class UUIPanel *HostLevelContainer;                   // 0x0698(0x0004) (Edit)
-  class UUINumericOptionList *FilterHostLevelStartList; // 0x069C(0x0004) (Edit)
-  class UUINumericOptionList *FilterHostLevelEndList;   // 0x06A0(0x0004) (Edit)
-  class UUILabel *HeroClassLabel;                       // 0x06A4(0x0004) (Edit)
-  class UUIScriptWidget_Button *HeroClassPrev;          // 0x06A8(0x0004) (Edit)
-  class UUIScriptWidget_Button *HeroClassNext;          // 0x06AC(0x0004) (Edit)
-  class UUIPanel *OptionsPanel1;                        // 0x06B0(0x0004) (Edit)
-  class UUIPanel *OptionsPanel2;                        // 0x06B4(0x0004) (Edit)
-  class UUIScriptWidget_Button *MoreOptionsButton;      // 0x06B8(0x0004) (Edit)
-  struct FString MSG_OneDifficultyRequiredTitle;        // 0x06BC(0x000C) (Edit,
-                                                 // Localized, NeedCtorLink)
-  struct FString
-      MSG_OneDifficultyRequiredDescription; // 0x06C8(0x000C) (Edit, Localized,
-                                            // NeedCtorLink)
-  struct FString AnyString; // 0x06D4(0x000C) (Edit, Localized, NeedCtorLink)
-  class UUIScriptWidget_Button *AcceptButton;  // 0x06E0(0x0004) (Edit)
-  class UUIScriptWidget_Button *CancelButton;  // 0x06E4(0x0004) (Edit)
-  class UUI_NetworkMultiplayer *MultiplayerUI; // 0x06E8(0x0004) (Transient)
-  unsigned long readyForFilterInit : 1;        // 0x06EC(0x0004) (Transient)
-  unsigned long switchOptions : 1;             // 0x06EC(0x0004)
-  class UUIImage *survivalContainer;           // 0x06F0(0x0004) (Edit)
-  class UUIImage *buildContainer;              // 0x06F4(0x0004) (Edit)
-  class UUIImage *strategyContainer;           // 0x06F8(0x0004) (Edit)
-  unsigned char savedSurvivalValue;            // 0x06FC(0x0001) (Transient)
-  unsigned char savedBuildValue;               // 0x06FD(0x0001) (Transient)
-  unsigned char savedStrategyValue;            // 0x06FE(0x0001) (Transient)
-  unsigned char UnknownData00[0x1];            // 0x06FF(0x0001) MISSED OFFSET
-  struct FSearchFilterSettings
-      originalSettings; // 0x0700(0x0024) (Transient, NeedCtorLink)
-  TArray<struct UUI_SearchFilters_FHeroClassInfo>
-      heroClasses;            // 0x0724(0x000C) (NeedCtorLink)
-  int selectedHeroClassIndex; // 0x0730(0x0004)
+	class UUIPanel_DataList*                           CampaignMapDataList;                                      // 0x063C(0x0004) (Edit)
+	class UUIPanel_DataList*                           ChallengeMapDataList;                                     // 0x0640(0x0004) (Edit)
+	class UUICheckBox_Scripted*                        CampaignsCheckbox;                                        // 0x0644(0x0004) (Edit)
+	class UUICheckBox_Scripted*                        ChallengesCheckbox;                                       // 0x0648(0x0004) (Edit)
+	class UUICheckBox_Scripted*                        EasyCheckbox;                                             // 0x064C(0x0004) (Edit)
+	class UUICheckBox_Scripted*                        MediumCheckbox;                                           // 0x0650(0x0004) (Edit)
+	class UUICheckBox_Scripted*                        HardCheckbox;                                             // 0x0654(0x0004) (Edit)
+	class UUICheckBox_Scripted*                        InsaneCheckbox;                                           // 0x0658(0x0004) (Edit)
+	class UUICheckBox_Scripted*                        NightmareCheckbox;                                        // 0x065C(0x0004) (Edit)
+	class UUICheckBox_Scripted*                        RuthlessCheckbox;                                         // 0x0660(0x0004) (Edit)
+	class UUIScriptWidget_ToggleButton*                BuildOn;                                                  // 0x0664(0x0004) (Edit)
+	class UUIScriptWidget_ToggleButton*                BuildOff;                                                 // 0x0668(0x0004) (Edit)
+	class UUIScriptWidget_ToggleButton*                BuildAny;                                                 // 0x066C(0x0004) (Edit)
+	class UUIScriptWidget_ToggleButton*                SurvivalOn;                                               // 0x0670(0x0004) (Edit)
+	class UUIScriptWidget_ToggleButton*                SurvivalOff;                                              // 0x0674(0x0004) (Edit)
+	class UUIScriptWidget_ToggleButton*                SurvivalAny;                                              // 0x0678(0x0004) (Edit)
+	class UUIScriptWidget_ToggleButton*                StrategyOn;                                               // 0x067C(0x0004) (Edit)
+	class UUIScriptWidget_ToggleButton*                StrategyOff;                                              // 0x0680(0x0004) (Edit)
+	class UUIScriptWidget_ToggleButton*                StrategyAny;                                              // 0x0684(0x0004) (Edit)
+	class UUIButton*                                   ButtonCycleBuild;                                         // 0x0688(0x0004) (Edit)
+	class UUIButton*                                   ButtonCycleSurvival;                                      // 0x068C(0x0004) (Edit)
+	class UUIButton*                                   ButtonCycleStrategy;                                      // 0x0690(0x0004) (Edit)
+	class UUICheckBox_Scripted*                        filterHostLevel;                                          // 0x0694(0x0004) (Edit)
+	class UUIPanel*                                    HostLevelContainer;                                       // 0x0698(0x0004) (Edit)
+	class UUINumericOptionList*                        FilterHostLevelStartList;                                 // 0x069C(0x0004) (Edit)
+	class UUINumericOptionList*                        FilterHostLevelEndList;                                   // 0x06A0(0x0004) (Edit)
+	class UUILabel*                                    HeroClassLabel;                                           // 0x06A4(0x0004) (Edit)
+	class UUIScriptWidget_Button*                      HeroClassPrev;                                            // 0x06A8(0x0004) (Edit)
+	class UUIScriptWidget_Button*                      HeroClassNext;                                            // 0x06AC(0x0004) (Edit)
+	class UUIPanel*                                    OptionsPanel1;                                            // 0x06B0(0x0004) (Edit)
+	class UUIPanel*                                    OptionsPanel2;                                            // 0x06B4(0x0004) (Edit)
+	class UUIScriptWidget_Button*                      MoreOptionsButton;                                        // 0x06B8(0x0004) (Edit)
+	struct FString                                     MSG_OneDifficultyRequiredTitle;                           // 0x06BC(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     MSG_OneDifficultyRequiredDescription;                     // 0x06C8(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     AnyString;                                                // 0x06D4(0x000C) (Edit, Localized, NeedCtorLink)
+	class UUIScriptWidget_Button*                      AcceptButton;                                             // 0x06E0(0x0004) (Edit)
+	class UUIScriptWidget_Button*                      CancelButton;                                             // 0x06E4(0x0004) (Edit)
+	class UUI_NetworkMultiplayer*                      MultiplayerUI;                                            // 0x06E8(0x0004) (Transient)
+	unsigned long                                      readyForFilterInit : 1;                                   // 0x06EC(0x0004) (Transient)
+	unsigned long                                      switchOptions : 1;                                        // 0x06EC(0x0004)
+	class UUIImage*                                    survivalContainer;                                        // 0x06F0(0x0004) (Edit)
+	class UUIImage*                                    buildContainer;                                           // 0x06F4(0x0004) (Edit)
+	class UUIImage*                                    strategyContainer;                                        // 0x06F8(0x0004) (Edit)
+	unsigned char                                      savedSurvivalValue;                                       // 0x06FC(0x0001) (Transient)
+	unsigned char                                      savedBuildValue;                                          // 0x06FD(0x0001) (Transient)
+	unsigned char                                      savedStrategyValue;                                       // 0x06FE(0x0001) (Transient)
+	unsigned char                                      UnknownData00[0x1];                                       // 0x06FF(0x0001) MISSED OFFSET
+	struct FSearchFilterSettings                       originalSettings;                                         // 0x0700(0x0024) (Transient, NeedCtorLink)
+	TArray<struct UUI_SearchFilters_FHeroClassInfo>    heroClasses;                                              // 0x0724(0x000C) (NeedCtorLink)
+	int                                                selectedHeroClassIndex;                                   // 0x0730(0x0004)
 
-  static UClass *StaticClass() {
-    static auto ptr = UObject::FindClass("Class UDKGame.UI_SearchFilters");
-    return ptr;
-  }
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.UI_SearchFilters");
+		return ptr;
+	}
 
-  unsigned long OnReceivedInputKey(struct FInputEventParameters *EventParms);
-  unsigned long IsGamepadOwned();
-  unsigned long IsKeyboardOwned();
-  void RestoreRadialValues();
-  void SaveRadialValues();
-  void Update(float DeltaTime);
-  unsigned long HasCampaignMissionsSelected();
-  void CheckDifficultyChange(class UUICheckBox_Scripted *Widget);
-  void SwitchOptionsPanel();
-  unsigned long NotifyWidgetClicked(class UUIObject *Widget);
-  void SearchFiltersSelectionChanged(class UUIObject *Widget,
-                                     unsigned long bFromMouseClick);
-  void ChangeAllDataListSelectionEntries(class UUICheckBox_Scripted *ParentBox,
-                                         class UUIPanel_DataList *DataList,
-                                         unsigned long bSelect,
-                                         unsigned long bOnlyAffectTop);
-  void UncheckAll(class UUIObject *theException);
-  void ApplyFilterSettings(unsigned long doSave);
-  void LoadFilterSettings();
-  void AfterDataListUpdate(class UUIPanel_DataList *aDataList);
-  void BeforeDataListUpdate(class UUIPanel_DataList *aDataList);
-  void PostInitialSceneUpdate();
-  void RefreshedChallengeList();
-  void BeforeRefreshedChallengeList();
-  void RefreshedCampaignList();
-  void BeforeRefreshedCampaignList();
+
+	unsigned long OnReceivedInputKey(struct FInputEventParameters* EventParms);
+	unsigned long IsGamepadOwned();
+	unsigned long IsKeyboardOwned();
+	void RestoreRadialValues();
+	void SaveRadialValues();
+	void Update(float DeltaTime);
+	unsigned long HasCampaignMissionsSelected();
+	void CheckDifficultyChange(class UUICheckBox_Scripted* Widget);
+	void SwitchOptionsPanel();
+	unsigned long NotifyWidgetClicked(class UUIObject* Widget);
+	void SearchFiltersSelectionChanged(class UUIObject* Widget, unsigned long bFromMouseClick);
+	void ChangeAllDataListSelectionEntries(class UUICheckBox_Scripted* ParentBox, class UUIPanel_DataList* DataList, unsigned long bSelect, unsigned long bOnlyAffectTop);
+	void UncheckAll(class UUIObject* theException);
+	void ApplyFilterSettings(unsigned long doSave);
+	void LoadFilterSettings();
+	void AfterDataListUpdate(class UUIPanel_DataList* aDataList);
+	void BeforeDataListUpdate(class UUIPanel_DataList* aDataList);
+	void PostInitialSceneUpdate();
+	void RefreshedChallengeList();
+	void BeforeRefreshedChallengeList();
+	void RefreshedCampaignList();
+	void BeforeRefreshedCampaignList();
 };
+
 
 // Class UDKGame.UICheckBox_Scripted
 // 0x0000 (0x04E0 - 0x04E0)
-class UUICheckBox_Scripted : public UUICheckbox {
+class UUICheckBox_Scripted : public UUICheckbox
+{
 public:
-  static UClass *StaticClass() {
-    static auto ptr = UObject::FindClass("Class UDKGame.UICheckBox_Scripted");
-    return ptr;
-  }
 
-  unsigned long ButtonClicked(class UUIScreenObject *Sender, int PlayerIndex);
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.UICheckBox_Scripted");
+		return ptr;
+	}
+
+
+	unsigned long ButtonClicked(class UUIScreenObject* Sender, int PlayerIndex);
 };
+
 
 // Class UDKGame.UILabel_KeyBinding
 // 0x0034 (0x0500 - 0x04CC)
-class UUILabel_KeyBinding : public UUILabel {
+class UUILabel_KeyBinding : public UUILabel
+{
 public:
-  struct FString
-      DisplayBindingDescriptionForBindingName;        // 0x04CC(0x000C) (Edit,
-                                                      // NeedCtorLink)
-  struct FName DisplayBindingDescriptionForKeyName;   // 0x04D8(0x0008) (Edit)
-  struct FString DisplayKeyDescriptionForBindingName; // 0x04E0(0x000C) (Edit,
-                                                      // NeedCtorLink)
-  struct FName DisplayKeyDescriptionForKeyName;       // 0x04EC(0x0008) (Edit)
-  struct FString
-      forActiveHeroArchetypePath; // 0x04F4(0x000C) (Edit, NeedCtorLink)
+	struct FString                                     DisplayBindingDescriptionForBindingName;                  // 0x04CC(0x000C) (Edit, NeedCtorLink)
+	struct FName                                       DisplayBindingDescriptionForKeyName;                      // 0x04D8(0x0008) (Edit)
+	struct FString                                     DisplayKeyDescriptionForBindingName;                      // 0x04E0(0x000C) (Edit, NeedCtorLink)
+	struct FName                                       DisplayKeyDescriptionForKeyName;                          // 0x04EC(0x0008) (Edit)
+	struct FString                                     forActiveHeroArchetypePath;                               // 0x04F4(0x000C) (Edit, NeedCtorLink)
 
-  static UClass *StaticClass() {
-    static auto ptr = UObject::FindClass("Class UDKGame.UILabel_KeyBinding");
-    return ptr;
-  }
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.UILabel_KeyBinding");
+		return ptr;
+	}
 
-  void DoInit();
+
+	void DoInit();
 };
+
 
 // Class UDKGame.UIButton_SessionBrowser_Entry
 // 0x0000 (0x0508 - 0x0508)
-class UUIButton_SessionBrowser_Entry : public UUIToggleButton {
+class UUIButton_SessionBrowser_Entry : public UUIToggleButton
+{
 public:
-  static UClass *StaticClass() {
-    static auto ptr =
-        UObject::FindClass("Class UDKGame.UIButton_SessionBrowser_Entry");
-    return ptr;
-  }
 
-  unsigned long ButtonClicked(class UUIScreenObject *Sender, int PlayerIndex);
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.UIButton_SessionBrowser_Entry");
+		return ptr;
+	}
+
+
+	unsigned long ButtonClicked(class UUIScreenObject* Sender, int PlayerIndex);
 };
+
 
 // Class UDKGame.UIDataContainer_EquipmentOverlay
 // 0x0000 (0x0488 - 0x0488)
-class UUIDataContainer_EquipmentOverlay : public UUIDataContainer_Equipment {
+class UUIDataContainer_EquipmentOverlay : public UUIDataContainer_Equipment
+{
 public:
-  static UClass *StaticClass() {
-    static auto ptr =
-        UObject::FindClass("Class UDKGame.UIDataContainer_EquipmentOverlay");
-    return ptr;
-  }
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.UIDataContainer_EquipmentOverlay");
+		return ptr;
+	}
+
 };
+
 
 // Class UDKGame.UIScript_ActionWheelHotkey
 // 0x0040 (0x050C - 0x04CC)
-class UUIScript_ActionWheelHotkey : public UUIScriptWidget {
+class UUIScript_ActionWheelHotkey : public UUIScriptWidget
+{
 public:
-  int hotKeyIndex;                             // 0x04CC(0x0004) (Edit)
-  class UTexture2D *emptyTexture;              // 0x04D0(0x0004) (Edit)
-  unsigned long bDrawHotkeyNumber : 1;         // 0x04D4(0x0004) (Edit)
-  unsigned long bSetString : 1;                // 0x04D4(0x0004) (Transient)
-  struct FVector HotKeyNumberOffset;           // 0x04D8(0x000C) (Edit)
-  class UFont *HotKeyNumberFont;               // 0x04E4(0x0004) (Edit)
-  struct FColor HotKeyNumberColor;             // 0x04E8(0x0004) (Edit)
-  float HotKeyNumberScale;                     // 0x04EC(0x0004) (Edit)
-  struct FLinearColor HotKeyNumberBottomColor; // 0x04F0(0x0010) (Edit)
-  struct FString numberString; // 0x0500(0x000C) (Transient, NeedCtorLink)
+	int                                                hotKeyIndex;                                              // 0x04CC(0x0004) (Edit)
+	class UTexture2D*                                  emptyTexture;                                             // 0x04D0(0x0004) (Edit)
+	unsigned long                                      bDrawHotkeyNumber : 1;                                    // 0x04D4(0x0004) (Edit)
+	unsigned long                                      bSetString : 1;                                           // 0x04D4(0x0004) (Transient)
+	struct FVector                                     HotKeyNumberOffset;                                       // 0x04D8(0x000C) (Edit)
+	class UFont*                                       HotKeyNumberFont;                                         // 0x04E4(0x0004) (Edit)
+	struct FColor                                      HotKeyNumberColor;                                        // 0x04E8(0x0004) (Edit)
+	float                                              HotKeyNumberScale;                                        // 0x04EC(0x0004) (Edit)
+	struct FLinearColor                                HotKeyNumberBottomColor;                                  // 0x04F0(0x0010) (Edit)
+	struct FString                                     numberString;                                             // 0x0500(0x000C) (Transient, NeedCtorLink)
 
-  static UClass *StaticClass() {
-    static auto ptr =
-        UObject::FindClass("Class UDKGame.UIScript_ActionWheelHotkey");
-    return ptr;
-  }
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.UIScript_ActionWheelHotkey");
+		return ptr;
+	}
 
-  void RenderGame(class UCanvas *C, float X1, float X2, float Y1, float Y2);
-  void RenderEditor(class UCanvas *C, float X1, float X2, float Y1, float Y2);
+
+	void RenderGame(class UCanvas* C, float X1, float X2, float Y1, float Y2);
+	void RenderEditor(class UCanvas* C, float X1, float X2, float Y1, float Y2);
 };
+
 
 // Class UDKGame.UIScriptWidget_ButtonMultiImage
 // 0x001C (0x0634 - 0x0618)
-class UUIScriptWidget_ButtonMultiImage : public UUIButton_DataListEntry {
+class UUIScriptWidget_ButtonMultiImage : public UUIButton_DataListEntry
+{
 public:
-  float widgetBaseScaleX;                              // 0x0618(0x0004) (Edit)
-  float widgetBaseScaleY;                              // 0x061C(0x0004) (Edit)
-  int MultiImageIndexToSetFromDataObject;              // 0x0620(0x0004) (Edit)
-  unsigned long bSetDisplayStringFromDataObject : 1;   // 0x0624(0x0004) (Edit)
-  unsigned long bSetBackgroundImageFromDataObject : 1; // 0x0624(0x0004) (Edit)
-  TArray<struct FMultiImageEntry>
-      MultiImageEntries; // 0x0628(0x000C) (Edit, NeedCtorLink)
+	float                                              widgetBaseScaleX;                                         // 0x0618(0x0004) (Edit)
+	float                                              widgetBaseScaleY;                                         // 0x061C(0x0004) (Edit)
+	int                                                MultiImageIndexToSetFromDataObject;                       // 0x0620(0x0004) (Edit)
+	unsigned long                                      bSetDisplayStringFromDataObject : 1;                      // 0x0624(0x0004) (Edit)
+	unsigned long                                      bSetBackgroundImageFromDataObject : 1;                    // 0x0624(0x0004) (Edit)
+	TArray<struct FMultiImageEntry>                    MultiImageEntries;                                        // 0x0628(0x000C) (Edit, NeedCtorLink)
 
-  static UClass *StaticClass() {
-    static auto ptr =
-        UObject::FindClass("Class UDKGame.UIScriptWidget_ButtonMultiImage");
-    return ptr;
-  }
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.UIScriptWidget_ButtonMultiImage");
+		return ptr;
+	}
 
-  void RenderGame(class UCanvas *C, float X1, float X2, float Y1, float Y2);
-  void InitializeFromDataListEntry(
-      class UUIPanel_DataList *DataList,
-      const TScriptInterface<class UDataListEntryInterface> &Entry);
+
+	void RenderGame(class UCanvas* C, float X1, float X2, float Y1, float Y2);
+	void InitializeFromDataListEntry(class UUIPanel_DataList* DataList, const TScriptInterface<class UDataListEntryInterface>& Entry);
 };
+
 
 // Class UDKGame.UIScriptWidget_HealthManaIcon
 // 0x0070 (0x053C - 0x04CC)
-class UUIScriptWidget_HealthManaIcon : public UUIScriptWidget {
+class UUIScriptWidget_HealthManaIcon : public UUIScriptWidget
+{
 public:
-  float widgetBaseScaleX;                   // 0x04CC(0x0004) (Edit)
-  float widgetBaseScaleY;                   // 0x04D0(0x0004) (Edit)
-  float TextMinCenterOffsetX;               // 0x04D4(0x0004) (Edit)
-  float TextMinCenterOffsetY;               // 0x04D8(0x0004) (Edit)
-  float TextMaxCenterOffsetX;               // 0x04DC(0x0004) (Edit)
-  float TextMaxCenterOffsetY;               // 0x04E0(0x0004) (Edit)
-  float IconCenterOffsetX;                  // 0x04E4(0x0004) (Edit)
-  float IconCenterOffsetY;                  // 0x04E8(0x0004) (Edit)
-  float IconSizeX;                          // 0x04EC(0x0004) (Edit)
-  float IconSizeY;                          // 0x04F0(0x0004) (Edit)
-  struct FColor BackgroundColor;            // 0x04F4(0x0004) (Edit)
-  class USurface *IconTex;                  // 0x04F8(0x0004) (Edit)
-  class USurface *BackgroundTex;            // 0x04FC(0x0004) (Edit)
-  float TextScale;                          // 0x0500(0x0004) (Edit)
-  struct FColor TextMinDrawColor;           // 0x0504(0x0004) (Edit)
-  struct FColor TextMaxDrawColor;           // 0x0508(0x0004) (Edit)
-  class UFont *TextFont;                    // 0x050C(0x0004) (Edit)
-  struct FLinearColor TextMinGradientColor; // 0x0510(0x0010) (Edit)
-  struct FLinearColor TextMaxGradientColor; // 0x0520(0x0010) (Edit)
-  float TextShadowScaleMultiplier;          // 0x0530(0x0004) (Edit)
-  unsigned long IsHealthIndicator : 1;      // 0x0534(0x0004) (Edit)
-  unsigned long isEditorRender : 1;         // 0x0534(0x0004)
-  class UDunDefHero *myHero;                // 0x0538(0x0004)
+	float                                              widgetBaseScaleX;                                         // 0x04CC(0x0004) (Edit)
+	float                                              widgetBaseScaleY;                                         // 0x04D0(0x0004) (Edit)
+	float                                              TextMinCenterOffsetX;                                     // 0x04D4(0x0004) (Edit)
+	float                                              TextMinCenterOffsetY;                                     // 0x04D8(0x0004) (Edit)
+	float                                              TextMaxCenterOffsetX;                                     // 0x04DC(0x0004) (Edit)
+	float                                              TextMaxCenterOffsetY;                                     // 0x04E0(0x0004) (Edit)
+	float                                              IconCenterOffsetX;                                        // 0x04E4(0x0004) (Edit)
+	float                                              IconCenterOffsetY;                                        // 0x04E8(0x0004) (Edit)
+	float                                              IconSizeX;                                                // 0x04EC(0x0004) (Edit)
+	float                                              IconSizeY;                                                // 0x04F0(0x0004) (Edit)
+	struct FColor                                      BackgroundColor;                                          // 0x04F4(0x0004) (Edit)
+	class USurface*                                    IconTex;                                                  // 0x04F8(0x0004) (Edit)
+	class USurface*                                    BackgroundTex;                                            // 0x04FC(0x0004) (Edit)
+	float                                              TextScale;                                                // 0x0500(0x0004) (Edit)
+	struct FColor                                      TextMinDrawColor;                                         // 0x0504(0x0004) (Edit)
+	struct FColor                                      TextMaxDrawColor;                                         // 0x0508(0x0004) (Edit)
+	class UFont*                                       TextFont;                                                 // 0x050C(0x0004) (Edit)
+	struct FLinearColor                                TextMinGradientColor;                                     // 0x0510(0x0010) (Edit)
+	struct FLinearColor                                TextMaxGradientColor;                                     // 0x0520(0x0010) (Edit)
+	float                                              TextShadowScaleMultiplier;                                // 0x0530(0x0004) (Edit)
+	unsigned long                                      IsHealthIndicator : 1;                                    // 0x0534(0x0004) (Edit)
+	unsigned long                                      isEditorRender : 1;                                       // 0x0534(0x0004)
+	class UDunDefHero*                                 myHero;                                                   // 0x0538(0x0004)
 
-  static UClass *StaticClass() {
-    static auto ptr =
-        UObject::FindClass("Class UDKGame.UIScriptWidget_HealthManaIcon");
-    return ptr;
-  }
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.UIScriptWidget_HealthManaIcon");
+		return ptr;
+	}
 
-  void RenderGame(class UCanvas *C, float X1, float X2, float Y1, float Y2);
-  void RenderEditor(class UCanvas *C, float X1, float X2, float Y1, float Y2);
-  class ADunDefPlayer *GetPlayer();
-  class UDunDefHero *GetHero();
+
+	void RenderGame(class UCanvas* C, float X1, float X2, float Y1, float Y2);
+	void RenderEditor(class UCanvas* C, float X1, float X2, float Y1, float Y2);
+	class ADunDefPlayer* GetPlayer();
+	class UDunDefHero* GetHero();
 };
+
 
 // Class UDKGame.UIScriptWidget_HeroIcon
 // 0x000C (0x04D8 - 0x04CC)
-class UUIScriptWidget_HeroIcon : public UUIScriptWidget {
+class UUIScriptWidget_HeroIcon : public UUIScriptWidget
+{
 public:
-  struct FColor iconColor;          // 0x04CC(0x0004) (Edit)
-  class UDunDefHero *myHero;        // 0x04D0(0x0004)
-  unsigned long isEditorRender : 1; // 0x04D4(0x0004)
+	struct FColor                                      iconColor;                                                // 0x04CC(0x0004) (Edit)
+	class UDunDefHero*                                 myHero;                                                   // 0x04D0(0x0004)
+	unsigned long                                      isEditorRender : 1;                                       // 0x04D4(0x0004)
 
-  static UClass *StaticClass() {
-    static auto ptr =
-        UObject::FindClass("Class UDKGame.UIScriptWidget_HeroIcon");
-    return ptr;
-  }
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.UIScriptWidget_HeroIcon");
+		return ptr;
+	}
 
-  struct FColor GetIconColor();
-  class USurface *GetIcon();
-  void RenderGame(class UCanvas *C, float X1, float X2, float Y1, float Y2);
-  void RenderEditor(class UCanvas *C, float X1, float X2, float Y1, float Y2);
-  class UDunDefHero *GetHero();
+
+	struct FColor GetIconColor();
+	class USurface* GetIcon();
+	void RenderGame(class UCanvas* C, float X1, float X2, float Y1, float Y2);
+	void RenderEditor(class UCanvas* C, float X1, float X2, float Y1, float Y2);
+	class UDunDefHero* GetHero();
 };
+
 
 // Class UDKGame.UIScriptWidget_HeroSelectionButton
 // 0x008C (0x06A4 - 0x0618)
-class UUIScriptWidget_HeroSelectionButton : public UUIButton_DataListEntry {
+class UUIScriptWidget_HeroSelectionButton : public UUIButton_DataListEntry
+{
 public:
-  float TextYPadding;           // 0x0618(0x0004) (Edit)
-  float BottomTextYPadding;     // 0x061C(0x0004) (Edit)
-  float HeroNameTextScale;      // 0x0620(0x0004) (Edit)
-  float HeroLevelTextScale;     // 0x0624(0x0004) (Edit)
-  float HealthAndManaTextScale; // 0x0628(0x0004) (Edit)
-  struct FString LevelString;  // 0x062C(0x000C) (Edit, Localized, NeedCtorLink)
-  struct FString HealthString; // 0x0638(0x000C) (Edit, Localized, NeedCtorLink)
-  struct FString manaString;   // 0x0644(0x000C) (Edit, Localized, NeedCtorLink)
-  struct FString
-      MaxManaString; // 0x0650(0x000C) (Edit, Localized, NeedCtorLink)
-  struct FString
-      MaxHealthString;         // 0x065C(0x000C) (Edit, Localized, NeedCtorLink)
-  struct FColor healthColor;   // 0x0668(0x0004) (Edit)
-  struct FColor ManaColor;     // 0x066C(0x0004) (Edit)
-  float HeroIconWidth;         // 0x0670(0x0004) (Edit)
-  float HeroIconHeight;        // 0x0674(0x0004) (Edit)
-  float HealthManaShadowScale; // 0x0678(0x0004) (Edit)
-  float LevelShadowScale;      // 0x067C(0x0004) (Edit)
-  float NameShadowScale;       // 0x0680(0x0004) (Edit)
-  float widgetBaseScaleX;      // 0x0684(0x0004) (Edit)
-  float widgetBaseScaleY;      // 0x0688(0x0004) (Edit)
-  float LevelStringYOffset;    // 0x068C(0x0004) (Edit)
-  class UTexture2D *MuteIcon;  // 0x0690(0x0004) (Edit)
-  unsigned long bAlwaysDrawMuteIcon : 1; // 0x0694(0x0004) (Edit)
-  unsigned long bDontFlush : 1;          // 0x0694(0x0004) (Transient)
-  float MuteIconSize;                    // 0x0698(0x0004) (Edit)
-  float MuteIconOffsetX;                 // 0x069C(0x0004) (Edit)
-  float MuteIconOffsetY;                 // 0x06A0(0x0004) (Edit)
+	float                                              TextYPadding;                                             // 0x0618(0x0004) (Edit)
+	float                                              BottomTextYPadding;                                       // 0x061C(0x0004) (Edit)
+	float                                              HeroNameTextScale;                                        // 0x0620(0x0004) (Edit)
+	float                                              HeroLevelTextScale;                                       // 0x0624(0x0004) (Edit)
+	float                                              HealthAndManaTextScale;                                   // 0x0628(0x0004) (Edit)
+	struct FString                                     LevelString;                                              // 0x062C(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     HealthString;                                             // 0x0638(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     manaString;                                               // 0x0644(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     MaxManaString;                                            // 0x0650(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     MaxHealthString;                                          // 0x065C(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FColor                                      healthColor;                                              // 0x0668(0x0004) (Edit)
+	struct FColor                                      ManaColor;                                                // 0x066C(0x0004) (Edit)
+	float                                              HeroIconWidth;                                            // 0x0670(0x0004) (Edit)
+	float                                              HeroIconHeight;                                           // 0x0674(0x0004) (Edit)
+	float                                              HealthManaShadowScale;                                    // 0x0678(0x0004) (Edit)
+	float                                              LevelShadowScale;                                         // 0x067C(0x0004) (Edit)
+	float                                              NameShadowScale;                                          // 0x0680(0x0004) (Edit)
+	float                                              widgetBaseScaleX;                                         // 0x0684(0x0004) (Edit)
+	float                                              widgetBaseScaleY;                                         // 0x0688(0x0004) (Edit)
+	float                                              LevelStringYOffset;                                       // 0x068C(0x0004) (Edit)
+	class UTexture2D*                                  MuteIcon;                                                 // 0x0690(0x0004) (Edit)
+	unsigned long                                      bAlwaysDrawMuteIcon : 1;                                  // 0x0694(0x0004) (Edit)
+	unsigned long                                      bDontFlush : 1;                                           // 0x0694(0x0004) (Transient)
+	float                                              MuteIconSize;                                             // 0x0698(0x0004) (Edit)
+	float                                              MuteIconOffsetX;                                          // 0x069C(0x0004) (Edit)
+	float                                              MuteIconOffsetY;                                          // 0x06A0(0x0004) (Edit)
 
-  static UClass *StaticClass() {
-    static auto ptr =
-        UObject::FindClass("Class UDKGame.UIScriptWidget_HeroSelectionButton");
-    return ptr;
-  }
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.UIScriptWidget_HeroSelectionButton");
+		return ptr;
+	}
 
-  void RenderGame(class UCanvas *C, float X1, float X2, float Y1, float Y2);
-  class UDunDefHero *GetHero();
+
+	void RenderGame(class UCanvas* C, float X1, float X2, float Y1, float Y2);
+	class UDunDefHero* GetHero();
 };
+
 
 // Class UDKGame.UIScriptWidget_HeroPlayerListButton
 // 0x0034 (0x06D8 - 0x06A4)
-class UUIScriptWidget_HeroPlayerListButton
-    : public UUIScriptWidget_HeroSelectionButton {
+class UUIScriptWidget_HeroPlayerListButton : public UUIScriptWidget_HeroSelectionButton
+{
 public:
-  struct FColor PlayerNameTextColor;               // 0x06A4(0x0004) (Edit)
-  struct FLinearColor PlayerNameTextGradientColor; // 0x06A8(0x0010) (Edit)
-  float PlayerNameTextYPadding;                    // 0x06B8(0x0004) (Edit)
-  float PlayerNameTextScale;                       // 0x06BC(0x0004) (Edit)
-  float PlayerNameTextShadowScale;                 // 0x06C0(0x0004) (Edit)
-  float MinPlayerNameScaler;                       // 0x06C4(0x0004) (Edit)
-  struct FString EditorDisplayString; // 0x06C8(0x000C) (Edit, NeedCtorLink)
-  unsigned long bClearValueOnLostFocus : 1; // 0x06D4(0x0004) (Edit)
+	struct FColor                                      PlayerNameTextColor;                                      // 0x06A4(0x0004) (Edit)
+	struct FLinearColor                                PlayerNameTextGradientColor;                              // 0x06A8(0x0010) (Edit)
+	float                                              PlayerNameTextYPadding;                                   // 0x06B8(0x0004) (Edit)
+	float                                              PlayerNameTextScale;                                      // 0x06BC(0x0004) (Edit)
+	float                                              PlayerNameTextShadowScale;                                // 0x06C0(0x0004) (Edit)
+	float                                              MinPlayerNameScaler;                                      // 0x06C4(0x0004) (Edit)
+	struct FString                                     EditorDisplayString;                                      // 0x06C8(0x000C) (Edit, NeedCtorLink)
+	unsigned long                                      bClearValueOnLostFocus : 1;                               // 0x06D4(0x0004) (Edit)
 
-  static UClass *StaticClass() {
-    static auto ptr =
-        UObject::FindClass("Class UDKGame.UIScriptWidget_HeroPlayerListButton");
-    return ptr;
-  }
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.UIScriptWidget_HeroPlayerListButton");
+		return ptr;
+	}
 
-  void LostFocus();
-  void RenderGame(class UCanvas *C, float X1, float X2, float Y1, float Y2);
-  class UDunDefHero *GetHero();
+
+	void LostFocus();
+	void RenderGame(class UCanvas* C, float X1, float X2, float Y1, float Y2);
+	class UDunDefHero* GetHero();
 };
 
-} // namespace Classes
+
+}
 
 #ifdef _MSC_VER
-#pragma pack(pop)
+	#pragma pack(pop)
 #endif

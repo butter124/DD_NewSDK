@@ -14,6 +14,22 @@ namespace Classes
 //Parameters
 //---------------------------------------------------------------------------
 
+// Function CDT8.DunDefWeapon_MagicStaff_CustomRightClick.CheckCooldown
+struct ADunDefWeapon_MagicStaff_CustomRightClick_CheckCooldown_Params
+{
+};
+
+// Function CDT8.DunDefWeapon_MagicStaff_CustomRightClick.PayBack
+struct ADunDefWeapon_MagicStaff_CustomRightClick_PayBack_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT8.DunDefWeapon_MagicStaff_CustomRightClick.PutDownWeapon
+struct ADunDefWeapon_MagicStaff_CustomRightClick_PutDownWeapon_Params
+{
+};
+
 // Function CDT8.DunDefWeapon_MagicStaff_WithOribitingEffect.SpawnKnockbackDecal
 struct ADunDefWeapon_MagicStaff_WithOribitingEffect_SpawnKnockbackDecal_Params
 {
@@ -44,6 +60,13 @@ struct ADunDefWeapon_MagicStaff_WithOribitingEffect_FireAmmunition_Params
 // Function CDT8.DunDefWeapon_MagicStaff_WithOribitingEffect.UpdateStacks
 struct ADunDefWeapon_MagicStaff_WithOribitingEffect_UpdateStacks_Params
 {
+};
+
+// Function CDT8.DunDefWeapon_Minigun.GetFireInterval
+struct ADunDefWeapon_Minigun_GetFireInterval_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function CDT8.HeroEquipment_Familiar_AoeBuffer.TickedByPawn

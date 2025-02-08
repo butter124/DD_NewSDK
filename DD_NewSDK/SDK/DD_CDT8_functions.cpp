@@ -12,6 +12,61 @@ namespace Classes
 //Functions
 //---------------------------------------------------------------------------
 
+// Function CDT8.DunDefWeapon_MagicStaff_CustomRightClick.CheckCooldown
+// (Defined, Simulated, Public)
+
+void ADunDefWeapon_MagicStaff_CustomRightClick::CheckCooldown()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function CDT8.DunDefWeapon_MagicStaff_CustomRightClick.CheckCooldown");
+
+	ADunDefWeapon_MagicStaff_CustomRightClick_CheckCooldown_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function CDT8.DunDefWeapon_MagicStaff_CustomRightClick.PayBack
+// (Defined, Simulated, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefWeapon_MagicStaff_CustomRightClick::PayBack()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function CDT8.DunDefWeapon_MagicStaff_CustomRightClick.PayBack");
+
+	ADunDefWeapon_MagicStaff_CustomRightClick_PayBack_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function CDT8.DunDefWeapon_MagicStaff_CustomRightClick.PutDownWeapon
+// (Defined, Simulated, Public)
+
+void ADunDefWeapon_MagicStaff_CustomRightClick::PutDownWeapon()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function CDT8.DunDefWeapon_MagicStaff_CustomRightClick.PutDownWeapon");
+
+	ADunDefWeapon_MagicStaff_CustomRightClick_PutDownWeapon_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function CDT8.DunDefWeapon_MagicStaff_WithOribitingEffect.SpawnKnockbackDecal
 // (Defined, Simulated, Public)
 // Parameters:
@@ -113,6 +168,29 @@ void ADunDefWeapon_MagicStaff_WithOribitingEffect::UpdateStacks()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function CDT8.DunDefWeapon_Minigun.GetFireInterval
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned char                  FireModeNum                    (Parm)
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefWeapon_Minigun::GetFireInterval(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function CDT8.DunDefWeapon_Minigun.GetFireInterval");
+
+	ADunDefWeapon_Minigun_GetFireInterval_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 

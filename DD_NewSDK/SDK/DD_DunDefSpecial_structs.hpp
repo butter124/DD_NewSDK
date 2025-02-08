@@ -245,6 +245,8 @@ struct FGlyphPattern
 	int                                                SPEC_towerUpgradeLevel;                                   // 0x0074(0x0004) (Edit)
 	unsigned long                                      SPEC_GoldEnemies : 1;                                     // 0x0078(0x0004) (Edit)
 	unsigned long                                      SPEC_Teleport : 1;                                        // 0x0078(0x0004) (Edit)
+	unsigned long                                      SPEC_CoreHeal : 1;                                        // 0x0078(0x0004) (Edit)
+	unsigned long                                      SPEC_CoreDmg : 1;                                         // 0x0078(0x0004) (Edit)
 	unsigned long                                      SPEC_StunEnemies : 1;                                     // 0x0078(0x0004) (Edit)
 	unsigned long                                      SPEC_TimeDilation : 1;                                    // 0x0078(0x0004) (Edit)
 	float                                              SPEC_TimeDilationAmt;                                     // 0x007C(0x0004) (Edit)

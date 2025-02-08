@@ -379,6 +379,11 @@ struct UDunDefBuff_Shield_DoDamageEffects_Params
 	class UObject*                                     WhatHitMe;                                                // (OptionalParm, Parm)
 };
 
+// Function DunDefBuff.DunDefBuff_Shield.DeactivateBuff
+struct UDunDefBuff_Shield_DeactivateBuff_Params
+{
+};
+
 // Function DunDefBuff.DunDefBuff_Shield.AdjustTargetDamage
 struct UDunDefBuff_Shield_AdjustTargetDamage_Params
 {

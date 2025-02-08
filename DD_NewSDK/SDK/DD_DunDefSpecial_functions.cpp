@@ -22062,6 +22062,72 @@ void ADunDefPlayerAbility_WheeloFortuna::DoTowerUpgrades(const struct FGlyphPatt
 }
 
 
+// Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.SortStuff
+// (Defined, Public, HasOutParms)
+// Parameters:
+// TArray<float>                  arrayin                        (Parm, NeedCtorLink)
+// int                            Size                           (Parm)
+// TArray<float>                  arrayout                       (Parm, OutParm, NeedCtorLink)
+
+void ADunDefPlayerAbility_WheeloFortuna::SortStuff(TArray<float> arrayin, int Size, TArray<float>* arrayout)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.SortStuff");
+
+	ADunDefPlayerAbility_WheeloFortuna_SortStuff_Params params;
+	params.arrayin = arrayin;
+	params.Size = Size;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (arrayout != nullptr)
+		*arrayout = params.arrayout;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.CoreDMG
+// (Defined, Public)
+// Parameters:
+// struct FGlyphPattern           thePattern                     (Parm, NeedCtorLink)
+
+void ADunDefPlayerAbility_WheeloFortuna::CoreDMG(const struct FGlyphPattern& thePattern)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.CoreDMG");
+
+	ADunDefPlayerAbility_WheeloFortuna_CoreDMG_Params params;
+	params.thePattern = thePattern;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.CoreHeal
+// (Defined, Public)
+// Parameters:
+// struct FGlyphPattern           thePattern                     (Parm, NeedCtorLink)
+
+void ADunDefPlayerAbility_WheeloFortuna::CoreHeal(const struct FGlyphPattern& thePattern)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.CoreHeal");
+
+	ADunDefPlayerAbility_WheeloFortuna_CoreHeal_Params params;
+	params.thePattern = thePattern;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function DunDefSpecial.DunDefPlayerAbility_WheeloFortuna.PlayerTeleport
 // (Defined, Public)
 // Parameters:
