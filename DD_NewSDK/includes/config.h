@@ -106,6 +106,7 @@ public:
   bool bUnlimitedManaTowers = false;
   bool bUnlimitedManaShop = false;
   bool bUnlockAllAchievments = false;
+  bool bAutoReady = false;
 
   Classes::FVector vacPos = {0, 0, 0};
   Classes::FVector playerTeleportPos = {0, 0, 0};
@@ -183,6 +184,7 @@ public:
   bool ToggleCrystalGodMode();
   bool UnlockAllAchievements();
   Classes::UEngine *GetEngine();
+  Classes::UDunDefViewportClient *GetViewportClient();
   Classes::ADunDefPlayerController *GetADunDefPlayerController();
   Classes::ADunDefPawn *GetPlayerPawn();
   Classes::APawn *GetFirstPawnInList();
