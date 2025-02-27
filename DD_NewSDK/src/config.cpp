@@ -1,6 +1,7 @@
 // clang-format off
 #include "pch.h"
 #include "includes/config.h"
+#include <SDK/DD_Basic.hpp>
 #include <SDK/DD_UDKGame_classes.hpp>
 #include <fstream>
 #include <regex>
@@ -198,6 +199,25 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   if (bAutoReady && !pMapInfo->IsLobbyLevel) {
     pController->ActivateCrystal();
   }
+}
+
+bool Config::RenameHero(const std::string &newName) {
+  auto pPlayerController = GetADunDefPlayerController();
+
+  if (!pPlayerController)
+    return false;
+
+  auto pPlayerHero = pPlayerController->GetHero(false);
+
+  if (!pPlayerHero)
+    return false;
+
+  std::wstring ws = std::wstring(newName.begin(), newName.end());
+  Classes::FString s = Classes::FString(ws.c_str());
+
+  pPlayerHero->SetName(s);
+
+  return true;
 }
 
 void Config::NoClip() {

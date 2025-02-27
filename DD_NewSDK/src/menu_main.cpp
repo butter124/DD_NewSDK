@@ -480,6 +480,14 @@ void MenuMain::PlayerCheats() {
   if (!pController->Pawn)
     return;
   if (ImGui::TreeNode("Player pawn")) {
+
+    static char newName[255] = {};
+    ImGui::InputText("##NewName", newName, sizeof(newName));
+    ImGui::SameLine();
+    if (ImGui::Button("Change Name")) {
+      config.RenameHero(newName);
+    }
+
     ImGui::InputInt("Hero level", &pController->myHero->HeroLevel);
     ImGui::InputInt("Hero Experience", &pController->myHero->HeroExperience);
     ImGui::InputInt("Mana power", &pController->myHero->ManaPower);
@@ -1018,13 +1026,8 @@ void MenuMain::Debug() {
   if (!pPlayerPawn || !pController || !pEngine || !pAchievementManager)
     return;
 
-  if (!pWorldInfo || pViewportClient)
-    return;
-  ImGui::Text("%s", pWorldInfo->GetName().c_str());
-  ImGui::Text("%s", pWorldInfo->GetMapInfo()->GetName().c_str());
-
-  if (ImGui::Button("Activate"))
-    pController->ServerActivateCrystal();
+  if (ImGui::Button("Change Name"))
+    pController->GetHero(false)->SetName(L"test");
 
   return;
 }

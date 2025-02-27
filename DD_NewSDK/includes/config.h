@@ -186,6 +186,7 @@ public:
   bool TurnOffPlayerGodMod();
   bool ToggleCrystalGodMode();
   bool UnlockAllAchievements();
+  bool RenameHero(const std::string &newName);
   Classes::UEngine *GetEngine();
   Classes::UDunDefViewportClient *GetViewportClient();
   Classes::ADunDefPlayerController *GetADunDefPlayerController();
