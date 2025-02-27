@@ -247,36 +247,6 @@ public:
 };
 
 
-// Class CDT7.UI_TBR
-// 0x0134 (0x0770 - 0x063C)
-class UUI_TBR : public UDunDefUIScene
-{
-public:
-	class UUIButton*                                   CloseButton;                                              // 0x063C(0x0004) (Edit)
-	TArray<class UUIScriptWidget_Button*>              CheckPointButtons;                                        // 0x0640(0x000C) (Edit, NeedCtorLink)
-	struct FOptionsInfo                                SavedOptions;                                             // 0x064C(0x0104) (NeedCtorLink)
-	class UDunDefHeroManager*                          heroManager;                                              // 0x0750(0x0004)
-	struct FString                                     MapToLaunch;                                              // 0x0754(0x000C) (NeedCtorLink)
-	int                                                MapSelection;                                             // 0x0760(0x0004)
-	int                                                DifficultySelection;                                      // 0x0764(0x0004)
-	class UUIScriptWidget_Button*                      TBRAscensionStartButton;                                  // 0x0768(0x0004) (Edit)
-	class UUIScriptWidget_Button*                      TBRNightmareStartButton;                                  // 0x076C(0x0004) (Edit)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class CDT7.UI_TBR");
-		return ptr;
-	}
-
-
-	void LaunchMap(unsigned long bStartTrueBossRush);
-	unsigned long WasCheckPointButtonPressed(class UUIObject* Widget);
-	unsigned long NotifyWidgetClicked(class UUIObject* Widget);
-	void CheckProgress();
-	void SceneActivated(unsigned long bInitialActivation);
-};
-
-
 }
 
 #ifdef _MSC_VER

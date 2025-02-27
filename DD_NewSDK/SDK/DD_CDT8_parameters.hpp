@@ -69,6 +69,12 @@ struct ADunDefWeapon_Minigun_GetFireInterval_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function CDT8.DunDefWeapon_Minigun.GetProjectileDamage
+struct ADunDefWeapon_Minigun_GetProjectileDamage_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function CDT8.HeroEquipment_Familiar_AoeBuffer.TickedByPawn
 struct UHeroEquipment_Familiar_AoeBuffer_TickedByPawn_Params
 {

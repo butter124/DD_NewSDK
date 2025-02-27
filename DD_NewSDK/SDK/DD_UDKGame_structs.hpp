@@ -32,6 +32,8 @@ namespace Classes
 #define CONST_DunDefHeroManagerNative_MAX_BUFF_SLOTS             3
 #define CONST__DataTypes_MAX_LEVELUP_STATS                       11
 #define CONST_DunDefOnlineGameSettingsConsole_FILTER_SURVIVAL    0x1000005C
+#define CONST_MAX_HERO_NAME_LENGTH                               32
+#define CONST_DunDefGameReplicationInfo_STATS_VIEW_COLUMN_CLASS  2
 #define CONST_DunDefGameReplicationInfo_PROPS_MATCHCOMPLETE      0x10000076
 #define CONST_StatObject_MAX_BUFF_SLOTS                          3
 #define CONST__DataTypes_MAX_CORES                               40
@@ -49,6 +51,31 @@ namespace Classes
 #define CONST_DunDefGameSearchCommon_PROPS_GAME_DIFFICULTY       0x10000010
 #define CONST_SPEED_HACK_DETECTION_THRESHOLD                     3
 #define CONST_SPEED_HACK_TOLERANCE                               1.20
+#define CONST_UI_TitleScreen_CONTEXT_ACTIVE_MISSION              1
+#define CONST_UI_NetworkMultiplayer_PROPS_WAVECOUNT              0x1000002D
+#define CONST_Main_STATS_VIEW_COLUMN_CLASS                       2
+#define CONST_HeroEquipmentNative_MAX_ACHIEVEMENTS_TO_STORE      500
+#define CONST_DunDefPlayerController_PROPS_HEROCLASS             0x20000020
+#define CONST_UI_TitleScreen_PRESENCE_MAIN_MENU                  0
+#define CONST_DunDefAchievementManager_MAX_LEVELUP_STATS         11
+#define CONST_DunDefDataStore_GameSearch_FILTER_SESSIONID_COUNT  10
+#define CONST_HeroEquipmentNative_MAX_TUTORIAL_SETS              10
+#define CONST_DunDefPlayerController_PROPS_WAVECOUNT             0x1000002D
+#define CONST_MAX_STAT_VALUE_SPEED                               100
+#define CONST_MAX_STAT_VALUE                                     1000
+#define CONST_Main_CONTEXT_ACTIVE_MISSION                        1
+#define CONST_EXP_PER_LEVEL_EXPONENT_FACTOR_HIGH                 2.1
+#define CONST_Main_PROPS_HEROCLASS                               0x20000020
+#define CONST_DunDefDataStore_GameSearch_PROPS_FRIENDLY_NAME     0x10000013
+#define CONST_HeroEquipmentNative_MAX_CORES                      40
+#define CONST_NEGATIVE_EQUIPMENT_STAT_WEIGHT                     1.4
+#define CONST_HeroEquipmentNative_MAX_DAMAGEREDUCTIONS           4
+#define CONST_HeroEquipment_NUM_EQUIPMENT_TYPES                  5
+#define CONST_DunDefOnlineGameSettingsConsole_PRESENCE_MISSION   2
+#define CONST_HeroEquipmentNative_MAX_LEVELUP_STATS              11
+#define CONST_HeroEquipmentNative_MAX_BUFF_TIERS                 6
+#define CONST_EQUIPMENT_STOCKY                                   3
+#define CONST_HeroEquipmentNative_MAX_BUFF_SLOTS                 3
 #define CONST_MAX_ITEM_BOX_EQUIPMENT_RUTHLESS                    1000
 #define CONST_UI_CharacterSelect_PROPS_START_AT_WAVE             0x1000000F
 #define CONST_DunDefOnlineGameSettingsConsole_FILTER_VERSIONNUMBER 0x10000075
@@ -59,6 +86,7 @@ namespace Classes
 #define CONST_EXP_PER_LEVEL_LINEAR_FACTOR_DOUBLEHIGH             900000
 #define CONST_DunDefGameReplicationInfo_CONTEXT_ACTIVE_MISSION   1
 #define CONST_DunDefHeroManagerNative_MAX_TUTORIAL_SETS          10
+#define CONST_LEVEL_FILE_EXTENSION                               ".udk"
 #define CONST_DunDefHeroManagerNative_MAX_DAMAGEREDUCTIONS       4
 #define CONST_DunDefPlayerController_PRESENCE_INACTIVE           4
 #define CONST_XBOX_MUSIC_MULTIPLIER                              0.7
@@ -67,48 +95,14 @@ namespace Classes
 #define CONST_Main_GS_PASSWORD_MAXLENGTH                         30
 #define CONST_PC_MUSIC_MULTIPLIER                                0.7
 #define CONST_DunDefHeroManagerNative_MAX_BUFF_TIERS             6
-#define CONST_EQUIPMENT_STOCKY                                   3
-#define CONST_HeroEquipmentNative_MAX_BUFF_SLOTS                 3
-#define CONST_HeroEquipmentNative_MAX_BUFF_TIERS                 6
-#define CONST_HeroEquipment_NUM_EQUIPMENT_TYPES                  5
-#define CONST_DunDefOnlineGameSettingsConsole_PRESENCE_MISSION   2
-#define CONST_HeroEquipmentNative_MAX_LEVELUP_STATS              11
-#define CONST_NEGATIVE_EQUIPMENT_STAT_WEIGHT                     1.4
-#define CONST_HeroEquipmentNative_MAX_DAMAGEREDUCTIONS           4
-#define CONST_MAX_STAT_VALUE_SPEED                               100
-#define CONST_MAX_STAT_VALUE                                     1000
-#define CONST_Main_CONTEXT_ACTIVE_MISSION                        1
-#define CONST_EXP_PER_LEVEL_EXPONENT_FACTOR_HIGH                 2.1
-#define CONST_Main_PROPS_HEROCLASS                               0x20000020
-#define CONST_DunDefDataStore_GameSearch_PROPS_FRIENDLY_NAME     0x10000013
-#define CONST_HeroEquipmentNative_MAX_CORES                      40
-#define CONST_UI_TitleScreen_PRESENCE_MAIN_MENU                  0
-#define CONST_DunDefAchievementManager_MAX_LEVELUP_STATS         11
-#define CONST_DunDefDataStore_GameSearch_FILTER_SESSIONID_COUNT  10
-#define CONST_HeroEquipmentNative_MAX_TUTORIAL_SETS              10
-#define CONST_DunDefPlayerController_PROPS_WAVECOUNT             0x1000002D
-#define CONST_UI_TitleScreen_CONTEXT_ACTIVE_MISSION              1
-#define CONST_UI_NetworkMultiplayer_PROPS_WAVECOUNT              0x1000002D
-#define CONST_Main_STATS_VIEW_COLUMN_CLASS                       2
-#define CONST_HeroEquipmentNative_MAX_ACHIEVEMENTS_TO_STORE      500
-#define CONST_DunDefPlayerController_PROPS_HEROCLASS             0x20000020
-#define CONST_DunDefAchievementManager_MAX_BUFF_SLOTS            3
-#define CONST_DunDefGameSearchCommon_FILTER_HEROLEVELSTART       0x1000005F
-#define CONST_UI_NetworkMultiplayer_FILTER_BUILD                 0x1000005B
-#define CONST_DunDefAchievementManager_MAX_BUFF_TIERS            6
-#define CONST_DunDefAchievementManager_MAX_DAMAGEREDUCTIONS      4
-#define CONST_DunDefGameReplicationInfo_PROPS_WAVECOUNT          0x1000002D
-#define CONST_DunDefDataStore_GameSearch_PROPS_HOSTHEROCLASS     0x1000005E
-#define CONST_DunDefAchievementManager_MAX_CORES                 40
-#define CONST_DunDefOnlineGameSettingsConsole_FILTER_LEVEL_START 0x1000002E
-#define CONST_DunDefAchievementManager_MAX_TUTORIAL_SETS         10
-#define CONST_EXP_PER_LEVEL_EXPONENT_FACTOR                      2.5
-#define CONST_DunDefDataStore_GameSearch_FILTER_LEVELINDEX       0x10000062
-#define CONST_DunDefAchievementManager_MAX_ACHIEVEMENTS_TO_STORE 500
 #define CONST_EXP_PER_LEVEL_LINEAR_FACTOR                        80.0
 #define CONST_UI_CharacterSelect_GS_PASSWORD_MAXLENGTH           30
+#define CONST_EXP_PER_LEVEL_EXPONENT_FACTOR                      2.5
+#define CONST_DunDefHeroManager_NUM_EQUIPMENT_TYPES              6
 #define CONST_MAX_PLAYERSHOP_ITEMS                               250
 #define CONST_EXP_PER_LEVEL_LINEAR_FACTOR_HIGH                   800000
+#define CONST_ENEMY_COLLECTIONGROUP                              8
+#define CONST_DunDefHeroManager_MAX_SUPPORTED_GAMEPADS           4
 #define CONST_UI_CharacterSelect_FILTER_MATCHCOMPLETE            0x10000077
 #define CONST_EXP_PER_LEVEL_EXPONENT_FACTOR_DOUBLEHIGH           2.2
 #define CONST_DunDefBuff_MAX_BUFF_SLOTS                          3
@@ -142,6 +136,7 @@ namespace Classes
 #define CONST_DunDefPlayerController_FILTER_DIFF_START           0x10000056
 #define CONST_Main_FILTER_LEVELINDEX                             0x10000062
 #define CONST_DD_SIGNED_BYTE_MIN                                 -127.0
+#define CONST_DunDefAchievementManager_MAX_BUFF_SLOTS            3
 #define CONST_UI_MultiplayerMenu_PROPS_MATCHCOMPLETE             0x10000076
 #define CONST_UI_CharacterSelect_PROPS_PHASE_TYPE                0x10000071
 #define CONST_UI_CharacterSelect_PROPS_HOSTHEROCLASS             0x1000005E
@@ -149,12 +144,17 @@ namespace Classes
 #define CONST_Main_PROPS_ISCHALLENGE                             0x1000005A
 #define CONST_MAX_SHOP_EQUIPMENT_SETS                            3
 #define CONST_MAX_BANKED_MANA                                    600000000
-#define CONST_LEVEL_FILE_EXTENSION                               ".udk"
-#define CONST_DunDefHeroManager_NUM_EQUIPMENT_TYPES              6
-#define CONST_MAX_HERO_NAME_LENGTH                               32
-#define CONST_DunDefGameReplicationInfo_STATS_VIEW_COLUMN_CLASS  2
-#define CONST_ENEMY_COLLECTIONGROUP                              8
-#define CONST_DunDefHeroManager_MAX_SUPPORTED_GAMEPADS           4
+#define CONST_DunDefGameSearchCommon_FILTER_HEROLEVELSTART       0x1000005F
+#define CONST_UI_NetworkMultiplayer_FILTER_BUILD                 0x1000005B
+#define CONST_DunDefAchievementManager_MAX_BUFF_TIERS            6
+#define CONST_DunDefAchievementManager_MAX_DAMAGEREDUCTIONS      4
+#define CONST_DunDefGameReplicationInfo_PROPS_WAVECOUNT          0x1000002D
+#define CONST_DunDefDataStore_GameSearch_PROPS_HOSTHEROCLASS     0x1000005E
+#define CONST_DunDefAchievementManager_MAX_CORES                 40
+#define CONST_DunDefOnlineGameSettingsConsole_FILTER_LEVEL_START 0x1000002E
+#define CONST_DunDefAchievementManager_MAX_TUTORIAL_SETS         10
+#define CONST_DunDefDataStore_GameSearch_FILTER_LEVELINDEX       0x10000062
+#define CONST_DunDefAchievementManager_MAX_ACHIEVEMENTS_TO_STORE 500
 #define CONST_PLAYER_COLLECTIONGROUP                             256
 #define CONST_UI_CharacterSelect_QUERY_COOP                      1
 #define CONST_DunDefGameReplicationInfo_GS_USERNAME_MAXLENGTH    15
@@ -1048,19 +1048,47 @@ enum class EEquipmentType : uint8_t
 };
 
 
-// Enum UDKGame.DunDefAchievementManager.EAchievementCheckSet
-enum class EAchievementCheckSet : uint8_t
+// Enum UDKGame.DunDefHeroManagerNative.EMultiplayerModes
+enum class EMultiplayerModes : uint8_t
 {
-	EAC_LEVEL_UP_EQUIPMENT         = 0,
-	EAC_LEVEL_UP_HERO              = 1,
-	EAC_LEVEL_VICTORY              = 2,
-	EAC_EQUIPMENT_SET              = 3,
-	EAC_SURVIVAL_WAVE              = 4,
-	EAC_AWARD                      = 5,
-	EAC_BANKED_MANA                = 6,
-	EAC_ALL_FAMILIAR               = 7,
-	EAC_AT_LOBBY                   = 8,
-	EAC_MAX                        = 9
+	MPM_UNRANKED                   = 0,
+	MPM_RANKED                     = 1,
+	MPM_NONSTEAM                   = 2,
+	MPM_MAX                        = 3
+};
+
+
+// Enum UDKGame.DunDefHeroManager.EGameDifficulty
+enum class EGameDifficulty : uint8_t
+{
+	EGD_EASY                       = 0,
+	EGD_MEDIUM                     = 1,
+	EGD_HARD                       = 2,
+	EGD_INSANE                     = 3,
+	EGD_NIGHTMARE                  = 4,
+	EGD_RUTHLESS                   = 5,
+	EGD_MAX                        = 6
+};
+
+
+// Enum UDKGame.DunDefHero.EHeroType
+enum class EHeroType : uint8_t
+{
+	EHT_APPRENTICE                 = 0,
+	EHT_SQUIRE                     = 1,
+	EHT_HUNTRESS                   = 2,
+	EHT_MONK                       = 3,
+	EHT_MAX                        = 4
+};
+
+
+// Enum UDKGame.DunDefHeroManager.StringVerificationTypes
+enum class EStringVerificationTypes : uint8_t
+{
+	HERO_NAME_VERIFY               = 0,
+	EQUIP_NAME_VERIFY              = 1,
+	EQUIP_FORGER_NAME_VERIFY       = 2,
+	StringVerificationTypes_MAX    = 3
 };
 
 
@@ -1227,47 +1255,19 @@ enum class EAchievement : uint8_t
 };
 
 
-// Enum UDKGame.DunDefHeroManager.EGameDifficulty
-enum class EGameDifficulty : uint8_t
+// Enum UDKGame.DunDefAchievementManager.EAchievementCheckSet
+enum class EAchievementCheckSet : uint8_t
 {
-	EGD_EASY                       = 0,
-	EGD_MEDIUM                     = 1,
-	EGD_HARD                       = 2,
-	EGD_INSANE                     = 3,
-	EGD_NIGHTMARE                  = 4,
-	EGD_RUTHLESS                   = 5,
-	EGD_MAX                        = 6
-};
-
-
-// Enum UDKGame.DunDefHeroManager.StringVerificationTypes
-enum class EStringVerificationTypes : uint8_t
-{
-	HERO_NAME_VERIFY               = 0,
-	EQUIP_NAME_VERIFY              = 1,
-	EQUIP_FORGER_NAME_VERIFY       = 2,
-	StringVerificationTypes_MAX    = 3
-};
-
-
-// Enum UDKGame.DunDefHero.EHeroType
-enum class EHeroType : uint8_t
-{
-	EHT_APPRENTICE                 = 0,
-	EHT_SQUIRE                     = 1,
-	EHT_HUNTRESS                   = 2,
-	EHT_MONK                       = 3,
-	EHT_MAX                        = 4
-};
-
-
-// Enum UDKGame.DunDefHeroManager.EMultiplayerModes
-enum class EMultiplayerModes : uint8_t
-{
-	MP_UNRANKED                    = 0,
-	MP_RANKED                      = 1,
-	MP_NONSTEAM                    = 2,
-	MP_MAX                         = 3
+	EAC_LEVEL_UP_EQUIPMENT         = 0,
+	EAC_LEVEL_UP_HERO              = 1,
+	EAC_LEVEL_VICTORY              = 2,
+	EAC_EQUIPMENT_SET              = 3,
+	EAC_SURVIVAL_WAVE              = 4,
+	EAC_AWARD                      = 5,
+	EAC_BANKED_MANA                = 6,
+	EAC_ALL_FAMILIAR               = 7,
+	EAC_AT_LOBBY                   = 8,
+	EAC_MAX                        = 9
 };
 
 
@@ -3202,29 +3202,6 @@ struct FItemTestInfo
 	int                                                ItemsPerFrame;                                            // 0x0040(0x0004)
 };
 
-// ScriptStruct UDKGame.DunDefAchievementManager.AchievementEntry
-// 0x002C
-struct FAchievementEntry
-{
-	TEnumAsByte<EAchievement>                          AchievementId;                                            // 0x0000(0x0001) (Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
-	struct FString                                     AchievementName;                                          // 0x0004(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     AchievementDescription;                                   // 0x0010(0x000C) (Edit, Localized, NeedCtorLink)
-	unsigned long                                      Is360 : 1;                                                // 0x001C(0x0004) (Edit)
-	unsigned long                                      bUnlockInUnranked : 1;                                    // 0x001C(0x0004) (Edit)
-	int                                                Mapping360;                                               // 0x0020(0x0004) (Edit)
-	class UTexture2D*                                  AchievementIcon;                                          // 0x0024(0x0004) (Edit)
-	struct FColor                                      AchievementColor;                                         // 0x0028(0x0004) (Edit)
-};
-
-// ScriptStruct UDKGame.DunDefAchievementManager.FamiliarTypeAlias
-// 0x0010
-struct FFamiliarTypeAlias
-{
-	struct FString                                     FamiliarPath;                                             // 0x0000(0x000C) (Edit, NeedCtorLink)
-	int                                                AliasIndex;                                               // 0x000C(0x0004) (Edit)
-};
-
 // ScriptStruct UDKGame.DunDefViewportClient.CursorParticle
 // 0x0028
 struct FCursorParticle
@@ -3246,6 +3223,29 @@ struct FAxisInfo
 	float                                              ly;                                                       // 0x0004(0x0004)
 	float                                              rx;                                                       // 0x0008(0x0004)
 	float                                              ry;                                                       // 0x000C(0x0004)
+};
+
+// ScriptStruct UDKGame.DunDefAchievementManager.AchievementEntry
+// 0x002C
+struct FAchievementEntry
+{
+	TEnumAsByte<EAchievement>                          AchievementId;                                            // 0x0000(0x0001) (Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	struct FString                                     AchievementName;                                          // 0x0004(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     AchievementDescription;                                   // 0x0010(0x000C) (Edit, Localized, NeedCtorLink)
+	unsigned long                                      Is360 : 1;                                                // 0x001C(0x0004) (Edit)
+	unsigned long                                      bUnlockInUnranked : 1;                                    // 0x001C(0x0004) (Edit)
+	int                                                Mapping360;                                               // 0x0020(0x0004) (Edit)
+	class UTexture2D*                                  AchievementIcon;                                          // 0x0024(0x0004) (Edit)
+	struct FColor                                      AchievementColor;                                         // 0x0028(0x0004) (Edit)
+};
+
+// ScriptStruct UDKGame.DunDefAchievementManager.FamiliarTypeAlias
+// 0x0010
+struct FFamiliarTypeAlias
+{
+	struct FString                                     FamiliarPath;                                             // 0x0000(0x000C) (Edit, NeedCtorLink)
+	int                                                AliasIndex;                                               // 0x000C(0x0004) (Edit)
 };
 
 // ScriptStruct UDKGame.UI_GameSetup.MissionPreviewImageInfo

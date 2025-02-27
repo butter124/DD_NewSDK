@@ -165,6 +165,12 @@ struct UDunDefHeroManagerNative_GetDamageTypeIndex_Params
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.DunDefHeroManagerNative.SetOnlineMode
+struct UDunDefHeroManagerNative_SetOnlineMode_Params
+{
+	TEnumAsByte<EMultiplayerModes>                     NewMode;                                                  // (Parm)
+};
+
 // Function UDKGame.HeroEquipmentNative.AccelInterp
 struct UHeroEquipmentNative_AccelInterp_Params
 {
@@ -19797,136 +19803,6 @@ struct UAntiCheat_GetAntiCheatInterval_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function UDKGame.DunDefAchievementManager.GetAchievementManager
-struct UDunDefAchievementManager_GetAchievementManager_Params
-{
-	class UDunDefAchievementManager*                   ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.DunDefAchievementManager.DoesAnyLocalPlayerHaveAchievementUnlocked
-struct UDunDefAchievementManager_DoesAnyLocalPlayerHaveAchievementUnlocked_Params
-{
-	TEnumAsByte<EAchievement>                          Achievement;                                              // (Parm)
-	unsigned long                                      bOnlyCheckPrimaryPlayer;                                  // (OptionalParm, Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.DunDefAchievementManager.IsAchievementUnlocked
-struct UDunDefAchievementManager_IsAchievementUnlocked_Params
-{
-	class ULocalPlayer*                                Player;                                                   // (Parm)
-	TEnumAsByte<EAchievement>                          Achievement;                                              // (Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.DunDefAchievementManager.AreAllOtherAchievementsUnlocked
-struct UDunDefAchievementManager_AreAllOtherAchievementsUnlocked_Params
-{
-	class ULocalPlayer*                                Player;                                                   // (Parm)
-	unsigned long                                      bIsUltimate;                                              // (OptionalParm, Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.DunDefAchievementManager.CheckToUnlockAchivement
-struct UDunDefAchievementManager_CheckToUnlockAchivement_Params
-{
-	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
-	TEnumAsByte<EAchievementCheckSet>                  AchievementCheckSet;                                      // (Parm)
-	class UDunDefHero*                                 hero;                                                     // (OptionalParm, Parm)
-	class UHeroEquipment*                              Equipment;                                                // (OptionalParm, Parm)
-	class UCampaignLevelEntryObject*                   beatLevelEntryObject;                                     // (OptionalParm, Parm)
-	int                                                intParam1;                                                // (OptionalParm, Parm)
-	int                                                intParam2;                                                // (OptionalParm, Parm)
-};
-
-// Function UDKGame.DunDefAchievementManager.CheckAllFamiliars
-struct UDunDefAchievementManager_CheckAllFamiliars_Params
-{
-	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
-	class UHeroEquipment*                              equipToCheck;                                             // (Parm)
-};
-
-// Function UDKGame.DunDefAchievementManager.CheckFamiliars
-struct UDunDefAchievementManager_CheckFamiliars_Params
-{
-	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
-	class UHeroEquipment*                              equipToCheck;                                             // (Parm)
-};
-
-// Function UDKGame.DunDefAchievementManager.CheckSurvivalWaveAchievements
-struct UDunDefAchievementManager_CheckSurvivalWaveAchievements_Params
-{
-	int                                                GameDifficulty;                                           // (Parm)
-	int                                                theWaveNumber;                                            // (Parm)
-};
-
-// Function UDKGame.DunDefAchievementManager.CheckAwardAchievements
-struct UDunDefAchievementManager_CheckAwardAchievements_Params
-{
-	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
-	int                                                GameDifficulty;                                           // (Parm)
-};
-
-// Function UDKGame.DunDefAchievementManager.CheckAward
-struct UDunDefAchievementManager_CheckAward_Params
-{
-	class UDunDefPlayerStats*                          theStats;                                                 // (Parm)
-	int                                                StatClassIndex;                                           // (Parm)
-	struct FString                                     BufferName;                                               // (Parm, NeedCtorLink)
-	int                                                StartDifficulty;                                          // (Parm)
-	int                                                minimumValue;                                             // (OptionalParm, Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.DunDefAchievementManager.CheckLevelCompletionAchievements
-struct UDunDefAchievementManager_CheckLevelCompletionAchievements_Params
-{
-	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
-	class UCampaignLevelEntryObject*                   levelEntry;                                               // (Parm)
-	int                                                GameDifficulty;                                           // (Parm)
-};
-
-// Function UDKGame.DunDefAchievementManager.CanIGetAHug
-struct UDunDefAchievementManager_CanIGetAHug_Params
-{
-	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
-	unsigned char                                      HeroUniqueTemplateHeroID;                                 // (Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.DunDefAchievementManager.GetAchievemntEntryIndex
-struct UDunDefAchievementManager_GetAchievemntEntryIndex_Params
-{
-	TEnumAsByte<EAchievement>                          Achievement;                                              // (Parm)
-	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.DunDefAchievementManager.GetCoreUnlockString
-struct UDunDefAchievementManager_GetCoreUnlockString_Params
-{
-	int                                                Index;                                                    // (Parm)
-	int                                                PlayerIndex;                                              // (Parm)
-	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
-};
-
-// Function UDKGame.DunDefAchievementManager.UnlockCores
-struct UDunDefAchievementManager_UnlockCores_Params
-{
-	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
-	TEnumAsByte<EAchievement>                          Achievement;                                              // (Parm)
-};
-
-// Function UDKGame.DunDefAchievementManager.DoUnlockAchivement
-struct UDunDefAchievementManager_DoUnlockAchivement_Params
-{
-	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
-	TEnumAsByte<EAchievement>                          Achievement;                                              // (Parm)
-	unsigned long                                      UnlockForEveryone;                                        // (OptionalParm, Parm)
-	unsigned long                                      bRequirePawnPossession;                                   // (OptionalParm, Parm)
-	unsigned long                                      bPCDontRecurse;                                           // (OptionalParm, Parm)
-	unsigned long                                      onlyUnlockLocal;                                          // (OptionalParm, Parm)
-};
-
 // Function UDKGame.DunDefViewportClient.SetSimpleDamageNumbers
 struct UDunDefViewportClient_SetSimpleDamageNumbers_Params
 {
@@ -20940,6 +20816,41 @@ struct UDunDefViewportClient_PostRender_Params
 	class UCanvas*                                     Canvas;                                                   // (Parm)
 };
 
+// Function UDKGame.ItemFolderStub.IsRootEntry
+struct UItemFolderStub_IsRootEntry_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.ItemFolderStub.GetDataProps
+struct UItemFolderStub_GetDataProps_Params
+{
+	struct FDataEntryProps                             dProps;                                                   // (Parm, OutParm)
+	int                                                dataSetType;                                              // (OptionalParm, Parm)
+};
+
+// Function UDKGame.ItemFolderStub.GetFolderID
+struct UItemFolderStub_GetFolderID_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.ItemFolderStub.GetDataString
+struct UItemFolderStub_GetDataString_Params
+{
+	int                                                dataSetType;                                              // (OptionalParm, Parm)
+	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function UDKGame.ItemFolderStub.GetEntryEnabled
+struct UItemFolderStub_GetEntryEnabled_Params
+{
+	class UPlayer*                                     ForPlayer;                                                // (Parm)
+	int                                                dataSetType;                                              // (OptionalParm, Parm)
+	class UUIScreenObject*                             relatedUIObject;                                          // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.CampaignLevelEntryObject.InitFrom
 struct UCampaignLevelEntryObject_InitFrom_Params
 {
@@ -21006,39 +20917,134 @@ struct UDunDefPlayerStats_GetDataListEntries_Params
 	TArray<TScriptInterface<class UDataListEntryInterface>> ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
 };
 
-// Function UDKGame.ItemFolderStub.IsRootEntry
-struct UItemFolderStub_IsRootEntry_Params
+// Function UDKGame.DunDefAchievementManager.GetAchievementManager
+struct UDunDefAchievementManager_GetAchievementManager_Params
 {
+	class UDunDefAchievementManager*                   ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefAchievementManager.DoesAnyLocalPlayerHaveAchievementUnlocked
+struct UDunDefAchievementManager_DoesAnyLocalPlayerHaveAchievementUnlocked_Params
+{
+	TEnumAsByte<EAchievement>                          Achievement;                                              // (Parm)
+	unsigned long                                      bOnlyCheckPrimaryPlayer;                                  // (OptionalParm, Parm)
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function UDKGame.ItemFolderStub.GetDataProps
-struct UItemFolderStub_GetDataProps_Params
+// Function UDKGame.DunDefAchievementManager.IsAchievementUnlocked
+struct UDunDefAchievementManager_IsAchievementUnlocked_Params
 {
-	struct FDataEntryProps                             dProps;                                                   // (Parm, OutParm)
-	int                                                dataSetType;                                              // (OptionalParm, Parm)
+	class ULocalPlayer*                                Player;                                                   // (Parm)
+	TEnumAsByte<EAchievement>                          Achievement;                                              // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function UDKGame.ItemFolderStub.GetFolderID
-struct UItemFolderStub_GetFolderID_Params
+// Function UDKGame.DunDefAchievementManager.AreAllOtherAchievementsUnlocked
+struct UDunDefAchievementManager_AreAllOtherAchievementsUnlocked_Params
 {
+	class ULocalPlayer*                                Player;                                                   // (Parm)
+	unsigned long                                      bIsUltimate;                                              // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefAchievementManager.CheckToUnlockAchivement
+struct UDunDefAchievementManager_CheckToUnlockAchivement_Params
+{
+	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
+	TEnumAsByte<EAchievementCheckSet>                  AchievementCheckSet;                                      // (Parm)
+	class UDunDefHero*                                 hero;                                                     // (OptionalParm, Parm)
+	class UHeroEquipment*                              Equipment;                                                // (OptionalParm, Parm)
+	class UCampaignLevelEntryObject*                   beatLevelEntryObject;                                     // (OptionalParm, Parm)
+	int                                                intParam1;                                                // (OptionalParm, Parm)
+	int                                                intParam2;                                                // (OptionalParm, Parm)
+};
+
+// Function UDKGame.DunDefAchievementManager.CheckAllFamiliars
+struct UDunDefAchievementManager_CheckAllFamiliars_Params
+{
+	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
+	class UHeroEquipment*                              equipToCheck;                                             // (Parm)
+};
+
+// Function UDKGame.DunDefAchievementManager.CheckFamiliars
+struct UDunDefAchievementManager_CheckFamiliars_Params
+{
+	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
+	class UHeroEquipment*                              equipToCheck;                                             // (Parm)
+};
+
+// Function UDKGame.DunDefAchievementManager.CheckSurvivalWaveAchievements
+struct UDunDefAchievementManager_CheckSurvivalWaveAchievements_Params
+{
+	int                                                GameDifficulty;                                           // (Parm)
+	int                                                theWaveNumber;                                            // (Parm)
+};
+
+// Function UDKGame.DunDefAchievementManager.CheckAwardAchievements
+struct UDunDefAchievementManager_CheckAwardAchievements_Params
+{
+	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
+	int                                                GameDifficulty;                                           // (Parm)
+};
+
+// Function UDKGame.DunDefAchievementManager.CheckAward
+struct UDunDefAchievementManager_CheckAward_Params
+{
+	class UDunDefPlayerStats*                          theStats;                                                 // (Parm)
+	int                                                StatClassIndex;                                           // (Parm)
+	struct FString                                     BufferName;                                               // (Parm, NeedCtorLink)
+	int                                                StartDifficulty;                                          // (Parm)
+	int                                                minimumValue;                                             // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefAchievementManager.CheckLevelCompletionAchievements
+struct UDunDefAchievementManager_CheckLevelCompletionAchievements_Params
+{
+	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
+	class UCampaignLevelEntryObject*                   levelEntry;                                               // (Parm)
+	int                                                GameDifficulty;                                           // (Parm)
+};
+
+// Function UDKGame.DunDefAchievementManager.CanIGetAHug
+struct UDunDefAchievementManager_CanIGetAHug_Params
+{
+	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
+	unsigned char                                      HeroUniqueTemplateHeroID;                                 // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefAchievementManager.GetAchievemntEntryIndex
+struct UDunDefAchievementManager_GetAchievemntEntryIndex_Params
+{
+	TEnumAsByte<EAchievement>                          Achievement;                                              // (Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function UDKGame.ItemFolderStub.GetDataString
-struct UItemFolderStub_GetDataString_Params
+// Function UDKGame.DunDefAchievementManager.GetCoreUnlockString
+struct UDunDefAchievementManager_GetCoreUnlockString_Params
 {
-	int                                                dataSetType;                                              // (OptionalParm, Parm)
+	int                                                Index;                                                    // (Parm)
+	int                                                PlayerIndex;                                              // (Parm)
 	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
 };
 
-// Function UDKGame.ItemFolderStub.GetEntryEnabled
-struct UItemFolderStub_GetEntryEnabled_Params
+// Function UDKGame.DunDefAchievementManager.UnlockCores
+struct UDunDefAchievementManager_UnlockCores_Params
 {
-	class UPlayer*                                     ForPlayer;                                                // (Parm)
-	int                                                dataSetType;                                              // (OptionalParm, Parm)
-	class UUIScreenObject*                             relatedUIObject;                                          // (OptionalParm, Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
+	TEnumAsByte<EAchievement>                          Achievement;                                              // (Parm)
+};
+
+// Function UDKGame.DunDefAchievementManager.DoUnlockAchivement
+struct UDunDefAchievementManager_DoUnlockAchivement_Params
+{
+	class ADunDefPlayerController*                     ForPlayer;                                                // (Parm)
+	TEnumAsByte<EAchievement>                          Achievement;                                              // (Parm)
+	unsigned long                                      UnlockForEveryone;                                        // (OptionalParm, Parm)
+	unsigned long                                      bRequirePawnPossession;                                   // (OptionalParm, Parm)
+	unsigned long                                      bPCDontRecurse;                                           // (OptionalParm, Parm)
+	unsigned long                                      onlyUnlockLocal;                                          // (OptionalParm, Parm)
 };
 
 // Function UDKGame.DunDefSceneClient.EmulateOnlineServiceConnect

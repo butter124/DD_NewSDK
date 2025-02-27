@@ -194,6 +194,27 @@ float ADunDefWeapon_Minigun::GetFireInterval(unsigned char FireModeNum)
 }
 
 
+// Function CDT8.DunDefWeapon_Minigun.GetProjectileDamage
+// (Defined, Simulated, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefWeapon_Minigun::GetProjectileDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function CDT8.DunDefWeapon_Minigun.GetProjectileDamage");
+
+	ADunDefWeapon_Minigun_GetProjectileDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function CDT8.HeroEquipment_Familiar_AoeBuffer.TickedByPawn
 // (Defined, Public)
 // Parameters:

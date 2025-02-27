@@ -314,37 +314,6 @@ struct UHeroEquipment_Familiar_Melee_TowerScaling_TickedByPawn_Params
 	float                                              DeltaTime;                                                // (Parm)
 };
 
-// Function CDT7.UI_TBR.LaunchMap
-struct UUI_TBR_LaunchMap_Params
-{
-	unsigned long                                      bStartTrueBossRush;                                       // (OptionalParm, Parm)
-};
-
-// Function CDT7.UI_TBR.WasCheckPointButtonPressed
-struct UUI_TBR_WasCheckPointButtonPressed_Params
-{
-	class UUIObject*                                   Widget;                                                   // (Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function CDT7.UI_TBR.NotifyWidgetClicked
-struct UUI_TBR_NotifyWidgetClicked_Params
-{
-	class UUIObject*                                   Widget;                                                   // (Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function CDT7.UI_TBR.CheckProgress
-struct UUI_TBR_CheckProgress_Params
-{
-};
-
-// Function CDT7.UI_TBR.SceneActivated
-struct UUI_TBR_SceneActivated_Params
-{
-	unsigned long                                      bInitialActivation;                                       // (Parm)
-};
-
 }
 
 #ifdef _MSC_VER

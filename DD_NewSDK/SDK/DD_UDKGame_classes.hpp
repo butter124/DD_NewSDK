@@ -247,7 +247,7 @@ public:
 
 
 // Class UDKGame.DunDefHeroManagerNative
-// 0x003C (0x0078 - 0x003C)
+// 0x003D (0x0079 - 0x003C)
 class UDunDefHeroManagerNative : public UObject
 {
 public:
@@ -256,6 +256,7 @@ public:
 	TArray<struct FAchievementSaveEntry>               AchievementEntries;                                       // 0x0054(0x000C) (Edit, NeedCtorLink)
 	TArray<struct FCrystalCoreEntry>                   CrystalCoreSettings;                                      // 0x0060(0x000C) (NeedCtorLink)
 	TArray<struct FGameDamageEntry>                    GameDamageEntries;                                        // 0x006C(0x000C) (Edit, NeedCtorLink)
+	TEnumAsByte<EMultiplayerModes>                     CurrentMultiplayerMode;                                   // 0x0078(0x0001) (Native)
 
 	static UClass* StaticClass()
 	{
@@ -269,6 +270,7 @@ public:
 	void CheckForDuplicateEquipment(int EquipmentID1, int EquipmentID2);
 	class UHeroEquipmentNative* STATIC_GetEquipmentOfType(TArray<class UHeroEquipmentNative*> InEquipments, int InEquipmentType, unsigned long bFindSecondary);
 	int GetDamageTypeIndex(class UClass* TheDamageType);
+	void SetOnlineMode(TEnumAsByte<EMultiplayerModes> NewMode);
 };
 
 
@@ -1218,12 +1220,11 @@ public:
 
 
 // Class UDKGame.DunDefHeroManager
-// 0x0628 (0x06A0 - 0x0078)
+// 0x062B (0x06A4 - 0x0079)
 class UDunDefHeroManager : public UDunDefHeroManagerNative
 {
 public:
-	TEnumAsByte<EMultiplayerModes>                     CurrentMultiplayerMode;                                   // 0x0078(0x0001)
-	TEnumAsByte<EEquipmentType>                        ShopEquipmentTypes[0x3];                                  // 0x0079(0x0001) (Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0079(0x0003) MISSED OFFSET
 	unsigned long                                      bSentSteamStatsAfterRanked : 1;                           // 0x007C(0x0004)
 	unsigned long                                      bDataListReturnDLCMissionsOnly : 1;                       // 0x007C(0x0004) (Transient)
 	unsigned long                                      bDataListReturnModMissionsOnly : 1;                       // 0x007C(0x0004) (Transient)
@@ -1276,69 +1277,71 @@ public:
 	TArray<struct FStatsSaveEntry>                     StatsEntries;                                             // 0x0248(0x000C) (Edit, NeedCtorLink)
 	class USoundCue*                                   RankedConnectingSound;                                    // 0x0254(0x0004) (Edit)
 	TArray<struct FString>                             ProTips;                                                  // 0x0258(0x000C) (Edit, Localized, NeedCtorLink)
-	float                                              ShopItemQualityMutliplier;                                // 0x0264(0x0004) (Edit)
-	float                                              ShopItemQualityAddition;                                  // 0x0268(0x0004) (Edit)
-	float                                              ShopRarityMultiplier;                                     // 0x026C(0x0004) (Edit)
-	float                                              ShopRarityAddition;                                       // 0x0270(0x0004) (Edit)
-	TArray<class UObject*>                             AdditionalReferences;                                     // 0x0274(0x000C) (Edit, NeedCtorLink)
-	TArray<class UTexture2D*>                          MultiplayerModeImages;                                    // 0x0280(0x000C) (Edit, NeedCtorLink)
-	class UHeroEquipment*                              TokenEquipmentArchetype;                                  // 0x028C(0x0004) (Edit)
-	TArray<int>                                        GameLogicIntArray;                                        // 0x0290(0x000C) (NeedCtorLink)
-	TArray<struct FString>                             AvailableProTips;                                         // 0x029C(0x000C) (NeedCtorLink)
-	class UDunDefAchievementManager*                   TheAchievementManager;                                    // 0x02A8(0x0004) (Edit, EditInline)
-	class UDunDefPostProcessManager*                   ThePostProcessManager;                                    // 0x02AC(0x0004) (Edit, EditInline)
-	struct FString                                     YesString;                                                // 0x02B0(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     NoString;                                                 // 0x02BC(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     LoadingRankedHeroesTitle;                                 // 0x02C8(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     LoadingRankedHeroesDescription;                           // 0x02D4(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     FailedLoadingRankedHeroesTitle;                           // 0x02E0(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     FailedLoadingRankedHeroesDescription;                     // 0x02EC(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     LoginAuthenticationError;                                 // 0x02F8(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     CustomMissionString;                                      // 0x0304(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     LoginBannedError;                                         // 0x0310(0x000C) (Localized, NeedCtorLink)
-	TArray<int>                                        ShownTutorialSets;                                        // 0x031C(0x000C) (NeedCtorLink)
-	struct FString                                     MapTagOverride;                                           // 0x0328(0x000C) (NeedCtorLink)
-	struct FString                                     NightmareDLCURL;                                          // 0x0334(0x000C) (NeedCtorLink)
-	TArray<TScriptInterface<class UDataListEntryInterface>> LocalLoadedHeroes;                                        // 0x0340(0x000C) (NeedCtorLink)
-	TArray<class UDunDefHero*>                         ActiveHeroes;                                             // 0x034C(0x000C) (NeedCtorLink)
-	struct FShopEquipmentSet                           ShopEquipments[0x3];                                      // 0x0358(0x000C) (NeedCtorLink)
-	TArray<class UHeroEquipment*>                      ItemBoxEquipments;                                        // 0x037C(0x000C) (NeedCtorLink)
-	TArray<struct FItemBoxEntry>                       ItemBoxEntries;                                           // 0x0388(0x000C) (NeedCtorLink)
-	TArray<class UHeroEquipment*>                      LobbyEquipments;                                          // 0x0394(0x000C) (NeedCtorLink)
-	TArray<struct FDLCEquipmentEntry>                  DLCEquipmentEntries;                                      // 0x03A0(0x000C) (NeedCtorLink)
-	class USaveHelper*                                 HeroSaver;                                                // 0x03AC(0x0004)
-	class UProfanityFilter*                            ProfanityChecker;                                         // 0x03B0(0x0004)
-	TArray<struct FPlayerUserID>                       RegisteredUserIDs;                                        // 0x03B4(0x000C) (NeedCtorLink)
-	int                                                CurrentUserID;                                            // 0x03C0(0x0004)
-	int                                                PrimaryController;                                        // 0x03C4(0x0004)
-	int                                                UniqueRemoteID;                                           // 0x03C8(0x0004)
-	struct FCrystalCoreOptions                         coreOptions;                                              // 0x03CC(0x0034)
-	struct FOptionsFixedStruct                         defaultSettingsFixed;                                     // 0x0400(0x00A4) (NeedCtorLink)
-	struct FString                                     defaultResolution;                                        // 0x04A4(0x000C) (NeedCtorLink)
-	struct FOptionsInfo                                DefaultSettings;                                          // 0x04B0(0x0104) (NeedCtorLink)
-	TArray<struct FLevelProgressInfo>                  defaultBeaten;                                            // 0x05B4(0x000C) (NeedCtorLink)
-	TArray<struct FLevelProgressInfo>                  defaultProgress;                                          // 0x05C0(0x000C) (NeedCtorLink)
-	TArray<struct FLevelProgressInfo>                  remoteDefaultProgress;                                    // 0x05CC(0x000C) (NeedCtorLink)
-	TArray<int>                                        loadedIDs;                                                // 0x05D8(0x000C) (NeedCtorLink)
-	struct FString                                     LobbyLevelName;                                           // 0x05E4(0x000C) (Localized, NeedCtorLink)
-	int                                                HostStatsIndex;                                           // 0x05F0(0x0004)
-	TArray<int>                                        KickedSessions;                                           // 0x05F4(0x000C) (NeedCtorLink)
-	int                                                KickedSessionsMax;                                        // 0x0600(0x0004) (Edit)
-	struct FString                                     CorruptSaveTitle;                                         // 0x0604(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     CorruptSaveMsg;                                           // 0x0610(0x000C) (Localized, NeedCtorLink)
-	TArray<class UDunDefHero*>                         heroesToVerify;                                           // 0x061C(0x000C) (NeedCtorLink)
-	TArray<class UHeroEquipment*>                      equipmentToVerify;                                        // 0x0628(0x000C) (NeedCtorLink)
-	TArray<class UTexture2D*>                          difficultyIcons;                                          // 0x0634(0x000C) (Edit, NeedCtorLink)
-	int                                                currentSaveVersion;                                       // 0x0640(0x0004)
-	struct FString                                     RankedModeWelcomeMessage;                                 // 0x0644(0x000C) (Transient, NeedCtorLink)
-	float                                              baseEquipMult;                                            // 0x0650(0x0004)
-	float                                              TrueBossRushSplits[0xA];                                  // 0x0654(0x0004)
-	float                                              TrueBossRushStartTime;                                    // 0x067C(0x0004)
-	int                                                TrueBossRushCurrentSplit;                                 // 0x0680(0x0004)
-	struct FRuthlessMapModifiers                       MapModifiers;                                             // 0x0684(0x0008) (Edit)
-	TArray<class UClass*>                              RuthlessLiveGameInfoOverride;                             // 0x068C(0x000C) (Edit, NeedCtorLink)
-	class UHeroManagerResources*                       HeroResources;                                            // 0x0698(0x0004)
-	class UHeroManagerResources*                       HeroManagerResourcesTemplate;                             // 0x069C(0x0004) (Edit)
+	TEnumAsByte<EEquipmentType>                        ShopEquipmentTypes[0x3];                                  // 0x0264(0x0001) (Edit)
+	unsigned char                                      UnknownData01[0x1];                                       // 0x0267(0x0001) MISSED OFFSET
+	float                                              ShopItemQualityMutliplier;                                // 0x0268(0x0004) (Edit)
+	float                                              ShopItemQualityAddition;                                  // 0x026C(0x0004) (Edit)
+	float                                              ShopRarityMultiplier;                                     // 0x0270(0x0004) (Edit)
+	float                                              ShopRarityAddition;                                       // 0x0274(0x0004) (Edit)
+	TArray<class UObject*>                             AdditionalReferences;                                     // 0x0278(0x000C) (Edit, NeedCtorLink)
+	TArray<class UTexture2D*>                          MultiplayerModeImages;                                    // 0x0284(0x000C) (Edit, NeedCtorLink)
+	class UHeroEquipment*                              TokenEquipmentArchetype;                                  // 0x0290(0x0004) (Edit)
+	TArray<int>                                        GameLogicIntArray;                                        // 0x0294(0x000C) (NeedCtorLink)
+	TArray<struct FString>                             AvailableProTips;                                         // 0x02A0(0x000C) (NeedCtorLink)
+	class UDunDefAchievementManager*                   TheAchievementManager;                                    // 0x02AC(0x0004) (Edit, EditInline)
+	class UDunDefPostProcessManager*                   ThePostProcessManager;                                    // 0x02B0(0x0004) (Edit, EditInline)
+	struct FString                                     YesString;                                                // 0x02B4(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     NoString;                                                 // 0x02C0(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     LoadingRankedHeroesTitle;                                 // 0x02CC(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     LoadingRankedHeroesDescription;                           // 0x02D8(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     FailedLoadingRankedHeroesTitle;                           // 0x02E4(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     FailedLoadingRankedHeroesDescription;                     // 0x02F0(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     LoginAuthenticationError;                                 // 0x02FC(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     CustomMissionString;                                      // 0x0308(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     LoginBannedError;                                         // 0x0314(0x000C) (Localized, NeedCtorLink)
+	TArray<int>                                        ShownTutorialSets;                                        // 0x0320(0x000C) (NeedCtorLink)
+	struct FString                                     MapTagOverride;                                           // 0x032C(0x000C) (NeedCtorLink)
+	struct FString                                     NightmareDLCURL;                                          // 0x0338(0x000C) (NeedCtorLink)
+	TArray<TScriptInterface<class UDataListEntryInterface>> LocalLoadedHeroes;                                        // 0x0344(0x000C) (NeedCtorLink)
+	TArray<class UDunDefHero*>                         ActiveHeroes;                                             // 0x0350(0x000C) (NeedCtorLink)
+	struct FShopEquipmentSet                           ShopEquipments[0x3];                                      // 0x035C(0x000C) (NeedCtorLink)
+	TArray<class UHeroEquipment*>                      ItemBoxEquipments;                                        // 0x0380(0x000C) (NeedCtorLink)
+	TArray<struct FItemBoxEntry>                       ItemBoxEntries;                                           // 0x038C(0x000C) (NeedCtorLink)
+	TArray<class UHeroEquipment*>                      LobbyEquipments;                                          // 0x0398(0x000C) (NeedCtorLink)
+	TArray<struct FDLCEquipmentEntry>                  DLCEquipmentEntries;                                      // 0x03A4(0x000C) (NeedCtorLink)
+	class USaveHelper*                                 HeroSaver;                                                // 0x03B0(0x0004)
+	class UProfanityFilter*                            ProfanityChecker;                                         // 0x03B4(0x0004)
+	TArray<struct FPlayerUserID>                       RegisteredUserIDs;                                        // 0x03B8(0x000C) (NeedCtorLink)
+	int                                                CurrentUserID;                                            // 0x03C4(0x0004)
+	int                                                PrimaryController;                                        // 0x03C8(0x0004)
+	int                                                UniqueRemoteID;                                           // 0x03CC(0x0004)
+	struct FCrystalCoreOptions                         coreOptions;                                              // 0x03D0(0x0034)
+	struct FOptionsFixedStruct                         defaultSettingsFixed;                                     // 0x0404(0x00A4) (NeedCtorLink)
+	struct FString                                     defaultResolution;                                        // 0x04A8(0x000C) (NeedCtorLink)
+	struct FOptionsInfo                                DefaultSettings;                                          // 0x04B4(0x0104) (NeedCtorLink)
+	TArray<struct FLevelProgressInfo>                  defaultBeaten;                                            // 0x05B8(0x000C) (NeedCtorLink)
+	TArray<struct FLevelProgressInfo>                  defaultProgress;                                          // 0x05C4(0x000C) (NeedCtorLink)
+	TArray<struct FLevelProgressInfo>                  remoteDefaultProgress;                                    // 0x05D0(0x000C) (NeedCtorLink)
+	TArray<int>                                        loadedIDs;                                                // 0x05DC(0x000C) (NeedCtorLink)
+	struct FString                                     LobbyLevelName;                                           // 0x05E8(0x000C) (Localized, NeedCtorLink)
+	int                                                HostStatsIndex;                                           // 0x05F4(0x0004)
+	TArray<int>                                        KickedSessions;                                           // 0x05F8(0x000C) (NeedCtorLink)
+	int                                                KickedSessionsMax;                                        // 0x0604(0x0004) (Edit)
+	struct FString                                     CorruptSaveTitle;                                         // 0x0608(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     CorruptSaveMsg;                                           // 0x0614(0x000C) (Localized, NeedCtorLink)
+	TArray<class UDunDefHero*>                         heroesToVerify;                                           // 0x0620(0x000C) (NeedCtorLink)
+	TArray<class UHeroEquipment*>                      equipmentToVerify;                                        // 0x062C(0x000C) (NeedCtorLink)
+	TArray<class UTexture2D*>                          difficultyIcons;                                          // 0x0638(0x000C) (Edit, NeedCtorLink)
+	int                                                currentSaveVersion;                                       // 0x0644(0x0004)
+	struct FString                                     RankedModeWelcomeMessage;                                 // 0x0648(0x000C) (Transient, NeedCtorLink)
+	float                                              baseEquipMult;                                            // 0x0654(0x0004)
+	float                                              TrueBossRushSplits[0xA];                                  // 0x0658(0x0004)
+	float                                              TrueBossRushStartTime;                                    // 0x0680(0x0004)
+	int                                                TrueBossRushCurrentSplit;                                 // 0x0684(0x0004)
+	struct FRuthlessMapModifiers                       MapModifiers;                                             // 0x0688(0x0008) (Edit)
+	TArray<class UClass*>                              RuthlessLiveGameInfoOverride;                             // 0x0690(0x000C) (Edit, NeedCtorLink)
+	class UHeroManagerResources*                       HeroResources;                                            // 0x069C(0x0004)
+	class UHeroManagerResources*                       HeroManagerResourcesTemplate;                             // 0x06A0(0x0004) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -7732,55 +7735,6 @@ public:
 };
 
 
-// Class UDKGame.DunDefAchievementManager
-// 0x00BC (0x00F8 - 0x003C)
-class UDunDefAchievementManager : public UObject
-{
-public:
-	TArray<struct FAchievementEntry>                   AchievementEntries;                                       // 0x003C(0x000C) (Edit, NeedCtorLink)
-	struct FString                                     UnlockedMessageString;                                    // 0x0048(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     UnlockedCoreMessageString;                                // 0x0054(0x000C) (Edit, Localized, NeedCtorLink)
-	class USoundCue*                                   UnlockedAchievementSound_PC;                              // 0x0060(0x0004) (Edit)
-	class USoundCue*                                   UnlockedCoreSound;                                        // 0x0064(0x0004) (Edit)
-	TArray<struct FString>                             Area1_Tags;                                               // 0x0068(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FString>                             Area2_Tags;                                               // 0x0074(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FString>                             Area3_Tags;                                               // 0x0080(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FString>                             AllArea_Tags;                                             // 0x008C(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FString>                             Challenge_Tags;                                           // 0x0098(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FString>                             FamiliarTypes;                                            // 0x00A4(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FFamiliarTypeAlias>                  FamiliarAliases;                                          // 0x00B0(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FString>                             AllFamiliarTypes;                                         // 0x00BC(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FFamiliarTypeAlias>                  AllFamiliarAliases;                                       // 0x00C8(0x000C) (Edit, NeedCtorLink)
-	TArray<unsigned char>                              HeroClassUniqueIDs;                                       // 0x00D4(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FString>                             TranscendentSurvivalistAreaTags;                          // 0x00E0(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FString>                             MasterRTSAreaTags;                                        // 0x00EC(0x000C) (Edit, NeedCtorLink)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class UDKGame.DunDefAchievementManager");
-		return ptr;
-	}
-
-
-	class UDunDefAchievementManager* STATIC_GetAchievementManager();
-	unsigned long DoesAnyLocalPlayerHaveAchievementUnlocked(TEnumAsByte<EAchievement> Achievement, unsigned long bOnlyCheckPrimaryPlayer);
-	unsigned long IsAchievementUnlocked(class ULocalPlayer* Player, TEnumAsByte<EAchievement> Achievement);
-	unsigned long AreAllOtherAchievementsUnlocked(class ULocalPlayer* Player, unsigned long bIsUltimate);
-	void CheckToUnlockAchivement(class ADunDefPlayerController* ForPlayer, TEnumAsByte<EAchievementCheckSet> AchievementCheckSet, class UDunDefHero* hero, class UHeroEquipment* Equipment, class UCampaignLevelEntryObject* beatLevelEntryObject, int intParam1, int intParam2);
-	void CheckAllFamiliars(class ADunDefPlayerController* ForPlayer, class UHeroEquipment* equipToCheck);
-	void CheckFamiliars(class ADunDefPlayerController* ForPlayer, class UHeroEquipment* equipToCheck);
-	void CheckSurvivalWaveAchievements(int GameDifficulty, int theWaveNumber);
-	void CheckAwardAchievements(class ADunDefPlayerController* ForPlayer, int GameDifficulty);
-	unsigned long CheckAward(class UDunDefPlayerStats* theStats, int StatClassIndex, const struct FString& BufferName, int StartDifficulty, int minimumValue);
-	void CheckLevelCompletionAchievements(class ADunDefPlayerController* ForPlayer, class UCampaignLevelEntryObject* levelEntry, int GameDifficulty);
-	unsigned long CanIGetAHug(class ADunDefPlayerController* ForPlayer, unsigned char HeroUniqueTemplateHeroID);
-	int GetAchievemntEntryIndex(TEnumAsByte<EAchievement> Achievement);
-	struct FString GetCoreUnlockString(int Index, int PlayerIndex);
-	void UnlockCores(class ADunDefPlayerController* ForPlayer, TEnumAsByte<EAchievement> Achievement);
-	void DoUnlockAchivement(class ADunDefPlayerController* ForPlayer, TEnumAsByte<EAchievement> Achievement, unsigned long UnlockForEveryone, unsigned long bRequirePawnPossession, unsigned long bPCDontRecurse, unsigned long onlyUnlockLocal);
-};
-
-
 // Class UDKGame.DunDefViewportClient
 // 0x0CCC (0x0E08 - 0x013C)
 class UDunDefViewportClient : public UDunDefNativeViewportClient
@@ -8029,18 +7983,26 @@ public:
 };
 
 
-// Class UDKGame.DunDefAchievementMessage
-// 0x0000 (0x0164 - 0x0164)
-class UDunDefAchievementMessage : public UDunDefGameMessage
+// Class UDKGame.ItemFolderStub
+// 0x0010 (0x004C - 0x003C)
+class UItemFolderStub : public UObject
 {
 public:
+	int                                                FolderID;                                                 // 0x003C(0x0004) (Transient)
+	struct FString                                     FolderName;                                               // 0x0040(0x000C) (Transient, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
-		static auto ptr = UObject::FindClass("Class UDKGame.DunDefAchievementMessage");
+		static auto ptr = UObject::FindClass("Class UDKGame.ItemFolderStub");
 		return ptr;
 	}
 
+
+	unsigned long IsRootEntry();
+	void GetDataProps(int dataSetType, struct FDataEntryProps* dProps);
+	int GetFolderID();
+	struct FString GetDataString(int dataSetType);
+	unsigned long GetEntryEnabled(class UPlayer* ForPlayer, int dataSetType, class UUIScreenObject* relatedUIObject);
 };
 
 
@@ -8093,26 +8055,52 @@ public:
 };
 
 
-// Class UDKGame.ItemFolderStub
-// 0x0010 (0x004C - 0x003C)
-class UItemFolderStub : public UObject
+// Class UDKGame.DunDefAchievementManager
+// 0x00BC (0x00F8 - 0x003C)
+class UDunDefAchievementManager : public UObject
 {
 public:
-	int                                                FolderID;                                                 // 0x003C(0x0004) (Transient)
-	struct FString                                     FolderName;                                               // 0x0040(0x000C) (Transient, NeedCtorLink)
+	TArray<struct FAchievementEntry>                   AchievementEntries;                                       // 0x003C(0x000C) (Edit, NeedCtorLink)
+	struct FString                                     UnlockedMessageString;                                    // 0x0048(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     UnlockedCoreMessageString;                                // 0x0054(0x000C) (Edit, Localized, NeedCtorLink)
+	class USoundCue*                                   UnlockedAchievementSound_PC;                              // 0x0060(0x0004) (Edit)
+	class USoundCue*                                   UnlockedCoreSound;                                        // 0x0064(0x0004) (Edit)
+	TArray<struct FString>                             Area1_Tags;                                               // 0x0068(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FString>                             Area2_Tags;                                               // 0x0074(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FString>                             Area3_Tags;                                               // 0x0080(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FString>                             AllArea_Tags;                                             // 0x008C(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FString>                             Challenge_Tags;                                           // 0x0098(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FString>                             FamiliarTypes;                                            // 0x00A4(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FFamiliarTypeAlias>                  FamiliarAliases;                                          // 0x00B0(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FString>                             AllFamiliarTypes;                                         // 0x00BC(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FFamiliarTypeAlias>                  AllFamiliarAliases;                                       // 0x00C8(0x000C) (Edit, NeedCtorLink)
+	TArray<unsigned char>                              HeroClassUniqueIDs;                                       // 0x00D4(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FString>                             TranscendentSurvivalistAreaTags;                          // 0x00E0(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FString>                             MasterRTSAreaTags;                                        // 0x00EC(0x000C) (Edit, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
-		static auto ptr = UObject::FindClass("Class UDKGame.ItemFolderStub");
+		static auto ptr = UObject::FindClass("Class UDKGame.DunDefAchievementManager");
 		return ptr;
 	}
 
 
-	unsigned long IsRootEntry();
-	void GetDataProps(int dataSetType, struct FDataEntryProps* dProps);
-	int GetFolderID();
-	struct FString GetDataString(int dataSetType);
-	unsigned long GetEntryEnabled(class UPlayer* ForPlayer, int dataSetType, class UUIScreenObject* relatedUIObject);
+	class UDunDefAchievementManager* STATIC_GetAchievementManager();
+	unsigned long DoesAnyLocalPlayerHaveAchievementUnlocked(TEnumAsByte<EAchievement> Achievement, unsigned long bOnlyCheckPrimaryPlayer);
+	unsigned long IsAchievementUnlocked(class ULocalPlayer* Player, TEnumAsByte<EAchievement> Achievement);
+	unsigned long AreAllOtherAchievementsUnlocked(class ULocalPlayer* Player, unsigned long bIsUltimate);
+	void CheckToUnlockAchivement(class ADunDefPlayerController* ForPlayer, TEnumAsByte<EAchievementCheckSet> AchievementCheckSet, class UDunDefHero* hero, class UHeroEquipment* Equipment, class UCampaignLevelEntryObject* beatLevelEntryObject, int intParam1, int intParam2);
+	void CheckAllFamiliars(class ADunDefPlayerController* ForPlayer, class UHeroEquipment* equipToCheck);
+	void CheckFamiliars(class ADunDefPlayerController* ForPlayer, class UHeroEquipment* equipToCheck);
+	void CheckSurvivalWaveAchievements(int GameDifficulty, int theWaveNumber);
+	void CheckAwardAchievements(class ADunDefPlayerController* ForPlayer, int GameDifficulty);
+	unsigned long CheckAward(class UDunDefPlayerStats* theStats, int StatClassIndex, const struct FString& BufferName, int StartDifficulty, int minimumValue);
+	void CheckLevelCompletionAchievements(class ADunDefPlayerController* ForPlayer, class UCampaignLevelEntryObject* levelEntry, int GameDifficulty);
+	unsigned long CanIGetAHug(class ADunDefPlayerController* ForPlayer, unsigned char HeroUniqueTemplateHeroID);
+	int GetAchievemntEntryIndex(TEnumAsByte<EAchievement> Achievement);
+	struct FString GetCoreUnlockString(int Index, int PlayerIndex);
+	void UnlockCores(class ADunDefPlayerController* ForPlayer, TEnumAsByte<EAchievement> Achievement);
+	void DoUnlockAchivement(class ADunDefPlayerController* ForPlayer, TEnumAsByte<EAchievement> Achievement, unsigned long UnlockForEveryone, unsigned long bRequirePawnPossession, unsigned long bPCDontRecurse, unsigned long onlyUnlockLocal);
 };
 
 
@@ -9884,6 +9872,21 @@ public:
 
 
 	TArray<TScriptInterface<class UDataListEntryInterface>> GetDataListEntries(int dataSetType, int PlayerIndex, int FolderID);
+};
+
+
+// Class UDKGame.DunDefAchievementMessage
+// 0x0000 (0x0164 - 0x0164)
+class UDunDefAchievementMessage : public UDunDefGameMessage
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.DunDefAchievementMessage");
+		return ptr;
+	}
+
 };
 
 

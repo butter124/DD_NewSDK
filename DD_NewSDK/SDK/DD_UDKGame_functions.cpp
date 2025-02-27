@@ -509,6 +509,27 @@ int UDunDefHeroManagerNative::GetDamageTypeIndex(class UClass* TheDamageType)
 }
 
 
+// Function UDKGame.DunDefHeroManagerNative.SetOnlineMode
+// (Native, Public)
+// Parameters:
+// TEnumAsByte<EMultiplayerModes> NewMode                        (Parm)
+
+void UDunDefHeroManagerNative::SetOnlineMode(TEnumAsByte<EMultiplayerModes> NewMode)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefHeroManagerNative.SetOnlineMode");
+
+	UDunDefHeroManagerNative_SetOnlineMode_Params params;
+	params.NewMode = NewMode;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function UDKGame.HeroEquipmentNative.AccelInterp
 // (Native, Public, HasOutParms)
 // Parameters:
@@ -64204,402 +64225,6 @@ float UAntiCheat::STATIC_GetAntiCheatInterval()
 }
 
 
-// Function UDKGame.DunDefAchievementManager.GetAchievementManager
-// (Defined, Static, Public)
-// Parameters:
-// class UDunDefAchievementManager* ReturnValue                    (Parm, OutParm, ReturnParm)
-
-class UDunDefAchievementManager* UDunDefAchievementManager::STATIC_GetAchievementManager()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.GetAchievementManager");
-
-	UDunDefAchievementManager_GetAchievementManager_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.DoesAnyLocalPlayerHaveAchievementUnlocked
-// (Defined, HasOptionalParms, Public)
-// Parameters:
-// TEnumAsByte<EAchievement>      Achievement                    (Parm)
-// unsigned long                  bOnlyCheckPrimaryPlayer        (OptionalParm, Parm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long UDunDefAchievementManager::DoesAnyLocalPlayerHaveAchievementUnlocked(TEnumAsByte<EAchievement> Achievement, unsigned long bOnlyCheckPrimaryPlayer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.DoesAnyLocalPlayerHaveAchievementUnlocked");
-
-	UDunDefAchievementManager_DoesAnyLocalPlayerHaveAchievementUnlocked_Params params;
-	params.Achievement = Achievement;
-	params.bOnlyCheckPrimaryPlayer = bOnlyCheckPrimaryPlayer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.IsAchievementUnlocked
-// (Defined, Public)
-// Parameters:
-// class ULocalPlayer*            Player                         (Parm)
-// TEnumAsByte<EAchievement>      Achievement                    (Parm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long UDunDefAchievementManager::IsAchievementUnlocked(class ULocalPlayer* Player, TEnumAsByte<EAchievement> Achievement)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.IsAchievementUnlocked");
-
-	UDunDefAchievementManager_IsAchievementUnlocked_Params params;
-	params.Player = Player;
-	params.Achievement = Achievement;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.AreAllOtherAchievementsUnlocked
-// (Defined, HasOptionalParms, Public)
-// Parameters:
-// class ULocalPlayer*            Player                         (Parm)
-// unsigned long                  bIsUltimate                    (OptionalParm, Parm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long UDunDefAchievementManager::AreAllOtherAchievementsUnlocked(class ULocalPlayer* Player, unsigned long bIsUltimate)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.AreAllOtherAchievementsUnlocked");
-
-	UDunDefAchievementManager_AreAllOtherAchievementsUnlocked_Params params;
-	params.Player = Player;
-	params.bIsUltimate = bIsUltimate;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.CheckToUnlockAchivement
-// (Defined, HasOptionalParms, Public)
-// Parameters:
-// class ADunDefPlayerController* ForPlayer                      (Parm)
-// TEnumAsByte<EAchievementCheckSet> AchievementCheckSet            (Parm)
-// class UDunDefHero*             hero                           (OptionalParm, Parm)
-// class UHeroEquipment*          Equipment                      (OptionalParm, Parm)
-// class UCampaignLevelEntryObject* beatLevelEntryObject           (OptionalParm, Parm)
-// int                            intParam1                      (OptionalParm, Parm)
-// int                            intParam2                      (OptionalParm, Parm)
-
-void UDunDefAchievementManager::CheckToUnlockAchivement(class ADunDefPlayerController* ForPlayer, TEnumAsByte<EAchievementCheckSet> AchievementCheckSet, class UDunDefHero* hero, class UHeroEquipment* Equipment, class UCampaignLevelEntryObject* beatLevelEntryObject, int intParam1, int intParam2)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CheckToUnlockAchivement");
-
-	UDunDefAchievementManager_CheckToUnlockAchivement_Params params;
-	params.ForPlayer = ForPlayer;
-	params.AchievementCheckSet = AchievementCheckSet;
-	params.hero = hero;
-	params.Equipment = Equipment;
-	params.beatLevelEntryObject = beatLevelEntryObject;
-	params.intParam1 = intParam1;
-	params.intParam2 = intParam2;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.CheckAllFamiliars
-// (Defined, Public)
-// Parameters:
-// class ADunDefPlayerController* ForPlayer                      (Parm)
-// class UHeroEquipment*          equipToCheck                   (Parm)
-
-void UDunDefAchievementManager::CheckAllFamiliars(class ADunDefPlayerController* ForPlayer, class UHeroEquipment* equipToCheck)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CheckAllFamiliars");
-
-	UDunDefAchievementManager_CheckAllFamiliars_Params params;
-	params.ForPlayer = ForPlayer;
-	params.equipToCheck = equipToCheck;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.CheckFamiliars
-// (Defined, Public)
-// Parameters:
-// class ADunDefPlayerController* ForPlayer                      (Parm)
-// class UHeroEquipment*          equipToCheck                   (Parm)
-
-void UDunDefAchievementManager::CheckFamiliars(class ADunDefPlayerController* ForPlayer, class UHeroEquipment* equipToCheck)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CheckFamiliars");
-
-	UDunDefAchievementManager_CheckFamiliars_Params params;
-	params.ForPlayer = ForPlayer;
-	params.equipToCheck = equipToCheck;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.CheckSurvivalWaveAchievements
-// (Defined, Public)
-// Parameters:
-// int                            GameDifficulty                 (Parm)
-// int                            theWaveNumber                  (Parm)
-
-void UDunDefAchievementManager::CheckSurvivalWaveAchievements(int GameDifficulty, int theWaveNumber)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CheckSurvivalWaveAchievements");
-
-	UDunDefAchievementManager_CheckSurvivalWaveAchievements_Params params;
-	params.GameDifficulty = GameDifficulty;
-	params.theWaveNumber = theWaveNumber;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.CheckAwardAchievements
-// (Defined, Public)
-// Parameters:
-// class ADunDefPlayerController* ForPlayer                      (Parm)
-// int                            GameDifficulty                 (Parm)
-
-void UDunDefAchievementManager::CheckAwardAchievements(class ADunDefPlayerController* ForPlayer, int GameDifficulty)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CheckAwardAchievements");
-
-	UDunDefAchievementManager_CheckAwardAchievements_Params params;
-	params.ForPlayer = ForPlayer;
-	params.GameDifficulty = GameDifficulty;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.CheckAward
-// (Defined, HasOptionalParms, Public)
-// Parameters:
-// class UDunDefPlayerStats*      theStats                       (Parm)
-// int                            StatClassIndex                 (Parm)
-// struct FString                 BufferName                     (Parm, NeedCtorLink)
-// int                            StartDifficulty                (Parm)
-// int                            minimumValue                   (OptionalParm, Parm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long UDunDefAchievementManager::CheckAward(class UDunDefPlayerStats* theStats, int StatClassIndex, const struct FString& BufferName, int StartDifficulty, int minimumValue)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CheckAward");
-
-	UDunDefAchievementManager_CheckAward_Params params;
-	params.theStats = theStats;
-	params.StatClassIndex = StatClassIndex;
-	params.BufferName = BufferName;
-	params.StartDifficulty = StartDifficulty;
-	params.minimumValue = minimumValue;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.CheckLevelCompletionAchievements
-// (Defined, Public)
-// Parameters:
-// class ADunDefPlayerController* ForPlayer                      (Parm)
-// class UCampaignLevelEntryObject* levelEntry                     (Parm)
-// int                            GameDifficulty                 (Parm)
-
-void UDunDefAchievementManager::CheckLevelCompletionAchievements(class ADunDefPlayerController* ForPlayer, class UCampaignLevelEntryObject* levelEntry, int GameDifficulty)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CheckLevelCompletionAchievements");
-
-	UDunDefAchievementManager_CheckLevelCompletionAchievements_Params params;
-	params.ForPlayer = ForPlayer;
-	params.levelEntry = levelEntry;
-	params.GameDifficulty = GameDifficulty;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.CanIGetAHug
-// (Defined, Public)
-// Parameters:
-// class ADunDefPlayerController* ForPlayer                      (Parm)
-// unsigned char                  HeroUniqueTemplateHeroID       (Parm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long UDunDefAchievementManager::CanIGetAHug(class ADunDefPlayerController* ForPlayer, unsigned char HeroUniqueTemplateHeroID)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CanIGetAHug");
-
-	UDunDefAchievementManager_CanIGetAHug_Params params;
-	params.ForPlayer = ForPlayer;
-	params.HeroUniqueTemplateHeroID = HeroUniqueTemplateHeroID;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.GetAchievemntEntryIndex
-// (Defined, Public)
-// Parameters:
-// TEnumAsByte<EAchievement>      Achievement                    (Parm)
-// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
-
-int UDunDefAchievementManager::GetAchievemntEntryIndex(TEnumAsByte<EAchievement> Achievement)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.GetAchievemntEntryIndex");
-
-	UDunDefAchievementManager_GetAchievemntEntryIndex_Params params;
-	params.Achievement = Achievement;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.GetCoreUnlockString
-// (Defined, Public)
-// Parameters:
-// int                            Index                          (Parm)
-// int                            PlayerIndex                    (Parm)
-// struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
-
-struct FString UDunDefAchievementManager::GetCoreUnlockString(int Index, int PlayerIndex)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.GetCoreUnlockString");
-
-	UDunDefAchievementManager_GetCoreUnlockString_Params params;
-	params.Index = Index;
-	params.PlayerIndex = PlayerIndex;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.UnlockCores
-// (Defined, Public, HasDefaults)
-// Parameters:
-// class ADunDefPlayerController* ForPlayer                      (Parm)
-// TEnumAsByte<EAchievement>      Achievement                    (Parm)
-
-void UDunDefAchievementManager::UnlockCores(class ADunDefPlayerController* ForPlayer, TEnumAsByte<EAchievement> Achievement)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.UnlockCores");
-
-	UDunDefAchievementManager_UnlockCores_Params params;
-	params.ForPlayer = ForPlayer;
-	params.Achievement = Achievement;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.DunDefAchievementManager.DoUnlockAchivement
-// (Defined, HasOptionalParms, Public, HasDefaults)
-// Parameters:
-// class ADunDefPlayerController* ForPlayer                      (Parm)
-// TEnumAsByte<EAchievement>      Achievement                    (Parm)
-// unsigned long                  UnlockForEveryone              (OptionalParm, Parm)
-// unsigned long                  bRequirePawnPossession         (OptionalParm, Parm)
-// unsigned long                  bPCDontRecurse                 (OptionalParm, Parm)
-// unsigned long                  onlyUnlockLocal                (OptionalParm, Parm)
-
-void UDunDefAchievementManager::DoUnlockAchivement(class ADunDefPlayerController* ForPlayer, TEnumAsByte<EAchievement> Achievement, unsigned long UnlockForEveryone, unsigned long bRequirePawnPossession, unsigned long bPCDontRecurse, unsigned long onlyUnlockLocal)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.DoUnlockAchivement");
-
-	UDunDefAchievementManager_DoUnlockAchivement_Params params;
-	params.ForPlayer = ForPlayer;
-	params.Achievement = Achievement;
-	params.UnlockForEveryone = UnlockForEveryone;
-	params.bRequirePawnPossession = bRequirePawnPossession;
-	params.bPCDontRecurse = bPCDontRecurse;
-	params.onlyUnlockLocal = onlyUnlockLocal;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function UDKGame.DunDefViewportClient.SetSimpleDamageNumbers
 // (Defined, Public)
 // Parameters:
@@ -67951,6 +67576,122 @@ void UDunDefViewportClient::PostRender(class UCanvas* Canvas)
 }
 
 
+// Function UDKGame.ItemFolderStub.IsRootEntry
+// (Defined, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UItemFolderStub::IsRootEntry()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ItemFolderStub.IsRootEntry");
+
+	UItemFolderStub_IsRootEntry_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.ItemFolderStub.GetDataProps
+// (HasOptionalParms, Public, HasOutParms)
+// Parameters:
+// struct FDataEntryProps         dProps                         (Parm, OutParm)
+// int                            dataSetType                    (OptionalParm, Parm)
+
+void UItemFolderStub::GetDataProps(int dataSetType, struct FDataEntryProps* dProps)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ItemFolderStub.GetDataProps");
+
+	UItemFolderStub_GetDataProps_Params params;
+	params.dataSetType = dataSetType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (dProps != nullptr)
+		*dProps = params.dProps;
+}
+
+
+// Function UDKGame.ItemFolderStub.GetFolderID
+// (Defined, Public)
+// Parameters:
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UItemFolderStub::GetFolderID()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ItemFolderStub.GetFolderID");
+
+	UItemFolderStub_GetFolderID_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.ItemFolderStub.GetDataString
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// int                            dataSetType                    (OptionalParm, Parm)
+// struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
+
+struct FString UItemFolderStub::GetDataString(int dataSetType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ItemFolderStub.GetDataString");
+
+	UItemFolderStub_GetDataString_Params params;
+	params.dataSetType = dataSetType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.ItemFolderStub.GetEntryEnabled
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// class UPlayer*                 ForPlayer                      (Parm)
+// int                            dataSetType                    (OptionalParm, Parm)
+// class UUIScreenObject*         relatedUIObject                (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UItemFolderStub::GetEntryEnabled(class UPlayer* ForPlayer, int dataSetType, class UUIScreenObject* relatedUIObject)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ItemFolderStub.GetEntryEnabled");
+
+	UItemFolderStub_GetEntryEnabled_Params params;
+	params.ForPlayer = ForPlayer;
+	params.dataSetType = dataSetType;
+	params.relatedUIObject = relatedUIObject;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function UDKGame.CampaignLevelEntryObject.InitFrom
 // (Defined, Public)
 // Parameters:
@@ -68169,16 +67910,16 @@ TArray<TScriptInterface<class UDataListEntryInterface>> UDunDefPlayerStats::GetD
 }
 
 
-// Function UDKGame.ItemFolderStub.IsRootEntry
-// (Defined, Public)
+// Function UDKGame.DunDefAchievementManager.GetAchievementManager
+// (Defined, Static, Public)
 // Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+// class UDunDefAchievementManager* ReturnValue                    (Parm, OutParm, ReturnParm)
 
-unsigned long UItemFolderStub::IsRootEntry()
+class UDunDefAchievementManager* UDunDefAchievementManager::STATIC_GetAchievementManager()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ItemFolderStub.IsRootEntry");
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.GetAchievementManager");
 
-	UItemFolderStub_IsRootEntry_Params params;
+	UDunDefAchievementManager_GetAchievementManager_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -68190,18 +67931,20 @@ unsigned long UItemFolderStub::IsRootEntry()
 }
 
 
-// Function UDKGame.ItemFolderStub.GetDataProps
-// (HasOptionalParms, Public, HasOutParms)
+// Function UDKGame.DunDefAchievementManager.DoesAnyLocalPlayerHaveAchievementUnlocked
+// (Defined, HasOptionalParms, Public)
 // Parameters:
-// struct FDataEntryProps         dProps                         (Parm, OutParm)
-// int                            dataSetType                    (OptionalParm, Parm)
+// TEnumAsByte<EAchievement>      Achievement                    (Parm)
+// unsigned long                  bOnlyCheckPrimaryPlayer        (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-void UItemFolderStub::GetDataProps(int dataSetType, struct FDataEntryProps* dProps)
+unsigned long UDunDefAchievementManager::DoesAnyLocalPlayerHaveAchievementUnlocked(TEnumAsByte<EAchievement> Achievement, unsigned long bOnlyCheckPrimaryPlayer)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ItemFolderStub.GetDataProps");
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.DoesAnyLocalPlayerHaveAchievementUnlocked");
 
-	UItemFolderStub_GetDataProps_Params params;
-	params.dataSetType = dataSetType;
+	UDunDefAchievementManager_DoesAnyLocalPlayerHaveAchievementUnlocked_Params params;
+	params.Achievement = Achievement;
+	params.bOnlyCheckPrimaryPlayer = bOnlyCheckPrimaryPlayer;
 
 	auto flags = fn->FunctionFlags;
 
@@ -68209,21 +67952,272 @@ void UItemFolderStub::GetDataProps(int dataSetType, struct FDataEntryProps* dPro
 
 	fn->FunctionFlags = flags;
 
-	if (dProps != nullptr)
-		*dProps = params.dProps;
+	return params.ReturnValue;
 }
 
 
-// Function UDKGame.ItemFolderStub.GetFolderID
+// Function UDKGame.DunDefAchievementManager.IsAchievementUnlocked
 // (Defined, Public)
 // Parameters:
+// class ULocalPlayer*            Player                         (Parm)
+// TEnumAsByte<EAchievement>      Achievement                    (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UDunDefAchievementManager::IsAchievementUnlocked(class ULocalPlayer* Player, TEnumAsByte<EAchievement> Achievement)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.IsAchievementUnlocked");
+
+	UDunDefAchievementManager_IsAchievementUnlocked_Params params;
+	params.Player = Player;
+	params.Achievement = Achievement;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefAchievementManager.AreAllOtherAchievementsUnlocked
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// class ULocalPlayer*            Player                         (Parm)
+// unsigned long                  bIsUltimate                    (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UDunDefAchievementManager::AreAllOtherAchievementsUnlocked(class ULocalPlayer* Player, unsigned long bIsUltimate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.AreAllOtherAchievementsUnlocked");
+
+	UDunDefAchievementManager_AreAllOtherAchievementsUnlocked_Params params;
+	params.Player = Player;
+	params.bIsUltimate = bIsUltimate;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefAchievementManager.CheckToUnlockAchivement
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// class ADunDefPlayerController* ForPlayer                      (Parm)
+// TEnumAsByte<EAchievementCheckSet> AchievementCheckSet            (Parm)
+// class UDunDefHero*             hero                           (OptionalParm, Parm)
+// class UHeroEquipment*          Equipment                      (OptionalParm, Parm)
+// class UCampaignLevelEntryObject* beatLevelEntryObject           (OptionalParm, Parm)
+// int                            intParam1                      (OptionalParm, Parm)
+// int                            intParam2                      (OptionalParm, Parm)
+
+void UDunDefAchievementManager::CheckToUnlockAchivement(class ADunDefPlayerController* ForPlayer, TEnumAsByte<EAchievementCheckSet> AchievementCheckSet, class UDunDefHero* hero, class UHeroEquipment* Equipment, class UCampaignLevelEntryObject* beatLevelEntryObject, int intParam1, int intParam2)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CheckToUnlockAchivement");
+
+	UDunDefAchievementManager_CheckToUnlockAchivement_Params params;
+	params.ForPlayer = ForPlayer;
+	params.AchievementCheckSet = AchievementCheckSet;
+	params.hero = hero;
+	params.Equipment = Equipment;
+	params.beatLevelEntryObject = beatLevelEntryObject;
+	params.intParam1 = intParam1;
+	params.intParam2 = intParam2;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefAchievementManager.CheckAllFamiliars
+// (Defined, Public)
+// Parameters:
+// class ADunDefPlayerController* ForPlayer                      (Parm)
+// class UHeroEquipment*          equipToCheck                   (Parm)
+
+void UDunDefAchievementManager::CheckAllFamiliars(class ADunDefPlayerController* ForPlayer, class UHeroEquipment* equipToCheck)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CheckAllFamiliars");
+
+	UDunDefAchievementManager_CheckAllFamiliars_Params params;
+	params.ForPlayer = ForPlayer;
+	params.equipToCheck = equipToCheck;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefAchievementManager.CheckFamiliars
+// (Defined, Public)
+// Parameters:
+// class ADunDefPlayerController* ForPlayer                      (Parm)
+// class UHeroEquipment*          equipToCheck                   (Parm)
+
+void UDunDefAchievementManager::CheckFamiliars(class ADunDefPlayerController* ForPlayer, class UHeroEquipment* equipToCheck)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CheckFamiliars");
+
+	UDunDefAchievementManager_CheckFamiliars_Params params;
+	params.ForPlayer = ForPlayer;
+	params.equipToCheck = equipToCheck;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefAchievementManager.CheckSurvivalWaveAchievements
+// (Defined, Public)
+// Parameters:
+// int                            GameDifficulty                 (Parm)
+// int                            theWaveNumber                  (Parm)
+
+void UDunDefAchievementManager::CheckSurvivalWaveAchievements(int GameDifficulty, int theWaveNumber)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CheckSurvivalWaveAchievements");
+
+	UDunDefAchievementManager_CheckSurvivalWaveAchievements_Params params;
+	params.GameDifficulty = GameDifficulty;
+	params.theWaveNumber = theWaveNumber;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefAchievementManager.CheckAwardAchievements
+// (Defined, Public)
+// Parameters:
+// class ADunDefPlayerController* ForPlayer                      (Parm)
+// int                            GameDifficulty                 (Parm)
+
+void UDunDefAchievementManager::CheckAwardAchievements(class ADunDefPlayerController* ForPlayer, int GameDifficulty)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CheckAwardAchievements");
+
+	UDunDefAchievementManager_CheckAwardAchievements_Params params;
+	params.ForPlayer = ForPlayer;
+	params.GameDifficulty = GameDifficulty;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefAchievementManager.CheckAward
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// class UDunDefPlayerStats*      theStats                       (Parm)
+// int                            StatClassIndex                 (Parm)
+// struct FString                 BufferName                     (Parm, NeedCtorLink)
+// int                            StartDifficulty                (Parm)
+// int                            minimumValue                   (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UDunDefAchievementManager::CheckAward(class UDunDefPlayerStats* theStats, int StatClassIndex, const struct FString& BufferName, int StartDifficulty, int minimumValue)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CheckAward");
+
+	UDunDefAchievementManager_CheckAward_Params params;
+	params.theStats = theStats;
+	params.StatClassIndex = StatClassIndex;
+	params.BufferName = BufferName;
+	params.StartDifficulty = StartDifficulty;
+	params.minimumValue = minimumValue;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefAchievementManager.CheckLevelCompletionAchievements
+// (Defined, Public)
+// Parameters:
+// class ADunDefPlayerController* ForPlayer                      (Parm)
+// class UCampaignLevelEntryObject* levelEntry                     (Parm)
+// int                            GameDifficulty                 (Parm)
+
+void UDunDefAchievementManager::CheckLevelCompletionAchievements(class ADunDefPlayerController* ForPlayer, class UCampaignLevelEntryObject* levelEntry, int GameDifficulty)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CheckLevelCompletionAchievements");
+
+	UDunDefAchievementManager_CheckLevelCompletionAchievements_Params params;
+	params.ForPlayer = ForPlayer;
+	params.levelEntry = levelEntry;
+	params.GameDifficulty = GameDifficulty;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefAchievementManager.CanIGetAHug
+// (Defined, Public)
+// Parameters:
+// class ADunDefPlayerController* ForPlayer                      (Parm)
+// unsigned char                  HeroUniqueTemplateHeroID       (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UDunDefAchievementManager::CanIGetAHug(class ADunDefPlayerController* ForPlayer, unsigned char HeroUniqueTemplateHeroID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.CanIGetAHug");
+
+	UDunDefAchievementManager_CanIGetAHug_Params params;
+	params.ForPlayer = ForPlayer;
+	params.HeroUniqueTemplateHeroID = HeroUniqueTemplateHeroID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefAchievementManager.GetAchievemntEntryIndex
+// (Defined, Public)
+// Parameters:
+// TEnumAsByte<EAchievement>      Achievement                    (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UItemFolderStub::GetFolderID()
+int UDunDefAchievementManager::GetAchievemntEntryIndex(TEnumAsByte<EAchievement> Achievement)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ItemFolderStub.GetFolderID");
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.GetAchievemntEntryIndex");
 
-	UItemFolderStub_GetFolderID_Params params;
+	UDunDefAchievementManager_GetAchievemntEntryIndex_Params params;
+	params.Achievement = Achievement;
 
 	auto flags = fn->FunctionFlags;
 
@@ -68235,18 +68229,20 @@ int UItemFolderStub::GetFolderID()
 }
 
 
-// Function UDKGame.ItemFolderStub.GetDataString
-// (Defined, HasOptionalParms, Public)
+// Function UDKGame.DunDefAchievementManager.GetCoreUnlockString
+// (Defined, Public)
 // Parameters:
-// int                            dataSetType                    (OptionalParm, Parm)
+// int                            Index                          (Parm)
+// int                            PlayerIndex                    (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UItemFolderStub::GetDataString(int dataSetType)
+struct FString UDunDefAchievementManager::GetCoreUnlockString(int Index, int PlayerIndex)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ItemFolderStub.GetDataString");
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.GetCoreUnlockString");
 
-	UItemFolderStub_GetDataString_Params params;
-	params.dataSetType = dataSetType;
+	UDunDefAchievementManager_GetCoreUnlockString_Params params;
+	params.Index = Index;
+	params.PlayerIndex = PlayerIndex;
 
 	auto flags = fn->FunctionFlags;
 
@@ -68258,30 +68254,55 @@ struct FString UItemFolderStub::GetDataString(int dataSetType)
 }
 
 
-// Function UDKGame.ItemFolderStub.GetEntryEnabled
-// (Defined, HasOptionalParms, Public)
+// Function UDKGame.DunDefAchievementManager.UnlockCores
+// (Defined, Public, HasDefaults)
 // Parameters:
-// class UPlayer*                 ForPlayer                      (Parm)
-// int                            dataSetType                    (OptionalParm, Parm)
-// class UUIScreenObject*         relatedUIObject                (OptionalParm, Parm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+// class ADunDefPlayerController* ForPlayer                      (Parm)
+// TEnumAsByte<EAchievement>      Achievement                    (Parm)
 
-unsigned long UItemFolderStub::GetEntryEnabled(class UPlayer* ForPlayer, int dataSetType, class UUIScreenObject* relatedUIObject)
+void UDunDefAchievementManager::UnlockCores(class ADunDefPlayerController* ForPlayer, TEnumAsByte<EAchievement> Achievement)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ItemFolderStub.GetEntryEnabled");
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.UnlockCores");
 
-	UItemFolderStub_GetEntryEnabled_Params params;
+	UDunDefAchievementManager_UnlockCores_Params params;
 	params.ForPlayer = ForPlayer;
-	params.dataSetType = dataSetType;
-	params.relatedUIObject = relatedUIObject;
+	params.Achievement = Achievement;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
 
-	return params.ReturnValue;
+
+// Function UDKGame.DunDefAchievementManager.DoUnlockAchivement
+// (Defined, HasOptionalParms, Public, HasDefaults)
+// Parameters:
+// class ADunDefPlayerController* ForPlayer                      (Parm)
+// TEnumAsByte<EAchievement>      Achievement                    (Parm)
+// unsigned long                  UnlockForEveryone              (OptionalParm, Parm)
+// unsigned long                  bRequirePawnPossession         (OptionalParm, Parm)
+// unsigned long                  bPCDontRecurse                 (OptionalParm, Parm)
+// unsigned long                  onlyUnlockLocal                (OptionalParm, Parm)
+
+void UDunDefAchievementManager::DoUnlockAchivement(class ADunDefPlayerController* ForPlayer, TEnumAsByte<EAchievement> Achievement, unsigned long UnlockForEveryone, unsigned long bRequirePawnPossession, unsigned long bPCDontRecurse, unsigned long onlyUnlockLocal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefAchievementManager.DoUnlockAchivement");
+
+	UDunDefAchievementManager_DoUnlockAchivement_Params params;
+	params.ForPlayer = ForPlayer;
+	params.Achievement = Achievement;
+	params.UnlockForEveryone = UnlockForEveryone;
+	params.bRequirePawnPossession = bRequirePawnPossession;
+	params.bPCDontRecurse = bPCDontRecurse;
+	params.onlyUnlockLocal = onlyUnlockLocal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -71169,7 +71190,7 @@ void UUI_GameSetup::SetHardcore(unsigned long bIsHardcore)
 
 
 // Function UDKGame.UI_GameSetup.SetMayHem
-// (Public)
+// (Defined, Public)
 // Parameters:
 // unsigned long                  bisMayHem                      (Parm)
 

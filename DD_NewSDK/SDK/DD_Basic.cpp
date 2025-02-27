@@ -8,8 +8,8 @@
 
 namespace Classes
 {
-TArray<FNameEntry*>* FName::GNames = (TArray<FNameEntry*>*) 0x01138f14;
-TArray<UObject*>* UObject::GObjects = (TArray<UObject*>*) 0x0114b22c;
+TArray<FNameEntry*>* FName::GNames = (TArray<FNameEntry*>*) 0x0113AF04;
+TArray<UObject*>* UObject::GObjects = (TArray<UObject*>*) 0x0114D21C;
 }
 
 #ifdef _MSC_VER

@@ -101,15 +101,13 @@ public:
 
 
 // Class CDT8.DunDefWeapon_Minigun
-// 0x0014 (0x0588 - 0x0574)
+// 0x000C (0x0580 - 0x0574)
 class ADunDefWeapon_Minigun : public ADunDefWeapon_Crossbow
 {
 public:
-	float                                              MaxFireRateInterval;                                      // 0x0574(0x0004) (Edit)
-	float                                              MaxMovementSpeedSlow;                                     // 0x0578(0x0004) (Edit)
-	float                                              TimeFiring;                                               // 0x057C(0x0004)
-	float                                              CurrentFireRateInterval;                                  // 0x0580(0x0004)
-	float                                              RecentlyFiredTime;                                        // 0x0584(0x0004)
+	float                                              MinigunProjectileDamageMultiplier;                        // 0x0574(0x0004) (Edit)
+	float                                              TimeFiring;                                               // 0x0578(0x0004)
+	unsigned long                                      fullyCharged : 1;                                         // 0x057C(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -119,6 +117,7 @@ public:
 
 
 	float GetFireInterval(unsigned char FireModeNum);
+	float GetProjectileDamage();
 };
 
 
