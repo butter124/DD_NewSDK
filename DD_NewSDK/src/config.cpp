@@ -28,9 +28,6 @@ bool Config::Init() {
                            PlayerRewardHookFunc);
   REGISTER_HOOKED_OBJECT("DunDefTreasureChest", 
                            OpenChest);
-  REGISTER_HOOKED_FUNCTION("",
-                           BlockInputInMenu);
-
 
 
   // TODO: register keybinds needs to be changed in a way that handles a single point of definition
