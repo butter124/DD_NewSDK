@@ -789,7 +789,12 @@ Classes::FVector Config::AddFVector(Classes::FVector vec1,
   return temp;
 }
 
-bool Config::GiveItem(Classes::UHeroEquipment *item) {
+bool Config::GiveItem(Classes::UHeroEquipment *_item) {
+
+  Classes::UHeroEquipment *item =
+      (Classes::UHeroEquipment *)(_item->GetBaseArchetype());
+  CopyItem(item, _item);
+
   Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *pItemGiver =
       GetEquipmentGiver();
   Classes::ADunDefPlayerController *pController = GetADunDefPlayerController();
@@ -833,6 +838,344 @@ bool Config::GiveItem(Classes::UHeroEquipment *item) {
 
   config.LogToFile("Gave item " + item->GetName());
   return true;
+}
+
+void Config::CopyItem(Classes::UHeroEquipment *to,
+                      Classes::UHeroEquipment *from) {
+  memcpy(to->StatModifiers, from->StatModifiers,
+         11 * sizeof(int)); // to->StatModifiers = from->StatModifiers;
+  memcpy(to->DamageReductions, from->DamageReductions,
+         4 * sizeof(Classes::FDamageReduction)); // to->DamageReductions =
+                                                 // from->DamageReductions;
+  to->WeaponDamageBonus = from->WeaponDamageBonus;
+  to->WeaponNumberOfProjectilesBonus = from->WeaponNumberOfProjectilesBonus;
+  to->WeaponSpeedOfProjectilesBonus = from->WeaponSpeedOfProjectilesBonus;
+  to->WeaponAdditionalDamageType = from->WeaponAdditionalDamageType;
+  to->WeaponAdditionalDamageAmount = from->WeaponAdditionalDamageAmount;
+  to->WeaponDrawScaleMultiplier = from->WeaponDrawScaleMultiplier;
+  to->MaxRandomElementalDamageMultiplier =
+      from->MaxRandomElementalDamageMultiplier;
+  to->WeaponSwingSpeedMultiplier = from->WeaponSwingSpeedMultiplier;
+  to->WeaponReloadSpeedBonusUse = from->WeaponReloadSpeedBonusUse;
+  to->bIgnoreLevelRequirement = from->bIgnoreLevelRequirement;
+  to->WeaponKnockbackBonusUse = from->WeaponKnockbackBonusUse;
+  to->bCanBeUpgraded = from->bCanBeUpgraded;
+  to->AllowRenamingAtMaxUpgrade = from->AllowRenamingAtMaxUpgrade;
+  to->bForceUseParentTemplate = from->bForceUseParentTemplate;
+  to->WeaponAltDamageBonusUse = from->WeaponAltDamageBonusUse;
+  to->bDisableTheRandomization = from->bDisableTheRandomization;
+  to->WeaponBlockingBonusUse = from->WeaponBlockingBonusUse;
+  to->bDontCalculateLevelRequirement = from->bDontCalculateLevelRequirement;
+  to->WeaponClipAmmoBonusUse = from->WeaponClipAmmoBonusUse;
+  to->bDontUseLevelName = from->bDontUseLevelName;
+  to->WeaponChargeSpeedBonusUse = from->WeaponChargeSpeedBonusUse;
+  to->WeaponShotsPerSecondBonusUse = from->WeaponShotsPerSecondBonusUse;
+  to->UseWeaponCoreStats = from->UseWeaponCoreStats;
+  to->bIsLocked = from->bIsLocked;
+  to->bWasAttached = from->bWasAttached;
+  to->bIsShopEquipment = from->bIsShopEquipment;
+  to->bIsSecondary = from->bIsSecondary;
+  to->bIsNameOnlineVerified = from->bIsNameOnlineVerified;
+  to->bIsForgerNameOnlineVerified = from->bIsForgerNameOnlineVerified;
+  to->bWasAddedToDefenderStore = from->bWasAddedToDefenderStore;
+  to->WeaponReloadSpeedBonus = from->WeaponReloadSpeedBonus;
+  to->WeaponKnockbackBonus = from->WeaponKnockbackBonus;
+  to->WeaponAltDamageBonus = from->WeaponAltDamageBonus;
+  to->WeaponBlockingBonus = from->WeaponBlockingBonus;
+  to->WeaponClipAmmoBonus = from->WeaponClipAmmoBonus;
+  to->AdditionalAllowedUpgradeResistancePoints =
+      from->AdditionalAllowedUpgradeResistancePoints;
+  to->RequirementLevelOverride = from->RequirementLevelOverride;
+  to->WeaponChargeSpeedBonus = from->WeaponChargeSpeedBonus;
+  to->WeaponShotsPerSecondBonus = from->WeaponShotsPerSecondBonus;
+  to->NameIndex_Base = from->NameIndex_Base;
+  to->NameIndex_QualityDescriptor = from->NameIndex_QualityDescriptor;
+  to->NameIndex_DamageReduction = from->NameIndex_DamageReduction;
+  to->PrimaryColorSet = from->PrimaryColorSet;
+  to->SecondaryColorSet = from->SecondaryColorSet;
+  to->bCantBeDropped = from->bCantBeDropped;
+  to->bCantBeSold = from->bCantBeSold;
+  to->bAutoLockInItemBox = from->bAutoLockInItemBox;
+  to->bDidOnetimeEffect = from->bDidOnetimeEffect;
+  to->ManualLR = from->ManualLR;
+  to->EquipmentType = from->EquipmentType;
+  to->PrimaryColorSets = from->PrimaryColorSets;
+  to->SecondaryColorSets = from->SecondaryColorSets;
+  to->PrimaryColorOverride = from->PrimaryColorOverride;
+  to->SecondaryColorOverride = from->SecondaryColorOverride;
+  to->MaximumSellWorth = from->MaximumSellWorth;
+  to->MinimumSellWorth = from->MinimumSellWorth;
+  to->ShopMinimumSellWorth = from->ShopMinimumSellWorth;
+  to->MaxEquipmentLevel = from->MaxEquipmentLevel;
+  to->UserEquipmentName = from->UserEquipmentName;
+  to->EquipmentDescription = from->EquipmentDescription;
+  to->UserForgerName = from->UserForgerName;
+  to->DroppedLocation = from->DroppedLocation;
+  to->FolderID = from->FolderID;
+  to->Level = from->Level;
+  to->StoredMana = from->StoredMana;
+  to->UserID = from->UserID;
+  to->MyRatingPercent = from->MyRatingPercent;
+  to->MyRating = from->MyRating;
+  // to->EquipmentID1 = from->EquipmentID1;
+  // to->EquipmentID2 = from->EquipmentID2;
+  to->EquipmentName = from->EquipmentName;
+  memcpy(
+      to->StatModifierRandomizers, from->StatModifierRandomizers,
+      11 * sizeof(
+               Classes::FEG_StatRandomizer)); // to->StatModifierRandomizers =
+                                              // from->StatModifierRandomizers;
+  to->bForceRandomDLCColor = from->bForceRandomDLCColor;
+  to->bUseShotsPerSecondRandomizerMult = from->bUseShotsPerSecondRandomizerMult;
+  to->bForceAllowDropping = from->bForceAllowDropping;
+  to->bForceAllowSelling = from->bForceAllowSelling;
+  to->bDoTranscendentLevelBoost = from->bDoTranscendentLevelBoost;
+  to->bUseLevelRequirementOverrides = from->bUseLevelRequirementOverrides;
+  to->bForceRandomizerWithMinEquipmentLevel =
+      from->bForceRandomizerWithMinEquipmentLevel;
+  to->bAllowSellingToExceedSoftManaCap = from->bAllowSellingToExceedSoftManaCap;
+  to->bCanBeEquipped = from->bCanBeEquipped;
+  to->bForceUseEquipmentDrawScale = from->bForceUseEquipmentDrawScale;
+  to->bDistributeManaUponDroppedDestruction =
+      from->bDistributeManaUponDroppedDestruction;
+  to->bAllowDroppedDestruction = from->bAllowDroppedDestruction;
+  to->bDontHideEquipmentAttachmentInFPV =
+      from->bDontHideEquipmentAttachmentInFPV;
+  to->bEncumberHero = from->bEncumberHero;
+  to->bIconUseEquipmentRating = from->bIconUseEquipmentRating;
+  to->bPlayerShopForceToMinimumSellWorth =
+      from->bPlayerShopForceToMinimumSellWorth;
+  to->bMaxEquipLevelUseAltCalc = from->bMaxEquipLevelUseAltCalc;
+  to->AllowNameRandomization = from->AllowNameRandomization;
+  to->OnlyRandomizeBaseName = from->OnlyRandomizeBaseName;
+  to->bNoNegativeRandomizations = from->bNoNegativeRandomizations;
+  to->UsesEquipmentAttachments = from->UsesEquipmentAttachments;
+  to->UseColorSets = from->UseColorSets;
+  to->RandomizeColorSets = from->RandomizeColorSets;
+  to->bUsePreviewZOffsetting = from->bUsePreviewZOffsetting;
+  to->bUseSelectionPreviewScale = from->bUseSelectionPreviewScale;
+  to->bUsePawnWeaponDamageCallback = from->bUsePawnWeaponDamageCallback;
+  to->bUsePawnDamageCallback = from->bUsePawnDamageCallback;
+  to->bCantSave = from->bCantSave;
+  to->bCantPutInItemBox = from->bCantPutInItemBox;
+  to->bSetRandomizerMultipliers = from->bSetRandomizerMultipliers;
+  to->bPlayerShopPurchasePending = from->bPlayerShopPurchasePending;
+  to->bCanModifyParticleColour = from->bCanModifyParticleColour;
+  to->bUseHighDigitManaTokenValue = from->bUseHighDigitManaTokenValue;
+  to->RandomizerStatModifierGoNegativeThreshold =
+      from->RandomizerStatModifierGoNegativeThreshold;
+  to->RandomizerStatModifierGoNegativeMultiplier =
+      from->RandomizerStatModifierGoNegativeMultiplier;
+  to->RandomizerStatModifierGoNegativeChance =
+      from->RandomizerStatModifierGoNegativeChance;
+  to->EquipmentWeaponTemplate = from->EquipmentWeaponTemplate;
+  to->RandomizerQualityMultiplier = from->RandomizerQualityMultiplier;
+  to->LevelRequirementRatingOffset = from->LevelRequirementRatingOffset;
+  to->MinElementalDamageIncreasePerLevel =
+      from->MinElementalDamageIncreasePerLevel;
+  to->HighLevelRequirementsRatingThreshold =
+      from->HighLevelRequirementsRatingThreshold;
+  to->MaximumSellWorthUpgradeDepreciationFactor =
+      from->MaximumSellWorthUpgradeDepreciationFactor;
+  to->TranscendentLevelBoostAmount = from->TranscendentLevelBoostAmount;
+  to->TranscendentLevelBoostRandomizerPower =
+      from->TranscendentLevelBoostRandomizerPower;
+  to->HighResaleWorthPower = from->HighResaleWorthPower;
+  to->SupremeLevelBoostAmount = from->SupremeLevelBoostAmount;
+  to->SupremeLevelBoostRandomizerPower = from->SupremeLevelBoostRandomizerPower;
+  to->UltimateLevelBoostAmount = from->UltimateLevelBoostAmount;
+  to->UltimateLevelBoostRandomizerPower =
+      from->UltimateLevelBoostRandomizerPower;
+  to->LevelRequirementOverrides = from->LevelRequirementOverrides;
+  to->WeaponDamageBonusRandomizer = from->WeaponDamageBonusRandomizer;
+  to->OneTime_ExpBonus = from->OneTime_ExpBonus;
+  to->HighLevelThreshold = from->HighLevelThreshold;
+  to->MaxHeroStatValue = from->MaxHeroStatValue;
+  to->TranscendentMaxHeroStatValue = from->TranscendentMaxHeroStatValue;
+  to->SupremeMaxHeroStatValue = from->SupremeMaxHeroStatValue;
+  to->MinTranscendentLevel = from->MinTranscendentLevel;
+  to->MinSupremeLevel = from->MinSupremeLevel;
+  to->UltimateMaxHeroStatValue = from->UltimateMaxHeroStatValue;
+  to->UltimatePlusMaxHeroStatValue = from->UltimatePlusMaxHeroStatValue;
+  to->MinUltimateLevel = from->MinUltimateLevel;
+  to->DescriptionStringOriginalReplacements =
+      from->DescriptionStringOriginalReplacements;
+  to->DescriptionStringNewReplacements = from->DescriptionStringNewReplacements;
+  to->WeaponAltDamageBonusRandomizer = from->WeaponAltDamageBonusRandomizer;
+  memcpy(
+      to->DamageReductionRandomizers, from->DamageReductionRandomizers,
+      4 * sizeof(Classes::
+                     FEG_StatRandomizer)); // to->DamageReductionRandomizers =
+                                           // from->DamageReductionRandomizers;
+  to->WeaponClipAmmoBonusRandomizer = from->WeaponClipAmmoBonusRandomizer;
+  to->WeaponReloadSpeedBonusRandomizer = from->WeaponReloadSpeedBonusRandomizer;
+  to->WeaponKnockbackBonusRandomizer = from->WeaponKnockbackBonusRandomizer;
+  to->WeaponChargeSpeedBonusRandomizer = from->WeaponChargeSpeedBonusRandomizer;
+  to->WeaponBlockingBonusRandomizer = from->WeaponBlockingBonusRandomizer;
+  to->MaxEquipmentLevelRandomizer = from->MaxEquipmentLevelRandomizer;
+  to->SellWorthLinearFactor = from->SellWorthLinearFactor;
+  to->SellWorthExponentialFactor = from->SellWorthExponentialFactor;
+  to->SellWorthMin = from->SellWorthMin;
+  to->SellWorthMax = from->SellWorthMax;
+  to->SellRatingExponent = from->SellRatingExponent;
+  to->SellWorthEquipmentRatingBase = from->SellWorthEquipmentRatingBase;
+  to->ElementalDamageMultiplier = from->ElementalDamageMultiplier;
+  to->ShopSellWorthLinearFactor = from->ShopSellWorthLinearFactor;
+  to->ShopSellWorthExponentialFactor = from->ShopSellWorthExponentialFactor;
+  to->ShopSellWorthMin = from->ShopSellWorthMin;
+  to->ShopSellWorthMax = from->ShopSellWorthMax;
+  to->ShopSellRatingExponent = from->ShopSellRatingExponent;
+  to->ShopSellWorthEquipmentRatingBase = from->ShopSellWorthEquipmentRatingBase;
+  to->ShopSellWorthWeaponMultiplier = from->ShopSellWorthWeaponMultiplier;
+  to->ShopSellWorthWeaponExponentialFactorMult =
+      from->ShopSellWorthWeaponExponentialFactorMult;
+  to->AltDamageRandomizerMult = from->AltDamageRandomizerMult;
+  to->MaxShopSellWorth = from->MaxShopSellWorth;
+  to->ShopSellWorthMinWeaponMultiplier = from->ShopSellWorthMinWeaponMultiplier;
+  to->ShopSellWorthMaxWeaponMultiplier = from->ShopSellWorthMaxWeaponMultiplier;
+  to->ShopSellWorthRatingWeaponMultiplier =
+      from->ShopSellWorthRatingWeaponMultiplier;
+  to->ManaCostPerLevelMaxQualityMultiplierAdditional =
+      from->ManaCostPerLevelMaxQualityMultiplierAdditional;
+  to->HighLevelManaCostPerLevelMaxQualityMultiplierAdditional =
+      from->HighLevelManaCostPerLevelMaxQualityMultiplierAdditional;
+  to->ManaCostPerLevelExponentialFactorAdditional =
+      from->ManaCostPerLevelExponentialFactorAdditional;
+  to->HighLevelManaCostPerLevelExponentialFactorAdditional =
+      from->HighLevelManaCostPerLevelExponentialFactorAdditional;
+  to->WeaponDrawScaleRandomizerExtraMultiplier =
+      from->WeaponDrawScaleRandomizerExtraMultiplier;
+  to->EquipLevelRequirements = from->EquipLevelRequirements;
+  to->ElementalDamageIncreasePerLevelMultiplier =
+      from->ElementalDamageIncreasePerLevelMultiplier;
+  to->DamageIncreasePerLevelMultiplier = from->DamageIncreasePerLevelMultiplier;
+  to->UltimateDamageIncreasePerLevelMultiplier =
+      from->UltimateDamageIncreasePerLevelMultiplier;
+  to->MaxElementalDamageIncreasePerLevel =
+      from->MaxElementalDamageIncreasePerLevel;
+  to->MaxDamageIncreasePerLevel = from->MaxDamageIncreasePerLevel;
+  to->UltimateMaxDamageIncreasePerLevel =
+      from->UltimateMaxDamageIncreasePerLevel;
+  to->SelectionPreviewScaleMultiplier = from->SelectionPreviewScaleMultiplier;
+  to->AltDamageIncreasePerLevelMultiplier =
+      from->AltDamageIncreasePerLevelMultiplier;
+  to->AltMaxDamageIncreasePerLevel = from->AltMaxDamageIncreasePerLevel;
+  to->PrimaryColorOverrideMultiplier = from->PrimaryColorOverrideMultiplier;
+  to->SecondaryColorOverrideMultiplier = from->SecondaryColorOverrideMultiplier;
+  to->GlobalSelectionPreviewScaleMultiplier =
+      from->GlobalSelectionPreviewScaleMultiplier;
+  to->ShopSellWorthMaxExponentAbsolute = from->ShopSellWorthMaxExponentAbsolute;
+  to->EquipmentRatingPercentBase = from->EquipmentRatingPercentBase;
+  to->WeaponEquipmentRatingPercentBase = from->WeaponEquipmentRatingPercentBase;
+  to->QualityShopCostMultipliers = from->QualityShopCostMultipliers;
+  to->QualityShopCostCaps = from->QualityShopCostCaps;
+  to->WeaponKnockbackMax = from->WeaponKnockbackMax;
+  to->MaxNonTranscendentStatRollValue = from->MaxNonTranscendentStatRollValue;
+  to->MinDamageBonus = from->MinDamageBonus;
+  to->MinEquipmentLevels = from->MinEquipmentLevels;
+  to->LevelRequirementOffset = from->LevelRequirementOffset;
+  to->WeaponShotsPerSecondBonusRandomizer =
+      from->WeaponShotsPerSecondBonusRandomizer;
+  to->WeaponNumberOfProjectilesQualityBaseline =
+      from->WeaponNumberOfProjectilesQualityBaseline;
+  to->DamageReductionUpgradeInterval = from->DamageReductionUpgradeInterval;
+  to->WeaponNumberOfProjectilesBonusRandomizer =
+      from->WeaponNumberOfProjectilesBonusRandomizer;
+  to->WeaponSpeedOfProjectilesBonusRandomizer =
+      from->WeaponSpeedOfProjectilesBonusRandomizer;
+  to->WeaponAdditionalDamageAmountRandomizer =
+      from->WeaponAdditionalDamageAmountRandomizer;
+  to->WeaponDrawScaleMultiplierRandomizer =
+      from->WeaponDrawScaleMultiplierRandomizer;
+  to->DroppedEquipmentTemplates = from->DroppedEquipmentTemplates;
+  to->weaponType = from->weaponType;
+  to->EquipmentSetID = from->EquipmentSetID;
+  to->AccessoryRequirements = from->AccessoryRequirements;
+  to->ManaCostPerLevelLinearFactor = from->ManaCostPerLevelLinearFactor;
+  to->IconColorMultPrimary = from->IconColorMultPrimary;
+  to->IconColorMultSecondary = from->IconColorMultSecondary;
+  to->ManaCostPerLevelExponentialFactor =
+      from->ManaCostPerLevelExponentialFactor;
+  to->ManaCostPerLevelMinQualityMultiplier =
+      from->ManaCostPerLevelMinQualityMultiplier;
+  to->ManaCostPerLevelMaxQualityMultiplier =
+      from->ManaCostPerLevelMaxQualityMultiplier;
+  to->RespawnTimeMultiplier = from->RespawnTimeMultiplier;
+  to->TotalRandomizerMultiplier = from->TotalRandomizerMultiplier;
+  to->EquipmentAttachmentInfos = from->EquipmentAttachmentInfos;
+  to->LevelString = from->LevelString;
+  to->ForgedByDescription = from->ForgedByDescription;
+  to->PrimaryColorSetIntensity = from->PrimaryColorSetIntensity;
+  to->PrimaryColorSetPow = from->PrimaryColorSetPow;
+  to->SecondaryColorSetIntensity = from->SecondaryColorSetIntensity;
+  to->SecondaryColorSetPow = from->SecondaryColorSetPow;
+  to->WeaponDrawScaleGlobalMultiplier = from->WeaponDrawScaleGlobalMultiplier;
+  to->IconScaleMultiplier = from->IconScaleMultiplier;
+  to->FullEquipmentSetStatMultiplier = from->FullEquipmentSetStatMultiplier;
+  to->MythicalFullEquipmentSetStatMultiplier =
+      from->MythicalFullEquipmentSetStatMultiplier;
+  to->TranscendentFullEquipmentSetStatMultiplier =
+      from->TranscendentFullEquipmentSetStatMultiplier;
+  to->SupremeFullEquipmentSetStatMultiplier =
+      from->SupremeFullEquipmentSetStatMultiplier;
+  to->UltimateFullEquipmentSetStatMultiplier =
+      from->UltimateFullEquipmentSetStatMultiplier;
+  to->WeaponDamageDisplayValueScale = from->WeaponDamageDisplayValueScale;
+  to->RatingPercentForLevelUpCostExponent =
+      from->RatingPercentForLevelUpCostExponent;
+  to->WeaponDamageBonusRandomizerMultiplier =
+      from->WeaponDamageBonusRandomizerMultiplier;
+  to->AdditionalWeaponDamageBonusRandomizerMultiplier =
+      from->AdditionalWeaponDamageBonusRandomizerMultiplier;
+  to->SellWorthMultiplierLevelBase = from->SellWorthMultiplierLevelBase;
+  to->SellWorthMultiplierLevelMin = from->SellWorthMultiplierLevelMin;
+  to->SellWorthMultiplierLevelMax = from->SellWorthMultiplierLevelMax;
+  to->ExtraEquipmentColorMultiplier = from->ExtraEquipmentColorMultiplier;
+  to->ExtraEquipmentColorMultiplierMaterialParamName =
+      from->ExtraEquipmentColorMultiplierMaterialParamName;
+  to->PreviewMinOffsetScale = from->PreviewMinOffsetScale;
+  to->PreviewMinOffsetZ = from->PreviewMinOffsetZ;
+  to->PreviewMaxOffsetScale = from->PreviewMaxOffsetScale;
+  to->PreviewMaxOffsetZ = from->PreviewMaxOffsetZ;
+  to->EquipmentIconMat = from->EquipmentIconMat;
+  to->AdditionalDescription = from->AdditionalDescription;
+  to->DamageDescription = from->DamageDescription;
+  to->EquipmentStatNames = from->EquipmentStatNames;
+  to->EquipmentStatDescriptions = from->EquipmentStatDescriptions;
+  to->EquipmentStatIcons = from->EquipmentStatIcons;
+  to->IconColorAddPrimary = from->IconColorAddPrimary;
+  to->IconColorAddSecondary = from->IconColorAddSecondary;
+  to->BaseForgerName = from->BaseForgerName;
+  to->ComparisonSimilarRatingAllowance = from->ComparisonSimilarRatingAllowance;
+  to->ComparisonRatingExponent = from->ComparisonRatingExponent;
+  to->PlayerSpeedMultiplier = from->PlayerSpeedMultiplier;
+  to->PlayerGravityMultiplier = from->PlayerGravityMultiplier;
+  to->GivenEquipmentMessageColor = from->GivenEquipmentMessageColor;
+  to->GivenEquipmentMessageString = from->GivenEquipmentMessageString;
+  to->RequiredLevelString = from->RequiredLevelString;
+  to->RequiredClassString = from->RequiredClassString;
+  to->EquipSound = from->EquipSound;
+  to->PreviewTranslationOffset = from->PreviewTranslationOffset;
+  to->ProtonChargeBlastDamageMultiplier =
+      from->ProtonChargeBlastDamageMultiplier;
+  to->BackupUserForgerName = from->BackupUserForgerName;
+  to->BackupUserEquipmentName = from->BackupUserEquipmentName;
+  to->MyNonUpgradeLevelRating = from->MyNonUpgradeLevelRating;
+  to->PlayerShopSellAmount = from->PlayerShopSellAmount;
+  to->PlayerShopSellAmountHDI = from->PlayerShopSellAmountHDI;
+  to->DebugPreTranscendentEquipmentRating =
+      from->DebugPreTranscendentEquipmentRating;
+  to->RandomBaseNames = from->RandomBaseNames;
+  to->DamageReductionNames = from->DamageReductionNames;
+  to->QualityDescriptorNames = from->QualityDescriptorNames;
+  to->QualityDescriptorRealNames = from->QualityDescriptorRealNames;
+  to->MinWeaponScale = from->MinWeaponScale;
+  to->WeaponDamageMultiplier = from->WeaponDamageMultiplier;
+  to->WeaponAltDamageMultiplier = from->WeaponAltDamageMultiplier;
+  to->CosmeticSet = from->CosmeticSet;
+  to->MaxLevelRangeDifficultyArray = from->MaxLevelRangeDifficultyArray;
+  to->compareSets = from->compareSets;
+  to->EquipmentHero = from->EquipmentHero;
 }
 
 Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *Config::GetEquipmentGiver() {

@@ -235,5 +235,6 @@ public:
   void InitLog();
   void CleanLog();
   void LogToFile(const std::string &s);
+  void CopyItem(Classes::UHeroEquipment *to, Classes::UHeroEquipment *from);
 };
 extern Config config;
