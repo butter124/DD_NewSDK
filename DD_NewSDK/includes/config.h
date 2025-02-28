@@ -125,7 +125,7 @@ public:
                             std::function<void(PROCESS_EVENT_ARGS)> func);
 
   // block functions from running in process event
-  std::unordered_map<std::string, bool> blockedFuncMap;
+  std::unordered_map<std::string, bool *> blockedFuncMap;
   void RegisterBlockedFunction(const std::string &key, bool &flag);
 
   std::unordered_map<std::string, bool> vProcessEventFunctionFilter;
@@ -179,6 +179,7 @@ public:
   void AutoLootHookFunc(PROCESS_EVENT_ARGS);
   void PlayerRewardHookFunc(PROCESS_EVENT_ARGS);
   void OpenChest(PROCESS_EVENT_ARGS);
+  void BlockInputInMenu(PROCESS_EVENT_ARGS);
 
   void NoClip();
   void ToggleNoClip();

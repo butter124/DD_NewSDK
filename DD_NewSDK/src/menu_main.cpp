@@ -172,7 +172,7 @@ void MenuMain::Thread() {
 }
 
 void MenuMain::NoClipHandleInput() {
-  if (!config.bNoClip)
+  if (!config.bNoClip || config.bShowMenu)
     return;
 
   auto pController = config.GetADunDefPlayerController();

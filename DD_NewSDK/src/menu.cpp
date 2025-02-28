@@ -25,13 +25,16 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
   std::string objectName = pObject->Name.GetName();
 
   // add to map if func have not been seen before
-  if (config.vProcessEventFunctionFilter.find(funcName) ==
+  auto vProcessEventFunctionFilterFind =
+      config.vProcessEventFunctionFilter.find(funcName);
+  if (vProcessEventFunctionFilterFind ==
       config.vProcessEventFunctionFilter.end()) {
     config.vProcessEventFunctionFilter[funcName] = false;
   }
   // add to map if obj have not been seen before
-  if (config.vProcessEventObjectFilter.find(objectName) ==
-      config.vProcessEventObjectFilter.end()) {
+  auto vProcessEventObjectFind =
+      config.vProcessEventObjectFilter.find(objectName);
+  if (vProcessEventObjectFind == config.vProcessEventObjectFilter.end()) {
     config.vProcessEventObjectFilter[objectName] = false;
   }
 
@@ -73,13 +76,10 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
     config.hookedObjects[objectName](pObject, edx, pFunction, pParms, pResult);
   }
   // blocked functions
-  if (config.blockedFuncMap.find(funcName) == config.blockedFuncMap.end()) {
-    if (config.blockedFuncMap[funcName] == true) {
-      // std::string s = std::format("Blocked Function {}", funcName);
-      // config.LogToFile(s);
-      //  config.PrintToConsole(std::format("Blocked {}", funcName));
-      return;
-    }
+  auto blockedMapFunc = config.blockedFuncMap.find(funcName);
+  if (blockedMapFunc != config.blockedFuncMap.end() &&
+      *blockedMapFunc->second) {
+    return;
   }
 
   std::string s = std::format("Hooked {:<50} | {}", funcName, objectName);

@@ -27,7 +27,11 @@ bool Config::Init() {
   REGISTER_HOOKED_FUNCTION("Function UDKGame.DunDef_SeqAct_GiveEquipmentToPlayers.Activated",
                            PlayerRewardHookFunc);
   REGISTER_HOOKED_OBJECT("DunDefTreasureChest", 
-                         OpenChest);
+                           OpenChest);
+  REGISTER_HOOKED_FUNCTION("",
+                           BlockInputInMenu);
+
+
 
   // TODO: register keybinds needs to be changed in a way that handles a single point of definition
   RegisterKeybind("Toggle menu",Config::KeyBinds::ToggleKey,519,[this](){bShowMenu = !bShowMenu;});
@@ -39,6 +43,8 @@ bool Config::Init() {
   bool invert = !bPlayerGodMode;
   RegisterBlockedFunction("Function DunDefPlayerController.Dead.BeginState", invert);
   RegisterBlockedFunction("Function UDKGame.DunDefPlayer.Dying.BeginState", invert);
+  RegisterBlockedFunction("Function UDKGame.DunDefPlayerController.JumpPressed", bShowMenu);
+  RegisterBlockedFunction("Function UDKGame.DunDefPlayerController.PlayerWalking.PlayerTick", bShowMenu);
 
   // clang-format on
 
@@ -46,6 +52,11 @@ bool Config::Init() {
   SetupFilter();
 
   return true;
+}
+
+void Config::BlockInputInMenu(PROCESS_EVENT_ARGS) {
+  if (bShowMenu)
+    return;
 }
 
 bool Config::Cleanup() {
@@ -83,7 +94,7 @@ void Config::RegisterHookedObject(
 }
 
 void Config::RegisterBlockedFunction(const std::string &key, bool &flag) {
-  blockedFuncMap[key] = flag;
+  blockedFuncMap[key] = &flag;
 }
 
 void Config::RegisterKeybind(std::string name, Config::KeyBinds keyBindName,
