@@ -47,7 +47,6 @@ static const char *itemQualitys[] = {"None",      "Mythical",  "Transcendent",
                                      "Supreme",   "Ultimate",  "Ultimate93",
                                      "Ultimate+", "Ultimate++"};
 
->>>>>>> LootFilterUpdate
 void MenuMain::Init() {
   // AddItem(config.GetADunDefPlayerController()->myHero->HeroEquipments[0]);
 }
@@ -1073,7 +1072,6 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
   //  auto a = item->GetPrimaryDamageIncreaseDisplay(item->GetWeaponDamage());
   //  ImGui::Text("%i", a);
 
->>>>>>> LootFilterUpdate
   if (ImGui::Button(("Give##%ls" + item->GetName()).c_str())) {
     config.PushItemToQueue(item);
   }
@@ -1264,7 +1262,6 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
   }
 
   if (ImGui::TreeNode("___Other___")) {
-
     // clang-format off
 
     ImGui::InputInt("MaxEquipmentLevel", &(item->MaxEquipmentLevel));
