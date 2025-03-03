@@ -35,6 +35,9 @@
     func(obj, edx, pFunction, pParms, pResult);                                \
   })
 
+#define STATFILTER_OFFSET(offset)                                              \
+  [](Classes::UHeroEquipment *item) { return item->offset; }
+
 enum Stats {
   eUnknown,
   eHHealth,
@@ -59,6 +62,8 @@ struct StatFilter {
   std::variant<int, float> min;
   std::variant<int, float> max;
   bool enabled;
+  std::function<std::variant<int, float>(Classes::UHeroEquipment *)>
+      memberGetter;
 };
 
 enum TARGET_TEAM { NONE, ENEMYS, PLAYERS };
@@ -115,24 +120,49 @@ public:
                             -999, -999, -999, -999, -999};
   int lootFilterMax[0xB] = {999, 999, 999, 999, 999, 999,
                             999, 999, 999, 999, 999};
-  StatFilter lootFilterWeaponLevel = {"Level", -999, 999, false};
-  StatFilter lootFilterWeaponDamage = {"Damage", -999, 999, false};
-  StatFilter lootFilterWeaponElementalDamage = {"Elemental Damge", -999, 999,
-                                                false};
-  StatFilter lootFilterWeaponAttackSpeed = {"Attack Speed", -999, 999, false};
-  StatFilter lootFilterWeaponAmmoCapacity = {"Ammo Capacity", -999, 999, false};
-  StatFilter lootFilterWeaponReloadSpeed = {"Reload Speed", -999, 999, false};
-  StatFilter lootFilterWeaponProjectileSpeed = {"Projectile Speed", -999, 999,
-                                                false};
-  StatFilter lootFilterMaxUpgrade = {"Max Upgrade", -999, 999, false};
-  StatFilter lootFilterNumberOfProjectiles = {"Number Of Projectiles", -999,
-                                              999, false};
-  StatFilter lootFilterResistance0 = {"Resistance0", -999, 999, false};
-  StatFilter lootFilterResistance1 = {"Resistance1", -999, 999, false};
-  StatFilter lootFilterResistance2 = {"Resistance2", -999, 999, false};
-  StatFilter lootFilterResistance3 = {"Resistance3", -999, 999, false};
-  StatFilter lootFilterKnockBack = {"Knockback", -999, 999, false};
-  StatFilter lootFilterSize = {"Size", -2.0f, 2.0f, false};
+
+  std::vector<StatFilter> lootStatFilters = {
+      {"Level", -999, 999, false, STATFILTER_OFFSET(MaxEquipmentLevel)},
+      {"Max Upgrade", -999, 999, false, STATFILTER_OFFSET(MaxEquipmentLevel)},
+      {"Damage", -999, 999, false, STATFILTER_OFFSET(WeaponDamageBonus)},
+      {"Elemental Damge", -999, 999, false,
+       STATFILTER_OFFSET(WeaponAdditionalDamageAmount)},
+      // {"Attack Speed", -999, 999, false,
+      // STATFILTER_OFFSET(WeaponSwingSpeedMultiplier)},
+      {"Ammo Capacity", -999, 999, false,
+       STATFILTER_OFFSET(WeaponClipAmmoBonus)},
+      {"Reload Speed", -999, 999, false,
+       STATFILTER_OFFSET(WeaponReloadSpeedBonus)},
+      {"Projectile Speed", -999, 999, false,
+       STATFILTER_OFFSET(WeaponSpeedOfProjectilesBonus)},
+      {"Number Of Projectiles", -999, 999, false,
+       STATFILTER_OFFSET(WeaponNumberOfProjectilesBonus)},
+      {"Resistance1", -999, 999, false,
+       STATFILTER_OFFSET(DamageReductions[0].PercentageReduction)},
+      {"Resistance2", -999, 999, false,
+       STATFILTER_OFFSET(DamageReductions[1].PercentageReduction)},
+      {"Resistance3", -999, 999, false,
+       STATFILTER_OFFSET(DamageReductions[2].PercentageReduction)},
+      {"Resistance4", -999, 999, false,
+       STATFILTER_OFFSET(DamageReductions[3].PercentageReduction)},
+      {"Knockback", -999, 999, false, STATFILTER_OFFSET(WeaponKnockbackBonus)},
+      {"Size", -2.0f, 2.0f, false,
+       STATFILTER_OFFSET(WeaponDrawScaleMultiplier)}};
+
+  /*
+  if (!HandleLootFilterStat(item->DamageIncreasePerLevelMultiplier,
+  if (!HandleLootFilterStat(item->WeaponSpeedOfProjectilesBonus,
+  if (!HandleLootFilterStat(item->WeaponNumberOfProjectilesBonus,
+  if (!HandleLootFilterStat(item->WeaponClipAmmoBonus,
+  if (!HandleLootFilterStat(item->WeaponReloadSpeedBonus,
+  if (!HandleLootFilterStat(item->MaxEquipmentLevel, lootFilterMaxUpgrade))
+  if (!HandleLootFilterStat(item->DamageReductions[0].PercentageReduction,
+  if (!HandleLootFilterStat(item->DamageReductions[1].PercentageReduction,
+  if (!HandleLootFilterStat(item->DamageReductions[2].PercentageReduction,
+  if (!HandleLootFilterStat(item->DamageReductions[3].PercentageReduction,
+  if (!HandleLootFilterStat(item->WeaponKnockbackBonus, lootFilterKnockBack))
+  if (!HandleLootFilterStat(item->WeaponDrawScaleMultiplier, lootFilterSize))
+ * */
 
   int itemFilterQuality = 0;
   int itemFilterQualityULT = 0;
@@ -185,9 +215,7 @@ public:
   void PushItemToQueueWithString(std::string s);
   std::vector<std::string> ScanForAllItems();
   bool ShouldLootItem(Classes::UHeroEquipment *item);
-  bool HandleLootFilterStat(int statNum, StatFilter &stat);
-  bool HandleLootFilterStat(float statNum, StatFilter &stat);
-
+  bool HandleLootFilterStat(StatFilter &stat, Classes::UHeroEquipment &item);
   // spawning enemys
   // TODO: put a mutix lock on this
   // TODO: find a better way to handle this

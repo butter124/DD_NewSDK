@@ -5,6 +5,7 @@
 #include <SDK/DD_UDKGame_classes.hpp>
 #include <fstream>
 #include <regex>
+#include <variant>
 // clang-format on
 Config config;
 // Config::Config() : logFileName("log.txt"), logger(logFileName) {}
@@ -368,23 +369,21 @@ bool Config::TurnOffPlayerGodMod() {
   return bPlayerGodMode;
 }
 
-bool Config::HandleLootFilterStat(int statNum, StatFilter &stat) {
+bool Config::HandleLootFilterStat(StatFilter &stat,
+                                  Classes::UHeroEquipment &item) {
   if (!stat.enabled)
     return true;
 
-  if (std::get<int>(stat.min) < statNum && std::get<int>(stat.max) > statNum)
-    return true;
+  if (std::holds_alternative<int>(stat.min)) {
+    if (std::get<int>(stat.min) < std::get<int>(stat.memberGetter(&item)) &&
+        std::get<int>(stat.max) > std::get<int>(stat.memberGetter(&item)))
+      return true;
+  } else {
+    if (std::get<float>(stat.min) < std::get<float>(stat.memberGetter(&item)) &&
+        std::get<float>(stat.max) > std::get<float>(stat.memberGetter(&item)))
+      return true;
+  }
 
-  return false;
-}
-
-bool Config::HandleLootFilterStat(float statNum, StatFilter &stat) {
-  if (!stat.enabled)
-    return true;
-
-  if (std::get<float>(stat.min) < statNum &&
-      std::get<float>(stat.max) > statNum)
-    return true;
   return false;
 }
 
@@ -409,47 +408,10 @@ bool Config::ShouldLootItem(Classes::UHeroEquipment *item) {
       return false;
   }
 
-  // handle other stats
-  // HandleLootFilterStat(item->WeaponSwingSpeedMultiplier,lootFilterWeaponAttackSpeed);
-
-  if (!HandleLootFilterStat(item->Level, lootFilterWeaponLevel))
-    return false;
-  if (!HandleLootFilterStat(item->DamageIncreasePerLevelMultiplier,
-                            lootFilterWeaponDamage))
-    return false;
-  if (!HandleLootFilterStat(item->WeaponAdditionalDamageAmount,
-                            lootFilterWeaponElementalDamage))
-    return false;
-  if (!HandleLootFilterStat(item->WeaponSpeedOfProjectilesBonus,
-                            lootFilterWeaponProjectileSpeed))
-    return false;
-  if (!HandleLootFilterStat(item->WeaponNumberOfProjectilesBonus,
-                            lootFilterNumberOfProjectiles))
-    return false;
-  if (!HandleLootFilterStat(item->WeaponClipAmmoBonus,
-                            lootFilterWeaponAmmoCapacity))
-    return false;
-  if (!HandleLootFilterStat(item->WeaponReloadSpeedBonus,
-                            lootFilterWeaponReloadSpeed))
-    return false;
-  if (!HandleLootFilterStat(item->MaxEquipmentLevel, lootFilterMaxUpgrade))
-    return false;
-  if (!HandleLootFilterStat(item->DamageReductions[0].PercentageReduction,
-                            lootFilterResistance0))
-    return false;
-  if (!HandleLootFilterStat(item->DamageReductions[1].PercentageReduction,
-                            lootFilterResistance1))
-    return false;
-  if (!HandleLootFilterStat(item->DamageReductions[2].PercentageReduction,
-                            lootFilterResistance2))
-    return false;
-  if (!HandleLootFilterStat(item->DamageReductions[3].PercentageReduction,
-                            lootFilterResistance3))
-    return false;
-  if (!HandleLootFilterStat(item->WeaponKnockbackBonus, lootFilterKnockBack))
-    return false;
-  if (!HandleLootFilterStat(item->WeaponDrawScaleMultiplier, lootFilterSize))
-    return false;
+  for (auto var : lootStatFilters) {
+    if (!HandleLootFilterStat(var, *item))
+      return false;
+  }
 
   // check for item filter
   if (itemFilterQuality &&
