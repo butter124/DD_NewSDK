@@ -368,6 +368,26 @@ bool Config::TurnOffPlayerGodMod() {
   return bPlayerGodMode;
 }
 
+bool Config::HandleLootFilterStat(int statNum, StatFilter &stat) {
+  if (!stat.enabled)
+    return true;
+
+  if (std::get<int>(stat.min) < statNum && std::get<int>(stat.max) > statNum)
+    return true;
+
+  return false;
+}
+
+bool Config::HandleLootFilterStat(float statNum, StatFilter &stat) {
+  if (!stat.enabled)
+    return true;
+
+  if (std::get<float>(stat.min) < statNum &&
+      std::get<float>(stat.max) > statNum)
+    return true;
+  return false;
+}
+
 bool Config::ShouldLootItem(Classes::UHeroEquipment *item) {
   if (!item)
     return false;
@@ -377,12 +397,59 @@ bool Config::ShouldLootItem(Classes::UHeroEquipment *item) {
       item->NameIndex_QualityDescriptor >= itemFilterQualityULT + 12)
     return true;
 
-  // if any of the stats are below the filter and the filter is valid
+  // if any of the stats are below the filter and the filter is valid and
+  // enabled
   for (int i = 0; i < 0xB; i++) {
+
+    if (!lootFilterEnabled[i])
+      continue;
+
     int curstat = item->StatModifiers[i];
-    if (lootFilter[i] > 0 && curstat < lootFilter[i])
+    if (lootFilterMin[i] > curstat || curstat > lootFilterMax[i])
       return false;
   }
+
+  // handle other stats
+  // HandleLootFilterStat(item->WeaponSwingSpeedMultiplier,lootFilterWeaponAttackSpeed);
+
+  if (!HandleLootFilterStat(item->Level, lootFilterWeaponLevel))
+    return false;
+  if (!HandleLootFilterStat(item->DamageIncreasePerLevelMultiplier,
+                            lootFilterWeaponDamage))
+    return false;
+  if (!HandleLootFilterStat(item->WeaponAdditionalDamageAmount,
+                            lootFilterWeaponElementalDamage))
+    return false;
+  if (!HandleLootFilterStat(item->WeaponSpeedOfProjectilesBonus,
+                            lootFilterWeaponProjectileSpeed))
+    return false;
+  if (!HandleLootFilterStat(item->WeaponNumberOfProjectilesBonus,
+                            lootFilterNumberOfProjectiles))
+    return false;
+  if (!HandleLootFilterStat(item->WeaponClipAmmoBonus,
+                            lootFilterWeaponAmmoCapacity))
+    return false;
+  if (!HandleLootFilterStat(item->WeaponReloadSpeedBonus,
+                            lootFilterWeaponReloadSpeed))
+    return false;
+  if (!HandleLootFilterStat(item->MaxEquipmentLevel, lootFilterMaxUpgrade))
+    return false;
+  if (!HandleLootFilterStat(item->DamageReductions[0].PercentageReduction,
+                            lootFilterResistance0))
+    return false;
+  if (!HandleLootFilterStat(item->DamageReductions[1].PercentageReduction,
+                            lootFilterResistance1))
+    return false;
+  if (!HandleLootFilterStat(item->DamageReductions[2].PercentageReduction,
+                            lootFilterResistance2))
+    return false;
+  if (!HandleLootFilterStat(item->DamageReductions[3].PercentageReduction,
+                            lootFilterResistance3))
+    return false;
+  if (!HandleLootFilterStat(item->WeaponKnockbackBonus, lootFilterKnockBack))
+    return false;
+  if (!HandleLootFilterStat(item->WeaponDrawScaleMultiplier, lootFilterSize))
+    return false;
 
   // check for item filter
   if (itemFilterQuality &&

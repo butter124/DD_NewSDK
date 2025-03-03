@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SDK.hpp"
+#include "includes/config.h"
 #include "menu_template.h"
 #include <functional>
 #include <string>
@@ -39,6 +40,8 @@ protected:
   void PlayerCheats();
   void WorldCheats();
   void Debug();
+  void ImGuiLootFilter();
+  void ImGuiLootFilterPair(StatFilter &filter);
   void NoClipHandleInput();
   void ImGuiPawn(Classes::ADunDefPawn *pPawn);
   void ImGuiTargetableActor(Classes::ADunDefDamageableTarget *pPawn);

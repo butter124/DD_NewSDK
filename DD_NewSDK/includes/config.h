@@ -5,6 +5,7 @@
 #include <SDK/DD_Core_structs.hpp>
 #include <SDK/DD_UDKGame_classes.hpp>
 #include <algorithm>
+#include <array>
 #include <format>
 #include <functional>
 #include <iostream>
@@ -13,6 +14,7 @@
 #include <string>
 #include <string_view>
 #include <unordered_map>
+#include <variant>
 #include <windows.h>
 
 #define PROCESS_EVENT_ARGS                                                     \
@@ -46,6 +48,19 @@ enum Stats {
   eTDamage,
   eTRange
 };
+
+constexpr std::array<std::string_view, 11> StatNames = {
+    "UNKNOWN",     "Hero Health",   "Hero Speed",    "Hero Damage",
+    "Hero Cast",   "Hero Ability1", "Hero Ability2", "Tower Health",
+    "Tower Speed", "Tower Damage",  "Tower Range"};
+
+struct StatFilter {
+  std::string name;
+  std::variant<int, float> min;
+  std::variant<int, float> max;
+  bool enabled;
+};
+
 enum TARGET_TEAM { NONE, ENEMYS, PLAYERS };
 
 struct KeybindsStruct {
@@ -95,9 +110,33 @@ public:
   bool bAutoOpenChest = false;
   int itemsLooted = 0;
   int itemsChecked = 0;
-  int lootFilter[0xB] = {};
+  bool lootFilterEnabled[0xB];
+  int lootFilterMin[0xB] = {-999, -999, -999, -999, -999, -999,
+                            -999, -999, -999, -999, -999};
+  int lootFilterMax[0xB] = {999, 999, 999, 999, 999, 999,
+                            999, 999, 999, 999, 999};
+  StatFilter lootFilterWeaponLevel = {"Level", -999, 999, false};
+  StatFilter lootFilterWeaponDamage = {"Damage", -999, 999, false};
+  StatFilter lootFilterWeaponElementalDamage = {"Elemental Damge", -999, 999,
+                                                false};
+  StatFilter lootFilterWeaponAttackSpeed = {"Attack Speed", -999, 999, false};
+  StatFilter lootFilterWeaponAmmoCapacity = {"Ammo Capacity", -999, 999, false};
+  StatFilter lootFilterWeaponReloadSpeed = {"Reload Speed", -999, 999, false};
+  StatFilter lootFilterWeaponProjectileSpeed = {"Projectile Speed", -999, 999,
+                                                false};
+  StatFilter lootFilterMaxUpgrade = {"Max Upgrade", -999, 999, false};
+  StatFilter lootFilterNumberOfProjectiles = {"Number Of Projectiles", -999,
+                                              999, false};
+  StatFilter lootFilterResistance0 = {"Resistance0", -999, 999, false};
+  StatFilter lootFilterResistance1 = {"Resistance1", -999, 999, false};
+  StatFilter lootFilterResistance2 = {"Resistance2", -999, 999, false};
+  StatFilter lootFilterResistance3 = {"Resistance3", -999, 999, false};
+  StatFilter lootFilterKnockBack = {"Knockback", -999, 999, false};
+  StatFilter lootFilterSize = {"Size", -2.0f, 2.0f, false};
+
   int itemFilterQuality = 0;
   int itemFilterQualityULT = 0;
+
   bool bAutoLootULT = false;
   bool bTeleportPlayers = false;
   bool bShowPlayerTeleportPos = false;
@@ -146,6 +185,8 @@ public:
   void PushItemToQueueWithString(std::string s);
   std::vector<std::string> ScanForAllItems();
   bool ShouldLootItem(Classes::UHeroEquipment *item);
+  bool HandleLootFilterStat(int statNum, StatFilter &stat);
+  bool HandleLootFilterStat(float statNum, StatFilter &stat);
 
   // spawning enemys
   // TODO: put a mutix lock on this

@@ -1,12 +1,14 @@
 
 // clang-format off
-#include "ImGui/imgui.h"
 #include "pch.h"
+#include "ImGui/imgui.h"
+#include <algorithm>
 #include "includes/menu_main.h"
 #include "includes/config.h"
 #include <SDK/DD_UDKGame_classes.hpp>
 #include <cstddef>
 #include <string>
+#include <variant>
 // clang-format on
 
 #define IMGUI_BITFIELD(s, item)                                                \
@@ -41,6 +43,11 @@
     }                                                                          \
   } while (0);
 
+static const char *itemQualitys[] = {"None",      "Mythical",  "Transcendent",
+                                     "Supreme",   "Ultimate",  "Ultimate93",
+                                     "Ultimate+", "Ultimate++"};
+
+>>>>>>> LootFilterUpdate
 void MenuMain::Init() {
   // AddItem(config.GetADunDefPlayerController()->myHero->HeroEquipments[0]);
 }
@@ -797,7 +804,7 @@ void MenuMain::WorldCheats() {
       ImGui::InputFloat("BuildPhaseRespawnTime", &pGRI->BuildPhaseRespawnTime);
       ImGui::InputFloat("CompetitiveFloatingNameDistanceMultiplier",&pGRI->CompetitiveFloatingNameDistanceMultiplier);
       ImGui::InputFloat("DeathSpectatorActivateInterval", &pGRI->DeathSpectatorActivateInterval);
-	    ImGui::InputFloat("EnemyLifeSpanMultiplier",&pGRI->EnemyLifeSpanMultiplier);
+      ImGui::InputFloat("EnemyLifeSpanMultiplier",&pGRI->EnemyLifeSpanMultiplier);
       ImGui::InputFloat("EnemyNetUpdateFrequencyMultiplier",&pGRI->EnemyNetUpdateFrequencyMultiplier);
       ImGui::InputFloat("EnemyTargetingDistanceLimit",&pGRI->EnemyTargetingDistanceLimit);
       ImGui::InputFloat("ForceMaxBuildTime",&pGRI->ForceMaxBuildTime);
@@ -1033,6 +1040,40 @@ void MenuMain::Debug() {
 }
 
 void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
+  // ATTEMPTS TO FIND REAL DAMAGE FUNCTION
+  // auto test2 = item->GetBaseDamage();
+  // ImGui::Text("GetBaseDamage %d", test2);
+  // auto test3 = item->GetPrimaryDamageIncreaseDisplay(100);
+  // ImGui::Text("GetPrimaryDamageIncreaseDisplay 100:%d", test3);
+  // auto test4 = item->GetPrimaryDamageIncreaseDisplay(50);
+  // ImGui::Text("GetPrimaryDamageIncreaseDisplay 50:%d", test4);
+  // auto test = item->GetWeaponDamage();
+  // ImGui::Text("GetWeaponDamage %d", test);
+  // ImGui::Text("WeaponDamageDisplayValueScale %f",
+  // item->WeaponDamageDisplayValueScale);
+  // ImGui::Text("WeaponAdditionalDamageAmount %d",
+  // item->WeaponAdditionalDamageAmount);
+  // auto t =
+  //      ((Classes::ADunDefPlayerReplicationInfo *)(config.GetPlayerPawn()
+  //                                                     ->PlayerReplicationInfo))
+  //          ->GetPlayer();
+  //
+  //  int out3 = item->EquipmentWeaponTemplate->BaseDamage +
+  //             item->WeaponDamageBonus + item->WeaponAdditionalDamageAmount;
+  //
+  //  float multiplier =
+  //      item->WeaponDamageDisplayValueScale * t->PlayerWeaponDamageMultiplier;
+  //
+  //  float multiplier2 = item->EquipmentWeaponTemplate->WeaponDamageMultiplier
+  //  *
+  //                      item->WeaponDamageMultiplier;
+  //
+  //  out3 = (multiplier2)*max((multiplier * out3), 1);
+  //  ImGui::Text("%i", out3);
+  //  auto a = item->GetPrimaryDamageIncreaseDisplay(item->GetWeaponDamage());
+  //  ImGui::Text("%i", a);
+
+>>>>>>> LootFilterUpdate
   if (ImGui::Button(("Give##%ls" + item->GetName()).c_str())) {
     config.PushItemToQueue(item);
   }
@@ -1224,61 +1265,146 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
 
   if (ImGui::TreeNode("___Other___")) {
 
-    ImGui::InputInt("MaxEquipmentLevel    ", &(item->MaxEquipmentLevel));
-    ImGui::InputInt("DamageReductions1    ",
-                    &(item->DamageReductions[0].PercentageReduction));
-    ImGui::InputInt("DamageReductions2    ",
-                    &(item->DamageReductions[1].PercentageReduction));
-    ImGui::InputInt("DamageReductions3    ",
-                    &(item->DamageReductions[2].PercentageReduction));
-    ImGui::InputInt("DamageReductions4    ",
-                    &(item->DamageReductions[3].PercentageReduction));
+    // clang-format off
 
-    ImGui::InputInt("DamageBonus    ", &(item->WeaponDamageBonus));
-    ImGui::InputInt("NumberOfProjectilesBonus    ",
-                    &(item->WeaponNumberOfProjectilesBonus));
-    ImGui::InputInt("SpeedOfProjectilesBonus    ",
-                    &(item->WeaponSpeedOfProjectilesBonus));
-    ImGui::InputInt("WeaponAdditionalDamageAmount    ",
-                    &(item->WeaponAdditionalDamageAmount));
+    ImGui::InputInt("MaxEquipmentLevel", &(item->MaxEquipmentLevel));
+    ImGui::InputInt("DamageBonus", &(item->WeaponDamageBonus));
+    ImGui::DragFloat("MaxDamageIncreasePerLevel",&item->MaxDamageIncreasePerLevel);
+    ImGui::DragFloat("DamageIncreasePerLevelMultiplier",&item->DamageIncreasePerLevelMultiplier);
+    ImGui::DragFloat("AdditionalWeaponDamageBonusRandomizerMultiplier",&item->AdditionalWeaponDamageBonusRandomizerMultiplier);
+    ImGui::DragFloat("WeaponDamageBonusRandomizerMultiplier",&item->WeaponDamageBonusRandomizerMultiplier);
+    ImGui::DragFloat("WeaponDamageDisplayValueScale",&item->WeaponDamageDisplayValueScale);
+    ImGui::DragFloat("WeaponDamageMultiplier",&item->WeaponDamageMultiplier);
+    ImGui::InputInt("WeaponAdditionalDamageAmount", &(item->WeaponAdditionalDamageAmount));
+    ImGui::InputInt("DamageReductions1", &(item->DamageReductions[0].PercentageReduction));
+    ImGui::InputInt("DamageReductions2", &(item->DamageReductions[1].PercentageReduction));
+    ImGui::InputInt("DamageReductions3", &(item->DamageReductions[2].PercentageReduction));
+    ImGui::InputInt("DamageReductions4", &(item->DamageReductions[3].PercentageReduction));
+    ImGui::DragFloat("AltDamageIncreasePerLevelMultiplier",&item->AltDamageIncreasePerLevelMultiplier);
+    ImGui::DragFloat("AltDamageRandomizerMult",&item->AltDamageRandomizerMult);
+    ImGui::DragFloat("AltMaxDamageIncreasePerLevel",&item->AltMaxDamageIncreasePerLevel);
+    ImGui::DragFloat("ElementalDamageIncreasePerLevelMultiplier",&item->ElementalDamageIncreasePerLevelMultiplier);
+    ImGui::DragFloat("ElementalDamageMultiplier",&item->ElementalDamageMultiplier);
+    ImGui::DragFloat("ExtraQualityDamageIncreasePerLevelMultiplier",&item->ExtraQualityDamageIncreasePerLevelMultiplier);
+    ImGui::DragFloat("ExtraQualityMaxDamageIncreasePerLevel",&item->ExtraQualityMaxDamageIncreasePerLevel);
+    ImGui::DragFloat("MaxElementalDamageIncreasePerLevel",&item->MaxElementalDamageIncreasePerLevel);
+    ImGui::DragFloat("MinElementalDamageIncreasePerLevel",&item->MinElementalDamageIncreasePerLevel);
+    ImGui::DragFloat("ProtonChargeBlastDamageMultiplier",&item->ProtonChargeBlastDamageMultiplier);
+    ImGui::DragFloat("SecondExtraQualityDamageIncreasePerLevelMultiplier",&item->SecondExtraQualityDamageIncreasePerLevelMultiplier);
+    ImGui::DragFloat("SecondExtraQualityMaxDamageIncreasePerLevel",&item->SecondExtraQualityMaxDamageIncreasePerLevel);
+    ImGui::DragFloat("UltimateDamageIncreasePerLevelMultiplier",&item->UltimateDamageIncreasePerLevelMultiplier);
+    ImGui::DragFloat("UltimateMaxDamageIncreasePerLevel",&item->UltimateMaxDamageIncreasePerLevel);
+    ImGui::DragFloat("WeaponAltDamageMultiplier",&item->WeaponAltDamageMultiplier);
+    ImGui::InputFloat("MaxRandomElementalDamageMultiplier", &item->MaxRandomElementalDamageMultiplier, 1, 100,"%.3f");
+    ImGui::InputInt("WeaponAltDamageBonus", &(item->WeaponAltDamageBonus));
 
-    ImGui::InputFloat("MaxRandomElementalDamageMultiplier",
-                      &item->MaxRandomElementalDamageMultiplier, 1, 100,
-                      "%.3f");
-    ImGui::InputFloat("WeaponSwingSpeedMultiplier",
-                      &item->WeaponSwingSpeedMultiplier, 1, 100, "%.3f");
-
-    ImGui::InputInt("WeaponReloadSpeedBonus                       ",
-                    &(item->WeaponReloadSpeedBonus));
-    ImGui::InputInt("WeaponKnockbackBonus                         ",
-                    &(item->WeaponKnockbackBonus));
-    ImGui::InputInt("WeaponAltDamageBonus                         ",
-                    &(item->WeaponAltDamageBonus));
-    ImGui::InputInt("WeaponBlockingBonus                          ",
-                    &(item->WeaponBlockingBonus));
-    ImGui::InputInt("WeaponClipAmmoBonus                          ",
-                    &(item->WeaponClipAmmoBonus));
-    ImGui::InputInt("AdditionalAllowedUpgradeResistancePoints     ",
-                    &(item->AdditionalAllowedUpgradeResistancePoints));
-    ImGui::InputInt("RequirementLevelOverride                     ",
-                    &(item->RequirementLevelOverride));
-    ImGui::InputInt("WeaponChargeSpeedBonus                       ",
-                    &(item->WeaponChargeSpeedBonus));
-    ImGui::InputInt("WeaponShotsPerSecondBonus                    ",
-                    &(item->WeaponShotsPerSecondBonus));
-
-    ImGui::InputInt("MaximumSellWorth", &item->MaximumSellWorth);
-    ImGui::InputInt("MinimumSellWorth", &item->MinimumSellWorth);
-    ImGui::InputInt("ShopMinimumSellWorth", &item->ShopMinimumSellWorth);
-    ImGui::InputInt("MaxEquipmentLevel", &item->MaxEquipmentLevel);
-    ImGui::InputInt("Level", &item->Level);
-    ImGui::InputInt("StoredMana", &item->StoredMana);
-    ImGui::InputInt("UserID", &item->UserID);
-    ImGui::InputFloat("MyRatingPercent", &item->MyRatingPercent, 1.0f);
+    ImGui::DragFloat("ComparisonRatingExponent",&item->ComparisonRatingExponent);
+    ImGui::DragFloat("ComparisonSimilarRatingAllowance",&item->ComparisonSimilarRatingAllowance);
+    ImGui::DragFloat("DebugPreTranscendentEquipmentRating",&item->DebugPreTranscendentEquipmentRating);
+    ImGui::DragFloat("EquipmentRatingPercentBase",&item->EquipmentRatingPercentBase);
+    ImGui::DragFloat("FullEquipmentSetStatMultiplier",&item->FullEquipmentSetStatMultiplier);
+    ImGui::DragFloat("GlobalSelectionPreviewScaleMultiplier",&item->GlobalSelectionPreviewScaleMultiplier);
+    ImGui::DragFloat("HealingPerBlock",&item->HealingPerBlock);
+    ImGui::DragFloat("HighLevelManaCostPerLevelExponentialFactorAdditional",&item->HighLevelManaCostPerLevelExponentialFactorAdditional);
+    ImGui::DragFloat("HighLevelManaCostPerLevelMaxQualityMultiplierAdditional",&item->HighLevelManaCostPerLevelMaxQualityMultiplierAdditional);
+    ImGui::DragFloat("HighLevelRequirementsRatingThreshold",&item->HighLevelRequirementsRatingThreshold);
+    ImGui::DragFloat("HighResaleWorthPower",&item->HighResaleWorthPower);
+    ImGui::DragFloat("IconColorMultPrimary",&item->IconColorMultPrimary);
+    ImGui::DragFloat("IconColorMultSecondary",&item->IconColorMultSecondary);
+    ImGui::DragFloat("IconScaleMultiplier",&item->IconScaleMultiplier);
+    ImGui::DragFloat("LevelRequirementRatingOffset",&item->LevelRequirementRatingOffset);
+    ImGui::DragFloat("ManaCostPerLevelExponentialFactor",&item->ManaCostPerLevelExponentialFactor);
+    ImGui::DragFloat("ManaCostPerLevelExponentialFactorAdditional",&item->ManaCostPerLevelExponentialFactorAdditional);
+    ImGui::DragFloat("ManaCostPerLevelLinearFactor",&item->ManaCostPerLevelLinearFactor);
+    ImGui::DragFloat("ManaCostPerLevelMaxQualityMultiplier",&item->ManaCostPerLevelMaxQualityMultiplier);
+    ImGui::DragFloat("ManaCostPerLevelMaxQualityMultiplierAdditional",&item->ManaCostPerLevelMaxQualityMultiplierAdditional);
+    ImGui::DragFloat("ManaCostPerLevelMinQualityMultiplier",&item->ManaCostPerLevelMinQualityMultiplier);
+    ImGui::DragFloat("MaxShopSellWorth",&item->MaxShopSellWorth);
+    ImGui::DragFloat("MaximumSellWorthUpgradeDepreciationFactor",&item->MaximumSellWorthUpgradeDepreciationFactor);
+    ImGui::DragFloat("MinWeaponScale",&item->MinWeaponScale);
+    ImGui::DragFloat("MyNonUpgradeLevelRating",&item->MyNonUpgradeLevelRating);
+    ImGui::DragFloat("MythicalFullEquipmentSetStatMultiplier",&item->MythicalFullEquipmentSetStatMultiplier);
+    ImGui::DragFloat("PlayerGravityMultiplier",&item->PlayerGravityMultiplier);
+    ImGui::DragFloat("PlayerSpeedMultiplier",&item->PlayerSpeedMultiplier);
+    ImGui::DragFloat("PreviewMaxOffsetScale",&item->PreviewMaxOffsetScale);
+    ImGui::DragFloat("PreviewMaxOffsetZ",&item->PreviewMaxOffsetZ);
+    ImGui::DragFloat("PreviewMinOffsetScale",&item->PreviewMinOffsetScale);
+    ImGui::DragFloat("PreviewMinOffsetZ",&item->PreviewMinOffsetZ);
+    ImGui::DragFloat("PrimaryColorOverrideMultiplier",&item->PrimaryColorOverrideMultiplier);
+    ImGui::DragFloat("PrimaryColorSetIntensity",&item->PrimaryColorSetIntensity);
+    ImGui::DragFloat("PrimaryColorSetPow",&item->PrimaryColorSetPow);
+    ImGui::DragFloat("RandomizerQualityMultiplier",&item->RandomizerQualityMultiplier);
+    ImGui::DragFloat("RandomizerStatModifierGoNegativeChance",&item->RandomizerStatModifierGoNegativeChance);
+    ImGui::DragFloat("RandomizerStatModifierGoNegativeMultiplier", &item->RandomizerStatModifierGoNegativeMultiplier);
+    ImGui::DragFloat("RatingPercentForLevelUpCostExponent",&item->RatingPercentForLevelUpCostExponent);
+    ImGui::DragFloat("RespawnTimeMultiplier",&item->RespawnTimeMultiplier);
+    ImGui::DragFloat("RuthlessUltimate93Chance",&item->RuthlessUltimate93Chance);
+    ImGui::DragFloat("RuthlessUltimatePlusChance",&item->RuthlessUltimatePlusChance);
+    ImGui::DragFloat("RuthlessUltimatePlusPlusChance",&item->RuthlessUltimatePlusPlusChance);
+    ImGui::DragFloat("SecondaryColorOverrideMultiplier",&item->SecondaryColorOverrideMultiplier);
+    ImGui::DragFloat("SecondaryColorSetIntensity",&item->SecondaryColorSetIntensity);
+    ImGui::DragFloat("SecondaryColorSetPow",&item->SecondaryColorSetPow);
+    ImGui::DragFloat("SelectionPreviewScaleMultiplier",&item->SelectionPreviewScaleMultiplier);
+    ImGui::DragFloat("SellRatingExponent",&item->SellRatingExponent);
+    ImGui::DragFloat("SellWorthEquipmentRatingBase",&item->SellWorthEquipmentRatingBase);
+    ImGui::DragFloat("SellWorthExponentialFactor",&item->SellWorthExponentialFactor);
+    ImGui::DragFloat("SellWorthLinearFactor",&item->SellWorthLinearFactor);
+    ImGui::DragFloat("SellWorthMax",&item->SellWorthMax);
+    ImGui::DragFloat("SellWorthMin",&item->SellWorthMin);
+    ImGui::DragFloat("SellWorthMultiplierLevelBase",&item->SellWorthMultiplierLevelBase);
+    ImGui::DragFloat("SellWorthMultiplierLevelMax",&item->SellWorthMultiplierLevelMax);
+    ImGui::DragFloat("SellWorthMultiplierLevelMin",&item->SellWorthMultiplierLevelMin);
+    ImGui::DragFloat("ShopSellRatingExponent",&item->ShopSellRatingExponent);
+    ImGui::DragFloat("ShopSellWorthEquipmentRatingBase",&item->ShopSellWorthEquipmentRatingBase);
+    ImGui::DragFloat("ShopSellWorthExponentialFactor",&item->ShopSellWorthExponentialFactor);
+    ImGui::DragFloat("ShopSellWorthLinearFactor",&item->ShopSellWorthLinearFactor);
+    ImGui::DragFloat("ShopSellWorthMax",&item->ShopSellWorthMax);
+    ImGui::DragFloat("ShopSellWorthMaxExponentAbsolute",&item->ShopSellWorthMaxExponentAbsolute);
+    ImGui::DragFloat("ShopSellWorthMaxWeaponMultiplier",&item->ShopSellWorthMaxWeaponMultiplier);
+    ImGui::DragFloat("ShopSellWorthMin",&item->ShopSellWorthMin);
+    ImGui::DragFloat("ShopSellWorthMinWeaponMultiplier",&item->ShopSellWorthMinWeaponMultiplier);
+    ImGui::DragFloat("ShopSellWorthRatingWeaponMultiplier",&item->ShopSellWorthRatingWeaponMultiplier);
+    ImGui::DragFloat("ShopSellWorthWeaponExponentialFactorMult",&item->ShopSellWorthWeaponExponentialFactorMult);
+    ImGui::DragFloat("ShopSellWorthWeaponMultiplier",&item->ShopSellWorthWeaponMultiplier);
+    ImGui::DragFloat("SupremeFullEquipmentSetStatMultiplier",&item->SupremeFullEquipmentSetStatMultiplier);
+    ImGui::DragFloat("SupremeLevelBoostAmount",&item->SupremeLevelBoostAmount);
+    ImGui::DragFloat("SupremeLevelBoostRandomizerPower",&item->SupremeLevelBoostRandomizerPower);
+    ImGui::DragFloat("TotalRandomizerMultiplier",&item->TotalRandomizerMultiplier);
+    ImGui::DragFloat("TranscendentFullEquipmentSetStatMultiplier",&item->TranscendentFullEquipmentSetStatMultiplier);
+    ImGui::DragFloat("TranscendentLevelBoostAmount",&item->TranscendentLevelBoostAmount);
+    ImGui::DragFloat("TranscendentLevelBoostRandomizerPower",&item->TranscendentLevelBoostRandomizerPower);
+    ImGui::DragFloat("Ultimate93Chance",&item->Ultimate93Chance);
+    ImGui::DragFloat("UltimateFullEquipmentSetStatMultiplier",&item->UltimateFullEquipmentSetStatMultiplier);
+    ImGui::DragFloat("UltimateLevelBoostAmount",&item->UltimateLevelBoostAmount);
+    ImGui::DragFloat("UltimateLevelBoostRandomizerPower",&item->UltimateLevelBoostRandomizerPower);
+    ImGui::DragFloat("UltimatePlusChance",&item->UltimatePlusChance);
+    ImGui::DragFloat("UltimatePlusPlusChance",&item->UltimatePlusPlusChance);
+    ImGui::DragFloat("WeaponDrawScaleGlobalMultiplier",&item->WeaponDrawScaleGlobalMultiplier);
+    ImGui::DragFloat("WeaponDrawScaleRandomizerExtraMultiplier",&item->WeaponDrawScaleRandomizerExtraMultiplier);
+    ImGui::DragFloat("WeaponEquipmentRatingPercentBase",&item->WeaponEquipmentRatingPercentBase);
     ImGui::InputFloat("MyRating", &item->MyRating, 1.0f);
+    ImGui::InputFloat("MyRatingPercent", &item->MyRatingPercent, 1.0f);
+    ImGui::InputFloat("WeaponSwingSpeedMultiplier", &item->WeaponSwingSpeedMultiplier, 1, 100,"%.3f");
+    ImGui::InputInt("AdditionalAllowedUpgradeResistancePoints", &(item->AdditionalAllowedUpgradeResistancePoints));
     ImGui::InputInt("EquipmentID1", &item->EquipmentID1);
     ImGui::InputInt("EquipmentID2", &item->EquipmentID2);
+    ImGui::InputInt("Level", &item->Level);
+    ImGui::InputInt("MaximumSellWorth", &item->MaximumSellWorth);
+    ImGui::InputInt("MinimumSellWorth", &item->MinimumSellWorth);
+    ImGui::InputInt("NumberOfProjectilesBonus", &(item->WeaponNumberOfProjectilesBonus));
+    ImGui::InputInt("RequirementLevelOverride", &(item->RequirementLevelOverride));
+    ImGui::InputInt("ShopMinimumSellWorth", &item->ShopMinimumSellWorth);
+    ImGui::InputInt("SpeedOfProjectilesBonus", &(item->WeaponSpeedOfProjectilesBonus));
+    ImGui::InputInt("StoredMana", &item->StoredMana);
+    ImGui::InputInt("UserID", &item->UserID);
+    ImGui::InputInt("WeaponBlockingBonus", &(item->WeaponBlockingBonus));
+    ImGui::InputInt("WeaponChargeSpeedBonus", &(item->WeaponChargeSpeedBonus));
+    ImGui::InputInt("WeaponClipAmmoBonus", &(item->WeaponClipAmmoBonus));
+    ImGui::InputInt("WeaponKnockbackBonus", &(item->WeaponKnockbackBonus));
+    ImGui::InputInt("WeaponReloadSpeedBonus", &(item->WeaponReloadSpeedBonus));
+    ImGui::InputInt("WeaponShotsPerSecondBonus", &(item->WeaponShotsPerSecondBonus));
 
+    // clang-format on
     ImGui::TreePop();
   }
   item->bIsNameOnlineVerified = 1;
@@ -1332,42 +1458,113 @@ void MenuMain::ChangeFString(Classes::FString &str, char *to) {
   str.Count = wideStr.length() + 1;
 }
 
-void MenuMain::Config() {
+void MenuMain::ImGuiLootFilterPair(StatFilter &filter) {
+  ImGui::TableNextRow();
+  ImGui::TableSetColumnIndex(0);
+  // enable check box
+  ImGui::Checkbox(("##" + filter.name).c_str(), &filter.enabled);
 
-  static const char *itemQualitys[] = {"None",      "Mythical",  "Transcendent",
-                                       "Supreme",   "Ultimate",  "Ultimate93",
-                                       "Ultimate+", "Ultimate++"};
-  ImGui::Text("Configs");
-  ImGui::Separator();
-  ImVec2 contentRegion = ImGui::GetContentRegionAvail();
-  ImVec2 settingsbuttonProperty = ImVec2(contentRegion.x * .5f, 20);
-  if (ImGui::TreeNode("Menu Settings")) {
+  // min
+  ImGui::TableSetColumnIndex(1);
+  ImGui::PushItemWidth(-FLT_MIN);
+  if (std::holds_alternative<int>(filter.min))
+    ImGui::DragInt(("##Min" + filter.name).c_str(), &std::get<int>(filter.min));
+  else
+    ImGui::DragFloat(("##Min" + filter.name).c_str(),
+                     &std::get<float>(filter.min));
+  ImGui::PopItemWidth();
 
-    for (auto &key : config.keyBindsmap) {
-      if (ImGui::Button(("Set " + key.second.name + " Key").c_str(),
-                        settingsbuttonProperty)) {
-        key.second.bShouldChange = true;
+  // max
+  ImGui::TableSetColumnIndex(2);
+  ImGui::PushItemWidth(-FLT_MIN);
+  if (std::holds_alternative<int>(filter.max))
+    ImGui::DragInt(("##Max" + filter.name).c_str(), &std::get<int>(filter.max));
+  else
+    ImGui::DragFloat(("##Max" + filter.name).c_str(),
+                     &std::get<float>(filter.max));
+  ImGui::PopItemWidth();
+
+  // stat name
+  ImGui::TableSetColumnIndex(3);
+  ImGui::Text("%s", filter.name.c_str());
+}
+
+void MenuMain::ImGuiLootFilter() {
+  if (ImGui::TreeNode("AutoLoot Settings")) {
+    if (ImGui::TreeNode("Stats")) {
+      if (ImGui::BeginTable("table1", 4,
+                            ImGuiTableFlags_NoHostExtendX |
+                                ImGuiTableFlags_SizingFixedFit)) {
+
+        ImGui::TableSetupColumn("E", ImGuiTableColumnFlags_WidthFixed, 20.0f);
+        ImGui::TableSetupColumn("Min", ImGuiTableColumnFlags_WidthFixed, 75.0f);
+        ImGui::TableSetupColumn("Max", ImGuiTableColumnFlags_WidthFixed, 75.0f);
+        ImGui::TableSetupColumn("Stat", ImGuiTableColumnFlags_WidthFixed,
+                                175.0f);
+        ImGui::TableHeadersRow();
+
+        for (int row = 1; row < 0xB; row++) {
+          ImGui::TableNextRow();
+          ImGui::TableSetColumnIndex(0);
+          // enable check box
+          ImGui::Checkbox(("##" + std::to_string(row)).c_str(),
+                          &config.lootFilterEnabled[row]);
+
+          // min
+          ImGui::TableSetColumnIndex(1);
+          ImGui::PushItemWidth(-FLT_MIN);
+          ImGui::DragInt(("##Min" + std::to_string(row)).c_str(),
+                         &config.lootFilterMin[row]);
+          ImGui::PopItemWidth();
+
+          // max
+          ImGui::TableSetColumnIndex(2);
+          ImGui::PushItemWidth(-FLT_MIN);
+          ImGui::DragInt(("##Max" + std::to_string(row)).c_str(),
+                         &config.lootFilterMax[row]);
+          ImGui::PopItemWidth();
+
+          // stat name
+          ImGui::TableSetColumnIndex(3);
+          ImGui::Text("%s", StatNames[row].data());
+        }
+        ImGui::EndTable();
       }
-      ImGui::SameLine();
-
-      HandleKeyChange(key.second.key, key.second.bShouldChange);
+      ImGui::TreePop();
     }
 
-    ImGui::TreePop();
-  }
+    if (ImGui::TreeNode("Other")) {
+      if (ImGui::BeginTable("table2", 4,
+                            ImGuiTableFlags_NoHostExtendX |
+                                ImGuiTableFlags_SizingFixedFit)) {
 
-  if (ImGui::TreeNode("AutoLoot Settings")) {
-    // int FilterMax = 500;
-    ImGui::InputInt("Hero Health", &config.lootFilter[eHHealth]);
-    ImGui::InputInt("Hero Speed", &config.lootFilter[eHSpeed]);
-    ImGui::InputInt("Hero Damage", &config.lootFilter[eHDamage]);
-    ImGui::InputInt("Hero Cast", &config.lootFilter[eHCast]);
-    ImGui::InputInt("Ability1", &config.lootFilter[Ability1]);
-    ImGui::InputInt("Ability2", &config.lootFilter[Ability2]);
-    ImGui::InputInt("Tower Health", &config.lootFilter[eTHealth]);
-    ImGui::InputInt("Tower Speed", &config.lootFilter[eTSpeed]);
-    ImGui::InputInt("Tower Damage", &config.lootFilter[eTDamage]);
-    ImGui::InputInt("Tower Range", &config.lootFilter[eTRange]);
+        ImGui::TableSetupColumn("E", ImGuiTableColumnFlags_WidthFixed, 20.0f);
+        ImGui::TableSetupColumn("Min", ImGuiTableColumnFlags_WidthFixed, 75.0f);
+        ImGui::TableSetupColumn("Max", ImGuiTableColumnFlags_WidthFixed, 75.0f);
+        ImGui::TableSetupColumn("Stat", ImGuiTableColumnFlags_WidthFixed,
+                                175.0f);
+        ImGui::TableHeadersRow();
+
+        ImGuiLootFilterPair(config.lootFilterWeaponLevel);
+        ImGuiLootFilterPair(config.lootFilterWeaponDamage);
+        ImGuiLootFilterPair(config.lootFilterWeaponElementalDamage);
+        ImGuiLootFilterPair(config.lootFilterWeaponAttackSpeed);
+        ImGuiLootFilterPair(config.lootFilterWeaponProjectileSpeed);
+        ImGuiLootFilterPair(config.lootFilterNumberOfProjectiles);
+        ImGuiLootFilterPair(config.lootFilterWeaponAmmoCapacity);
+        ImGuiLootFilterPair(config.lootFilterWeaponReloadSpeed);
+        ImGuiLootFilterPair(config.lootFilterMaxUpgrade);
+        ImGuiLootFilterPair(config.lootFilterResistance0);
+        ImGuiLootFilterPair(config.lootFilterResistance1);
+        ImGuiLootFilterPair(config.lootFilterResistance2);
+        ImGuiLootFilterPair(config.lootFilterResistance3);
+        ImGuiLootFilterPair(config.lootFilterKnockBack);
+        ImGuiLootFilterPair(config.lootFilterSize);
+
+        ImGui::EndTable();
+      }
+      ImGui::TreePop();
+    }
 
     ImGui::Combo("Quality", &config.itemFilterQuality, itemQualitys,
                  IM_ARRAYSIZE(itemQualitys));
@@ -1388,6 +1585,30 @@ void MenuMain::Config() {
 
     ImGui::TreePop();
   }
+}
+
+void MenuMain::Config() {
+
+  ImGui::Text("Configs");
+  ImGui::Separator();
+  ImVec2 contentRegion = ImGui::GetContentRegionAvail();
+  ImVec2 settingsbuttonProperty = ImVec2(contentRegion.x * .5f, 20);
+  if (ImGui::TreeNode("Menu Settings")) {
+
+    for (auto &key : config.keyBindsmap) {
+      if (ImGui::Button(("Set " + key.second.name + " Key").c_str(),
+                        settingsbuttonProperty)) {
+        key.second.bShouldChange = true;
+      }
+      ImGui::SameLine();
+
+      HandleKeyChange(key.second.key, key.second.bShouldChange);
+    }
+
+    ImGui::TreePop();
+  }
+
+  ImGuiLootFilter();
 
   if (ImGui::TreeNode("Logging")) {
     ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f),
