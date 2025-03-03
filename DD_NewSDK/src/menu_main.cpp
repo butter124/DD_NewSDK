@@ -1761,15 +1761,11 @@ void MenuMain::ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
                          unsigned char &_changeChar, std::string comboName) {
   std::string CurrentSelected;
 
-  // Convert the selected value to string if it's valid
   if (_CurrentSelected.IsValid())
     CurrentSelected = _CurrentSelected.ToString();
 
-  // Initialize CurrentSelectedIndex based on the current selection
-  static int CurrentSelectedIndex = -1; // -1 means no selection at first
+  static int CurrentSelectedIndex = -1;
 
-  // Update the CurrentSelectedIndex when the combo is opened with a new
-  // selection
   if (CurrentSelectedIndex == -1 && !CurrentSelected.empty()) {
     for (int i = 0; i < names.Count; i++) {
       if (names.Data[i].StringValue.ToString() == CurrentSelected) {
@@ -1779,7 +1775,6 @@ void MenuMain::ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
     }
   }
 
-  // Begin the combo box
   if (ImGui::BeginCombo((comboName).c_str(), CurrentSelected.c_str())) {
     for (int i = 0; i < names.Count; i++) {
       std::string ComboName;
@@ -1794,12 +1789,9 @@ void MenuMain::ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
       if (ImGui::Selectable((ComboName + "##" + std::to_string(i)).c_str(),
                             is_selected)) {
         CurrentSelectedIndex = i;
-        _changeChar =
-            static_cast<unsigned char>(i); // Ensure it's assigned correctly
+        _changeChar = static_cast<unsigned char>(i);
       }
 
-      // Set the initial focus when opening the combo (scrolling + keyboard
-      // navigation focus)
       if (is_selected)
         ImGui::SetItemDefaultFocus();
     }
