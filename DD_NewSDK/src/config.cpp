@@ -207,6 +207,7 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   // auto ready
   if (bAutoReady && !pMapInfo->IsLobbyLevel) {
     pController->ActivateCrystal();
+    pController->ActivateCrystalForAllPlayers();
   }
 }
 
