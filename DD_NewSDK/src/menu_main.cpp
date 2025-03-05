@@ -2,6 +2,7 @@
 // clang-format off
 #include "pch.h"
 #include "ImGui/imgui.h"
+#include <SDK/DD_Basic.hpp>
 #include <algorithm>
 #include "includes/menu_main.h"
 #include "includes/config.h"
@@ -1098,34 +1099,40 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
   }
 
   // item name
-  if (item->UserEquipmentName.Data) {
-    // change item name
-    ImGui::Text("UserEquipmentName :  %ls", item->UserEquipmentName.c_str());
-    static char charBuff[255] = {0};
-    ImGui::InputText("##ItemName", charBuff, sizeof(charBuff));
-    ImGui::SameLine();
+  // change item name
+  ImGui::Text("UserEquipmentName :  %ls", item->UserEquipmentName.c_str());
+  static char charBuff[255] = {0};
+  ImGui::InputText("##ItemName", charBuff, sizeof(charBuff));
+  ImGui::SameLine();
 
-    if (ImGui::Button("Change Name")) {
-      ChangeFString(item->UserEquipmentName, charBuff);
-    }
-  } else {
-    ImGui::Text("UserEquipmentName :");
+  if (ImGui::Button("Change Name")) {
+    ChangeFString(item->UserEquipmentName, charBuff);
   }
 
   // forger name
-  if (item->UserForgerName.Data) {
-    ImGui::Text("UserForgerName    :  %ls", item->UserForgerName.c_str());
+  ImGui::Text("UserForgerName    :  %ls", item->UserForgerName.c_str());
 
-    // change forger name
-    static char ncharBuff[255] = {0};
-    ImGui::InputText("##ItemForger", ncharBuff, sizeof(ncharBuff));
-    ImGui::SameLine();
+  // change forger name
+  static char ncharBuff[255] = {0};
+  ImGui::InputText("##ItemForger", ncharBuff, sizeof(ncharBuff));
+  ImGui::SameLine();
 
-    if (ImGui::Button("Change Forger Name")) {
-      ChangeFString(item->UserForgerName, ncharBuff);
-    } else {
-      ImGui::Text("UserForgerName    :");
-    }
+  if (ImGui::Button("Change Forger Name")) {
+    ChangeFString(item->UserForgerName, ncharBuff);
+  }
+
+  // change equipment description
+  ImGui::Text("EquipmentDescription :  %ls",
+              item->EquipmentDescription.c_str());
+  static char nncharBuff[255] = {0};
+  ImGui::InputText("##ItemDesc", nncharBuff, sizeof(nncharBuff));
+  ImGui::SameLine();
+
+  if (ImGui::Button("Change Item Description")) {
+    // This is needed to prevent a crash
+    auto t = item->GetNetInfo(1, 0);
+    ChangeFString(t.Description, nncharBuff);
+    item->InitFromNetInfo(t, NULL);
   }
 
   if (ImGui::TreeNode("___Main___")) {
@@ -1476,17 +1483,24 @@ void MenuMain::ImGuiTArrayOfItems(
 }
 
 void MenuMain::ChangeFString(Classes::FString &str, char *to) {
-  if (!str.IsValid())
+  if (to[0] == '\0')
     return;
 
+  // std::wstring wideStr(to, to + std::strlen(to));
+
+  // str = wideStr.c_str();
+  //  str.Data = new wchar_t[wideStr.length() + 1];
+  //  memset(str.Data, 0, wideStr.length() + 1);
+  //  std::wmemcpy(str.Data, wideStr.c_str(), wideStr.length() + 1);
+  //
+  //  str.Max = wideStr.length() + 1;
+  //  str.Count = wideStr.length() + 1;
+
   std::wstring wideStr(to, to + std::strlen(to));
-
-  str.Data = new wchar_t[wideStr.length() + 1];
-  memset(str.Data, 0, wideStr.length() + 1);
-  std::wmemcpy(str.Data, wideStr.c_str(), wideStr.length() + 1);
-
-  str.Max = wideStr.length() + 1;
-  str.Count = wideStr.length() + 1;
+  wchar_t *copiedStr = new wchar_t[wideStr.size() + 1]; // Allocate memory
+  std::wmemcpy(copiedStr, wideStr.c_str(), wideStr.size() + 1); // Copy content
+  str = copiedStr; // Now you can use copiedStr safely after wideStr goes out of
+                   // scope
 }
 
 void MenuMain::ImGuiLootFilterPair(StatFilter &filter) {

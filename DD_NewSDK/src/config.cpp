@@ -409,6 +409,7 @@ bool Config::ShouldLootItem(Classes::UHeroEquipment *item) {
       return false;
   }
 
+  // handle other stats
   for (auto var : lootStatFilters) {
     if (!HandleLootFilterStat(var, *item))
       return false;
