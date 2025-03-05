@@ -843,14 +843,14 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
   Classes::FGiveEquipmentEntry newtemp = oldtemp;
 
   newtemp.ForHeroArchetype = NULL;
-  newtemp.EquipmentArchetype = (Classes::UHeroEquipment *)item;
+  newtemp.EquipmentArchetype = item;
   // newtemp.EquipmentArchetypesRandom;
-  newtemp.BaseForceRandomizationQuality = 1.5f;
-  newtemp.MaxRandomizationQuality = 1.5f;
-  newtemp.RandomizerMultiplierOverride = 9.0f;
+  newtemp.BaseForceRandomizationQuality = 0;
+  newtemp.MaxRandomizationQuality = 0;
+  newtemp.RandomizerMultiplierOverride = 0;
   newtemp.bUseEquipmentArchetypeAsTemplate = 1;
   newtemp.bRandomGlobalDontUseAdditionalItemEntries = 0;
-  newtemp.ForceHeroArchetypeExactMatch = 0;
+  newtemp.ForceHeroArchetypeExactMatch = 1;
   newtemp.bDontIgnoreEquipmentMinUpgradeLevels = 0;
   newtemp.bGetRandomGlobalEquipmentDrop = 0;
   newtemp.bRandomGlobalDontUseShopDrops = 0;
