@@ -149,21 +149,6 @@ public:
       {"Size", -2.0f, 2.0f, false,
        STATFILTER_OFFSET(WeaponDrawScaleMultiplier)}};
 
-  /*
-  if (!HandleLootFilterStat(item->DamageIncreasePerLevelMultiplier,
-  if (!HandleLootFilterStat(item->WeaponSpeedOfProjectilesBonus,
-  if (!HandleLootFilterStat(item->WeaponNumberOfProjectilesBonus,
-  if (!HandleLootFilterStat(item->WeaponClipAmmoBonus,
-  if (!HandleLootFilterStat(item->WeaponReloadSpeedBonus,
-  if (!HandleLootFilterStat(item->MaxEquipmentLevel, lootFilterMaxUpgrade))
-  if (!HandleLootFilterStat(item->DamageReductions[0].PercentageReduction,
-  if (!HandleLootFilterStat(item->DamageReductions[1].PercentageReduction,
-  if (!HandleLootFilterStat(item->DamageReductions[2].PercentageReduction,
-  if (!HandleLootFilterStat(item->DamageReductions[3].PercentageReduction,
-  if (!HandleLootFilterStat(item->WeaponKnockbackBonus, lootFilterKnockBack))
-  if (!HandleLootFilterStat(item->WeaponDrawScaleMultiplier, lootFilterSize))
- * */
-
   int itemFilterQuality = 0;
   int itemFilterQualityULT = 0;
 
