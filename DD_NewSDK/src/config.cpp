@@ -668,7 +668,7 @@ void Config::KillAllEnemyPawns() {
   auto pWorld = config.GetGameInfo();
   auto pInfo = config.GetWorldInfo();
 
-  if (!pWorld || pWorld->TargetableActors.Num() > 0 || pInfo == nullptr)
+  if (!pWorld || pWorld->TargetableActors.Num() == 0 || pInfo == nullptr)
     return;
 
   for (size_t i = 0; i < pWorld->TargetableActors.Num(); i++) {
@@ -833,17 +833,20 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
   if (!pItemGiver || !pController)
     return false;
 
-  Classes::UHeroEquipment *item =
-      reinterpret_cast<Classes::UHeroEquipment *>(_item->GetBaseArchetype());
-
-  config.LogToFile("Giving item " + item->GetName());
-
+  // create net info to create an equipment
   auto netInfo = _item->GetNetInfo(1, 0);
-  auto oldNetInfo = item->GetNetInfo(1, 0);
   netInfo.EquipmentID1 = std::rand() % 2000000000;
   netInfo.EquipmentID2 = std::rand() % 2000000000;
 
+  // copy over the base item
+  Classes::UHeroEquipment *item = netInfo.EquipmentTemplate;
+
+  // init the netinfo
   item->InitFromNetInfo(netInfo, nullptr);
+
+  config.LogToFile("Giving item " + item->GetName());
+  // save old info to restore later
+  auto oldNetInfo = item->GetNetInfo(1, 0);
 
   // save old template
   Classes::FGiveEquipmentEntry oldtemp;
@@ -858,9 +861,9 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
   newtemp.BaseForceRandomizationQuality = 0;
   newtemp.MaxRandomizationQuality = 0;
   newtemp.RandomizerMultiplierOverride = 0;
-  newtemp.bUseEquipmentArchetypeAsTemplate = 1;
+  newtemp.bUseEquipmentArchetypeAsTemplate = 0;
   newtemp.bRandomGlobalDontUseAdditionalItemEntries = 0;
-  newtemp.ForceHeroArchetypeExactMatch = 1;
+  newtemp.ForceHeroArchetypeExactMatch = 0;
   newtemp.bDontIgnoreEquipmentMinUpgradeLevels = 0;
   newtemp.bGetRandomGlobalEquipmentDrop = 0;
   newtemp.bRandomGlobalDontUseShopDrops = 0;

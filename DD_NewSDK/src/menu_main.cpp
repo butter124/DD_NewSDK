@@ -1472,8 +1472,14 @@ void MenuMain::ImGuiTArrayOfItems(
       if (!item)
         continue;
 
-      auto itemName = item->GetName() + " | " + item->EquipmentName.ToString() +
-                      " | " + item->UserEquipmentName.ToString();
+      std::string EquipmentName =
+          item->EquipmentName.IsValid() ? item->EquipmentName.ToString() : " ";
+      std::string UserEquipmentName = item->UserEquipmentName.IsValid()
+                                          ? item->UserEquipmentName.ToString()
+                                          : " ";
+
+      auto itemName =
+          item->GetName() + " | " + EquipmentName + " | " + UserEquipmentName;
 
       if ((ImGui::TreeNode((itemName + "##" + std::to_string(i)).c_str()))) {
         ImGuiItem(item);
