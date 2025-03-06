@@ -830,14 +830,24 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
       GetEquipmentGiver();
   Classes::ADunDefPlayerController *pController = GetADunDefPlayerController();
 
-  config.LogToFile("Giving item " + item->GetName());
-
   if (!pItemGiver || !pController)
     return false;
 
+  Classes::UHeroEquipment *item =
+      reinterpret_cast<Classes::UHeroEquipment *>(_item->GetBaseArchetype());
+
+  config.LogToFile("Giving item " + item->GetName());
+
+  auto netInfo = _item->GetNetInfo(1, 0);
+  auto oldNetInfo = item->GetNetInfo(1, 0);
+  netInfo.EquipmentID1 = std::rand() % 2000000000;
+  netInfo.EquipmentID2 = std::rand() % 2000000000;
+
+  item->InitFromNetInfo(netInfo, nullptr);
+
   // save old template
   Classes::FGiveEquipmentEntry oldtemp;
-  oldtemp = pItemGiver->GiveEquipmentEntries.Data[0];
+  oldtemp = pItemGiver->GiveEquipmentEntries.GetByIndex(0);
 
   // setup new template
   Classes::FGiveEquipmentEntry newtemp = oldtemp;
@@ -860,12 +870,15 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
   newtemp.bUsed = 0;
 
   // change the itemGiver to my items
-  pItemGiver->GiveEquipmentEntries.Data[0] = newtemp;
+  pItemGiver->GiveEquipmentEntries.GetByIndex(0) = newtemp;
 
   pItemGiver->GiveEquipment(pController);
 
   // cleanup templates
-  pItemGiver->GiveEquipmentEntries.Data[0] = oldtemp;
+  pItemGiver->GiveEquipmentEntries.GetByIndex(0) = oldtemp;
+
+  // cleanup archtype
+  item->InitFromNetInfo(oldNetInfo, nullptr);
 
   config.LogToFile("Gave item " + item->GetName());
   return true;
