@@ -1224,8 +1224,8 @@ public:
 class UDunDefHeroManager : public UDunDefHeroManagerNative
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0079(0x0003) MISSED OFFSET
-	unsigned long                                      bSentSteamStatsAfterRanked : 1;                           // 0x007C(0x0004)
+	//unsigned char                                      UnknownData00[0x3];                                       // 0x0079(0x0003) MISSED OFFSET
+	//unsigned long                                      bSentSteamStatsAfterRanked : 1;                           // 0x007C(0x0004)
 	unsigned long                                      bDataListReturnDLCMissionsOnly : 1;                       // 0x007C(0x0004) (Transient)
 	unsigned long                                      bDataListReturnModMissionsOnly : 1;                       // 0x007C(0x0004) (Transient)
 	unsigned long                                      bDataListReturnLostMissionsOnly : 1;                      // 0x007C(0x0004) (Transient)
