@@ -49,6 +49,8 @@ bool Config::Init() {
   GetKeybinds();
   SetupFilter();
 
+  std::srand(std::time(nullptr));
+
   return true;
 }
 
@@ -666,7 +668,7 @@ void Config::KillAllEnemyPawns() {
   auto pWorld = config.GetGameInfo();
   auto pInfo = config.GetWorldInfo();
 
-  if (!pWorld || pWorld->TargetableActors.Data == nullptr || pInfo == nullptr)
+  if (!pWorld || pWorld->TargetableActors.Num() > 0 || pInfo == nullptr)
     return;
 
   for (size_t i = 0; i < pWorld->TargetableActors.Num(); i++) {
@@ -822,9 +824,7 @@ Classes::FVector Config::AddFVector(Classes::FVector vec1,
 
 bool Config::GiveItem(Classes::UHeroEquipment *_item) {
 
-  Classes::UHeroEquipment *item =
-      (Classes::UHeroEquipment *)(_item->GetBaseArchetype());
-  CopyItem(item, _item);
+  // CopyItem(item, _item);
 
   Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *pItemGiver =
       GetEquipmentGiver();
@@ -1320,8 +1320,8 @@ std::vector<std::string> Config::ScanForAllItems() {
   for (auto v : equipVector) {
     Classes::UHeroEquipment *item = (Classes::UHeroEquipment *)v;
 
-    if (item->RandomBaseNames.Data)
-      if (item->RandomBaseNames.Data[0].StringValue.ToString().find(
+    if (item->RandomBaseNames.IsValidIndex(0))
+      if (item->RandomBaseNames.GetByIndex(0).StringValue.ToString().find(
               "Generic Random") != std::string::npos)
         continue;
 

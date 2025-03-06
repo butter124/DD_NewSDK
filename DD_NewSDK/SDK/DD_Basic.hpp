@@ -2,8 +2,11 @@
 
 // Dungeon Defenders (10.0) SDK
 
-#include <cctype>
+#include <cstdint>
+#include <cwchar>
 #include <locale>
+#include <set>
+#include <string>
 #ifdef _MSC_VER
 #pragma pack(push, 0x4)
 #endif
@@ -36,12 +39,13 @@ public:
 
   inline const T &GetByIndex(size_t i) const { return Data[i]; }
 
+private:
   T *Data;
   int32_t Count;
   int32_t Max;
 };
 
-struct FString : public TArray<wchar_t> {
+struct FString : private TArray<wchar_t> {
   inline FString() {}
 
   FString(const wchar_t *other) {

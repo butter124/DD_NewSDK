@@ -1092,7 +1092,7 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
   ImGui::PopStyleVar(); // Restore previous style
   ImGui::Text("InternalName      :  %s", item->GetName().c_str());
 
-  if (item->EquipmentName.Data) {
+  if (item->EquipmentName.IsValid()) {
     ImGui::Text("EquipmentName     :  %ls", item->EquipmentName.c_str());
   } else {
     ImGui::Text("EquipmentName     :  ");
@@ -1138,24 +1138,26 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
   if (ImGui::TreeNode("___Main___")) {
     ImGui::Text("___Name___");
 
-    if (item->RandomBaseNames.Data)
-      ShowCombo(item->RandomBaseNames,
-                item->RandomBaseNames.Data[item->NameIndex_Base].StringValue,
-                item->NameIndex_Base, "Base");
+    if (item->RandomBaseNames.IsValidIndex(0))
+      ShowCombo(
+          item->RandomBaseNames,
+          item->RandomBaseNames.GetByIndex(item->NameIndex_Base).StringValue,
+          item->NameIndex_Base, "Base");
     else
       ImGui::Text("No RandomBaseNames found");
 
-    if (item->DamageReductionNames.Data)
-      ShowCombo(item->DamageReductionNames,
-                item->DamageReductionNames.Data[item->NameIndex_DamageReduction]
-                    .StringValue,
-                item->NameIndex_DamageReduction, "DamageReduction");
+    if (item->DamageReductionNames.IsValidIndex(0))
+      ShowCombo(
+          item->DamageReductionNames,
+          item->DamageReductionNames.GetByIndex(item->NameIndex_DamageReduction)
+              .StringValue,
+          item->NameIndex_DamageReduction, "DamageReduction");
     else
       ImGui::Text("No DamageReductionNames found");
-    if (item->QualityDescriptorRealNames.Data)
+    if (item->QualityDescriptorRealNames.IsValidIndex(0))
       ShowCombo(item->QualityDescriptorRealNames,
                 item->QualityDescriptorRealNames
-                    .Data[item->NameIndex_QualityDescriptor]
+                    .GetByIndex(item->NameIndex_QualityDescriptor)
                     .StringValue,
                 item->NameIndex_QualityDescriptor, "Quality");
     else
@@ -1453,7 +1455,7 @@ void MenuMain::ImGuiTArrayOfItems(
     Classes::TArray<Classes::UHeroEquipment *> items, std::string foldName,
     std::function<void()> func) {
 
-  if (!items.Data) {
+  if (!items.IsValidIndex(0)) {
     ImGui::Text("%s", (foldName + " is empty").c_str());
     return;
   }
@@ -1803,8 +1805,8 @@ void MenuMain::ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
   static int CurrentSelectedIndex = -1;
 
   if (CurrentSelectedIndex == -1 && !CurrentSelected.empty()) {
-    for (int i = 0; i < names.Count; i++) {
-      if (names.Data[i].StringValue.ToString() == CurrentSelected) {
+    for (int i = 0; i < names.Num(); i++) {
+      if (names.GetByIndex(i).StringValue.ToString() == CurrentSelected) {
         CurrentSelectedIndex = i;
         break;
       }
@@ -1812,12 +1814,12 @@ void MenuMain::ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
   }
 
   if (ImGui::BeginCombo((comboName).c_str(), CurrentSelected.c_str())) {
-    for (int i = 0; i < names.Count; i++) {
+    for (int i = 0; i < names.Num(); i++) {
       std::string ComboName;
-      if (!(names.Data[i].StringValue.Data)) {
+      if (!(names.GetByIndex(i).StringValue.c_str())) {
         ComboName = "< blank >";
       } else {
-        ComboName = names.Data[i].StringValue.ToString();
+        ComboName = names.GetByIndex(i).StringValue.ToString();
       }
 
       const bool is_selected = (CurrentSelectedIndex == i);
