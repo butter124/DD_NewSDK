@@ -36,7 +36,7 @@ void Logger::log(const std::string &msg) {
     timestamp << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
 
     // Write timestamp and message to log file
-    logFile << "[" << timestamp.str() << "] " << msg << std::endl;
+    logFile << "[" << timestamp.str() << "] " << msg << "\n";
   }
 }
 
