@@ -657,6 +657,7 @@ void MenuMain::WorldCheats() {
   }
 
   if (ImGui::TreeNode("Spawn Enemys")) {
+    config.bIsSpawnEnemyOpen = true;
     // class ADunDefEnemy* WaveSpawnerCreateEnemy ( class
     // UDunDef_SeqAct_EnemyWaveSpawner* aSpawner,
     // class ADunDefEnemy* EnemyTemplate,
@@ -675,6 +676,8 @@ void MenuMain::WorldCheats() {
 
     // code here
     ImGui::TreePop();
+  } else {
+    config.bIsSpawnEnemyOpen = false;
   }
 
   auto pGRI = config.GetGRI();

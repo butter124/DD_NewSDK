@@ -152,6 +152,7 @@ public:
   int itemFilterQuality = 0;
   int itemFilterQualityULT = 0;
 
+  bool bIsSpawnEnemyOpen = false;
   bool bAutoLootULT = false;
   bool bTeleportPlayers = false;
   bool bShowPlayerTeleportPos = false;

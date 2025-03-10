@@ -1270,10 +1270,15 @@ Classes::UDunDef_SeqAct_EnemyWaveSpawner *Config::GetWaveSpawner() {
 
 std::set<Classes::UObject *> Config::GetEnemyTemplates() {
   // TODO: THERE IS A BETTER WAY TO DO THIS
+  // This is dumb as fuck calling GetAllInstaceOf every frame causes way too
+  // much lag. to fix this find a way to tell when switching levels
 
   static std::set<Classes::UObject *> rSet = {};
-  sEnemyTemplates.clear();
 
+  if (!config.bIsSpawnEnemyOpen)
+    return rSet;
+
+  sEnemyTemplates.clear();
   auto enemys = GetAllInstanceOf(Classes::ADunDefEnemy::StaticClass());
 
   for (auto e : enemys) {
