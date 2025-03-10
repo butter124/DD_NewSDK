@@ -208,8 +208,8 @@ public:
   std::set<std::string> sEnemyTemplates;
   std::queue<std::string> qEnemysToSpawn;
   void SpawnEnemyAt(Classes::ADunDefEnemy *enemy, Classes::FVector pos);
-  void SpawnEnemyAt(std::string s, Classes::FVector pos);
-  Classes::ADunDefEnemy *GetEnemyTemplate(std::string s);
+  void SpawnEnemyAt(std::string &s, Classes::FVector pos);
+  Classes::ADunDefEnemy *GetEnemyTemplate(std::string &s);
   std::set<Classes::UObject *> GetEnemyTemplates();
 
   // handle key presses
@@ -221,8 +221,8 @@ public:
     ToggleNoClipKeybind
   };
   std::unordered_map<KeyBinds, KeybindsStruct> keyBindsmap;
-  void RegisterKeybind(std::string name, KeyBinds keyBindName, int keyCode,
-                       std::function<void()> func);
+  void RegisterKeybind(std::string name, KeyBinds keyBindName,
+                       const int keyCode, std::function<void()> func);
 
   void GetKeybinds();
   void SaveKeybinds();
@@ -275,11 +275,12 @@ public:
   Classes::FVector GetPlayerPos();
   Classes::FVector SetPlayerPos(Classes::FVector pos);
   std::string GetItemQualityString(Classes::UHeroEquipment *item);
-  Classes::UObject *GetInstanceByName(Classes::UClass *Class, std::string name);
+  Classes::UObject *GetInstanceByName(Classes::UClass *Class,
+                                      std::string &name);
   Classes::UObject *GetInstanceOf(Classes::UClass *Class);
   std::vector<Classes::UObject *> GetAllInstanceOf(Classes::UClass *Class);
-  std::string FStringToString(Classes::FString s);
-  Classes::FString StringToFString(std::string s);
+  std::string FStringToString(Classes::FString &s);
+  Classes::FString StringToFString(std::string &s);
   Classes::FVector GetForward(float yaw, float pitch);
   Classes::FVector AddFVector(Classes::FVector vec1, Classes::FVector vec2);
   bool ContainsNumber(const std::string &str);

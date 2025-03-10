@@ -435,29 +435,29 @@ void Config::SpawnEnemyAt(Classes::ADunDefEnemy *enemy, Classes::FVector pos) {
   pMain->WaveSpawnerCreateEnemy(pSpawner, enemy, pos, {0, 0, 0});
 }
 
-void Config::SpawnEnemyAt(std::string s, Classes::FVector pos) {
+void Config::SpawnEnemyAt(std::string &s, Classes::FVector pos) {
   auto pEnemy = (Classes::ADunDefEnemy *)GetInstanceByName(
       Classes::ADunDefEnemy::StaticClass(), s);
   if (pEnemy)
     SpawnEnemyAt(pEnemy, pos);
 }
 
-Classes::ADunDefEnemy *Config::GetEnemyTemplate(std::string s) {
+Classes::ADunDefEnemy *Config::GetEnemyTemplate(std::string &s) {
   return (Classes::ADunDefEnemy *)GetInstanceByName(
       Classes::ADunDefEnemy::StaticClass(), s);
 }
 
-std::string Config::FStringToString(Classes::FString s) {
+std::string Config::FStringToString(Classes::FString &s) {
   return std::string(s.ToString());
 }
 
-Classes::FString Config::StringToFString(std::string s) {
+Classes::FString Config::StringToFString(std::string &s) {
   std::wstring wstr(s.begin(), s.end());
   return Classes::FString(wstr.c_str());
 }
 
 Classes::UObject *Config::GetInstanceByName(Classes::UClass *Class,
-                                            std::string name) {
+                                            std::string &name) {
   static Classes::UObject *ObjectInstance = NULL;
 
   for (size_t i = 0; i < Classes::UObject::GetGlobalObjects().Num(); ++i) {
