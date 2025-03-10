@@ -49,7 +49,7 @@ bool Config::Init() {
   GetKeybinds();
   SetupFilter();
 
-  std::srand(std::time(nullptr));
+  std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
   return true;
 }

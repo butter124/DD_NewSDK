@@ -1811,7 +1811,7 @@ void MenuMain::ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
   static int CurrentSelectedIndex = -1;
 
   if (CurrentSelectedIndex == -1 && !CurrentSelected.empty()) {
-    for (int i = 0; i < names.Num(); i++) {
+    for (size_t i = 0; i < names.Num(); i++) {
       if (names.GetByIndex(i).StringValue.ToString() == CurrentSelected) {
         CurrentSelectedIndex = i;
         break;
@@ -1820,7 +1820,7 @@ void MenuMain::ShowCombo(Classes::TArray<Classes::FEG_StatMatchingString> names,
   }
 
   if (ImGui::BeginCombo((comboName).c_str(), CurrentSelected.c_str())) {
-    for (int i = 0; i < names.Num(); i++) {
+    for (size_t i = 0; i < names.Num(); i++) {
       std::string ComboName;
       if (!(names.GetByIndex(i).StringValue.c_str())) {
         ComboName = "< blank >";
