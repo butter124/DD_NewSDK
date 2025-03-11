@@ -2,10 +2,12 @@
 #include "pch.h"
 #include "includes/config.h"
 #include <SDK/DD_Basic.hpp>
+#include <SDK/DD_Core_classes.hpp>
 #include <SDK/DD_UDKGame_classes.hpp>
 #include <fstream>
 #include <regex>
 #include <variant>
+
 // clang-format on
 Config config;
 // Config::Config() : logFileName("log.txt"), logger(logFileName) {}
@@ -15,6 +17,7 @@ Config::~Config() {}
 
 bool Config::Init() {
 
+  config.LogToFile("Init config.");
   gameHWND = FindWindow(NULL, "Dungeon Defenders");
 
   // clang-format off
@@ -54,12 +57,22 @@ bool Config::Init() {
   return true;
 }
 
+void Config::InitSDK() {
+  // std::stringstream ss;
+  //
+  // ss << "GObjects: " << std::hex << GObjectsAddr << " GNames: " <<
+  // GNamesAddr;
+  //
+  // config.LogToFile(ss.str());
+}
+
 void Config::BlockInputInMenu(PROCESS_EVENT_ARGS) {
   if (bShowMenu)
     return;
 }
 
 bool Config::Cleanup() {
+  config.LogToFile("Cleanup config.");
   TurnOffPlayerGodMod();
   SaveKeybinds();
   // turn off no clip
@@ -83,6 +96,8 @@ bool Config::Cleanup() {
 
 void Config::RegisterHookedFunction(
     const std::string &key, std::function<void(PROCESS_EVENT_ARGS)> func) {
+
+  config.LogToFile("Registering function " + key);
   hookedFuncMap[key] = func;
 }
 
@@ -90,15 +105,19 @@ void Config::RegisterHookedObject(
     // if you call a class method of obj it will enter an infinite loop
     // the caller must account for that
     const std::string &key, std::function<void(PROCESS_EVENT_ARGS)> func) {
+  config.LogToFile("Registering hooked Object " + key);
   hookedObjects[key] = func;
 }
 
 void Config::RegisterBlockedFunction(const std::string &key, bool &flag) {
+  config.LogToFile("Registering blocked funtion " + key);
   blockedFuncMap[key] = &flag;
 }
 
 void Config::RegisterKeybind(std::string name, Config::KeyBinds keyBindName,
                              int keyCode, std::function<void()> func) {
+
+  config.LogToFile("Registering keybind " + name);
   KeybindsStruct key;
   key.name = name;
   key.key = keyCode;
@@ -824,15 +843,20 @@ Classes::FVector Config::AddFVector(Classes::FVector vec1,
 
 bool Config::GiveItem(Classes::UHeroEquipment *_item) {
 
+  config.LogToFile("Giving item.");
+  config.LogToFile("Item name : " + _item->GetFullName());
   // CopyItem(item, _item);
 
   Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *pItemGiver =
       GetEquipmentGiver();
+  config.LogToFile("Found item giver class: " + pItemGiver->GetFullName());
   Classes::ADunDefPlayerController *pController = GetADunDefPlayerController();
+  config.LogToFile("Found player controller: " + pController->GetFullName());
 
   if (!pItemGiver || !pController)
     return false;
 
+  config.LogToFile("Setting up item structure.");
   // create net info to create an equipment
   auto netInfo = _item->GetNetInfo(1, 0);
   netInfo.EquipmentID1 = std::rand() % 2000000000;
@@ -848,6 +872,7 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
   // save old info to restore later
   auto oldNetInfo = item->GetNetInfo(1, 0);
 
+  config.LogToFile("Done setting up item structure.");
   // save old template
   Classes::FGiveEquipmentEntry oldtemp;
   oldtemp = pItemGiver->GiveEquipmentEntries.GetByIndex(0);
@@ -877,13 +902,14 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
 
   pItemGiver->GiveEquipment(pController);
 
+  config.LogToFile("Gave item sucessfully.");
   // cleanup templates
   pItemGiver->GiveEquipmentEntries.GetByIndex(0) = oldtemp;
 
   // cleanup archtype
   item->InitFromNetInfo(oldNetInfo, nullptr);
 
-  config.LogToFile("Gave item " + item->GetName());
+  config.LogToFile("Gave item " + item->GetFullName());
   return true;
 }
 
@@ -1235,16 +1261,10 @@ Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *Config::GetEquipmentGiver() {
 }
 
 Classes::ADunDefForge *Config::GetForge() {
+
+  config.LogToFile("Found ADunDefForge.");
   return ((Classes::ADunDefForge *)(Classes::ADunDefForge::StaticClass()))
       ->STATIC_GetAForge();
-
-  auto obj = (Classes::ADunDefForge *)GetInstanceOf(
-      Classes::ADunDefForge::StaticClass());
-
-  if (!obj)
-    return nullptr;
-
-  return obj;
 }
 
 Classes::UDunDefAchievementManager *Config::GetAchievementManager() {
@@ -1255,6 +1275,7 @@ Classes::UDunDefAchievementManager *Config::GetAchievementManager() {
                Classes::UDunDefAchievementManager::StaticClass())
               ->STATIC_GetAchievementManager();
 
+  config.LogToFile("Found UDunDefAchievementManager.");
   return obj;
 }
 
@@ -1265,6 +1286,7 @@ Classes::UDunDef_SeqAct_EnemyWaveSpawner *Config::GetWaveSpawner() {
     obj = (Classes::UDunDef_SeqAct_EnemyWaveSpawner *)GetInstanceOf(
         Classes::UDunDef_SeqAct_EnemyWaveSpawner::StaticClass());
 
+  config.LogToFile("Found UDunDef_SeqAct_EnemyWaveSpawner.");
   return obj;
 }
 
@@ -1290,18 +1312,23 @@ std::set<Classes::UObject *> Config::GetEnemyTemplates() {
     sEnemyTemplates.insert(e->GetName());
   }
 
+  config.LogToFile("Found ADunDefEnemy.");
   return rSet;
 }
 
 void Config::PushItemToQueue(Classes::UHeroEquipment *item) {
   std::lock_guard<std::mutex> lock(queueMutex);
   qItemsToGive.push(item);
+
+  config.LogToFile("Found UHeroEquipment.");
 }
 
 Classes::UHeroEquipment *Config::PopItemFromQueue() {
   std::lock_guard<std::mutex> lock(queueMutex);
   if (!qItemsToGive.empty()) {
+
     auto item = qItemsToGive.front();
+    config.LogToFile("Popping item from queue " + item->GetFullName());
     qItemsToGive.pop();
     return item;
   }
@@ -1316,11 +1343,14 @@ void Config::PushItemToQueueWithString(std::string s) {
   if (!instance)
     return;
 
+  config.LogToFile("Mutex lock for PushItemToQueueWithString: " + s);
   std::lock_guard<std::mutex> lock(queueMutex);
   qItemsToGive.push(instance);
 }
 
 std::vector<std::string> Config::ScanForAllItems() {
+
+  config.LogToFile("ScanForAllItems called.");
   // this function could be done better
   std::vector<std::string> retVec;
   auto equipVector = GetAllInstanceOf(Classes::UHeroEquipment::StaticClass());
@@ -1401,6 +1431,9 @@ void Config::InitLog() {
   bLoggingToFile = true;
   logger.openfile();
   logger.log("Init logger.");
+
+  auto version = config.GetViewportClient()->versionString.ToString();
+  logger.log("Game version: " + version);
 }
 
 void Config::CleanLog() {

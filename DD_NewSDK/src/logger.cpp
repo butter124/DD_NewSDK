@@ -50,16 +50,15 @@ void Logger::openfile(bool clear) {
 
 void Logger::closefile() { logFile.close(); }
 
-// LONG WINAPI Logger::ExceptionHandler(EXCEPTION_POINTERS *pExceptionInfo) {
-//   if (!logFile.is_open())
-//     openfile(false);
-//   std::stringstream ss;
-//   ss << "Crash detected! Exception Code: 0x" << std::hex
-//      << pExceptionInfo->ExceptionRecord->ExceptionCode;
-//
-//   log(ss.str()); // Convert to string and log
-//   return EXCEPTION_EXECUTE_HANDLER;
-// }
+ LONG WINAPI Logger::ExceptionHandler(int sig) {
+   if (!logFile.is_open())
+     openfile(false);
+   std::stringstream ss;
+   ss << "Crash detected! " << sig;
+
+   log(ss.str()); // Convert to string and log
+   return EXCEPTION_EXECUTE_HANDLER;
+ }
 
 Logger::~Logger() {
   // File closes automatically when logFile goes out of scope

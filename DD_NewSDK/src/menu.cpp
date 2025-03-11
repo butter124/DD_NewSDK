@@ -82,9 +82,9 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
     return;
   }
 
-  std::string s = std::format("Hooked {:<50} | {}", funcName, objectName);
-  config.LogToFile(s);
-  // Call Original PE
+  // std::string s = std::format("Hooked {:<50} | {}", funcName, objectName);
+  // config.LogToFile(s);
+  //  Call Original PE
   ((tProcessEvent)(ProcEventHook.HookAddr))(pObject, pFunction, pParms,
                                             pResult);
 }

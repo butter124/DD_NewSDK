@@ -11,6 +11,7 @@
 #include <cstddef>
 #include <string>
 #include <variant>
+#include <csignal>
 // clang-format on
 
 #define IMGUI_BITFIELD(s, item)                                                \
@@ -51,6 +52,8 @@ static const char *itemQualitys[] = {"None",      "Mythical",  "Transcendent",
 
 void MenuMain::Init() {
   // AddItem(config.GetADunDefPlayerController()->myHero->HeroEquipments[0]);
+  std::signal(SIGSEGV,
+              [](int signal) { config.logger.ExceptionHandler(signal); });
 }
 
 void MenuMain::OnBegin() {

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SDK.hpp"
+#include "includes/HelperFunctions.h"
 #include "includes/logger.h"
 #include <SDK/DD_Core_structs.hpp>
 #include <SDK/DD_UDKGame_classes.hpp>
@@ -229,6 +230,7 @@ public:
   void SaveKeybinds();
 
   /* sdk funcs */
+  void InitSDK();
   void PostRenderHookFunc(PROCESS_EVENT_ARGS);
   void WaveSkipHookFunc(PROCESS_EVENT_ARGS);
   void AutoLootHookFunc(PROCESS_EVENT_ARGS);

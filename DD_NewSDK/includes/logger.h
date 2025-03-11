@@ -15,6 +15,7 @@ public:
   void openfile(bool clear = false);
   void closefile();
   void log(const std::string &msg);
-  static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *pExceptionInfo);
+
+  LONG WINAPI ExceptionHandler(int sig);
   ~Logger();
 };
