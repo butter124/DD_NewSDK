@@ -119,6 +119,7 @@ public:
 	}
 
 
+	void STATIC_NotifyAntiCheat(const struct FString& Reason);
 	struct FHighDigitInt STATIC_ToHDI(const struct FString& In);
 	struct FHighDigitInt STATIC_ClampHDI(const struct FHighDigitInt& Value, const struct FHighDigitInt& Min, const struct FHighDigitInt& Max);
 	int STATIC_AsInt(const struct FHighDigitInt& toConvert);
@@ -447,6 +448,33 @@ public:
 	float STATIC_Multiply_FloatFloat(float A, float B);
 	float STATIC_MultiplyMultiply_FloatFloat(float Base, float Exp);
 	float STATIC_Subtract_PreFloat(float A);
+	int STATIC_SubtractSubtract_SafeInt(int* A);
+	int STATIC_AddAdd_SafeInt(int* A);
+	int STATIC_SubtractSubtract_PreSafeInt(int* A);
+	int STATIC_AddAdd_PreSafeInt(int* A);
+	int STATIC_SubtractEqual_SafeIntSafeInt(int B, int* A);
+	int STATIC_AddEqual_SafeIntSafeInt(int B, int* A);
+	int STATIC_DivideEqual_SafeIntFloat(float B, int* A);
+	int STATIC_MultiplyEqual_SafeIntFloat(float B, int* A);
+	int STATIC_Or_SafeIntSafeInt(int A, int B);
+	int STATIC_Xor_SafeIntSafeInt(int A, int B);
+	int STATIC_And_SafeIntSafeInt(int A, int B);
+	unsigned long STATIC_NotEqual_SafeIntSafeInt(int A, int B);
+	unsigned long STATIC_EqualEqual_SafeIntSafeInt(int A, int B);
+	unsigned long STATIC_GreaterEqual_SafeIntSafeInt(int A, int B);
+	unsigned long STATIC_LessEqual_SafeIntSafeInt(int A, int B);
+	unsigned long STATIC_Greater_SafeIntSafeInt(int A, int B);
+	unsigned long STATIC_Less_SafeIntSafeInt(int A, int B);
+	int STATIC_GreaterGreaterGreater_SafeIntSafeInt(int A, int B);
+	int STATIC_GreaterGreater_SafeIntSafeInt(int A, int B);
+	int STATIC_LessLess_SafeIntSafeInt(int A, int B);
+	int STATIC_Subtract_SafeIntSafeInt(int A, int B);
+	int STATIC_Add_SafeIntSafeInt(int A, int B);
+	int STATIC_Percent_SafeIntSafeInt(int A, int B);
+	int STATIC_Divide_SafeIntSafeInt(int A, int B);
+	int STATIC_Multiply_SafeIntSafeInt(int A, int B);
+	int STATIC_Subtract_PreSafeInt(int A);
+	int STATIC_Complement_PreSafeInt(int A);
 	struct FString STATIC_ToHex(int A);
 	int STATIC_Clamp(int V, int A, int B);
 	int STATIC_Max(int A, int B);
@@ -903,6 +931,22 @@ public:
 	static UClass* StaticClass()
 	{
 		static auto ptr = UObject::FindClass("Class Core.IntProperty");
+		return ptr;
+	}
+
+};
+
+
+// Class Core.SafeIntProperty
+// 0x0004 (0x008C - 0x0088)
+class USafeIntProperty : public UIntProperty
+{
+public:
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0088(0x0004) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class Core.SafeIntProperty");
 		return ptr;
 	}
 

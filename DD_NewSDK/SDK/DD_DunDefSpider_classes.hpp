@@ -121,17 +121,17 @@ public:
 
 
 // Class DunDefSpider.DunDefCrystalCore_PortalDefense
-// 0x002C (0x069C - 0x0670)
+// 0x002C (0x06A8 - 0x067C)
 class ADunDefCrystalCore_PortalDefense : public ADunDefCrystalCore
 {
 public:
-	TArray<class UClass*>                              AllowedToDamageClasses;                                   // 0x0670(0x000C) (Edit, NeedCtorLink)
-	class UParticleSystem*                             WarpEffect;                                               // 0x067C(0x0004) (Edit)
-	class USoundCue*                                   WarpedSound;                                              // 0x0680(0x0004) (Edit)
-	struct FVector                                     WarpEffectOffset;                                         // 0x0684(0x000C) (Edit)
-	float                                              WarpInvincibilityTime;                                    // 0x0690(0x0004) (Edit)
-	float                                              TimeSinceLastTeleport;                                    // 0x0694(0x0004)
-	unsigned long                                      bIsInvincible : 1;                                        // 0x0698(0x0004) (Net)
+	TArray<class UClass*>                              AllowedToDamageClasses;                                   // 0x067C(0x000C) (Edit, NeedCtorLink)
+	class UParticleSystem*                             WarpEffect;                                               // 0x0688(0x0004) (Edit)
+	class USoundCue*                                   WarpedSound;                                              // 0x068C(0x0004) (Edit)
+	struct FVector                                     WarpEffectOffset;                                         // 0x0690(0x000C) (Edit)
+	float                                              WarpInvincibilityTime;                                    // 0x069C(0x0004) (Edit)
+	float                                              TimeSinceLastTeleport;                                    // 0x06A0(0x0004)
+	unsigned long                                      bIsInvincible : 1;                                        // 0x06A4(0x0004) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -184,26 +184,26 @@ public:
 
 
 // Class DunDefSpider.DunDefSpider
-// 0x004C (0x0D58 - 0x0D0C)
+// 0x004C (0x0D60 - 0x0D14)
 class ADunDefSpider : public ADunDefEnemy
 {
 public:
-	struct FName                                       LungeAnimation;                                           // 0x0D0C(0x0008) (Edit)
-	struct FName                                       WebShootAnimation;                                        // 0x0D14(0x0008) (Edit)
-	struct FName                                       WebChargeAnimation;                                       // 0x0D1C(0x0008) (Edit)
-	struct FName                                       WebShootSocket;                                           // 0x0D24(0x0008) (Edit)
-	struct FName                                       MeleeSwingSocketName;                                     // 0x0D2C(0x0008) (Edit)
-	struct FName                                       SpawnParticleMeshAttachmentSocket;                        // 0x0D34(0x0008) (Edit)
-	float                                              MaxWebParticleScale;                                      // 0x0D3C(0x0004) (Edit)
-	class UParticleSystemComponent*                    WebChargeParticleSystem;                                  // 0x0D40(0x0004) (Edit, ExportObject, Component, EditInline)
-	class USoundCue*                                   WebChargeSound;                                           // 0x0D44(0x0004) (Edit)
-	class UParticleSystemComponent*                    SpawnParticleEffect;                                      // 0x0D48(0x0004) (Edit, ExportObject, Component, EditInline)
-	unsigned long                                      bAttachSpawnParticleToMesh : 1;                           // 0x0D4C(0x0004) (Edit)
-	unsigned long                                      bUseSpawnEffect : 1;                                      // 0x0D4C(0x0004) (Edit)
-	unsigned long                                      bPlayingWebCharge : 1;                                    // 0x0D4C(0x0004) (Net)
-	unsigned long                                      bPlaySpawnEffect : 1;                                     // 0x0D4C(0x0004) (Net)
-	float                                              WebStartTime;                                             // 0x0D50(0x0004)
-	float                                              WebChargeTime;                                            // 0x0D54(0x0004) (Net)
+	struct FName                                       LungeAnimation;                                           // 0x0D14(0x0008) (Edit)
+	struct FName                                       WebShootAnimation;                                        // 0x0D1C(0x0008) (Edit)
+	struct FName                                       WebChargeAnimation;                                       // 0x0D24(0x0008) (Edit)
+	struct FName                                       WebShootSocket;                                           // 0x0D2C(0x0008) (Edit)
+	struct FName                                       MeleeSwingSocketName;                                     // 0x0D34(0x0008) (Edit)
+	struct FName                                       SpawnParticleMeshAttachmentSocket;                        // 0x0D3C(0x0008) (Edit)
+	float                                              MaxWebParticleScale;                                      // 0x0D44(0x0004) (Edit)
+	class UParticleSystemComponent*                    WebChargeParticleSystem;                                  // 0x0D48(0x0004) (Edit, ExportObject, Component, EditInline)
+	class USoundCue*                                   WebChargeSound;                                           // 0x0D4C(0x0004) (Edit)
+	class UParticleSystemComponent*                    SpawnParticleEffect;                                      // 0x0D50(0x0004) (Edit, ExportObject, Component, EditInline)
+	unsigned long                                      bAttachSpawnParticleToMesh : 1;                           // 0x0D54(0x0004) (Edit)
+	unsigned long                                      bUseSpawnEffect : 1;                                      // 0x0D54(0x0004) (Edit)
+	unsigned long                                      bPlayingWebCharge : 1;                                    // 0x0D54(0x0004) (Net)
+	unsigned long                                      bPlaySpawnEffect : 1;                                     // 0x0D54(0x0004) (Net)
+	float                                              WebStartTime;                                             // 0x0D58(0x0004)
+	float                                              WebChargeTime;                                            // 0x0D5C(0x0004) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -260,14 +260,14 @@ public:
 
 
 // Class DunDefSpider.GameInfo_PortalDefense
-// 0x0010 (0x0558 - 0x0548)
+// 0x0010 (0x054C - 0x053C)
 class AGameInfo_PortalDefense : public AGameInfo_Special
 {
 public:
-	int                                                currentPortal;                                            // 0x0548(0x0004)
-	float                                              GameEnemyHealthMultiplier;                                // 0x054C(0x0004)
-	float                                              GameEnemyDamageMultiplier;                                // 0x0550(0x0004)
-	float                                              GameEnemyScaleMultiplier;                                 // 0x0554(0x0004)
+	int                                                currentPortal;                                            // 0x053C(0x0004)
+	float                                              GameEnemyHealthMultiplier;                                // 0x0540(0x0004)
+	float                                              GameEnemyDamageMultiplier;                                // 0x0544(0x0004)
+	float                                              GameEnemyScaleMultiplier;                                 // 0x0548(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -447,49 +447,49 @@ public:
 
 
 // Class DunDefSpider.DunDefSpiderQueen
-// 0x00D0 (0x0E10 - 0x0D40)
+// 0x00D0 (0x0E40 - 0x0D70)
 class ADunDefSpiderQueen : public ADunDefBoss
 {
 public:
-	float                                              StunDelay;                                                // 0x0D40(0x0004) (Edit)
-	float                                              CoreDamageMultiplier;                                     // 0x0D44(0x0004) (Edit)
-	float                                              MinimumAngleDotForSuperHit;                               // 0x0D48(0x0004) (Edit)
-	TArray<float>                                      NonStunnedDmgScalar;                                      // 0x0D4C(0x000C) (Edit, NeedCtorLink)
-	float                                              CurrentNonStunnedDmgScalar;                               // 0x0D58(0x0004)
-	float                                              BabySpawnPlayRate;                                        // 0x0D5C(0x0004) (Edit)
-	struct FName                                       BabySpawnLocSocket;                                       // 0x0D60(0x0008) (Edit)
-	struct FName                                       BabySpawnAnimName;                                        // 0x0D68(0x0008) (Edit)
-	struct FName                                       StunnedAnimLoop;                                          // 0x0D70(0x0008) (Edit)
-	struct FName                                       CrystalSocketName;                                        // 0x0D78(0x0008) (Edit)
-	struct FName                                       MeleeSwingSocketName;                                     // 0x0D80(0x0008) (Edit)
-	struct FName                                       WebShootSocket;                                           // 0x0D88(0x0008) (Edit)
-	struct FName                                       WebShootAnimation;                                        // 0x0D90(0x0008) (Edit)
-	struct FName                                       StunnedHurtAnim;                                          // 0x0D98(0x0008) (Edit)
-	class ADunDefEmitterSpawnable*                     StunnedHurtEffectTemplate;                                // 0x0DA0(0x0004) (Edit)
-	class UParticleSystemComponent*                    StunnedCoreVFX;                                           // 0x0DA4(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    EnragedVFX;                                               // 0x0DA8(0x0004) (Edit, ExportObject, Component, EditInline)
-	struct FName                                       EnrageSocketName;                                         // 0x0DAC(0x0008) (Edit)
-	struct FName                                       UpperBodyLookAtName;                                      // 0x0DB4(0x0008) (Edit)
-	float                                              CrystalScaleDownTime;                                     // 0x0DBC(0x0004) (Edit)
-	float                                              MinCrystalBrightnessScale;                                // 0x0DC0(0x0004) (Edit)
-	float                                              EnrageHealthPct;                                          // 0x0DC4(0x0004) (Edit)
-	float                                              EnrageDmgMult;                                            // 0x0DC8(0x0004) (Edit)
-	float                                              EnrageBabySpawnMult;                                      // 0x0DCC(0x0004) (Edit)
-	float                                              EnrageIntervalMult;                                       // 0x0DD0(0x0004) (Edit)
-	float                                              EnrageGroundSpeedMult;                                    // 0x0DD4(0x0004) (Edit)
-	unsigned long                                      bRageMode : 1;                                            // 0x0DD8(0x0004)
-	unsigned long                                      bIsStunned : 1;                                           // 0x0DD8(0x0004)
-	unsigned long                                      bLookAtTarget : 1;                                        // 0x0DD8(0x0004)
-	float                                              TimeOfDeath;                                              // 0x0DDC(0x0004)
-	class UMaterialInstanceConstant*                   QueenMIC;                                                 // 0x0DE0(0x0004)
-	class USkelControlLookAt*                          UpperBodyLookAt;                                          // 0x0DE4(0x0004)
-	class USkelControlLookAt*                          IKTest;                                                   // 0x0DE8(0x0004)
-	class AActor*                                      TheLastDamageCauser;                                      // 0x0DEC(0x0004)
-	float                                              WebChargeTime;                                            // 0x0DF0(0x0004)
-	float                                              WebStartTime;                                             // 0x0DF4(0x0004)
-	float                                              currentTakenStunnedDamage;                                // 0x0DF8(0x0004)
-	float                                              AllowedDmgStunnedPct;                                     // 0x0DFC(0x0004) (Edit)
-	struct FLinearColor                                EnrageCoreColor;                                          // 0x0E00(0x0010) (Edit)
+	float                                              StunDelay;                                                // 0x0D70(0x0004) (Edit)
+	float                                              CoreDamageMultiplier;                                     // 0x0D74(0x0004) (Edit)
+	float                                              MinimumAngleDotForSuperHit;                               // 0x0D78(0x0004) (Edit)
+	TArray<float>                                      NonStunnedDmgScalar;                                      // 0x0D7C(0x000C) (Edit, NeedCtorLink)
+	float                                              CurrentNonStunnedDmgScalar;                               // 0x0D88(0x0004)
+	float                                              BabySpawnPlayRate;                                        // 0x0D8C(0x0004) (Edit)
+	struct FName                                       BabySpawnLocSocket;                                       // 0x0D90(0x0008) (Edit)
+	struct FName                                       BabySpawnAnimName;                                        // 0x0D98(0x0008) (Edit)
+	struct FName                                       StunnedAnimLoop;                                          // 0x0DA0(0x0008) (Edit)
+	struct FName                                       CrystalSocketName;                                        // 0x0DA8(0x0008) (Edit)
+	struct FName                                       MeleeSwingSocketName;                                     // 0x0DB0(0x0008) (Edit)
+	struct FName                                       WebShootSocket;                                           // 0x0DB8(0x0008) (Edit)
+	struct FName                                       WebShootAnimation;                                        // 0x0DC0(0x0008) (Edit)
+	struct FName                                       StunnedHurtAnim;                                          // 0x0DC8(0x0008) (Edit)
+	class ADunDefEmitterSpawnable*                     StunnedHurtEffectTemplate;                                // 0x0DD0(0x0004) (Edit)
+	class UParticleSystemComponent*                    StunnedCoreVFX;                                           // 0x0DD4(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    EnragedVFX;                                               // 0x0DD8(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FName                                       EnrageSocketName;                                         // 0x0DDC(0x0008) (Edit)
+	struct FName                                       UpperBodyLookAtName;                                      // 0x0DE4(0x0008) (Edit)
+	float                                              CrystalScaleDownTime;                                     // 0x0DEC(0x0004) (Edit)
+	float                                              MinCrystalBrightnessScale;                                // 0x0DF0(0x0004) (Edit)
+	float                                              EnrageHealthPct;                                          // 0x0DF4(0x0004) (Edit)
+	float                                              EnrageDmgMult;                                            // 0x0DF8(0x0004) (Edit)
+	float                                              EnrageBabySpawnMult;                                      // 0x0DFC(0x0004) (Edit)
+	float                                              EnrageIntervalMult;                                       // 0x0E00(0x0004) (Edit)
+	float                                              EnrageGroundSpeedMult;                                    // 0x0E04(0x0004) (Edit)
+	unsigned long                                      bRageMode : 1;                                            // 0x0E08(0x0004)
+	unsigned long                                      bIsStunned : 1;                                           // 0x0E08(0x0004)
+	unsigned long                                      bLookAtTarget : 1;                                        // 0x0E08(0x0004)
+	float                                              TimeOfDeath;                                              // 0x0E0C(0x0004)
+	class UMaterialInstanceConstant*                   QueenMIC;                                                 // 0x0E10(0x0004)
+	class USkelControlLookAt*                          UpperBodyLookAt;                                          // 0x0E14(0x0004)
+	class USkelControlLookAt*                          IKTest;                                                   // 0x0E18(0x0004)
+	class AActor*                                      TheLastDamageCauser;                                      // 0x0E1C(0x0004)
+	float                                              WebChargeTime;                                            // 0x0E20(0x0004)
+	float                                              WebStartTime;                                             // 0x0E24(0x0004)
+	float                                              currentTakenStunnedDamage;                                // 0x0E28(0x0004)
+	float                                              AllowedDmgStunnedPct;                                     // 0x0E2C(0x0004) (Edit)
+	struct FLinearColor                                EnrageCoreColor;                                          // 0x0E30(0x0010) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -555,15 +555,15 @@ public:
 
 
 // Class DunDefSpider.GameInfo_VDay
-// 0x0024 (0x056C - 0x0548)
+// 0x0024 (0x0560 - 0x053C)
 class AGameInfo_VDay : public AMain
 {
 public:
-	TArray<class ADunDefEnemy*>                        Boys;                                                     // 0x0548(0x000C) (NeedCtorLink)
-	TArray<class ADunDefEnemy*>                        Girls;                                                    // 0x0554(0x000C) (NeedCtorLink)
-	unsigned long                                      bUsingGenderSpawnTimer : 1;                               // 0x0560(0x0004)
-	float                                              GenderSpawnTimer;                                         // 0x0564(0x0004)
-	class UUI_KillCount*                               myKillCountUI;                                            // 0x0568(0x0004)
+	TArray<class ADunDefEnemy*>                        Boys;                                                     // 0x053C(0x000C) (NeedCtorLink)
+	TArray<class ADunDefEnemy*>                        Girls;                                                    // 0x0548(0x000C) (NeedCtorLink)
+	unsigned long                                      bUsingGenderSpawnTimer : 1;                               // 0x0554(0x0004)
+	float                                              GenderSpawnTimer;                                         // 0x0558(0x0004)
+	class UUI_KillCount*                               myKillCountUI;                                            // 0x055C(0x0004)
 
 	static UClass* StaticClass()
 	{

@@ -42,61 +42,61 @@ public:
 
 
 // Class DunDefSpecial.DunDefTower_SummonEnemy
-// 0x015A (0x097E - 0x0824)
+// 0x015A (0x098A - 0x0830)
 class ADunDefTower_SummonEnemy : public ADunDefTower
 {
 public:
-	struct FSummonedBoosts                             resistanceBoosting;                                       // 0x0824(0x0024) (Edit, NeedCtorLink)
-	struct FSummonedBoosts                             movementSpeedBoosting;                                    // 0x0848(0x0024) (Edit, NeedCtorLink)
-	struct FSummonedBoosts                             attackAnimSpeedBoosting;                                  // 0x086C(0x0024) (Edit, NeedCtorLink)
-	TArray<TEnumAsByte<EPawnBoostType>>                allowedScalingTypes;                                      // 0x0890(0x000C) (Edit, NeedCtorLink)
-	class ADunDefEnemy*                                myEnemyTemplate;                                          // 0x089C(0x0004) (Edit)
-	class UTexture2D*                                  SelectedIcon;                                             // 0x08A0(0x0004) (Edit)
-	class UTexture2D*                                  PendingSelectionIcon;                                     // 0x08A4(0x0004) (Edit)
-	class UTexture2D*                                  CmdIcon_MoveDef;                                          // 0x08A8(0x0004) (Edit)
-	class UTexture2D*                                  CmdIcon_MoveOf;                                           // 0x08AC(0x0004) (Edit)
-	class UTexture2D*                                  CmdIcon_Attack;                                           // 0x08B0(0x0004) (Edit)
-	class UTexture2D*                                  CmdIcon_Follow;                                           // 0x08B4(0x0004) (Edit)
-	class UTexture2D*                                  CmdIcon_HoldDef;                                          // 0x08B8(0x0004) (Edit)
-	class UTexture2D*                                  CmdIcon_HoldOff;                                          // 0x08BC(0x0004) (Edit)
-	class UTexture2D*                                  currentAttackTargetIcon;                                  // 0x08C0(0x0004) (Edit)
-	class UTexture2D*                                  currentFollowTargetIcon;                                  // 0x08C4(0x0004) (Edit)
-	class ADunDefEnemy*                                myEnemyReference;                                         // 0x08C8(0x0004) (Net, Transient)
-	class ADunDefEnemyController*                      myEnemyControllerReference;                               // 0x08CC(0x0004) (Transient)
-	class AActor*                                      currentTargetActor;                                       // 0x08D0(0x0004) (Net, Transient)
-	class AActor*                                      pendingTargetActor;                                       // 0x08D4(0x0004) (Transient)
-	unsigned long                                      bFollowOwner : 1;                                         // 0x08D8(0x0004) (Transient)
-	unsigned long                                      bCheckForFollowReturn : 1;                                // 0x08D8(0x0004) (Transient)
-	unsigned long                                      bAllowSelection : 1;                                      // 0x08D8(0x0004) (Edit)
-	unsigned long                                      bDisableCommandIconDrawing : 1;                           // 0x08D8(0x0004) (Edit)
-	unsigned long                                      bIsSelected : 1;                                          // 0x08D8(0x0004)
-	unsigned long                                      bPendingSelection : 1;                                    // 0x08D8(0x0004)
-	float                                              SelectedIconSize;                                         // 0x08DC(0x0004) (Edit)
-	float                                              UpdateCommandRate;                                        // 0x08E0(0x0004) (Edit)
-	struct FVector                                     SelectedIconOffset;                                       // 0x08E4(0x000C) (Edit)
-	float                                              ResistanceMultiplier;                                     // 0x08F0(0x0004) (Net)
-	float                                              AttackRangeMultiplier;                                    // 0x08F4(0x0004)
-	float                                              MovementSpeedMult;                                        // 0x08F8(0x0004) (Net)
-	float                                              AnimAttackSpeedMult;                                      // 0x08FC(0x0004) (Net)
-	float                                              ReplicatedDmgValue;                                       // 0x0900(0x0004) (Net)
-	float                                              ReplicatedAtkRange;                                       // 0x0904(0x0004) (Net)
-	struct FString                                     ResistanceString;                                         // 0x0908(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     MovementSpeedString;                                      // 0x0914(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     AnimSpeedString;                                          // 0x0920(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     AttackAnimSpeedString;                                    // 0x092C(0x000C) (Edit, Localized, NeedCtorLink)
-	float                                              HoldOffensive_TargetableRange;                            // 0x0938(0x0004) (Edit)
-	float                                              HoldDefensive_TargetableRange;                            // 0x093C(0x0004) (Edit)
-	float                                              followIconZOffset;                                        // 0x0940(0x0004) (Edit)
-	float                                              attackIconZOffset;                                        // 0x0944(0x0004) (Edit)
-	class USoundCue*                                   AcceptOrderSound;                                         // 0x0948(0x0004) (Edit)
-	class UParticleSystemComponent*                    SelectedParticle;                                         // 0x094C(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    pendingSelectedParticle;                                  // 0x0950(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    otherSelectedParticle;                                    // 0x0954(0x0004) (Edit, ExportObject, Component, EditInline)
-	TArray<class AActor*>                              commandInstigators;                                       // 0x0958(0x000C) (NeedCtorLink)
-	struct FVector                                     currentCommandPoint;                                      // 0x0964(0x000C)
-	struct FVector                                     pendingCommandPoint;                                      // 0x0970(0x000C)
-	TEnumAsByte<ESummonedCommand>                      currentCommand;                                           // 0x097C(0x0001) (Net)
-	TEnumAsByte<ESummonedCommand>                      previousCommand;                                          // 0x097D(0x0001)
+	struct FSummonedBoosts                             resistanceBoosting;                                       // 0x0830(0x0024) (Edit, NeedCtorLink)
+	struct FSummonedBoosts                             movementSpeedBoosting;                                    // 0x0854(0x0024) (Edit, NeedCtorLink)
+	struct FSummonedBoosts                             attackAnimSpeedBoosting;                                  // 0x0878(0x0024) (Edit, NeedCtorLink)
+	TArray<TEnumAsByte<EPawnBoostType>>                allowedScalingTypes;                                      // 0x089C(0x000C) (Edit, NeedCtorLink)
+	class ADunDefEnemy*                                myEnemyTemplate;                                          // 0x08A8(0x0004) (Edit)
+	class UTexture2D*                                  SelectedIcon;                                             // 0x08AC(0x0004) (Edit)
+	class UTexture2D*                                  PendingSelectionIcon;                                     // 0x08B0(0x0004) (Edit)
+	class UTexture2D*                                  CmdIcon_MoveDef;                                          // 0x08B4(0x0004) (Edit)
+	class UTexture2D*                                  CmdIcon_MoveOf;                                           // 0x08B8(0x0004) (Edit)
+	class UTexture2D*                                  CmdIcon_Attack;                                           // 0x08BC(0x0004) (Edit)
+	class UTexture2D*                                  CmdIcon_Follow;                                           // 0x08C0(0x0004) (Edit)
+	class UTexture2D*                                  CmdIcon_HoldDef;                                          // 0x08C4(0x0004) (Edit)
+	class UTexture2D*                                  CmdIcon_HoldOff;                                          // 0x08C8(0x0004) (Edit)
+	class UTexture2D*                                  currentAttackTargetIcon;                                  // 0x08CC(0x0004) (Edit)
+	class UTexture2D*                                  currentFollowTargetIcon;                                  // 0x08D0(0x0004) (Edit)
+	class ADunDefEnemy*                                myEnemyReference;                                         // 0x08D4(0x0004) (Net, Transient)
+	class ADunDefEnemyController*                      myEnemyControllerReference;                               // 0x08D8(0x0004) (Transient)
+	class AActor*                                      currentTargetActor;                                       // 0x08DC(0x0004) (Net, Transient)
+	class AActor*                                      pendingTargetActor;                                       // 0x08E0(0x0004) (Transient)
+	unsigned long                                      bFollowOwner : 1;                                         // 0x08E4(0x0004) (Transient)
+	unsigned long                                      bCheckForFollowReturn : 1;                                // 0x08E4(0x0004) (Transient)
+	unsigned long                                      bAllowSelection : 1;                                      // 0x08E4(0x0004) (Edit)
+	unsigned long                                      bDisableCommandIconDrawing : 1;                           // 0x08E4(0x0004) (Edit)
+	unsigned long                                      bIsSelected : 1;                                          // 0x08E4(0x0004)
+	unsigned long                                      bPendingSelection : 1;                                    // 0x08E4(0x0004)
+	float                                              SelectedIconSize;                                         // 0x08E8(0x0004) (Edit)
+	float                                              UpdateCommandRate;                                        // 0x08EC(0x0004) (Edit)
+	struct FVector                                     SelectedIconOffset;                                       // 0x08F0(0x000C) (Edit)
+	float                                              ResistanceMultiplier;                                     // 0x08FC(0x0004) (Net)
+	float                                              AttackRangeMultiplier;                                    // 0x0900(0x0004)
+	float                                              MovementSpeedMult;                                        // 0x0904(0x0004) (Net)
+	float                                              AnimAttackSpeedMult;                                      // 0x0908(0x0004) (Net)
+	float                                              ReplicatedDmgValue;                                       // 0x090C(0x0004) (Net)
+	float                                              ReplicatedAtkRange;                                       // 0x0910(0x0004) (Net)
+	struct FString                                     ResistanceString;                                         // 0x0914(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     MovementSpeedString;                                      // 0x0920(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     AnimSpeedString;                                          // 0x092C(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     AttackAnimSpeedString;                                    // 0x0938(0x000C) (Edit, Localized, NeedCtorLink)
+	float                                              HoldOffensive_TargetableRange;                            // 0x0944(0x0004) (Edit)
+	float                                              HoldDefensive_TargetableRange;                            // 0x0948(0x0004) (Edit)
+	float                                              followIconZOffset;                                        // 0x094C(0x0004) (Edit)
+	float                                              attackIconZOffset;                                        // 0x0950(0x0004) (Edit)
+	class USoundCue*                                   AcceptOrderSound;                                         // 0x0954(0x0004) (Edit)
+	class UParticleSystemComponent*                    SelectedParticle;                                         // 0x0958(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    pendingSelectedParticle;                                  // 0x095C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    otherSelectedParticle;                                    // 0x0960(0x0004) (Edit, ExportObject, Component, EditInline)
+	TArray<class AActor*>                              commandInstigators;                                       // 0x0964(0x000C) (NeedCtorLink)
+	struct FVector                                     currentCommandPoint;                                      // 0x0970(0x000C)
+	struct FVector                                     pendingCommandPoint;                                      // 0x097C(0x000C)
+	TEnumAsByte<ESummonedCommand>                      currentCommand;                                           // 0x0988(0x0001) (Net)
+	TEnumAsByte<ESummonedCommand>                      previousCommand;                                          // 0x0989(0x0001)
 
 	static UClass* StaticClass()
 	{
@@ -555,12 +555,12 @@ public:
 
 
 // Class DunDefSpecial.CTF_GameInfo
-// 0x0008 (0x0554 - 0x054C)
+// 0x0008 (0x0548 - 0x0540)
 class ACTF_GameInfo : public AGameInfo_Competitive
 {
 public:
-	int                                                TeamPointsForKill;                                        // 0x054C(0x0004)
-	unsigned long                                      bPreventCompetitivePlayerDamage : 1;                      // 0x0550(0x0004)
+	int                                                TeamPointsForKill;                                        // 0x0540(0x0004)
+	unsigned long                                      bPreventCompetitivePlayerDamage : 1;                      // 0x0544(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -583,11 +583,11 @@ public:
 
 
 // Class DunDefSpecial.CTD_GameInfo
-// 0x000C (0x0560 - 0x0554)
+// 0x000C (0x0554 - 0x0548)
 class ACTD_GameInfo : public ACTF_GameInfo
 {
 public:
-	TArray<float>                                      OgreDifficultyOffsets;                                    // 0x0554(0x000C) (NeedCtorLink)
+	TArray<float>                                      OgreDifficultyOffsets;                                    // 0x0548(0x000C) (NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -650,11 +650,11 @@ public:
 
 
 // Class DunDefSpecial.CTF_MultiFlag_GameInfo
-// 0x0004 (0x0558 - 0x0554)
+// 0x0004 (0x054C - 0x0548)
 class ACTF_MultiFlag_GameInfo : public ACTF_GameInfo
 {
 public:
-	unsigned long                                      bSetRandomTeamSides : 1;                                  // 0x0554(0x0004)
+	unsigned long                                      bSetRandomTeamSides : 1;                                  // 0x0548(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -849,74 +849,74 @@ public:
 
 
 // Class DunDefSpecial.DunDefTower_TripWire
-// 0x0100 (0x09F0 - 0x08F0)
+// 0x0100 (0x09FC - 0x08FC)
 class ADunDefTower_TripWire : public ADunDefTower_DetonationType
 {
 public:
-	TArray<struct FBeamTrippers>                       currentBeamTrippers;                                      // 0x08F0(0x000C) (Component, NeedCtorLink)
-	TArray<class ADunDefTower_TripWire*>               ChildNodes;                                               // 0x08FC(0x000C) (NeedCtorLink)
-	class ADunDefTower_TripWire*                       ChildNode;                                                // 0x0908(0x0004) (Net)
-	unsigned long                                      bIsChildNode : 1;                                         // 0x090C(0x0004) (Net)
-	unsigned long                                      bUseDetonation : 1;                                       // 0x090C(0x0004) (Edit)
-	unsigned long                                      bShowInactiveEffectOnDeactivate : 1;                      // 0x090C(0x0004) (Edit)
-	unsigned long                                      bActiveDamage : 1;                                        // 0x090C(0x0004) (Net)
-	unsigned long                                      bShutDown : 1;                                            // 0x090C(0x0004) (Net)
-	unsigned long                                      bDoesStun : 1;                                            // 0x090C(0x0004) (Edit)
-	unsigned long                                      bContinuousProcs : 1;                                     // 0x090C(0x0004) (Edit)
-	unsigned long                                      bAllowTargeting : 1;                                      // 0x090C(0x0004) (Edit)
-	unsigned long                                      bDoesTracing : 1;                                         // 0x090C(0x0004) (Edit)
-	unsigned long                                      bActiveOnStart : 1;                                       // 0x090C(0x0004) (Edit)
-	unsigned long                                      bWantsChildTodrawUpgradeOverlay : 1;                      // 0x090C(0x0004) (Edit)
-	unsigned long                                      bSetFullCollisionForChild : 1;                            // 0x090C(0x0004) (Edit)
-	unsigned long                                      bDoClientTrace : 1;                                       // 0x090C(0x0004) (Edit)
-	unsigned long                                      bMoving : 1;                                              // 0x090C(0x0004) (Net)
-	unsigned long                                      bDidSingleHit : 1;                                        // 0x090C(0x0004)
-	class ADunDefTower_TripWire*                       ParentNode;                                               // 0x0910(0x0004) (Net)
-	float                                              WireDistanceForMaxCost;                                   // 0x0914(0x0004) (Edit)
-	float                                              WireDistanceForMinCost;                                   // 0x0918(0x0004) (Edit)
-	int                                                TowerUnitCostMax;                                         // 0x091C(0x0004) (Edit)
-	struct FVector                                     BeamTraceExtent;                                          // 0x0920(0x000C) (Edit)
-	float                                              ActiveEffectLingerTime;                                   // 0x092C(0x0004) (Edit)
-	class UParticleSystemComponent*                    BeamEffect;                                               // 0x0930(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    InActiveBeamEffect;                                       // 0x0934(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    InActiveBeamEndPointEffect;                               // 0x0938(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    ActiveBeamEndPointEffect;                                 // 0x093C(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    PreDetonationEndPointEffect;                              // 0x0940(0x0004) (Edit, ExportObject, Component, EditInline)
-	struct FName                                       BeamSocketName;                                           // 0x0944(0x0008) (Edit)
-	int                                                BaseDamagePerTick;                                        // 0x094C(0x0004) (Edit)
-	float                                              DmgProcInterval;                                          // 0x0950(0x0004) (Edit)
-	float                                              ActiveDuration;                                           // 0x0954(0x0004) (Edit)
-	class UClass*                                      BeamDamageType;                                           // 0x0958(0x0004) (Edit)
-	float                                              TimeTillDetonate;                                         // 0x095C(0x0004) (Edit)
-	float                                              LifeEnergy;                                               // 0x0960(0x0004) (Edit, Net)
-	float                                              LifeEnergyDecrease;                                       // 0x0964(0x0004) (Edit)
-	float                                              LifeEnergyDecreasePerPawnAffected;                        // 0x0968(0x0004) (Edit)
-	float                                              HealAmountMultiplier;                                     // 0x096C(0x0004) (Edit)
-	float                                              NetUpdateFrequencyWhenRepairing;                          // 0x0970(0x0004) (Edit)
-	float                                              LastRepairIncrementTime;                                  // 0x0974(0x0004)
-	int                                                MaxLifeEnergy;                                            // 0x0978(0x0004) (Net)
-	TArray<class UClass*>                              NoStunDamageTypes;                                        // 0x097C(0x000C) (Edit, NeedCtorLink)
-	class UParticleSystem*                             StunnedEffect;                                            // 0x0988(0x0004) (Edit)
-	float                                              BaseStunTime;                                             // 0x098C(0x0004) (Edit)
-	float                                              MaxZHeight;                                               // 0x0990(0x0004) (Edit)
-	float                                              MinZHeight;                                               // 0x0994(0x0004) (Edit)
-	class UTexture2D*                                  MiniMapBeamTexture;                                       // 0x0998(0x0004) (Edit)
-	float                                              MiniMapBeamWidth;                                         // 0x099C(0x0004) (Edit)
-	float                                              StunTimeExponent;                                         // 0x09A0(0x0004) (Edit)
-	TEnumAsByte<ELevelUpValueType>                     StunStat;                                                 // 0x09A4(0x0001) (Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x09A5(0x0003) MISSED OFFSET
-	class USoundCue*                                   DetonateSound;                                            // 0x09A8(0x0004) (Edit)
-	class USoundCue*                                   TripCue;                                                  // 0x09AC(0x0004) (Edit)
-	float                                              LinearDUHealthScaleValue;                                 // 0x09B0(0x0004) (Edit)
-	float                                              DUHealthExp;                                              // 0x09B4(0x0004) (Edit)
-	struct FString                                     StunTimeString;                                           // 0x09B8(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     StunIntervalEndString;                                    // 0x09C4(0x000C) (Edit, Localized, NeedCtorLink)
-	class UAudioComponent*                             AmbientSoundComponent;                                    // 0x09D0(0x0004) (Edit, ExportObject, Component, EditInline)
-	struct FColor                                      MiniMapBeamColor;                                         // 0x09D4(0x0004) (Edit)
-	float                                              StunMultiplier;                                           // 0x09D8(0x0004) (Net)
-	float                                              LastCleanUpTime;                                          // 0x09DC(0x0004)
-	struct FVector                                     spawnInPoint;                                             // 0x09E0(0x000C) (Net)
-	int                                                modifiedDUCost;                                           // 0x09EC(0x0004) (Net)
+	TArray<struct FBeamTrippers>                       currentBeamTrippers;                                      // 0x08FC(0x000C) (Component, NeedCtorLink)
+	TArray<class ADunDefTower_TripWire*>               ChildNodes;                                               // 0x0908(0x000C) (NeedCtorLink)
+	class ADunDefTower_TripWire*                       ChildNode;                                                // 0x0914(0x0004) (Net)
+	unsigned long                                      bIsChildNode : 1;                                         // 0x0918(0x0004) (Net)
+	unsigned long                                      bUseDetonation : 1;                                       // 0x0918(0x0004) (Edit)
+	unsigned long                                      bShowInactiveEffectOnDeactivate : 1;                      // 0x0918(0x0004) (Edit)
+	unsigned long                                      bActiveDamage : 1;                                        // 0x0918(0x0004) (Net)
+	unsigned long                                      bShutDown : 1;                                            // 0x0918(0x0004) (Net)
+	unsigned long                                      bDoesStun : 1;                                            // 0x0918(0x0004) (Edit)
+	unsigned long                                      bContinuousProcs : 1;                                     // 0x0918(0x0004) (Edit)
+	unsigned long                                      bAllowTargeting : 1;                                      // 0x0918(0x0004) (Edit)
+	unsigned long                                      bDoesTracing : 1;                                         // 0x0918(0x0004) (Edit)
+	unsigned long                                      bActiveOnStart : 1;                                       // 0x0918(0x0004) (Edit)
+	unsigned long                                      bWantsChildTodrawUpgradeOverlay : 1;                      // 0x0918(0x0004) (Edit)
+	unsigned long                                      bSetFullCollisionForChild : 1;                            // 0x0918(0x0004) (Edit)
+	unsigned long                                      bDoClientTrace : 1;                                       // 0x0918(0x0004) (Edit)
+	unsigned long                                      bMoving : 1;                                              // 0x0918(0x0004) (Net)
+	unsigned long                                      bDidSingleHit : 1;                                        // 0x0918(0x0004)
+	class ADunDefTower_TripWire*                       ParentNode;                                               // 0x091C(0x0004) (Net)
+	float                                              WireDistanceForMaxCost;                                   // 0x0920(0x0004) (Edit)
+	float                                              WireDistanceForMinCost;                                   // 0x0924(0x0004) (Edit)
+	int                                                TowerUnitCostMax;                                         // 0x0928(0x0004) (Edit)
+	struct FVector                                     BeamTraceExtent;                                          // 0x092C(0x000C) (Edit)
+	float                                              ActiveEffectLingerTime;                                   // 0x0938(0x0004) (Edit)
+	class UParticleSystemComponent*                    BeamEffect;                                               // 0x093C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    InActiveBeamEffect;                                       // 0x0940(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    InActiveBeamEndPointEffect;                               // 0x0944(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    ActiveBeamEndPointEffect;                                 // 0x0948(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    PreDetonationEndPointEffect;                              // 0x094C(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FName                                       BeamSocketName;                                           // 0x0950(0x0008) (Edit)
+	int                                                BaseDamagePerTick;                                        // 0x0958(0x0004) (Edit)
+	float                                              DmgProcInterval;                                          // 0x095C(0x0004) (Edit)
+	float                                              ActiveDuration;                                           // 0x0960(0x0004) (Edit)
+	class UClass*                                      BeamDamageType;                                           // 0x0964(0x0004) (Edit)
+	float                                              TimeTillDetonate;                                         // 0x0968(0x0004) (Edit)
+	float                                              LifeEnergy;                                               // 0x096C(0x0004) (Edit, Net)
+	float                                              LifeEnergyDecrease;                                       // 0x0970(0x0004) (Edit)
+	float                                              LifeEnergyDecreasePerPawnAffected;                        // 0x0974(0x0004) (Edit)
+	float                                              HealAmountMultiplier;                                     // 0x0978(0x0004) (Edit)
+	float                                              NetUpdateFrequencyWhenRepairing;                          // 0x097C(0x0004) (Edit)
+	float                                              LastRepairIncrementTime;                                  // 0x0980(0x0004)
+	int                                                MaxLifeEnergy;                                            // 0x0984(0x0004) (Net)
+	TArray<class UClass*>                              NoStunDamageTypes;                                        // 0x0988(0x000C) (Edit, NeedCtorLink)
+	class UParticleSystem*                             StunnedEffect;                                            // 0x0994(0x0004) (Edit)
+	float                                              BaseStunTime;                                             // 0x0998(0x0004) (Edit)
+	float                                              MaxZHeight;                                               // 0x099C(0x0004) (Edit)
+	float                                              MinZHeight;                                               // 0x09A0(0x0004) (Edit)
+	class UTexture2D*                                  MiniMapBeamTexture;                                       // 0x09A4(0x0004) (Edit)
+	float                                              MiniMapBeamWidth;                                         // 0x09A8(0x0004) (Edit)
+	float                                              StunTimeExponent;                                         // 0x09AC(0x0004) (Edit)
+	TEnumAsByte<ELevelUpValueType>                     StunStat;                                                 // 0x09B0(0x0001) (Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x09B1(0x0003) MISSED OFFSET
+	class USoundCue*                                   DetonateSound;                                            // 0x09B4(0x0004) (Edit)
+	class USoundCue*                                   TripCue;                                                  // 0x09B8(0x0004) (Edit)
+	float                                              LinearDUHealthScaleValue;                                 // 0x09BC(0x0004) (Edit)
+	float                                              DUHealthExp;                                              // 0x09C0(0x0004) (Edit)
+	struct FString                                     StunTimeString;                                           // 0x09C4(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     StunIntervalEndString;                                    // 0x09D0(0x000C) (Edit, Localized, NeedCtorLink)
+	class UAudioComponent*                             AmbientSoundComponent;                                    // 0x09DC(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FColor                                      MiniMapBeamColor;                                         // 0x09E0(0x0004) (Edit)
+	float                                              StunMultiplier;                                           // 0x09E4(0x0004) (Net)
+	float                                              LastCleanUpTime;                                          // 0x09E8(0x0004)
+	struct FVector                                     spawnInPoint;                                             // 0x09EC(0x000C) (Net)
+	int                                                modifiedDUCost;                                           // 0x09F8(0x0004) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -1031,44 +1031,44 @@ public:
 
 
 // Class DunDefSpecial.DunDefTower_TripPhysical
-// 0x00B0 (0x0AA0 - 0x09F0)
+// 0x00B0 (0x0AAC - 0x09FC)
 class ADunDefTower_TripPhysical : public ADunDefTower_TripWire
 {
 public:
-	struct FVector                                     TargetingLocation;                                        // 0x09F0(0x000C)
-	class UParticleSystemComponent*                    TopBeam;                                                  // 0x09FC(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    SideBeamA;                                                // 0x0A00(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    SideBeamB;                                                // 0x0A04(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    ParticlePlane;                                            // 0x0A08(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    TopPointA;                                                // 0x0A0C(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    TopPointB;                                                // 0x0A10(0x0004) (Edit, ExportObject, Component, EditInline)
-	struct FName                                       TopBoneControllerName;                                    // 0x0A14(0x0008) (Edit)
-	struct FName                                       TopSocketName;                                            // 0x0A1C(0x0008) (Edit)
-	float                                              PlaneFadeTime;                                            // 0x0A24(0x0004) (Edit)
-	float                                              CollisionWidth;                                           // 0x0A28(0x0004) (Edit)
-	class UMaterialInterface*                          PlaneMaterial;                                            // 0x0A2C(0x0004) (Edit)
-	class USoundCue*                                   ExpandSound;                                              // 0x0A30(0x0004) (Edit)
-	struct FVector                                     MeshOffSet;                                               // 0x0A34(0x000C) (Edit)
-	struct FName                                       BottomSocketName;                                         // 0x0A40(0x0008) (Edit)
-	unsigned long                                      bUseBottomSocket : 1;                                     // 0x0A48(0x0004) (Edit)
-	unsigned long                                      bAllowAbilityMove : 1;                                    // 0x0A48(0x0004) (Net)
-	unsigned long                                      bDoSpawnTick : 1;                                         // 0x0A48(0x0004)
-	unsigned long                                      bBeamStarted : 1;                                         // 0x0A48(0x0004)
-	unsigned long                                      bActivatedBeam : 1;                                       // 0x0A48(0x0004)
-	unsigned long                                      bModifyActorLocation : 1;                                 // 0x0A48(0x0004)
-	unsigned long                                      bSetCollisionMeshAsComponent : 1;                         // 0x0A48(0x0004)
-	unsigned long                                      bClientRecievedLoc : 1;                                   // 0x0A48(0x0004)
-	class UMaterialInstanceConstant*                   MyPlaneMIC;                                               // 0x0A4C(0x0004)
-	class USkelControlSingleBone*                      TopBoneController;                                        // 0x0A50(0x0004)
-	float                                              ScaleInTime;                                              // 0x0A54(0x0004) (Edit)
-	float                                              StartScaleTime;                                           // 0x0A58(0x0004)
-	struct FVector                                     topEndPointA;                                             // 0x0A5C(0x000C)
-	struct FVector                                     topEndPointB;                                             // 0x0A68(0x000C)
-	struct FVector                                     currentPointA;                                            // 0x0A74(0x000C)
-	struct FVector                                     currentPointB;                                            // 0x0A80(0x000C)
-	float                                              distanceBetween;                                          // 0x0A8C(0x0004) (Transient)
-	float                                              theTime;                                                  // 0x0A90(0x0004)
-	struct FVector                                     MeshTranslation;                                          // 0x0A94(0x000C) (Net)
+	struct FVector                                     TargetingLocation;                                        // 0x09FC(0x000C)
+	class UParticleSystemComponent*                    TopBeam;                                                  // 0x0A08(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    SideBeamA;                                                // 0x0A0C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    SideBeamB;                                                // 0x0A10(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    ParticlePlane;                                            // 0x0A14(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    TopPointA;                                                // 0x0A18(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    TopPointB;                                                // 0x0A1C(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FName                                       TopBoneControllerName;                                    // 0x0A20(0x0008) (Edit)
+	struct FName                                       TopSocketName;                                            // 0x0A28(0x0008) (Edit)
+	float                                              PlaneFadeTime;                                            // 0x0A30(0x0004) (Edit)
+	float                                              CollisionWidth;                                           // 0x0A34(0x0004) (Edit)
+	class UMaterialInterface*                          PlaneMaterial;                                            // 0x0A38(0x0004) (Edit)
+	class USoundCue*                                   ExpandSound;                                              // 0x0A3C(0x0004) (Edit)
+	struct FVector                                     MeshOffSet;                                               // 0x0A40(0x000C) (Edit)
+	struct FName                                       BottomSocketName;                                         // 0x0A4C(0x0008) (Edit)
+	unsigned long                                      bUseBottomSocket : 1;                                     // 0x0A54(0x0004) (Edit)
+	unsigned long                                      bAllowAbilityMove : 1;                                    // 0x0A54(0x0004) (Net)
+	unsigned long                                      bDoSpawnTick : 1;                                         // 0x0A54(0x0004)
+	unsigned long                                      bBeamStarted : 1;                                         // 0x0A54(0x0004)
+	unsigned long                                      bActivatedBeam : 1;                                       // 0x0A54(0x0004)
+	unsigned long                                      bModifyActorLocation : 1;                                 // 0x0A54(0x0004)
+	unsigned long                                      bSetCollisionMeshAsComponent : 1;                         // 0x0A54(0x0004)
+	unsigned long                                      bClientRecievedLoc : 1;                                   // 0x0A54(0x0004)
+	class UMaterialInstanceConstant*                   MyPlaneMIC;                                               // 0x0A58(0x0004)
+	class USkelControlSingleBone*                      TopBoneController;                                        // 0x0A5C(0x0004)
+	float                                              ScaleInTime;                                              // 0x0A60(0x0004) (Edit)
+	float                                              StartScaleTime;                                           // 0x0A64(0x0004)
+	struct FVector                                     topEndPointA;                                             // 0x0A68(0x000C)
+	struct FVector                                     topEndPointB;                                             // 0x0A74(0x000C)
+	struct FVector                                     currentPointA;                                            // 0x0A80(0x000C)
+	struct FVector                                     currentPointB;                                            // 0x0A8C(0x000C)
+	float                                              distanceBetween;                                          // 0x0A98(0x0004) (Transient)
+	float                                              theTime;                                                  // 0x0A9C(0x0004)
+	struct FVector                                     MeshTranslation;                                          // 0x0AA0(0x000C) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -1134,19 +1134,19 @@ public:
 
 
 // Class DunDefSpecial.DunDefPlayer_Hovering
-// 0x002C (0x0DC4 - 0x0D98)
+// 0x002C (0x0DCC - 0x0DA0)
 class ADunDefPlayer_Hovering : public ADunDefPlayer
 {
 public:
-	struct FName                                       HoveringBlenderName;                                      // 0x0D98(0x0008) (Edit)
-	float                                              HoverOnBlendTime;                                         // 0x0DA0(0x0004) (Edit)
-	float                                              HoverOffBlendTime;                                        // 0x0DA4(0x0004) (Edit)
-	class USoundCue*                                   HoveringStartSound;                                       // 0x0DA8(0x0004) (Edit)
-	class USoundCue*                                   HoveringStopSound;                                        // 0x0DAC(0x0004) (Edit)
-	class UParticleSystemComponent*                    HoveringParticleSystem;                                   // 0x0DB0(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UAudioComponent*                             HoveringLoopSound;                                        // 0x0DB4(0x0004) (Edit, ExportObject, Component, EditInline)
-	struct FName                                       HoveringParticleSystemAttachSocketName;                   // 0x0DB8(0x0008) (Edit)
-	class UAnimNodeBlend*                              HoveringBlender;                                          // 0x0DC0(0x0004) (Transient)
+	struct FName                                       HoveringBlenderName;                                      // 0x0DA0(0x0008) (Edit)
+	float                                              HoverOnBlendTime;                                         // 0x0DA8(0x0004) (Edit)
+	float                                              HoverOffBlendTime;                                        // 0x0DAC(0x0004) (Edit)
+	class USoundCue*                                   HoveringStartSound;                                       // 0x0DB0(0x0004) (Edit)
+	class USoundCue*                                   HoveringStopSound;                                        // 0x0DB4(0x0004) (Edit)
+	class UParticleSystemComponent*                    HoveringParticleSystem;                                   // 0x0DB8(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UAudioComponent*                             HoveringLoopSound;                                        // 0x0DBC(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FName                                       HoveringParticleSystemAttachSocketName;                   // 0x0DC0(0x0008) (Edit)
+	class UAnimNodeBlend*                              HoveringBlender;                                          // 0x0DC8(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -1163,36 +1163,36 @@ public:
 
 
 // Class DunDefSpecial.DunDefPlayer_Summoner
-// 0x00A8 (0x0E6C - 0x0DC4)
+// 0x00A8 (0x0E74 - 0x0DCC)
 class ADunDefPlayer_Summoner : public ADunDefPlayer_Hovering
 {
 public:
-	struct FName                                       WheelEntryToOpenOnFire;                                   // 0x0DC4(0x0008) (Edit)
-	struct FName                                       AbilityToActivateOnFire;                                  // 0x0DCC(0x0008) (Edit)
-	TArray<class ADunDefTower_SummonEnemy*>            currentSelectedTowers;                                    // 0x0DD4(0x000C) (NeedCtorLink)
-	struct FLinearColor                                SummonBarTextColor;                                       // 0x0DE0(0x0010) (Edit)
-	struct FLinearColor                                SummonBarColor;                                           // 0x0DF0(0x0010) (Edit)
-	class UParticleSystemComponent*                    HoverEffect;                                              // 0x0E00(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    BookHoverEffect;                                          // 0x0E04(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    LeftHandGlow;                                             // 0x0E08(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    RightHandGlow;                                            // 0x0E0C(0x0004) (Edit, ExportObject, Component, EditInline)
-	struct FName                                       RightHandSocket;                                          // 0x0E10(0x0008) (Edit)
-	struct FName                                       LeftHandSocket;                                           // 0x0E18(0x0008) (Edit)
-	struct FName                                       HoverSocket;                                              // 0x0E20(0x0008) (Edit)
-	struct FName                                       BookHoverSocket;                                          // 0x0E28(0x0008) (Edit)
-	class ADunDefEmitterSpawnable*                     RepairingTowerWeaponEmitterTemplate;                      // 0x0E30(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     UpgradingTowerWeaponEmitterTemplate;                      // 0x0E34(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     HealingSelfWeaponEmitterTemplate;                         // 0x0E38(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     SummoningTowerWeaponEmitterTemplate;                      // 0x0E3C(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     DetonatingTrapsEmitterTemplate;                           // 0x0E40(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     SellTowerEmitterTemplate;                                 // 0x0E44(0x0004) (Edit)
-	class UTexture2D*                                  OverlordMiniMapIconTexture;                               // 0x0E48(0x0004) (Edit)
-	TArray<class UMaterialInstanceConstant*>           phaseShiftMICoverride;                                    // 0x0E4C(0x000C) (Edit, NeedCtorLink)
-	float                                              cameraIconSize;                                           // 0x0E58(0x0004) (Edit)
-	class UAudioComponent*                             OrderIssuedUnitCommand;                                   // 0x0E5C(0x0004) (ExportObject, Component, EditInline)
-	unsigned long                                      bIsPhased : 1;                                            // 0x0E60(0x0004) (Net)
-	class ADunDefPlayerAbility_PhaseShift*             myPhaseShiftAbility;                                      // 0x0E64(0x0004) (Net, Transient)
-	class ADunDefEmitterSpawnable*                     castingSpellEmitter;                                      // 0x0E68(0x0004) (Transient)
+	struct FName                                       WheelEntryToOpenOnFire;                                   // 0x0DCC(0x0008) (Edit)
+	struct FName                                       AbilityToActivateOnFire;                                  // 0x0DD4(0x0008) (Edit)
+	TArray<class ADunDefTower_SummonEnemy*>            currentSelectedTowers;                                    // 0x0DDC(0x000C) (NeedCtorLink)
+	struct FLinearColor                                SummonBarTextColor;                                       // 0x0DE8(0x0010) (Edit)
+	struct FLinearColor                                SummonBarColor;                                           // 0x0DF8(0x0010) (Edit)
+	class UParticleSystemComponent*                    HoverEffect;                                              // 0x0E08(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    BookHoverEffect;                                          // 0x0E0C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    LeftHandGlow;                                             // 0x0E10(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    RightHandGlow;                                            // 0x0E14(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FName                                       RightHandSocket;                                          // 0x0E18(0x0008) (Edit)
+	struct FName                                       LeftHandSocket;                                           // 0x0E20(0x0008) (Edit)
+	struct FName                                       HoverSocket;                                              // 0x0E28(0x0008) (Edit)
+	struct FName                                       BookHoverSocket;                                          // 0x0E30(0x0008) (Edit)
+	class ADunDefEmitterSpawnable*                     RepairingTowerWeaponEmitterTemplate;                      // 0x0E38(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     UpgradingTowerWeaponEmitterTemplate;                      // 0x0E3C(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     HealingSelfWeaponEmitterTemplate;                         // 0x0E40(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     SummoningTowerWeaponEmitterTemplate;                      // 0x0E44(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     DetonatingTrapsEmitterTemplate;                           // 0x0E48(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     SellTowerEmitterTemplate;                                 // 0x0E4C(0x0004) (Edit)
+	class UTexture2D*                                  OverlordMiniMapIconTexture;                               // 0x0E50(0x0004) (Edit)
+	TArray<class UMaterialInstanceConstant*>           phaseShiftMICoverride;                                    // 0x0E54(0x000C) (Edit, NeedCtorLink)
+	float                                              cameraIconSize;                                           // 0x0E60(0x0004) (Edit)
+	class UAudioComponent*                             OrderIssuedUnitCommand;                                   // 0x0E64(0x0004) (ExportObject, Component, EditInline)
+	unsigned long                                      bIsPhased : 1;                                            // 0x0E68(0x0004) (Net)
+	class ADunDefPlayerAbility_PhaseShift*             myPhaseShiftAbility;                                      // 0x0E6C(0x0004) (Net, Transient)
+	class ADunDefEmitterSpawnable*                     castingSpellEmitter;                                      // 0x0E70(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -1260,32 +1260,32 @@ public:
 
 
 // Class DunDefSpecial.DunDefDecoyTarget
-// 0x005C (0x0564 - 0x0508)
+// 0x005C (0x0570 - 0x0514)
 class ADunDefDecoyTarget : public ADunDefDamageableTarget
 {
 public:
-	TEnumAsByte<ELevelUpValueType>                     AssociatedHeroStat;                                       // 0x0508(0x0001) (Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0509(0x0003) MISSED OFFSET
-	float                                              HealthExponent;                                           // 0x050C(0x0004) (Edit)
-	float                                              HealthLinearFactor;                                       // 0x0510(0x0004) (Edit)
-	float                                              TargetingDesirabilityExponent;                            // 0x0514(0x0004) (Edit)
-	unsigned long                                      bDoPoke : 1;                                              // 0x0518(0x0004) (Edit)
-	unsigned long                                      bFadedIn : 1;                                             // 0x0518(0x0004) (Transient)
-	float                                              PokeRadius;                                               // 0x051C(0x0004) (Edit)
-	float                                              PokeAggroAmount;                                          // 0x0520(0x0004) (Edit)
-	float                                              ActiveTime;                                               // 0x0524(0x0004) (Edit)
-	float                                              ActiveTimeExponent;                                       // 0x0528(0x0004) (Edit)
-	float                                              NumAttackersExponent;                                     // 0x052C(0x0004) (Edit)
-	TArray<class UClass*>                              NoPokeClasses;                                            // 0x0530(0x000C) (Edit, NeedCtorLink)
-	class USkeletalMeshComponent*                      Mesh;                                                     // 0x053C(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UDynamicLightEnvironmentComponent*           LightEnvironment;                                         // 0x0540(0x0004) (Edit, ExportObject, Component, EditInline)
-	class ADunDefEmitterSpawnable*                     SpawnedEmitter;                                           // 0x0544(0x0004) (Edit)
-	class UMaterialInterface*                          MyMaterial;                                               // 0x0548(0x0004) (Edit)
-	struct FName                                       MaterialFadeInName;                                       // 0x054C(0x0008) (Edit)
-	float                                              FadeInTime;                                               // 0x0554(0x0004) (Edit)
-	class UTexture2D*                                  MiniMapIconTexture;                                       // 0x0558(0x0004) (Edit)
-	float                                              MiniMapIconSize;                                          // 0x055C(0x0004) (Edit)
-	class UMaterialInstanceConstant*                   myMIC;                                                    // 0x0560(0x0004)
+	TEnumAsByte<ELevelUpValueType>                     AssociatedHeroStat;                                       // 0x0514(0x0001) (Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0515(0x0003) MISSED OFFSET
+	float                                              HealthExponent;                                           // 0x0518(0x0004) (Edit)
+	float                                              HealthLinearFactor;                                       // 0x051C(0x0004) (Edit)
+	float                                              TargetingDesirabilityExponent;                            // 0x0520(0x0004) (Edit)
+	unsigned long                                      bDoPoke : 1;                                              // 0x0524(0x0004) (Edit)
+	unsigned long                                      bFadedIn : 1;                                             // 0x0524(0x0004) (Transient)
+	float                                              PokeRadius;                                               // 0x0528(0x0004) (Edit)
+	float                                              PokeAggroAmount;                                          // 0x052C(0x0004) (Edit)
+	float                                              ActiveTime;                                               // 0x0530(0x0004) (Edit)
+	float                                              ActiveTimeExponent;                                       // 0x0534(0x0004) (Edit)
+	float                                              NumAttackersExponent;                                     // 0x0538(0x0004) (Edit)
+	TArray<class UClass*>                              NoPokeClasses;                                            // 0x053C(0x000C) (Edit, NeedCtorLink)
+	class USkeletalMeshComponent*                      Mesh;                                                     // 0x0548(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UDynamicLightEnvironmentComponent*           LightEnvironment;                                         // 0x054C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class ADunDefEmitterSpawnable*                     SpawnedEmitter;                                           // 0x0550(0x0004) (Edit)
+	class UMaterialInterface*                          MyMaterial;                                               // 0x0554(0x0004) (Edit)
+	struct FName                                       MaterialFadeInName;                                       // 0x0558(0x0008) (Edit)
+	float                                              FadeInTime;                                               // 0x0560(0x0004) (Edit)
+	class UTexture2D*                                  MiniMapIconTexture;                                       // 0x0564(0x0004) (Edit)
+	float                                              MiniMapIconSize;                                          // 0x0568(0x0004) (Edit)
+	class UMaterialInstanceConstant*                   myMIC;                                                    // 0x056C(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -1316,95 +1316,95 @@ public:
 
 
 // Class DunDefSpecial.DunDefDropOffPoint
-// 0x01BC (0x06C4 - 0x0508)
+// 0x01BC (0x06D0 - 0x0514)
 class ADunDefDropOffPoint : public ADunDefDamageableTarget
 {
 public:
-	class ADunDefPlayer*                               theDroppingOffActor;                                      // 0x0508(0x0004) (Net)
-	TArray<class ADunDefPickupableItem*>               droppedOffItems;                                          // 0x050C(0x000C) (NeedCtorLink)
-	class UDecalComponent*                             Decal;                                                    // 0x0518(0x0004) (Edit, ExportObject, Component, EditInline)
-	class USkeletalMeshComponent*                      MyMesh;                                                   // 0x051C(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UCylinderComponent*                          CylinderComponent;                                        // 0x0520(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UDynamicLightEnvironmentComponent*           LightEnvironment;                                         // 0x0524(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    DropOffParticleComponent;                                 // 0x0528(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    DropOffCompletedParticleComponent;                        // 0x052C(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UAudioComponent*                             DropOffSoundComp;                                         // 0x0530(0x0004) (Edit, ExportObject, Component, EditInline)
-	TArray<struct FName>                               TakeHitAnims;                                             // 0x0534(0x000C) (Edit, NeedCtorLink)
-	struct FName                                       CustomAnimName;                                           // 0x0540(0x0008) (Edit)
-	class USoundCue*                                   DropOffFullSound;                                         // 0x0548(0x0004) (Edit)
-	class USoundCue*                                   DroppedOffItemSound;                                      // 0x054C(0x0004) (Edit)
-	class USoundCue*                                   DropOffPointDiedSound;                                    // 0x0550(0x0004) (Edit)
-	class UAnimNodePlayCustomAnim*                     CustomAnimNode;                                           // 0x0554(0x0004) (Transient)
-	float                                              PushOutOffset;                                            // 0x0558(0x0004) (Edit)
-	float                                              RotPlacementInc;                                          // 0x055C(0x0004) (Edit)
-	float                                              FullOpacityValue;                                         // 0x0560(0x0004) (Edit)
-	struct FColor                                      DropOffUnderAttackMessageColor;                           // 0x0564(0x0004) (Edit)
-	struct FColor                                      DropOffDestroyedColor;                                    // 0x0568(0x0004) (Edit)
-	struct FString                                     DropOffUnderAttackMessageString;                          // 0x056C(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     DropOffDestroyedString;                                   // 0x0578(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     DropOffString;                                            // 0x0584(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     BeganDroppingOffString;                                   // 0x0590(0x000C) (Edit, Localized, NeedCtorLink)
-	float                                              DropOffTime;                                              // 0x059C(0x0004) (Edit)
-	class ADunDefTouchForwardingActor*                 myTouchForwardingActor;                                   // 0x05A0(0x0004) (Edit)
-	class UTexture2D*                                  ActiveDropsTexture;                                       // 0x05A4(0x0004) (Edit)
-	class UTexture2D*                                  ActiveDropsBGTexture;                                     // 0x05A8(0x0004) (Edit)
-	class UTexture2D*                                  IconBGTexture;                                            // 0x05AC(0x0004) (Edit)
-	class UTexture2D*                                  IconTexture;                                              // 0x05B0(0x0004) (Edit)
-	float                                              MiniMapScale;                                             // 0x05B4(0x0004) (Edit)
-	float                                              MiniMapOpacity;                                           // 0x05B8(0x0004) (Edit)
-	struct FVector                                     MiniMapOffset;                                            // 0x05BC(0x000C) (Edit)
-	struct FVector                                     ActiveDisplayOffset;                                      // 0x05C8(0x000C) (Edit)
-	float                                              TileTextOffsetY;                                          // 0x05D4(0x0004) (Edit)
-	float                                              TileTextOffsetX;                                          // 0x05D8(0x0004) (Edit)
-	float                                              ActiveDisplayScale;                                       // 0x05DC(0x0004) (Edit)
-	float                                              IconBGScale;                                              // 0x05E0(0x0004) (Edit)
-	float                                              IconBGSizeX;                                              // 0x05E4(0x0004) (Edit)
-	float                                              IconBGSizeY;                                              // 0x05E8(0x0004) (Edit)
-	float                                              IconBGOffsetX;                                            // 0x05EC(0x0004) (Edit)
-	float                                              IconBGOffsetY;                                            // 0x05F0(0x0004) (Edit)
-	float                                              ActiveDisplaySizeX;                                       // 0x05F4(0x0004) (Edit)
-	float                                              ActiveDisplaySizeY;                                       // 0x05F8(0x0004) (Edit)
-	float                                              ActiveDisplayTextScale;                                   // 0x05FC(0x0004) (Edit)
-	float                                              TileScale;                                                // 0x0600(0x0004) (Edit)
-	float                                              ActiveDisplayOffsetX;                                     // 0x0604(0x0004) (Edit)
-	float                                              ActiveDisplayOffsetY;                                     // 0x0608(0x0004) (Edit)
-	float                                              TileOffsetY;                                              // 0x060C(0x0004) (Edit)
-	float                                              TileOffsetX;                                              // 0x0610(0x0004) (Edit)
-	float                                              TileSizeX;                                                // 0x0614(0x0004) (Edit)
-	float                                              TileSizeY;                                                // 0x0618(0x0004) (Edit)
-	float                                              ActiveDisplayTextOffsetX;                                 // 0x061C(0x0004) (Edit)
-	float                                              ActiveDisplayTextOffsetY;                                 // 0x0620(0x0004) (Edit)
-	struct FString                                     fullString;                                               // 0x0624(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     ActiveString;                                             // 0x0630(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     DroppingOffString;                                        // 0x063C(0x000C) (Edit, Localized, NeedCtorLink)
-	float                                              MinFadeDistance;                                          // 0x0648(0x0004) (Edit)
-	float                                              FadeDistanceOffset;                                       // 0x064C(0x0004) (Edit)
-	float                                              MinFadeOpacity;                                           // 0x0650(0x0004) (Edit)
-	float                                              FadeDotExponent;                                          // 0x0654(0x0004) (Edit)
-	struct FColor                                      ActiveDisplayTextColor;                                   // 0x0658(0x0004) (Edit)
-	float                                              TowerPreventionRadius;                                    // 0x065C(0x0004) (Edit)
-	float                                              DamageNotifyInterval;                                     // 0x0660(0x0004) (Edit)
-	float                                              IndicateDamageTime;                                       // 0x0664(0x0004) (Edit)
-	struct FName                                       ActiveScalarParamName;                                    // 0x0668(0x0008) (Edit)
-	int                                                ActiveMICIndex;                                           // 0x0670(0x0004) (Edit)
-	class UMaterialInstanceConstant*                   ActiveMIC;                                                // 0x0674(0x0004)
-	int                                                MaxHoldableDropOffs;                                      // 0x0678(0x0004) (Edit, Net)
-	int                                                currentDropOffTime;                                       // 0x067C(0x0004)
-	float                                              accumulatedDropOffTime;                                   // 0x0680(0x0004)
-	int                                                currentNumDropOffs;                                       // 0x0684(0x0004) (Net)
-	unsigned long                                      bIsActive : 1;                                            // 0x0688(0x0004) (Net)
-	unsigned long                                      bStartedDangerFadeIn : 1;                                 // 0x0688(0x0004) (Transient)
-	unsigned long                                      bDropOffFilled : 1;                                       // 0x0688(0x0004) (Net)
-	class UMaterialInterface*                          InDangerHUDWaypointMatHealthBar;                          // 0x068C(0x0004) (Edit)
-	class UMaterialInterface*                          InDangerHUDWaypointMat;                                   // 0x0690(0x0004) (Edit)
-	class UMaterialInstanceConstant*                   InDangerHUDWaypointMatHealthBarInst;                      // 0x0694(0x0004) (Transient)
-	float                                              InDangerHUDFadeOutTime;                                   // 0x0698(0x0004) (Edit)
-	float                                              InDangerHUDFadeInTime;                                    // 0x069C(0x0004) (Edit)
-	float                                              LastStartedDangerFadeInTime;                              // 0x06A0(0x0004) (Transient)
-	float                                              WarningIconCenterYOffset;                                 // 0x06A4(0x0004) (Edit)
-	float                                              WarningIconCenterScale;                                   // 0x06A8(0x0004) (Edit)
-	struct FString                                     DropOffFilledMessage;                                     // 0x06AC(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      DifficultyHealthMultipliers;                              // 0x06B8(0x000C) (Edit, NeedCtorLink)
+	class ADunDefPlayer*                               theDroppingOffActor;                                      // 0x0514(0x0004) (Net)
+	TArray<class ADunDefPickupableItem*>               droppedOffItems;                                          // 0x0518(0x000C) (NeedCtorLink)
+	class UDecalComponent*                             Decal;                                                    // 0x0524(0x0004) (Edit, ExportObject, Component, EditInline)
+	class USkeletalMeshComponent*                      MyMesh;                                                   // 0x0528(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UCylinderComponent*                          CylinderComponent;                                        // 0x052C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UDynamicLightEnvironmentComponent*           LightEnvironment;                                         // 0x0530(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    DropOffParticleComponent;                                 // 0x0534(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    DropOffCompletedParticleComponent;                        // 0x0538(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UAudioComponent*                             DropOffSoundComp;                                         // 0x053C(0x0004) (Edit, ExportObject, Component, EditInline)
+	TArray<struct FName>                               TakeHitAnims;                                             // 0x0540(0x000C) (Edit, NeedCtorLink)
+	struct FName                                       CustomAnimName;                                           // 0x054C(0x0008) (Edit)
+	class USoundCue*                                   DropOffFullSound;                                         // 0x0554(0x0004) (Edit)
+	class USoundCue*                                   DroppedOffItemSound;                                      // 0x0558(0x0004) (Edit)
+	class USoundCue*                                   DropOffPointDiedSound;                                    // 0x055C(0x0004) (Edit)
+	class UAnimNodePlayCustomAnim*                     CustomAnimNode;                                           // 0x0560(0x0004) (Transient)
+	float                                              PushOutOffset;                                            // 0x0564(0x0004) (Edit)
+	float                                              RotPlacementInc;                                          // 0x0568(0x0004) (Edit)
+	float                                              FullOpacityValue;                                         // 0x056C(0x0004) (Edit)
+	struct FColor                                      DropOffUnderAttackMessageColor;                           // 0x0570(0x0004) (Edit)
+	struct FColor                                      DropOffDestroyedColor;                                    // 0x0574(0x0004) (Edit)
+	struct FString                                     DropOffUnderAttackMessageString;                          // 0x0578(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     DropOffDestroyedString;                                   // 0x0584(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     DropOffString;                                            // 0x0590(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     BeganDroppingOffString;                                   // 0x059C(0x000C) (Edit, Localized, NeedCtorLink)
+	float                                              DropOffTime;                                              // 0x05A8(0x0004) (Edit)
+	class ADunDefTouchForwardingActor*                 myTouchForwardingActor;                                   // 0x05AC(0x0004) (Edit)
+	class UTexture2D*                                  ActiveDropsTexture;                                       // 0x05B0(0x0004) (Edit)
+	class UTexture2D*                                  ActiveDropsBGTexture;                                     // 0x05B4(0x0004) (Edit)
+	class UTexture2D*                                  IconBGTexture;                                            // 0x05B8(0x0004) (Edit)
+	class UTexture2D*                                  IconTexture;                                              // 0x05BC(0x0004) (Edit)
+	float                                              MiniMapScale;                                             // 0x05C0(0x0004) (Edit)
+	float                                              MiniMapOpacity;                                           // 0x05C4(0x0004) (Edit)
+	struct FVector                                     MiniMapOffset;                                            // 0x05C8(0x000C) (Edit)
+	struct FVector                                     ActiveDisplayOffset;                                      // 0x05D4(0x000C) (Edit)
+	float                                              TileTextOffsetY;                                          // 0x05E0(0x0004) (Edit)
+	float                                              TileTextOffsetX;                                          // 0x05E4(0x0004) (Edit)
+	float                                              ActiveDisplayScale;                                       // 0x05E8(0x0004) (Edit)
+	float                                              IconBGScale;                                              // 0x05EC(0x0004) (Edit)
+	float                                              IconBGSizeX;                                              // 0x05F0(0x0004) (Edit)
+	float                                              IconBGSizeY;                                              // 0x05F4(0x0004) (Edit)
+	float                                              IconBGOffsetX;                                            // 0x05F8(0x0004) (Edit)
+	float                                              IconBGOffsetY;                                            // 0x05FC(0x0004) (Edit)
+	float                                              ActiveDisplaySizeX;                                       // 0x0600(0x0004) (Edit)
+	float                                              ActiveDisplaySizeY;                                       // 0x0604(0x0004) (Edit)
+	float                                              ActiveDisplayTextScale;                                   // 0x0608(0x0004) (Edit)
+	float                                              TileScale;                                                // 0x060C(0x0004) (Edit)
+	float                                              ActiveDisplayOffsetX;                                     // 0x0610(0x0004) (Edit)
+	float                                              ActiveDisplayOffsetY;                                     // 0x0614(0x0004) (Edit)
+	float                                              TileOffsetY;                                              // 0x0618(0x0004) (Edit)
+	float                                              TileOffsetX;                                              // 0x061C(0x0004) (Edit)
+	float                                              TileSizeX;                                                // 0x0620(0x0004) (Edit)
+	float                                              TileSizeY;                                                // 0x0624(0x0004) (Edit)
+	float                                              ActiveDisplayTextOffsetX;                                 // 0x0628(0x0004) (Edit)
+	float                                              ActiveDisplayTextOffsetY;                                 // 0x062C(0x0004) (Edit)
+	struct FString                                     fullString;                                               // 0x0630(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     ActiveString;                                             // 0x063C(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     DroppingOffString;                                        // 0x0648(0x000C) (Edit, Localized, NeedCtorLink)
+	float                                              MinFadeDistance;                                          // 0x0654(0x0004) (Edit)
+	float                                              FadeDistanceOffset;                                       // 0x0658(0x0004) (Edit)
+	float                                              MinFadeOpacity;                                           // 0x065C(0x0004) (Edit)
+	float                                              FadeDotExponent;                                          // 0x0660(0x0004) (Edit)
+	struct FColor                                      ActiveDisplayTextColor;                                   // 0x0664(0x0004) (Edit)
+	float                                              TowerPreventionRadius;                                    // 0x0668(0x0004) (Edit)
+	float                                              DamageNotifyInterval;                                     // 0x066C(0x0004) (Edit)
+	float                                              IndicateDamageTime;                                       // 0x0670(0x0004) (Edit)
+	struct FName                                       ActiveScalarParamName;                                    // 0x0674(0x0008) (Edit)
+	int                                                ActiveMICIndex;                                           // 0x067C(0x0004) (Edit)
+	class UMaterialInstanceConstant*                   ActiveMIC;                                                // 0x0680(0x0004)
+	int                                                MaxHoldableDropOffs;                                      // 0x0684(0x0004) (Edit, Net)
+	int                                                currentDropOffTime;                                       // 0x0688(0x0004)
+	float                                              accumulatedDropOffTime;                                   // 0x068C(0x0004)
+	int                                                currentNumDropOffs;                                       // 0x0690(0x0004) (Net)
+	unsigned long                                      bIsActive : 1;                                            // 0x0694(0x0004) (Net)
+	unsigned long                                      bStartedDangerFadeIn : 1;                                 // 0x0694(0x0004) (Transient)
+	unsigned long                                      bDropOffFilled : 1;                                       // 0x0694(0x0004) (Net)
+	class UMaterialInterface*                          InDangerHUDWaypointMatHealthBar;                          // 0x0698(0x0004) (Edit)
+	class UMaterialInterface*                          InDangerHUDWaypointMat;                                   // 0x069C(0x0004) (Edit)
+	class UMaterialInstanceConstant*                   InDangerHUDWaypointMatHealthBarInst;                      // 0x06A0(0x0004) (Transient)
+	float                                              InDangerHUDFadeOutTime;                                   // 0x06A4(0x0004) (Edit)
+	float                                              InDangerHUDFadeInTime;                                    // 0x06A8(0x0004) (Edit)
+	float                                              LastStartedDangerFadeInTime;                              // 0x06AC(0x0004) (Transient)
+	float                                              WarningIconCenterYOffset;                                 // 0x06B0(0x0004) (Edit)
+	float                                              WarningIconCenterScale;                                   // 0x06B4(0x0004) (Edit)
+	struct FString                                     DropOffFilledMessage;                                     // 0x06B8(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      DifficultyHealthMultipliers;                              // 0x06C4(0x000C) (Edit, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -1629,18 +1629,20 @@ public:
 
 
 // Class DunDefSpecial.DunDefEnemyCrystalCore
-// 0x0028 (0x0530 - 0x0508)
+// 0x0038 (0x054C - 0x0514)
 class ADunDefEnemyCrystalCore : public ADunDefDamageableTarget
 {
 public:
-	class UStaticMeshComponent*                        CollisionMesh;                                            // 0x0508(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    CoreParticleEffect;                                       // 0x050C(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UAudioComponent*                             MyAmbientSound;                                           // 0x0510(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UPointLightComponent*                        CoreLight;                                                // 0x0514(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UTexture2D*                                  MiniMapIconTexture;                                       // 0x0518(0x0004) (Edit)
-	float                                              MiniMapIconSize;                                          // 0x051C(0x0004) (Edit)
-	TArray<float>                                      DifficultyHealthMultipliers;                              // 0x0520(0x000C) (Edit, NeedCtorLink)
-	int                                                MaxDifficultySets;                                        // 0x052C(0x0004) (Edit)
+	class UStaticMeshComponent*                        CollisionMesh;                                            // 0x0514(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    CoreParticleEffect;                                       // 0x0518(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UAudioComponent*                             MyAmbientSound;                                           // 0x051C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UPointLightComponent*                        CoreLight;                                                // 0x0520(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UTexture2D*                                  MiniMapIconTexture;                                       // 0x0524(0x0004) (Edit)
+	float                                              MiniMapIconSize;                                          // 0x0528(0x0004) (Edit)
+	TArray<float>                                      DifficultyHealthMultipliers;                              // 0x052C(0x000C) (Edit, NeedCtorLink)
+	int                                                MaxDifficultySets;                                        // 0x0538(0x0004) (Edit)
+	unsigned long                                      bScaleWithPlayerCount : 1;                                // 0x053C(0x0004) (Edit)
+	TArray<float>                                      PlayerCountHealthMultipliers;                             // 0x0540(0x000C) (Edit, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -2108,18 +2110,18 @@ public:
 
 
 // Class DunDefSpecial.DunDefHarbinger_v2
-// 0x0034 (0x0D40 - 0x0D0C)
+// 0x0034 (0x0D48 - 0x0D14)
 class ADunDefHarbinger_v2 : public ADunDefEnemy
 {
 public:
-	struct FName                                       ShootFireAnimation;                                       // 0x0D0C(0x0008) (Edit)
-	struct FName                                       ChargeAnimationName;                                      // 0x0D14(0x0008) (Edit)
-	struct FName                                       ProjectileSpawnSocketNameLeft;                            // 0x0D1C(0x0008) (Edit)
-	struct FName                                       ProjectileSpawnSocketNameRight;                           // 0x0D24(0x0008) (Edit)
-	struct FName                                       GloveEffectSocketName;                                    // 0x0D2C(0x0008) (Edit)
-	class UParticleSystemComponent*                    FireGloveEffectComponent;                                 // 0x0D34(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    AuraEffectComponent;                                      // 0x0D38(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    FiringAuraEffect;                                         // 0x0D3C(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FName                                       ShootFireAnimation;                                       // 0x0D14(0x0008) (Edit)
+	struct FName                                       ChargeAnimationName;                                      // 0x0D1C(0x0008) (Edit)
+	struct FName                                       ProjectileSpawnSocketNameLeft;                            // 0x0D24(0x0008) (Edit)
+	struct FName                                       ProjectileSpawnSocketNameRight;                           // 0x0D2C(0x0008) (Edit)
+	struct FName                                       GloveEffectSocketName;                                    // 0x0D34(0x0008) (Edit)
+	class UParticleSystemComponent*                    FireGloveEffectComponent;                                 // 0x0D3C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    AuraEffectComponent;                                      // 0x0D40(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    FiringAuraEffect;                                         // 0x0D44(0x0004) (Edit, ExportObject, Component, EditInline)
 
 	static UClass* StaticClass()
 	{
@@ -2170,41 +2172,41 @@ public:
 
 
 // Class DunDefSpecial.DunDefPickupableSpawner
-// 0x00A8 (0x05B0 - 0x0508)
+// 0x00A8 (0x05BC - 0x0514)
 class ADunDefPickupableSpawner : public ADunDefDamageableTarget
 {
 public:
-	class USkeletalMeshComponent*                      MyMesh;                                                   // 0x0508(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UCylinderComponent*                          CylinderComponent;                                        // 0x050C(0x0004) (Edit, ExportObject, Component, EditInline)
-	TArray<class ADunDefPickupableItem*>               PickupableTemplates;                                      // 0x0510(0x000C) (Edit, NeedCtorLink)
-	class UDynamicLightEnvironmentComponent*           LightEnvironment;                                         // 0x051C(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    ActiveParticle;                                           // 0x0520(0x0004) (Edit, ExportObject, Component, EditInline)
-	class ADunDefEmitterSpawnable*                     ActivateEmitter;                                          // 0x0524(0x0004) (Edit)
-	int                                                MaxAllowedSpawnedItems;                                   // 0x0528(0x0004) (Edit)
-	unsigned long                                      bUseSocketForSpawn : 1;                                   // 0x052C(0x0004) (Edit)
-	unsigned long                                      bInCombatPhase : 1;                                       // 0x052C(0x0004)
-	unsigned long                                      bAllowActivate : 1;                                       // 0x052C(0x0004) (Net)
-	struct FName                                       SocketName;                                               // 0x0530(0x0008) (Edit)
-	float                                              RespawnNewItemDelay;                                      // 0x0538(0x0004) (Edit)
-	struct FColor                                      ToolTipDrawColor;                                         // 0x053C(0x0004) (Edit)
-	struct FString                                     CombatPhaseString;                                        // 0x0540(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     BuildPhaseString;                                         // 0x054C(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     PickedUpSpawnHudMessage;                                  // 0x0558(0x000C) (Edit, Localized, NeedCtorLink)
-	class UTexture2D*                                  MiniMapIconTexture;                                       // 0x0564(0x0004) (Edit)
-	class UTexture2D*                                  OffScreenWaypointTexture;                                 // 0x0568(0x0004) (Edit)
-	class UTexture2D*                                  OnScreenWaypointTexture;                                  // 0x056C(0x0004) (Edit)
-	float                                              WaypointIconOffscreenScale;                               // 0x0570(0x0004) (Edit)
-	float                                              WaypointIconCenterScale;                                  // 0x0574(0x0004) (Edit)
-	float                                              WaypointCenterYOffset;                                    // 0x0578(0x0004) (Edit)
-	float                                              MiniMapIconSize;                                          // 0x057C(0x0004) (Edit)
-	struct FColor                                      MiniMapIconColor;                                         // 0x0580(0x0004) (Edit)
-	struct FColor                                      MiniMapIconColorDisabled;                                 // 0x0584(0x0004) (Edit)
-	struct FColor                                      PickedUpSpawnMessageColor;                                // 0x0588(0x0004) (Edit)
-	TArray<class ADunDefPickupableItem*>               currentPickupItems;                                       // 0x058C(0x000C) (NeedCtorLink)
-	TArray<class ADunDefPickupableItem*>               currentSpawnedItems;                                      // 0x0598(0x000C) (NeedCtorLink)
-	float                                              MaxPickupDistance;                                        // 0x05A4(0x0004) (Edit)
-	float                                              PickupWeighting;                                          // 0x05A8(0x0004) (Edit)
-	float                                              PickupOffset;                                             // 0x05AC(0x0004) (Edit)
+	class USkeletalMeshComponent*                      MyMesh;                                                   // 0x0514(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UCylinderComponent*                          CylinderComponent;                                        // 0x0518(0x0004) (Edit, ExportObject, Component, EditInline)
+	TArray<class ADunDefPickupableItem*>               PickupableTemplates;                                      // 0x051C(0x000C) (Edit, NeedCtorLink)
+	class UDynamicLightEnvironmentComponent*           LightEnvironment;                                         // 0x0528(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    ActiveParticle;                                           // 0x052C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class ADunDefEmitterSpawnable*                     ActivateEmitter;                                          // 0x0530(0x0004) (Edit)
+	int                                                MaxAllowedSpawnedItems;                                   // 0x0534(0x0004) (Edit)
+	unsigned long                                      bUseSocketForSpawn : 1;                                   // 0x0538(0x0004) (Edit)
+	unsigned long                                      bInCombatPhase : 1;                                       // 0x0538(0x0004)
+	unsigned long                                      bAllowActivate : 1;                                       // 0x0538(0x0004) (Net)
+	struct FName                                       SocketName;                                               // 0x053C(0x0008) (Edit)
+	float                                              RespawnNewItemDelay;                                      // 0x0544(0x0004) (Edit)
+	struct FColor                                      ToolTipDrawColor;                                         // 0x0548(0x0004) (Edit)
+	struct FString                                     CombatPhaseString;                                        // 0x054C(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     BuildPhaseString;                                         // 0x0558(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     PickedUpSpawnHudMessage;                                  // 0x0564(0x000C) (Edit, Localized, NeedCtorLink)
+	class UTexture2D*                                  MiniMapIconTexture;                                       // 0x0570(0x0004) (Edit)
+	class UTexture2D*                                  OffScreenWaypointTexture;                                 // 0x0574(0x0004) (Edit)
+	class UTexture2D*                                  OnScreenWaypointTexture;                                  // 0x0578(0x0004) (Edit)
+	float                                              WaypointIconOffscreenScale;                               // 0x057C(0x0004) (Edit)
+	float                                              WaypointIconCenterScale;                                  // 0x0580(0x0004) (Edit)
+	float                                              WaypointCenterYOffset;                                    // 0x0584(0x0004) (Edit)
+	float                                              MiniMapIconSize;                                          // 0x0588(0x0004) (Edit)
+	struct FColor                                      MiniMapIconColor;                                         // 0x058C(0x0004) (Edit)
+	struct FColor                                      MiniMapIconColorDisabled;                                 // 0x0590(0x0004) (Edit)
+	struct FColor                                      PickedUpSpawnMessageColor;                                // 0x0594(0x0004) (Edit)
+	TArray<class ADunDefPickupableItem*>               currentPickupItems;                                       // 0x0598(0x000C) (NeedCtorLink)
+	TArray<class ADunDefPickupableItem*>               currentSpawnedItems;                                      // 0x05A4(0x000C) (NeedCtorLink)
+	float                                              MaxPickupDistance;                                        // 0x05B0(0x0004) (Edit)
+	float                                              PickupWeighting;                                          // 0x05B4(0x0004) (Edit)
+	float                                              PickupOffset;                                             // 0x05B8(0x0004) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -2239,31 +2241,31 @@ public:
 
 
 // Class DunDefSpecial.DunDefPlayer_DualMelee
-// 0x0090 (0x0E28 - 0x0D98)
+// 0x0090 (0x0E30 - 0x0DA0)
 class ADunDefPlayer_DualMelee : public ADunDefPlayer
 {
 public:
-	TEnumAsByte<EStances>                              myCurrentStance;                                          // 0x0D98(0x0001)
-	unsigned char                                      PendingFireMain;                                          // 0x0D99(0x0001)
-	unsigned char                                      PendingFireOff;                                           // 0x0D9A(0x0001)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x0D9B(0x0001) MISSED OFFSET
-	struct FName                                       OffHandWeaponSocketName;                                  // 0x0D9C(0x0008) (Edit)
-	struct FName                                       StanceIdleNodeName;                                       // 0x0DA4(0x0008) (Edit)
-	struct FName                                       StanceMovementNodeName;                                   // 0x0DAC(0x0008) (Edit)
-	float                                              StanceBlendTime;                                          // 0x0DB4(0x0004) (Edit)
-	class UAnimNodeBlendList*                          StanceIdleNode;                                           // 0x0DB8(0x0004)
-	class UAnimNodeBlendList*                          StanceMovementNode;                                       // 0x0DBC(0x0004)
-	class ADunDefWeapon_MeleeSword*                    PreviousAttackWeapon;                                     // 0x0DC0(0x0004)
-	int                                                currentComboSwingIndex;                                   // 0x0DC4(0x0004)
-	struct FMeleeSwingInfo                             currentComboMeleeSwingInfo;                               // 0x0DC8(0x002C)
-	unsigned long                                      bInCombo : 1;                                             // 0x0DF4(0x0004)
-	float                                              LastSwingTime;                                            // 0x0DF8(0x0004)
-	class ADunDefWeapon_MeleeSword*                    OffHandWeapon;                                            // 0x0DFC(0x0004) (Net)
-	TArray<struct FMeleeSwingInfo>                     OffHandMeleeSwingInfos;                                   // 0x0E00(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FMeleeSwingInfo>                     MainHandMeleeSwingInfos;                                  // 0x0E0C(0x000C) (Edit, NeedCtorLink)
-	class ADunDefPlayerAbility_StanceBase*             myActiveStance;                                           // 0x0E18(0x0004)
-	class ADunDefPlayerAbility_StanceBase*             mySecondaryStance;                                        // 0x0E1C(0x0004)
-	struct FName                                       PreviousAnim;                                             // 0x0E20(0x0008)
+	TEnumAsByte<EStances>                              myCurrentStance;                                          // 0x0DA0(0x0001)
+	unsigned char                                      PendingFireMain;                                          // 0x0DA1(0x0001)
+	unsigned char                                      PendingFireOff;                                           // 0x0DA2(0x0001)
+	unsigned char                                      UnknownData00[0x1];                                       // 0x0DA3(0x0001) MISSED OFFSET
+	struct FName                                       OffHandWeaponSocketName;                                  // 0x0DA4(0x0008) (Edit)
+	struct FName                                       StanceIdleNodeName;                                       // 0x0DAC(0x0008) (Edit)
+	struct FName                                       StanceMovementNodeName;                                   // 0x0DB4(0x0008) (Edit)
+	float                                              StanceBlendTime;                                          // 0x0DBC(0x0004) (Edit)
+	class UAnimNodeBlendList*                          StanceIdleNode;                                           // 0x0DC0(0x0004)
+	class UAnimNodeBlendList*                          StanceMovementNode;                                       // 0x0DC4(0x0004)
+	class ADunDefWeapon_MeleeSword*                    PreviousAttackWeapon;                                     // 0x0DC8(0x0004)
+	int                                                currentComboSwingIndex;                                   // 0x0DCC(0x0004)
+	struct FMeleeSwingInfo                             currentComboMeleeSwingInfo;                               // 0x0DD0(0x002C)
+	unsigned long                                      bInCombo : 1;                                             // 0x0DFC(0x0004)
+	float                                              LastSwingTime;                                            // 0x0E00(0x0004)
+	class ADunDefWeapon_MeleeSword*                    OffHandWeapon;                                            // 0x0E04(0x0004) (Net)
+	TArray<struct FMeleeSwingInfo>                     OffHandMeleeSwingInfos;                                   // 0x0E08(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FMeleeSwingInfo>                     MainHandMeleeSwingInfos;                                  // 0x0E14(0x000C) (Edit, NeedCtorLink)
+	class ADunDefPlayerAbility_StanceBase*             myActiveStance;                                           // 0x0E20(0x0004)
+	class ADunDefPlayerAbility_StanceBase*             mySecondaryStance;                                        // 0x0E24(0x0004)
+	struct FName                                       PreviousAnim;                                             // 0x0E28(0x0008)
 
 	static UClass* StaticClass()
 	{
@@ -2452,38 +2454,38 @@ public:
 
 
 // Class DunDefSpecial.DunDefPlayer_Jester
-// 0x008C (0x0E24 - 0x0D98)
+// 0x008C (0x0E2C - 0x0DA0)
 class ADunDefPlayer_Jester : public ADunDefPlayer
 {
 public:
-	float                                              WeaponIconScale;                                          // 0x0D98(0x0004) (Edit)
-	float                                              WeaponIconFrameSize;                                      // 0x0D9C(0x0004) (Edit)
-	float                                              WeaponIconYOffset;                                        // 0x0DA0(0x0004) (Edit)
-	float                                              WeaponIconXOffset;                                        // 0x0DA4(0x0004) (Edit)
-	float                                              WeaponIconXOffset_GamePad;                                // 0x0DA8(0x0004) (Edit)
-	float                                              WeaponIconYOffset_GamePad;                                // 0x0DAC(0x0004) (Edit)
-	float                                              WeaponIconSize;                                           // 0x0DB0(0x0004) (Edit)
-	float                                              SplitScreenIconScale;                                     // 0x0DB4(0x0004) (Edit)
-	float                                              FrameInterpSpeed;                                         // 0x0DB8(0x0004) (Edit)
-	float                                              OffHandIconOpacity;                                       // 0x0DBC(0x0004) (Edit)
-	float                                              MainHandIconOpacity;                                      // 0x0DC0(0x0004) (Edit)
-	class ADunDefWeapon*                               storedWeapon;                                             // 0x0DC4(0x0004) (Net)
-	struct FName                                       WeaponSwapAnim_ToRanged;                                  // 0x0DC8(0x0008) (Edit)
-	struct FName                                       WeaponSwapAnim_ToStaff;                                   // 0x0DD0(0x0008) (Edit)
-	struct FName                                       Shootanim_Spear;                                          // 0x0DD8(0x0008) (Edit)
-	float                                              MinWeaponSwitchDelay;                                     // 0x0DE0(0x0004) (Edit)
-	float                                              LastSwitchTime;                                           // 0x0DE4(0x0004)
-	class USoundCue*                                   WeaponSwitchSound;                                        // 0x0DE8(0x0004) (Edit)
-	class USurface*                                    WeaponSelectFrame;                                        // 0x0DEC(0x0004) (Edit)
-	class UAnimSet*                                    CrossBowAnimSet;                                          // 0x0DF0(0x0004) (Edit)
-	class UAnimSet*                                    StaffAnimSet;                                             // 0x0DF4(0x0004) (Edit)
-	struct FName                                       WeaponCrossbow_Socket;                                    // 0x0DF8(0x0008) (Edit)
-	struct FName                                       WeaponStaff_Socket;                                       // 0x0E00(0x0008) (Edit)
-	struct FName                                       WeaponSpear_Socket;                                       // 0x0E08(0x0008) (Edit)
-	struct FName                                       WeaponSword_Socket;                                       // 0x0E10(0x0008) (Edit)
-	int                                                MainHandIndex;                                            // 0x0E18(0x0004) (Net)
-	unsigned long                                      bDoInterp : 1;                                            // 0x0E1C(0x0004)
-	float                                              InterpTime;                                               // 0x0E20(0x0004)
+	float                                              WeaponIconScale;                                          // 0x0DA0(0x0004) (Edit)
+	float                                              WeaponIconFrameSize;                                      // 0x0DA4(0x0004) (Edit)
+	float                                              WeaponIconYOffset;                                        // 0x0DA8(0x0004) (Edit)
+	float                                              WeaponIconXOffset;                                        // 0x0DAC(0x0004) (Edit)
+	float                                              WeaponIconXOffset_GamePad;                                // 0x0DB0(0x0004) (Edit)
+	float                                              WeaponIconYOffset_GamePad;                                // 0x0DB4(0x0004) (Edit)
+	float                                              WeaponIconSize;                                           // 0x0DB8(0x0004) (Edit)
+	float                                              SplitScreenIconScale;                                     // 0x0DBC(0x0004) (Edit)
+	float                                              FrameInterpSpeed;                                         // 0x0DC0(0x0004) (Edit)
+	float                                              OffHandIconOpacity;                                       // 0x0DC4(0x0004) (Edit)
+	float                                              MainHandIconOpacity;                                      // 0x0DC8(0x0004) (Edit)
+	class ADunDefWeapon*                               storedWeapon;                                             // 0x0DCC(0x0004) (Net)
+	struct FName                                       WeaponSwapAnim_ToRanged;                                  // 0x0DD0(0x0008) (Edit)
+	struct FName                                       WeaponSwapAnim_ToStaff;                                   // 0x0DD8(0x0008) (Edit)
+	struct FName                                       Shootanim_Spear;                                          // 0x0DE0(0x0008) (Edit)
+	float                                              MinWeaponSwitchDelay;                                     // 0x0DE8(0x0004) (Edit)
+	float                                              LastSwitchTime;                                           // 0x0DEC(0x0004)
+	class USoundCue*                                   WeaponSwitchSound;                                        // 0x0DF0(0x0004) (Edit)
+	class USurface*                                    WeaponSelectFrame;                                        // 0x0DF4(0x0004) (Edit)
+	class UAnimSet*                                    CrossBowAnimSet;                                          // 0x0DF8(0x0004) (Edit)
+	class UAnimSet*                                    StaffAnimSet;                                             // 0x0DFC(0x0004) (Edit)
+	struct FName                                       WeaponCrossbow_Socket;                                    // 0x0E00(0x0008) (Edit)
+	struct FName                                       WeaponStaff_Socket;                                       // 0x0E08(0x0008) (Edit)
+	struct FName                                       WeaponSpear_Socket;                                       // 0x0E10(0x0008) (Edit)
+	struct FName                                       WeaponSword_Socket;                                       // 0x0E18(0x0008) (Edit)
+	int                                                MainHandIndex;                                            // 0x0E20(0x0004) (Net)
+	unsigned long                                      bDoInterp : 1;                                            // 0x0E24(0x0004)
+	float                                              InterpTime;                                               // 0x0E28(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -2516,53 +2518,53 @@ public:
 
 
 // Class DunDefSpecial.DunDefPlayer_SeriesEv
-// 0x00D0 (0x0E68 - 0x0D98)
+// 0x00D0 (0x0E70 - 0x0DA0)
 class ADunDefPlayer_SeriesEv : public ADunDefPlayer
 {
 public:
-	class ADunDefWeapon*                               storedWeapon;                                             // 0x0D98(0x0004) (Net)
-	float                                              WeaponIconScale;                                          // 0x0D9C(0x0004) (Edit)
-	float                                              WeaponIconFrameSize;                                      // 0x0DA0(0x0004) (Edit)
-	float                                              WeaponIconYOffset;                                        // 0x0DA4(0x0004) (Edit)
-	float                                              WeaponIconXOffset;                                        // 0x0DA8(0x0004) (Edit)
-	float                                              WeaponIconXOffset_GamePad;                                // 0x0DAC(0x0004) (Edit)
-	float                                              WeaponIconYOffset_GamePad;                                // 0x0DB0(0x0004) (Edit)
-	float                                              WeaponIconSize;                                           // 0x0DB4(0x0004) (Edit)
-	float                                              SplitScreenIconScale;                                     // 0x0DB8(0x0004) (Edit)
-	float                                              OffHandIconOpacity;                                       // 0x0DBC(0x0004) (Edit)
-	float                                              MainHandIconOpacity;                                      // 0x0DC0(0x0004) (Edit)
-	float                                              ArmUpNoFireTime;                                          // 0x0DC4(0x0004) (Edit)
-	class USurface*                                    WeaponSelectFrame;                                        // 0x0DC8(0x0004) (Edit)
-	struct FName                                       DoubleShootAnim;                                          // 0x0DCC(0x0008) (Edit)
-	struct FName                                       SingleShootAnim;                                          // 0x0DD4(0x0008) (Edit)
-	struct FName                                       WeaponElementalSocket;                                    // 0x0DDC(0x0008) (Edit)
-	struct FName                                       WeaponSwapAnim;                                           // 0x0DE4(0x0008) (Edit)
-	TArray<struct FName>                               GunUpHurtAnims;                                           // 0x0DEC(0x000C) (Edit, NeedCtorLink)
-	class UMaterialInstanceConstant*                   DefaultWeaponIcon;                                        // 0x0DF8(0x0004) (Edit)
-	TArray<struct FGameDamageEntry>                    ElementalWeaponOverrides;                                 // 0x0DFC(0x000C) (Edit, NeedCtorLink)
-	class USoundCue*                                   WeaponSwitchSound;                                        // 0x0E08(0x0004) (Edit)
-	float                                              FrameInterpSpeed;                                         // 0x0E0C(0x0004) (Edit)
-	float                                              MinWeaponSwitchDelay;                                     // 0x0E10(0x0004) (Edit)
-	float                                              LastSwitchTime;                                           // 0x0E14(0x0004)
-	class ADunDefPlayerAbility_ManaCharge*             activeChargeAbility;                                      // 0x0E18(0x0004)
-	float                                              LastFireTime;                                             // 0x0E1C(0x0004)
-	unsigned long                                      bArmUp : 1;                                               // 0x0E20(0x0004)
-	unsigned long                                      bDoInterp : 1;                                            // 0x0E20(0x0004)
-	class UMaterialInstanceConstant*                   MainHandWeapTex;                                          // 0x0E24(0x0004) (Transient)
-	class UMaterialInstanceConstant*                   OffHandWeapTex;                                           // 0x0E28(0x0004) (Transient)
-	float                                              frameXCenterPos;                                          // 0x0E2C(0x0004)
-	float                                              frameYCenterPos;                                          // 0x0E30(0x0004)
-	int                                                MainHandIndex;                                            // 0x0E34(0x0004) (Net)
-	float                                              InterpTime;                                               // 0x0E38(0x0004)
-	struct FName                                       HoveringBlenderName;                                      // 0x0E3C(0x0008) (Edit)
-	float                                              HoverOnBlendTime;                                         // 0x0E44(0x0004) (Edit)
-	float                                              HoverOffBlendTime;                                        // 0x0E48(0x0004) (Edit)
-	class USoundCue*                                   HoveringStartSound;                                       // 0x0E4C(0x0004) (Edit)
-	class USoundCue*                                   HoveringStopSound;                                        // 0x0E50(0x0004) (Edit)
-	class UParticleSystemComponent*                    HoveringParticleSystem;                                   // 0x0E54(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UAudioComponent*                             HoveringLoopSound;                                        // 0x0E58(0x0004) (Edit, ExportObject, Component, EditInline)
-	struct FName                                       HoveringParticleSystemAttachSocketName;                   // 0x0E5C(0x0008) (Edit)
-	class UAnimNodeBlend*                              HoveringBlender;                                          // 0x0E64(0x0004) (Transient)
+	class ADunDefWeapon*                               storedWeapon;                                             // 0x0DA0(0x0004) (Net)
+	float                                              WeaponIconScale;                                          // 0x0DA4(0x0004) (Edit)
+	float                                              WeaponIconFrameSize;                                      // 0x0DA8(0x0004) (Edit)
+	float                                              WeaponIconYOffset;                                        // 0x0DAC(0x0004) (Edit)
+	float                                              WeaponIconXOffset;                                        // 0x0DB0(0x0004) (Edit)
+	float                                              WeaponIconXOffset_GamePad;                                // 0x0DB4(0x0004) (Edit)
+	float                                              WeaponIconYOffset_GamePad;                                // 0x0DB8(0x0004) (Edit)
+	float                                              WeaponIconSize;                                           // 0x0DBC(0x0004) (Edit)
+	float                                              SplitScreenIconScale;                                     // 0x0DC0(0x0004) (Edit)
+	float                                              OffHandIconOpacity;                                       // 0x0DC4(0x0004) (Edit)
+	float                                              MainHandIconOpacity;                                      // 0x0DC8(0x0004) (Edit)
+	float                                              ArmUpNoFireTime;                                          // 0x0DCC(0x0004) (Edit)
+	class USurface*                                    WeaponSelectFrame;                                        // 0x0DD0(0x0004) (Edit)
+	struct FName                                       DoubleShootAnim;                                          // 0x0DD4(0x0008) (Edit)
+	struct FName                                       SingleShootAnim;                                          // 0x0DDC(0x0008) (Edit)
+	struct FName                                       WeaponElementalSocket;                                    // 0x0DE4(0x0008) (Edit)
+	struct FName                                       WeaponSwapAnim;                                           // 0x0DEC(0x0008) (Edit)
+	TArray<struct FName>                               GunUpHurtAnims;                                           // 0x0DF4(0x000C) (Edit, NeedCtorLink)
+	class UMaterialInstanceConstant*                   DefaultWeaponIcon;                                        // 0x0E00(0x0004) (Edit)
+	TArray<struct FGameDamageEntry>                    ElementalWeaponOverrides;                                 // 0x0E04(0x000C) (Edit, NeedCtorLink)
+	class USoundCue*                                   WeaponSwitchSound;                                        // 0x0E10(0x0004) (Edit)
+	float                                              FrameInterpSpeed;                                         // 0x0E14(0x0004) (Edit)
+	float                                              MinWeaponSwitchDelay;                                     // 0x0E18(0x0004) (Edit)
+	float                                              LastSwitchTime;                                           // 0x0E1C(0x0004)
+	class ADunDefPlayerAbility_ManaCharge*             activeChargeAbility;                                      // 0x0E20(0x0004)
+	float                                              LastFireTime;                                             // 0x0E24(0x0004)
+	unsigned long                                      bArmUp : 1;                                               // 0x0E28(0x0004)
+	unsigned long                                      bDoInterp : 1;                                            // 0x0E28(0x0004)
+	class UMaterialInstanceConstant*                   MainHandWeapTex;                                          // 0x0E2C(0x0004) (Transient)
+	class UMaterialInstanceConstant*                   OffHandWeapTex;                                           // 0x0E30(0x0004) (Transient)
+	float                                              frameXCenterPos;                                          // 0x0E34(0x0004)
+	float                                              frameYCenterPos;                                          // 0x0E38(0x0004)
+	int                                                MainHandIndex;                                            // 0x0E3C(0x0004) (Net)
+	float                                              InterpTime;                                               // 0x0E40(0x0004)
+	struct FName                                       HoveringBlenderName;                                      // 0x0E44(0x0008) (Edit)
+	float                                              HoverOnBlendTime;                                         // 0x0E4C(0x0004) (Edit)
+	float                                              HoverOffBlendTime;                                        // 0x0E50(0x0004) (Edit)
+	class USoundCue*                                   HoveringStartSound;                                       // 0x0E54(0x0004) (Edit)
+	class USoundCue*                                   HoveringStopSound;                                        // 0x0E58(0x0004) (Edit)
+	class UParticleSystemComponent*                    HoveringParticleSystem;                                   // 0x0E5C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UAudioComponent*                             HoveringLoopSound;                                        // 0x0E60(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FName                                       HoveringParticleSystemAttachSocketName;                   // 0x0E64(0x0008) (Edit)
+	class UAnimNodeBlend*                              HoveringBlender;                                          // 0x0E6C(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -3695,15 +3697,15 @@ public:
 
 
 // Class DunDefSpecial.DunDefTower_BoostAura
-// 0x002C (0x08EC - 0x08C0)
+// 0x002C (0x08F8 - 0x08CC)
 class ADunDefTower_BoostAura : public ADunDefTower_Aura
 {
 public:
-	struct FString                                     boostedTowerString;                                       // 0x08C0(0x000C) (Edit, NeedCtorLink)
-	TArray<class UClass*>                              DamagableClassesToIgnore;                                 // 0x08CC(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FBoostingtypes>                      BoostValues;                                              // 0x08D8(0x000C) (Edit, NeedCtorLink)
-	float                                              AttackRangeMultiplier;                                    // 0x08E4(0x0004) (Net)
-	float                                              ResistanceMultiplier;                                     // 0x08E8(0x0004) (Net)
+	struct FString                                     boostedTowerString;                                       // 0x08CC(0x000C) (Edit, NeedCtorLink)
+	TArray<class UClass*>                              DamagableClassesToIgnore;                                 // 0x08D8(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FBoostingtypes>                      BoostValues;                                              // 0x08E4(0x000C) (Edit, NeedCtorLink)
+	float                                              AttackRangeMultiplier;                                    // 0x08F0(0x0004) (Net)
+	float                                              ResistanceMultiplier;                                     // 0x08F4(0x0004) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -3736,22 +3738,22 @@ public:
 
 
 // Class DunDefSpecial.DunDefTower_TripTowerBuff
-// 0x0050 (0x0A40 - 0x09F0)
+// 0x0050 (0x0A4C - 0x09FC)
 class ADunDefTower_TripTowerBuff : public ADunDefTower_TripWire
 {
 public:
-	TArray<struct FBoostingtypes>                      BoostValues;                                              // 0x09F0(0x000C) (Edit, NeedCtorLink)
-	int                                                MaxAllowedLostTowers;                                     // 0x09FC(0x0004) (Edit)
-	int                                                currentLostTowers;                                        // 0x0A00(0x0004)
-	float                                              TowerCheckInterval;                                       // 0x0A04(0x0004)
-	float                                              LastTowerCheckTime;                                       // 0x0A08(0x0004)
-	float                                              AttachParticleScale;                                      // 0x0A0C(0x0004) (Edit)
-	class UParticleSystem*                             AttachParticle;                                           // 0x0A10(0x0004) (Edit)
-	TArray<class UClass*>                              IgnoreForBuffs;                                           // 0x0A14(0x000C) (Edit, NeedCtorLink)
-	struct FString                                     boostedTowerString;                                       // 0x0A20(0x000C) (Edit, Localized, NeedCtorLink)
-	float                                              AttackRangeMultiplier;                                    // 0x0A2C(0x0004) (Net)
-	float                                              ResistanceMultiplier;                                     // 0x0A30(0x0004) (Net)
-	TArray<class ADunDefTower*>                        TracedTowers;                                             // 0x0A34(0x000C) (Transient, NeedCtorLink)
+	TArray<struct FBoostingtypes>                      BoostValues;                                              // 0x09FC(0x000C) (Edit, NeedCtorLink)
+	int                                                MaxAllowedLostTowers;                                     // 0x0A08(0x0004) (Edit)
+	int                                                currentLostTowers;                                        // 0x0A0C(0x0004)
+	float                                              TowerCheckInterval;                                       // 0x0A10(0x0004)
+	float                                              LastTowerCheckTime;                                       // 0x0A14(0x0004)
+	float                                              AttachParticleScale;                                      // 0x0A18(0x0004) (Edit)
+	class UParticleSystem*                             AttachParticle;                                           // 0x0A1C(0x0004) (Edit)
+	TArray<class UClass*>                              IgnoreForBuffs;                                           // 0x0A20(0x000C) (Edit, NeedCtorLink)
+	struct FString                                     boostedTowerString;                                       // 0x0A2C(0x000C) (Edit, Localized, NeedCtorLink)
+	float                                              AttackRangeMultiplier;                                    // 0x0A38(0x0004) (Net)
+	float                                              ResistanceMultiplier;                                     // 0x0A3C(0x0004) (Net)
+	TArray<class ADunDefTower*>                        TracedTowers;                                             // 0x0A40(0x000C) (Transient, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -3786,19 +3788,19 @@ public:
 
 
 // Class DunDefSpecial.DunDefTower_BuffSpawner
-// 0x003C (0x0860 - 0x0824)
+// 0x003C (0x086C - 0x0830)
 class ADunDefTower_BuffSpawner : public ADunDefTower
 {
 public:
-	TArray<class UDunDefBuff*>                         BuffTemplates;                                            // 0x0824(0x000C) (Edit, NeedCtorLink)
-	TArray<class UClass*>                              ClassesToAffect;                                          // 0x0830(0x000C) (Edit, NeedCtorLink)
-	unsigned long                                      bIsPhysicalTower : 1;                                     // 0x083C(0x0004) (Edit)
-	unsigned long                                      bPreventTowerOverlap : 1;                                 // 0x083C(0x0004) (Edit)
-	unsigned long                                      bDoneInitalOverlap : 1;                                   // 0x083C(0x0004) (Net, Transient)
-	float                                              TowerPreventionRadiusOffset;                              // 0x0840(0x0004) (Edit)
-	int                                                CostPerBuffSpawn;                                         // 0x0844(0x0004) (Edit)
-	TArray<struct FsBuffTarget>                        BuffTargets;                                              // 0x0848(0x000C) (NeedCtorLink)
-	TArray<class UDunDefBuff*>                         ActiveBuffs;                                              // 0x0854(0x000C) (NeedCtorLink)
+	TArray<class UDunDefBuff*>                         BuffTemplates;                                            // 0x0830(0x000C) (Edit, NeedCtorLink)
+	TArray<class UClass*>                              ClassesToAffect;                                          // 0x083C(0x000C) (Edit, NeedCtorLink)
+	unsigned long                                      bIsPhysicalTower : 1;                                     // 0x0848(0x0004) (Edit)
+	unsigned long                                      bPreventTowerOverlap : 1;                                 // 0x0848(0x0004) (Edit)
+	unsigned long                                      bDoneInitalOverlap : 1;                                   // 0x0848(0x0004) (Net, Transient)
+	float                                              TowerPreventionRadiusOffset;                              // 0x084C(0x0004) (Edit)
+	int                                                CostPerBuffSpawn;                                         // 0x0850(0x0004) (Edit)
+	TArray<struct FsBuffTarget>                        BuffTargets;                                              // 0x0854(0x000C) (NeedCtorLink)
+	TArray<class UDunDefBuff*>                         ActiveBuffs;                                              // 0x0860(0x000C) (NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -3833,18 +3835,18 @@ public:
 
 
 // Class DunDefSpecial.DunDefTower_EmitterBurst
-// 0x0020 (0x08FC - 0x08DC)
+// 0x0020 (0x0908 - 0x08E8)
 class ADunDefTower_EmitterBurst : public ADunDefTower_ProjectileType
 {
 public:
-	class ADunDefEmitterDamage*                        EmitterTemplate;                                          // 0x08DC(0x0004) (Edit)
-	float                                              DamageHeight;                                             // 0x08E0(0x0004) (Edit)
-	float                                              DamageWidth;                                              // 0x08E4(0x0004) (Edit)
-	float                                              BurstTime;                                                // 0x08E8(0x0004) (Edit)
-	struct FName                                       stopShootAnim;                                            // 0x08EC(0x0008) (Edit)
-	unsigned long                                      bSingleBurst : 1;                                         // 0x08F4(0x0004) (Edit)
-	unsigned long                                      bIsShooting : 1;                                          // 0x08F4(0x0004) (Net, Transient)
-	class ADunDefEmitterDamage*                        damageEmitterInstance;                                    // 0x08F8(0x0004) (Net, Transient)
+	class ADunDefEmitterDamage*                        EmitterTemplate;                                          // 0x08E8(0x0004) (Edit)
+	float                                              DamageHeight;                                             // 0x08EC(0x0004) (Edit)
+	float                                              DamageWidth;                                              // 0x08F0(0x0004) (Edit)
+	float                                              BurstTime;                                                // 0x08F4(0x0004) (Edit)
+	struct FName                                       stopShootAnim;                                            // 0x08F8(0x0008) (Edit)
+	unsigned long                                      bSingleBurst : 1;                                         // 0x0900(0x0004) (Edit)
+	unsigned long                                      bIsShooting : 1;                                          // 0x0900(0x0004) (Net, Transient)
+	class ADunDefEmitterDamage*                        damageEmitterInstance;                                    // 0x0904(0x0004) (Net, Transient)
 
 	static UClass* StaticClass()
 	{
@@ -3864,36 +3866,36 @@ public:
 
 
 // Class DunDefSpecial.DunDefTower_Present
-// 0x0098 (0x08BC - 0x0824)
+// 0x0098 (0x08C8 - 0x0830)
 class ADunDefTower_Present : public ADunDefTower
 {
 public:
-	struct FString                                     ChanceToSpawnString;                                      // 0x0824(0x000C) (Edit, Localized, NeedCtorLink)
-	TArray<struct FspawnTypes>                         mySpawns;                                                 // 0x0830(0x000C) (Edit, NeedCtorLink)
-	int                                                minManatoSpawn;                                           // 0x083C(0x0004) (Edit)
-	int                                                maxManatoSpawn;                                           // 0x0840(0x0004) (Edit)
-	class ADunDefManaToken*                            SmallManaTokenTemplate;                                   // 0x0844(0x0004) (Edit)
-	class ADunDefManaToken*                            MinorManaTokenTemplate;                                   // 0x0848(0x0004) (Edit)
-	class ADunDefManaToken*                            LargeManaTokenTemplate;                                   // 0x084C(0x0004) (Edit)
-	class ADunDefManaToken*                            SuperManaTokenTemplate;                                   // 0x0850(0x0004) (Edit)
-	float                                              ManaTokenImpulseMagnitude;                                // 0x0854(0x0004) (Edit)
-	float                                              ManaTokenTorqueMagnitude;                                 // 0x0858(0x0004) (Edit)
-	struct FVector                                     ManaTokenImpulseUpOffset;                                 // 0x085C(0x000C) (Edit)
-	struct FVector                                     PlacementPosOffset;                                       // 0x0868(0x000C) (Edit)
-	float                                              GlobalEquipmentDropValueMin;                              // 0x0874(0x0004) (Edit)
-	float                                              GlobalEquipmentDropValueMax;                              // 0x0878(0x0004) (Edit)
-	float                                              NightmareAbsoluteMaxEquipmentDropQuality;                 // 0x087C(0x0004) (Edit)
-	float                                              NightmareGlobalEquipmentDropQuality;                      // 0x0880(0x0004) (Edit)
-	float                                              AdditionalEquipmentRarityWeighting;                       // 0x0884(0x0004) (Edit)
-	float                                              MaxDropEquipmentAngle;                                    // 0x0888(0x0004) (Edit)
-	float                                              MaxWaveEquipmentQualityMultiplier;                        // 0x088C(0x0004) (Edit)
-	float                                              EquipmentQualityMultiplierMaxWave;                        // 0x0890(0x0004) (Edit)
-	float                                              AbsoluteMaxEquipmentDropQuality;                          // 0x0894(0x0004) (Edit)
-	float                                              GlobalEquipmentDropQuality;                               // 0x0898(0x0004) (Edit)
-	TArray<float>                                      DifficultyEquipmentQualityMultipliers;                    // 0x089C(0x000C) (Edit, NeedCtorLink)
-	unsigned long                                      bOpenPresentOnCombatPhase : 1;                            // 0x08A8(0x0004) (Edit)
-	int                                                spawnGroupIdx;                                            // 0x08AC(0x0004) (Transient)
-	TArray<struct FspawnChances>                       tempSpawnType;                                            // 0x08B0(0x000C) (Transient, NeedCtorLink)
+	struct FString                                     ChanceToSpawnString;                                      // 0x0830(0x000C) (Edit, Localized, NeedCtorLink)
+	TArray<struct FspawnTypes>                         mySpawns;                                                 // 0x083C(0x000C) (Edit, NeedCtorLink)
+	int                                                minManatoSpawn;                                           // 0x0848(0x0004) (Edit)
+	int                                                maxManatoSpawn;                                           // 0x084C(0x0004) (Edit)
+	class ADunDefManaToken*                            SmallManaTokenTemplate;                                   // 0x0850(0x0004) (Edit)
+	class ADunDefManaToken*                            MinorManaTokenTemplate;                                   // 0x0854(0x0004) (Edit)
+	class ADunDefManaToken*                            LargeManaTokenTemplate;                                   // 0x0858(0x0004) (Edit)
+	class ADunDefManaToken*                            SuperManaTokenTemplate;                                   // 0x085C(0x0004) (Edit)
+	float                                              ManaTokenImpulseMagnitude;                                // 0x0860(0x0004) (Edit)
+	float                                              ManaTokenTorqueMagnitude;                                 // 0x0864(0x0004) (Edit)
+	struct FVector                                     ManaTokenImpulseUpOffset;                                 // 0x0868(0x000C) (Edit)
+	struct FVector                                     PlacementPosOffset;                                       // 0x0874(0x000C) (Edit)
+	float                                              GlobalEquipmentDropValueMin;                              // 0x0880(0x0004) (Edit)
+	float                                              GlobalEquipmentDropValueMax;                              // 0x0884(0x0004) (Edit)
+	float                                              NightmareAbsoluteMaxEquipmentDropQuality;                 // 0x0888(0x0004) (Edit)
+	float                                              NightmareGlobalEquipmentDropQuality;                      // 0x088C(0x0004) (Edit)
+	float                                              AdditionalEquipmentRarityWeighting;                       // 0x0890(0x0004) (Edit)
+	float                                              MaxDropEquipmentAngle;                                    // 0x0894(0x0004) (Edit)
+	float                                              MaxWaveEquipmentQualityMultiplier;                        // 0x0898(0x0004) (Edit)
+	float                                              EquipmentQualityMultiplierMaxWave;                        // 0x089C(0x0004) (Edit)
+	float                                              AbsoluteMaxEquipmentDropQuality;                          // 0x08A0(0x0004) (Edit)
+	float                                              GlobalEquipmentDropQuality;                               // 0x08A4(0x0004) (Edit)
+	TArray<float>                                      DifficultyEquipmentQualityMultipliers;                    // 0x08A8(0x000C) (Edit, NeedCtorLink)
+	unsigned long                                      bOpenPresentOnCombatPhase : 1;                            // 0x08B4(0x0004) (Edit)
+	int                                                spawnGroupIdx;                                            // 0x08B8(0x0004) (Transient)
+	TArray<struct FspawnChances>                       tempSpawnType;                                            // 0x08BC(0x000C) (Transient, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -3919,17 +3921,17 @@ public:
 
 
 // Class DunDefSpecial.DunDefTower_ProjectileReflect
-// 0x0016 (0x0AB6 - 0x0AA0)
+// 0x0016 (0x0AC2 - 0x0AAC)
 class ADunDefTower_ProjectileReflect : public ADunDefTower_TripPhysical
 {
 public:
-	float                                              costPerReflect;                                           // 0x0AA0(0x0004) (Edit)
-	float                                              ProjDmgScale;                                             // 0x0AA4(0x0004) (Edit)
-	float                                              ProjDmgExp;                                               // 0x0AA8(0x0004) (Edit)
-	float                                              ProjSecondDmgScale;                                       // 0x0AAC(0x0004) (Edit)
-	float                                              ProjSecondDmgExp;                                         // 0x0AB0(0x0004) (Edit)
-	TEnumAsByte<ELevelUpValueType>                     ProjDmgStatType;                                          // 0x0AB4(0x0001) (Edit)
-	TEnumAsByte<ELevelUpValueType>                     ProjSecondDmgStatType;                                    // 0x0AB5(0x0001) (Edit)
+	float                                              costPerReflect;                                           // 0x0AAC(0x0004) (Edit)
+	float                                              ProjDmgScale;                                             // 0x0AB0(0x0004) (Edit)
+	float                                              ProjDmgExp;                                               // 0x0AB4(0x0004) (Edit)
+	float                                              ProjSecondDmgScale;                                       // 0x0AB8(0x0004) (Edit)
+	float                                              ProjSecondDmgExp;                                         // 0x0ABC(0x0004) (Edit)
+	TEnumAsByte<ELevelUpValueType>                     ProjDmgStatType;                                          // 0x0AC0(0x0001) (Edit)
+	TEnumAsByte<ELevelUpValueType>                     ProjSecondDmgStatType;                                    // 0x0AC1(0x0001) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -3949,14 +3951,14 @@ public:
 
 
 // Class DunDefSpecial.DunDefTower_WebWall
-// 0x000C (0x0AAC - 0x0AA0)
+// 0x000C (0x0AB8 - 0x0AAC)
 class ADunDefTower_WebWall : public ADunDefTower_TripPhysical
 {
 public:
-	class UDunDefBuff*                                 BuffTemplate;                                             // 0x0AA0(0x0004) (Edit)
-	int                                                CostPerWeb;                                               // 0x0AA4(0x0004) (Edit)
-	unsigned long                                      ActivateTouchForSameTeam : 1;                             // 0x0AA8(0x0004) (Edit)
-	unsigned long                                      bBuffExistingWebbedTargets : 1;                           // 0x0AA8(0x0004) (Edit)
+	class UDunDefBuff*                                 BuffTemplate;                                             // 0x0AAC(0x0004) (Edit)
+	int                                                CostPerWeb;                                               // 0x0AB0(0x0004) (Edit)
+	unsigned long                                      ActivateTouchForSameTeam : 1;                             // 0x0AB4(0x0004) (Edit)
+	unsigned long                                      bBuffExistingWebbedTargets : 1;                           // 0x0AB4(0x0004) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -3981,13 +3983,13 @@ public:
 
 
 // Class DunDefSpecial.DunDefTurkey
-// 0x000C (0x0D18 - 0x0D0C)
+// 0x000C (0x0D20 - 0x0D14)
 class ADunDefTurkey : public ADunDefEnemy
 {
 public:
-	class ADunDefEmitterSpawnable*                     DeathEffect;                                              // 0x0D0C(0x0004) (Edit)
-	float                                              FleeSpeed;                                                // 0x0D10(0x0004) (Edit)
-	int                                                FleeSoundIndex;                                           // 0x0D14(0x0004) (Net)
+	class ADunDefEmitterSpawnable*                     DeathEffect;                                              // 0x0D14(0x0004) (Edit)
+	float                                              FleeSpeed;                                                // 0x0D18(0x0004) (Edit)
+	int                                                FleeSoundIndex;                                           // 0x0D1C(0x0004) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -4041,7 +4043,7 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_AroundTheWorld
-// 0x0000 (0x0548 - 0x0548)
+// 0x0000 (0x053C - 0x053C)
 class AGameInfo_AroundTheWorld : public AGameInfo_Special
 {
 public:
@@ -4059,7 +4061,7 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_Assault
-// 0x0000 (0x0548 - 0x0548)
+// 0x0000 (0x053C - 0x053C)
 class AGameInfo_Assault : public AGameInfo_Special
 {
 public:
@@ -4079,7 +4081,7 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_Chicken
-// 0x0000 (0x0548 - 0x0548)
+// 0x0000 (0x053C - 0x053C)
 class AGameInfo_Chicken : public AGameInfo_Special
 {
 public:
@@ -4096,7 +4098,7 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_Delivery
-// 0x0000 (0x0548 - 0x0548)
+// 0x0000 (0x053C - 0x053C)
 class AGameInfo_Delivery : public AMain
 {
 public:
@@ -4111,7 +4113,7 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_GoldenTokens
-// 0x0000 (0x0548 - 0x0548)
+// 0x0000 (0x053C - 0x053C)
 class AGameInfo_GoldenTokens : public AGameInfo_Special
 {
 public:
@@ -4128,7 +4130,7 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_KillEnemiesTimeLimit
-// 0x0000 (0x0548 - 0x0548)
+// 0x0000 (0x053C - 0x053C)
 class AGameInfo_KillEnemiesTimeLimit : public AGameInfo_Special
 {
 public:
@@ -4146,7 +4148,7 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_KillEnemiesTimeLimit_Uber
-// 0x0000 (0x0548 - 0x0548)
+// 0x0000 (0x053C - 0x053C)
 class AGameInfo_KillEnemiesTimeLimit_Uber : public AGameInfo_KillEnemiesTimeLimit
 {
 public:
@@ -4165,7 +4167,7 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_KillEnemiesTimeLimit_Uber6
-// 0x0000 (0x0548 - 0x0548)
+// 0x0000 (0x053C - 0x053C)
 class AGameInfo_KillEnemiesTimeLimit_Uber6 : public AGameInfo_KillEnemiesTimeLimit_Uber
 {
 public:
@@ -4180,7 +4182,7 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_NoTowers
-// 0x0000 (0x0548 - 0x0548)
+// 0x0000 (0x053C - 0x053C)
 class AGameInfo_NoTowers : public AGameInfo_Special
 {
 public:
@@ -4197,7 +4199,7 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_OgreAlly
-// 0x0000 (0x0548 - 0x0548)
+// 0x0000 (0x053C - 0x053C)
 class AGameInfo_OgreAlly : public AGameInfo_Special
 {
 public:
@@ -4214,7 +4216,7 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_RainingGoblins
-// 0x0000 (0x0548 - 0x0548)
+// 0x0000 (0x053C - 0x053C)
 class AGameInfo_RainingGoblins : public AGameInfo_Special
 {
 public:
@@ -4231,7 +4233,7 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_UberAssault
-// 0x0000 (0x0548 - 0x0548)
+// 0x0000 (0x053C - 0x053C)
 class AGameInfo_UberAssault : public AGameInfo_Assault
 {
 public:
@@ -4246,7 +4248,7 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_UberDefense
-// 0x0000 (0x0548 - 0x0548)
+// 0x0000 (0x053C - 0x053C)
 class AGameInfo_UberDefense : public AMain
 {
 public:
@@ -4261,12 +4263,12 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_VDay2
-// 0x0018 (0x0560 - 0x0548)
+// 0x0018 (0x0554 - 0x053C)
 class AGameInfo_VDay2 : public AMain
 {
 public:
-	TArray<class ADunDefEnemy*>                        Boys;                                                     // 0x0548(0x000C) (Transient, NeedCtorLink)
-	TArray<class ADunDefEnemy*>                        Girls;                                                    // 0x0554(0x000C) (Transient, NeedCtorLink)
+	TArray<class ADunDefEnemy*>                        Boys;                                                     // 0x053C(0x000C) (Transient, NeedCtorLink)
+	TArray<class ADunDefEnemy*>                        Girls;                                                    // 0x0548(0x000C) (Transient, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -4283,12 +4285,12 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_Wizardry
-// 0x0008 (0x0550 - 0x0548)
+// 0x0008 (0x0544 - 0x053C)
 class AGameInfo_Wizardry : public AGameInfo_Special
 {
 public:
-	class ADunDefDarkElfMage*                          RegularMage;                                              // 0x0548(0x0004)
-	class ADunDefDarkElfMage*                          RegularMageTwo;                                           // 0x054C(0x0004)
+	class ADunDefDarkElfMage*                          RegularMage;                                              // 0x053C(0x0004)
+	class ADunDefDarkElfMage*                          RegularMageTwo;                                           // 0x0540(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -4303,7 +4305,7 @@ public:
 
 
 // Class DunDefSpecial.GameInfo_ZippyTerror
-// 0x0000 (0x0548 - 0x0548)
+// 0x0000 (0x053C - 0x053C)
 class AGameInfo_ZippyTerror : public AGameInfo_Special
 {
 public:
@@ -4320,22 +4322,22 @@ public:
 
 
 // Class DunDefSpecial.SnowManBoss
-// 0x004C (0x0D8C - 0x0D40)
+// 0x004C (0x0DBC - 0x0D70)
 class ASnowManBoss : public ADunDefBoss
 {
 public:
-	struct FName                                       PeckAnim;                                                 // 0x0D40(0x0008) (Edit)
-	struct FName                                       PeckSocket;                                               // 0x0D48(0x0008) (Edit)
-	struct FName                                       SnowShootAnim;                                            // 0x0D50(0x0008) (Edit)
-	struct FName                                       SnowSpawnSocketLeft;                                      // 0x0D58(0x0008) (Edit)
-	struct FName                                       SnowSpawnSocketRight;                                     // 0x0D60(0x0008) (Edit)
-	class ADunDefEmitterSpawnable*                     SnowShootEffect;                                          // 0x0D68(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     PeckHitEffect;                                            // 0x0D6C(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     StompEffect;                                              // 0x0D70(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     DeathEffect;                                              // 0x0D74(0x0004) (Edit)
-	struct FName                                       StompAnim;                                                // 0x0D78(0x0008) (Edit)
-	float                                              StompEffectRadius;                                        // 0x0D80(0x0004) (Edit)
-	struct FName                                       SpawnInAnim;                                              // 0x0D84(0x0008) (Edit)
+	struct FName                                       PeckAnim;                                                 // 0x0D70(0x0008) (Edit)
+	struct FName                                       PeckSocket;                                               // 0x0D78(0x0008) (Edit)
+	struct FName                                       SnowShootAnim;                                            // 0x0D80(0x0008) (Edit)
+	struct FName                                       SnowSpawnSocketLeft;                                      // 0x0D88(0x0008) (Edit)
+	struct FName                                       SnowSpawnSocketRight;                                     // 0x0D90(0x0008) (Edit)
+	class ADunDefEmitterSpawnable*                     SnowShootEffect;                                          // 0x0D98(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     PeckHitEffect;                                            // 0x0D9C(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     StompEffect;                                              // 0x0DA0(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     DeathEffect;                                              // 0x0DA4(0x0004) (Edit)
+	struct FName                                       StompAnim;                                                // 0x0DA8(0x0008) (Edit)
+	float                                              StompEffectRadius;                                        // 0x0DB0(0x0004) (Edit)
+	struct FName                                       SpawnInAnim;                                              // 0x0DB4(0x0008) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -4416,20 +4418,20 @@ public:
 
 
 // Class DunDefSpecial.TurkeyBoss
-// 0x003C (0x0D7C - 0x0D40)
+// 0x003C (0x0DAC - 0x0D70)
 class ATurkeyBoss : public ADunDefBoss
 {
 public:
-	struct FName                                       PeckAnim;                                                 // 0x0D40(0x0008) (Edit)
-	struct FName                                       PeckSocket;                                               // 0x0D48(0x0008) (Edit)
-	struct FName                                       EggShootAnim;                                             // 0x0D50(0x0008) (Edit)
-	struct FName                                       EggSpawnSocket;                                           // 0x0D58(0x0008) (Edit)
-	class ADunDefEmitterSpawnable*                     EggShootEffect;                                           // 0x0D60(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     PeckHitEffect;                                            // 0x0D64(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     StompEffect;                                              // 0x0D68(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     DeathEffect;                                              // 0x0D6C(0x0004) (Edit)
-	struct FName                                       StompAnim;                                                // 0x0D70(0x0008) (Edit)
-	float                                              StompEffectRadius;                                        // 0x0D78(0x0004) (Edit)
+	struct FName                                       PeckAnim;                                                 // 0x0D70(0x0008) (Edit)
+	struct FName                                       PeckSocket;                                               // 0x0D78(0x0008) (Edit)
+	struct FName                                       EggShootAnim;                                             // 0x0D80(0x0008) (Edit)
+	struct FName                                       EggSpawnSocket;                                           // 0x0D88(0x0008) (Edit)
+	class ADunDefEmitterSpawnable*                     EggShootEffect;                                           // 0x0D90(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     PeckHitEffect;                                            // 0x0D94(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     StompEffect;                                              // 0x0D98(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     DeathEffect;                                              // 0x0D9C(0x0004) (Edit)
+	struct FName                                       StompAnim;                                                // 0x0DA0(0x0008) (Edit)
+	float                                              StompEffectRadius;                                        // 0x0DA8(0x0004) (Edit)
 
 	static UClass* StaticClass()
 	{

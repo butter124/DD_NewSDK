@@ -1126,6 +1126,21 @@ struct UHeroEquipment_GetEquipmentName_Params
 	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
 };
 
+// Function UDKGame.HeroEquipment.GenerateBestItem
+struct UHeroEquipment_GenerateBestItem_Params
+{
+	int                                                NumberOfRewardsToChooseFrom;                              // (Parm)
+	unsigned long                                      FactorUpgradesForBestReward;                              // (Parm)
+	struct FEquipmentNetInfo                           theNetInfo;                                               // (Parm, NeedCtorLink)
+	unsigned long                                      bUseEquipmentArchetypeAsTemplate;                         // (Parm)
+	float                                              equipmentQuality;                                         // (Parm)
+	unsigned long                                      doResetStatsToTemplate;                                   // (OptionalParm, Parm)
+	unsigned long                                      bDontUseMissionRandomizerMultiplier;                      // (OptionalParm, Parm)
+	float                                              RandomizerMultiplierOverride;                             // (OptionalParm, Parm)
+	unsigned long                                      bIsForShop;                                               // (OptionalParm, Parm)
+	unsigned long                                      bAllowTranscendentGear;                                   // (OptionalParm, Parm)
+};
+
 // Function UDKGame.HeroEquipment.AddRandomizeValues
 struct UHeroEquipment_AddRandomizeValues_Params
 {
@@ -1262,6 +1277,12 @@ struct UHeroEquipment_ConvertSaveInfoToNetInfo_Params
 	struct FEquipmentNetInfo                           ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
 };
 
+// Function UDKGame.HeroEquipment.CopyStatsFromNetInfo
+struct UHeroEquipment_CopyStatsFromNetInfo_Params
+{
+	struct FEquipmentNetInfo                           Info;                                                     // (Parm, NeedCtorLink)
+};
+
 // Function UDKGame.HeroEquipment.InitFromNetInfo
 struct UHeroEquipment_InitFromNetInfo_Params
 {
@@ -1394,15 +1415,6 @@ struct U_DataTypes_Merge_Params
 	TArray<class UHeroEquipment*>                      arr;                                                      // (Parm, OutParm, NeedCtorLink)
 	int                                                Low;                                                      // (Parm)
 	int                                                Mid;                                                      // (Parm)
-	int                                                High;                                                     // (Parm)
-	struct FScriptDelegate                             comparer;                                                 // (Parm, NeedCtorLink)
-};
-
-// Function UDKGame._DataTypes.MergeSortPets
-struct U_DataTypes_MergeSortPets_Params
-{
-	TArray<class UHeroEquipment*>                      arr;                                                      // (Parm, OutParm, NeedCtorLink)
-	int                                                Low;                                                      // (Parm)
 	int                                                High;                                                     // (Parm)
 	struct FScriptDelegate                             comparer;                                                 // (Parm, NeedCtorLink)
 };
@@ -2133,6 +2145,13 @@ struct UDunDefHero_GetStatModifier_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.DunDefHero.GetBuffedStatValue
+struct UDunDefHero_GetBuffedStatValue_Params
+{
+	TEnumAsByte<ELevelUpValueType>                     stat;                                                     // (Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.DunDefHero.GetPlayerGravityMultiplier
 struct UDunDefHero_GetPlayerGravityMultiplier_Params
 {
@@ -2349,6 +2368,25 @@ struct UDunDefHero_TickedByPawn_Params
 	float                                              DeltaTime;                                                // (Parm)
 };
 
+// Function UDKGame.DunDefHero.getCachedBuffStatModifiers
+struct UDunDefHero_getCachedBuffStatModifiers_Params
+{
+	TEnumAsByte<ELevelUpValueType>                     stat;                                                     // (Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefHero.setCachedBuffStatModifiers
+struct UDunDefHero_setCachedBuffStatModifiers_Params
+{
+	TEnumAsByte<ELevelUpValueType>                     stat;                                                     // (Parm)
+	float                                              Value;                                                    // (Parm)
+};
+
+// Function UDKGame.DunDefHero.CacheBuffModifierValues
+struct UDunDefHero_CacheBuffModifierValues_Params
+{
+};
+
 // Function UDKGame.DunDefHero.ReceivedPlayerActor
 struct UDunDefHero_ReceivedPlayerActor_Params
 {
@@ -2503,8 +2541,8 @@ struct UDunDefHeroManager_GetNextHeroIndexForSelection_Params
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function UDKGame.DunDefHeroManager.GetMetaFlagLenght
-struct UDunDefHeroManager_GetMetaFlagLenght_Params
+// Function UDKGame.DunDefHeroManager.GetMetaFlagLength
+struct UDunDefHeroManager_GetMetaFlagLength_Params
 {
 	struct FOptionsFixedStruct                         tOptions;                                                 // (Const, Parm, OutParm, NeedCtorLink)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
@@ -3989,6 +4027,14 @@ struct UDunDefHeroManager_GetSortedItemBoxDataEntries_Params
 	TArray<TScriptInterface<class UDataListEntryInterface>> altSet;                                                   // (Parm, OutParm, NeedCtorLink)
 	int                                                myUserID;                                                 // (Parm)
 	int                                                FolderID;                                                 // (OptionalParm, Parm)
+};
+
+// Function UDKGame.DunDefHeroManager.getCachedSortedItems
+struct UDunDefHeroManager_getCachedSortedItems_Params
+{
+	int                                                myUserID;                                                 // (Parm)
+	int                                                FolderID;                                                 // (Parm)
+	TArray<TScriptInterface<class UDataListEntryInterface>> altSet;                                                   // (Parm, OutParm, NeedCtorLink)
 };
 
 // Function UDKGame.DunDefHeroManager.GetDataListEntries
@@ -6585,6 +6631,12 @@ struct ADunDefDamageableTarget_GetGRI_Params
 	class ADunDefGameReplicationInfo*                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.DunDefDamageableTarget.GetRemainingHealthBars
+struct ADunDefDamageableTarget_GetRemainingHealthBars_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.DunDefDamageableTarget.GetHealthPercent
 struct ADunDefDamageableTarget_GetHealthPercent_Params
 {
@@ -7253,6 +7305,11 @@ struct ADunDefTower_ScaleForHeroModifiers_Params
 	unsigned long                                      IsFirstTime;                                              // (Parm)
 };
 
+// Function UDKGame.DunDefTower.UpdateCachedHeroModifieres
+struct ADunDefTower_UpdateCachedHeroModifieres_Params
+{
+};
+
 // Function UDKGame.DunDefTower.CheckAssociateWithHero
 struct ADunDefTower_CheckAssociateWithHero_Params
 {
@@ -7384,6 +7441,13 @@ struct ADunDefTower_DoSpawnEffect_Params
 struct ADunDefTower_UpdateAI_Params
 {
 	float                                              DeltaTime;                                                // (Parm)
+};
+
+// Function UDKGame.DunDefTower.GetCreatorStatsFromBuffs
+struct ADunDefTower_GetCreatorStatsFromBuffs_Params
+{
+	TEnumAsByte<ELevelUpValueType>                     statType;                                                 // (Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function UDKGame.DunDefTower.ReplicatedEvent
@@ -9132,6 +9196,11 @@ struct ADunDefBasePlayerController_PostBeginPlay_Params
 {
 };
 
+// Function UDKGame.DunDefPlayerController.TestSafeIntOperators
+struct ADunDefPlayerController_TestSafeIntOperators_Params
+{
+};
+
 // Function UDKGame.DunDefPlayerController.PrintOwnerBuffs
 struct ADunDefPlayerController_PrintOwnerBuffs_Params
 {
@@ -9455,6 +9524,11 @@ struct ADunDefPlayerController_ToggleStepTowardsTarget_Params
 
 // Function UDKGame.DunDefPlayerController.ToggleItemCensor
 struct ADunDefPlayerController_ToggleItemCensor_Params
+{
+};
+
+// Function UDKGame.DunDefPlayerController.ToggleTinyMap
+struct ADunDefPlayerController_ToggleTinyMap_Params
 {
 };
 
@@ -14512,6 +14586,12 @@ struct UUI_PlayerHUD_ShowProgressBar_Params
 	unsigned long                                      bPlayCompletedAnimation;                                  // (OptionalParm, Parm)
 };
 
+// Function UDKGame.Main.getDefaultGameplayLevel
+struct AMain_getDefaultGameplayLevel_Params
+{
+	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
 // Function UDKGame.Main.EnemyDied
 struct AMain_EnemyDied_Params
 {
@@ -15863,6 +15943,12 @@ struct ADunDefPawn_AllowsBoosting_Params
 struct ADunDefPawn_AllowNegativeStatusAffecting_Params
 {
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefPawn.GetRemainingHealthBars
+struct ADunDefPawn_GetRemainingHealthBars_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function UDKGame.DunDefPawn.GetBoostAmount
@@ -18890,7 +18976,7 @@ struct UStatObject_CanAddBuffs_Params
 // Function UDKGame.StatObject.DoesModifyStat
 struct UStatObject_DoesModifyStat_Params
 {
-	TEnumAsByte<ELevelUpValueType>                     Stat;                                                     // (Parm)
+	TEnumAsByte<ELevelUpValueType>                     stat;                                                     // (Parm)
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -18898,7 +18984,7 @@ struct UStatObject_DoesModifyStat_Params
 struct UStatObject_GetBuffStatValue_Params
 {
 	class UDunDefHero*                                 aHero;                                                    // (Parm)
-	TEnumAsByte<ELevelUpValueType>                     Stat;                                                     // (Parm)
+	TEnumAsByte<ELevelUpValueType>                     stat;                                                     // (Parm)
 	unsigned long                                      bDoAdditivePass;                                          // (Parm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -18907,7 +18993,7 @@ struct UStatObject_GetBuffStatValue_Params
 struct UStatObject_GetStatValue_Params
 {
 	class UDunDefHero*                                 aHero;                                                    // (Parm)
-	TEnumAsByte<ELevelUpValueType>                     Stat;                                                     // (Parm)
+	TEnumAsByte<ELevelUpValueType>                     stat;                                                     // (Parm)
 	unsigned long                                      bGetStatModifier;                                         // (OptionalParm, Parm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -19562,6 +19648,12 @@ struct UDunDefTargetableInterface_AddToChainingTowers_Params
 	class ADunDefTower_ChainLightning*                 Tower;                                                    // (Parm)
 };
 
+// Function UDKGame.DunDefTargetableInterface.GetRemainingHealthBars
+struct UDunDefTargetableInterface_GetRemainingHealthBars_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.DunDefTargetableInterface.GetLightningTowerDamagePercent
 struct UDunDefTargetableInterface_GetLightningTowerDamagePercent_Params
 {
@@ -19803,6 +19895,12 @@ struct UAntiCheat_GetAntiCheatInterval_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.DunDefViewportClient.SetOldCameraAngles
+struct UDunDefViewportClient_SetOldCameraAngles_Params
+{
+	unsigned long                                      OldCameraAnglesEnabled;                                   // (Parm)
+};
+
 // Function UDKGame.DunDefViewportClient.SetSimpleDamageNumbers
 struct UDunDefViewportClient_SetSimpleDamageNumbers_Params
 {
@@ -19825,6 +19923,17 @@ struct UDunDefViewportClient_SetStepTowardsTarget_Params
 struct UDunDefViewportClient_SetCensorItems_Params
 {
 	unsigned long                                      CensorItemsEnabled;                                       // (Parm)
+};
+
+// Function UDKGame.DunDefViewportClient.SetTinyMap
+struct UDunDefViewportClient_SetTinyMap_Params
+{
+	unsigned long                                      TinyMapEnabled;                                           // (Parm)
+};
+
+// Function UDKGame.DunDefViewportClient.ToggleTinyMap
+struct UDunDefViewportClient_ToggleTinyMap_Params
+{
 };
 
 // Function UDKGame.DunDefViewportClient.ToggleStepTowardsTarget
@@ -21703,6 +21812,11 @@ struct ADunDefPlayerCamera_UpdateSpectatorSmoothZoom_Params
 struct ADunDefPlayerCamera_UpdateSpectatorPitch_Params
 {
 	float                                              Amount;                                                   // (Parm)
+};
+
+// Function UDKGame.DunDefPlayerCamera.SetOldCameraAngles
+struct ADunDefPlayerCamera_SetOldCameraAngles_Params
+{
 };
 
 // Function UDKGame.DunDefPlayerCamera.UpdateSpectatorYaw
@@ -25697,6 +25811,7 @@ struct UUIPanel_DataList_GetButtonAtIndex_Params
 // Function UDKGame.UIPanel_DataList.GetLastSelectableIndex
 struct UUIPanel_DataList_GetLastSelectableIndex_Params
 {
+	int                                                startAtIndex;                                             // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -28816,6 +28931,11 @@ struct UUI_KillCount_ExecReplicatedUIMessage_Params
 	class UObject*                                     objectParam1;                                             // (Parm)
 };
 
+// Function UDKGame.DunDefBoss.notifyKismet
+struct ADunDefBoss_notifyKismet_Params
+{
+};
+
 // Function UDKGame.DunDefBoss.TakeDamage
 struct ADunDefBoss_TakeDamage_Params
 {
@@ -29647,6 +29767,11 @@ struct UDunDef_SeqAct_SetCombatPhase_Activated_Params
 
 // Function UDKGame.DunDef_SeqAct_SetCursorPosition.Activated
 struct UDunDef_SeqAct_SetCursorPosition_Activated_Params
+{
+};
+
+// Function UDKGame.DunDef_SeqAct_SetDefaultGameplayLevel.Activated
+struct UDunDef_SeqAct_SetDefaultGameplayLevel_Activated_Params
 {
 };
 
@@ -34616,6 +34741,18 @@ struct ADunDefGRI_PureStrategy_AddedTower_Params
 	class ADunDefTower*                                Tower;                                                    // (Parm)
 };
 
+// Function UDKGame.DunDefGRI_PureStrategy.DeterminatePureStratMapTier
+struct ADunDefGRI_PureStrategy_DeterminatePureStratMapTier_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefGRI_PureStrategy.AverageDistanceBetweenCoresOnAMap
+struct ADunDefGRI_PureStrategy_AverageDistanceBetweenCoresOnAMap_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.StatObject_Equipment.IsRootEntry
 struct UStatObject_Equipment_IsRootEntry_Params
 {
@@ -38033,11 +38170,44 @@ struct UHeroEquipment_Consumable_AddRandomizeValues_Params
 	unsigned long                                      bAllowTranscendentGear;                                   // (OptionalParm, Parm)
 };
 
+// Function UDKGame.HeroEquipment_Consumable.Validate
+struct UHeroEquipment_Consumable_Validate_Params
+{
+	class UHeroEquipment*                              Equipment;                                                // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Consumable.ValidateBonusRequirements
+struct UHeroEquipment_Consumable_ValidateBonusRequirements_Params
+{
+	class UHeroEquipment*                              EQ;                                                       // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.HeroEquipment_Consumable.ValidateEquipmentType
 struct UHeroEquipment_Consumable_ValidateEquipmentType_Params
 {
 	TEnumAsByte<EEquipmentType>                        EqType;                                                   // (Parm)
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Consumable.GetBonusRequirementsString
+struct UHeroEquipment_Consumable_GetBonusRequirementsString_Params
+{
+	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function UDKGame.HeroEquipment_Consumable.GetEquipmentTypeToString
+struct UHeroEquipment_Consumable_GetEquipmentTypeToString_Params
+{
+	TEnumAsByte<EEquipmentType>                        Number;                                                   // (Parm)
+	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function UDKGame.HeroEquipment_Consumable.GetValidEquipmentTypesString
+struct UHeroEquipment_Consumable_GetValidEquipmentTypesString_Params
+{
+	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
 };
 
 // Function UDKGame.HeroEquipment_Rune.GetRuneEnchantTier
@@ -39498,7 +39668,7 @@ struct UUI_HeroInfoNew_Update_Params
 // Function UDKGame.UI_HeroInfoNew.CanLevelUpStat
 struct UUI_HeroInfoNew_CanLevelUpStat_Params
 {
-	TEnumAsByte<ELevelUpValueType>                     Stat;                                                     // (Parm)
+	TEnumAsByte<ELevelUpValueType>                     stat;                                                     // (Parm)
 	int                                                numPoints;                                                // (Parm)
 	unsigned char                                      bDoesStatForceRequirement;                                // (OptionalParm, Parm, OutParm)
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
@@ -39514,7 +39684,7 @@ struct UUI_HeroInfoNew_RemovePoint_Params
 struct UUI_HeroInfoNew_SpendPoint_Params
 {
 	class UUIScriptWidget_HeroStat*                    statButton;                                               // (Parm)
-	TEnumAsByte<ELevelUpValueType>                     Stat;                                                     // (Parm)
+	TEnumAsByte<ELevelUpValueType>                     stat;                                                     // (Parm)
 };
 
 // Function UDKGame.UI_HeroInfoNew.AllocatePointsToStats
@@ -40444,6 +40614,18 @@ struct UUIImage_HealthBar_SetHealthPercent_Params
 	unsigned long                                      overrideTextColor;                                        // (OptionalParm, Parm)
 	struct FLinearColor                                textColorToUse;                                           // (OptionalParm, Parm)
 	unsigned long                                      bForceUpdate;                                             // (OptionalParm, Parm)
+};
+
+// Function UDKGame.UIImage_HealthBar.UseAdditionalHealthBars
+struct UUIImage_HealthBar_UseAdditionalHealthBars_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.UIImage_HealthBar.SetNumberOfHealthBars
+struct UUIImage_HealthBar_SetNumberOfHealthBars_Params
+{
+	int                                                healthbarsnumber;                                         // (Parm)
 };
 
 // Function UDKGame.UIImage_HealthBar.Update

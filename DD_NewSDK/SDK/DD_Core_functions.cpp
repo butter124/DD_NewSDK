@@ -46,6 +46,27 @@ bool UObject::IsA(UClass* cmp) const
 	return false;
 }
 
+// Function Core.Object.NotifyAntiCheat
+// (Final, Native, Static, Public)
+// Parameters:
+// struct FString                 Reason                         (Parm, NeedCtorLink)
+
+void UObject::STATIC_NotifyAntiCheat(const struct FString& Reason)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotifyAntiCheat");
+
+	UObject_NotifyAntiCheat_Params params;
+	params.Reason = Reason;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function Core.Object.ToHDI
 // (Final, Defined, Static, Public, HasDefaults)
 // Parameters:
@@ -8454,6 +8475,712 @@ float UObject::STATIC_Subtract_PreFloat(float A)
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_PreFloat");
 
 	UObject_Subtract_PreFloat_Params params;
+	params.A = A;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.SubtractSubtract_SafeInt
+// (Final, Native, Operator, Static, Public, HasOutParms)
+// Parameters:
+// int                            A                              (Parm, OutParm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_SubtractSubtract_SafeInt(int* A)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractSubtract_SafeInt");
+
+	UObject_SubtractSubtract_SafeInt_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (A != nullptr)
+		*A = params.A;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.AddAdd_SafeInt
+// (Final, Native, Operator, Static, Public, HasOutParms)
+// Parameters:
+// int                            A                              (Parm, OutParm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_AddAdd_SafeInt(int* A)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddAdd_SafeInt");
+
+	UObject_AddAdd_SafeInt_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (A != nullptr)
+		*A = params.A;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.SubtractSubtract_PreSafeInt
+// (Final, PreOperator, Native, Operator, Static, Public, HasOutParms)
+// Parameters:
+// int                            A                              (Parm, OutParm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_SubtractSubtract_PreSafeInt(int* A)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractSubtract_PreSafeInt");
+
+	UObject_SubtractSubtract_PreSafeInt_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (A != nullptr)
+		*A = params.A;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.AddAdd_PreSafeInt
+// (Final, PreOperator, Native, Operator, Static, Public, HasOutParms)
+// Parameters:
+// int                            A                              (Parm, OutParm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_AddAdd_PreSafeInt(int* A)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddAdd_PreSafeInt");
+
+	UObject_AddAdd_PreSafeInt_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (A != nullptr)
+		*A = params.A;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.SubtractEqual_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public, HasOutParms)
+// Parameters:
+// int                            A                              (Parm, OutParm)
+// int                            B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_SubtractEqual_SafeIntSafeInt(int B, int* A)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_SafeIntSafeInt");
+
+	UObject_SubtractEqual_SafeIntSafeInt_Params params;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (A != nullptr)
+		*A = params.A;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.AddEqual_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public, HasOutParms)
+// Parameters:
+// int                            A                              (Parm, OutParm)
+// int                            B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_AddEqual_SafeIntSafeInt(int B, int* A)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddEqual_SafeIntSafeInt");
+
+	UObject_AddEqual_SafeIntSafeInt_Params params;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (A != nullptr)
+		*A = params.A;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.DivideEqual_SafeIntFloat
+// (Final, Native, Operator, Static, Public, HasOutParms)
+// Parameters:
+// int                            A                              (Parm, OutParm)
+// float                          B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_DivideEqual_SafeIntFloat(float B, int* A)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DivideEqual_SafeIntFloat");
+
+	UObject_DivideEqual_SafeIntFloat_Params params;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (A != nullptr)
+		*A = params.A;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.MultiplyEqual_SafeIntFloat
+// (Final, Native, Operator, Static, Public, HasOutParms)
+// Parameters:
+// int                            A                              (Parm, OutParm)
+// float                          B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_MultiplyEqual_SafeIntFloat(float B, int* A)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_SafeIntFloat");
+
+	UObject_MultiplyEqual_SafeIntFloat_Params params;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (A != nullptr)
+		*A = params.A;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.Or_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_Or_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Or_SafeIntSafeInt");
+
+	UObject_Or_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.Xor_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_Xor_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Xor_SafeIntSafeInt");
+
+	UObject_Xor_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.And_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_And_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.And_SafeIntSafeInt");
+
+	UObject_And_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.NotEqual_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UObject::STATIC_NotEqual_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_SafeIntSafeInt");
+
+	UObject_NotEqual_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.EqualEqual_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UObject::STATIC_EqualEqual_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_SafeIntSafeInt");
+
+	UObject_EqualEqual_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.GreaterEqual_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UObject::STATIC_GreaterEqual_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterEqual_SafeIntSafeInt");
+
+	UObject_GreaterEqual_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.LessEqual_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UObject::STATIC_LessEqual_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessEqual_SafeIntSafeInt");
+
+	UObject_LessEqual_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.Greater_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UObject::STATIC_Greater_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Greater_SafeIntSafeInt");
+
+	UObject_Greater_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.Less_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UObject::STATIC_Less_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Less_SafeIntSafeInt");
+
+	UObject_Less_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.GreaterGreaterGreater_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_GreaterGreaterGreater_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterGreaterGreater_SafeIntSafeInt");
+
+	UObject_GreaterGreaterGreater_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.GreaterGreater_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_GreaterGreater_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterGreater_SafeIntSafeInt");
+
+	UObject_GreaterGreater_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.LessLess_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_LessLess_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessLess_SafeIntSafeInt");
+
+	UObject_LessLess_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.Subtract_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_Subtract_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_SafeIntSafeInt");
+
+	UObject_Subtract_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.Add_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_Add_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_SafeIntSafeInt");
+
+	UObject_Add_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.Percent_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_Percent_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Percent_SafeIntSafeInt");
+
+	UObject_Percent_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.Divide_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_Divide_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Divide_SafeIntSafeInt");
+
+	UObject_Divide_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.Multiply_SafeIntSafeInt
+// (Final, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            B                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_Multiply_SafeIntSafeInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_SafeIntSafeInt");
+
+	UObject_Multiply_SafeIntSafeInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.Subtract_PreSafeInt
+// (Final, PreOperator, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_Subtract_PreSafeInt(int A)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_PreSafeInt");
+
+	UObject_Subtract_PreSafeInt_Params params;
+	params.A = A;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.Complement_PreSafeInt
+// (Final, PreOperator, Native, Operator, Static, Public)
+// Parameters:
+// int                            A                              (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UObject::STATIC_Complement_PreSafeInt(int A)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Complement_PreSafeInt");
+
+	UObject_Complement_PreSafeInt_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;

@@ -720,6 +720,12 @@ struct AKrakenTentacle_GetHealthPercent_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function DunDefAtlantis.KrakenTentacle.GetRemainingHealthBars
+struct AKrakenTentacle_GetRemainingHealthBars_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function DunDefAtlantis.KrakenTentacle.UpdateDamageFlashing
 struct AKrakenTentacle_UpdateDamageFlashing_Params
 {

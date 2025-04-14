@@ -2228,6 +2228,27 @@ unsigned long ADunDef_OldOne::CheckForMeteorAttack()
 }
 
 
+// Function DunDefSkyCity.DunDef_OldOne.GetRemainingHealthBars
+// (Simulated, Public)
+// Parameters:
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int ADunDef_OldOne::GetRemainingHealthBars()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSkyCity.DunDef_OldOne.GetRemainingHealthBars");
+
+	ADunDef_OldOne_GetRemainingHealthBars_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function DunDefSkyCity.DunDef_OldOne.CheckForFlame
 // (Public)
 // Parameters:

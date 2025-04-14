@@ -14,6 +14,12 @@ namespace Classes
 //Parameters
 //---------------------------------------------------------------------------
 
+// Function Core.Object.NotifyAntiCheat
+struct UObject_NotifyAntiCheat_Params
+{
+	struct FString                                     Reason;                                                   // (Parm, NeedCtorLink)
+};
+
 // Function Core.Object.ToHDI
 struct UObject_ToHDI_Params
 {
@@ -2615,6 +2621,216 @@ struct UObject_Subtract_PreFloat_Params
 {
 	float                                              A;                                                        // (Parm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.SubtractSubtract_SafeInt
+struct UObject_SubtractSubtract_SafeInt_Params
+{
+	int                                                A;                                                        // (Parm, OutParm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.AddAdd_SafeInt
+struct UObject_AddAdd_SafeInt_Params
+{
+	int                                                A;                                                        // (Parm, OutParm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.SubtractSubtract_PreSafeInt
+struct UObject_SubtractSubtract_PreSafeInt_Params
+{
+	int                                                A;                                                        // (Parm, OutParm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.AddAdd_PreSafeInt
+struct UObject_AddAdd_PreSafeInt_Params
+{
+	int                                                A;                                                        // (Parm, OutParm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.SubtractEqual_SafeIntSafeInt
+struct UObject_SubtractEqual_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm, OutParm)
+	int                                                B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.AddEqual_SafeIntSafeInt
+struct UObject_AddEqual_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm, OutParm)
+	int                                                B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.DivideEqual_SafeIntFloat
+struct UObject_DivideEqual_SafeIntFloat_Params
+{
+	int                                                A;                                                        // (Parm, OutParm)
+	float                                              B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.MultiplyEqual_SafeIntFloat
+struct UObject_MultiplyEqual_SafeIntFloat_Params
+{
+	int                                                A;                                                        // (Parm, OutParm)
+	float                                              B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.Or_SafeIntSafeInt
+struct UObject_Or_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.Xor_SafeIntSafeInt
+struct UObject_Xor_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.And_SafeIntSafeInt
+struct UObject_And_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.NotEqual_SafeIntSafeInt
+struct UObject_NotEqual_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.EqualEqual_SafeIntSafeInt
+struct UObject_EqualEqual_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.GreaterEqual_SafeIntSafeInt
+struct UObject_GreaterEqual_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.LessEqual_SafeIntSafeInt
+struct UObject_LessEqual_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.Greater_SafeIntSafeInt
+struct UObject_Greater_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.Less_SafeIntSafeInt
+struct UObject_Less_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.GreaterGreaterGreater_SafeIntSafeInt
+struct UObject_GreaterGreaterGreater_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.GreaterGreater_SafeIntSafeInt
+struct UObject_GreaterGreater_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.LessLess_SafeIntSafeInt
+struct UObject_LessLess_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.Subtract_SafeIntSafeInt
+struct UObject_Subtract_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.Add_SafeIntSafeInt
+struct UObject_Add_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.Percent_SafeIntSafeInt
+struct UObject_Percent_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.Divide_SafeIntSafeInt
+struct UObject_Divide_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.Multiply_SafeIntSafeInt
+struct UObject_Multiply_SafeIntSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.Subtract_PreSafeInt
+struct UObject_Subtract_PreSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Core.Object.Complement_PreSafeInt
+struct UObject_Complement_PreSafeInt_Params
+{
+	int                                                A;                                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function Core.Object.ToHex

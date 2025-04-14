@@ -2258,6 +2258,27 @@ float AKrakenTentacle::GetHealthPercent()
 }
 
 
+// Function DunDefAtlantis.KrakenTentacle.GetRemainingHealthBars
+// (Simulated, Public)
+// Parameters:
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int AKrakenTentacle::GetRemainingHealthBars()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefAtlantis.KrakenTentacle.GetRemainingHealthBars");
+
+	AKrakenTentacle_GetRemainingHealthBars_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function DunDefAtlantis.KrakenTentacle.UpdateDamageFlashing
 // (Defined, Simulated, Public)
 

@@ -685,6 +685,12 @@ struct ADunDef_OldOne_CheckForMeteorAttack_Params
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function DunDefSkyCity.DunDef_OldOne.GetRemainingHealthBars
+struct ADunDef_OldOne_GetRemainingHealthBars_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function DunDefSkyCity.DunDef_OldOne.CheckForFlame
 struct ADunDef_OldOne_CheckForFlame_Params
 {

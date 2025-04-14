@@ -30,6 +30,7 @@ namespace Classes
 #define CONST__DataTypes_MAX_BUFF_TIERS                          6
 #define CONST_DunDefPlayerController_GS_MESSAGE_MAXLENGTH        255
 #define CONST_DunDefHeroManagerNative_MAX_BUFF_SLOTS             3
+#define CONST_UIScriptWidget_EquipmentIconButton_MAX_TUTORIAL_SETS 10
 #define CONST__DataTypes_MAX_LEVELUP_STATS                       11
 #define CONST_DunDefOnlineGameSettingsConsole_FILTER_SURVIVAL    0x1000005C
 #define CONST_MAX_HERO_NAME_LENGTH                               32
@@ -40,6 +41,7 @@ namespace Classes
 #define CONST__DataTypes_MAX_TUTORIAL_SETS                       10
 #define CONST_MAX_STAT_VALUE_SPEED_HERO                          100
 #define CONST_DunDefPlayerController_PRESENCE_MISSION            2
+#define CONST_UIScriptWidget_EquipmentIconButton_MAX_DAMAGEREDUCTIONS 4
 #define CONST_DunDefGameReplicationInfo_FILTER_LEVELINDEX        0x10000062
 #define CONST_DunDefPlayerController_FILTER_SESSIONID_COUNT      10
 #define CONST_DunDefHeroManagerNative_MAX_CORES                  40
@@ -350,6 +352,7 @@ namespace Classes
 #define CONST_DunDefGameSearchCommon_PROPS_WAVECOUNT             0x1000002D
 #define CONST_EQUIPMENT_ULTIMATE93                               17
 #define CONST_DunDefOnlineGameSettingsConsole_GS_CDKEY_PART_MAXLENGTH 4
+#define CONST_UIScriptWidget_EquipmentIconButton_MAX_LEVELUP_STATS 11
 #define CONST_DunDefPlayerController_PROPS_COMPLETIONTIME        0x1000002C
 #define CONST_DunDefPlayerController_STATS_VIEW_COLUMN_NAME      1
 #define CONST_DunDefPlayerController_STATS_VIEW_COLUMN_CLASS     2
@@ -612,6 +615,7 @@ namespace Classes
 #define CONST_StatObject_MAX_ACHIEVEMENTS_TO_STORE               500
 #define CONST_StatObject_MAX_DAMAGEREDUCTIONS                    4
 #define CONST_StatObject_MAX_LEVELUP_STATS                       11
+#define CONST_UIScriptWidget_EquipmentIconButton_MAX_CORES       40
 #define CONST_UI_CharacterSelect_CONTEXT_GAME_MODE               0x0000800B
 #define CONST_UI_CharacterSelect_QUERY_FILTERED                  2
 #define CONST_UI_CharacterSelect_FILTER_LEVEL_START              0x1000002E
@@ -767,6 +771,9 @@ namespace Classes
 #define CONST_UI_TitleScreen_STATS_VIEW_COLUMN_LEVEL             3
 #define CONST_UI_TitleScreen_STATS_VIEW_COLUMN_TIME              5
 #define CONST_UI_TitleScreen_STATS_VIEW_COLUMN_WAVE              6
+#define CONST_UIScriptWidget_EquipmentIconButton_MAX_ACHIEVEMENTS_TO_STORE 500
+#define CONST_UIScriptWidget_EquipmentIconButton_MAX_BUFF_TIERS  6
+#define CONST_UIScriptWidget_EquipmentIconButton_MAX_BUFF_SLOTS  3
 #define CONST_EQUIPMENT_CURSED                                   0
 #define CONST_EQUIPMENT_WORN                                     2
 #define CONST_EQUIPMENT_SHINING                                  7
@@ -1251,7 +1258,12 @@ enum class EAchievement : uint8_t
 	EA_FROSTDALEWONDERLAND         = 153,
 	EA_VALENTINECITADEL            = 154,
 	EA_LOVEMACHINE                 = 155,
-	EA_MAX                         = 156
+	EA_RETMISTYMIRE                = 156,
+	EA_RETMORAGGO                  = 157,
+	EA_RETAQUANOS                  = 158,
+	EA_RETSKYCITY                  = 159,
+	EA_RETCD                       = 160,
+	EA_MAX                         = 161
 };
 
 
