@@ -5,6 +5,7 @@
 
 #My custom files
 notes.txt
+compile_commands.json
 
 # User-specific files
 *.rsuser
