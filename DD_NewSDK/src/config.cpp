@@ -4,6 +4,7 @@
 #include <SDK/DD_Basic.hpp>
 #include <SDK/DD_Core_classes.hpp>
 #include <SDK/DD_UDKGame_classes.hpp>
+#include <chrono>
 #include <fstream>
 #include <regex>
 #include <variant>
@@ -224,11 +225,36 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
     qEnemysToSpawn.pop();
     SpawnEnemyAt(front, vacPos);
   }
+  HandleAutoReady();
+}
 
-  // auto ready
-  if (bAutoReady && !pMapInfo->IsLobbyLevel) {
+void Config::HandleAutoReady() {
+  auto pMapInfo = ((Classes::UDunDefMapInfo *)(GetWorldInfo()->MyMapInfo));
+  Classes::ADunDefPlayerController *pController = GetADunDefPlayerController();
+
+  if (!pController || !pMapInfo)
+    return;
+
+  static std::chrono::high_resolution_clock::time_point timeLast;
+  static bool cachedTime = false;
+
+  // check for entering build phase
+  if (!cachedTime && config.GetGRI()->STATIC_IsNonLobbyBuildPhase()) {
+    timeLast = std::chrono::high_resolution_clock::now();
+    cachedTime = true;
+  }
+
+  auto timeNow = std::chrono::high_resolution_clock::now();
+  auto timePassed = timeNow - timeLast;
+  bool bShouldReady = timePassed > tAutoReadyAfterXSeconds;
+
+  if (bAutoReady && !pMapInfo->IsLobbyLevel && bShouldReady) {
     pController->ActivateCrystal();
+    cachedTime = false;
+  }
+  if (bSuperAutoReady && !pMapInfo->IsLobbyLevel && bShouldReady) {
     pController->ActivateCrystalForAllPlayers();
+    cachedTime = false;
   }
 }
 

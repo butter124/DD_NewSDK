@@ -17,6 +17,7 @@
 #include <unordered_map>
 #include <variant>
 #include <windows.h>
+#include <chrono>
 
 #define PROCESS_EVENT_ARGS                                                     \
   Classes::UObject *obj, void *edx, Classes::UFunction *pFunction,             \
@@ -166,6 +167,8 @@ public:
   bool bUnlimitedManaShop = false;
   bool bUnlockAllAchievments = false;
   bool bAutoReady = false;
+  bool bSuperAutoReady = false;
+  std::chrono::duration<double> tAutoReadyAfterXSeconds = std::chrono::duration<double>(5.0);
 
   Classes::FVector vacPos = {0, 0, 0};
   Classes::FVector playerTeleportPos = {0, 0, 0};
@@ -245,6 +248,7 @@ public:
   bool ToggleCrystalGodMode();
   bool UnlockAllAchievements();
   bool RenameHero(const std::string &newName);
+  void HandleAutoReady();
   Classes::UEngine *GetEngine();
   Classes::UDunDefViewportClient *GetViewportClient();
   Classes::ADunDefPlayerController *GetADunDefPlayerController();

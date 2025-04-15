@@ -294,6 +294,8 @@ void MenuMain::BasicCheats() {
     HelpMarker("Will loot anything that is equal to or higher\nin the "
                "configuration settings");
     ImGui::Checkbox("Auto Ready", &config.bAutoReady);
+    ImGui::SameLine();
+    ImGui::Checkbox("Host Auto Ready", &config.bSuperAutoReady);
     ImGui::Checkbox("One kill to advance", &config.bKillOneToAdvance);
     ImGui::Checkbox("Enemys drop items", &config.bLootShower);
     ImGui::Checkbox("Auto open chest", &config.bAutoOpenChest);
@@ -1650,6 +1652,11 @@ void MenuMain::Config() {
       ImGui::SameLine();
 
       HandleKeyChange(key.second.key, key.second.bShouldChange);
+    }
+
+    float duration = static_cast<float>(config.tAutoReadyAfterXSeconds.count());
+    if (ImGui::SliderFloat("Auto ready delay", &duration, 0.0f, 30.0f)) {
+      config.tAutoReadyAfterXSeconds = std::chrono::duration<double>(duration);
     }
 
     ImGui::TreePop();
