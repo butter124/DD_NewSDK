@@ -1,7 +1,0 @@
-﻿[
-  {
-    "directory": "E:/Projects/cpp/DD_NewSDK/",
-    "command": "\"clang++.exe\" -x c++ \"E:/Projects/cpp/DD_NewSDK/DD_NewSDK/src/menu_item.cpp\" -std=c++20 -Wall -fms-compatibility-version=19.10 -Wmicrosoft -Wno-invalid-token-paste -Wno-unknown-pragmas -Wno-unused-value -m32 -fsyntax-only \"-D_MT\" \"-D_DLL\" \"-DWIN32\" \"-D_DEBUG\" \"-DDDNEWSDK_EXPORTS\" \"-D_WINDOWS\" \"-D_USRDLL\" \"-D_DEBUG_FUNCTIONAL_MACHINERY\" -isystem\"E:/Projects/cpp/DD_NewSDK/DD_NewSDK\" -isystem\"E:/Projects/VisualStudio/VC/include\" -isystem\"E:/Projects/VisualStudio/VC/atlmfc/include\" -isystem\"E:/Projects/VisualStudio/VC/Auxiliary/VS/include\" -isystem\"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/ucrt\" -isystem\"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um\" -isystem\"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/shared\" -isystem\"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/winrt\" -isystem\"C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/cppwinrt\" -isystem\"C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include\" -I\"E:/Projects/cpp/DD_NewSDK/DD_NewSDK/src\" -I\"E:/Projects/cpp/DD_NewSDK/DD_NewSDK/includes\" -I\"E:/Projects/cpp/DD_NewSDK/DD_NewSDK\"",
-    "file": "E:/Projects/cpp/DD_NewSDK/DD_NewSDK/src/menu_item.cpp"
-  }
-]
