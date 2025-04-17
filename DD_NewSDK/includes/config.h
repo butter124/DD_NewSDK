@@ -7,6 +7,7 @@
 #include <SDK/DD_UDKGame_classes.hpp>
 #include <algorithm>
 #include <array>
+#include <chrono>
 #include <format>
 #include <functional>
 #include <iostream>
@@ -17,7 +18,6 @@
 #include <unordered_map>
 #include <variant>
 #include <windows.h>
-#include <chrono>
 
 #define PROCESS_EVENT_ARGS                                                     \
   Classes::UObject *obj, void *edx, Classes::UFunction *pFunction,             \
@@ -168,7 +168,8 @@ public:
   bool bUnlockAllAchievments = false;
   bool bAutoReady = false;
   bool bSuperAutoReady = false;
-  std::chrono::duration<double> tAutoReadyAfterXSeconds = std::chrono::duration<double>(5.0);
+  std::chrono::duration<double> tAutoReadyAfterXSeconds =
+      std::chrono::duration<double>(0.0);
 
   Classes::FVector vacPos = {0, 0, 0};
   Classes::FVector playerTeleportPos = {0, 0, 0};
