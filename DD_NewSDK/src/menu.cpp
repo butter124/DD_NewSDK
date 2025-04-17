@@ -11,10 +11,12 @@
 #include <string.h>
 // clang-format on
 
+void ScoreHook();
 tEndScene oScene = nullptr;
 Hooking EndSceneHook;
 
 Hooking ProcEventHook(nullptr, HookedPE, 5);
+Hooking ScoreHookObj(nullptr, ScoreHook, 8);
 
 WNDPROC oWndProc;
 
@@ -129,6 +131,45 @@ HRESULT APIENTRY hkEndScene(LPDIRECT3DDEVICE9 pDevice) {
   // Call the original function after your code
   return ((tEndScene)(EndSceneHook.HookAddr))(pDevice);
 }
+DWORD PlayerCheckScoreHack = 0;
+DWORD EaxCheck = 0;
+// Score hack to change instance score to zero or x
+bool isController = false;
+bool ScoreHookFunc() {
+  Classes::TArray<Classes::ULocalPlayer *> controllers =
+      config.GetEngine()->GamePlayers;
+
+  if (controllers.Num())
+    for (int ScroreHookI = 0; ScroreHookI < controllers.Num(); ScroreHookI++) {
+      if (PlayerCheckScoreHack ==
+          (DWORD)(controllers.GetByIndex(ScroreHookI)->Actor))
+        if (EaxCheck != (DWORD)(controllers.GetByIndex(ScroreHookI)->Actor)) {
+          return true;
+        }
+    }
+  return false;
+}
+
+void __declspec(naked) ScoreHook() {
+  __asm {
+    pushf
+    pushad
+    mov [PlayerCheckScoreHack], edi
+    mov [EaxCheck], eax
+    call ScoreHookFunc
+    test al, al
+    jnz skip_restore
+    popad
+    popf
+    jmp ScoreHookObj.HookAddr
+
+  skip_restore:
+    popad
+    mov eax, 0
+    popf
+    jmp ScoreHookObj.HookAddr
+  }
+}
 
 bool Menu::Init() {
 
@@ -154,8 +195,16 @@ bool Menu::Init() {
   DWORD ProcessEventAddress = BaseProcessEventAddress - 0xe8;
   // tProcessEvent ProcessEvent = (tProcessEvent)ProcessEventAddress;
 
+  // Hook score
+
+  DWORD ScoreHookAddrOffset =
+      (FindPattern((unsigned long)miGame.lpBaseOfDll, miGame.SizeOfImage,
+                   (unsigned char *)ScoreHook_Pattern, (char *)ScoreHook_Mask));
+
+  ScoreHookObj.UpdateHookAddr((void *)(ScoreHookAddrOffset));
   ProcEventHook.UpdateHookAddr((void *)ProcessEventAddress);
   ProcEventHook.HookFunction();
+  ScoreHookObj.HookFunction();
 
 #ifdef LOGGING // 1
   AttachConsole();
@@ -173,6 +222,7 @@ bool Menu::Cleanup() {
   (WNDPROC) SetWindowLongPtr(config.gameHWND, GWL_WNDPROC, (LONG_PTR)oWndProc);
 
   ProcEventHook.UnHookFunction();
+  ScoreHookObj.UnHookFunction();
 
 #ifdef LOGGING //== 1
   DettachConsole();

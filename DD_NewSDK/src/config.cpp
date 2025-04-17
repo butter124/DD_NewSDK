@@ -199,6 +199,8 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   if (!pController)
     return;
 
+  pController->Score = 0;
+
   // unlimited mana for towers
   if (bUnlimitedManaTowers)
     pController->ManaPower = config.iManaForTowers;

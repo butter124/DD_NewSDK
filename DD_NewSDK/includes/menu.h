@@ -28,6 +28,9 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
                          Classes::UFunction *pFunction, void *pParms,
                          void *pResult);
 
+#define ScoreHook_Pattern "\x01\x03\x8b\x1b\x8b\x4c\x24\x14"
+#define ScoreHook_Mask "xxxxxxxx"
+
 extern Hooking ProcEventHook;
 
 class Menu {
