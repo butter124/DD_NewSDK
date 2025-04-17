@@ -891,12 +891,13 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
   // copy over the base item
   Classes::UHeroEquipment *item = netInfo.EquipmentTemplate;
 
-  // init the netinfo
-  item->InitFromNetInfo(netInfo, nullptr);
-
   config.LogToFile("Giving item " + item->GetName());
   // save old info to restore later
   auto oldNetInfo = item->GetNetInfo(1, 0);
+
+  // init the netinfo
+  item->InitFromNetInfo(netInfo, nullptr);
+  item->CopyStatsFromNetInfo(netInfo);
 
   config.LogToFile("Done setting up item structure.");
   // save old template
@@ -908,11 +909,15 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
 
   newtemp.ForHeroArchetype = NULL;
   newtemp.EquipmentArchetype = item;
+  newtemp.EquipmentArchetype->EquipmentID1 =
+      oldtemp.EquipmentArchetype->EquipmentID1;
+  newtemp.EquipmentArchetype->EquipmentID2 =
+      oldtemp.EquipmentArchetype->EquipmentID2;
   // newtemp.EquipmentArchetypesRandom;
   newtemp.BaseForceRandomizationQuality = 0;
   newtemp.MaxRandomizationQuality = 0;
   newtemp.RandomizerMultiplierOverride = 0;
-  newtemp.bUseEquipmentArchetypeAsTemplate = 0;
+  newtemp.bUseEquipmentArchetypeAsTemplate = 1;
   newtemp.bRandomGlobalDontUseAdditionalItemEntries = 0;
   newtemp.ForceHeroArchetypeExactMatch = 0;
   newtemp.bDontIgnoreEquipmentMinUpgradeLevels = 0;
@@ -925,10 +930,10 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
 
   // change the itemGiver to my items
   pItemGiver->GiveEquipmentEntries.GetByIndex(0) = newtemp;
-
   pItemGiver->GiveEquipment(pController);
 
   config.LogToFile("Gave item sucessfully.");
+
   // cleanup templates
   pItemGiver->GiveEquipmentEntries.GetByIndex(0) = oldtemp;
 
