@@ -188,6 +188,7 @@ public:
   std::unordered_map<std::string, bool *> blockedFuncMap;
   void RegisterBlockedFunction(const std::string &key, bool &flag);
 
+  bool bEnableFunctionFilter = false;
   std::unordered_map<std::string, bool> vProcessEventFunctionFilter;
   std::unordered_map<std::string, bool> vProcessEventObjectFilter;
   void SetupFilter();
