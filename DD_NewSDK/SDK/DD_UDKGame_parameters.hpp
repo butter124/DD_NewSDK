@@ -8099,6 +8099,12 @@ struct UHeroEquipment_Familiar_NotifyEquipment_AnimNotifyAttachment_Params
 	class USkeletalMeshComponent*                      equipmentSkelComp;                                        // (Parm, EditInline)
 };
 
+// Function UDKGame.HeroEquipment_Familiar.GetStanceDamageReduction
+struct UHeroEquipment_Familiar_GetStanceDamageReduction_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnDied
 struct UHeroEquipment_Familiar_NotifyEquipment_PawnDied_Params
 {

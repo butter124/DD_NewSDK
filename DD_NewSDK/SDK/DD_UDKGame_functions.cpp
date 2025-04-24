@@ -26298,6 +26298,27 @@ void UHeroEquipment_Familiar::NotifyEquipment_AnimNotifyAttachment(int NotifyID,
 }
 
 
+// Function UDKGame.HeroEquipment_Familiar.GetStanceDamageReduction
+// (Defined, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float UHeroEquipment_Familiar::GetStanceDamageReduction()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetStanceDamageReduction");
+
+	UHeroEquipment_Familiar_GetStanceDamageReduction_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnDied
 // (Defined, Public)
 

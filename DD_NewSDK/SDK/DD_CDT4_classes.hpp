@@ -13,37 +13,37 @@ namespace Classes
 //---------------------------------------------------------------------------
 
 // Class CDT4.HeroEquipment_Familiar_CoreHealer
-// 0x008C (0x0B88 - 0x0AFC)
+// 0x008C (0x0B8C - 0x0B00)
 class UHeroEquipment_Familiar_CoreHealer : public UHeroEquipment_Familiar
 {
 public:
-	float                                              ManaCostStatBase;                                         // 0x0AFC(0x0004) (Edit)
-	float                                              ManaCostMultiplier;                                       // 0x0B00(0x0004) (Edit)
-	float                                              ManaCostExponent;                                         // 0x0B04(0x0004) (Edit)
-	float                                              ManaCostMin;                                              // 0x0B08(0x0004) (Edit)
-	float                                              ManaCostMax;                                              // 0x0B0C(0x0004) (Edit)
-	float                                              HealAmountBase;                                           // 0x0B10(0x0004) (Edit)
-	float                                              HealAmountMultiplier;                                     // 0x0B14(0x0004) (Edit)
-	float                                              HealAmountExtraMultiplier;                                // 0x0B18(0x0004) (Edit)
-	float                                              HealAmountMaxPercent;                                     // 0x0B1C(0x0004) (Edit)
-	float                                              MinimumCoreHealthPercent;                                 // 0x0B20(0x0004) (Edit)
-	float                                              HealInterval;                                             // 0x0B24(0x0004) (Edit)
-	float                                              HealRangeBase;                                            // 0x0B28(0x0004) (Edit)
-	float                                              HealRangeStatBase;                                        // 0x0B2C(0x0004) (Edit)
-	float                                              HealRangeStatMultiplier;                                  // 0x0B30(0x0004) (Edit)
-	float                                              HealRangeStatExponent;                                    // 0x0B34(0x0004) (Edit)
-	float                                              HealRangeMaxEffectiveStat;                                // 0x0B38(0x0004) (Edit)
-	float                                              NightmareHealingMultiplier;                               // 0x0B3C(0x0004) (Edit)
-	float                                              RotationSpeed;                                            // 0x0B40(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     CoreHealEffect;                                           // 0x0B44(0x0004) (Edit)
-	unsigned long                                      bHealInCombatPhaseOnly : 1;                               // 0x0B48(0x0004) (Edit)
-	unsigned long                                      bDebug : 1;                                               // 0x0B48(0x0004) (Edit)
-	struct FString                                     StringHealAmount;                                         // 0x0B4C(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     StringHealSpeed;                                          // 0x0B58(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     StringHealRange;                                          // 0x0B64(0x000C) (Edit, Localized, NeedCtorLink)
-	float                                              LastHealTime;                                             // 0x0B70(0x0004) (Transient)
-	TScriptInterface<class UDunDefTargetableInterface> BestTargetRef;                                            // 0x0B74(0x0008) (Transient)
-	struct FRotator                                    CurrentRotation;                                          // 0x0B7C(0x000C) (Transient)
+	float                                              ManaCostStatBase;                                         // 0x0B00(0x0004) (Edit)
+	float                                              ManaCostMultiplier;                                       // 0x0B04(0x0004) (Edit)
+	float                                              ManaCostExponent;                                         // 0x0B08(0x0004) (Edit)
+	float                                              ManaCostMin;                                              // 0x0B0C(0x0004) (Edit)
+	float                                              ManaCostMax;                                              // 0x0B10(0x0004) (Edit)
+	float                                              HealAmountBase;                                           // 0x0B14(0x0004) (Edit)
+	float                                              HealAmountMultiplier;                                     // 0x0B18(0x0004) (Edit)
+	float                                              HealAmountExtraMultiplier;                                // 0x0B1C(0x0004) (Edit)
+	float                                              HealAmountMaxPercent;                                     // 0x0B20(0x0004) (Edit)
+	float                                              MinimumCoreHealthPercent;                                 // 0x0B24(0x0004) (Edit)
+	float                                              HealInterval;                                             // 0x0B28(0x0004) (Edit)
+	float                                              HealRangeBase;                                            // 0x0B2C(0x0004) (Edit)
+	float                                              HealRangeStatBase;                                        // 0x0B30(0x0004) (Edit)
+	float                                              HealRangeStatMultiplier;                                  // 0x0B34(0x0004) (Edit)
+	float                                              HealRangeStatExponent;                                    // 0x0B38(0x0004) (Edit)
+	float                                              HealRangeMaxEffectiveStat;                                // 0x0B3C(0x0004) (Edit)
+	float                                              NightmareHealingMultiplier;                               // 0x0B40(0x0004) (Edit)
+	float                                              RotationSpeed;                                            // 0x0B44(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     CoreHealEffect;                                           // 0x0B48(0x0004) (Edit)
+	unsigned long                                      bHealInCombatPhaseOnly : 1;                               // 0x0B4C(0x0004) (Edit)
+	unsigned long                                      bDebug : 1;                                               // 0x0B4C(0x0004) (Edit)
+	struct FString                                     StringHealAmount;                                         // 0x0B50(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     StringHealSpeed;                                          // 0x0B5C(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     StringHealRange;                                          // 0x0B68(0x000C) (Edit, Localized, NeedCtorLink)
+	float                                              LastHealTime;                                             // 0x0B74(0x0004) (Transient)
+	TScriptInterface<class UDunDefTargetableInterface> BestTargetRef;                                            // 0x0B78(0x0008) (Transient)
+	struct FRotator                                    CurrentRotation;                                          // 0x0B80(0x000C) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -78,12 +78,12 @@ public:
 
 
 // Class CDT4.HeroEquipment_Familiar_MiniQueen
-// 0x0008 (0x0C74 - 0x0C6C)
+// 0x0008 (0x0C78 - 0x0C70)
 class UHeroEquipment_Familiar_MiniQueen : public UHeroEquipment_Familiar_Melee
 {
 public:
-	float                                              WebOverrideRange;                                         // 0x0C6C(0x0004) (Edit)
-	unsigned long                                      bNextAttackRanged : 1;                                    // 0x0C70(0x0004) (Transient)
+	float                                              WebOverrideRange;                                         // 0x0C70(0x0004) (Edit)
+	unsigned long                                      bNextAttackRanged : 1;                                    // 0x0C74(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{

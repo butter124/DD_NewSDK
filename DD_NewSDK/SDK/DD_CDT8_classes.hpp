@@ -122,26 +122,26 @@ public:
 
 
 // Class CDT8.HeroEquipment_Familiar_AoeBuffer
-// 0x0048 (0x0B44 - 0x0AFC)
+// 0x0048 (0x0B48 - 0x0B00)
 class UHeroEquipment_Familiar_AoeBuffer : public UHeroEquipment_Familiar
 {
 public:
-	TArray<class UDunDefBuff*>                         BuffTemplates;                                            // 0x0AFC(0x000C) (Edit, NeedCtorLink)
-	float                                              StaticBuffRange;                                          // 0x0B08(0x0004) (Edit)
-	float                                              MaxBoostStat;                                             // 0x0B0C(0x0004) (Edit)
-	float                                              MaxRangeBoostStat;                                        // 0x0B10(0x0004) (Edit)
-	unsigned long                                      UseStaticBuffRange : 1;                                   // 0x0B14(0x0004) (Edit)
-	int                                                BoostStatUpgradeInterval;                                 // 0x0B18(0x0004) (Edit)
-	float                                              BoostAnimMinInterval;                                     // 0x0B1C(0x0004) (Edit)
-	float                                              BoostAnimMaxInterval;                                     // 0x0B20(0x0004) (Edit)
-	float                                              BoostAnimPlayRate;                                        // 0x0B24(0x0004) (Edit)
-	float                                              FirstBoostInterval;                                       // 0x0B28(0x0004) (Edit)
-	float                                              BuffRange;                                                // 0x0B2C(0x0004)
-	float                                              TimeLastApplication;                                      // 0x0B30(0x0004)
-	float                                              LastEffectSpawnedTime;                                    // 0x0B34(0x0004) (Transient)
-	float                                              LastAttackedAnimationTime;                                // 0x0B38(0x0004) (Transient)
-	float                                              LastBoostAnimTimer;                                       // 0x0B3C(0x0004) (Transient)
-	float                                              NextBoostAnimTimer;                                       // 0x0B40(0x0004) (Transient)
+	TArray<class UDunDefBuff*>                         BuffTemplates;                                            // 0x0B00(0x000C) (Edit, NeedCtorLink)
+	float                                              StaticBuffRange;                                          // 0x0B0C(0x0004) (Edit)
+	float                                              MaxBoostStat;                                             // 0x0B10(0x0004) (Edit)
+	float                                              MaxRangeBoostStat;                                        // 0x0B14(0x0004) (Edit)
+	unsigned long                                      UseStaticBuffRange : 1;                                   // 0x0B18(0x0004) (Edit)
+	int                                                BoostStatUpgradeInterval;                                 // 0x0B1C(0x0004) (Edit)
+	float                                              BoostAnimMinInterval;                                     // 0x0B20(0x0004) (Edit)
+	float                                              BoostAnimMaxInterval;                                     // 0x0B24(0x0004) (Edit)
+	float                                              BoostAnimPlayRate;                                        // 0x0B28(0x0004) (Edit)
+	float                                              FirstBoostInterval;                                       // 0x0B2C(0x0004) (Edit)
+	float                                              BuffRange;                                                // 0x0B30(0x0004)
+	float                                              TimeLastApplication;                                      // 0x0B34(0x0004)
+	float                                              LastEffectSpawnedTime;                                    // 0x0B38(0x0004) (Transient)
+	float                                              LastAttackedAnimationTime;                                // 0x0B3C(0x0004) (Transient)
+	float                                              LastBoostAnimTimer;                                       // 0x0B40(0x0004) (Transient)
+	float                                              NextBoostAnimTimer;                                       // 0x0B44(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{

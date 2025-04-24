@@ -177,6 +177,7 @@ public:
 	unsigned long                                      bUseEffectAngle : 1;                                      // 0x0324(0x0004) (Edit)
 	unsigned long                                      bUseDistanceCheck : 1;                                    // 0x0324(0x0004) (Edit)
 	unsigned long                                      bUseCheckFailing : 1;                                     // 0x0324(0x0004) (Edit)
+	unsigned long                                      bUseMultiplicativeStacking : 1;                           // 0x0324(0x0004) (Edit)
 	float                                              MinDamageRange;                                           // 0x0328(0x0004) (Edit)
 	float                                              MaxDamageRange;                                           // 0x032C(0x0004) (Edit)
 
