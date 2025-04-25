@@ -8,12 +8,17 @@
 #include "includes/Hooking.h"
 #include "includes/config.h"
 #include "includes/menu.h"
+#include <d3d9.h>
 #include <string.h>
 // clang-format on
 
 void ScoreHook();
-tEndScene oScene = nullptr;
+tEndScene oEndScene = nullptr;
+tReset oReset = nullptr;
+tBeginScene oBeginScene = nullptr;
 Hooking EndSceneHook;
+Hooking ResetHook;
+Hooking BeginSceneHook;
 
 Hooking ProcEventHook(nullptr, HookedPE, 5);
 Hooking ScoreHookObj(nullptr, ScoreHook, 8);
@@ -93,6 +98,20 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
 
 LRESULT __stdcall WndProc(const HWND hwnd, UINT uMsg, WPARAM wParam,
                           LPARAM lparam) {
+  switch (uMsg) {
+  case WM_SIZE: {
+
+    // update window size
+    int width = LOWORD(lparam);
+    int height = HIWORD(lparam);
+    menu.d3dppCached.BackBufferWidth = width;
+    menu.d3dppCached.BackBufferHeight = height;
+
+    // reset imgui
+    ImGui_ImplDX9_InvalidateDeviceObjects();
+    break;
+  }
+  }
 
   if (ImGui_ImplWin32_WndProcHandler(hwnd, uMsg, wParam, lparam))
     return TRUE;
@@ -101,7 +120,7 @@ LRESULT __stdcall WndProc(const HWND hwnd, UINT uMsg, WPARAM wParam,
 }
 
 HRESULT APIENTRY hkEndScene(LPDIRECT3DDEVICE9 pDevice) {
-
+  menu.pDeviceCached = pDevice;
   static bool init = false;
   if (!init) {
     init = true;
@@ -114,6 +133,7 @@ HRESULT APIENTRY hkEndScene(LPDIRECT3DDEVICE9 pDevice) {
     io.ConfigFlags = ImGuiConfigFlags_NoMouseCursorChange;
     ImGui_ImplDX9_Init(pDevice);
   }
+
   ImGui_ImplDX9_NewFrame();
   ImGui_ImplWin32_NewFrame();
   ImGui::NewFrame();
@@ -130,6 +150,35 @@ HRESULT APIENTRY hkEndScene(LPDIRECT3DDEVICE9 pDevice) {
 
   // Call the original function after your code
   return ((tEndScene)(EndSceneHook.HookAddr))(pDevice);
+}
+
+HRESULT APIENTRY hkBeginScene(LPDIRECT3DDEVICE9 pDevice) {
+
+  // watch for DX9 device reset and reset ImGui if device has been reset
+  if (menu.pDeviceCached) {
+    HRESULT hr = menu.pDeviceCached->TestCooperativeLevel();
+    config.PrintToConsole(std::format("{}", hr));
+    if (hr == D3DERR_DEVICENOTRESET) {
+      menu.d3dppCached.Windowed = TRUE;
+      menu.d3dppCached.SwapEffect = D3DSWAPEFFECT_COPY;
+      menu.d3dppCached.hDeviceWindow = config.gameHWND;
+      menu.d3dppCached.BackBufferFormat = D3DFMT_A8R8G8B8;
+
+      menu.d3dppCached.PresentationInterval =
+          D3DPRESENT_INTERVAL_IMMEDIATE; // V-Sync disabled
+
+      menu.pDeviceCached->Reset(&menu.d3dppCached);
+      ImGui_ImplDX9_CreateDeviceObjects();
+    }
+  }
+
+  return ((tBeginScene)(BeginSceneHook.HookAddr))(pDevice);
+}
+
+HRESULT APIENTRY hkReset(IDirect3DDevice9 *pDevice,
+                         D3DPRESENT_PARAMETERS *pPresentationParameters) {
+
+  return ((tReset)(ResetHook.HookAddr))(pDevice, pPresentationParameters);
 }
 DWORD PlayerCheckScoreHack = 0;
 DWORD EaxCheck = 0;
@@ -174,12 +223,20 @@ void __declspec(naked) ScoreHook() {
 bool Menu::Init() {
 
   EndSceneHook = Hooking((void *)NULL, hkEndScene, 7);
+  ResetHook = Hooking((void *)NULL, hkReset, 7);
+  BeginSceneHook = Hooking((void *)NULL, hkBeginScene, 7);
 
   if (GetDevicePointer(d3d9Device, sizeof(d3d9Device))) {
-    oScene = (tEndScene)d3d9Device[42];
+    oReset = (tReset)d3d9Device[16];
+    oBeginScene = (tBeginScene)d3d9Device[41];
+    oEndScene = (tEndScene)d3d9Device[42];
   }
 
-  EndSceneHook.UpdateHookAddr(oScene);
+  // ResetHook.UpdateHookAddr(oReset);
+  // ResetHook.HookFunction();
+  BeginSceneHook.UpdateHookAddr(oBeginScene);
+  BeginSceneHook.HookFunction();
+  EndSceneHook.UpdateHookAddr(oEndScene);
   EndSceneHook.HookFunction();
 
   oWndProc = (WNDPROC)SetWindowLongPtr(FindWindow(NULL, "Dungeon Defenders"),
@@ -217,6 +274,7 @@ bool Menu::Init() {
 
 bool Menu::Cleanup() {
 
+  BeginSceneHook.UnHookFunction();
   EndSceneHook.UnHookFunction();
 
   (WNDPROC) SetWindowLongPtr(config.gameHWND, GWL_WNDPROC, (LONG_PTR)oWndProc);

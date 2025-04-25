@@ -6,10 +6,20 @@
 #include "SDK.hpp"
 #include "includes/Hooking.h"
 #include "includes/menu_main.h"
-typedef HRESULT(APIENTRY *tEndScene)(LPDIRECT3DDEVICE9 pDevice);
 
+typedef HRESULT(APIENTRY *tBeginScene)(LPDIRECT3DDEVICE9 pDevice);
+extern tBeginScene oScene;
+HRESULT APIENTRY hkBeginScene(LPDIRECT3DDEVICE9 pDevice);
+
+typedef HRESULT(APIENTRY *tEndScene)(LPDIRECT3DDEVICE9 pDevice);
 extern tEndScene oScene;
 HRESULT APIENTRY hkEndScene(LPDIRECT3DDEVICE9 pDevice);
+
+typedef HRESULT(APIENTRY *tReset)(
+    IDirect3DDevice9 *pDevice, D3DPRESENT_PARAMETERS *pPresentationParameters);
+extern tReset oReset;
+HRESULT APIENTRY hkReset(IDirect3DDevice9 *pDevice,
+                         D3DPRESENT_PARAMETERS *pPresentationParameters);
 
 LRESULT __stdcall WndProc(const HWND hwnd, UINT uMsg, WPARAM wParam,
                           LPARAM lparam);
@@ -53,5 +63,9 @@ public:
   void DettachConsole();
 
   MenuMain main;
+  bool bReset = false;
+
+  LPDIRECT3DDEVICE9 pDeviceCached = nullptr;
+  D3DPRESENT_PARAMETERS d3dppCached = {};
 };
 extern Menu menu;
