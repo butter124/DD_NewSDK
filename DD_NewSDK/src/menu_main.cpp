@@ -1683,6 +1683,7 @@ void MenuMain::Config() {
       else
         config.CleanLog();
     }
+    ImGui::Checkbox("Enable function filter", &config.bEnableFunctionFilter);
 
     // unordered_map menu
     // TODO: THIS COULD BE DONE ALOT BETTER
