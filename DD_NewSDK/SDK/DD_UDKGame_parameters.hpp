@@ -6154,6 +6154,12 @@ struct ADunDefDamageableTarget_AdjustDealtDamage_Params
 	int                                                OriginalDamage;                                           // (OptionalParm, Parm)
 };
 
+// Function UDKGame.DunDefDamageableTarget.OnBuffUpdated
+struct ADunDefDamageableTarget_OnBuffUpdated_Params
+{
+	class UObject*                                     BuffUpdated;                                              // (Parm)
+};
+
 // Function UDKGame.DunDefDamageableTarget.OnBuffRemoved
 struct ADunDefDamageableTarget_OnBuffRemoved_Params
 {
@@ -8597,6 +8603,11 @@ struct UDunDefBuff_InitializeBuffInfo_Params
 
 // Function UDKGame.DunDefBuff.Destroyed
 struct UDunDefBuff_Destroyed_Params
+{
+};
+
+// Function UDKGame.DunDefBuff.DoTargetStatRefresh
+struct UDunDefBuff_DoTargetStatRefresh_Params
 {
 };
 
@@ -15791,6 +15802,12 @@ struct ADunDefPawn_AdjustDealtDamage_Params
 	int                                                OriginalDamage;                                           // (OptionalParm, Parm)
 };
 
+// Function UDKGame.DunDefPawn.OnBuffUpdated
+struct ADunDefPawn_OnBuffUpdated_Params
+{
+	class UObject*                                     BuffUpdated;                                              // (Parm)
+};
+
 // Function UDKGame.DunDefPawn.OnBuffRemoved
 struct ADunDefPawn_OnBuffRemoved_Params
 {
@@ -17567,6 +17584,12 @@ struct ADunDefPlayer_GetStatModifier_Params
 	class UObject*                                     forActor;                                                 // (Parm)
 	TEnumAsByte<ELevelUpValueType>                     levelUpValue;                                             // (Parm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefPlayer.OnBuffUpdated
+struct ADunDefPlayer_OnBuffUpdated_Params
+{
+	class UObject*                                     BuffUpdated;                                              // (Parm)
 };
 
 // Function UDKGame.DunDefPlayer.OnBuffRemoved
@@ -31867,6 +31890,12 @@ struct UDunDefBuffInterface_GetHealth_Params
 {
 	unsigned long                                      bGetMax;                                                  // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefBuffInterface.OnBuffUpdated
+struct UDunDefBuffInterface_OnBuffUpdated_Params
+{
+	class UObject*                                     BuffUpdated;                                              // (Parm)
 };
 
 // Function UDKGame.DunDefBuffInterface.OnBuffRemoved

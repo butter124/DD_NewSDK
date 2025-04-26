@@ -1230,8 +1230,8 @@ public:
 class UDunDefHeroManager : public UDunDefHeroManagerNative
 {
 public:
-	// unsigned char                                      UnknownData00[0x3];                                       // 0x0079(0x0003) MISSED OFFSET
-	// unsigned long                                      bSentSteamStatsAfterRanked : 1;                           // 0x007C(0x0004)
+	//unsigned char                                      UnknownData00[0x3];                                       // 0x0079(0x0003) MISSED OFFSET
+	//unsigned long                                      bSentSteamStatsAfterRanked : 1;                           // 0x007C(0x0004)
 	unsigned long                                      bDataListReturnDLCMissionsOnly : 1;                       // 0x007C(0x0004) (Transient)
 	unsigned long                                      bDataListReturnModMissionsOnly : 1;                       // 0x007C(0x0004) (Transient)
 	unsigned long                                      bDataListReturnLostMissionsOnly : 1;                      // 0x007C(0x0004) (Transient)
@@ -2800,6 +2800,7 @@ public:
 	void RemoveStatusEffect(TEnumAsByte<EStatusEffect> Status);
 	void AddStatusEffect(TEnumAsByte<EStatusEffect> Status);
 	void AdjustDealtDamage(class AActor* damagedTarget, int OriginalDamage, int* inDamage, struct FsLastDamageInfo* damageInfo, struct FVector* Momentum);
+	void OnBuffUpdated(class UObject* BuffUpdated);
 	void OnBuffRemoved(class UObject* BuffRemoved);
 	void OnBuffAdded(class UObject* BuffAdded);
 	void ReportBuffRemoved(class UDunDefBuff* BuffRemoved);
@@ -3428,6 +3429,7 @@ public:
 	unsigned long                                      bDestroyBuffOnOwnerDeath : 1;                             // 0x00E8(0x0004) (Edit)
 	unsigned long                                      bAddStackOnTimerReset : 1;                                // 0x00E8(0x0004) (Edit)
 	unsigned long                                      bStackingAddsStacks : 1;                                  // 0x00E8(0x0004) (Edit)
+	unsigned long                                      bDoTargetStatRefresh : 1;                                 // 0x00E8(0x0004) (Edit)
 	unsigned long                                      bLimitNumSameBuffs : 1;                                   // 0x00E8(0x0004) (Edit)
 	unsigned long                                      bLimitNumSameBuffs_PerOwner : 1;                          // 0x00E8(0x0004) (Edit)
 	unsigned long                                      bKillOldest : 1;                                          // 0x00E8(0x0004) (Edit)
@@ -3447,7 +3449,7 @@ public:
 	unsigned long                                      bBuffDeadTarget : 1;                                      // 0x00E8(0x0004) (Edit)
 	unsigned long                                      bUseCharacterOverlay : 1;                                 // 0x00E8(0x0004) (Edit)
 	unsigned long                                      bAttachToSocket : 1;                                      // 0x00E8(0x0004) (Edit)
-	unsigned long                                      bScaleVFX : 1;                                            // 0x00E8(0x0004) (Edit)
+	unsigned long                                      bScaleVFX : 1;                                            // 0x00EC(0x0004) (Edit)
 	unsigned long                                      bShowBuffNotification : 1;                                // 0x00EC(0x0004) (Edit)
 	unsigned long                                      bInitedForClient : 1;                                     // 0x00EC(0x0004) (Transient)
 	unsigned long                                      bOnlyRelevantToOwner : 1;                                 // 0x00EC(0x0004) (Transient)
@@ -3563,6 +3565,7 @@ public:
 	void SetRotation(const struct FRotator& NewRot);
 	void InitializeBuffInfo(struct FsBuffNetInfo* initialInfo);
 	void Destroyed();
+	void DoTargetStatRefresh();
 	void SpawnEffect(class UParticleSystem* aParticle, class AActor* theOwner, const struct FVector& Position, const struct FRotator& Orientation, float ScaleFactor, const struct FName& SpawnFromSocket, unsigned long AttachToSocket, unsigned long AttachToActor, unsigned long DontReplicate, unsigned long bIgnoreRenderTime);
 	void DisableBuff();
 	void EnableBuff();
@@ -5984,6 +5987,7 @@ public:
 	void RemoveStatusEffect(TEnumAsByte<EStatusEffect> Status);
 	void AddStatusEffect(TEnumAsByte<EStatusEffect> Status);
 	void AdjustDealtDamage(class AActor* damagedTarget, int OriginalDamage, int* inDamage, struct FsLastDamageInfo* damageInfo, struct FVector* Momentum);
+	void OnBuffUpdated(class UObject* BuffUpdated);
 	void OnBuffRemoved(class UObject* BuffRemoved);
 	void OnBuffAdded(class UObject* BuffAdded);
 	void ReportBuffRemoved(class UDunDefBuff* BuffRemoved);
@@ -6702,6 +6706,7 @@ public:
 
 	class ADunDefPlayerReplicationInfo* GetPRI();
 	float GetStatModifier(class UObject* forActor, TEnumAsByte<ELevelUpValueType> levelUpValue);
+	void OnBuffUpdated(class UObject* BuffUpdated);
 	void OnBuffRemoved(class UObject* BuffRemoved);
 	void OnBuffAdded(class UObject* BuffAdded);
 	struct FName STATIC_StaticGetOverrideSocketName(class UDunDefHero* aHero);
@@ -16207,6 +16212,7 @@ public:
 	void ReportKilledActor(class AActor* killedActor, class UClass* TheDamageType, class AController* Killer, class AActor* KillingActor, class UObject* WhatKilledThem);
 	struct FVector GetLocation();
 	int GetHealth(unsigned long bGetMax);
+	void OnBuffUpdated(class UObject* BuffUpdated);
 	void OnBuffRemoved(class UObject* BuffRemoved);
 	void OnBuffAdded(class UObject* BuffAdded);
 };

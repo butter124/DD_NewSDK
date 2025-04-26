@@ -20008,6 +20008,26 @@ void ADunDefDamageableTarget::AdjustDealtDamage(class AActor* damagedTarget, int
 }
 
 
+// Function UDKGame.DunDefDamageableTarget.OnBuffUpdated
+// (Simulated, Public)
+// Parameters:
+// class UObject*                 BuffUpdated                    (Parm)
+
+void ADunDefDamageableTarget::OnBuffUpdated(class UObject* BuffUpdated)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefDamageableTarget.OnBuffUpdated");
+
+	ADunDefDamageableTarget_OnBuffUpdated_Params params;
+	params.BuffUpdated = BuffUpdated;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function UDKGame.DunDefDamageableTarget.OnBuffRemoved
 // (Defined, Simulated, Public)
 // Parameters:
@@ -27855,6 +27875,23 @@ void UDunDefBuff::Destroyed()
 	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefBuff.Destroyed");
 
 	UDunDefBuff_Destroyed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefBuff.DoTargetStatRefresh
+// (Defined, Simulated, Public)
+
+void UDunDefBuff::DoTargetStatRefresh()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefBuff.DoTargetStatRefresh");
+
+	UDunDefBuff_DoTargetStatRefresh_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51244,6 +51281,26 @@ void ADunDefPawn::AdjustDealtDamage(class AActor* damagedTarget, int OriginalDam
 }
 
 
+// Function UDKGame.DunDefPawn.OnBuffUpdated
+// (Simulated, Public)
+// Parameters:
+// class UObject*                 BuffUpdated                    (Parm)
+
+void ADunDefPawn::OnBuffUpdated(class UObject* BuffUpdated)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPawn.OnBuffUpdated");
+
+	ADunDefPawn_OnBuffUpdated_Params params;
+	params.BuffUpdated = BuffUpdated;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function UDKGame.DunDefPawn.OnBuffRemoved
 // (Defined, Simulated, Public)
 // Parameters:
@@ -57004,6 +57061,26 @@ float ADunDefPlayer::GetStatModifier(class UObject* forActor, TEnumAsByte<ELevel
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefPlayer.OnBuffUpdated
+// (Defined, Simulated, Public)
+// Parameters:
+// class UObject*                 BuffUpdated                    (Parm)
+
+void ADunDefPlayer::OnBuffUpdated(class UObject* BuffUpdated)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayer.OnBuffUpdated");
+
+	ADunDefPlayer_OnBuffUpdated_Params params;
+	params.BuffUpdated = BuffUpdated;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -103456,6 +103533,26 @@ int UDunDefBuffInterface::GetHealth(unsigned long bGetMax)
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefBuffInterface.OnBuffUpdated
+// (Simulated, Public)
+// Parameters:
+// class UObject*                 BuffUpdated                    (Parm)
+
+void UDunDefBuffInterface::OnBuffUpdated(class UObject* BuffUpdated)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefBuffInterface.OnBuffUpdated");
+
+	UDunDefBuffInterface_OnBuffUpdated_Params params;
+	params.BuffUpdated = BuffUpdated;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
