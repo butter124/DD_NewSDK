@@ -29715,6 +29715,49 @@ struct UDunDef_SeqAct_PlayerCountSwitch_Activated_Params
 {
 };
 
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.Update
+struct UDunDef_SeqAct_ProjectileSpawner_Update_Params
+{
+	float                                              dt;                                                       // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.Activated
+struct UDunDef_SeqAct_ProjectileSpawner_Activated_Params
+{
+};
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.Reset
+struct UDunDef_SeqAct_ProjectileSpawner_Reset_Params
+{
+};
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnProjectilesAll
+struct UDunDef_SeqAct_ProjectileSpawner_SpawnProjectilesAll_Params
+{
+};
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnProjectile
+struct UDunDef_SeqAct_ProjectileSpawner_SpawnProjectile_Params
+{
+};
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.GetLocation
+struct UDunDef_SeqAct_ProjectileSpawner_GetLocation_Params
+{
+	int                                                I;                                                        // (Parm)
+	struct FVector                                     TargetLocation;                                           // (Parm)
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.MakeActIntPair
+struct UDunDef_SeqAct_ProjectileSpawner_MakeActIntPair_Params
+{
+	class AActor*                                      A;                                                        // (Parm)
+	int                                                B;                                                        // (Parm)
+	struct Fact_int_pair                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.DunDef_SeqAct_RateLimiter.Activated
 struct UDunDef_SeqAct_RateLimiter_Activated_Params
 {

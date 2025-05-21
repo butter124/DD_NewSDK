@@ -101,6 +101,50 @@ void ABuffVolume::Touch(class AActor* Other, class UPrimitiveComponent* OtherCom
 }
 
 
+// Function DunDefBuff.DunDef_SeqAct_BuffArrayManager.Activated
+// (Defined, Event, Public)
+
+void UDunDef_SeqAct_BuffArrayManager::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDef_SeqAct_BuffArrayManager.Activated");
+
+	UDunDef_SeqAct_BuffArrayManager_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefBuff.DunDef_SeqAct_BuffArrayManager.CreateBuffInfo
+// (Defined, Public, HasDefaults)
+// Parameters:
+// class ADunDefPlayerController* A                              (Parm)
+// int                            Buff                           (Parm)
+// int                            Wave                           (Parm)
+// struct Findexer                ReturnValue                    (Parm, OutParm, ReturnParm)
+
+struct Findexer UDunDef_SeqAct_BuffArrayManager::CreateBuffInfo(class ADunDefPlayerController* A, int Buff, int Wave)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDef_SeqAct_BuffArrayManager.CreateBuffInfo");
+
+	UDunDef_SeqAct_BuffArrayManager_CreateBuffInfo_Params params;
+	params.A = A;
+	params.Buff = Buff;
+	params.Wave = Wave;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function DunDefBuff.DunDef_SeqAct_ClearBuffs.Activated
 // (Defined, Event, Public)
 

@@ -9463,7 +9463,7 @@ public:
 
 
 // Class UDKGame.UI_ItemBox
-// 0x01D0 (0x080C - 0x063C)
+// 0x01D8 (0x0814 - 0x063C)
 class UUI_ItemBox : public UDunDefUIScene
 {
 public:
@@ -9486,75 +9486,77 @@ public:
 	class UUIButton*                                   SetActiveFolderbutton;                                    // 0x067C(0x0004) (Edit)
 	class UUIResolutionContainer*                      ResolutionContainerToResize;                              // 0x0680(0x0004) (Edit)
 	float                                              TradeModeScalarValue;                                     // 0x0684(0x0004) (Edit)
-	class UUIObject*                                   MainExtentsWidget;                                        // 0x0688(0x0004) (Edit)
-	unsigned long                                      bInTradeMode : 1;                                         // 0x068C(0x0004) (Transient)
-	unsigned long                                      bPlayedShowItemBoxUI : 1;                                 // 0x068C(0x0004)
-	unsigned long                                      bIsPlayerShop : 1;                                        // 0x068C(0x0004) (Edit)
-	unsigned long                                      bShowingDeletionConfirmation : 1;                         // 0x068C(0x0004)
-	unsigned long                                      bDontCancelDeletion : 1;                                  // 0x068C(0x0004)
-	unsigned long                                      bIsInLobby : 1;                                           // 0x068C(0x0004)
-	unsigned long                                      bIsFolderRenaming : 1;                                    // 0x068C(0x0004) (Transient)
-	unsigned long                                      bIsFolderCreating : 1;                                    // 0x068C(0x0004) (Transient)
-	unsigned long                                      bCtrlDown : 1;                                            // 0x068C(0x0004) (Transient)
-	class UUIButton*                                   CreateFolder;                                             // 0x0690(0x0004) (Edit)
-	class UUIButton*                                   UpFolder;                                                 // 0x0694(0x0004) (Edit)
-	class UUIButton*                                   RenameFolder;                                             // 0x0698(0x0004) (Edit)
-	class UUIButton*                                   DeleteFolder;                                             // 0x069C(0x0004) (Edit)
-	class UUI_EquipmentInfo*                           EquipmentInfoUITemplate;                                  // 0x06A0(0x0004) (Edit)
-	class USoundCue*                                   MoveEquipmentSound;                                       // 0x06A4(0x0004) (Edit)
-	class USoundCue*                                   SellSound;                                                // 0x06A8(0x0004) (Edit)
-	class USoundCue*                                   SellAllSound;                                             // 0x06AC(0x0004) (Edit)
-	class USoundCue*                                   LockSound;                                                // 0x06B0(0x0004) (Edit)
-	class USoundCue*                                   UnlockSound;                                              // 0x06B4(0x0004) (Edit)
-	class USoundCue*                                   AddItemToTradeSound;                                      // 0x06B8(0x0004) (Edit)
-	class USoundCue*                                   RemoveItemFromTradeSound;                                 // 0x06BC(0x0004) (Edit)
-	class USoundCue*                                   NavigateToFolderSound;                                    // 0x06C0(0x0004) (Edit)
-	class USoundCue*                                   ItemDraggedSoundCue;                                      // 0x06C4(0x0004) (Edit)
-	class USoundCue*                                   FolderDraggedSoundCue;                                    // 0x06C8(0x0004) (Edit)
-	class USoundCue*                                   DeleteFolderSoundCue;                                     // 0x06CC(0x0004) (Edit)
-	class UUILabel*                                    BankedManaLabel;                                          // 0x06D0(0x0004) (Edit)
-	class UUILabel*                                    ItemCountLabel;                                           // 0x06D4(0x0004) (Edit)
-	struct FColor                                      LockItemColor;                                            // 0x06D8(0x0004) (Edit)
-	struct FColor                                      UnlockItemColor;                                          // 0x06DC(0x0004) (Edit)
-	struct FName                                       ShowItemBoxUI;                                            // 0x06E0(0x0008) (Edit)
-	struct FName                                       HideItemBoxUI;                                            // 0x06E8(0x0008) (Edit)
-	struct FString                                     LockItemString;                                           // 0x06F0(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     UnlockItemString;                                         // 0x06FC(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     ViewTradeString;                                          // 0x0708(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     MoveItemUpString;                                         // 0x0714(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     MoveItemIntoFolderString;                                 // 0x0720(0x000C) (Edit, Localized, NeedCtorLink)
-	class UUI_EditboxPopup*                            NewFolderEditBoxPopupTemplate;                            // 0x072C(0x0004) (Edit)
-	class UUI_EditboxPopup*                            RenameFolderEditBoxPopupTemplate;                         // 0x0730(0x0004) (Edit)
-	struct FLinearColor                                ItemCountColorFull;                                       // 0x0734(0x0010) (Edit)
-	struct FLinearColor                                ItemCountColorRegular;                                    // 0x0744(0x0010) (Edit)
-	class UUILabel*                                    ItemPath;                                                 // 0x0754(0x0004) (Edit)
-	class UHeroEquipment*                              NextRefreshSelectedEntry;                                 // 0x0758(0x0004)
-	class UUIButton*                                   CancelDeletionButton;                                     // 0x075C(0x0004) (Edit)
-	class UUIButton*                                   ConfirmDeletionButton;                                    // 0x0760(0x0004) (Edit)
-	class UUIButton*                                   UseInTradeButton;                                         // 0x0764(0x0004) (Edit)
-	class UUIObject*                                   DeletionPanel;                                            // 0x0768(0x0004) (Edit)
-	class UUILabel*                                    DeletionEquipmentNameLabel;                               // 0x076C(0x0004) (Edit)
-	TArray<class UUIObject*>                           ConfirmationButtons;                                      // 0x0770(0x000C) (Edit, NeedCtorLink)
-	struct FName                                       AnimShowDeletionConfirmation;                             // 0x077C(0x0008) (Edit)
-	struct FName                                       AnimHideDeletionConfirmation;                             // 0x0784(0x0008) (Edit)
-	struct FString                                     AllItemsString;                                           // 0x078C(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     SellAllInLobbyString;                                     // 0x0798(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     SellInLobbyString;                                        // 0x07A4(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     AddToTradeString;                                         // 0x07B0(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     RemoveFromTradeString;                                    // 0x07BC(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     SetActiveFolderString;                                    // 0x07C8(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     ClearActiveFolderString;                                  // 0x07D4(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FColor                                      AddToTradeColor;                                          // 0x07E0(0x0004) (Edit)
-	struct FColor                                      RemoveFromTradeColor;                                     // 0x07E4(0x0004) (Edit)
-	class UUIScriptWidget_Combobox*                    CB_SortingFilter;                                         // 0x07E8(0x0004) (Edit)
-	int                                                FocusCounter;                                             // 0x07EC(0x0004)
-	int                                                DeletionReason;                                           // 0x07F0(0x0004)
-	int                                                UserID;                                                   // 0x07F4(0x0004)
-	class UUI_EditboxPopup*                            FolderNaming;                                             // 0x07F8(0x0004) (Transient)
-	int                                                FolderIDToRename;                                         // 0x07FC(0x0004) (Transient)
-	float                                              SyncItemsTimer;                                           // 0x0800(0x0004) (Transient)
-	float                                              SaveUpdateTimer;                                          // 0x0804(0x0004) (Transient)
-	int                                                ActiveTransferFolderID;                                   // 0x0808(0x0004) (Transient)
+	float                                              SplitScreenModeScalarValue;                               // 0x0688(0x0004) (Edit)
+	float                                              FourByThreeModeScalarValue;                               // 0x068C(0x0004) (Edit)
+	class UUIObject*                                   MainExtentsWidget;                                        // 0x0690(0x0004) (Edit)
+	unsigned long                                      bInTradeMode : 1;                                         // 0x0694(0x0004) (Transient)
+	unsigned long                                      bPlayedShowItemBoxUI : 1;                                 // 0x0694(0x0004)
+	unsigned long                                      bIsPlayerShop : 1;                                        // 0x0694(0x0004) (Edit)
+	unsigned long                                      bShowingDeletionConfirmation : 1;                         // 0x0694(0x0004)
+	unsigned long                                      bDontCancelDeletion : 1;                                  // 0x0694(0x0004)
+	unsigned long                                      bIsInLobby : 1;                                           // 0x0694(0x0004)
+	unsigned long                                      bIsFolderRenaming : 1;                                    // 0x0694(0x0004) (Transient)
+	unsigned long                                      bIsFolderCreating : 1;                                    // 0x0694(0x0004) (Transient)
+	unsigned long                                      bCtrlDown : 1;                                            // 0x0694(0x0004) (Transient)
+	class UUIButton*                                   CreateFolder;                                             // 0x0698(0x0004) (Edit)
+	class UUIButton*                                   UpFolder;                                                 // 0x069C(0x0004) (Edit)
+	class UUIButton*                                   RenameFolder;                                             // 0x06A0(0x0004) (Edit)
+	class UUIButton*                                   DeleteFolder;                                             // 0x06A4(0x0004) (Edit)
+	class UUI_EquipmentInfo*                           EquipmentInfoUITemplate;                                  // 0x06A8(0x0004) (Edit)
+	class USoundCue*                                   MoveEquipmentSound;                                       // 0x06AC(0x0004) (Edit)
+	class USoundCue*                                   SellSound;                                                // 0x06B0(0x0004) (Edit)
+	class USoundCue*                                   SellAllSound;                                             // 0x06B4(0x0004) (Edit)
+	class USoundCue*                                   LockSound;                                                // 0x06B8(0x0004) (Edit)
+	class USoundCue*                                   UnlockSound;                                              // 0x06BC(0x0004) (Edit)
+	class USoundCue*                                   AddItemToTradeSound;                                      // 0x06C0(0x0004) (Edit)
+	class USoundCue*                                   RemoveItemFromTradeSound;                                 // 0x06C4(0x0004) (Edit)
+	class USoundCue*                                   NavigateToFolderSound;                                    // 0x06C8(0x0004) (Edit)
+	class USoundCue*                                   ItemDraggedSoundCue;                                      // 0x06CC(0x0004) (Edit)
+	class USoundCue*                                   FolderDraggedSoundCue;                                    // 0x06D0(0x0004) (Edit)
+	class USoundCue*                                   DeleteFolderSoundCue;                                     // 0x06D4(0x0004) (Edit)
+	class UUILabel*                                    BankedManaLabel;                                          // 0x06D8(0x0004) (Edit)
+	class UUILabel*                                    ItemCountLabel;                                           // 0x06DC(0x0004) (Edit)
+	struct FColor                                      LockItemColor;                                            // 0x06E0(0x0004) (Edit)
+	struct FColor                                      UnlockItemColor;                                          // 0x06E4(0x0004) (Edit)
+	struct FName                                       ShowItemBoxUI;                                            // 0x06E8(0x0008) (Edit)
+	struct FName                                       HideItemBoxUI;                                            // 0x06F0(0x0008) (Edit)
+	struct FString                                     LockItemString;                                           // 0x06F8(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     UnlockItemString;                                         // 0x0704(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     ViewTradeString;                                          // 0x0710(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     MoveItemUpString;                                         // 0x071C(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     MoveItemIntoFolderString;                                 // 0x0728(0x000C) (Edit, Localized, NeedCtorLink)
+	class UUI_EditboxPopup*                            NewFolderEditBoxPopupTemplate;                            // 0x0734(0x0004) (Edit)
+	class UUI_EditboxPopup*                            RenameFolderEditBoxPopupTemplate;                         // 0x0738(0x0004) (Edit)
+	struct FLinearColor                                ItemCountColorFull;                                       // 0x073C(0x0010) (Edit)
+	struct FLinearColor                                ItemCountColorRegular;                                    // 0x074C(0x0010) (Edit)
+	class UUILabel*                                    ItemPath;                                                 // 0x075C(0x0004) (Edit)
+	class UHeroEquipment*                              NextRefreshSelectedEntry;                                 // 0x0760(0x0004)
+	class UUIButton*                                   CancelDeletionButton;                                     // 0x0764(0x0004) (Edit)
+	class UUIButton*                                   ConfirmDeletionButton;                                    // 0x0768(0x0004) (Edit)
+	class UUIButton*                                   UseInTradeButton;                                         // 0x076C(0x0004) (Edit)
+	class UUIObject*                                   DeletionPanel;                                            // 0x0770(0x0004) (Edit)
+	class UUILabel*                                    DeletionEquipmentNameLabel;                               // 0x0774(0x0004) (Edit)
+	TArray<class UUIObject*>                           ConfirmationButtons;                                      // 0x0778(0x000C) (Edit, NeedCtorLink)
+	struct FName                                       AnimShowDeletionConfirmation;                             // 0x0784(0x0008) (Edit)
+	struct FName                                       AnimHideDeletionConfirmation;                             // 0x078C(0x0008) (Edit)
+	struct FString                                     AllItemsString;                                           // 0x0794(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     SellAllInLobbyString;                                     // 0x07A0(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     SellInLobbyString;                                        // 0x07AC(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     AddToTradeString;                                         // 0x07B8(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     RemoveFromTradeString;                                    // 0x07C4(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     SetActiveFolderString;                                    // 0x07D0(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     ClearActiveFolderString;                                  // 0x07DC(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FColor                                      AddToTradeColor;                                          // 0x07E8(0x0004) (Edit)
+	struct FColor                                      RemoveFromTradeColor;                                     // 0x07EC(0x0004) (Edit)
+	class UUIScriptWidget_Combobox*                    CB_SortingFilter;                                         // 0x07F0(0x0004) (Edit)
+	int                                                FocusCounter;                                             // 0x07F4(0x0004)
+	int                                                DeletionReason;                                           // 0x07F8(0x0004)
+	int                                                UserID;                                                   // 0x07FC(0x0004)
+	class UUI_EditboxPopup*                            FolderNaming;                                             // 0x0800(0x0004) (Transient)
+	int                                                FolderIDToRename;                                         // 0x0804(0x0004) (Transient)
+	float                                              SyncItemsTimer;                                           // 0x0808(0x0004) (Transient)
+	float                                              SaveUpdateTimer;                                          // 0x080C(0x0004) (Transient)
+	int                                                ActiveTransferFolderID;                                   // 0x0810(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -13095,12 +13097,13 @@ public:
 
 
 // Class UDKGame.DunDef_SeqAct_GetRandomInt
-// 0x0008 (0x00F0 - 0x00E8)
+// 0x000C (0x00F4 - 0x00E8)
 class UDunDef_SeqAct_GetRandomInt : public USequenceAction
 {
 public:
 	int                                                Min;                                                      // 0x00E8(0x0004) (Edit)
 	int                                                Max;                                                      // 0x00EC(0x0004) (Edit)
+	unsigned long                                      bPreventImmediateRepeats : 1;                             // 0x00F0(0x0004) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -13467,6 +13470,54 @@ public:
 
 
 	void Activated();
+};
+
+
+// Class UDKGame.DunDef_SeqAct_ProjectileSpawner
+// 0x0064 (0x015C - 0x00F8)
+class UDunDef_SeqAct_ProjectileSpawner : public USeqAct_Latent
+{
+public:
+	TArray<class ADunDefProjectile*>                   ProjectileToSpawn;                                        // 0x00F8(0x000C) (Edit, NeedCtorLink)
+	TArray<class AActor*>                              SpawnLocations;                                           // 0x0104(0x000C) (Edit, NeedCtorLink)
+	unsigned long                                      bUseTargetAsSpawnLocation : 1;                            // 0x0110(0x0004) (Edit)
+	unsigned long                                      bOffsetRangeSurfaceOnly : 1;                              // 0x0110(0x0004) (Edit)
+	unsigned long                                      bOverrideDamage : 1;                                      // 0x0110(0x0004) (Edit)
+	unsigned long                                      bRandomSpawnLocations : 1;                                // 0x0110(0x0004) (Edit)
+	unsigned long                                      bRandomProjectiles : 1;                                   // 0x0110(0x0004) (Edit)
+	unsigned long                                      bExcludePreviousLocation : 1;                             // 0x0110(0x0004) (Edit)
+	unsigned long                                      bExcludePreviousTarget : 1;                               // 0x0110(0x0004) (Edit)
+	unsigned long                                      bIgnoreSpawnCollision : 1;                                // 0x0110(0x0004) (Edit)
+	unsigned long                                      bShuffleTargetSequence : 1;                               // 0x0110(0x0004) (Edit)
+	unsigned long                                      bUseProjectileHoming : 1;                                 // 0x0110(0x0004) (Edit)
+	struct FVector                                     WorldSpawnOffset;                                         // 0x0114(0x000C) (Edit)
+	struct FVector                                     WorldSpawnOffsetLow;                                      // 0x0120(0x000C) (Edit)
+	int                                                SpawnCount;                                               // 0x012C(0x0004) (Edit)
+	float                                              DamageMultiplier;                                         // 0x0130(0x0004) (Edit)
+	TEnumAsByte<ETargetingType>                        TargetingType;                                            // 0x0134(0x0001) (Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0135(0x0003) MISSED OFFSET
+	float                                              ProjectileSpawnDelay;                                     // 0x0138(0x0004) (Edit)
+	class APawn*                                       Instigator;                                               // 0x013C(0x0004) (Edit)
+	TArray<struct Fact_int_pair>                       ProjectileDestinations;                                   // 0x0140(0x000C) (Transient, NeedCtorLink)
+	int                                                projectilesSpawned;                                       // 0x014C(0x0004) (Transient)
+	float                                              myTimer;                                                  // 0x0150(0x0004) (Transient)
+	int                                                prevTargetIndex;                                          // 0x0154(0x0004) (Transient)
+	int                                                prevLocationIndex;                                        // 0x0158(0x0004) (Transient)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.DunDef_SeqAct_ProjectileSpawner");
+		return ptr;
+	}
+
+
+	unsigned long Update(float dt);
+	void Activated();
+	void Reset();
+	void SpawnProjectilesAll();
+	void SpawnProjectile();
+	struct FVector GetLocation(int I, const struct FVector& TargetLocation);
+	struct Fact_int_pair MakeActIntPair(class AActor* A, int B);
 };
 
 
@@ -21480,28 +21531,28 @@ public:
 
 
 // Class UDKGame.UI_PlayerShop
-// 0x0060 (0x086C - 0x080C)
+// 0x0060 (0x0874 - 0x0814)
 class UUI_PlayerShop : public UUI_ItemBox
 {
 public:
-	class UUIButton*                                   RemoveFromPlayerShopButton;                               // 0x080C(0x0004) (Edit)
-	class UUIButton*                                   IncreaseItemCost;                                         // 0x0810(0x0004) (Edit)
-	class UUIButton*                                   ReduceItemCost;                                           // 0x0814(0x0004) (Edit)
-	class UUIButton*                                   DecreaseItemCost;                                         // 0x0818(0x0004) (Edit)
-	class UUIButton*                                   SetItemCostButton;                                        // 0x081C(0x0004) (Edit)
-	class UUIButton*                                   BuyItemButton;                                            // 0x0820(0x0004) (Edit)
-	class UUIScriptWidget_Button*                      ToggleAFKShopMode;                                        // 0x0824(0x0004) (Edit)
-	class UUILabel*                                    PlayerShopNameLabel;                                      // 0x0828(0x0004) (Edit)
-	class UUILabel*                                    PurchaseEquipmentManaCostLabel;                           // 0x082C(0x0004) (Edit)
-	class UUILabel*                                    RequiresShopModeLabel;                                    // 0x0830(0x0004) (Edit)
-	class UUILabel*                                    WillRequireShopModeLabel;                                 // 0x0834(0x0004) (Edit)
-	struct FString                                     PlayerShopNameString;                                     // 0x0838(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     EnableShopString;                                         // 0x0844(0x000C) (Edit, Localized, NeedCtorLink)
-	struct FString                                     DisableShopString;                                        // 0x0850(0x000C) (Edit, Localized, NeedCtorLink)
-	class UUIImage*                                    heroIconImage;                                            // 0x085C(0x0004) (Edit)
-	class APlayerShopManager*                          myPlayerShopManager;                                      // 0x0860(0x0004)
-	class UUI_EditboxPopup*                            myEditBoxPopup;                                           // 0x0864(0x0004) (Transient)
-	class UUI_EditboxPopup*                            EditBoxPopupTemplate;                                     // 0x0868(0x0004) (Edit)
+	class UUIButton*                                   RemoveFromPlayerShopButton;                               // 0x0814(0x0004) (Edit)
+	class UUIButton*                                   IncreaseItemCost;                                         // 0x0818(0x0004) (Edit)
+	class UUIButton*                                   ReduceItemCost;                                           // 0x081C(0x0004) (Edit)
+	class UUIButton*                                   DecreaseItemCost;                                         // 0x0820(0x0004) (Edit)
+	class UUIButton*                                   SetItemCostButton;                                        // 0x0824(0x0004) (Edit)
+	class UUIButton*                                   BuyItemButton;                                            // 0x0828(0x0004) (Edit)
+	class UUIScriptWidget_Button*                      ToggleAFKShopMode;                                        // 0x082C(0x0004) (Edit)
+	class UUILabel*                                    PlayerShopNameLabel;                                      // 0x0830(0x0004) (Edit)
+	class UUILabel*                                    PurchaseEquipmentManaCostLabel;                           // 0x0834(0x0004) (Edit)
+	class UUILabel*                                    RequiresShopModeLabel;                                    // 0x0838(0x0004) (Edit)
+	class UUILabel*                                    WillRequireShopModeLabel;                                 // 0x083C(0x0004) (Edit)
+	struct FString                                     PlayerShopNameString;                                     // 0x0840(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     EnableShopString;                                         // 0x084C(0x000C) (Edit, Localized, NeedCtorLink)
+	struct FString                                     DisableShopString;                                        // 0x0858(0x000C) (Edit, Localized, NeedCtorLink)
+	class UUIImage*                                    heroIconImage;                                            // 0x0864(0x0004) (Edit)
+	class APlayerShopManager*                          myPlayerShopManager;                                      // 0x0868(0x0004)
+	class UUI_EditboxPopup*                            myEditBoxPopup;                                           // 0x086C(0x0004) (Transient)
+	class UUI_EditboxPopup*                            EditBoxPopupTemplate;                                     // 0x0870(0x0004) (Edit)
 
 	static UClass* StaticClass()
 	{

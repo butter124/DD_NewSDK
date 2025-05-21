@@ -1287,7 +1287,7 @@ public:
 
 		//UClass::GetDefaultObject can be found with the sig
 		//85 C0 75 21 39 05 ?? ?? ?? ?? 74 19 F7 86 ?? 00 00 00 00 00 00 10 75 0D F6 05 ?? ?? ?? ?? 02 0F 84
-		static Fn fn = nullptr;
+		static Fn fn = (Fn)0x00462FF0;
 		
 		return fn(this, 0);
 

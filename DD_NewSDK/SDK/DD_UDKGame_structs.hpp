@@ -1427,6 +1427,16 @@ enum class ENoteAlignment : uint8_t
 };
 
 
+// Enum UDKGame.DunDef_SeqAct_ProjectileSpawner.ETargetingType
+enum class ETargetingType : uint8_t
+{
+	Sequential                     = 0,
+	Random                         = 1,
+	All                            = 2,
+	ETargetingType_MAX             = 3
+};
+
+
 // Enum UDKGame.Main.ETUTORIALFLAG
 enum class ETUTORIALFLAG : uint8_t
 {
@@ -4754,6 +4764,14 @@ struct FGiveEquipmentEntry
 	float                                              RandomGlobalEquipmentDropValueMin;                        // 0x0028(0x0004) (Edit)
 	float                                              RandomGlobalEquipmentDropValueMax;                        // 0x002C(0x0004) (Edit)
 	unsigned long                                      bUsed : 1;                                                // 0x0030(0x0004)
+};
+
+// ScriptStruct UDKGame.DunDef_SeqAct_ProjectileSpawner.act_int_pair
+// 0x0008
+struct Fact_int_pair
+{
+	class AActor*                                      act;                                                      // 0x0000(0x0004)
+	int                                                Num;                                                      // 0x0004(0x0004)
 };
 
 // ScriptStruct UDKGame.UI_MainMenu.myUIKeyRepeatData

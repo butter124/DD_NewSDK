@@ -38,13 +38,36 @@ public:
 };
 
 
+// Class DunDefBuff.DunDef_SeqAct_BuffArrayManager
+// 0x0018 (0x0100 - 0x00E8)
+class UDunDef_SeqAct_BuffArrayManager : public USequenceAction
+{
+public:
+	TArray<class UDunDefBuff*>                         BuffList;                                                 // 0x00E8(0x000C) (Edit, NeedCtorLink)
+	TArray<struct Findexer>                            ChosenBuffs;                                              // 0x00F4(0x000C) (NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class DunDefBuff.DunDef_SeqAct_BuffArrayManager");
+		return ptr;
+	}
+
+
+	void Activated();
+	struct Findexer CreateBuffInfo(class ADunDefPlayerController* A, int Buff, int Wave);
+};
+
+
 // Class DunDefBuff.DunDef_SeqAct_ClearBuffs
-// 0x0010 (0x00F8 - 0x00E8)
+// 0x0014 (0x00FC - 0x00E8)
 class UDunDef_SeqAct_ClearBuffs : public USequenceAction
 {
 public:
 	unsigned long                                      bClearAllBuffs : 1;                                       // 0x00E8(0x0004) (Edit)
+	unsigned long                                      bClearBuffsAtIndex : 1;                                   // 0x00E8(0x0004) (Edit)
+	unsigned long                                      bDecrementStacksInstead : 1;                              // 0x00E8(0x0004) (Edit)
 	TArray<class UDunDefBuff*>                         BuffsToClear;                                             // 0x00EC(0x000C) (Edit, NeedCtorLink)
+	int                                                StacksToRemove;                                           // 0x00F8(0x0004) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -58,11 +81,13 @@ public:
 
 
 // Class DunDefBuff.DunDef_SeqAct_SpawnBuffs
-// 0x000C (0x00F4 - 0x00E8)
+// 0x0014 (0x00FC - 0x00E8)
 class UDunDef_SeqAct_SpawnBuffs : public USequenceAction
 {
 public:
 	TArray<class UDunDefBuff*>                         BuffTemplates;                                            // 0x00E8(0x000C) (Edit, NeedCtorLink)
+	unsigned long                                      bApplyAllBuffs : 1;                                       // 0x00F4(0x0004) (Edit)
+	int                                                StacksToAdd;                                              // 0x00F8(0x0004) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -332,7 +357,7 @@ public:
 
 
 // Class DunDefBuff.DunDefBuff_Spawn
-// 0x0058 (0x0358 - 0x0300)
+// 0x0064 (0x0364 - 0x0300)
 class UDunDefBuff_Spawn : public UDunDefBuff
 {
 public:
@@ -349,10 +374,11 @@ public:
 	int                                                SpawnCount;                                               // 0x0314(0x0004) (Edit)
 	int                                                SpawnLimit;                                               // 0x0318(0x0004) (Edit)
 	TArray<int>                                        TieredSpawnCountArray;                                    // 0x031C(0x000C) (Edit, NeedCtorLink)
-	TArray<class UActorFilter*>                        EventCauserFilters;                                       // 0x0328(0x000C) (Edit, NeedCtorLink, EditInline)
-	TArray<class UActorFilter*>                        EventOwnerFilters;                                        // 0x0334(0x000C) (Edit, NeedCtorLink, EditInline)
-	TArray<class UActorFilter*>                        WhatDidDamageFilters;                                     // 0x0340(0x000C) (Edit, NeedCtorLink, EditInline)
-	TArray<class UObject*>                             SpawnedObjects;                                           // 0x034C(0x000C) (Transient, NeedCtorLink)
+	struct FVector                                     SpawnOffsetVector;                                        // 0x0328(0x000C) (Edit)
+	TArray<class UActorFilter*>                        EventCauserFilters;                                       // 0x0334(0x000C) (Edit, NeedCtorLink, EditInline)
+	TArray<class UActorFilter*>                        EventOwnerFilters;                                        // 0x0340(0x000C) (Edit, NeedCtorLink, EditInline)
+	TArray<class UActorFilter*>                        WhatDidDamageFilters;                                     // 0x034C(0x000C) (Edit, NeedCtorLink, EditInline)
+	TArray<class UObject*>                             SpawnedObjects;                                           // 0x0358(0x000C) (Transient, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{

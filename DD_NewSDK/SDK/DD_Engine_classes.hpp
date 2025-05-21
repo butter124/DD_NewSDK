@@ -1433,7 +1433,7 @@ public:
 	float DrawTextCenteredShadowed(const struct FString& Text, unsigned long CR, float XScale, float YScale, unsigned long CenterY, class UFont* FontToUse, unsigned long Wrap, const struct FLinearColor& gradientColor, float Left, float Right, float Top, float Bottom, unsigned long checkForLineBreaks, TArray<struct FTextEx>* TextBlock);
 	void DrawTextCentered(const struct FString& Text, unsigned long CR, float XScale, float YScale, unsigned long CenterY, unsigned long Wrap, float Left, float Right, float Top, float Bottom);
 	void STATIC_AddColoredText(const struct FString& Text, const struct FColor& InColor, TArray<struct FTextEx>* TextBlock);
-	void DrawText(const struct FString& Text, unsigned long CR, float XScale, float YScale, unsigned long Wrap, float Left, float Right, float Top, float Bottom, struct FFontRenderInfo* RenderInfo, TArray<struct FTextEx>* TextBlock);
+	void DrawTextA(const struct FString& Text, unsigned long CR, float XScale, float YScale, unsigned long Wrap, float Left, float Right, float Top, float Bottom, struct FFontRenderInfo* RenderInfo, TArray<struct FTextEx>* TextBlock);
 	void TextSize(const struct FString& String, float* XL, float* YL);
 	void StrLen(const struct FString& String, float XScale, float YScale, unsigned long Wrap, float* XL, float* YL);
 	struct FFontRenderInfo STATIC_CreateFontRenderInfo(unsigned long bClipText, unsigned long bEnableShadow, const struct FLinearColor& GlowColor, const struct FVector2D& GlowOuterRadius, const struct FVector2D& GlowInnerRadius);

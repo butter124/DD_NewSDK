@@ -96426,6 +96426,147 @@ void UDunDef_SeqAct_PlayerCountSwitch::Activated()
 }
 
 
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.Update
+// (Defined, Event, Public)
+// Parameters:
+// float                          dt                             (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UDunDef_SeqAct_ProjectileSpawner::Update(float dt)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_ProjectileSpawner.Update");
+
+	UDunDef_SeqAct_ProjectileSpawner_Update_Params params;
+	params.dt = dt;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.Activated
+// (Defined, Event, Public, HasDefaults)
+
+void UDunDef_SeqAct_ProjectileSpawner::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_ProjectileSpawner.Activated");
+
+	UDunDef_SeqAct_ProjectileSpawner_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.Reset
+// (Defined, Public)
+
+void UDunDef_SeqAct_ProjectileSpawner::Reset()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_ProjectileSpawner.Reset");
+
+	UDunDef_SeqAct_ProjectileSpawner_Reset_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnProjectilesAll
+// (Defined, Public)
+
+void UDunDef_SeqAct_ProjectileSpawner::SpawnProjectilesAll()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnProjectilesAll");
+
+	UDunDef_SeqAct_ProjectileSpawner_SpawnProjectilesAll_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnProjectile
+// (Defined, Public, HasDefaults)
+
+void UDunDef_SeqAct_ProjectileSpawner::SpawnProjectile()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnProjectile");
+
+	UDunDef_SeqAct_ProjectileSpawner_SpawnProjectile_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.GetLocation
+// (Defined, Public, HasDefaults)
+// Parameters:
+// int                            I                              (Parm)
+// struct FVector                 TargetLocation                 (Parm)
+// struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
+
+struct FVector UDunDef_SeqAct_ProjectileSpawner::GetLocation(int I, const struct FVector& TargetLocation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_ProjectileSpawner.GetLocation");
+
+	UDunDef_SeqAct_ProjectileSpawner_GetLocation_Params params;
+	params.I = I;
+	params.TargetLocation = TargetLocation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.MakeActIntPair
+// (Defined, Public, HasDefaults)
+// Parameters:
+// class AActor*                  A                              (Parm)
+// int                            B                              (Parm)
+// struct Fact_int_pair           ReturnValue                    (Parm, OutParm, ReturnParm)
+
+struct Fact_int_pair UDunDef_SeqAct_ProjectileSpawner::MakeActIntPair(class AActor* A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_ProjectileSpawner.MakeActIntPair");
+
+	UDunDef_SeqAct_ProjectileSpawner_MakeActIntPair_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function UDKGame.DunDef_SeqAct_RateLimiter.Activated
 // (Defined, Event, Public)
 

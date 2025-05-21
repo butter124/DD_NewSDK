@@ -10580,7 +10580,7 @@ void UCanvas::STATIC_AddColoredText(const struct FString& Text, const struct FCo
 // float                          Bottom                         (OptionalParm, Parm)
 // TArray<struct FTextEx>         TextBlock                      (OptionalParm, Parm, OutParm, NeedCtorLink)
 
-void UCanvas::DrawText(const struct FString& Text, unsigned long CR, float XScale, float YScale, unsigned long Wrap, float Left, float Right, float Top, float Bottom, struct FFontRenderInfo* RenderInfo, TArray<struct FTextEx>* TextBlock)
+void UCanvas::DrawTextA(const struct FString& Text, unsigned long CR, float XScale, float YScale, unsigned long Wrap, float Left, float Right, float Top, float Bottom, struct FFontRenderInfo* RenderInfo, TArray<struct FTextEx>* TextBlock)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Canvas.DrawText");
 

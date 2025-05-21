@@ -42,6 +42,20 @@ struct ABuffVolume_Touch_Params
 	struct FVector                                     HitNormal;                                                // (Parm)
 };
 
+// Function DunDefBuff.DunDef_SeqAct_BuffArrayManager.Activated
+struct UDunDef_SeqAct_BuffArrayManager_Activated_Params
+{
+};
+
+// Function DunDefBuff.DunDef_SeqAct_BuffArrayManager.CreateBuffInfo
+struct UDunDef_SeqAct_BuffArrayManager_CreateBuffInfo_Params
+{
+	class ADunDefPlayerController*                     A;                                                        // (Parm)
+	int                                                Buff;                                                     // (Parm)
+	int                                                Wave;                                                     // (Parm)
+	struct Findexer                                    ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function DunDefBuff.DunDef_SeqAct_ClearBuffs.Activated
 struct UDunDef_SeqAct_ClearBuffs_Activated_Params
 {
