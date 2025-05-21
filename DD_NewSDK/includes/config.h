@@ -3,6 +3,7 @@
 #include "SDK.hpp"
 #include "includes/HelperFunctions.h"
 #include "includes/logger.h"
+#include <SDK/DD_Basic.hpp>
 #include <SDK/DD_Core_structs.hpp>
 #include <SDK/DD_UDKGame_classes.hpp>
 #include <algorithm>
@@ -66,6 +67,11 @@ struct StatFilter {
   bool enabled;
   std::function<std::variant<int, float>(Classes::UHeroEquipment *)>
       memberGetter;
+};
+
+struct PointToRender {
+  Classes::FString name;
+  Classes::FVector pos;
 };
 
 enum TARGET_TEAM { NONE, ENEMYS, PLAYERS };
@@ -214,10 +220,14 @@ public:
   bool GotEnemyTemplates = false;
   std::set<std::string> sEnemyTemplates;
   std::queue<std::string> qEnemysToSpawn;
-  void SpawnEnemyAt(Classes::ADunDefEnemy *enemy, Classes::FVector pos);
+  Classes::ADunDefEnemy *SpawnEnemyAt(Classes::ADunDefEnemy *enemy,
+                                      Classes::FVector pos);
   void SpawnEnemyAt(std::string &s, Classes::FVector pos);
   Classes::ADunDefEnemy *GetEnemyTemplate(std::string &s);
   std::set<Classes::UObject *> GetEnemyTemplates();
+
+  // post render drawing
+  std::vector<PointToRender> vPointsToDraw;
 
   // handle key presses
   enum KeyBinds {
@@ -234,6 +244,11 @@ public:
   void GetKeybinds();
   void SaveKeybinds();
 
+  // pathfinding
+  Classes::FVector pathfindToPoint;
+  Classes::FVector pathfindNextPoint;
+  bool bPathFind = false;
+
   /* sdk funcs */
   void InitSDK();
   void PostRenderHookFunc(PROCESS_EVENT_ARGS);
@@ -242,7 +257,7 @@ public:
   void PlayerRewardHookFunc(PROCESS_EVENT_ARGS);
   void OpenChest(PROCESS_EVENT_ARGS);
   void BlockInputInMenu(PROCESS_EVENT_ARGS);
-
+  void DrawingOnScreen(PROCESS_EVENT_ARGS);
   void NoClip();
   void ToggleNoClip();
   bool TogglePlayerGodMode();
@@ -278,7 +293,8 @@ public:
   void SetTeleportPos(Classes::FVector pos);
   void MovePlayerPawns(Classes::FVector pos);
   void FloatingTextinWorld(const Classes::FString &string, Classes::FVector pos,
-                           Classes::FLinearColor dColor = {0, 1, 0, 1});
+                           Classes::FLinearColor dColor = {0, 1, 0, 1},
+                           float time = 0.1f);
   Classes::FVector GetTeleportPos();
   Classes::FVector GetVacPos();
   Classes::FVector GetPlayerPos();
@@ -300,5 +316,9 @@ public:
   void CleanLog();
   void LogToFile(const std::string &s);
   void CopyItem(Classes::UHeroEquipment *to, Classes::UHeroEquipment *from);
+
+  // Canvas drawing
+  void DrawTextCentered(Classes::UCanvas *canvas, Classes::FString _Text,
+                        float _x, float _y, Classes::FColor _Color);
 };
 extern Config config;

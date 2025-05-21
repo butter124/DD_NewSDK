@@ -5,6 +5,7 @@
 #include <errhandlingapi.h>
 #include "includes/logger.h"
 #include <memory>
+#include <winuser.h>
 // clang-format on
 
 #define KEYBIND(key, var, bkey)                                                \
@@ -30,6 +31,8 @@ DWORD WINAPI MainThread_Initialize(LPVOID param) {
     //  KEYBIND(config.TeleportPlayerKey, config.bTeleportPlayer,
     //  keyDownTeleport); KEYBIND(config.NewTeleportKey, config.bTeleportPlayer,
     //  keyDownTeleport);
+    if (GetAsyncKeyState(VK_NUMPAD0))
+      config.bPathFind = true;
     Sleep(10);
   }
 

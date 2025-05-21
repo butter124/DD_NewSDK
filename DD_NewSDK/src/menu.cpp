@@ -157,7 +157,6 @@ HRESULT APIENTRY hkBeginScene(LPDIRECT3DDEVICE9 pDevice) {
   // watch for DX9 device reset and reset ImGui if device has been reset
   if (menu.pDeviceCached) {
     HRESULT hr = menu.pDeviceCached->TestCooperativeLevel();
-    config.PrintToConsole(std::format("{}", hr));
     if (hr == D3DERR_DEVICENOTRESET) {
       menu.d3dppCached.Windowed = TRUE;
       menu.d3dppCached.SwapEffect = D3DSWAPEFFECT_COPY;

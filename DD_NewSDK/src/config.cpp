@@ -3,10 +3,14 @@
 #include "includes/config.h"
 #include <SDK/DD_Basic.hpp>
 #include <SDK/DD_Core_classes.hpp>
+#include <SDK/DD_Core_structs.hpp>
+#include <SDK/DD_Engine_classes.hpp>
+#include <SDK/DD_Engine_parameters.hpp>
 #include <SDK/DD_UDKGame_classes.hpp>
 #include <chrono>
 #include <fstream>
 #include <regex>
+#include <string>
 #include <variant>
 #include <winuser.h>
 
@@ -129,7 +133,7 @@ void Config::RegisterKeybind(std::string name, Config::KeyBinds keyBindName,
 }
 
 void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
-
+  DrawingOnScreen(obj, edx, pFunction, pParms, pResult);
   auto pMapInfo = ((Classes::UDunDefMapInfo *)(GetWorldInfo()->MyMapInfo));
   if (pMapInfo->IsLoadingLevel)
     return;
@@ -151,6 +155,10 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   if (bShowPlayerTeleportPos) {
     Classes::FString v(L"V");
     FloatingTextinWorld(v, GetTeleportPos(), {0, 1, 0, 1});
+  }
+
+  for (auto point : vPointsToDraw) {
+    FloatingTextinWorld(point.name, point.pos, {1, 0, 0, 1});
   }
 
   // show vacuum hack
@@ -229,6 +237,62 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
     SpawnEnemyAt(front, vacPos);
   }
   HandleAutoReady();
+}
+
+void Config::DrawingOnScreen(PROCESS_EVENT_ARGS) {
+  auto canvas =
+      ((Classes::UGameViewportClient_PostRender_Params *)(pParms))->Canvas;
+
+  // nav points
+
+  Classes::ANavigationPoint *point = config.GetWorldInfo()->NavigationPointList;
+
+  int i = 0;
+  while (point != nullptr) {
+    i++;
+    auto screenpoint = canvas->ProjectNoClip(point->Location);
+    if (screenpoint.Z > 1.0f) {
+
+      point = point->nextNavigationPoint;
+      continue;
+    }
+    DrawTextCentered(canvas,
+                     Classes::FString((L"Point_" + std::to_wstring(i)).c_str()),
+                     screenpoint.X, screenpoint.Y, {255, 0, 0, 255});
+
+    point = point->nextNavigationPoint;
+  }
+
+  auto screenpoint = canvas->ProjectNoClip(pathfindNextPoint);
+  if (screenpoint.Z < 1.0f)
+    DrawTextCentered(canvas, L"NextPoint", screenpoint.X, screenpoint.Y,
+                     {0, 255, 0, 255});
+
+  auto screenpoint2 = canvas->ProjectNoClip(pathfindToPoint);
+  if (screenpoint2.Z < 1.0f)
+    DrawTextCentered(canvas, L"ToPoint", screenpoint2.X, screenpoint2.Y,
+                     {0, 255, 0, 255});
+}
+
+void Config::DrawTextCentered(Classes::UCanvas *canvas, Classes::FString _Text,
+                              float _x, float _y, Classes::FColor _Color) {
+  Classes::FVector2D tmpCanvasPos = {canvas->CurX, canvas->CurY};
+  Classes::FColor tmpCanvasColor = canvas->DrawColor;
+
+  float MaxX = 0;
+  float MaxY = 0;
+  canvas->TextSize(_Text, &MaxX, &MaxY);
+  _x = _x - (MaxX / 2);
+  _y = _y - (MaxY / 2);
+
+  canvas->SetPos(_x, _y);
+  canvas->DrawColor = _Color;
+
+  canvas->DrawTextA(_Text, false, 1.0f, 1.0f, NULL, 100, 100, 100, 100, NULL,
+                    NULL);
+
+  canvas->DrawColor = tmpCanvasColor;
+  canvas->SetPos(tmpCanvasPos.X, tmpCanvasPos.Y);
 }
 
 void Config::HandleAutoReady() {
@@ -473,14 +537,15 @@ bool Config::ShouldLootItem(Classes::UHeroEquipment *item) {
   return true;
 }
 
-void Config::SpawnEnemyAt(Classes::ADunDefEnemy *enemy, Classes::FVector pos) {
+Classes::ADunDefEnemy *Config::SpawnEnemyAt(Classes::ADunDefEnemy *enemy,
+                                            Classes::FVector pos) {
   auto pMain = GetGameInfo();
   auto pSpawner = GetWaveSpawner();
 
   if (!pSpawner || !pMain)
-    return;
+    return nullptr;
 
-  pMain->WaveSpawnerCreateEnemy(pSpawner, enemy, pos, {0, 0, 0});
+  return pMain->WaveSpawnerCreateEnemy(pSpawner, enemy, pos, {0, 0, 0});
 }
 
 void Config::SpawnEnemyAt(std::string &s, Classes::FVector pos) {
@@ -577,6 +642,128 @@ Classes::ADunDefPlayerController *Config::GetADunDefPlayerController() {
   return (Classes::ADunDefPlayerController *)uengine->GamePlayers[0]->Actor;
 }
 
+// Classes::FVector Config::GeneratePathToPoint(Classes::APawn
+// Pawn,Classes::FVector GoalPoint,  float WithinDistance = 1.0f,  bool
+// bAllowPartialPath = true)
+// {
+//   Classes::FVector NextDest;
+//     bool bNextMove, bReachable;
+//     Classes::FVector GoalLocationTest, PreviousGoalLocationTest, newGoal;
+//     bool doLineChecks;
+//
+//     NextDest = GoalPoint;
+//     NavMeshPath_SearchExtent_Modifier =
+//     default.NavMeshPath_SearchExtent_Modifier; GoalLocationTest = GoalPoint;
+//     PreviousGoalLocationTest = PreviousGoalLocation;
+//     // End:0xB4
+//     if(WorldInfo.bTreatNavMeshAsPlane)
+//     {
+//         GoalLocationTest.Z = 0.0000000;
+//         PreviousGoalLocationTest.Z = 0.0000000;
+//     }
+//     // End:0xD0
+//     if(NavigationHandle == none)
+//     {
+//         InitNavigationHandle();
+//     }
+//     else
+//     {
+//         // End:0x1D1
+//         if(VSizeSq(GoalLocationTest - PreviousGoalLocationTest) <
+//         float(22500))
+//         {
+//             bNextMove = NavigationHandle.GetNextMoveLocation(NextDest,
+//             NavMeshArrivalDistance); bReachable =
+//             ((WorldInfo.bTreatNavMeshAsPlane) ? true :
+//             NavigationHandle.PointReachable(NextDest));
+//             // End:0x1D1
+//             if((bNextMove && NextDest != vect(0.0000000, 0.0000000,
+//             0.0000000)) && bReachable)
+//             {
+//                 return NextDest;
+//             }
+//         }
+//     }
+//     PreviousGoalLocation = GoalPoint;
+//     NavigationHandle.ClearConstraints();
+//     Class'Engine.NavMeshPath_Toward'.static.TowardPoint(NavigationHandle,
+//     GoalPoint);
+//     Class'Engine.NavMeshGoal_At'.static.AtLocation(NavigationHandle,
+//     GoalPoint, WithinDistance, true);
+//     // End:0x399
+//     if(NavigationHandle.FindPath())
+//     {
+//         NavigationHandle.GetNextMoveLocation(NextDest,
+//         NavMeshArrivalDistance);
+//         // End:0x396
+//         if(VSizeSq(NextDest) == float(0))
+//         {
+//             // End:0x35C
+//             if(NavigationHandle.GetNearestNavMeshPoint(newGoal, GoalPoint,
+//             vect(512.0000000, 512.0000000, 1024.0000000), false,
+//             1000.0000000, true))
+//             {
+//                 SetReturnPoint(newGoal);
+//                 return Pawn.Location;
+//             }
+//             else
+//             {
+//                 ObstructionJump(vect(300.0000000, 0.0000000, 0.0000000),
+//                 vect(0.0000000, 130.0000000, 0.0000000)); SetIdleEnemy(true,
+//                 true); return NextDest;
+//             }
+//         }
+//     }
+//     else
+//     {
+//         // End:0x5E2
+//         if(VSizeSq(Velocity) < 0.0056250)
+//         {
+//             // End:0x3F8
+//             if((WorldInfo.TimeSeconds - LastLineCheckPolySearch) < 5.0000000)
+//             {
+//                 doLineChecks = false;
+//             }
+//             else
+//             {
+//                 doLineChecks = true;
+//                 LastLineCheckPolySearch = WorldInfo.TimeSeconds;
+//             }
+//             // End:0x4D1
+//             if(!NavigationHandle.GetNearestNavMeshPoint(NextDest,
+//             Pawn.Location, vect(1024.0000000, 1024.0000000, 1024.0000000),
+//             doLineChecks, 3000.0000000, true))
+//             {
+//                 ObstructionJump(vect(300.0000000, 0.0000000, 0.0000000),
+//                 vect(0.0000000, 130.0000000, 0.0000000)); SetIdleEnemy(true,
+//                 true); return NextDest;
+//             }
+//             else
+//             {
+//                 // End:0x54B
+//                 if(NavigationHandle.GetNearestNavMeshPoint(newGoal,
+//                 GoalPoint, vect(512.0000000, 512.0000000, 512.0000000),
+//                 doLineChecks, 1000.0000000, false))
+//                 {
+//                     SetReturnPoint(newGoal);
+//                     NextDest = newGoal;
+//                 }
+//                 else
+//                 {
+//                     SetIdleEnemy(true, true);
+//                     return NextDest;
+//                 }
+//                 bForceMove = true;
+//                 NextDest += ((Normal(ChooseVectorComponents(NextDest -
+//                 Pawn.Location, true, true, false)) *
+//                 Pawn.GetCollisionRadius()) * 8.0000000); return NextDest;
+//             }
+//         }
+//     }
+//     return NextDest;
+//     //return ReturnValue;
+// }
+//
 Classes::ADunDefPawn *Config::GetPlayerPawn() {
   Classes::ADunDefPlayerController *playerController =
       GetADunDefPlayerController();
@@ -796,7 +983,7 @@ Classes::FVector Config::SetPlayerPos(Classes::FVector pos) {
 
 void Config::FloatingTextinWorld(const Classes::FString &string,
                                  Classes::FVector pos,
-                                 Classes::FLinearColor dColor) {
+                                 Classes::FLinearColor dColor, float time) {
   auto playerController = config.GetADunDefPlayerController();
   if (!playerController || !playerController->myHUD)
     return;
@@ -804,7 +991,7 @@ void Config::FloatingTextinWorld(const Classes::FString &string,
   if (!GRI)
     return;
 
-  GRI->AddCustomFloatingText(string, pos, 0, 0.1f, 2, TRUE, dColor);
+  GRI->AddCustomFloatingText(string, pos, 0, time, 2, TRUE, dColor);
 }
 
 std::string Config::GetItemQualityString(Classes::UHeroEquipment *item) {

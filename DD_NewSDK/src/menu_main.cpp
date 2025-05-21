@@ -3,6 +3,9 @@
 #include "pch.h"
 #include "ImGui/imgui.h"
 #include <SDK/DD_Basic.hpp>
+#include <SDK/DD_Core_classes.hpp>
+#include <SDK/DD_Core_structs.hpp>
+#include <SDK/DD_Engine_classes.hpp>
 #include <algorithm>
 #include "includes/menu_main.h"
 #include "includes/config.h"
@@ -14,6 +17,10 @@
 #include <csignal>
 // clang-format on
 
+Classes::FVector GeneratePathToPoint(Classes::APawn *pPawn,
+                                     Classes::FVector GoalPoint,
+                                     float WithinDistance = 5.0f,
+                                     bool bAllowPartialPath = false);
 #define IMGUI_BITFIELD(s, item)                                                \
   {                                                                            \
     bool bs = item->s;                                                         \
@@ -29,6 +36,17 @@
         (item)->s.X = values[0];                                               \
         (item)->s.Y = values[1];                                               \
         (item)->s.Z = values[2];                                               \
+      }                                                                        \
+    }                                                                          \
+  } while (0);
+#define IMGUI_FROTATOR(s, item)                                                \
+  do {                                                                         \
+    if ((item) != nullptr) {                                                   \
+      int values[3] = {(item)->s.Pitch, (item)->s.Yaw, (item)->s.Roll};        \
+      if (ImGui::InputInt3(#s, values)) {                                      \
+        (item)->s.Pitch = values[0];                                           \
+        (item)->s.Yaw = values[1];                                             \
+        (item)->s.Roll = values[2];                                            \
       }                                                                        \
     }                                                                          \
   } while (0);
@@ -1028,9 +1046,17 @@ void MenuMain::ItemModding() {
   return;
 }
 
+float Distance(const Classes::FVector &a, const Classes::FVector &b) {
+  float dx = a.X - b.X;
+  float dy = a.Y - b.Y;
+  float dz = a.Z - b.Z;
+  return sqrtf(dx * dx + dy * dy + dz * dz);
+}
+
 void MenuMain::Debug() {
 
   ImGui::Separator();
+  ImGui::Text("Debug");
   auto pPlayerPawn = config.GetPlayerPawn();
   auto pController = config.GetADunDefPlayerController();
   auto pEngine = config.GetEngine();
@@ -1038,14 +1064,211 @@ void MenuMain::Debug() {
   auto pWorldInfo = config.GetWorldInfo();
   auto pMapInfo = config.GetWorldInfo()->GetMapInfo();
   auto pViewportClient = config.GetViewportClient();
+  auto pWorld = config.GetGameInfo();
 
   if (!pPlayerPawn || !pController || !pEngine || !pAchievementManager)
     return;
 
-  if (ImGui::Button("Change Name"))
-    pController->GetHero(false)->SetName(L"test");
+  float minDist = 100.0f;
+  // start pathfinding
+  if (config.bPathFind) {
+    config.bPathFind = false;
+    pController->MoveToDirectNonPathPos(
+        config.pathfindNextPoint, pWorld->TargetableActors[0], minDist, 0);
+  }
 
+  // Get inital point
+  if (ImGui::Button("generate path")) {
+    config.pathfindNextPoint =
+        GeneratePathToPoint(pPlayerPawn, config.pathfindToPoint, minDist, 1);
+
+    pController->NavigationHandle->GetNextMoveLocation(
+        minDist, &config.pathfindNextPoint);
+  }
+  // pathfind to next point
+
+  float DistanceTo = Distance(pPlayerPawn->Location, config.pathfindNextPoint);
+  ImGui::Text("Distance to : %f", DistanceTo);
+  if (DistanceTo < minDist) {
+
+    pController->NavigationHandle->GetNextMoveLocation(
+        minDist, &config.pathfindNextPoint);
+
+    pController->MoveToDirectNonPathPos(
+        config.pathfindNextPoint, pWorld->TargetableActors[0], minDist, 0);
+  }
+
+  if (ImGui::Button("move path")) {
+    config.pathfindToPoint = pPlayerPawn->Location;
+  }
+  if (ImGui::Button("path 2")) {
+
+    // pController->MoveToDirectNonPathPos(config.vacPos,
+    //                                     pWorld->TargetableActors[0], 2, 0);
+  }
+
+  if (ImGui::Button("Test"))
+    pController->MoveToDirectNonPathPos(config.vacPos,
+                                        pWorld->TargetableActors[0], 19, 0);
+  // ImGui::InputFloat3("Pos", &test.X);
   return;
+}
+
+static bool LastLineCheckPolySearch = 0;
+static Classes::FVector PreviousGoalLocation = {0, 0, 0};
+static Classes::FVector ReturnPoint = {0, 0, 0};
+Classes::FVector GeneratePathToPoint(Classes::APawn *pPawn,
+                                     Classes::FVector GoalPoint,
+                                     float WithinDistance,
+                                     bool bAllowPartialPath) {
+  Classes::FVector NextDest = GoalPoint;
+  Classes::FVector GoalLocationTest = GoalPoint;
+  Classes::FVector PreviousGoalLocationTest = PreviousGoalLocation;
+  Classes::FVector newGoal;
+
+  Classes::UNavigationHandle *NavigationHandle =
+      pPawn->Controller->NavigationHandle;
+  auto WorldInfo = config.GetWorldInfo();
+  float NavMeshArrivalDistance = 10.0f;
+  if (config.GetWorldInfo()->WorldInfo->bTreatNavMeshAsPlane) {
+    GoalLocationTest.Z = 0.0f;
+    PreviousGoalLocationTest.Z = 0.0f;
+  }
+
+  if (!NavigationHandle) {
+    pPawn->Controller->InitNavigationHandle();
+  } else {
+    Classes::FVector dVec(GoalLocationTest.X - PreviousGoalLocationTest.X,
+                          GoalLocationTest.Y - PreviousGoalLocationTest.Y,
+                          GoalLocationTest.Z - PreviousGoalLocationTest.Z);
+    float dSquared = dVec.X * dVec.X + dVec.Y * dVec.Y + dVec.Z * dVec.Z;
+    if (dSquared < 22500.0f) {
+      bool bNextMove = NavigationHandle->GetNextMoveLocation(
+          NavMeshArrivalDistance, &NextDest);
+      bool bReachable = WorldInfo->bTreatNavMeshAsPlane
+                            ? true
+                            : NavigationHandle->PointReachable(NextDest);
+
+      bool isZero = NextDest.X == 0 && NextDest.Y == 0 && NextDest.Z == 0;
+      if (bNextMove && !isZero && bReachable)
+        return NextDest;
+    }
+  }
+
+  PreviousGoalLocation = GoalPoint;
+  NavigationHandle->ClearConstraints();
+
+  // ((Classes::UNavMeshPath_Toward
+  // *)Classes::UNavMeshPath_Toward::StaticClass())
+  //     ->STATIC_TowardPoint(NavigationHandle, GoalPoint);
+
+  // Classes::UNavMeshPath_Toward *mesh =
+  //     (Classes::UNavMeshPath_Toward *)config.GetInstanceOf(
+  //         Classes::UNavMeshPath_Toward::StaticClass());
+  Classes::UNavMeshPath_Toward *mesh =
+      (Classes::UNavMeshPath_Toward *)NavigationHandle->CreatePathConstraint(
+          Classes::UNavMeshPath_Toward::StaticClass());
+  mesh->STATIC_TowardPoint(NavigationHandle, GoalPoint);
+
+  // auto TowardEval = NavigationHandle->CreatePathGoalEvaluator(
+  //     Classes::UObject::FindClass("Engine.NavMeshPath_Toward"));
+  //
+  // ((Classes::UNavMeshPath_Toward *)TowardEval)
+  //     ->STATIC_TowardPoint(NavigationHandle, GoalPoint);
+  //((Classes::UNavMeshPath_Toward*)TowardEval)->TowardPoint(NavigationHandle,
+  // GoalPoint);
+
+  // auto towardClass = (NavigationHandle->CreatePathGoalEvaluator(
+  //     Classes::UNavMeshPath_Toward::StaticClass()));
+
+  // auto goalAtClass = Classes::UObject::FindClass("Engine.NavMeshGoal_At");
+  auto goalAtEvaluator = NavigationHandle->CreatePathGoalEvaluator(
+      Classes::UNavMeshGoal_At::StaticClass());
+
+  auto atEval = static_cast<Classes::UNavMeshGoal_At *>(goalAtEvaluator);
+  atEval->STATIC_AtLocation(NavigationHandle, GoalPoint, WithinDistance, true);
+
+  if (NavigationHandle->FindPath(nullptr, nullptr)) {
+    NavigationHandle->GetNextMoveLocation(NavMeshArrivalDistance, &NextDest);
+
+    bool isZero = NextDest.X == 0 && NextDest.Y == 0 && NextDest.Z == 0;
+    if (isZero) {
+      if (NavigationHandle->GetNearestNavMeshPoint(
+              GoalPoint, Classes::FVector(512, 512, 1024), false, 1000.0f, true,
+              &newGoal)) {
+        ReturnPoint = newGoal;
+        return pPawn->Location;
+      } else {
+
+        // TODO: reimplement this for player use
+        //  ObstructionJump(Classes::FVector(300, 0, 0),
+        //                  Classes::FVector(0, 130, 0));
+        //  SetIdleEnemy(true, true);
+        return NextDest;
+      }
+    }
+  } else {
+    float PawnVelocitySquared = pPawn->Velocity.X * pPawn->Velocity.X +
+                                pPawn->Velocity.Y * pPawn->Velocity.Y +
+                                pPawn->Velocity.Z * pPawn->Velocity.Z;
+
+    if (PawnVelocitySquared < 0.005625f) {
+      bool doLineChecks = true;
+      if ((WorldInfo->TimeSeconds - LastLineCheckPolySearch) < 5.0f)
+        doLineChecks = false;
+      else
+        LastLineCheckPolySearch = WorldInfo->TimeSeconds;
+
+      if (!NavigationHandle->GetNearestNavMeshPoint(
+              pPawn->Location, Classes::FVector(1024, 1024, 1024), doLineChecks,
+              3000.0f, true, &NextDest)) {
+        // TODO: reimplement  this
+        //  ObstructionJump(Classes::FVector(300, 0, 0),
+        //                  Classes::FVector(0, 130, 0));
+        //  SetIdleEnemy(true, true);
+        //  return NextDest;
+      } else {
+        if (NavigationHandle->GetNearestNavMeshPoint(
+                GoalPoint, Classes::FVector(512, 512, 512), doLineChecks,
+                1000.0f, false, &newGoal)) {
+          ReturnPoint = newGoal;
+          NextDest = newGoal;
+        } else {
+          // SetIdleEnemy(true, true);
+          return NextDest;
+        }
+
+        // TODO: reimplement  this
+        // bForceMove = true;
+
+        // Classes::FVector Dir = (NextDest - pPawn->Location);
+        Classes::FVector Dir(NextDest.X - pPawn->Location.X,
+                             NextDest.Y - pPawn->Location.Y,
+                             NextDest.Z - pPawn->Location.Z);
+        Dir.Z = 0;
+        float mag = sqrt(Dir.X * Dir.X + Dir.Y * Dir.Y + Dir.Z * Dir.Z);
+
+        if (mag > 0.0001f) {
+          Dir.X /= mag;
+          Dir.Y /= mag;
+          Dir.Z /= mag;
+
+          float Radius = pPawn->GetCollisionRadius() *
+                         8.0; // get collision radius manually
+          NextDest.X += Dir.X * Radius * 8.0f;
+          NextDest.Y += Dir.Y * Radius * 8.0f;
+          NextDest.Z += Dir.Z * Radius * 8.0f;
+        } else {
+          Dir = Classes::FVector(0, 0, 0); // or leave unchanged
+        }
+        // NextDest += Dir * pPawn->GetCollisionRadius() * 8.0f;
+
+        return NextDest;
+      }
+    }
+  }
+
+  return NextDest;
 }
 
 void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
@@ -1991,6 +2214,7 @@ void MenuMain::ImGuiPawn(Classes::ADunDefPawn *pPawn) {
   // IMGUI_FVECTOR(LastBumpLocation, pPawn);
   // IMGUI_FVECTOR(LastFiringFlashLocation, pPawn);
   IMGUI_FVECTOR(Location, pPawn);
+  IMGUI_FROTATOR(Rotation, pPawn);
   // IMGUI_FVECTOR(LookAtTargetOffset, pPawn);
   // IMGUI_FVECTOR(ManaTokenImpulseUpOffset, pPawn);
   // IMGUI_FVECTOR(MeshInterpLoc, pPawn);
@@ -2006,6 +2230,52 @@ void MenuMain::ImGuiPawn(Classes::ADunDefPawn *pPawn) {
   IMGUI_FVECTOR(Velocity, pPawn);
   // IMGUI_FVECTOR(noise1spot, pPawn);
   // IMGUI_FVECTOR(noise2spot, pPawn);
+  //
+  if (!pPawn->IsPlayerOwned()) {
+    auto p = ((Classes::ADunDefEnemyController *)pPawn->Controller);
+    // auto t =
+    //              ->GeneratePathToPoint(config.vacPos, 100, 1);
+    // auto tt = ((Classes::ADunDefEnemyController *)pPawn->Controller)
+    //               ->FindPathTo(config.vacPos, 100, 1);
+    // pPawn->Controller->NavigationHandle->DrawPathCache({0, 10, 0}, 1,
+    //                                                    {255, 0, 0, 255});
+    //
+    // config.FloatingTextinWorld(L"TEST", t);
+    //
+    // p->NavigationHandle->ComputeValidFinalDestination(&finalDest);
+    //
+    if (ImGui::Button("Set des"))
+      p->NavigationHandle->SetFinalDestination(config.vacPos);
+    ImGui::Text("Final pos: %f, %f, %f",
+                p->NavigationHandle->FinalDestination.Position.X,
+                p->NavigationHandle->FinalDestination.Position.Y,
+                p->NavigationHandle->FinalDestination.Position.Z);
+    bool bOnMesh = p->NavigationHandle->IsBoxOnNavMesh(
+        p->Pawn->Location, p->Pawn->GetCollisionExtent());
+    ImGui::Text("bOnNavMesh: %s", bOnMesh ? "true" : "false");
+
+    ImGui::Text("PathCache count: %d",
+                p->NavigationHandle->PathCache.EdgeList.Num());
+    static float tempChange = 10;
+    ImGui::InputFloat("range", &tempChange);
+    bool bFoundPath = p->NavigationHandle->FindPath(nullptr, nullptr);
+    ImGui::Text("bFoundPath: %s", bFoundPath ? "true" : "false");
+
+    if (ImGui::Button("Generate path")) {
+      auto ttt = p->GeneratePathToPoint(config.vacPos, 10, 1);
+      p->NavigationHandle->DrawPathCache({0, 10, 0}, 1, {255, 0, 0, 255});
+      config.vPointsToDraw.push_back(PointToRender(L"Path", ttt));
+      // config.FloatingTextinWorld(L"newpath", ttt,{0,1,0,1},10);
+    }
+    // auto tttt = p->FindPathTo(config.vacPos, 100, 1);
+
+    // Classes::FVector MoveDest;
+    // if (p->NavigationHandle->GetNextMoveLocation(tempChange, &MoveDest)) {
+    //   static Classes::FString sss = L"MPos";
+    //   config.FloatingTextinWorld(sss, MoveDest);
+    //   ImGui::Text("%f %f %f", MoveDest.X, MoveDest.Y, MoveDest.Z);
+    // }
+  }
 }
 
 void MenuMain::ImGuiTargetableActor(Classes::ADunDefDamageableTarget *pPawn) {
