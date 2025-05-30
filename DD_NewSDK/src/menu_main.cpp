@@ -69,7 +69,6 @@ static const char *itemQualitys[] = {"None",      "Mythical",  "Transcendent",
                                      "Ultimate+", "Ultimate++"};
 
 void MenuMain::Init() {
-  // AddItem(config.GetADunDefPlayerController()->myHero->HeroEquipments[0]);
   std::signal(SIGSEGV,
               [](int signal) { config.logger.ExceptionHandler(signal); });
 }
@@ -78,9 +77,6 @@ void MenuMain::OnBegin() {
 
   ImGui::Begin("MainMenu");
 
-  // for (auto item : itemsVec) {
-  // item.Render();
-  //}
 }
 
 void MenuMain::RenderMenuButton(std::string name, std::function<void()> func,
@@ -105,8 +101,6 @@ int MenuMain::GetKeydown() {
        key = (ImGuiKey)(key + 1)) {
     if (!ImGui::IsKeyPressed(key))
       continue;
-    // ImGui::Text((key < ImGuiKey_NamedKey_BEGIN) ? "\"%s\"" : "\"%s\" %d",
-    //            ImGui::GetKeyName(key), key);
     return key;
   }
 
