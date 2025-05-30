@@ -248,6 +248,8 @@ public:
   Classes::FVector pathfindToPoint;
   Classes::FVector pathfindNextPoint;
   bool bPathFind = false;
+  bool bShowPath = false;
+  float pathfindthreshhold = 100;
 
   /* sdk funcs */
   void InitSDK();
@@ -320,5 +322,14 @@ public:
   // Canvas drawing
   void DrawTextCentered(Classes::UCanvas *canvas, Classes::FString _Text,
                         float _x, float _y, Classes::FColor _Color);
+
+  float Distance(const Classes::FVector &a, const Classes::FVector &b);
+  float minDist = 200.0f;
+
+  Classes::FVector GeneratePathToPoint(Classes::APawn *pPawn,
+                                       Classes::FVector GoalPoint,
+                                       float WithinDistance,
+                                       bool bAllowPartialPath);
+  void HandlePathfinding();
 };
 extern Config config;

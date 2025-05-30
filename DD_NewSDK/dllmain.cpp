@@ -32,7 +32,7 @@ DWORD WINAPI MainThread_Initialize(LPVOID param) {
     //  keyDownTeleport); KEYBIND(config.NewTeleportKey, config.bTeleportPlayer,
     //  keyDownTeleport);
     if (GetAsyncKeyState(VK_NUMPAD0))
-      config.bPathFind = true;
+      config.bPathFind = !config.bPathFind;
     Sleep(10);
   }
 
