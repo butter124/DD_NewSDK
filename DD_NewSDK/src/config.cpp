@@ -1,4 +1,5 @@
 // clang-format off
+#include "lua_engine.h"
 #include "pch.h"
 #include "includes/config.h"
 #include <SDK/DD_Basic.hpp>
@@ -60,6 +61,8 @@ bool Config::Init() {
 
   std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
+  L = &LUA_ENGINE::get_instance();
+  AttachConsole();
   return true;
 }
 
@@ -1501,12 +1504,14 @@ bool Config::GiveAllItems() {
 void Config::AttachConsole() {
   AllocConsole();
   freopen_s(&f, "CONOUT$", "w", stdout);
-  std::cout << "[+] Successfully attached to process.\n";
+  PrintToConsole("[+] Successfully attached to process.");
 
   bConsoleAttached = true;
+  logger.ConsoleAttached();
 }
 
 void Config::DettachConsole() {
+  logger.ConsoleDettached();
   fclose(f);
   FreeConsole();
   bConsoleAttached = false;
@@ -1515,7 +1520,7 @@ void Config::DettachConsole() {
 void Config::PrintToConsole(const std::string &s) {
   if (!bConsoleAttached)
     return;
-  std::cout << s << "\n";
+  logger.log("[CONFIG] %s", s.c_str());
 }
 
 void Config::InitLog() {
@@ -1524,7 +1529,7 @@ void Config::InitLog() {
   logger.log("Init logger.");
 
   auto version = config.GetViewportClient()->versionString.ToString();
-  logger.log("Game version: " + version);
+  logger.log("Game version: %s", version);
 }
 
 void Config::CleanLog() {
@@ -1535,7 +1540,7 @@ void Config::CleanLog() {
 
 void Config::LogToFile(const std::string &s) {
   if (bLoggingToFile)
-    logger.log(s);
+    logger.log(s.c_str());
 }
 
 void Config::SetupFilter() {

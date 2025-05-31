@@ -87,7 +87,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)includes;$(ProjectDir);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)\includes\</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -110,7 +110,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)includes;$(ProjectDir);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)\includes\</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -132,6 +132,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)\includes\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -149,6 +150,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)\includes\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -172,6 +174,7 @@
     <ClInclude Include="includes\ImGui\imstb_textedit.h" />
     <ClInclude Include="includes\ImGui\imstb_truetype.h" />
     <ClInclude Include="includes\logger.h" />
+    <ClInclude Include="includes\lua_engine.h" />
     <ClInclude Include="includes\menu_main.h" />
     <ClInclude Include="includes\menu.h" />
     <ClInclude Include="includes\menu_template.h" />
@@ -197,6 +200,7 @@
     <ClCompile Include="src\HelperFunctions.cpp" />
     <ClCompile Include="src\Hooking.cpp" />
     <ClCompile Include="src\logger.cpp" />
+    <ClCompile Include="src\lua_engine.cpp" />
     <ClCompile Include="src\menu_main.cpp" />
     <ClCompile Include="src\menu.cpp" />
     <ClCompile Include="src\menu_template.cpp" />

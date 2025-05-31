@@ -16,6 +16,9 @@
     <Filter Include="Header Files\SDK">
       <UniqueIdentifier>{f1c60229-1f7f-4952-9579-b3f92859c353}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\lua">
+      <UniqueIdentifier>{5200c186-bb5e-49b8-85aa-29a77ab5b3ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\DD_NewSDK\pch.h">
@@ -298,6 +301,102 @@
     </ClCompile>
     <ClCompile Include="..\DD_NewSDK\SDK\DD_XAudio2_functions.cpp">
       <Filter>Header Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\ltable.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\ltablib.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\ltm.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lundump.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lutf8lib.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lvm.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lzio.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lapi.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lauxlib.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lbaselib.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lcode.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lcorolib.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lctype.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\ldblib.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\ldebug.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\ldo.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\ldump.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lfunc.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lgc.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\linit.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\liolib.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\llex.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lmathlib.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lmem.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\loadlib.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lobject.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lopcodes.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\loslib.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lparser.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lstate.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lstring.c">
+      <Filter>Source Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DD_NewSDK\lua\lstrlib.c">
+      <Filter>Source Files\lua</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

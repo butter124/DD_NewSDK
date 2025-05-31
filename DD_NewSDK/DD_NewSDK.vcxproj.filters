@@ -81,6 +81,9 @@
     <ClInclude Include="includes\logger.h">
       <Filter>Header Files\includes</Filter>
     </ClInclude>
+    <ClInclude Include="includes\lua_engine.h">
+      <Filter>Header Files\includes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -129,6 +132,9 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="src\logger.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua_engine.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>

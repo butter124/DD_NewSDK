@@ -2,6 +2,8 @@
 
 #include "SDK.hpp"
 #include "includes/config.h"
+#include "includes/lua_engine.h"
+#include "lua_engine.h"
 #include "menu_template.h"
 #include <functional>
 #include <string>
@@ -16,6 +18,7 @@ public:
     MenuModding,
     MenuConfig,
     MenuWorld,
+    MenuLua,
   };
   void Init() override;
   void OnBegin() override;
@@ -36,6 +39,7 @@ private:
 
 protected:
   void BasicCheats();
+  void Lua();
   void Config();
   void PlayerCheats();
   void WorldCheats();
@@ -56,6 +60,8 @@ protected:
 
   void ChangeFString(Classes::FString &str, char *to);
   void ItemModding();
+  std::string GetFolderPath();
+  std::string GetFilePath();
 
   std::string ToLower(const std::string &str);
 };

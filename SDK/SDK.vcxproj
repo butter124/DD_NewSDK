@@ -206,6 +206,38 @@
     <ClInclude Include="..\DD_NewSDK\SDK\DD_XAudio2_structs.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\DD_NewSDK\lua\lapi.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lauxlib.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lbaselib.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lcode.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lcorolib.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lctype.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\ldblib.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\ldebug.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\ldo.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\ldump.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lfunc.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lgc.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\linit.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\liolib.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\llex.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lmathlib.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lmem.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\loadlib.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lobject.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lopcodes.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\loslib.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lparser.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lstate.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lstring.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lstrlib.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\ltable.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\ltablib.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\ltm.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lundump.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lutf8lib.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lvm.c" />
+    <ClCompile Include="..\DD_NewSDK\lua\lzio.c" />
     <ClCompile Include="..\DD_NewSDK\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

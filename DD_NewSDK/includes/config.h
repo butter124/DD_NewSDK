@@ -3,6 +3,7 @@
 #include "SDK.hpp"
 #include "includes/HelperFunctions.h"
 #include "includes/logger.h"
+#include "includes/lua_engine.h"
 #include <SDK/DD_Basic.hpp>
 #include <SDK/DD_Core_structs.hpp>
 #include <SDK/DD_UDKGame_classes.hpp>
@@ -83,6 +84,7 @@ struct KeybindsStruct {
   std::string name;
 };
 
+class LUA_ENGINE;
 class Config {
 private:
   FILE *f = nullptr;
@@ -92,6 +94,7 @@ public:
   Config();
   ~Config();
   Logger logger;
+  LUA_ENGINE *L;
   bool Init();
   bool Cleanup();
 

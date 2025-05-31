@@ -1,6 +1,9 @@
 
 // clang-format off
 #include "pch.h"
+#include <commdlg.h>
+#include <shlobj.h>
+#include "menu.h"
 #include "ImGui/imgui.h"
 #include <SDK/DD_Basic.hpp>
 #include <SDK/DD_Core_classes.hpp>
@@ -73,11 +76,7 @@ void MenuMain::Init() {
               [](int signal) { config.logger.ExceptionHandler(signal); });
 }
 
-void MenuMain::OnBegin() {
-
-  ImGui::Begin("MainMenu");
-
-}
+void MenuMain::OnBegin() { ImGui::Begin("MainMenu"); }
 
 void MenuMain::RenderMenuButton(std::string name, std::function<void()> func,
                                 bool isSelected) {
@@ -137,6 +136,9 @@ void MenuMain::RenderUI() {
         "World", [this]() { selectedMenu = Menus::MenuWorld; },
         selectedMenu == Menus::MenuWorld);
     RenderMenuButton(
+        "Lua", [this]() { selectedMenu = Menus::MenuLua; },
+        selectedMenu == Menus::MenuLua);
+    RenderMenuButton(
         "Config", [this]() { selectedMenu = Menus::MenuConfig; },
         selectedMenu == Menus::MenuConfig);
 
@@ -169,6 +171,10 @@ void MenuMain::RenderUI() {
 
     case Menus::MenuWorld:
       WorldCheats();
+      break;
+
+    case Menus::MenuLua:
+      Lua();
       break;
 
     default:
@@ -2113,4 +2119,51 @@ void MenuMain::ImGuiTargetableActor(Classes::ADunDefDamageableTarget *pPawn) {
   IMGUI_FVECTOR(Location, pPawn);
   IMGUI_FVECTOR(DrawScale3D, pPawn);
   // ImGui::InputFloat("Gravity", &pPawn->GravityZMultiplier);
+}
+
+void MenuMain::Lua() {
+  ImGui::Text("Lua");
+  ImGui::Separator();
+
+  static std::string path;
+  if (ImGui::Button("Select lua folder")) {
+    path = GetFolderPath();
+  }
+  if (ImGui::Button("run lua file")) {
+    path = GetFilePath();
+    config.L->execute_lua_file(path);
+  }
+  ImGui::Text("%s", path.c_str());
+}
+
+std::string MenuMain::GetFolderPath() {
+  char path[MAX_PATH] = {};
+  BROWSEINFOA bi = {0};
+  bi.lpszTitle = "Select Folder";
+  bi.ulFlags = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
+
+  LPITEMIDLIST pidl = SHBrowseForFolderA(&bi);
+  if (pidl && SHGetPathFromIDListA(pidl, path)) {
+    // path now contains selected folder
+    CoTaskMemFree(pidl);
+    return std::string(path);
+  }
+  CoTaskMemFree(pidl);
+  return std::string("");
+}
+
+std::string MenuMain::GetFilePath() {
+  OPENFILENAMEA ofn = {0};
+  char filePath[MAX_PATH] = {};
+
+  ofn.lStructSize = sizeof(ofn);
+  ofn.lpstrFile = filePath;
+  ofn.nMaxFile = MAX_PATH;
+  ofn.lpstrFilter = "All Files\0*.*\0";
+  ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+  if (!GetOpenFileNameA(&ofn)) {
+    return std::string("");
+  }
+  return std::string(filePath);
 }

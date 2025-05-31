@@ -1,5 +1,6 @@
 
 // clang-format off
+#include "lua_engine.h"
 #include "pch.h"
 #include "includes/ImGui/imgui.h"
 #include "includes/ImGui/imgui_impl_dx9.h"
@@ -266,6 +267,10 @@ bool Menu::Init() {
   AttachConsole();
 #endif
 
+  // lua engine
+  L = &LUA_ENGINE::get_instance();
+  L->init();
+
   main.Init();
 
   return true;
@@ -280,6 +285,8 @@ bool Menu::Cleanup() {
 
   ProcEventHook.UnHookFunction();
   ScoreHookObj.UnHookFunction();
+
+  L->cleanup();
 
 #ifdef LOGGING //== 1
   DettachConsole();

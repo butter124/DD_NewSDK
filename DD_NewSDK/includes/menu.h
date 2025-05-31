@@ -5,7 +5,9 @@
 
 #include "SDK.hpp"
 #include "includes/Hooking.h"
+#include "includes/lua_engine.h"
 #include "includes/menu_main.h"
+#include "includes/lua_engine.h"
 
 typedef HRESULT(APIENTRY *tBeginScene)(LPDIRECT3DDEVICE9 pDevice);
 extern tBeginScene oScene;
@@ -48,8 +50,6 @@ private:
   LPDIRECT3DDEVICE9 d3Device;
   void *d3d9Device[119];
 
-  MODULEINFO miGame;
-
 public:
   bool Init();
   bool Cleanup();
@@ -65,7 +65,9 @@ public:
   MenuMain main;
   bool bReset = false;
 
+  MODULEINFO miGame;
   LPDIRECT3DDEVICE9 pDeviceCached = nullptr;
   D3DPRESENT_PARAMETERS d3dppCached = {};
+  LUA_ENGINE *L;
 };
 extern Menu menu;
