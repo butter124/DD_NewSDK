@@ -84,15 +84,22 @@ struct KeybindsStruct {
   std::string name;
 };
 
+class Entity;
+class Player;
 class LUA_ENGINE;
 class Config {
 private:
   FILE *f = nullptr;
   std::string logFileName;
 
-public:
   Config();
   ~Config();
+  Config(const Config &) = delete;
+  Config &operator=(const Config &) = delete;
+
+public:
+  static Config &getInstance();
+
   Logger logger;
   LUA_ENGINE *L;
   bool Init();
@@ -335,4 +342,4 @@ public:
                                        bool bAllowPartialPath);
   void HandlePathfinding();
 };
-extern Config config;
+extern Config *config;

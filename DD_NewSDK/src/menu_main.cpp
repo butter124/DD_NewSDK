@@ -73,7 +73,7 @@ static const char *itemQualitys[] = {"None",      "Mythical",  "Transcendent",
 
 void MenuMain::Init() {
   std::signal(SIGSEGV,
-              [](int signal) { config.logger.ExceptionHandler(signal); });
+              [](int signal) { config->logger.ExceptionHandler(signal); });
 }
 
 void MenuMain::OnBegin() { ImGui::Begin("MainMenu"); }
@@ -191,7 +191,7 @@ void MenuMain::Thread() {
   // any thing in this function will be handled in proc events
 
   // handle keybinds
-  for (auto &pair : config.keyBindsmap) {
+  for (auto &pair : config->keyBindsmap) {
     if (ImGui::IsKeyPressed((ImGuiKey)pair.second.key, false) &&
         !pair.second.bShouldChange) {
       pair.second.func();
@@ -201,11 +201,11 @@ void MenuMain::Thread() {
 }
 
 void MenuMain::NoClipHandleInput() {
-  if (!config.bNoClip || config.bShowMenu)
+  if (!config->bNoClip || config->bShowMenu)
     return;
 
-  auto pController = config.GetADunDefPlayerController();
-  auto pPlayerPawn = config.GetPlayerPawn();
+  auto pController = config->GetADunDefPlayerController();
+  auto pPlayerPawn = config->GetPlayerPawn();
 
   if (pController == nullptr || pPlayerPawn == nullptr)
     return;
@@ -219,28 +219,28 @@ void MenuMain::NoClipHandleInput() {
   pPlayerPawn->Acceleration = {0, 0, 0};
 
   if (ImGui::IsKeyDown(ImGuiKey_W)) {
-    auto forward = config.GetForward(static_cast<float>(rot.Yaw),
-                                     static_cast<float>(rot.Pitch));
-    float t[3] = {static_cast<float>(forward.X) * config.fNoClipSpeed,
-                  static_cast<float>(forward.Y) * config.fNoClipSpeed,
-                  static_cast<float>(forward.Z) * config.fNoClipSpeed};
+    auto forward = config->GetForward(static_cast<float>(rot.Yaw),
+                                      static_cast<float>(rot.Pitch));
+    float t[3] = {static_cast<float>(forward.X) * config->fNoClipSpeed,
+                  static_cast<float>(forward.Y) * config->fNoClipSpeed,
+                  static_cast<float>(forward.Z) * config->fNoClipSpeed};
     pPlayerPawn->Location =
-        config.AddFVector(pPlayerPawn->Location, {t[0], t[1], t[2]});
+        config->AddFVector(pPlayerPawn->Location, {t[0], t[1], t[2]});
   }
 
   if (ImGui::IsKeyDown(ImGuiKey_S)) {
-    auto forward = config.GetForward(static_cast<float>(rot.Yaw),
-                                     static_cast<float>(rot.Pitch));
-    float t[3] = {static_cast<float>(forward.X) * config.fNoClipSpeed,
-                  static_cast<float>(forward.Y) * config.fNoClipSpeed,
-                  static_cast<float>(forward.Z) * config.fNoClipSpeed};
+    auto forward = config->GetForward(static_cast<float>(rot.Yaw),
+                                      static_cast<float>(rot.Pitch));
+    float t[3] = {static_cast<float>(forward.X) * config->fNoClipSpeed,
+                  static_cast<float>(forward.Y) * config->fNoClipSpeed,
+                  static_cast<float>(forward.Z) * config->fNoClipSpeed};
     pPlayerPawn->Location =
-        config.AddFVector(pPlayerPawn->Location, {-t[0], -t[1], -t[2]});
+        config->AddFVector(pPlayerPawn->Location, {-t[0], -t[1], -t[2]});
   }
 
   if (ImGui::IsKeyDown(ImGuiKey_D)) {
-    auto forward = config.GetForward(static_cast<float>(rot.Yaw),
-                                     static_cast<float>(rot.Pitch));
+    auto forward = config->GetForward(static_cast<float>(rot.Yaw),
+                                      static_cast<float>(rot.Pitch));
     // Define the up vector (assuming Z is up)
     Classes::FVector up = {0.0f, 0.0f, 1.0f};
 
@@ -251,17 +251,17 @@ void MenuMain::NoClipHandleInput() {
         static_cast<float>(forward.X) * up.Y - forward.Y * up.X};
 
     // Normalize the right vector (if needed) and scale it
-    float tRight[3] = {static_cast<float>(right.X) * config.fNoClipSpeed,
-                       static_cast<float>(right.Y) * config.fNoClipSpeed,
-                       static_cast<float>(right.Z) * config.fNoClipSpeed};
+    float tRight[3] = {static_cast<float>(right.X) * config->fNoClipSpeed,
+                       static_cast<float>(right.Y) * config->fNoClipSpeed,
+                       static_cast<float>(right.Z) * config->fNoClipSpeed};
 
-    pPlayerPawn->Location = config.AddFVector(
+    pPlayerPawn->Location = config->AddFVector(
         pPlayerPawn->Location, {-tRight[0], -tRight[1], -tRight[2]});
   }
 
   if (ImGui::IsKeyDown(ImGuiKey_A)) {
-    auto forward = config.GetForward(static_cast<float>(rot.Yaw),
-                                     static_cast<float>(rot.Pitch));
+    auto forward = config->GetForward(static_cast<float>(rot.Yaw),
+                                      static_cast<float>(rot.Pitch));
     // Define the up vector (assuming Z is up)
     Classes::FVector up = {0.0f, 0.0f, 1.0f};
 
@@ -272,20 +272,20 @@ void MenuMain::NoClipHandleInput() {
         static_cast<float>(forward.X) * up.Y - forward.Y * up.X};
 
     // Normalize the left vector (if needed) and scale it
-    float tLeft[3] = {static_cast<float>(left.X) * config.fNoClipSpeed,
-                      static_cast<float>(left.Y) * config.fNoClipSpeed,
-                      static_cast<float>(left.Z) * config.fNoClipSpeed};
+    float tLeft[3] = {static_cast<float>(left.X) * config->fNoClipSpeed,
+                      static_cast<float>(left.Y) * config->fNoClipSpeed,
+                      static_cast<float>(left.Z) * config->fNoClipSpeed};
 
-    pPlayerPawn->Location = config.AddFVector(pPlayerPawn->Location,
-                                              {tLeft[0], tLeft[1], tLeft[2]});
+    pPlayerPawn->Location = config->AddFVector(pPlayerPawn->Location,
+                                               {tLeft[0], tLeft[1], tLeft[2]});
   }
 
   if (ImGui::IsKeyDown(ImGuiKey_Space)) {
-    pPlayerPawn->Location.Z += config.fNoClipSpeed;
+    pPlayerPawn->Location.Z += config->fNoClipSpeed;
   }
 
   if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl)) {
-    pPlayerPawn->Location.Z -= config.fNoClipSpeed;
+    pPlayerPawn->Location.Z -= config->fNoClipSpeed;
   }
 }
 
@@ -304,27 +304,27 @@ void MenuMain::BasicCheats() {
   {
     ImGui::Text("Basic cheats");
     ImGui::Separator();
-    if (ImGui::Checkbox("Godmode", &config.bPlayerGodMode)) {
-      config.TogglePlayerGodMode();
+    if (ImGui::Checkbox("Godmode", &config->bPlayerGodMode)) {
+      config->TogglePlayerGodMode();
     }
-    ImGui::Checkbox("Auto Kill", &config.bKillAllEnemys);
-    ImGui::Checkbox("Auto Loot", &config.bAutoLoot);
+    ImGui::Checkbox("Auto Kill", &config->bKillAllEnemys);
+    ImGui::Checkbox("Auto Loot", &config->bAutoLoot);
     HelpMarker("Will loot anything that is equal to or higher\nin the "
                "configuration settings");
-    ImGui::Checkbox("Auto Ready", &config.bAutoReady);
+    ImGui::Checkbox("Auto Ready", &config->bAutoReady);
     ImGui::SameLine();
-    ImGui::Checkbox("Host Auto Ready", &config.bSuperAutoReady);
-    ImGui::Checkbox("One kill to advance", &config.bKillOneToAdvance);
-    ImGui::Checkbox("Enemys drop items", &config.bLootShower);
-    ImGui::Checkbox("Auto open chest", &config.bAutoOpenChest);
+    ImGui::Checkbox("Host Auto Ready", &config->bSuperAutoReady);
+    ImGui::Checkbox("One kill to advance", &config->bKillOneToAdvance);
+    ImGui::Checkbox("Enemys drop items", &config->bLootShower);
+    ImGui::Checkbox("Auto open chest", &config->bAutoOpenChest);
     HelpMarker("Only works with chest that respawn");
 
-    ImGui::Checkbox("Unlimited mana for towers", &config.bUnlimitedManaTowers);
-    ImGui::Checkbox("Unlimited mana for shop", &config.bUnlimitedManaShop);
+    ImGui::Checkbox("Unlimited mana for towers", &config->bUnlimitedManaTowers);
+    ImGui::Checkbox("Unlimited mana for shop", &config->bUnlimitedManaShop);
 
-    if (ImGui::Checkbox("NoClip", &config.bNoClip)) {
-      auto pPlayerPawn = config.GetADunDefPlayerController();
-      if (config.bNoClip) {
+    if (ImGui::Checkbox("NoClip", &config->bNoClip)) {
+      auto pPlayerPawn = config->GetADunDefPlayerController();
+      if (config->bNoClip) {
         if (pPlayerPawn) {
           pPlayerPawn->Pawn->bCollideWorld = false;
           pPlayerPawn->Pawn->bCollideActors = false;
@@ -341,21 +341,21 @@ void MenuMain::BasicCheats() {
       }
     }
 
-    ImGui::SliderFloat("No clip speed", &config.fNoClipSpeed, 1.0f, 100.0f);
+    ImGui::SliderFloat("No clip speed", &config->fNoClipSpeed, 1.0f, 100.0f);
 
     // level cheats
-    ImGui::InputInt("##waveskip", &config.waveToSkipTo);
+    ImGui::InputInt("##waveskip", &config->waveToSkipTo);
     ImGui::SameLine();
-    ImGui::Checkbox("Level skip", &config.bSkipWave);
+    ImGui::Checkbox("Level skip", &config->bSkipWave);
     ImGui::SameLine();
-    ImGui::Checkbox("lock level", &config.bLockWave);
+    ImGui::Checkbox("lock level", &config->bLockWave);
 
     // multiply rewards
-    ImGui::InputInt("##reward count", &config.MultiplyRewardsBy);
+    ImGui::InputInt("##reward count", &config->MultiplyRewardsBy);
     ImGui::SameLine();
-    ImGui::Checkbox("Multiply Wave rewards", &config.bMultiplyReward);
+    ImGui::Checkbox("Multiply Wave rewards", &config->bMultiplyReward);
     if (ImGui::Button("Unlock all achievments"))
-      config.bUnlockAllAchievments = true;
+      config->bUnlockAllAchievments = true;
   }
 
   // teleport cheats
@@ -363,21 +363,21 @@ void MenuMain::BasicCheats() {
     ImGui::Separator();
     /* Vacuum cheats */
     if (ImGui::Button("Update vacuum pos")) {
-      config.SetVacPos(config.GetPlayerPos());
+      config->SetVacPos(config->GetPlayerPos());
     }
 
     // Vacuum point is done in postrender
-    ImGui::Checkbox("Show vacuum point", &config.bShowVacuumPos);
-    ImGui::Checkbox("Vacuum hack", &config.bVacHack);
+    ImGui::Checkbox("Show vacuum point", &config->bShowVacuumPos);
+    ImGui::Checkbox("Vacuum hack", &config->bVacHack);
     ImGui::Separator();
 
     /* teleport cheats */
     if (ImGui::Button("Update teleport pos")) {
-      config.SetTeleportPos(config.GetPlayerPos());
+      config->SetTeleportPos(config->GetPlayerPos());
     }
     // teleport point is done in postrender
-    ImGui::Checkbox("Show teleport pos", &config.bShowPlayerTeleportPos);
-    ImGui::Checkbox("Teleport players", &config.bTeleportPlayers);
+    ImGui::Checkbox("Show teleport pos", &config->bShowPlayerTeleportPos);
+    ImGui::Checkbox("Teleport players", &config->bTeleportPlayers);
   }
 
   // debugging
@@ -390,7 +390,7 @@ void MenuMain::PlayerCheats() {
   ImGui::Text("Player Cheats");
   ImGui::Separator();
   Classes::ADunDefPlayerController *pController =
-      config.GetADunDefPlayerController();
+      config->GetADunDefPlayerController();
 
   if (!pController)
     return;
@@ -516,7 +516,7 @@ void MenuMain::PlayerCheats() {
     ImGui::InputText("##NewName", newName, sizeof(newName));
     ImGui::SameLine();
     if (ImGui::Button("Change Name")) {
-      config.RenameHero(newName);
+      config->RenameHero(newName);
     }
 
     ImGui::InputInt("Hero level", &pController->myHero->HeroLevel);
@@ -565,8 +565,8 @@ void MenuMain::WorldCheats() {
   ImGui::Text("World settings");
   ImGui::Separator();
 
-  auto pGameInfo = config.GetGameInfo();
-  auto pWorldInfo = config.GetWorldInfo();
+  auto pGameInfo = config->GetGameInfo();
+  auto pWorldInfo = config->GetWorldInfo();
 
   if (!pGameInfo || !pWorldInfo)
     return;
@@ -597,7 +597,7 @@ void MenuMain::WorldCheats() {
   }
 
   if (ImGui::TreeNode("Pawns")) {
-    Classes::APawn *pFirstPawn = config.GetFirstPawnInList();
+    Classes::APawn *pFirstPawn = config->GetFirstPawnInList();
     int i = 0;
     while (pFirstPawn != nullptr) {
       if (!pFirstPawn->IsA(Classes::ADunDefPawn::StaticClass())) {
@@ -680,7 +680,7 @@ void MenuMain::WorldCheats() {
   }
 
   if (ImGui::TreeNode("Spawn Enemys")) {
-    config.bIsSpawnEnemyOpen = true;
+    config->bIsSpawnEnemyOpen = true;
     // class ADunDefEnemy* WaveSpawnerCreateEnemy ( class
     // UDunDef_SeqAct_EnemyWaveSpawner* aSpawner,
     // class ADunDefEnemy* EnemyTemplate,
@@ -689,10 +689,10 @@ void MenuMain::WorldCheats() {
 
     static int ammount = 1;
     ImGui::InputInt("Spawn ammount", &ammount);
-    for (const auto &enemy : config.sEnemyTemplates) {
+    for (const auto &enemy : config->sEnemyTemplates) {
       if (ImGui::Button(("Spawn " + enemy).c_str())) {
         for (int i = 0; i < ammount; i++) {
-          config.qEnemysToSpawn.push(enemy);
+          config->qEnemysToSpawn.push(enemy);
         }
       }
     }
@@ -700,10 +700,10 @@ void MenuMain::WorldCheats() {
     // code here
     ImGui::TreePop();
   } else {
-    config.bIsSpawnEnemyOpen = false;
+    config->bIsSpawnEnemyOpen = false;
   }
 
-  auto pGRI = config.GetGRI();
+  auto pGRI = config->GetGRI();
 
   if (!pGRI)
     return;
@@ -956,7 +956,7 @@ void MenuMain::ItemModding() {
   ImGui::Text("Item modding");
   ImGui::Separator();
 
-  auto pPlayerController = config.GetADunDefPlayerController();
+  auto pPlayerController = config->GetADunDefPlayerController();
   if (!pPlayerController)
     return;
 
@@ -967,7 +967,7 @@ void MenuMain::ItemModding() {
     ImGui::Text("No player hero found.");
   }
 
-  auto pHeroManager = config.GetHeroManager();
+  auto pHeroManager = config->GetHeroManager();
   if (pHeroManager) {
 
     auto fixUnsellableItems = [&]() {
@@ -994,41 +994,41 @@ void MenuMain::ItemModding() {
   {
     if (ImGui::TreeNode("Spawn items")) {
       if (ImGui::Button("Scan for items"))
-        config.vHeroEquipmentStrings = config.ScanForAllItems();
+        config->vHeroEquipmentStrings = config->ScanForAllItems();
       ImGui::SameLine();
       if (ImGui::Button("Add selected items"))
-        config.GiveSelectedItems();
+        config->GiveSelectedItems();
 
       if (ImGui::Button("Give all items"))
-        config.GiveAllItems();
+        config->GiveAllItems();
 
       ImGui::SameLine();
       static char FilterItemsBuffer[255]{0};
       ImGui::InputText("##Filter Items", FilterItemsBuffer,
                        sizeof(FilterItemsBuffer));
 
-      ImGui::Text("Items Found %d", config.vHeroEquipmentStrings.size());
+      ImGui::Text("Items Found %d", config->vHeroEquipmentStrings.size());
       ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f),
                          "Hold Ctrl to select multiple.");
       ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 5.0f);
       ImGui::BeginChild("Items", ImVec2(0, 0), true);
 
       ImGui::Columns(3, NULL, false);
-      int itemCount = config.vHeroEquipmentStrings.size();
+      int itemCount = config->vHeroEquipmentStrings.size();
       for (int n = 0; n < itemCount; ++n) {
-        std::string itemLower = config.vHeroEquipmentStrings[n];
+        std::string itemLower = config->vHeroEquipmentStrings[n];
         std::transform(itemLower.begin(), itemLower.end(), itemLower.begin(),
                        [](unsigned char c) { return std::tolower(c); });
 
         // Check if the item matches the filter
         if (itemLower.find(FilterItemsBuffer) != std::string::npos) {
-          if (ImGui::Selectable(config.vHeroEquipmentStrings[n].c_str(),
-                                config.pItemSelectable[n])) {
+          if (ImGui::Selectable(config->vHeroEquipmentStrings[n].c_str(),
+                                config->pItemSelectable[n])) {
             if (!ImGui::GetIO().KeyCtrl) {
-              memset(config.pItemSelectable, 0,
-                     config.vHeroEquipmentStrings.size() * sizeof(bool));
+              memset(config->pItemSelectable, 0,
+                     config->vHeroEquipmentStrings.size() * sizeof(bool));
             }
-            config.pItemSelectable[n] ^= 1;
+            config->pItemSelectable[n] ^= 1;
           }
 
           ImGui::NextColumn();
@@ -1050,46 +1050,46 @@ void MenuMain::Debug() {
 
   ImGui::Separator();
   ImGui::Text("Debug");
-  auto pPlayerPawn = config.GetPlayerPawn();
-  auto pController = config.GetADunDefPlayerController();
-  auto pEngine = config.GetEngine();
-  auto pAchievementManager = config.GetAchievementManager();
-  auto pWorldInfo = config.GetWorldInfo();
-  auto pMapInfo = config.GetWorldInfo()->GetMapInfo();
-  auto pViewportClient = config.GetViewportClient();
-  auto pWorld = config.GetGameInfo();
+  auto pPlayerPawn = config->GetPlayerPawn();
+  auto pController = config->GetADunDefPlayerController();
+  auto pEngine = config->GetEngine();
+  auto pAchievementManager = config->GetAchievementManager();
+  auto pWorldInfo = config->GetWorldInfo();
+  auto pMapInfo = config->GetWorldInfo()->GetMapInfo();
+  auto pViewportClient = config->GetViewportClient();
+  auto pWorld = config->GetGameInfo();
 
   if (!pPlayerPawn || !pController || !pEngine || !pAchievementManager)
     return;
 
-  ImGui::Checkbox("Pathfind", &config.bPathFind);
-  ImGui::SliderFloat("Min dist", &config.minDist, 0, 500);
-  ImGui::SliderFloat("pathfind treshold", &config.pathfindthreshhold, 0, 500);
+  ImGui::Checkbox("Pathfind", &config->bPathFind);
+  ImGui::SliderFloat("Min dist", &config->minDist, 0, 500);
+  ImGui::SliderFloat("pathfind treshold", &config->pathfindthreshhold, 0, 500);
 
-  ImGui::InputFloat3("PointTo", &config.pathfindToPoint.X);
-  ImGui::InputFloat3("NextPoint", &config.pathfindNextPoint.X);
+  ImGui::InputFloat3("PointTo", &config->pathfindToPoint.X);
+  ImGui::InputFloat3("NextPoint", &config->pathfindNextPoint.X);
 
   // Get inital point
   if (ImGui::Button("generate path")) {
-    config.pathfindNextPoint = config.GeneratePathToPoint(
-        pPlayerPawn, config.pathfindToPoint, config.minDist, 0);
+    config->pathfindNextPoint = config->GeneratePathToPoint(
+        pPlayerPawn, config->pathfindToPoint, config->minDist, 0);
 
     pController->NavigationHandle->GetNextMoveLocation(
-        config.minDist, &config.pathfindNextPoint);
+        config->minDist, &config->pathfindNextPoint);
   }
   // pathfind to next point
 
   if (ImGui::Button("move path")) {
-    config.pathfindToPoint = pPlayerPawn->Location;
+    config->pathfindToPoint = pPlayerPawn->Location;
   }
-  // ImGui::Checkbox("Show path", &config.bShowPath);
+  // ImGui::Checkbox("Show path", &config->bShowPath);
 
   if (ImGui::Button("Show path")) {
-    config.GetADunDefPlayerController()->NavigationHandle->DrawPathCache(
+    config->GetADunDefPlayerController()->NavigationHandle->DrawPathCache(
         {0, 1, 0}, 1, {255, 0, 0, 255});
   }
   if (ImGui::Button("Test"))
-    // pController->MoveToDirectNonPathPos(config.vacPos,
+    // pController->MoveToDirectNonPathPos(config->vacPos,
     //                                     pWorld->TargetableActors[0], 19, 0);
     // ImGui::InputFloat3("Pos", &test.X);
     return;
@@ -1110,7 +1110,7 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
   // ImGui::Text("WeaponAdditionalDamageAmount %d",
   // item->WeaponAdditionalDamageAmount);
   // auto t =
-  //      ((Classes::ADunDefPlayerReplicationInfo *)(config.GetPlayerPawn()
+  //      ((Classes::ADunDefPlayerReplicationInfo *)(config->GetPlayerPawn()
   //                                                     ->PlayerReplicationInfo))
   //          ->GetPlayer();
   //
@@ -1130,7 +1130,7 @@ void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
   //  ImGui::Text("%i", a);
 
   if (ImGui::Button(("Give##%ls" + item->GetName()).c_str())) {
-    config.PushItemToQueue(item);
+    config->PushItemToQueue(item);
   }
 
   ImGui::Text("ItemAddr          :  0x%p", item);
@@ -1616,20 +1616,20 @@ void MenuMain::ImGuiLootFilter() {
           ImGui::TableSetColumnIndex(0);
           // enable check box
           ImGui::Checkbox(("##" + std::to_string(row)).c_str(),
-                          &config.lootFilterEnabled[row]);
+                          &config->lootFilterEnabled[row]);
 
           // min
           ImGui::TableSetColumnIndex(1);
           ImGui::PushItemWidth(-FLT_MIN);
           ImGui::DragInt(("##Min" + std::to_string(row)).c_str(),
-                         &config.lootFilterMin[row]);
+                         &config->lootFilterMin[row]);
           ImGui::PopItemWidth();
 
           // max
           ImGui::TableSetColumnIndex(2);
           ImGui::PushItemWidth(-FLT_MIN);
           ImGui::DragInt(("##Max" + std::to_string(row)).c_str(),
-                         &config.lootFilterMax[row]);
+                         &config->lootFilterMax[row]);
           ImGui::PopItemWidth();
 
           // stat name
@@ -1654,7 +1654,7 @@ void MenuMain::ImGuiLootFilter() {
         ImGui::TableHeadersRow();
 
         std::for_each(
-            config.lootStatFilters.begin(), config.lootStatFilters.end(),
+            config->lootStatFilters.begin(), config->lootStatFilters.end(),
             [this](StatFilter &filter) { ImGuiLootFilterPair(filter); });
 
         ImGui::EndTable();
@@ -1662,21 +1662,21 @@ void MenuMain::ImGuiLootFilter() {
       ImGui::TreePop();
     }
 
-    ImGui::Combo("Quality", &config.itemFilterQuality, itemQualitys,
+    ImGui::Combo("Quality", &config->itemFilterQuality, itemQualitys,
                  IM_ARRAYSIZE(itemQualitys));
 
-    ImGui::Checkbox("Always loot quality >= selected?", &config.bAutoLootULT);
+    ImGui::Checkbox("Always loot quality >= selected?", &config->bAutoLootULT);
     HelpMarker("This requires the auto loot setting and\nwill bypass the "
                "above settings");
-    ImGui::Combo("Always loot Quality", &config.itemFilterQualityULT,
+    ImGui::Combo("Always loot Quality", &config->itemFilterQualityULT,
                  itemQualitys, IM_ARRAYSIZE(itemQualitys));
 
-    ImGui::Text("Items Added : %d   |  Items Filtered : %d", config.itemsLooted,
-                config.itemsChecked);
+    ImGui::Text("Items Added : %d   |  Items Filtered : %d",
+                config->itemsLooted, config->itemsChecked);
     ImGui::SameLine();
     if (ImGui::Button("Reset")) {
-      config.itemsLooted = 0;
-      config.itemsChecked = 0;
+      config->itemsLooted = 0;
+      config->itemsChecked = 0;
     }
 
     ImGui::TreePop();
@@ -1691,7 +1691,7 @@ void MenuMain::Config() {
   ImVec2 settingsbuttonProperty = ImVec2(contentRegion.x * .5f, 20);
   if (ImGui::TreeNode("Menu Settings")) {
 
-    for (auto &key : config.keyBindsmap) {
+    for (auto &key : config->keyBindsmap) {
       if (ImGui::Button(("Set " + key.second.name + " Key").c_str(),
                         settingsbuttonProperty)) {
         key.second.bShouldChange = true;
@@ -1701,9 +1701,10 @@ void MenuMain::Config() {
       HandleKeyChange(key.second.key, key.second.bShouldChange);
     }
 
-    float duration = static_cast<float>(config.tAutoReadyAfterXSeconds.count());
+    float duration =
+        static_cast<float>(config->tAutoReadyAfterXSeconds.count());
     if (ImGui::SliderFloat("Auto ready delay", &duration, 0.0f, 30.0f)) {
-      config.tAutoReadyAfterXSeconds = std::chrono::duration<double>(duration);
+      config->tAutoReadyAfterXSeconds = std::chrono::duration<double>(duration);
     }
 
     ImGui::TreePop();
@@ -1714,23 +1715,23 @@ void MenuMain::Config() {
   if (ImGui::TreeNode("Logging")) {
     ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f),
                        "This is for debugging purposes");
-    if (ImGui::Checkbox("Attach console", &config.bConsoleAttached)) {
-      if (config.bConsoleAttached) {
-        config.AttachConsole();
+    if (ImGui::Checkbox("Attach console", &config->bConsoleAttached)) {
+      if (config->bConsoleAttached) {
+        config->AttachConsole();
       } else {
-        config.DettachConsole();
+        config->DettachConsole();
       }
     }
     ImGui::SameLine();
-    ImGui::Checkbox("Log process events", &config.bLoggingProcessEvents);
+    ImGui::Checkbox("Log process events", &config->bLoggingProcessEvents);
     ImGui::SameLine();
-    if (ImGui::Checkbox("Log to file", &config.bLoggingToFile)) {
-      if (config.bLoggingToFile)
-        config.InitLog();
+    if (ImGui::Checkbox("Log to file", &config->bLoggingToFile)) {
+      if (config->bLoggingToFile)
+        config->InitLog();
       else
-        config.CleanLog();
+        config->CleanLog();
     }
-    ImGui::Checkbox("Enable function filter", &config.bEnableFunctionFilter);
+    ImGui::Checkbox("Enable function filter", &config->bEnableFunctionFilter);
 
     // unordered_map menu
     // TODO: THIS COULD BE DONE ALOT BETTER
@@ -1752,7 +1753,7 @@ void MenuMain::Config() {
 
           ImGui::TableHeadersRow();
 
-          for (auto &s : config.vProcessEventFunctionFilter) {
+          for (auto &s : config->vProcessEventFunctionFilter) {
             if (s.second == false)
               continue;
 
@@ -1777,7 +1778,7 @@ void MenuMain::Config() {
           ImGui::TableSetupColumn("Active#2", ImGuiTableColumnFlags_WidthFixed);
           ImGui::TableHeadersRow();
 
-          for (auto &s : config.vProcessEventFunctionFilter) {
+          for (auto &s : config->vProcessEventFunctionFilter) {
             if (s.second == true)
               continue;
 
@@ -1817,7 +1818,7 @@ void MenuMain::Config() {
 
           ImGui::TableHeadersRow();
 
-          for (auto &s : config.vProcessEventObjectFilter) {
+          for (auto &s : config->vProcessEventObjectFilter) {
 
             if (s.first.find(buff) == std::string::npos)
               continue;
@@ -1843,7 +1844,7 @@ bool MenuMain::HandleKeyChange(int &key, bool &shouldChange) {
   if (!shouldChange) {
     std::string tmpString =
         "Current : " + std::string(ImGui::GetKeyName((ImGuiKey)key));
-    ImGui::Text(tmpString.c_str(), config.ToggleKey, config.ToggleKey);
+    ImGui::Text(tmpString.c_str(), config->ToggleKey, config->ToggleKey);
     return true;
   } else {
     int keyDown = GetKeydown();
@@ -1853,8 +1854,8 @@ bool MenuMain::HandleKeyChange(int &key, bool &shouldChange) {
     } else {
       shouldChange = false;
       key = keyDown;
-      config.LogToFile("Saved keybind change.");
-      config.SaveKeybinds();
+      config->LogToFile("Saved keybind change.");
+      config->SaveKeybinds();
       return true;
     }
   }
@@ -1917,7 +1918,7 @@ void MenuMain::ImGuiPawn(Classes::ADunDefPawn *pPawn) {
   // ImGui::Separator();
 
   if (ImGui::Button(("Kill##" + pPawn->GetName()).c_str())) {
-    config.KillPawn(pPawn);
+    config->KillPawn(pPawn);
   }
 
   ImGui::Text("Creation span : %f", pPawn->CreationTime);
@@ -2058,18 +2059,18 @@ void MenuMain::ImGuiPawn(Classes::ADunDefPawn *pPawn) {
   if (!pPawn->IsPlayerOwned()) {
     auto p = ((Classes::ADunDefEnemyController *)pPawn->Controller);
     // auto t =
-    //              ->GeneratePathToPoint(config.vacPos, 100, 1);
+    //              ->GeneratePathToPoint(config->vacPos, 100, 1);
     // auto tt = ((Classes::ADunDefEnemyController *)pPawn->Controller)
-    //               ->FindPathTo(config.vacPos, 100, 1);
+    //               ->FindPathTo(config->vacPos, 100, 1);
     // pPawn->Controller->NavigationHandle->DrawPathCache({0, 10, 0}, 1,
     //                                                    {255, 0, 0, 255});
     //
-    // config.FloatingTextinWorld(L"TEST", t);
+    // config->FloatingTextinWorld(L"TEST", t);
     //
     // p->NavigationHandle->ComputeValidFinalDestination(&finalDest);
     //
     if (ImGui::Button("Set des"))
-      p->NavigationHandle->SetFinalDestination(config.vacPos);
+      p->NavigationHandle->SetFinalDestination(config->vacPos);
     ImGui::Text("Final pos: %f, %f, %f",
                 p->NavigationHandle->FinalDestination.Position.X,
                 p->NavigationHandle->FinalDestination.Position.Y,
@@ -2087,19 +2088,19 @@ void MenuMain::ImGuiPawn(Classes::ADunDefPawn *pPawn) {
 
     if (ImGui::Button("Generate path")) {
 
-      p->NavigationHandle->ComputeValidFinalDestination(&config.vacPos);
+      p->NavigationHandle->ComputeValidFinalDestination(&config->vacPos);
 
-      auto ttt = p->GeneratePathToPoint(config.vacPos, 10, 1);
-      // config.vPointsToDraw.push_back(PointToRender(L"Path", ttt));
+      auto ttt = p->GeneratePathToPoint(config->vacPos, 10, 1);
+      // config->vPointsToDraw.push_back(PointToRender(L"Path", ttt));
 
-      // config.FloatingTextinWorld(L"newpath", ttt,{0,1,0,1},10);
+      // config->FloatingTextinWorld(L"newpath", ttt,{0,1,0,1},10);
     }
-    // auto tttt = p->FindPathTo(config.vacPos, 100, 1);
+    // auto tttt = p->FindPathTo(config->vacPos, 100, 1);
 
     // Classes::FVector MoveDest;
     // if (p->NavigationHandle->GetNextMoveLocation(tempChange, &MoveDest)) {
     //   static Classes::FString sss = L"MPos";
-    //   config.FloatingTextinWorld(sss, MoveDest);
+    //   config->FloatingTextinWorld(sss, MoveDest);
     //   ImGui::Text("%f %f %f", MoveDest.X, MoveDest.Y, MoveDest.Z);
     // }
   }
@@ -2107,7 +2108,7 @@ void MenuMain::ImGuiPawn(Classes::ADunDefPawn *pPawn) {
 
 void MenuMain::ImGuiTargetableActor(Classes::ADunDefDamageableTarget *pPawn) {
   if (ImGui::Button("Kill")) {
-    config.KillPawn(pPawn);
+    config->KillPawn(pPawn);
   }
 
   ImGui::Text("TargetingTeam: %d", pPawn->TargetingTeam);
@@ -2126,14 +2127,24 @@ void MenuMain::Lua() {
   ImGui::Separator();
 
   static std::string path;
-  if (ImGui::Button("Select lua folder")) {
-    path = GetFolderPath();
-  }
   if (ImGui::Button("run lua file")) {
     path = GetFilePath();
-    config.L->execute_lua_file(path);
+    config->L->execute_lua_file(path);
   }
-  ImGui::Text("%s", path.c_str());
+  ImGui::SameLine();
+
+  static char text[1024 * 16];
+  if (ImGui::Button("Execute")) {
+    config->L->L.script(text);
+  }
+
+  ImGui::InputTextMultiline("##luacode", text, IM_ARRAYSIZE(text),
+                            ImVec2(-FLT_MIN, -FLT_MIN),
+                            ImGuiInputTextFlags_AllowTabInput);
+
+  ImVec2 window_size = ImGui::GetWindowSize();
+  float input_height = ImGui::GetTextLineHeight() * 16;
+  ImVec2 input_pos = ImVec2(0, window_size.y - input_height);
 }
 
 std::string MenuMain::GetFolderPath() {

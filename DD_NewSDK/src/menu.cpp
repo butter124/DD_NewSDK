@@ -34,64 +34,64 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
 
   // add to map if func have not been seen before
   auto vProcessEventFunctionFilterFind =
-      config.vProcessEventFunctionFilter.find(funcName);
+      config->vProcessEventFunctionFilter.find(funcName);
   if (vProcessEventFunctionFilterFind ==
-      config.vProcessEventFunctionFilter.end()) {
-    config.vProcessEventFunctionFilter[funcName] = false;
+      config->vProcessEventFunctionFilter.end()) {
+    config->vProcessEventFunctionFilter[funcName] = false;
   }
   // add to map if obj have not been seen before
   auto vProcessEventObjectFind =
-      config.vProcessEventObjectFilter.find(objectName);
-  if (vProcessEventObjectFind == config.vProcessEventObjectFilter.end()) {
-    config.vProcessEventObjectFilter[objectName] = false;
+      config->vProcessEventObjectFilter.find(objectName);
+  if (vProcessEventObjectFind == config->vProcessEventObjectFilter.end()) {
+    config->vProcessEventObjectFilter[objectName] = false;
   }
 
   // logging process events
-  if (config.bConsoleAttached && config.bLoggingProcessEvents) {
-    if (!config.vProcessEventFunctionFilter[funcName]) {
+  if (config->bConsoleAttached && config->bLoggingProcessEvents) {
+    if (!config->vProcessEventFunctionFilter[funcName]) {
       std::string s = std::format("{:<50} | {}", objectName, funcName);
       std::cout << s << "\n";
     }
   }
 
   // block input when menu is shown
-  if (config.bShowMenu) {
+  if (config->bShowMenu) {
     if (strcmp(objectName.c_str(), "UIState_Pressed") == 0) {
-      config.PrintToConsole("Blocked input");
+      config->PrintToConsole("Blocked input");
       return;
     }
   }
 
   // anti cheat
   if (strcmp(funcName.c_str(), "Function UDKGame.Main.RunAntiCheat") == 0) {
-    config.PrintToConsole("Blocked Function UDKGame.Main.RunAntiCheat");
+    config->PrintToConsole("Blocked Function UDKGame.Main.RunAntiCheat");
     return;
   }
   if (strcmp(funcName.c_str(), "Function UDKGame.Main.HandleCheater") == 0) {
-    config.PrintToConsole("Blocked Function UDKGame.Main.HandleCheater");
+    config->PrintToConsole("Blocked Function UDKGame.Main.HandleCheater");
     return;
   }
   // hooked functions
-  if (config.hookedFuncMap.find(funcName) != config.hookedFuncMap.end()) {
-    //  config.PrintToConsole();
-    config.hookedFuncMap[funcName](pObject, edx, pFunction, pParms, pResult);
+  if (config->hookedFuncMap.find(funcName) != config->hookedFuncMap.end()) {
+    //  config->PrintToConsole();
+    config->hookedFuncMap[funcName](pObject, edx, pFunction, pParms, pResult);
   }
   // hooked objects
-  if (config.hookedObjects.find(objectName) != config.hookedObjects.end()) {
+  if (config->hookedObjects.find(objectName) != config->hookedObjects.end()) {
     // std::string s = std::format("Hooked Object {}", objectName);
-    // config.LogToFile(s);
-    //  config.PrintToConsole(std::format("Hooked {}", objectName));
-    config.hookedObjects[objectName](pObject, edx, pFunction, pParms, pResult);
+    // config->LogToFile(s);
+    //  config->PrintToConsole(std::format("Hooked {}", objectName));
+    config->hookedObjects[objectName](pObject, edx, pFunction, pParms, pResult);
   }
   // blocked functions
-  auto blockedMapFunc = config.blockedFuncMap.find(funcName);
-  if (blockedMapFunc != config.blockedFuncMap.end() &&
+  auto blockedMapFunc = config->blockedFuncMap.find(funcName);
+  if (blockedMapFunc != config->blockedFuncMap.end() &&
       *blockedMapFunc->second) {
     return;
   }
 
   // std::string s = std::format("Hooked {:<50} | {}", funcName, objectName);
-  // config.LogToFile(s);
+  // config->LogToFile(s);
   //  Call Original PE
   ((tProcessEvent)(ProcEventHook.HookAddr))(pObject, pFunction, pParms,
                                             pResult);
@@ -130,7 +130,7 @@ HRESULT APIENTRY hkEndScene(LPDIRECT3DDEVICE9 pDevice) {
     ImGui::CreateContext();
 
     ImGuiIO &io = ImGui::GetIO();
-    ImGui_ImplWin32_Init(config.gameHWND);
+    ImGui_ImplWin32_Init(config->gameHWND);
     io.ConfigFlags = ImGuiConfigFlags_NoMouseCursorChange;
     ImGui_ImplDX9_Init(pDevice);
   }
@@ -161,7 +161,7 @@ HRESULT APIENTRY hkBeginScene(LPDIRECT3DDEVICE9 pDevice) {
     if (hr == D3DERR_DEVICENOTRESET) {
       menu.d3dppCached.Windowed = TRUE;
       menu.d3dppCached.SwapEffect = D3DSWAPEFFECT_COPY;
-      menu.d3dppCached.hDeviceWindow = config.gameHWND;
+      menu.d3dppCached.hDeviceWindow = config->gameHWND;
       menu.d3dppCached.BackBufferFormat = D3DFMT_A8R8G8B8;
 
       menu.d3dppCached.PresentationInterval =
@@ -186,7 +186,7 @@ DWORD EaxCheck = 0;
 bool isController = false;
 bool ScoreHookFunc() {
   Classes::TArray<Classes::ULocalPlayer *> controllers =
-      config.GetEngine()->GamePlayers;
+      config->GetEngine()->GamePlayers;
 
   if (controllers.Num())
     for (int ScroreHookI = 0; ScroreHookI < controllers.Num(); ScroreHookI++) {
@@ -281,7 +281,7 @@ bool Menu::Cleanup() {
   BeginSceneHook.UnHookFunction();
   EndSceneHook.UnHookFunction();
 
-  (WNDPROC) SetWindowLongPtr(config.gameHWND, GWL_WNDPROC, (LONG_PTR)oWndProc);
+  (WNDPROC) SetWindowLongPtr(config->gameHWND, GWL_WNDPROC, (LONG_PTR)oWndProc);
 
   ProcEventHook.UnHookFunction();
   ScoreHookObj.UnHookFunction();
@@ -310,7 +310,7 @@ bool Menu::GetDevicePointer(void **pTable, size_t size) {
   d3dpp.Windowed = true;
   d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
 
-  d3dpp.hDeviceWindow = config.gameHWND;
+  d3dpp.hDeviceWindow = config->gameHWND;
 
   HRESULT dummyDeviceCreated = pD3D->CreateDevice(
       D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, d3dpp.hDeviceWindow,
@@ -339,7 +339,7 @@ bool Menu::GetDevicePointer(void **pTable, size_t size) {
 
 void Menu::ImGuiMenu() {
   main.Thread();
-  if (!config.bShowMenu)
+  if (!config->bShowMenu)
     return;
   main.Render();
 }

@@ -16,15 +16,15 @@
 #include <winuser.h>
 
 // clang-format on
-Config config;
-// Config::Config() : logFileName("log.txt"), logger(logFileName) {}
+Config *config = &Config::getInstance();
+//  Config::Config() : logFileName("log.txt"), logger(logFileName) {}
 Config::Config() : logFileName("log.txt"), logger(logFileName) {}
 
 Config::~Config() {}
 
 bool Config::Init() {
 
-  config.LogToFile("Init config.");
+  config->LogToFile("Init config.");
   gameHWND = FindWindow(NULL, "Dungeon Defenders");
 
   // clang-format off
@@ -72,7 +72,7 @@ void Config::InitSDK() {
   // ss << "GObjects: " << std::hex << GObjectsAddr << " GNames: " <<
   // GNamesAddr;
   //
-  // config.LogToFile(ss.str());
+  // config->LogToFile(ss.str());
 }
 
 void Config::BlockInputInMenu(PROCESS_EVENT_ARGS) {
@@ -81,7 +81,7 @@ void Config::BlockInputInMenu(PROCESS_EVENT_ARGS) {
 }
 
 bool Config::Cleanup() {
-  config.LogToFile("Cleanup config.");
+  config->LogToFile("Cleanup config");
   TurnOffPlayerGodMod();
   SaveKeybinds();
   // turn off no clip
@@ -106,7 +106,7 @@ bool Config::Cleanup() {
 void Config::RegisterHookedFunction(
     const std::string &key, std::function<void(PROCESS_EVENT_ARGS)> func) {
 
-  config.LogToFile("Registering function " + key);
+  config->LogToFile("Registering function " + key);
   hookedFuncMap[key] = func;
 }
 
@@ -114,19 +114,19 @@ void Config::RegisterHookedObject(
     // if you call a class method of obj it will enter an infinite loop
     // the caller must account for that
     const std::string &key, std::function<void(PROCESS_EVENT_ARGS)> func) {
-  config.LogToFile("Registering hooked Object " + key);
+  config->LogToFile("Registering hooked Object " + key);
   hookedObjects[key] = func;
 }
 
 void Config::RegisterBlockedFunction(const std::string &key, bool &flag) {
-  config.LogToFile("Registering blocked funtion " + key);
+  config->LogToFile("Registering blocked funtion " + key);
   blockedFuncMap[key] = &flag;
 }
 
 void Config::RegisterKeybind(std::string name, Config::KeyBinds keyBindName,
                              int keyCode, std::function<void()> func) {
 
-  config.LogToFile("Registering keybind " + name);
+  config->LogToFile("Registering keybind " + name);
   KeybindsStruct key;
   key.name = name;
   key.key = keyCode;
@@ -217,7 +217,7 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
 
   // unlimited mana for towers
   if (bUnlimitedManaTowers)
-    pController->ManaPower = config.iManaForTowers;
+    pController->ManaPower = config->iManaForTowers;
 
   // unlimited mana for shops
   if (bUnlimitedManaShop) {
@@ -250,7 +250,7 @@ void Config::DrawingOnScreen(PROCESS_EVENT_ARGS) {
 
   auto screenpoint = canvas->ProjectNoClip(pathfindNextPoint);
   if (screenpoint.Z > 0.0f && screenpoint.Z < 1.0f) {
-    float d = Distance(GetPlayerPawn()->Location, config.pathfindNextPoint);
+    float d = Distance(GetPlayerPawn()->Location, config->pathfindNextPoint);
     std::wstring s = std::to_wstring(d);
     DrawTextCentered(canvas, s.c_str(), screenpoint.X, screenpoint.Y,
                      {0, 255, 0, 255});
@@ -265,7 +265,7 @@ void Config::DrawingOnScreen(PROCESS_EVENT_ARGS) {
       GetPlayerPawn()->Location, pathfindNextPoint, {0, 0, 255, 255});
 
   // if (bShowPath)
-  //   config.GetADunDefPlayerController()->NavigationHandle->DrawPathCache(
+  //   config->GetADunDefPlayerController()->NavigationHandle->DrawPathCache(
   //       {0, 1, 0}, 0, {255, 0, 0, 255});
 }
 
@@ -301,7 +301,7 @@ void Config::HandleAutoReady() {
   static bool cachedTime = false;
 
   // check for entering build phase
-  if (!cachedTime && config.GetGRI()->STATIC_IsNonLobbyBuildPhase()) {
+  if (!cachedTime && config->GetGRI()->STATIC_IsNonLobbyBuildPhase()) {
     timeLast = std::chrono::high_resolution_clock::now();
     cachedTime = true;
   }
@@ -377,7 +377,7 @@ void Config::PlayerRewardHookFunc(PROCESS_EVENT_ARGS) {
 
   static int currentRewardInteration = 0;
 
-  if (currentRewardInteration < config.MultiplyRewardsBy) {
+  if (currentRewardInteration < config->MultiplyRewardsBy) {
     currentRewardInteration++;
     rewarditems->Activated();
     // tmpItemEntry = rewarditems->GiveEquipmentEntries;
@@ -408,8 +408,8 @@ void Config::AutoLootHookFunc(PROCESS_EVENT_ARGS) {
   if (!isValid)
     return;
 
-  auto pPawn = config.GetPlayerPawn();
-  auto pHeroManager = config.GetHeroManager();
+  auto pPawn = config->GetPlayerPawn();
+  auto pHeroManager = config->GetHeroManager();
 
   if (!pHeroManager || !pPawn ||
       !((Classes::ADunDefPlayer *)pPawn)->MyPlayerHero)
@@ -423,7 +423,7 @@ void Config::AutoLootHookFunc(PROCESS_EVENT_ARGS) {
 bool Config::TogglePlayerGodMode() {
   Classes::ADunDefPlayerController *playerController =
       GetADunDefPlayerController();
-  auto pWorld = config.GetGameInfo();
+  auto pWorld = config->GetGameInfo();
   if (!playerController || !pWorld)
     return false;
 
@@ -449,8 +449,8 @@ bool Config::ToggleCrystalGodMode() {
 }
 
 bool Config::UnlockAllAchievements() {
-  auto pAchievementManager = config.GetAchievementManager();
-  auto pController = config.GetADunDefPlayerController();
+  auto pAchievementManager = config->GetAchievementManager();
+  auto pController = config->GetADunDefPlayerController();
 
   if (!pAchievementManager || !pController)
     return false;
@@ -773,8 +773,8 @@ void Config::KillPawn(Classes::ADunDefDamageableTarget *pawn) {
 
 void Config::KillAllEnemyPawns() {
 
-  auto pWorld = config.GetGameInfo();
-  auto pInfo = config.GetWorldInfo();
+  auto pWorld = config->GetGameInfo();
+  auto pInfo = config->GetWorldInfo();
 
   if (!pWorld || pWorld->TargetableActors.Num() == 0 || pInfo == nullptr)
     return;
@@ -791,7 +791,7 @@ void Config::KillAllEnemyPawns() {
     if (pActor->CreationTime + 5 < pInfo->TimeSeconds)
       if (((Classes::ADunDefDamageableTarget *)pActor)->TargetingTeam ==
           TARGET_TEAM::PLAYERS) {
-        config.KillPawn(
+        config->KillPawn(
             reinterpret_cast<Classes::ADunDefDamageableTarget *>(pActor));
       }
   }
@@ -857,7 +857,7 @@ Classes::FVector Config::SetPlayerPos(Classes::FVector pos) {
 void Config::FloatingTextinWorld(const Classes::FString &string,
                                  Classes::FVector pos,
                                  Classes::FLinearColor dColor, float time) {
-  auto playerController = config.GetADunDefPlayerController();
+  auto playerController = config->GetADunDefPlayerController();
   if (!playerController || !playerController->myHUD)
     return;
   auto GRI = playerController->GetGRI();
@@ -932,20 +932,20 @@ Classes::FVector Config::AddFVector(Classes::FVector vec1,
 
 bool Config::GiveItem(Classes::UHeroEquipment *_item) {
 
-  config.LogToFile("Giving item.");
-  config.LogToFile("Item name : " + _item->GetFullName());
+  config->LogToFile("Giving item.");
+  config->LogToFile("Item name : " + _item->GetFullName());
   // CopyItem(item, _item);
 
   Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *pItemGiver =
       GetEquipmentGiver();
-  config.LogToFile("Found item giver class: " + pItemGiver->GetFullName());
+  config->LogToFile("Found item giver class: " + pItemGiver->GetFullName());
   Classes::ADunDefPlayerController *pController = GetADunDefPlayerController();
-  config.LogToFile("Found player controller: " + pController->GetFullName());
+  config->LogToFile("Found player controller: " + pController->GetFullName());
 
   if (!pItemGiver || !pController)
     return false;
 
-  config.LogToFile("Setting up item structure.");
+  config->LogToFile("Setting up item structure.");
   // create net info to create an equipment
   auto netInfo = _item->GetNetInfo(1, 0);
   netInfo.EquipmentID1 = std::rand() % 2000000000;
@@ -954,7 +954,7 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
   // copy over the base item
   Classes::UHeroEquipment *item = netInfo.EquipmentTemplate;
 
-  config.LogToFile("Giving item " + item->GetName());
+  config->LogToFile("Giving item " + item->GetName());
   // save old info to restore later
   auto oldNetInfo = item->GetNetInfo(1, 0);
 
@@ -962,7 +962,7 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
   item->InitFromNetInfo(netInfo, nullptr);
   item->CopyStatsFromNetInfo(netInfo);
 
-  config.LogToFile("Done setting up item structure.");
+  config->LogToFile("Done setting up item structure.");
   // save old template
   Classes::FGiveEquipmentEntry oldtemp;
   oldtemp = pItemGiver->GiveEquipmentEntries.GetByIndex(0);
@@ -995,7 +995,7 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
   pItemGiver->GiveEquipmentEntries.GetByIndex(0) = newtemp;
   pItemGiver->GiveEquipment(pController);
 
-  config.LogToFile("Gave item sucessfully.");
+  config->LogToFile("Gave item sucessfully.");
 
   // cleanup templates
   pItemGiver->GiveEquipmentEntries.GetByIndex(0) = oldtemp;
@@ -1003,7 +1003,7 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
   // cleanup archtype
   item->InitFromNetInfo(oldNetInfo, nullptr);
 
-  config.LogToFile("Gave item " + item->GetFullName());
+  config->LogToFile("Gave item " + item->GetFullName());
   return true;
 }
 
@@ -1349,14 +1349,14 @@ Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *Config::GetEquipmentGiver() {
   Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *obj;
   obj = (Classes::UDunDef_SeqAct_GiveEquipmentToPlayers *)GetInstanceOf(
       Classes::UDunDef_SeqAct_GiveEquipmentToPlayers::StaticClass());
-  config.LogToFile(
+  config->LogToFile(
       "Found UDunDef_SeqAct_GiveEquipmentToPlayers for GetEquipmentGiver()");
   return obj;
 }
 
 Classes::ADunDefForge *Config::GetForge() {
 
-  config.LogToFile("Found ADunDefForge.");
+  config->LogToFile("Found ADunDefForge.");
   return ((Classes::ADunDefForge *)(Classes::ADunDefForge::StaticClass()))
       ->STATIC_GetAForge();
 }
@@ -1369,7 +1369,7 @@ Classes::UDunDefAchievementManager *Config::GetAchievementManager() {
                Classes::UDunDefAchievementManager::StaticClass())
               ->STATIC_GetAchievementManager();
 
-  config.LogToFile("Found UDunDefAchievementManager.");
+  config->LogToFile("Found UDunDefAchievementManager.");
   return obj;
 }
 
@@ -1380,7 +1380,7 @@ Classes::UDunDef_SeqAct_EnemyWaveSpawner *Config::GetWaveSpawner() {
     obj = (Classes::UDunDef_SeqAct_EnemyWaveSpawner *)GetInstanceOf(
         Classes::UDunDef_SeqAct_EnemyWaveSpawner::StaticClass());
 
-  config.LogToFile("Found UDunDef_SeqAct_EnemyWaveSpawner.");
+  config->LogToFile("Found UDunDef_SeqAct_EnemyWaveSpawner.");
   return obj;
 }
 
@@ -1391,7 +1391,7 @@ std::set<Classes::UObject *> Config::GetEnemyTemplates() {
 
   static std::set<Classes::UObject *> rSet = {};
 
-  if (!config.bIsSpawnEnemyOpen)
+  if (!config->bIsSpawnEnemyOpen)
     return rSet;
 
   sEnemyTemplates.clear();
@@ -1406,7 +1406,7 @@ std::set<Classes::UObject *> Config::GetEnemyTemplates() {
     sEnemyTemplates.insert(e->GetName());
   }
 
-  config.LogToFile("Found ADunDefEnemy.");
+  config->LogToFile("Found ADunDefEnemy.");
   return rSet;
 }
 
@@ -1414,7 +1414,7 @@ void Config::PushItemToQueue(Classes::UHeroEquipment *item) {
   std::lock_guard<std::mutex> lock(queueMutex);
   qItemsToGive.push(item);
 
-  config.LogToFile("Found UHeroEquipment.");
+  config->LogToFile("Found UHeroEquipment.");
 }
 
 Classes::UHeroEquipment *Config::PopItemFromQueue() {
@@ -1422,7 +1422,7 @@ Classes::UHeroEquipment *Config::PopItemFromQueue() {
   if (!qItemsToGive.empty()) {
 
     auto item = qItemsToGive.front();
-    config.LogToFile("Popping item from queue " + item->GetFullName());
+    config->LogToFile("Popping item from queue " + item->GetFullName());
     qItemsToGive.pop();
     return item;
   }
@@ -1437,14 +1437,14 @@ void Config::PushItemToQueueWithString(std::string s) {
   if (!instance)
     return;
 
-  config.LogToFile("Mutex lock for PushItemToQueueWithString: " + s);
+  config->LogToFile("Mutex lock for PushItemToQueueWithString: " + s);
   std::lock_guard<std::mutex> lock(queueMutex);
   qItemsToGive.push(instance);
 }
 
 std::vector<std::string> Config::ScanForAllItems() {
 
-  config.LogToFile("ScanForAllItems called.");
+  config->LogToFile("ScanForAllItems called.");
   // this function could be done better
   std::vector<std::string> retVec;
   auto equipVector = GetAllInstanceOf(Classes::UHeroEquipment::StaticClass());
@@ -1528,7 +1528,7 @@ void Config::InitLog() {
   logger.openfile();
   logger.log("Init logger.");
 
-  auto version = config.GetViewportClient()->versionString.ToString();
+  auto version = config->GetViewportClient()->versionString.ToString();
   logger.log("Game version: %s", version);
 }
 
@@ -1959,9 +1959,9 @@ Classes::FVector Config::GeneratePathToPoint(Classes::APawn *pPawn,
 
   Classes::UNavigationHandle *NavigationHandle =
       pPawn->Controller->NavigationHandle;
-  auto WorldInfo = config.GetWorldInfo();
+  auto WorldInfo = config->GetWorldInfo();
   float NavMeshArrivalDistance = 10.0f;
-  if (config.GetWorldInfo()->WorldInfo->bTreatNavMeshAsPlane) {
+  if (config->GetWorldInfo()->WorldInfo->bTreatNavMeshAsPlane) {
     GoalLocationTest.Z = 0.0f;
     PreviousGoalLocationTest.Z = 0.0f;
   }
@@ -2088,43 +2088,49 @@ Classes::FVector Config::GeneratePathToPoint(Classes::APawn *pPawn,
 void Config::HandlePathfinding() {
 
   // start pathfinding
-  if (!config.bPathFind) {
+  if (!config->bPathFind) {
     return;
-    // config.bPathFind = false;
+    // config->bPathFind = false;
   }
 
   GetADunDefPlayerController()->NavigationHandle->SuggestMovePreparation(
-      config.pathfindNextPoint, GetADunDefPlayerController());
+      config->pathfindNextPoint, GetADunDefPlayerController());
 
   if (!GetADunDefPlayerController()->NavigationHandle->PointReachable(
-          config.pathfindNextPoint)) {
+          config->pathfindNextPoint)) {
 
-    config.pathfindNextPoint = config.GeneratePathToPoint(
-        GetPlayerPawn(), config.pathfindToPoint, config.minDist, 1);
+    config->pathfindNextPoint = config->GeneratePathToPoint(
+        GetPlayerPawn(), config->pathfindToPoint, config->minDist, 1);
 
     GetADunDefPlayerController()->NavigationHandle->SuggestMovePreparation(
-        config.pathfindNextPoint, GetADunDefPlayerController());
+        config->pathfindNextPoint, GetADunDefPlayerController());
     return;
   }
 
   GetADunDefPlayerController()->MoveToDirectNonPathPos(
-      config.pathfindNextPoint, GetGameInfo()->TargetableActors[0], 20, 0);
+      config->pathfindNextPoint, GetGameInfo()->TargetableActors[0], 20, 0);
 
   float DistanceTo =
-      Distance(GetPlayerPawn()->Location, config.pathfindNextPoint);
+      Distance(GetPlayerPawn()->Location, config->pathfindNextPoint);
 
-  if (DistanceTo < config.pathfindthreshhold) {
+  if (DistanceTo < config->pathfindthreshhold) {
 
     GetADunDefPlayerController()->NavigationHandle->GetNextMoveLocation(
-        minDist, &config.pathfindNextPoint);
+        minDist, &config->pathfindNextPoint);
 
-    if (config.pathfindNextPoint.X == 0 && config.pathfindNextPoint.Y == 0 &&
-        config.pathfindNextPoint.Z == 0)
+    if (config->pathfindNextPoint.X == 0 && config->pathfindNextPoint.Y == 0 &&
+        config->pathfindNextPoint.Z == 0)
 
-      config.pathfindNextPoint = GeneratePathToPoint(
-          GetPlayerPawn(), config.pathfindToPoint, config.minDist, 1);
+      config->pathfindNextPoint = GeneratePathToPoint(
+          GetPlayerPawn(), config->pathfindToPoint, config->minDist, 1);
 
     // GetADunDefPlayerController()->MoveToDirectNonPathPos(
-    //     config.pathfindNextPoint, GetGameInfo()->TargetableActors[0], 20, 0);
+    //     config->pathfindNextPoint, GetGameInfo()->TargetableActors[0], 20,
+    //     0);
   }
+}
+
+Config &Config::getInstance() {
+  static Config c;
+  return c;
 }

@@ -21,22 +21,22 @@
 Menu menu;
 
 DWORD WINAPI MainThread_Initialize(LPVOID param) {
-  config.Init();
+  config->Init();
   menu.Init();
 
   // SetUnhandledExceptionFilter(config.logger.ExceptionHandler);
-  while (!config.bEndMenu) {
+  while (!config->bEndMenu) {
     // KEYBIND(config.ToggleKey, config.bShowMenu, keyDownMenu);
     // KEYBIND(VK_F2, config.bEndMenu, keyDownEnd);
     //  KEYBIND(config.TeleportPlayerKey, config.bTeleportPlayer,
     //  keyDownTeleport); KEYBIND(config.NewTeleportKey, config.bTeleportPlayer,
     //  keyDownTeleport);
     if (GetAsyncKeyState(VK_NUMPAD0))
-      config.bPathFind = !config.bPathFind;
+      config->bPathFind = !config->bPathFind;
     Sleep(10);
   }
 
-  config.Cleanup();
+  config->Cleanup();
   menu.Cleanup();
 
   FreeLibraryAndExitThread(static_cast<HMODULE>(param), 0);
