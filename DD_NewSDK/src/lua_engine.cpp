@@ -12,9 +12,10 @@
 
 
 Player LUA_ENGINE::luaPlayer;
-std::mutex LUA_ENGINE::mtx;
+std::mutex LUA_ENGINE::coroutine_mtx;
 bool LUA_ENGINE::bRunning;
 std::queue<sol::coroutine> LUA_ENGINE::coroutine_queue;
+std::queue<std::function<void()>> LUA_ENGINE::threadsafe_lua_tasks;
 
 LUA_ENGINE::LUA_ENGINE()  {
   // Init the lua state
@@ -46,8 +47,8 @@ bool LUA_ENGINE::init() {
 
 void LUA_ENGINE::thread_main(){
   while(bRunning){
-    std::this_thread::sleep_for(std::chrono::milliseconds(10));
-    std::lock_guard<std::mutex> lock(mtx);
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    std::lock_guard<std::mutex> lock(coroutine_mtx);
 
     size_t n = coroutine_queue.size();
     for (int i = 0; i < n; i++) {
@@ -75,14 +76,17 @@ void LUA_ENGINE::push_lua_task(sol::object lua_callable){
   sol::state_view lua = lua_callable.lua_state();
   sol::coroutine co;
 
-  if(lua_callable.get_type() == sol::type::function)
-  {
+if (lua_callable.get_type() == sol::type::function) {
     sol::function f = lua_callable;
     sol::thread new_thread = sol::thread::create(lua);
-    sol::state_view thread_state = new_thread.state();
-    thread_state["entry"] = f;
-    co = sol::coroutine(thread_state["entry"]);
-  }
+    sol::state_view thread_lua = new_thread.state();
+
+    // Assign function to thread's global space
+    thread_lua["entry"] = f;
+
+    // Create coroutine from thread context
+    co = sol::coroutine(thread_lua["entry"]);
+}
   else if (lua_callable.get_type() == sol::type::thread)
   {
     co = sol::coroutine(lua_callable);
@@ -93,7 +97,7 @@ void LUA_ENGINE::push_lua_task(sol::object lua_callable){
   }
 
   if(co.valid()){
-    std::lock_guard<std::mutex> lock(mtx);
+    std::lock_guard<std::mutex> lock(coroutine_mtx);
     coroutine_queue.push(co);
   }
 }
@@ -108,14 +112,14 @@ bool LUA_ENGINE::init_lua_classes() {
       "Z", &Classes::FVector::Z
   );
 
-
-
   L.new_usertype<Entity>("Entity",
                          sol::no_constructor,
                          "getHealth", &Entity::getHealth,
                          "setHealth", &Entity::setHealth,
                          "setPos", &Entity::setPos,
-                         "getPos", &Entity::getPos
+                         "getPos", &Entity::getPos,
+                         "moveTo", &Entity::moveTo,
+                         "distanceToPoint",&Entity::distanceToPoint
                          );
 
 L.new_usertype<Player>("Player",
@@ -138,8 +142,9 @@ bool LUA_ENGINE::init_lua_functions() {
   // Put any lua functions here for the lua api
   // L.set_function("set_player_health", set_player_health);
   L.set_function("get_player", get_player);
-  L.set_function("test", test);
   L.set_function("push_lua_task", push_lua_task);
+  L.set_function("add_floating_text_in_world",add_floating_text_in_world);
+  L.set_function("remove_floating_text_in_world",remove_floating_text_in_world);
 
   return true;
 }
@@ -151,6 +156,16 @@ bool LUA_ENGINE::execute_lua_file(const std::string &filename) {
     return true;
   } catch (const sol::error &e) {
     log("Failed to execute " + filename + " : " + e.what());
+    return false;
+  }
+}
+
+bool LUA_ENGINE::execute_lua_string(const std::string &str) {
+  try {
+    L.script(str);
+    return true;
+  } catch (const sol::error &e) {
+    log(std::string("Failed to execute   : ") + e.what());
     return false;
   }
 }
@@ -180,4 +195,18 @@ std::ostringstream oss;
   Classes::FVector LUA_ENGINE::test(){
   return {1337,1337,1337};
 }
+
+void LUA_ENGINE::add_floating_text_in_world(const std::string &s,
+                                        Classes::FVector pos
+                                         ){
+  config->AddPointToScreenDrawingQueue(s,pos);
+}
+
+void LUA_ENGINE::remove_floating_text_in_world(const std::string &s){
+  config->RemovePointToScreenDrawingQueue(s);
+}
 // clang-format on
+void LUA_ENGINE::insert_thread_safe_request(std::function<void()> v) {
+  std::lock_guard<std::mutex> lock(threadsafe_lua_task_mtx);
+  threadsafe_lua_tasks.push(v);
+}

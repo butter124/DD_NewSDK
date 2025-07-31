@@ -9,6 +9,7 @@
 #include <SDK/DD_Engine_parameters.hpp>
 #include <SDK/DD_UDKGame_classes.hpp>
 #include <chrono>
+#include <cmath>
 #include <fstream>
 #include <regex>
 #include <string>
@@ -137,12 +138,12 @@ void Config::RegisterKeybind(std::string name, Config::KeyBinds keyBindName,
 
 void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
 
-  HandlePathfinding();
-  DrawingOnScreen(obj, edx, pFunction, pParms, pResult);
   auto pMapInfo = ((Classes::UDunDefMapInfo *)(GetWorldInfo()->MyMapInfo));
   if (pMapInfo->IsLoadingLevel)
     return;
 
+  HandlePathfinding();
+  DrawingOnScreen(obj, edx, pFunction, pParms, pResult);
   // noclip
   NoClip();
 
@@ -163,7 +164,7 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   }
 
   for (auto point : vPointsToDraw) {
-    FloatingTextinWorld(point.name, point.pos, {1, 0, 0, 1});
+    FloatingTextinWorld(point.backing_wstr.c_str(), point.pos, {1, 0, 0, 1});
   }
 
   // show vacuum hack
@@ -242,8 +243,19 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
     SpawnEnemyAt(front, vacPos);
   }
   HandleAutoReady();
+  HandleThreadSafeLuaRequest();
+
+  // lua
 }
 
+void Config::HandleThreadSafeLuaRequest() {
+  int n = L->threadsafe_lua_tasks.size();
+  for (int i = 0; i < n; i++) {
+    std::function<void()> func = L->threadsafe_lua_tasks.front();
+    L->threadsafe_lua_tasks.pop();
+    func();
+  }
+}
 void Config::DrawingOnScreen(PROCESS_EVENT_ARGS) {
   auto canvas =
       ((Classes::UGameViewportClient_PostRender_Params *)(pParms))->Canvas;
@@ -559,7 +571,7 @@ std::string Config::FStringToString(Classes::FString &s) {
   return std::string(s.ToString());
 }
 
-Classes::FString Config::StringToFString(std::string &s) {
+Classes::FString Config::StringToFString(const std::string &s) {
   std::wstring wstr(s.begin(), s.end());
   return Classes::FString(wstr.c_str());
 }
@@ -2133,4 +2145,26 @@ void Config::HandlePathfinding() {
 Config &Config::getInstance() {
   static Config c;
   return c;
+}
+
+void Config::AddPointToScreenDrawingQueue(const std::string &s,
+
+                                          Classes::FVector v) {
+  std::wstring wstr(s.begin(), s.end());
+  auto t = PointToRender(wstr.c_str(), v);
+  vPointsToDraw.push_back(std::move(t));
+}
+void Config::RemovePointToScreenDrawingQueue(const std::string &s) {
+
+  auto it = std::find_if(vPointsToDraw.begin(), vPointsToDraw.end(),
+                         [&](const PointToRender &p) {
+                           std::wstring wstr(s.begin(), s.end());
+                           return p.backing_wstr == wstr;
+                         });
+
+  if (it != vPointsToDraw.end()) {
+    vPointsToDraw.erase(it);
+  } else {
+    config->PrintToConsole("Failed to remove " + s);
+  }
 }

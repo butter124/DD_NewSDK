@@ -11,4 +11,6 @@ public:
   Player();
   Player(Classes::ADunDefPlayerController *controller,
          Classes::ADunDefPawn *pawn);
+
+  void myHud();
 };

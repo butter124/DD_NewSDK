@@ -7,7 +7,6 @@
 #include "includes/Hooking.h"
 #include "includes/lua_engine.h"
 #include "includes/menu_main.h"
-#include "includes/lua_engine.h"
 
 typedef HRESULT(APIENTRY *tBeginScene)(LPDIRECT3DDEVICE9 pDevice);
 extern tBeginScene oScene;

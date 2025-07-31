@@ -14,7 +14,12 @@ public:
 
   int getHealth();
   void setHealth(int i);
+  bool moveTo(Classes::FVector &pos, float offset);
+  float distanceToPoint(Classes::FVector &point);
 
   Entity nextEntity(Classes::AController &controller,
                     Classes::ADunDefPawn &pawn);
+
+private:
+  bool bPathing = false;
 };

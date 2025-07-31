@@ -5,6 +5,7 @@
 #include "includes/config.h"
 #include "includes/ent.h"
 #include "includes/player.h"
+#include <SDK/DD_Core_structs.hpp>
 #include <mutex>
 #include <sol/forward.hpp>
 #include <string>
@@ -13,17 +14,23 @@
 // clang-format on
 
 #include <sol/sol.hpp>
+
 class LUA_ENGINE {
 public:
   static LUA_ENGINE &get_instance();
   bool init();
   bool cleanup();
   bool execute_lua_file(const std::string &filename);
+  bool execute_lua_string(const std::string &str);
 
   static int set_player_health(int var);
   static Entity *get_player();
   static Classes::FVector test();
   sol::state L;
+
+  std::mutex threadsafe_lua_task_mtx;
+  static std::queue<std::function<void()>> threadsafe_lua_tasks;
+  void insert_thread_safe_request(std::function<void()> v);
 
 private:
   LUA_ENGINE();
@@ -31,7 +38,7 @@ private:
   LUA_ENGINE &operator=(const LUA_ENGINE &) = delete;
 
   static void thread_main();
-  static std::mutex mtx;
+  static std::mutex coroutine_mtx;
   static std::queue<sol::coroutine> coroutine_queue;
   std::thread thread_worker;
   static bool bRunning;
@@ -44,4 +51,8 @@ private:
 
   // API FUNCTION
   static Player luaPlayer;
+
+  static void add_floating_text_in_world(const std::string &s,
+                                         Classes::FVector pos);
+  static void remove_floating_text_in_world(const std::string &s);
 };

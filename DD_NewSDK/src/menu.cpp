@@ -55,20 +55,20 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
   }
 
   // block input when menu is shown
-  if (config->bShowMenu) {
-    if (strcmp(objectName.c_str(), "UIState_Pressed") == 0) {
-      config->PrintToConsole("Blocked input");
-      return;
-    }
-  }
+  // if (config->bShowMenu) {
+  //   if (strcmp(objectName.c_str(), "UIState_Pressed") == 0) {
+  //     config->PrintToConsole("Blocked input");
+  //     return;
+  //   }
+  // }
 
   // anti cheat
   if (strcmp(funcName.c_str(), "Function UDKGame.Main.RunAntiCheat") == 0) {
-    config->PrintToConsole("Blocked Function UDKGame.Main.RunAntiCheat");
+    // config->PrintToConsole("Blocked Function UDKGame.Main.RunAntiCheat");
     return;
   }
   if (strcmp(funcName.c_str(), "Function UDKGame.Main.HandleCheater") == 0) {
-    config->PrintToConsole("Blocked Function UDKGame.Main.HandleCheater");
+    // config->PrintToConsole("Blocked Function UDKGame.Main.HandleCheater");
     return;
   }
   // hooked functions
@@ -87,6 +87,7 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
   auto blockedMapFunc = config->blockedFuncMap.find(funcName);
   if (blockedMapFunc != config->blockedFuncMap.end() &&
       *blockedMapFunc->second) {
+    std::lock_guard<std::mutex> lock(config->mtx);
     return;
   }
 
@@ -114,8 +115,19 @@ LRESULT __stdcall WndProc(const HWND hwnd, UINT uMsg, WPARAM wParam,
   }
   }
 
-  if (ImGui_ImplWin32_WndProcHandler(hwnd, uMsg, wParam, lparam))
-    return TRUE;
+  // if (ImGui_ImplWin32_WndProcHandler(hwnd, uMsg, wParam, lparam))
+  //   return TRUE;
+  if (ImGui::GetCurrentContext()) {
+    ImGuiIO &io = ImGui::GetIO();
+
+    // Let ImGui handle input first
+    if (ImGui_ImplWin32_WndProcHandler(hwnd, uMsg, wParam, lparam))
+      return true;
+
+    // Block input to the rest of the application
+    if (io.WantCaptureMouse || io.WantCaptureKeyboard)
+      return true;
+  }
 
   return CallWindowProc(oWndProc, hwnd, uMsg, wParam, lparam);
 }
@@ -253,7 +265,6 @@ bool Menu::Init() {
   // tProcessEvent ProcessEvent = (tProcessEvent)ProcessEventAddress;
 
   // Hook score
-
   DWORD ScoreHookAddrOffset =
       (FindPattern((unsigned long)miGame.lpBaseOfDll, miGame.SizeOfImage,
                    (unsigned char *)ScoreHook_Pattern, (char *)ScoreHook_Mask));

@@ -1089,10 +1089,9 @@ void MenuMain::Debug() {
         {0, 1, 0}, 1, {255, 0, 0, 255});
   }
   if (ImGui::Button("Test"))
-    // pController->MoveToDirectNonPathPos(config->vacPos,
-    //                                     pWorld->TargetableActors[0], 19, 0);
-    // ImGui::InputFloat3("Pos", &test.X);
-    return;
+    pController->MoveToDirectNonPathPos(config->vacPos,
+                                        pWorld->TargetableActors[0], 19, 0);
+  return;
 }
 
 void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
@@ -2131,11 +2130,24 @@ void MenuMain::Lua() {
     path = GetFilePath();
     config->L->execute_lua_file(path);
   }
+  if (ImGui::Button("run file again")) {
+    config->L->execute_lua_file(path);
+  }
+
+  if (ImGui::Button("copy to clipboard", ImVec2(0, 0))) {
+    char buf[128];
+    snprintf(buf, sizeof(buf), "%.2f, %.2f, %.2f",
+             config->GetPlayerPawn()->Location.X,
+             config->GetPlayerPawn()->Location.Y,
+             config->GetPlayerPawn()->Location.Z);
+    ImGui::SetClipboardText(buf);
+  }
+
   ImGui::SameLine();
 
   static char text[1024 * 16];
   if (ImGui::Button("Execute")) {
-    config->L->L.script(text);
+    config->L->execute_lua_string(text);
   }
 
   ImGui::InputTextMultiline("##luacode", text, IM_ARRAYSIZE(text),

@@ -71,8 +71,11 @@ struct StatFilter {
 };
 
 struct PointToRender {
+  std::wstring backing_wstr;
   Classes::FString name;
   Classes::FVector pos;
+  PointToRender(const wchar_t *ws, Classes::FVector p)
+      : backing_wstr(ws), name(backing_wstr.c_str()), pos(p) {}
 };
 
 enum TARGET_TEAM { NONE, ENEMYS, PLAYERS };
@@ -98,6 +101,7 @@ private:
   Config &operator=(const Config &) = delete;
 
 public:
+  std::mutex mtx;
   static Config &getInstance();
 
   Logger logger;
@@ -238,6 +242,8 @@ public:
 
   // post render drawing
   std::vector<PointToRender> vPointsToDraw;
+  void RemovePointToScreenDrawingQueue(const std::string &s);
+  void AddPointToScreenDrawingQueue(const std::string &s, Classes::FVector v);
 
   // handle key presses
   enum KeyBinds {
@@ -278,6 +284,7 @@ public:
   bool UnlockAllAchievements();
   bool RenameHero(const std::string &newName);
   void HandleAutoReady();
+  void HandleThreadSafeLuaRequest();
   Classes::UEngine *GetEngine();
   Classes::UDunDefViewportClient *GetViewportClient();
   Classes::ADunDefPlayerController *GetADunDefPlayerController();
@@ -317,7 +324,7 @@ public:
   Classes::UObject *GetInstanceOf(Classes::UClass *Class);
   std::vector<Classes::UObject *> GetAllInstanceOf(Classes::UClass *Class);
   std::string FStringToString(Classes::FString &s);
-  Classes::FString StringToFString(std::string &s);
+  Classes::FString StringToFString(const std::string &s);
   Classes::FVector GetForward(float yaw, float pitch);
   Classes::FVector AddFVector(Classes::FVector vec1, Classes::FVector vec2);
   bool ContainsNumber(const std::string &str);
