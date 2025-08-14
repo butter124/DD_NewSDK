@@ -262,10 +262,12 @@ void Config::DrawingOnScreen(PROCESS_EVENT_ARGS) {
 
   auto screenpoint = canvas->ProjectNoClip(pathfindNextPoint);
   if (screenpoint.Z > 0.0f && screenpoint.Z < 1.0f) {
-    float d = Distance(GetPlayerPawn()->Location, config->pathfindNextPoint);
-    std::wstring s = std::to_wstring(d);
-    DrawTextCentered(canvas, s.c_str(), screenpoint.X, screenpoint.Y,
-                     {0, 255, 0, 255});
+    if (GetPlayerPawn() != NULL) {
+      float d = Distance(GetPlayerPawn()->Location, config->pathfindNextPoint);
+      std::wstring s = std::to_wstring(d);
+      DrawTextCentered(canvas, s.c_str(), screenpoint.X, screenpoint.Y,
+                       {0, 255, 0, 255});
+    }
   }
 
   auto screenpoint2 = canvas->ProjectNoClip(pathfindToPoint);
@@ -295,7 +297,7 @@ void Config::DrawTextCentered(Classes::UCanvas *canvas, Classes::FString _Text,
   canvas->SetPos(_x, _y);
   canvas->DrawColor = _Color;
 
-  canvas->DrawTextA(_Text, false, 1.0f, 1.0f, NULL, 100, 100, 100, 100, NULL,
+  canvas->DrawText_(_Text, false, 1.0f, 1.0f, NULL, 100, 100, 100, 100, NULL,
                     NULL);
 
   canvas->DrawColor = tmpCanvasColor;

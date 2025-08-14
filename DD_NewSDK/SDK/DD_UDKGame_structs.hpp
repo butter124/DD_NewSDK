@@ -2097,6 +2097,14 @@ struct FItemFolder
 	unsigned long                                      Tag : 1;                                                  // 0x0014(0x0004) (Transient)
 };
 
+// ScriptStruct UDKGame._SpecialData.Storage
+// 0x01D0
+struct FStorage
+{
+	struct FString                                     IDs[0x1D];                                                // 0x0000(0x000C) (Edit, NeedCtorLink)
+	int                                                Slots[0x1D];                                              // 0x015C(0x0004) (Edit)
+};
+
 // ScriptStruct UDKGame.DunDefHeroManager.EquipmentDropEntry
 // 0x0040
 struct FEquipmentDropEntry
@@ -4774,6 +4782,17 @@ struct Fact_int_pair
 	int                                                Num;                                                      // 0x0004(0x0004)
 };
 
+// ScriptStruct UDKGame.DunDef_SeqAct_ProjectileSpawner.ProjectileSpawnInfo
+// 0x0024
+struct FProjectileSpawnInfo
+{
+	float                                              TimeElapsed;                                              // 0x0000(0x0004)
+	class AActor*                                      TargetActor;                                              // 0x0004(0x0004)
+	int                                                Index;                                                    // 0x0008(0x0004)
+	struct FVector                                     Location;                                                 // 0x000C(0x000C)
+	struct FVector                                     Direction;                                                // 0x0018(0x000C)
+};
+
 // ScriptStruct UDKGame.UI_MainMenu.myUIKeyRepeatData
 // 0x000C
 struct FmyUIKeyRepeatData
@@ -4911,6 +4930,14 @@ struct FProjectileEntry
 {
 	class ADunDefProjectile*                           theProjectile;                                            // 0x0000(0x0004) (Edit)
 	float                                              chanceToSpawn;                                            // 0x0004(0x0004) (Edit)
+};
+
+// ScriptStruct UDKGame.DunDefTower_MultiProjectile.TargetCooldownData
+// 0x0008
+struct FTargetCooldownData
+{
+	class AActor*                                      Target;                                                   // 0x0000(0x0004)
+	float                                              LastFireTime;                                             // 0x0004(0x0004)
 };
 
 // ScriptStruct UDKGame.HeroEquipment_Familiar_WithProjectileAI.DelayedShot

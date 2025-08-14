@@ -55,6 +55,7 @@ public:
 
 	void Activated();
 	struct Findexer CreateBuffInfo(class ADunDefPlayerController* A, int Buff, int Wave);
+	void NotifyPlayer(class ADunDefPlayerController* PC, int BuffChosen);
 };
 
 
@@ -419,6 +420,7 @@ public:
 	float                                              PawnAttackSpeedMult;                                      // 0x032C(0x0004) (Edit)
 	float                                              WebbedJumpZ;                                              // 0x0330(0x0004) (Edit)
 	unsigned long                                      bUsePawnDeboosting : 1;                                   // 0x0334(0x0004) (Edit)
+	unsigned long                                      bDisablePlayerAbilities : 1;                              // 0x0334(0x0004) (Edit)
 
 	static UClass* StaticClass()
 	{

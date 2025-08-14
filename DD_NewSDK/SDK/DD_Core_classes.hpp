@@ -161,6 +161,7 @@ public:
 	struct FHighDigitInt STATIC_Subtract_HighDigitIntInt(const struct FHighDigitInt& A, int B);
 	struct FHighDigitInt STATIC_Subtract_IntHighDigitInt(int A, const struct FHighDigitInt& B);
 	struct FHighDigitInt STATIC_AddEqual_HighDigitIntHighDigitInt(const struct FHighDigitInt& B, struct FHighDigitInt* A);
+	struct FHighDigitInt STATIC_AddEqual_HighDigitIntFloat(float B, struct FHighDigitInt* A);
 	struct FHighDigitInt STATIC_AddEqual_HighDigitIntInt(int B, struct FHighDigitInt* A);
 	struct FHighDigitInt STATIC_Add_HighDigitIntInt(const struct FHighDigitInt& A, int B);
 	struct FHighDigitInt STATIC_Add_IntHighDigitInt(int A, const struct FHighDigitInt& B);
@@ -1287,7 +1288,7 @@ public:
 
 		//UClass::GetDefaultObject can be found with the sig
 		//85 C0 75 21 39 05 ?? ?? ?? ?? 74 19 F7 86 ?? 00 00 00 00 00 00 10 75 0D F6 05 ?? ?? ?? ?? 02 0F 84
-		static Fn fn = (Fn)0x00462FF0;
+		static Fn fn = nullptr;
 		
 		return fn(this, 0);
 

@@ -8424,6 +8424,7 @@ struct UDunDefBuff_GetBuffDescription_Params
 struct UDunDefBuff_GetBuffName_Params
 {
 	TScriptInterface<class UDunDefTargetableInterface> aTarget;                                                  // (OptionalParm, Parm)
+	unsigned long                                      bDontIncludeTierName;                                     // (OptionalParm, Parm)
 	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
 };
 
@@ -17180,6 +17181,13 @@ struct ADunDefWeapon_GetNumProjectiles_Params
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.DunDefWeapon.GetVariableRotOffset
+struct ADunDefWeapon_GetVariableRotOffset_Params
+{
+	int                                                Index;                                                    // (Parm)
+	struct FRotator                                    ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.DunDefWeapon.GetProjectileSpawnRotation
 struct ADunDefWeapon_GetProjectileSpawnRotation_Params
 {
@@ -19924,6 +19932,12 @@ struct UAntiCheat_GetAntiCheatInterval_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.DunDefViewportClient.SetLoadingScreenLimitFPS
+struct UDunDefViewportClient_SetLoadingScreenLimitFPS_Params
+{
+	unsigned long                                      LimitLoadingScreenFrames;                                 // (Parm)
+};
+
 // Function UDKGame.DunDefViewportClient.SetOldCameraAngles
 struct UDunDefViewportClient_SetOldCameraAngles_Params
 {
@@ -22292,7 +22306,7 @@ struct ADunDefDroppedEquipment_TakesToolTipPriority_Params
 struct ADunDefDroppedEquipment_DestroyAllDroppedEquipment_Params
 {
 	unsigned long                                      bDistributeMana;                                          // (OptionalParm, Parm)
-	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function UDKGame.DunDefDroppedEquipment.FadeOut
@@ -28213,6 +28227,12 @@ struct UUI_LoadingScreen_Update_Params
 	float                                              DeltaTime;                                                // (Parm)
 };
 
+// Function UDKGame.UI_LoadingScreen.GetEngine
+struct UUI_LoadingScreen_GetEngine_Params
+{
+	class UEngine*                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.UI_LoadingScreen.CloseWithAnimation
 struct UUI_LoadingScreen_CloseWithAnimation_Params
 {
@@ -28978,6 +28998,11 @@ struct ADunDefBoss_TakeDamage_Params
 	class UObject*                                     WhatHitMe;                                                // (OptionalParm, Parm)
 };
 
+// Function UDKGame.DunDefBoss.PostBeginPlay
+struct ADunDefBoss_PostBeginPlay_Params
+{
+};
+
 // Function UDKGame.DunDefBoss.CheckForEncroachers
 struct ADunDefBoss_CheckForEncroachers_Params
 {
@@ -29732,14 +29757,27 @@ struct UDunDef_SeqAct_ProjectileSpawner_Reset_Params
 {
 };
 
-// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnProjectilesAll
-struct UDunDef_SeqAct_ProjectileSpawner_SpawnProjectilesAll_Params
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.QueueProjectilesAll
+struct UDunDef_SeqAct_ProjectileSpawner_QueueProjectilesAll_Params
+{
+};
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.QueueProjectile
+struct UDunDef_SeqAct_ProjectileSpawner_QueueProjectile_Params
 {
 };
 
 // Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnProjectile
 struct UDunDef_SeqAct_ProjectileSpawner_SpawnProjectile_Params
 {
+	struct FProjectileSpawnInfo                        ProjInfo;                                                 // (Parm)
+};
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnHeadsUpEmitter
+struct UDunDef_SeqAct_ProjectileSpawner_SpawnHeadsUpEmitter_Params
+{
+	struct FVector                                     Location;                                                 // (Parm)
+	struct FRotator                                    Rotation;                                                 // (Parm)
 };
 
 // Function UDKGame.DunDef_SeqAct_ProjectileSpawner.GetLocation
@@ -29756,6 +29794,17 @@ struct UDunDef_SeqAct_ProjectileSpawner_MakeActIntPair_Params
 	class AActor*                                      A;                                                        // (Parm)
 	int                                                B;                                                        // (Parm)
 	struct Fact_int_pair                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.MakeProjectileSpawnInfo
+struct UDunDef_SeqAct_ProjectileSpawner_MakeProjectileSpawnInfo_Params
+{
+	float                                              T;                                                        // (Parm)
+	class AActor*                                      TargetActor;                                              // (Parm)
+	int                                                I;                                                        // (Parm)
+	struct FVector                                     Location;                                                 // (Parm)
+	struct FVector                                     Direction;                                                // (Parm)
+	struct FProjectileSpawnInfo                        ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function UDKGame.DunDef_SeqAct_RateLimiter.Activated
@@ -31859,6 +31908,7 @@ struct UDunDefBuffEffectInterface_GetBuffDescription_Params
 struct UDunDefBuffEffectInterface_GetBuffName_Params
 {
 	TScriptInterface<class UDunDefTargetableInterface> aTarget;                                                  // (OptionalParm, Parm)
+	unsigned long                                      bDontIncludeTierName;                                     // (OptionalParm, Parm)
 	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
 };
 
@@ -37493,6 +37543,33 @@ struct ADunDefTower_MagicMissile_PostBeginPlay_Params
 struct ADunDefTower_JackInTheBox_GetAttackRange_Params
 {
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefTower_MultiProjectile.ValidateTargets
+struct ADunDefTower_MultiProjectile_ValidateTargets_Params
+{
+};
+
+// Function UDKGame.DunDefTower_MultiProjectile.CanAttackAnyTarget
+struct ADunDefTower_MultiProjectile_CanAttackAnyTarget_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefTower_MultiProjectile.UpdateAI
+struct ADunDefTower_MultiProjectile_UpdateAI_Params
+{
+	float                                              DeltaTime;                                                // (Parm)
+};
+
+// Function UDKGame.DunDefTower_MultiProjectile.ShootProjectile
+struct ADunDefTower_MultiProjectile_ShootProjectile_Params
+{
+};
+
+// Function UDKGame.DunDefTower_MultiProjectile.UpdateTarget
+struct ADunDefTower_MultiProjectile_UpdateTarget_Params
+{
 };
 
 // Function UDKGame.DunDefTower_SliceNDice.UsesRange

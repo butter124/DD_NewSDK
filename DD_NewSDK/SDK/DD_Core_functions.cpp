@@ -1115,6 +1115,33 @@ struct FHighDigitInt UObject::STATIC_AddEqual_HighDigitIntHighDigitInt(const str
 }
 
 
+// Function Core.Object.AddEqual_HighDigitIntFloat
+// (Final, Defined, Operator, Static, Public, HasOutParms)
+// Parameters:
+// struct FHighDigitInt           A                              (Parm, OutParm)
+// float                          B                              (Parm)
+// struct FHighDigitInt           ReturnValue                    (Parm, OutParm, ReturnParm)
+
+struct FHighDigitInt UObject::STATIC_AddEqual_HighDigitIntFloat(float B, struct FHighDigitInt* A)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddEqual_HighDigitIntFloat");
+
+	UObject_AddEqual_HighDigitIntFloat_Params params;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (A != nullptr)
+		*A = params.A;
+
+	return params.ReturnValue;
+}
+
+
 // Function Core.Object.AddEqual_HighDigitIntInt
 // (Final, Defined, Operator, Static, Public, HasOutParms)
 // Parameters:

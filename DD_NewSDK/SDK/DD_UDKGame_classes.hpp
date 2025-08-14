@@ -797,6 +797,21 @@ public:
 };
 
 
+// Class UDKGame._SpecialData
+// 0x0000 (0x003C - 0x003C)
+class U_SpecialData : public UObject
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame._SpecialData");
+		return ptr;
+	}
+
+};
+
+
 // Class UDKGame.NativeDunDefHero
 // 0x0000 (0x003C - 0x003C)
 class UNativeDunDefHero : public UObject
@@ -1230,8 +1245,8 @@ public:
 class UDunDefHeroManager : public UDunDefHeroManagerNative
 {
 public:
-	//unsigned char                                      UnknownData00[0x3];                                       // 0x0079(0x0003) MISSED OFFSET
-	//unsigned long                                      bSentSteamStatsAfterRanked : 1;                           // 0x007C(0x0004)
+	// unsigned char                                      UnknownData00[0x3];                                       // 0x0079(0x0003) MISSED OFFSET
+	// unsigned long                                      bSentSteamStatsAfterRanked : 1;                           // 0x007C(0x0004)
 	unsigned long                                      bDataListReturnDLCMissionsOnly : 1;                       // 0x007C(0x0004) (Transient)
 	unsigned long                                      bDataListReturnModMissionsOnly : 1;                       // 0x007C(0x0004) (Transient)
 	unsigned long                                      bDataListReturnLostMissionsOnly : 1;                      // 0x007C(0x0004) (Transient)
@@ -3539,7 +3554,7 @@ public:
 	struct FString GetTierName();
 	class USurface* GetBuffIcon(const TScriptInterface<class UDunDefTargetableInterface>& aTarget);
 	struct FString GetBuffDescription(const TScriptInterface<class UDunDefTargetableInterface>& aTarget);
-	struct FString GetBuffName(const TScriptInterface<class UDunDefTargetableInterface>& aTarget);
+	struct FString GetBuffName(const TScriptInterface<class UDunDefTargetableInterface>& aTarget, unsigned long bDontIncludeTierName);
 	unsigned long CheckProcChance();
 	int GetStackCount();
 	void SetStackCount(int NewAmount);
@@ -6127,7 +6142,7 @@ public:
 
 
 // Class UDKGame.DunDefWeapon
-// 0x01DE (0x04EA - 0x030C)
+// 0x01F6 (0x0502 - 0x030C)
 class ADunDefWeapon : public AWeapon
 {
 public:
@@ -6174,6 +6189,7 @@ public:
 	unsigned long                                      bSpawnMuzzleFlashOnShootAnim : 1;                         // 0x03BC(0x0004) (Edit)
 	unsigned long                                      bDontSpawnMuzzleFlashInFPV : 1;                           // 0x03BC(0x0004) (Edit)
 	unsigned long                                      bAutoActivate : 1;                                        // 0x03BC(0x0004) (Edit)
+	unsigned long                                      bUseVariableProjectileRot : 1;                            // 0x03BC(0x0004) (Edit)
 	unsigned long                                      bIsMeleeWeapon : 1;                                       // 0x03BC(0x0004) (Edit)
 	unsigned long                                      bDontPlayAttackSoundOnShoot : 1;                          // 0x03BC(0x0004) (Edit)
 	unsigned long                                      bForceToMinElementalScale : 1;                            // 0x03BC(0x0004) (Edit)
@@ -6197,41 +6213,43 @@ public:
 	float                                              MatEquipmentRatingOverlayPower;                           // 0x03D4(0x0004) (Edit)
 	TArray<struct FVector>                             ProjectileSpawnOffsets;                                   // 0x03D8(0x000C) (Edit, NeedCtorLink)
 	TArray<struct FRotator>                            ProjectileRotOffsets;                                     // 0x03E4(0x000C) (Edit, NeedCtorLink)
-	int                                                WeaponEquipmentQualityMaterialIndex;                      // 0x03F0(0x0004) (Edit)
-	int                                                BaseTotalAmmo;                                            // 0x03F4(0x0004) (Edit)
-	int                                                BaseAltDamage;                                            // 0x03F8(0x0004) (Edit)
-	int                                                BaseBlockingDamageResistance;                             // 0x03FC(0x0004) (Edit)
-	int                                                BaseShotsPerSecond;                                       // 0x0400(0x0004) (Edit)
-	struct FString                                     ReloadString;                                             // 0x0404(0x000C) (Edit, Localized, NeedCtorLink)
-	float                                              MinimumProjectileSpeed;                                   // 0x0410(0x0004) (Edit)
-	class USoundCue*                                   EquipSound;                                               // 0x0414(0x0004) (Edit)
-	TArray<struct FGameDamageEntry>                    ElementalEffectEntries;                                   // 0x0418(0x000C) (Edit, Const, NeedCtorLink)
-	struct FLinearColor                                ReloadNormalTextColor;                                    // 0x0424(0x0010) (Edit)
-	struct FLinearColor                                ReloadNormalBarColor;                                     // 0x0434(0x0010) (Edit)
-	struct FLinearColor                                ReloadReloadingTextColor;                                 // 0x0444(0x0010) (Edit)
-	struct FLinearColor                                ReloadReloadingBarColor;                                  // 0x0454(0x0010) (Edit)
-	float                                              NoEquipmentWeaponScaleMultiplier;                         // 0x0464(0x0004) (Edit)
-	struct FRotator                                    OffhandRotOffset;                                         // 0x0468(0x000C) (Edit)
-	struct FVector                                     OffHandScale;                                             // 0x0474(0x000C) (Edit)
-	float                                              StoredChargePercent;                                      // 0x0480(0x0004) (Transient)
-	class ADunDefEmitterSpawnable*                     CurrentSpellEmitter;                                      // 0x0484(0x0004) (Transient)
-	class ADunDefEmitterSpawnable*                     SpawnEffect;                                              // 0x0488(0x0004) (Net)
-	float                                              ReplicationMeshScale;                                     // 0x048C(0x0004) (Net)
-	float                                              BaseMeshScale;                                            // 0x0490(0x0004)
-	int                                                AdditionalDamageAmount;                                   // 0x0494(0x0004) (Net)
-	class UClass*                                      AdditionalDamageType;                                     // 0x0498(0x0004) (Net)
-	float                                              WeaponEquipmentQualityValue;                              // 0x049C(0x0004) (Net)
-	class ADunDefEmitterSpawnable*                     PreviousSpawnEffect;                                      // 0x04A0(0x0004)
-	struct FEquipmentColorSet                          WeaponColorSet;                                           // 0x04A4(0x0020) (Net)
-	class UMaterialInstanceConstant*                   WeaponEquipmentQualityMIC;                                // 0x04C4(0x0004) (Transient)
-	float                                              LastFireTime;                                             // 0x04C8(0x0004) (Transient)
-	class UHeroEquipment*                              MyEquipmentRef;                                           // 0x04CC(0x0004) (Transient)
-	float                                              EquipmentSwingSpeedMultiplier;                            // 0x04D0(0x0004) (Transient)
-	float                                              WeaponSpeedMultiplier;                                    // 0x04D4(0x0004) (Net)
-	TArray<unsigned char>                              bIsFireDown;                                              // 0x04D8(0x000C) (NeedCtorLink)
-	struct FColor                                      primaryColour;                                            // 0x04E4(0x0004) (Transient)
-	TEnumAsByte<EElementTrait>                         PrimaryElement;                                           // 0x04E8(0x0001) (Net, Transient)
-	TEnumAsByte<EElementTrait>                         SecondaryElement;                                         // 0x04E9(0x0001) (Net, Transient)
+	TArray<struct FRotator>                            ProjectileRotMaxOffsets;                                  // 0x03F0(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FRotator>                            ProjectileRotMinOffsets;                                  // 0x03FC(0x000C) (Edit, NeedCtorLink)
+	int                                                WeaponEquipmentQualityMaterialIndex;                      // 0x0408(0x0004) (Edit)
+	int                                                BaseTotalAmmo;                                            // 0x040C(0x0004) (Edit)
+	int                                                BaseAltDamage;                                            // 0x0410(0x0004) (Edit)
+	int                                                BaseBlockingDamageResistance;                             // 0x0414(0x0004) (Edit)
+	int                                                BaseShotsPerSecond;                                       // 0x0418(0x0004) (Edit)
+	struct FString                                     ReloadString;                                             // 0x041C(0x000C) (Edit, Localized, NeedCtorLink)
+	float                                              MinimumProjectileSpeed;                                   // 0x0428(0x0004) (Edit)
+	class USoundCue*                                   EquipSound;                                               // 0x042C(0x0004) (Edit)
+	TArray<struct FGameDamageEntry>                    ElementalEffectEntries;                                   // 0x0430(0x000C) (Edit, Const, NeedCtorLink)
+	struct FLinearColor                                ReloadNormalTextColor;                                    // 0x043C(0x0010) (Edit)
+	struct FLinearColor                                ReloadNormalBarColor;                                     // 0x044C(0x0010) (Edit)
+	struct FLinearColor                                ReloadReloadingTextColor;                                 // 0x045C(0x0010) (Edit)
+	struct FLinearColor                                ReloadReloadingBarColor;                                  // 0x046C(0x0010) (Edit)
+	float                                              NoEquipmentWeaponScaleMultiplier;                         // 0x047C(0x0004) (Edit)
+	struct FRotator                                    OffhandRotOffset;                                         // 0x0480(0x000C) (Edit)
+	struct FVector                                     OffHandScale;                                             // 0x048C(0x000C) (Edit)
+	float                                              StoredChargePercent;                                      // 0x0498(0x0004) (Transient)
+	class ADunDefEmitterSpawnable*                     CurrentSpellEmitter;                                      // 0x049C(0x0004) (Transient)
+	class ADunDefEmitterSpawnable*                     SpawnEffect;                                              // 0x04A0(0x0004) (Net)
+	float                                              ReplicationMeshScale;                                     // 0x04A4(0x0004) (Net)
+	float                                              BaseMeshScale;                                            // 0x04A8(0x0004)
+	int                                                AdditionalDamageAmount;                                   // 0x04AC(0x0004) (Net)
+	class UClass*                                      AdditionalDamageType;                                     // 0x04B0(0x0004) (Net)
+	float                                              WeaponEquipmentQualityValue;                              // 0x04B4(0x0004) (Net)
+	class ADunDefEmitterSpawnable*                     PreviousSpawnEffect;                                      // 0x04B8(0x0004)
+	struct FEquipmentColorSet                          WeaponColorSet;                                           // 0x04BC(0x0020) (Net)
+	class UMaterialInstanceConstant*                   WeaponEquipmentQualityMIC;                                // 0x04DC(0x0004) (Transient)
+	float                                              LastFireTime;                                             // 0x04E0(0x0004) (Transient)
+	class UHeroEquipment*                              MyEquipmentRef;                                           // 0x04E4(0x0004) (Transient)
+	float                                              EquipmentSwingSpeedMultiplier;                            // 0x04E8(0x0004) (Transient)
+	float                                              WeaponSpeedMultiplier;                                    // 0x04EC(0x0004) (Net)
+	TArray<unsigned char>                              bIsFireDown;                                              // 0x04F0(0x000C) (NeedCtorLink)
+	struct FColor                                      primaryColour;                                            // 0x04FC(0x0004) (Transient)
+	TEnumAsByte<EElementTrait>                         PrimaryElement;                                           // 0x0500(0x0001) (Net, Transient)
+	TEnumAsByte<EElementTrait>                         SecondaryElement;                                         // 0x0501(0x0001) (Net, Transient)
 
 	static UClass* StaticClass()
 	{
@@ -6310,6 +6328,7 @@ public:
 	void CustomFire(int theFireMode);
 	void GetProjectileSpawnTransformation(int Index, class AActor* AimAtTarget, unsigned long bForceNoRotClamping, struct FVector* OutLocation, struct FRotator* OutRotation);
 	int GetNumProjectiles();
+	struct FRotator GetVariableRotOffset(int Index);
 	struct FRotator GetProjectileSpawnRotation(const struct FVector& ProjectileShotLocation, unsigned long ForceNoRotClamping, class AActor* AimAtTargetOverride);
 	struct FVector GetMuzzleLoc();
 	float GetTotalAdditionalDamage();
@@ -6333,66 +6352,66 @@ public:
 
 
 // Class UDKGame.DunDefWeapon_MeleeSword
-// 0x010A (0x05F4 - 0x04EA)
+// 0x010A (0x060C - 0x0502)
 class ADunDefWeapon_MeleeSword : public ADunDefWeapon
 {
 public:
-	unsigned char                                      UnknownData00[0x2];                                       // 0x04EA(0x0002) MISSED OFFSET
-	float                                              SpeedMultiplier;                                          // 0x04EC(0x0004) (Edit)
-	float                                              ExtraSpeedMultiplier;                                     // 0x04F0(0x0004) (Edit)
-	float                                              DamageMultiplier;                                         // 0x04F4(0x0004) (Edit)
-	float                                              MomentumMultiplier;                                       // 0x04F8(0x0004) (Edit)
-	float                                              DamageIncreaseForSwingSpeedFactor;                        // 0x04FC(0x0004) (Edit)
-	struct FName                                       BlockingAnimationName;                                    // 0x0500(0x0008) (Edit)
-	struct FName                                       BlockingFlinchAnimationName;                              // 0x0508(0x0008) (Edit)
-	float                                              MeleeDamageMomentum;                                      // 0x0510(0x0004) (Edit)
-	float                                              SpeedMultiplierDamageExponent;                            // 0x0514(0x0004) (Edit)
-	struct FVector                                     MeleeSwingExtent;                                         // 0x0518(0x000C) (Edit)
-	TArray<struct FMeleeSwingInfo>                     MeleeSwingInfos;                                          // 0x0524(0x000C) (Edit, NeedCtorLink)
-	class UClass*                                      BaseMeleeDamageType;                                      // 0x0530(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     BlockingSparksEffect;                                     // 0x0534(0x0004) (Edit)
-	class USoundCue*                                   EnableBlockingSound;                                      // 0x0538(0x0004) (Edit)
-	class USoundCue*                                   DisableBlockingSound;                                     // 0x053C(0x0004) (Edit)
-	float                                              MaximumBlockingAngle;                                     // 0x0540(0x0004) (Edit)
-	float                                              BlockingMomentumExponent;                                 // 0x0544(0x0004) (Edit)
-	float                                              KnockbackBonusLinearScale;                                // 0x0548(0x0004) (Edit)
-	float                                              KnockbackBonusExpScale;                                   // 0x054C(0x0004) (Edit)
-	float                                              MinimumReblockInterval;                                   // 0x0550(0x0004) (Edit)
-	float                                              MinimumSwingDamageTime;                                   // 0x0554(0x0004) (Edit)
-	float                                              MinimumSwingTime;                                         // 0x0558(0x0004) (Edit)
-	float                                              AdditionalMomentumMultiplier;                             // 0x055C(0x0004) (Edit)
-	float                                              MaxMomentumMultiplierByDamage;                            // 0x0560(0x0004) (Edit)
-	float                                              MaxTotalMomentumMultiplier;                               // 0x0564(0x0004) (Edit)
-	float                                              MaximumBlockingPercent;                                   // 0x0568(0x0004) (Edit)
-	float                                              ProjectileDamageHeroStatExponentMultiplier;               // 0x056C(0x0004) (Edit)
-	float                                              MinimumShootProjectileDotProduct;                         // 0x0570(0x0004) (Edit)
-	unsigned long                                      bShootMeleeProjectile : 1;                                // 0x0574(0x0004) (Edit)
-	unsigned long                                      bOnlyShootProjectileAtFullHealth : 1;                     // 0x0574(0x0004) (Edit)
-	unsigned long                                      bSlowEnemyTarget : 1;                                     // 0x0574(0x0004) (Edit)
-	unsigned long                                      bWeakenEnemyTarget : 1;                                   // 0x0574(0x0004) (Edit)
-	unsigned long                                      bUseWeaponDamageForProjectileDamage : 1;                  // 0x0574(0x0004) (Edit)
-	unsigned long                                      IsSwingingWeapon : 1;                                     // 0x0574(0x0004)
-	unsigned long                                      StartedSwingDamage : 1;                                   // 0x0574(0x0004)
-	unsigned long                                      StoppedSwingDamage : 1;                                   // 0x0574(0x0004)
-	unsigned long                                      bIsBlocking : 1;                                          // 0x0574(0x0004)
-	unsigned long                                      bReplicatedIsBlocking : 1;                                // 0x0574(0x0004) (Net)
-	unsigned long                                      bDidShootMeleeProjectile : 1;                             // 0x0574(0x0004) (Transient)
-	unsigned long                                      bIsInSpecialAnimation : 1;                                // 0x0574(0x0004) (Transient)
-	float                                              SlowEnemyTargetPercentage;                                // 0x0578(0x0004) (Edit)
-	float                                              WeakenEnemyTargetPercentage;                              // 0x057C(0x0004) (Edit)
-	float                                              EnemyClearSlowTime;                                       // 0x0580(0x0004) (Edit)
-	float                                              EnemyClearWeakenTime;                                     // 0x0584(0x0004) (Edit)
-	float                                              WeaponProjectileDamageMultiplier;                         // 0x0588(0x0004) (Edit)
-	float                                              LastSwingDamageTime;                                      // 0x058C(0x0004) (Transient)
-	struct FMeleeSwingInfo                             CurrentMeleeSwingInfo;                                    // 0x0590(0x002C)
-	int                                                CurrentMeleeSwingInfoIndex;                               // 0x05BC(0x0004)
-	float                                              LastSwingTime;                                            // 0x05C0(0x0004)
-	float                                              LastBlockingEndTime;                                      // 0x05C4(0x0004)
-	float                                              TimeFromRecentHealingOnBlock;                             // 0x05C8(0x0004)
-	TArray<class AActor*>                              SwingHurtList;                                            // 0x05CC(0x000C) (NeedCtorLink)
-	TArray<struct FName>                               MeleeSwingSockets;                                        // 0x05D8(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FVector>                             PreviousMeleeSwingLocations;                              // 0x05E4(0x000C) (NeedCtorLink)
-	class AActor*                                      StartedSwingAimTarget;                                    // 0x05F0(0x0004) (Transient)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x0502(0x0002) MISSED OFFSET
+	float                                              SpeedMultiplier;                                          // 0x0504(0x0004) (Edit)
+	float                                              ExtraSpeedMultiplier;                                     // 0x0508(0x0004) (Edit)
+	float                                              DamageMultiplier;                                         // 0x050C(0x0004) (Edit)
+	float                                              MomentumMultiplier;                                       // 0x0510(0x0004) (Edit)
+	float                                              DamageIncreaseForSwingSpeedFactor;                        // 0x0514(0x0004) (Edit)
+	struct FName                                       BlockingAnimationName;                                    // 0x0518(0x0008) (Edit)
+	struct FName                                       BlockingFlinchAnimationName;                              // 0x0520(0x0008) (Edit)
+	float                                              MeleeDamageMomentum;                                      // 0x0528(0x0004) (Edit)
+	float                                              SpeedMultiplierDamageExponent;                            // 0x052C(0x0004) (Edit)
+	struct FVector                                     MeleeSwingExtent;                                         // 0x0530(0x000C) (Edit)
+	TArray<struct FMeleeSwingInfo>                     MeleeSwingInfos;                                          // 0x053C(0x000C) (Edit, NeedCtorLink)
+	class UClass*                                      BaseMeleeDamageType;                                      // 0x0548(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     BlockingSparksEffect;                                     // 0x054C(0x0004) (Edit)
+	class USoundCue*                                   EnableBlockingSound;                                      // 0x0550(0x0004) (Edit)
+	class USoundCue*                                   DisableBlockingSound;                                     // 0x0554(0x0004) (Edit)
+	float                                              MaximumBlockingAngle;                                     // 0x0558(0x0004) (Edit)
+	float                                              BlockingMomentumExponent;                                 // 0x055C(0x0004) (Edit)
+	float                                              KnockbackBonusLinearScale;                                // 0x0560(0x0004) (Edit)
+	float                                              KnockbackBonusExpScale;                                   // 0x0564(0x0004) (Edit)
+	float                                              MinimumReblockInterval;                                   // 0x0568(0x0004) (Edit)
+	float                                              MinimumSwingDamageTime;                                   // 0x056C(0x0004) (Edit)
+	float                                              MinimumSwingTime;                                         // 0x0570(0x0004) (Edit)
+	float                                              AdditionalMomentumMultiplier;                             // 0x0574(0x0004) (Edit)
+	float                                              MaxMomentumMultiplierByDamage;                            // 0x0578(0x0004) (Edit)
+	float                                              MaxTotalMomentumMultiplier;                               // 0x057C(0x0004) (Edit)
+	float                                              MaximumBlockingPercent;                                   // 0x0580(0x0004) (Edit)
+	float                                              ProjectileDamageHeroStatExponentMultiplier;               // 0x0584(0x0004) (Edit)
+	float                                              MinimumShootProjectileDotProduct;                         // 0x0588(0x0004) (Edit)
+	unsigned long                                      bShootMeleeProjectile : 1;                                // 0x058C(0x0004) (Edit)
+	unsigned long                                      bOnlyShootProjectileAtFullHealth : 1;                     // 0x058C(0x0004) (Edit)
+	unsigned long                                      bSlowEnemyTarget : 1;                                     // 0x058C(0x0004) (Edit)
+	unsigned long                                      bWeakenEnemyTarget : 1;                                   // 0x058C(0x0004) (Edit)
+	unsigned long                                      bUseWeaponDamageForProjectileDamage : 1;                  // 0x058C(0x0004) (Edit)
+	unsigned long                                      IsSwingingWeapon : 1;                                     // 0x058C(0x0004)
+	unsigned long                                      StartedSwingDamage : 1;                                   // 0x058C(0x0004)
+	unsigned long                                      StoppedSwingDamage : 1;                                   // 0x058C(0x0004)
+	unsigned long                                      bIsBlocking : 1;                                          // 0x058C(0x0004)
+	unsigned long                                      bReplicatedIsBlocking : 1;                                // 0x058C(0x0004) (Net)
+	unsigned long                                      bDidShootMeleeProjectile : 1;                             // 0x058C(0x0004) (Transient)
+	unsigned long                                      bIsInSpecialAnimation : 1;                                // 0x058C(0x0004) (Transient)
+	float                                              SlowEnemyTargetPercentage;                                // 0x0590(0x0004) (Edit)
+	float                                              WeakenEnemyTargetPercentage;                              // 0x0594(0x0004) (Edit)
+	float                                              EnemyClearSlowTime;                                       // 0x0598(0x0004) (Edit)
+	float                                              EnemyClearWeakenTime;                                     // 0x059C(0x0004) (Edit)
+	float                                              WeaponProjectileDamageMultiplier;                         // 0x05A0(0x0004) (Edit)
+	float                                              LastSwingDamageTime;                                      // 0x05A4(0x0004) (Transient)
+	struct FMeleeSwingInfo                             CurrentMeleeSwingInfo;                                    // 0x05A8(0x002C)
+	int                                                CurrentMeleeSwingInfoIndex;                               // 0x05D4(0x0004)
+	float                                              LastSwingTime;                                            // 0x05D8(0x0004)
+	float                                              LastBlockingEndTime;                                      // 0x05DC(0x0004)
+	float                                              TimeFromRecentHealingOnBlock;                             // 0x05E0(0x0004)
+	TArray<class AActor*>                              SwingHurtList;                                            // 0x05E4(0x000C) (NeedCtorLink)
+	TArray<struct FName>                               MeleeSwingSockets;                                        // 0x05F0(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FVector>                             PreviousMeleeSwingLocations;                              // 0x05FC(0x000C) (NeedCtorLink)
+	class AActor*                                      StartedSwingAimTarget;                                    // 0x0608(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -7852,6 +7871,7 @@ public:
 	}
 
 
+	void SetLoadingScreenLimitFPS(unsigned long LimitLoadingScreenFrames);
 	void SetOldCameraAngles(unsigned long OldCameraAnglesEnabled);
 	void SetSimpleDamageNumbers(unsigned long SimpleDamageNumbersEnabled);
 	void SetDamageNumberScale(float val);
@@ -8788,7 +8808,7 @@ public:
 	int STATIC_GetNumberOfDroppedEquipment();
 	int GetToolTipPriority();
 	unsigned long TakesToolTipPriority(const TScriptInterface<class UDunDefToolTipInterface>& otherToolTip);
-	int STATIC_DestroyAllDroppedEquipment(unsigned long bDistributeMana);
+	float STATIC_DestroyAllDroppedEquipment(unsigned long bDistributeMana);
 	void FadeOut();
 	float GetActivationOffset();
 	float GetActivationWeighting();
@@ -9957,6 +9977,7 @@ public:
 	unsigned long                                      bShowAllDescriptionQualityNames : 1;                      // 0x003C(0x0004) (Config)
 	unsigned long                                      bDisableAllDescriptionQualityNames : 1;                   // 0x003C(0x0004) (Config)
 	unsigned long                                      bUseCustomColorArray : 1;                                 // 0x003C(0x0004) (Config)
+	unsigned long                                      bLimitLoadingFramerate : 1;                               // 0x003C(0x0004) (Config)
 	int                                                ShowDroppedItemQualityFx;                                 // 0x0040(0x0004) (Config)
 	int                                                numSigFigsHVFormat;                                       // 0x0044(0x0004) (Config)
 	float                                              AlphaAtHighHealth;                                        // 0x0048(0x0004) (Config)
@@ -10450,7 +10471,7 @@ public:
 
 
 // Class UDKGame.UI_OptionsMenu
-// 0x01EC (0x0828 - 0x063C)
+// 0x01F0 (0x082C - 0x063C)
 class UUI_OptionsMenu : public UDunDefUIScene
 {
 public:
@@ -10545,10 +10566,11 @@ public:
 	class UUISlider*                                   DamageNumberScaleSlider;                                  // 0x080C(0x0004) (Edit)
 	class UUICheckbox*                                 SimpleDamageNumbersCheckBox;                              // 0x0810(0x0004) (Edit)
 	class UUICheckbox*                                 OldCameraAnglesCheckBox;                                  // 0x0814(0x0004) (Edit)
-	class UUICheckbox*                                 CensorItemsCheckBox;                                      // 0x0818(0x0004) (Edit)
-	class UUICheckbox*                                 TinyMapCheckBox;                                          // 0x081C(0x0004) (Edit)
-	class UUISlider*                                   FrameRateLimitSlider;                                     // 0x0820(0x0004) (Edit)
-	class UUILabel*                                    FrameRateLimitLabel;                                      // 0x0824(0x0004) (Edit)
+	class UUICheckbox*                                 LimitLoadingFPSCheckbox;                                  // 0x0818(0x0004) (Edit)
+	class UUICheckbox*                                 CensorItemsCheckBox;                                      // 0x081C(0x0004) (Edit)
+	class UUICheckbox*                                 TinyMapCheckBox;                                          // 0x0820(0x0004) (Edit)
+	class UUISlider*                                   FrameRateLimitSlider;                                     // 0x0824(0x0004) (Edit)
+	class UUILabel*                                    FrameRateLimitLabel;                                      // 0x0828(0x0004) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -11212,6 +11234,7 @@ public:
 	unsigned long                                      bSecondScaleDamageStatOnAdditionalDamage : 1;             // 0x0264(0x0004) (Edit)
 	unsigned long                                      bSecondScaleDamageStatType : 1;                           // 0x0264(0x0004) (Edit)
 	unsigned long                                      MultiplyProjectileDamageByWeaponDamage : 1;               // 0x0264(0x0004) (Edit)
+	unsigned long                                      MultiplyProjectileDamageByPrimaryWeaponSwingSpeed : 1;    // 0x0264(0x0004) (Edit)
 	unsigned long                                      ScaleMomentumForPawnMass : 1;                             // 0x0264(0x0004) (Edit)
 	unsigned long                                      OnlyCollideWithIgnoreClasses : 1;                         // 0x0264(0x0004) (Edit)
 	unsigned long                                      bScaleImpactEmitterByProjectileSize : 1;                  // 0x0264(0x0004) (Edit)
@@ -11960,7 +11983,7 @@ public:
 
 
 // Class UDKGame.UI_LoadingScreen
-// 0x003C (0x0678 - 0x063C)
+// 0x0044 (0x0680 - 0x063C)
 class UUI_LoadingScreen : public UDunDefUIScene
 {
 public:
@@ -11974,6 +11997,8 @@ public:
 	class UMaterialInstanceConstant*                   LoadingBGMaterialInstance;                                // 0x066C(0x0004) (Transient)
 	class UMaterialInstanceConstant*                   AltLoadingBGMaterialInstance;                             // 0x0670(0x0004) (Transient)
 	float                                              OpenCounter;                                              // 0x0674(0x0004) (Transient)
+	float                                              MaxFrame;                                                 // 0x0678(0x0004) (Transient)
+	float                                              MinFrame;                                                 // 0x067C(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -11986,6 +12011,7 @@ public:
 	unsigned long AllowGlobalVisibilityToggling();
 	void SceneActivated(unsigned long bInitialActivation);
 	void Update(float DeltaTime);
+	class UEngine* STATIC_GetEngine();
 	void CloseWithAnimation();
 	unsigned long CloseScene(class UUIScene* SceneToClose, unsigned long bCloseChildScenes, unsigned long bForceCloseImmediately);
 };
@@ -12687,6 +12713,7 @@ public:
 
 	void notifyKismet();
 	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
+	void PostBeginPlay();
 	void CheckForEncroachers(float DeltaTime);
 	void Tick(float DeltaTime);
 	unsigned long ForceFriendlyFire(class AActor* Target);
@@ -13474,7 +13501,7 @@ public:
 
 
 // Class UDKGame.DunDef_SeqAct_ProjectileSpawner
-// 0x0064 (0x015C - 0x00F8)
+// 0x0088 (0x0180 - 0x00F8)
 class UDunDef_SeqAct_ProjectileSpawner : public USeqAct_Latent
 {
 public:
@@ -13490,6 +13517,10 @@ public:
 	unsigned long                                      bIgnoreSpawnCollision : 1;                                // 0x0110(0x0004) (Edit)
 	unsigned long                                      bShuffleTargetSequence : 1;                               // 0x0110(0x0004) (Edit)
 	unsigned long                                      bUseProjectileHoming : 1;                                 // 0x0110(0x0004) (Edit)
+	unsigned long                                      bUseHeadsUpEmitter : 1;                                   // 0x0110(0x0004) (Edit)
+	unsigned long                                      bHeadsUpEmitterInheritDirection : 1;                      // 0x0110(0x0004) (Edit)
+	unsigned long                                      bUseCustomSpawnAngle : 1;                                 // 0x0110(0x0004) (Edit)
+	unsigned long                                      bEmitterSpawned : 1;                                      // 0x0110(0x0004) (Transient)
 	struct FVector                                     WorldSpawnOffset;                                         // 0x0114(0x000C) (Edit)
 	struct FVector                                     WorldSpawnOffsetLow;                                      // 0x0120(0x000C) (Edit)
 	int                                                SpawnCount;                                               // 0x012C(0x0004) (Edit)
@@ -13498,11 +13529,16 @@ public:
 	unsigned char                                      UnknownData00[0x3];                                       // 0x0135(0x0003) MISSED OFFSET
 	float                                              ProjectileSpawnDelay;                                     // 0x0138(0x0004) (Edit)
 	class APawn*                                       Instigator;                                               // 0x013C(0x0004) (Edit)
-	TArray<struct Fact_int_pair>                       ProjectileDestinations;                                   // 0x0140(0x000C) (Transient, NeedCtorLink)
-	int                                                projectilesSpawned;                                       // 0x014C(0x0004) (Transient)
-	float                                              myTimer;                                                  // 0x0150(0x0004) (Transient)
-	int                                                prevTargetIndex;                                          // 0x0154(0x0004) (Transient)
-	int                                                prevLocationIndex;                                        // 0x0158(0x0004) (Transient)
+	class ADunDefEmitterSpawnable*                     HeadsUpEmitter;                                           // 0x0140(0x0004) (Edit)
+	float                                              PostHeadsUpEmitterDelay;                                  // 0x0144(0x0004) (Edit)
+	struct FRotator                                    SpawnAngle;                                               // 0x0148(0x000C) (Edit)
+	TArray<struct Fact_int_pair>                       ProjectileDestinations;                                   // 0x0154(0x000C) (Transient, NeedCtorLink)
+	TArray<struct FProjectileSpawnInfo>                ProjectilesAwaitingSpawn;                                 // 0x0160(0x000C) (Transient, NeedCtorLink)
+	int                                                projectilesSpawned;                                       // 0x016C(0x0004) (Transient)
+	float                                              myTimer;                                                  // 0x0170(0x0004) (Transient)
+	int                                                prevTargetIndex;                                          // 0x0174(0x0004) (Transient)
+	int                                                prevLocationIndex;                                        // 0x0178(0x0004) (Transient)
+	float                                              emitterTimer;                                             // 0x017C(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -13514,10 +13550,13 @@ public:
 	unsigned long Update(float dt);
 	void Activated();
 	void Reset();
-	void SpawnProjectilesAll();
-	void SpawnProjectile();
+	void QueueProjectilesAll();
+	void QueueProjectile();
+	void SpawnProjectile(const struct FProjectileSpawnInfo& ProjInfo);
+	void SpawnHeadsUpEmitter(const struct FVector& Location, const struct FRotator& Rotation);
 	struct FVector GetLocation(int I, const struct FVector& TargetLocation);
 	struct Fact_int_pair MakeActIntPair(class AActor* A, int B);
+	struct FProjectileSpawnInfo MakeProjectileSpawnInfo(float T, class AActor* TargetActor, int I, const struct FVector& Location, const struct FVector& Direction);
 };
 
 
@@ -16237,7 +16276,7 @@ public:
 	void GetStatValue(class AActor* forActor, TEnumAsByte<ELevelUpValueType> levelUpValue, unsigned long bAdditivePass, float* buffVal);
 	class USurface* GetBuffIcon(const TScriptInterface<class UDunDefTargetableInterface>& aTarget);
 	struct FString GetBuffDescription(const TScriptInterface<class UDunDefTargetableInterface>& aTarget);
-	struct FString GetBuffName(const TScriptInterface<class UDunDefTargetableInterface>& aTarget);
+	struct FString GetBuffName(const TScriptInterface<class UDunDefTargetableInterface>& aTarget, unsigned long bDontIncludeTierName);
 };
 
 
@@ -18874,7 +18913,7 @@ public:
 
 
 // Class UDKGame.DunDefPhoenixControllerV3
-// 0x0098 (0x06A4 - 0x060C)
+// 0x00A4 (0x06B0 - 0x060C)
 class ADunDefPhoenixControllerV3 : public ADunDefEnemyController
 {
 public:
@@ -18888,18 +18927,21 @@ public:
 	TArray<int>                                        BabyPhoenixMaxAlive;                                      // 0x0630(0x000C) (Edit, NeedCtorLink)
 	TArray<int>                                        BabyPhoenixSpawnInterval;                                 // 0x063C(0x000C) (Edit, NeedCtorLink)
 	float                                              AbortDiveMinimumZPosition;                                // 0x0648(0x0004) (Edit)
-	float                                              LastShootProjectileTime;                                  // 0x064C(0x0004) (Transient)
-	class AFlightPathNode*                             NavigationTarget;                                         // 0x0650(0x0004) (Transient)
-	TArray<class AFlightPathNode*>                     FlyingNavPoints;                                          // 0x0654(0x000C) (Transient, NeedCtorLink)
-	TArray<class AFlightPathNode*>                     DashEndNavPoints;                                         // 0x0660(0x000C) (Transient, NeedCtorLink)
-	float                                              TimeEnteredState;                                         // 0x066C(0x0004) (Transient)
-	float                                              TimeInState;                                              // 0x0670(0x0004) (Transient)
-	int                                                numAliveMiniBirds;                                        // 0x0674(0x0004) (Transient)
-	TArray<class ADunDefPhoenixMiniV2*>                MyMiniBirds;                                              // 0x0678(0x000C) (Transient, NeedCtorLink)
-	float                                              StuckCheck_RecentDistance;                                // 0x0684(0x0004) (Transient)
-	float                                              StuckCheck_TimeElapsed;                                   // 0x0688(0x0004) (Transient)
-	struct FVector                                     StuckCheck_OldLocation;                                   // 0x068C(0x000C) (Transient)
-	struct FVector                                     StuckCheck_ResetLocation;                                 // 0x0698(0x000C) (Edit)
+	float                                              ChooseNextActionInterval;                                 // 0x064C(0x0004) (Edit)
+	float                                              DashingChance;                                            // 0x0650(0x0004) (Edit)
+	float                                              LaunchFireballChance;                                     // 0x0654(0x0004) (Edit)
+	float                                              LastShootProjectileTime;                                  // 0x0658(0x0004) (Transient)
+	class AFlightPathNode*                             NavigationTarget;                                         // 0x065C(0x0004) (Transient)
+	TArray<class AFlightPathNode*>                     FlyingNavPoints;                                          // 0x0660(0x000C) (Transient, NeedCtorLink)
+	TArray<class AFlightPathNode*>                     DashEndNavPoints;                                         // 0x066C(0x000C) (Transient, NeedCtorLink)
+	float                                              TimeEnteredState;                                         // 0x0678(0x0004) (Transient)
+	float                                              TimeInState;                                              // 0x067C(0x0004) (Transient)
+	int                                                numAliveMiniBirds;                                        // 0x0680(0x0004) (Transient)
+	TArray<class ADunDefPhoenixMiniV2*>                MyMiniBirds;                                              // 0x0684(0x000C) (Transient, NeedCtorLink)
+	float                                              StuckCheck_RecentDistance;                                // 0x0690(0x0004) (Transient)
+	float                                              StuckCheck_TimeElapsed;                                   // 0x0694(0x0004) (Transient)
+	struct FVector                                     StuckCheck_OldLocation;                                   // 0x0698(0x000C) (Transient)
+	struct FVector                                     StuckCheck_ResetLocation;                                 // 0x06A4(0x000C) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -20476,6 +20518,35 @@ public:
 };
 
 
+// Class UDKGame.DunDefTower_MultiProjectile
+// 0x002C (0x0914 - 0x08E8)
+class ADunDefTower_MultiProjectile : public ADunDefTower_ProjectileType
+{
+public:
+	int                                                MaxTargets;                                               // 0x08E8(0x0004) (Edit)
+	unsigned long                                      bHomingProjectiles : 1;                                   // 0x08EC(0x0004) (Edit)
+	unsigned long                                      bAllowSameTarget : 1;                                     // 0x08EC(0x0004) (Edit)
+	float                                              ProjectileSpreadAngle;                                    // 0x08F0(0x0004) (Edit)
+	float                                              ProjectileSpawnRadius;                                    // 0x08F4(0x0004) (Edit)
+	float                                              TargetCooldownTime;                                       // 0x08F8(0x0004) (Edit)
+	TArray<class AActor*>                              CurrentTargets;                                           // 0x08FC(0x000C) (Transient, NeedCtorLink)
+	TArray<struct FTargetCooldownData>                 TargetCooldowns;                                          // 0x0908(0x000C) (Transient, NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class UDKGame.DunDefTower_MultiProjectile");
+		return ptr;
+	}
+
+
+	void ValidateTargets();
+	unsigned long CanAttackAnyTarget();
+	void UpdateAI(float DeltaTime);
+	void ShootProjectile();
+	void UpdateTarget();
+};
+
+
 // Class UDKGame.DunDefTower_ProxMineTrap
 // 0x0000 (0x0940 - 0x0940)
 class ADunDefTower_ProxMineTrap : public ADunDefTower_GasTrap
@@ -20652,50 +20723,50 @@ public:
 
 
 // Class UDKGame.DunDefWeapon_Crossbow
-// 0x008A (0x0574 - 0x04EA)
+// 0x008A (0x058C - 0x0502)
 class ADunDefWeapon_Crossbow : public ADunDefWeapon
 {
 public:
-	unsigned char                                      UnknownData00[0x2];                                       // 0x04EA(0x0002) MISSED OFFSET
-	struct FName                                       CustomAnimNodeName;                                       // 0x04EC(0x0008) (Edit)
-	struct FName                                       ShootAnimName;                                            // 0x04F4(0x0008) (Edit)
-	int                                                BaseNumProjectiles;                                       // 0x04FC(0x0004) (Edit)
-	float                                              FireIntervalMultiplier;                                   // 0x0500(0x0004) (Edit)
-	float                                              BaseReloadSpeed;                                          // 0x0504(0x0004) (Edit)
-	float                                              ReloadSpeedBonusLinearScale;                              // 0x0508(0x0004) (Edit)
-	float                                              ReloadSpeedBonusExpScale;                                 // 0x050C(0x0004) (Edit)
-	float                                              ReloadSpeedMultiplier;                                    // 0x0510(0x0004) (Edit)
-	float                                              MinimumReloadTime;                                        // 0x0514(0x0004) (Edit)
-	float                                              PostCancelReloadAllowedInterval;                          // 0x0518(0x0004) (Edit)
-	float                                              ReloadSpeedNoAmmoMultiplier;                              // 0x051C(0x0004) (Edit)
-	float                                              ShootAnimBlendInTime;                                     // 0x0520(0x0004) (Edit)
-	float                                              ShootAnimBlendOutTime;                                    // 0x0524(0x0004) (Edit)
-	class USoundCue*                                   ReloadSound;                                              // 0x0528(0x0004) (Edit)
-	class USoundCue*                                   ReloadFinishedSound;                                      // 0x052C(0x0004) (Edit)
-	class USoundCue*                                   ReloadCancelledSound;                                     // 0x0530(0x0004) (Edit)
-	class USoundCue*                                   NoReloadAllowedSound;                                     // 0x0534(0x0004) (Edit)
-	unsigned long                                      bTurnOnParticleSystemComponent : 1;                       // 0x0538(0x0004) (Edit)
-	unsigned long                                      bReplicateFireEvent : 1;                                  // 0x0538(0x0004) (Edit)
-	unsigned long                                      bPlayFiringSound : 1;                                     // 0x0538(0x0004) (Edit)
-	unsigned long                                      bTurnOnLightComponent : 1;                                // 0x0538(0x0004) (Edit)
-	unsigned long                                      bUseFixedReloadSpeed : 1;                                 // 0x0538(0x0004) (Edit)
-	unsigned long                                      bUseHighShotPerSecond : 1;                                // 0x0538(0x0004) (Edit)
-	unsigned long                                      bReloading : 1;                                           // 0x0538(0x0004)
-	unsigned long                                      bFireFirstShot : 1;                                       // 0x0538(0x0004)
-	unsigned long                                      bStartedFireEvent : 1;                                    // 0x0538(0x0004) (Transient)
-	unsigned long                                      bForceReloadCheckOnActivate : 1;                          // 0x0538(0x0004) (Transient)
-	struct FName                                       TurnOnParticleSystemComponentName;                        // 0x053C(0x0008) (Edit)
-	struct FName                                       TurnOnLightComponentName;                                 // 0x0544(0x0008) (Edit)
-	class USoundCue*                                   FiringSound;                                              // 0x054C(0x0004) (Edit)
-	int                                                AmmoConsumptionPerShot;                                   // 0x0550(0x0004) (Edit)
-	float                                              FixedReloadSpeed;                                         // 0x0554(0x0004) (Edit)
-	class UAnimNodePlayCustomAnim*                     CustomAnimNode;                                           // 0x0558(0x0004)
-	int                                                ClipAmmo;                                                 // 0x055C(0x0004) (Net)
-	float                                              TotalReloadTime;                                          // 0x0560(0x0004)
-	float                                              ReloadStartTime;                                          // 0x0564(0x0004)
-	float                                              LastReloadCancelledTime;                                  // 0x0568(0x0004)
-	float                                              LastNoReloadAllowedSoundTime;                             // 0x056C(0x0004) (Transient)
-	float                                              LastReloadPressedFireTime;                                // 0x0570(0x0004) (Transient)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x0502(0x0002) MISSED OFFSET
+	struct FName                                       CustomAnimNodeName;                                       // 0x0504(0x0008) (Edit)
+	struct FName                                       ShootAnimName;                                            // 0x050C(0x0008) (Edit)
+	int                                                BaseNumProjectiles;                                       // 0x0514(0x0004) (Edit)
+	float                                              FireIntervalMultiplier;                                   // 0x0518(0x0004) (Edit)
+	float                                              BaseReloadSpeed;                                          // 0x051C(0x0004) (Edit)
+	float                                              ReloadSpeedBonusLinearScale;                              // 0x0520(0x0004) (Edit)
+	float                                              ReloadSpeedBonusExpScale;                                 // 0x0524(0x0004) (Edit)
+	float                                              ReloadSpeedMultiplier;                                    // 0x0528(0x0004) (Edit)
+	float                                              MinimumReloadTime;                                        // 0x052C(0x0004) (Edit)
+	float                                              PostCancelReloadAllowedInterval;                          // 0x0530(0x0004) (Edit)
+	float                                              ReloadSpeedNoAmmoMultiplier;                              // 0x0534(0x0004) (Edit)
+	float                                              ShootAnimBlendInTime;                                     // 0x0538(0x0004) (Edit)
+	float                                              ShootAnimBlendOutTime;                                    // 0x053C(0x0004) (Edit)
+	class USoundCue*                                   ReloadSound;                                              // 0x0540(0x0004) (Edit)
+	class USoundCue*                                   ReloadFinishedSound;                                      // 0x0544(0x0004) (Edit)
+	class USoundCue*                                   ReloadCancelledSound;                                     // 0x0548(0x0004) (Edit)
+	class USoundCue*                                   NoReloadAllowedSound;                                     // 0x054C(0x0004) (Edit)
+	unsigned long                                      bTurnOnParticleSystemComponent : 1;                       // 0x0550(0x0004) (Edit)
+	unsigned long                                      bReplicateFireEvent : 1;                                  // 0x0550(0x0004) (Edit)
+	unsigned long                                      bPlayFiringSound : 1;                                     // 0x0550(0x0004) (Edit)
+	unsigned long                                      bTurnOnLightComponent : 1;                                // 0x0550(0x0004) (Edit)
+	unsigned long                                      bUseFixedReloadSpeed : 1;                                 // 0x0550(0x0004) (Edit)
+	unsigned long                                      bUseHighShotPerSecond : 1;                                // 0x0550(0x0004) (Edit)
+	unsigned long                                      bReloading : 1;                                           // 0x0550(0x0004)
+	unsigned long                                      bFireFirstShot : 1;                                       // 0x0550(0x0004)
+	unsigned long                                      bStartedFireEvent : 1;                                    // 0x0550(0x0004) (Transient)
+	unsigned long                                      bForceReloadCheckOnActivate : 1;                          // 0x0550(0x0004) (Transient)
+	struct FName                                       TurnOnParticleSystemComponentName;                        // 0x0554(0x0008) (Edit)
+	struct FName                                       TurnOnLightComponentName;                                 // 0x055C(0x0008) (Edit)
+	class USoundCue*                                   FiringSound;                                              // 0x0564(0x0004) (Edit)
+	int                                                AmmoConsumptionPerShot;                                   // 0x0568(0x0004) (Edit)
+	float                                              FixedReloadSpeed;                                         // 0x056C(0x0004) (Edit)
+	class UAnimNodePlayCustomAnim*                     CustomAnimNode;                                           // 0x0570(0x0004)
+	int                                                ClipAmmo;                                                 // 0x0574(0x0004) (Net)
+	float                                              TotalReloadTime;                                          // 0x0578(0x0004)
+	float                                              ReloadStartTime;                                          // 0x057C(0x0004)
+	float                                              LastReloadCancelledTime;                                  // 0x0580(0x0004)
+	float                                              LastNoReloadAllowedSoundTime;                             // 0x0584(0x0004) (Transient)
+	float                                              LastReloadPressedFireTime;                                // 0x0588(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -20747,85 +20818,85 @@ public:
 
 
 // Class UDKGame.DunDefWeapon_MagicStaff
-// 0x0132 (0x061C - 0x04EA)
+// 0x0132 (0x0634 - 0x0502)
 class ADunDefWeapon_MagicStaff : public ADunDefWeapon
 {
 public:
-	unsigned char                                      UnknownData00[0x2];                                       // 0x04EA(0x0002) MISSED OFFSET
-	float                                              FullChargeTime;                                           // 0x04EC(0x0004) (Edit)
-	float                                              FullAltChargeTime;                                        // 0x04F0(0x0004) (Edit)
-	class UParticleSystemComponent*                    ChargeEffect;                                             // 0x04F4(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    FullyChargedEffect;                                       // 0x04F8(0x0004) (Edit, ExportObject, Component, EditInline)
-	float                                              MinChargeEffectScale;                                     // 0x04FC(0x0004) (Edit)
-	float                                              MaxChargeEffectScale;                                     // 0x0500(0x0004) (Edit)
-	unsigned long                                      bEmberorMoon : 1;                                         // 0x0504(0x0004) (Edit)
-	unsigned long                                      bUseHealKnockBack : 1;                                    // 0x0504(0x0004) (Edit)
-	unsigned long                                      bUseAttackCD : 1;                                         // 0x0504(0x0004) (Edit)
-	unsigned long                                      bUseElementalScallingForRightClick : 1;                   // 0x0504(0x0004) (Edit)
-	unsigned long                                      InFiringState : 1;                                        // 0x0504(0x0004) (Net)
-	unsigned long                                      InAltFiringState : 1;                                     // 0x0504(0x0004) (Net)
-	unsigned long                                      OnCooldown : 1;                                           // 0x0504(0x0004)
-	unsigned long                                      bIsRainMaker : 1;                                         // 0x0504(0x0004)
-	unsigned long                                      IsDoingKnockback : 1;                                     // 0x0504(0x0004)
-	class ADunDefEmitterSpawnable*                     MuzzleFlashEffectTemplate;                                // 0x0508(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     FullyChargedMuzzleFlashEffectTemplate;                    // 0x050C(0x0004) (Edit)
-	float                                              MinMuzzleFlashEffectScale;                                // 0x0510(0x0004) (Edit)
-	float                                              MaxMuzzleFlashEffectScale;                                // 0x0514(0x0004) (Edit)
-	struct FVector                                     MuzzleFlashEffectLocationOffset;                          // 0x0518(0x000C) (Edit)
-	struct FRotator                                    MuzzleFlashEffectRotationOffset;                          // 0x0524(0x000C) (Edit)
-	class UForceFeedbackWaveform*                      LowChargeShotFF;                                          // 0x0530(0x0004) (Edit, EditInline)
-	class UForceFeedbackWaveform*                      MediumChargeShotFF;                                       // 0x0534(0x0004) (Edit, EditInline)
-	class UForceFeedbackWaveform*                      MaxChargeShotFF;                                          // 0x0538(0x0004) (Edit, EditInline)
-	float                                              MediumChargeFFThreshold;                                  // 0x053C(0x0004) (Edit)
-	int                                                NumProjectiles;                                           // 0x0540(0x0004) (Edit)
-	class UPointLightComponent*                        ChargeLight;                                              // 0x0544(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UAudioComponent*                             MyAudioComponent1;                                        // 0x0548(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UAudioComponent*                             MyAudioComponent2;                                        // 0x054C(0x0004) (Edit, ExportObject, Component, EditInline)
-	float                                              BaseKnockbackRange;                                       // 0x0550(0x0004) (Edit)
-	float                                              BaseKnockbackMomentum;                                    // 0x0554(0x0004) (Edit)
-	float                                              KnockbackMovementSpeed;                                   // 0x0558(0x0004) (Edit)
-	float                                              KnockbackMovementSpeedScale;                              // 0x055C(0x0004) (Edit)
-	class UClass*                                      KnockbackDamageType;                                      // 0x0560(0x0004) (Edit)
-	float                                              LinearKnockbackBonusMagScale;                             // 0x0564(0x0004) (Edit)
-	float                                              ExpKnockbackBonusMagScale;                                // 0x0568(0x0004) (Edit)
-	float                                              LinearKnockbackBonusRangeScale;                           // 0x056C(0x0004) (Edit)
-	float                                              ExpKnockbackBonusRangeScale;                              // 0x0570(0x0004) (Edit)
-	float                                              MaxMomumentumMassScale;                                   // 0x0574(0x0004) (Edit)
-	float                                              MassMomentumScaleExponent;                                // 0x0578(0x0004) (Edit)
-	float                                              MomumentumMassScaleBase;                                  // 0x057C(0x0004) (Edit)
-	float                                              BaseKnockbackRangeAdditive;                               // 0x0580(0x0004) (Edit)
-	float                                              BaseKnockbackMomentumAdditive;                            // 0x0584(0x0004) (Edit)
-	float                                              HealKnockBackScalar;                                      // 0x0588(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     KnockbackEffectTemplate;                                  // 0x058C(0x0004) (Edit)
-	float                                              KnockbackEffectRangeScale;                                // 0x0590(0x0004) (Edit)
-	float                                              BaseChargeSpeed;                                          // 0x0594(0x0004) (Edit)
-	float                                              ChargeSpeedBonusLinearScale;                              // 0x0598(0x0004) (Edit)
-	float                                              ChargeSpeedBonusExpScale;                                 // 0x059C(0x0004) (Edit)
-	float                                              FullchargeRefireInterval;                                 // 0x05A0(0x0004) (Edit)
-	struct FVector                                     KnockbackSpawnOffset;                                     // 0x05A4(0x000C) (Edit)
-	class USoundCue*                                   KnockbackChargingSound;                                   // 0x05B0(0x0004) (Edit)
-	class USoundCue*                                   KnockbackMaxChargeSound;                                  // 0x05B4(0x0004) (Edit)
-	class UMaterialInterface*                          KnockbackImpactDecalMaterial;                             // 0x05B8(0x0004) (Edit)
-	float                                              KnockbackDecalSizeMin;                                    // 0x05BC(0x0004) (Edit)
-	float                                              KnockbackDecalSizeMax;                                    // 0x05C0(0x0004) (Edit)
-	float                                              KnockbackDecalRangeMin;                                   // 0x05C4(0x0004) (Edit)
-	float                                              KnockbackDecalRangeMax;                                   // 0x05C8(0x0004) (Edit)
-	float                                              KnockbackImpactDecalLifespan;                             // 0x05CC(0x0004) (Edit)
-	struct FVector                                     KnockbackDecalTraceOffset;                                // 0x05D0(0x000C) (Edit)
-	float                                              KnockbackDamageScaleMin;                                  // 0x05DC(0x0004) (Edit)
-	float                                              KnockbackDamageScaleMax;                                  // 0x05E0(0x0004) (Edit)
-	int                                                CooldownDuration;                                         // 0x05E4(0x0004) (Edit)
-	float                                              ElementalDamageForRightClickScalar;                       // 0x05E8(0x0004) (Edit)
-	float                                              LastReleasedTime;                                         // 0x05EC(0x0004) (Transient)
-	float                                              LastAltReleasedTime;                                      // 0x05F0(0x0004) (Transient)
-	float                                              ChargeLightOriginalBrightness;                            // 0x05F4(0x0004) (Transient)
-	float                                              BonusDamageMulti;                                         // 0x05F8(0x0004)
-	float                                              TimeFromLastFire;                                         // 0x05FC(0x0004)
-	float                                              LastFullChargeFireTime;                                   // 0x0600(0x0004)
-	float                                              CurrentKnockbackRange;                                    // 0x0604(0x0004)
-	int                                                AbilityCooldownTime;                                      // 0x0608(0x0004)
-	TArray<TScriptInterface<class UDunDefTargetableInterface>> KnockbackVictims;                                         // 0x060C(0x000C) (NeedCtorLink)
-	float                                              MaximumKnockbackRange;                                    // 0x0618(0x0004) (Edit)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x0502(0x0002) MISSED OFFSET
+	float                                              FullChargeTime;                                           // 0x0504(0x0004) (Edit)
+	float                                              FullAltChargeTime;                                        // 0x0508(0x0004) (Edit)
+	class UParticleSystemComponent*                    ChargeEffect;                                             // 0x050C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    FullyChargedEffect;                                       // 0x0510(0x0004) (Edit, ExportObject, Component, EditInline)
+	float                                              MinChargeEffectScale;                                     // 0x0514(0x0004) (Edit)
+	float                                              MaxChargeEffectScale;                                     // 0x0518(0x0004) (Edit)
+	unsigned long                                      bEmberorMoon : 1;                                         // 0x051C(0x0004) (Edit)
+	unsigned long                                      bUseHealKnockBack : 1;                                    // 0x051C(0x0004) (Edit)
+	unsigned long                                      bUseAttackCD : 1;                                         // 0x051C(0x0004) (Edit)
+	unsigned long                                      bUseElementalScallingForRightClick : 1;                   // 0x051C(0x0004) (Edit)
+	unsigned long                                      InFiringState : 1;                                        // 0x051C(0x0004) (Net)
+	unsigned long                                      InAltFiringState : 1;                                     // 0x051C(0x0004) (Net)
+	unsigned long                                      OnCooldown : 1;                                           // 0x051C(0x0004)
+	unsigned long                                      bIsRainMaker : 1;                                         // 0x051C(0x0004)
+	unsigned long                                      IsDoingKnockback : 1;                                     // 0x051C(0x0004)
+	class ADunDefEmitterSpawnable*                     MuzzleFlashEffectTemplate;                                // 0x0520(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     FullyChargedMuzzleFlashEffectTemplate;                    // 0x0524(0x0004) (Edit)
+	float                                              MinMuzzleFlashEffectScale;                                // 0x0528(0x0004) (Edit)
+	float                                              MaxMuzzleFlashEffectScale;                                // 0x052C(0x0004) (Edit)
+	struct FVector                                     MuzzleFlashEffectLocationOffset;                          // 0x0530(0x000C) (Edit)
+	struct FRotator                                    MuzzleFlashEffectRotationOffset;                          // 0x053C(0x000C) (Edit)
+	class UForceFeedbackWaveform*                      LowChargeShotFF;                                          // 0x0548(0x0004) (Edit, EditInline)
+	class UForceFeedbackWaveform*                      MediumChargeShotFF;                                       // 0x054C(0x0004) (Edit, EditInline)
+	class UForceFeedbackWaveform*                      MaxChargeShotFF;                                          // 0x0550(0x0004) (Edit, EditInline)
+	float                                              MediumChargeFFThreshold;                                  // 0x0554(0x0004) (Edit)
+	int                                                NumProjectiles;                                           // 0x0558(0x0004) (Edit)
+	class UPointLightComponent*                        ChargeLight;                                              // 0x055C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UAudioComponent*                             MyAudioComponent1;                                        // 0x0560(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UAudioComponent*                             MyAudioComponent2;                                        // 0x0564(0x0004) (Edit, ExportObject, Component, EditInline)
+	float                                              BaseKnockbackRange;                                       // 0x0568(0x0004) (Edit)
+	float                                              BaseKnockbackMomentum;                                    // 0x056C(0x0004) (Edit)
+	float                                              KnockbackMovementSpeed;                                   // 0x0570(0x0004) (Edit)
+	float                                              KnockbackMovementSpeedScale;                              // 0x0574(0x0004) (Edit)
+	class UClass*                                      KnockbackDamageType;                                      // 0x0578(0x0004) (Edit)
+	float                                              LinearKnockbackBonusMagScale;                             // 0x057C(0x0004) (Edit)
+	float                                              ExpKnockbackBonusMagScale;                                // 0x0580(0x0004) (Edit)
+	float                                              LinearKnockbackBonusRangeScale;                           // 0x0584(0x0004) (Edit)
+	float                                              ExpKnockbackBonusRangeScale;                              // 0x0588(0x0004) (Edit)
+	float                                              MaxMomumentumMassScale;                                   // 0x058C(0x0004) (Edit)
+	float                                              MassMomentumScaleExponent;                                // 0x0590(0x0004) (Edit)
+	float                                              MomumentumMassScaleBase;                                  // 0x0594(0x0004) (Edit)
+	float                                              BaseKnockbackRangeAdditive;                               // 0x0598(0x0004) (Edit)
+	float                                              BaseKnockbackMomentumAdditive;                            // 0x059C(0x0004) (Edit)
+	float                                              HealKnockBackScalar;                                      // 0x05A0(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     KnockbackEffectTemplate;                                  // 0x05A4(0x0004) (Edit)
+	float                                              KnockbackEffectRangeScale;                                // 0x05A8(0x0004) (Edit)
+	float                                              BaseChargeSpeed;                                          // 0x05AC(0x0004) (Edit)
+	float                                              ChargeSpeedBonusLinearScale;                              // 0x05B0(0x0004) (Edit)
+	float                                              ChargeSpeedBonusExpScale;                                 // 0x05B4(0x0004) (Edit)
+	float                                              FullchargeRefireInterval;                                 // 0x05B8(0x0004) (Edit)
+	struct FVector                                     KnockbackSpawnOffset;                                     // 0x05BC(0x000C) (Edit)
+	class USoundCue*                                   KnockbackChargingSound;                                   // 0x05C8(0x0004) (Edit)
+	class USoundCue*                                   KnockbackMaxChargeSound;                                  // 0x05CC(0x0004) (Edit)
+	class UMaterialInterface*                          KnockbackImpactDecalMaterial;                             // 0x05D0(0x0004) (Edit)
+	float                                              KnockbackDecalSizeMin;                                    // 0x05D4(0x0004) (Edit)
+	float                                              KnockbackDecalSizeMax;                                    // 0x05D8(0x0004) (Edit)
+	float                                              KnockbackDecalRangeMin;                                   // 0x05DC(0x0004) (Edit)
+	float                                              KnockbackDecalRangeMax;                                   // 0x05E0(0x0004) (Edit)
+	float                                              KnockbackImpactDecalLifespan;                             // 0x05E4(0x0004) (Edit)
+	struct FVector                                     KnockbackDecalTraceOffset;                                // 0x05E8(0x000C) (Edit)
+	float                                              KnockbackDamageScaleMin;                                  // 0x05F4(0x0004) (Edit)
+	float                                              KnockbackDamageScaleMax;                                  // 0x05F8(0x0004) (Edit)
+	int                                                CooldownDuration;                                         // 0x05FC(0x0004) (Edit)
+	float                                              ElementalDamageForRightClickScalar;                       // 0x0600(0x0004) (Edit)
+	float                                              LastReleasedTime;                                         // 0x0604(0x0004) (Transient)
+	float                                              LastAltReleasedTime;                                      // 0x0608(0x0004) (Transient)
+	float                                              ChargeLightOriginalBrightness;                            // 0x060C(0x0004) (Transient)
+	float                                              BonusDamageMulti;                                         // 0x0610(0x0004)
+	float                                              TimeFromLastFire;                                         // 0x0614(0x0004)
+	float                                              LastFullChargeFireTime;                                   // 0x0618(0x0004)
+	float                                              CurrentKnockbackRange;                                    // 0x061C(0x0004)
+	int                                                AbilityCooldownTime;                                      // 0x0620(0x0004)
+	TArray<TScriptInterface<class UDunDefTargetableInterface>> KnockbackVictims;                                         // 0x0624(0x000C) (NeedCtorLink)
+	float                                              MaximumKnockbackRange;                                    // 0x0630(0x0004) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -20861,13 +20932,13 @@ public:
 
 
 // Class UDKGame.DunDefWeapon_MonkSpear
-// 0x000C (0x0600 - 0x05F4)
+// 0x000C (0x0618 - 0x060C)
 class ADunDefWeapon_MonkSpear : public ADunDefWeapon_MeleeSword
 {
 public:
-	float                                              ShootInterval;                                            // 0x05F4(0x0004) (Edit)
-	float                                              MaxMeleeDistance;                                         // 0x05F8(0x0004) (Edit)
-	float                                              LastShootTime;                                            // 0x05FC(0x0004)
+	float                                              ShootInterval;                                            // 0x060C(0x0004) (Edit)
+	float                                              MaxMeleeDistance;                                         // 0x0610(0x0004) (Edit)
+	float                                              LastShootTime;                                            // 0x0614(0x0004)
 
 	static UClass* StaticClass()
 	{

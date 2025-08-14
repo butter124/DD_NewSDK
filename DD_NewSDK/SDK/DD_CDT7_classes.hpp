@@ -75,7 +75,7 @@ public:
 
 
 // Class CDT7.DunDefWeapon_MagicStaff_Dot
-// 0x0000 (0x061C - 0x061C)
+// 0x0000 (0x0634 - 0x0634)
 class ADunDefWeapon_MagicStaff_Dot : public ADunDefWeapon_MagicStaff
 {
 public:

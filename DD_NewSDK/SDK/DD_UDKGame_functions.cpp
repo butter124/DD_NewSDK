@@ -9524,7 +9524,7 @@ void UDunDefHeroManager::TransferEquipmentFromItemBox(class UDunDefHero* hero, c
 
 
 // Function UDKGame.DunDefHeroManager.GetMaxItemCount
-// (Defined, Public)
+// (Defined, Public, HasDefaults)
 // Parameters:
 // int                            UserID                         (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -27302,14 +27302,16 @@ struct FString UDunDefBuff::GetBuffDescription(const TScriptInterface<class UDun
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
 // TScriptInterface<class UDunDefTargetableInterface> aTarget                        (OptionalParm, Parm)
+// unsigned long                  bDontIncludeTierName           (OptionalParm, Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UDunDefBuff::GetBuffName(const TScriptInterface<class UDunDefTargetableInterface>& aTarget)
+struct FString UDunDefBuff::GetBuffName(const TScriptInterface<class UDunDefTargetableInterface>& aTarget, unsigned long bDontIncludeTierName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefBuff.GetBuffName");
 
 	UDunDefBuff_GetBuffName_Params params;
 	params.aTarget = aTarget;
+	params.bDontIncludeTierName = bDontIncludeTierName;
 
 	auto flags = fn->FunctionFlags;
 
@@ -55767,6 +55769,29 @@ int ADunDefWeapon::GetNumProjectiles()
 }
 
 
+// Function UDKGame.DunDefWeapon.GetVariableRotOffset
+// (Defined, Simulated, Public, HasDefaults)
+// Parameters:
+// int                            Index                          (Parm)
+// struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
+
+struct FRotator ADunDefWeapon::GetVariableRotOffset(int Index)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefWeapon.GetVariableRotOffset");
+
+	ADunDefWeapon_GetVariableRotOffset_Params params;
+	params.Index = Index;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function UDKGame.DunDefWeapon.GetProjectileSpawnRotation
 // (Defined, Simulated, HasOptionalParms, Public, HasDefaults)
 // Parameters:
@@ -64622,6 +64647,26 @@ float UAntiCheat::STATIC_GetAntiCheatInterval()
 }
 
 
+// Function UDKGame.DunDefViewportClient.SetLoadingScreenLimitFPS
+// (Defined, Public)
+// Parameters:
+// unsigned long                  LimitLoadingScreenFrames       (Parm)
+
+void UDunDefViewportClient::SetLoadingScreenLimitFPS(unsigned long LimitLoadingScreenFrames)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefViewportClient.SetLoadingScreenLimitFPS");
+
+	UDunDefViewportClient_SetLoadingScreenLimitFPS_Params params;
+	params.LimitLoadingScreenFrames = LimitLoadingScreenFrames;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function UDKGame.DunDefViewportClient.SetOldCameraAngles
 // (Defined, Public)
 // Parameters:
@@ -72347,9 +72392,9 @@ unsigned long ADunDefDroppedEquipment::TakesToolTipPriority(const TScriptInterfa
 // (Defined, Static, HasOptionalParms, Public)
 // Parameters:
 // unsigned long                  bDistributeMana                (OptionalParm, Parm)
-// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int ADunDefDroppedEquipment::STATIC_DestroyAllDroppedEquipment(unsigned long bDistributeMana)
+float ADunDefDroppedEquipment::STATIC_DestroyAllDroppedEquipment(unsigned long bDistributeMana)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefDroppedEquipment.DestroyAllDroppedEquipment");
 
@@ -91521,6 +91566,27 @@ void UUI_LoadingScreen::Update(float DeltaTime)
 }
 
 
+// Function UDKGame.UI_LoadingScreen.GetEngine
+// (Defined, Static, Public)
+// Parameters:
+// class UEngine*                 ReturnValue                    (Parm, OutParm, ReturnParm)
+
+class UEngine* UUI_LoadingScreen::STATIC_GetEngine()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.UI_LoadingScreen.GetEngine");
+
+	UUI_LoadingScreen_GetEngine_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function UDKGame.UI_LoadingScreen.CloseWithAnimation
 // (Defined, Public)
 
@@ -93990,6 +94056,23 @@ void ADunDefBoss::TakeDamage(int DamageAmount, class AController* EventInstigato
 	params.HitInfo = HitInfo;
 	params.DamageCauser = DamageCauser;
 	params.WhatHitMe = WhatHitMe;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefBoss.PostBeginPlay
+// (Defined, Simulated, Event, Public)
+
+void ADunDefBoss::PostBeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefBoss.PostBeginPlay");
+
+	ADunDefBoss_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -96483,14 +96566,31 @@ void UDunDef_SeqAct_ProjectileSpawner::Reset()
 }
 
 
-// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnProjectilesAll
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.QueueProjectilesAll
 // (Defined, Public)
 
-void UDunDef_SeqAct_ProjectileSpawner::SpawnProjectilesAll()
+void UDunDef_SeqAct_ProjectileSpawner::QueueProjectilesAll()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnProjectilesAll");
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_ProjectileSpawner.QueueProjectilesAll");
 
-	UDunDef_SeqAct_ProjectileSpawner_SpawnProjectilesAll_Params params;
+	UDunDef_SeqAct_ProjectileSpawner_QueueProjectilesAll_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.QueueProjectile
+// (Defined, Public, HasDefaults)
+
+void UDunDef_SeqAct_ProjectileSpawner::QueueProjectile()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_ProjectileSpawner.QueueProjectile");
+
+	UDunDef_SeqAct_ProjectileSpawner_QueueProjectile_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -96501,13 +96601,38 @@ void UDunDef_SeqAct_ProjectileSpawner::SpawnProjectilesAll()
 
 
 // Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnProjectile
-// (Defined, Public, HasDefaults)
+// (Defined, Public)
+// Parameters:
+// struct FProjectileSpawnInfo    ProjInfo                       (Parm)
 
-void UDunDef_SeqAct_ProjectileSpawner::SpawnProjectile()
+void UDunDef_SeqAct_ProjectileSpawner::SpawnProjectile(const struct FProjectileSpawnInfo& ProjInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnProjectile");
 
 	UDunDef_SeqAct_ProjectileSpawner_SpawnProjectile_Params params;
+	params.ProjInfo = ProjInfo;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnHeadsUpEmitter
+// (Defined, Public)
+// Parameters:
+// struct FVector                 Location                       (Parm)
+// struct FRotator                Rotation                       (Parm)
+
+void UDunDef_SeqAct_ProjectileSpawner::SpawnHeadsUpEmitter(const struct FVector& Location, const struct FRotator& Rotation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_ProjectileSpawner.SpawnHeadsUpEmitter");
+
+	UDunDef_SeqAct_ProjectileSpawner_SpawnHeadsUpEmitter_Params params;
+	params.Location = Location;
+	params.Rotation = Rotation;
 
 	auto flags = fn->FunctionFlags;
 
@@ -96556,6 +96681,37 @@ struct Fact_int_pair UDunDef_SeqAct_ProjectileSpawner::MakeActIntPair(class AAct
 	UDunDef_SeqAct_ProjectileSpawner_MakeActIntPair_Params params;
 	params.A = A;
 	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDef_SeqAct_ProjectileSpawner.MakeProjectileSpawnInfo
+// (Defined, Public, HasDefaults)
+// Parameters:
+// float                          T                              (Parm)
+// class AActor*                  TargetActor                    (Parm)
+// int                            I                              (Parm)
+// struct FVector                 Location                       (Parm)
+// struct FVector                 Direction                      (Parm)
+// struct FProjectileSpawnInfo    ReturnValue                    (Parm, OutParm, ReturnParm)
+
+struct FProjectileSpawnInfo UDunDef_SeqAct_ProjectileSpawner::MakeProjectileSpawnInfo(float T, class AActor* TargetActor, int I, const struct FVector& Location, const struct FVector& Direction)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_ProjectileSpawner.MakeProjectileSpawnInfo");
+
+	UDunDef_SeqAct_ProjectileSpawner_MakeProjectileSpawnInfo_Params params;
+	params.T = T;
+	params.TargetActor = TargetActor;
+	params.I = I;
+	params.Location = Location;
+	params.Direction = Direction;
 
 	auto flags = fn->FunctionFlags;
 
@@ -103434,14 +103590,16 @@ struct FString UDunDefBuffEffectInterface::GetBuffDescription(const TScriptInter
 // (Simulated, HasOptionalParms, Public)
 // Parameters:
 // TScriptInterface<class UDunDefTargetableInterface> aTarget                        (OptionalParm, Parm)
+// unsigned long                  bDontIncludeTierName           (OptionalParm, Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UDunDefBuffEffectInterface::GetBuffName(const TScriptInterface<class UDunDefTargetableInterface>& aTarget)
+struct FString UDunDefBuffEffectInterface::GetBuffName(const TScriptInterface<class UDunDefTargetableInterface>& aTarget, unsigned long bDontIncludeTierName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefBuffEffectInterface.GetBuffName");
 
 	UDunDefBuffEffectInterface_GetBuffName_Params params;
 	params.aTarget = aTarget;
+	params.bDontIncludeTierName = bDontIncludeTierName;
 
 	auto flags = fn->FunctionFlags;
 
@@ -121619,6 +121777,98 @@ float ADunDefTower_JackInTheBox::GetAttackRange()
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefTower_MultiProjectile.ValidateTargets
+// (Defined, Public)
+
+void ADunDefTower_MultiProjectile::ValidateTargets()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefTower_MultiProjectile.ValidateTargets");
+
+	ADunDefTower_MultiProjectile_ValidateTargets_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefTower_MultiProjectile.CanAttackAnyTarget
+// (Defined, Public, HasDefaults)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefTower_MultiProjectile::CanAttackAnyTarget()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefTower_MultiProjectile.CanAttackAnyTarget");
+
+	ADunDefTower_MultiProjectile_CanAttackAnyTarget_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefTower_MultiProjectile.UpdateAI
+// (Defined, Public)
+// Parameters:
+// float                          DeltaTime                      (Parm)
+
+void ADunDefTower_MultiProjectile::UpdateAI(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefTower_MultiProjectile.UpdateAI");
+
+	ADunDefTower_MultiProjectile_UpdateAI_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefTower_MultiProjectile.ShootProjectile
+// (Defined, Simulated, Event, Public, HasDefaults)
+
+void ADunDefTower_MultiProjectile::ShootProjectile()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefTower_MultiProjectile.ShootProjectile");
+
+	ADunDefTower_MultiProjectile_ShootProjectile_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefTower_MultiProjectile.UpdateTarget
+// (Defined, Public, HasDefaults)
+
+void ADunDefTower_MultiProjectile::UpdateTarget()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefTower_MultiProjectile.UpdateTarget");
+
+	ADunDefTower_MultiProjectile_UpdateTarget_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 

@@ -145,6 +145,28 @@ struct Findexer UDunDef_SeqAct_BuffArrayManager::CreateBuffInfo(class ADunDefPla
 }
 
 
+// Function DunDefBuff.DunDef_SeqAct_BuffArrayManager.NotifyPlayer
+// (Defined, Simulated, Public)
+// Parameters:
+// class ADunDefPlayerController* PC                             (Parm)
+// int                            BuffChosen                     (Parm)
+
+void UDunDef_SeqAct_BuffArrayManager::NotifyPlayer(class ADunDefPlayerController* PC, int BuffChosen)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefBuff.DunDef_SeqAct_BuffArrayManager.NotifyPlayer");
+
+	UDunDef_SeqAct_BuffArrayManager_NotifyPlayer_Params params;
+	params.PC = PC;
+	params.BuffChosen = BuffChosen;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function DunDefBuff.DunDef_SeqAct_ClearBuffs.Activated
 // (Defined, Event, Public)
 

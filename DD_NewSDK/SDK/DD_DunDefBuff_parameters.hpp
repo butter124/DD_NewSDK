@@ -56,6 +56,13 @@ struct UDunDef_SeqAct_BuffArrayManager_CreateBuffInfo_Params
 	struct Findexer                                    ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function DunDefBuff.DunDef_SeqAct_BuffArrayManager.NotifyPlayer
+struct UDunDef_SeqAct_BuffArrayManager_NotifyPlayer_Params
+{
+	class ADunDefPlayerController*                     PC;                                                       // (Parm)
+	int                                                BuffChosen;                                               // (Parm)
+};
+
 // Function DunDefBuff.DunDef_SeqAct_ClearBuffs.Activated
 struct UDunDef_SeqAct_ClearBuffs_Activated_Params
 {

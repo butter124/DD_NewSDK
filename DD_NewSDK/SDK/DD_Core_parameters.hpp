@@ -352,6 +352,14 @@ struct UObject_AddEqual_HighDigitIntHighDigitInt_Params
 	struct FHighDigitInt                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function Core.Object.AddEqual_HighDigitIntFloat
+struct UObject_AddEqual_HighDigitIntFloat_Params
+{
+	struct FHighDigitInt                               A;                                                        // (Parm, OutParm)
+	float                                              B;                                                        // (Parm)
+	struct FHighDigitInt                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function Core.Object.AddEqual_HighDigitIntInt
 struct UObject_AddEqual_HighDigitIntInt_Params
 {
