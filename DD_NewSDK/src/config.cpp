@@ -642,6 +642,13 @@ Classes::UEngine *Config::GetEngine() {
   return obj;
 }
 
+Classes::TArray<Classes::ULocalPlayer *> Config::GetDunDefPlayers() {
+  Classes::UEngine *uengine = GetEngine();
+  if (uengine == nullptr)
+    return Classes::TArray<Classes::ULocalPlayer *>{};
+  return uengine->GamePlayers;
+}
+
 Classes::ADunDefPlayerController *Config::GetADunDefPlayerController() {
   Classes::UEngine *uengine = GetEngine();
 
@@ -651,9 +658,34 @@ Classes::ADunDefPlayerController *Config::GetADunDefPlayerController() {
   return (Classes::ADunDefPlayerController *)uengine->GamePlayers[0]->Actor;
 }
 
+Classes::ADunDefPlayerController *
+Config::GetADunDefPlayerControllerByIndex(int i) {
+  Classes::UEngine *uengine = GetEngine();
+
+  if (!uengine || !uengine->GamePlayers.IsValidIndex(i))
+    return nullptr;
+
+  return (Classes::ADunDefPlayerController *)uengine->GamePlayers[i]->Actor;
+}
+
 Classes::ADunDefPawn *Config::GetPlayerPawn() {
   Classes::ADunDefPlayerController *playerController =
       GetADunDefPlayerController();
+
+  if (playerController == nullptr) {
+    return nullptr;
+  }
+
+  if (playerController->Pawn == nullptr) {
+    return nullptr;
+  }
+
+  return (Classes::ADunDefPlayer *)playerController->Pawn;
+}
+
+Classes::ADunDefPawn *Config::GetPlayerPawnByIndex(int i) {
+  Classes::ADunDefPlayerController *playerController =
+      GetADunDefPlayerControllerByIndex(i);
 
   if (playerController == nullptr) {
     return nullptr;

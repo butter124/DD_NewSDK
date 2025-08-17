@@ -287,8 +287,11 @@ public:
   void HandleThreadSafeLuaRequest();
   Classes::UEngine *GetEngine();
   Classes::UDunDefViewportClient *GetViewportClient();
-  Classes::ADunDefPlayerController *GetADunDefPlayerController();
-  Classes::ADunDefPawn *GetPlayerPawn();
+  Classes::TArray<Classes::ULocalPlayer*> GetDunDefPlayers();
+  Classes::ADunDefPlayerController *GetADunDefPlayerController(); // this should no longer be used
+  Classes::ADunDefPlayerController *GetADunDefPlayerControllerByIndex(int i);
+  Classes::ADunDefPawn *GetPlayerPawn(); // this should no longer be used
+  Classes::ADunDefPawn *GetPlayerPawnByIndex(int i);
   Classes::APawn *GetFirstPawnInList();
   Classes::AWorldInfo *GetWorldInfo();
   Classes::AMain *GetGameInfo();

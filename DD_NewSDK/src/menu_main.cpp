@@ -1078,7 +1078,6 @@ void MenuMain::Debug() {
         config->minDist, &config->pathfindNextPoint);
   }
   // pathfind to next point
-
   if (ImGui::Button("move path")) {
     config->pathfindToPoint = pPlayerPawn->Location;
   }
@@ -1091,43 +1090,14 @@ void MenuMain::Debug() {
   if (ImGui::Button("Test"))
     pController->MoveToDirectNonPathPos(config->vacPos,
                                         pWorld->TargetableActors[0], 19, 0);
+
+  auto players = config->GetDunDefPlayers();
+  ImGui::Text("Player count: %i", players.Num());
+
   return;
 }
 
 void MenuMain::ImGuiItem(Classes::UHeroEquipment *item) {
-  // ATTEMPTS TO FIND REAL DAMAGE FUNCTION
-  // auto test2 = item->GetBaseDamage();
-  // ImGui::Text("GetBaseDamage %d", test2);
-  // auto test3 = item->GetPrimaryDamageIncreaseDisplay(100);
-  // ImGui::Text("GetPrimaryDamageIncreaseDisplay 100:%d", test3);
-  // auto test4 = item->GetPrimaryDamageIncreaseDisplay(50);
-  // ImGui::Text("GetPrimaryDamageIncreaseDisplay 50:%d", test4);
-  // auto test = item->GetWeaponDamage();
-  // ImGui::Text("GetWeaponDamage %d", test);
-  // ImGui::Text("WeaponDamageDisplayValueScale %f",
-  // item->WeaponDamageDisplayValueScale);
-  // ImGui::Text("WeaponAdditionalDamageAmount %d",
-  // item->WeaponAdditionalDamageAmount);
-  // auto t =
-  //      ((Classes::ADunDefPlayerReplicationInfo *)(config->GetPlayerPawn()
-  //                                                     ->PlayerReplicationInfo))
-  //          ->GetPlayer();
-  //
-  //  int out3 = item->EquipmentWeaponTemplate->BaseDamage +
-  //             item->WeaponDamageBonus + item->WeaponAdditionalDamageAmount;
-  //
-  //  float multiplier =
-  //      item->WeaponDamageDisplayValueScale * t->PlayerWeaponDamageMultiplier;
-  //
-  //  float multiplier2 = item->EquipmentWeaponTemplate->WeaponDamageMultiplier
-  //  *
-  //                      item->WeaponDamageMultiplier;
-  //
-  //  out3 = (multiplier2)*max((multiplier * out3), 1);
-  //  ImGui::Text("%i", out3);
-  //  auto a = item->GetPrimaryDamageIncreaseDisplay(item->GetWeaponDamage());
-  //  ImGui::Text("%i", a);
-
   if (ImGui::Button(("Give##%ls" + item->GetName()).c_str())) {
     config->PushItemToQueue(item);
   }

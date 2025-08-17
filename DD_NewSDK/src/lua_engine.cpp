@@ -28,7 +28,8 @@ bool LUA_ENGINE::init() {
   is_init = true;
 
   Classes::ADunDefPlayerController*playerController =  config->GetADunDefPlayerController();
-  Classes::ADunDefPawn*playerPawn =  config->GetPlayerPawn();
+  Classes::ADunDefPawn*playerPawn =  config->GetPlayerPawnByIndex(0);
+  Classes::ADunDefPawn*playerPawn =  config->GetPlayerPawnByIndex(1);
   luaPlayer = Player(playerController,playerPawn);
   log("Initalizing Lua engine");
   L.open_libraries(sol::lib::base, sol::lib::string, sol::lib::coroutine);
