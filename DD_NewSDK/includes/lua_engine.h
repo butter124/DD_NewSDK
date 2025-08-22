@@ -4,7 +4,7 @@
 #include "pch.h"
 #include "includes/config.h"
 #include "includes/ent.h"
-#include "includes/player.h"
+#include "includes/playerHelper.h"
 #include <SDK/DD_Core_structs.hpp>
 #include <mutex>
 #include <sol/forward.hpp>
@@ -23,8 +23,6 @@ public:
   bool execute_lua_file(const std::string &filename);
   bool execute_lua_string(const std::string &str);
 
-  static int set_player_health(int var);
-  static Entity *get_player();
   static Classes::FVector test();
   sol::state L;
 
@@ -50,9 +48,18 @@ private:
   static bool log(const std::string &s);
 
   // API FUNCTION
-  static Player luaPlayer;
+  static PlayerHelper &luaPlayerHelper;
+
+  static float distance_between(Classes::FVector to, Classes::FVector from);
 
   static void add_floating_text_in_world(const std::string &s,
                                          Classes::FVector pos);
   static void remove_floating_text_in_world(const std::string &s);
+
+  static int set_player_health(int playerNum, int var);
+  static int get_player_health(int playerNum);
+
+  static void set_player_location(int playerNum, Classes::FVector pos);
+  static Classes::FVector get_player_location(int playerNum);
+  static void player_move_to(int playerNum, Classes::FVector pos);
 };

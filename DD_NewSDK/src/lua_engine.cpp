@@ -11,7 +11,7 @@
 #include "includes/lua_engine.h"
 
 
-Player LUA_ENGINE::luaPlayer;
+PlayerHelper& LUA_ENGINE::luaPlayerHelper = PlayerHelper::getInstance();
 std::mutex LUA_ENGINE::coroutine_mtx;
 bool LUA_ENGINE::bRunning;
 std::queue<sol::coroutine> LUA_ENGINE::coroutine_queue;
@@ -28,9 +28,8 @@ bool LUA_ENGINE::init() {
   is_init = true;
 
   Classes::ADunDefPlayerController*playerController =  config->GetADunDefPlayerController();
-  Classes::ADunDefPawn*playerPawn =  config->GetPlayerPawnByIndex(0);
-  Classes::ADunDefPawn*playerPawn =  config->GetPlayerPawnByIndex(1);
-  luaPlayer = Player(playerController,playerPawn);
+  Classes::ADunDefPawn*playerPawn1 =  config->GetPlayerPawnByIndex(0);
+  Classes::ADunDefPawn*playerPawn2 =  config->GetPlayerPawnByIndex(1);
   log("Initalizing Lua engine");
   L.open_libraries(sol::lib::base, sol::lib::string, sol::lib::coroutine);
   init_lua_classes();
@@ -113,20 +112,19 @@ bool LUA_ENGINE::init_lua_classes() {
       "Z", &Classes::FVector::Z
   );
 
-  L.new_usertype<Entity>("Entity",
-                         sol::no_constructor,
-                         "getHealth", &Entity::getHealth,
-                         "setHealth", &Entity::setHealth,
-                         "setPos", &Entity::setPos,
-                         "getPos", &Entity::getPos,
-                         "moveTo", &Entity::moveTo,
-                         "distanceToPoint",&Entity::distanceToPoint
-                         );
+  // Outdated exmaple of binding cpp to the lua engine
+  // L.new_usertype<Entity>("Entity",
+  //                        sol::no_constructor,
+  //                        "getHealth", &Entity::getHealth,
+  //                        "setHealth", &Entity::setHealth,
+  //                        "setPos", &Entity::setPos,
+  //                        "getPos", &Entity::getPos,
+  //                        "moveTo", &Entity::moveTo,
+  //                        "distanceToPoint",&Entity::distanceToPoint
+  //                        );
 
-L.new_usertype<Player>("Player",
-                       sol::no_constructor,
-                       sol::base_classes, sol::bases<Entity>());
-  return true; }
+  return true; 
+}
 
 bool LUA_ENGINE::cleanup() {
   if (!is_init)
@@ -142,10 +140,16 @@ bool LUA_ENGINE::init_lua_functions() {
   log("Registering lua functions.");
   // Put any lua functions here for the lua api
   // L.set_function("set_player_health", set_player_health);
-  L.set_function("get_player", get_player);
   L.set_function("push_lua_task", push_lua_task);
   L.set_function("add_floating_text_in_world",add_floating_text_in_world);
   L.set_function("remove_floating_text_in_world",remove_floating_text_in_world);
+
+  L.set_function("set_player_health", set_player_health);
+  L.set_function("get_player_health", get_player_health);
+  L.set_function("set_player_location", set_player_location);
+  L.set_function("get_player_location", get_player_location);
+  L.set_function("player_move_to", player_move_to);
+
 
   return true;
 }
@@ -182,19 +186,9 @@ LUA_ENGINE &LUA_ENGINE::get_instance() {
 }
 
 // GAME FUNCTIONS
-int LUA_ENGINE::set_player_health(int var) {
-  config->GetPlayerPawn()->Health = var;
-  return var;
-}
 
-
-Entity* LUA_ENGINE::get_player(){
-std::ostringstream oss;
-  return &luaPlayer;
-}
-
-  Classes::FVector LUA_ENGINE::test(){
-  return {1337,1337,1337};
+Classes::FVector LUA_ENGINE::test(){
+return {1337,1337,1337};
 }
 
 void LUA_ENGINE::add_floating_text_in_world(const std::string &s,
@@ -206,8 +200,35 @@ void LUA_ENGINE::add_floating_text_in_world(const std::string &s,
 void LUA_ENGINE::remove_floating_text_in_world(const std::string &s){
   config->RemovePointToScreenDrawingQueue(s);
 }
-// clang-format on
+
 void LUA_ENGINE::insert_thread_safe_request(std::function<void()> v) {
   std::lock_guard<std::mutex> lock(threadsafe_lua_task_mtx);
   threadsafe_lua_tasks.push(v);
+}
+
+
+float LUA_ENGINE::distance_between(Classes::FVector to, Classes::FVector from){
+  return config->Distance(to,from);
+}
+
+
+int LUA_ENGINE::set_player_health(int playerNum, int health) {
+  config->setPlayerHealth(playerNum, health);
+  return health;
+}
+
+int LUA_ENGINE::get_player_health(int playerNum){
+  return config->getPlayerHealth(playerNum);
+}
+
+void LUA_ENGINE::set_player_location(int playerNum, Classes::FVector pos){
+  config->setPlayerLocation(playerNum, pos);
+}
+
+Classes::FVector LUA_ENGINE::get_player_location(int playerNum){
+  return config->getPlayerLocation(playerNum);
+}
+
+void LUA_ENGINE::player_move_to(int playerNum, Classes::FVector pos){
+  config->playerMoveTo(playerNum, pos);
 }

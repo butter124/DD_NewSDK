@@ -2202,3 +2202,40 @@ void Config::RemovePointToScreenDrawingQueue(const std::string &s) {
     config->PrintToConsole("Failed to remove " + s);
   }
 }
+
+void Config::setPlayerHealth(int playerNum, int health) {
+  auto player = GetPlayerPawnByIndex(playerNum);
+  if (!player)
+    return;
+
+  player->Health = health;
+}
+
+int Config::getPlayerHealth(int playerNum) {
+  auto player = GetPlayerPawnByIndex(playerNum);
+  if (!player)
+    return -1;
+
+  return player->Health;
+}
+
+void Config::setPlayerLocation(int playerNum, Classes::FVector pos) {
+  auto player = GetPlayerPawnByIndex(playerNum);
+  if (!player)
+    return;
+  player->Location = pos;
+}
+
+Classes::FVector Config::getPlayerLocation(int playerNum) {
+  auto player = GetPlayerPawnByIndex(playerNum);
+  if (!player)
+    return {0, 0, 0};
+  return player->Location;
+}
+
+void Config::playerMoveTo(int playerNum, Classes::FVector pos) {
+  auto player = GetPlayerPawnByIndex(playerNum);
+  if (!player)
+    return;
+  player->Controller->MoveToDirectNonPathPos(pos, nullptr, 20, 0);
+}

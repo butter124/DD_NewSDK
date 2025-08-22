@@ -87,8 +87,6 @@ struct KeybindsStruct {
   std::string name;
 };
 
-class Entity;
-class Player;
 class LUA_ENGINE;
 class Config {
 private:
@@ -287,8 +285,9 @@ public:
   void HandleThreadSafeLuaRequest();
   Classes::UEngine *GetEngine();
   Classes::UDunDefViewportClient *GetViewportClient();
-  Classes::TArray<Classes::ULocalPlayer*> GetDunDefPlayers();
-  Classes::ADunDefPlayerController *GetADunDefPlayerController(); // this should no longer be used
+  Classes::TArray<Classes::ULocalPlayer *> GetDunDefPlayers();
+  Classes::ADunDefPlayerController *
+  GetADunDefPlayerController(); // this should no longer be used
   Classes::ADunDefPlayerController *GetADunDefPlayerControllerByIndex(int i);
   Classes::ADunDefPawn *GetPlayerPawn(); // this should no longer be used
   Classes::ADunDefPawn *GetPlayerPawnByIndex(int i);
@@ -351,5 +350,12 @@ public:
                                        float WithinDistance,
                                        bool bAllowPartialPath);
   void HandlePathfinding();
+
+  void setPlayerHealth(int playerNum, int health);
+  int getPlayerHealth(int playerNum);
+  void setPlayerLocation(int playerNum, Classes::FVector pos);
+  Classes::FVector getPlayerLocation(int playerNum);
+
+  void playerMoveTo(int playerNum, Classes::FVector pos);
 };
 extern Config *config;

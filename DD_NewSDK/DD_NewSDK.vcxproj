@@ -179,7 +179,7 @@
     <ClInclude Include="includes\menu_main.h" />
     <ClInclude Include="includes\menu.h" />
     <ClInclude Include="includes\menu_template.h" />
-    <ClInclude Include="includes\player.h" />
+    <ClInclude Include="includes\playerHelper.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SDK.hpp" />
   </ItemGroup>
@@ -207,7 +207,7 @@
     <ClCompile Include="src\menu_main.cpp" />
     <ClCompile Include="src\menu.cpp" />
     <ClCompile Include="src\menu_template.cpp" />
-    <ClCompile Include="src\player.cpp" />
+    <ClCompile Include="src\playerHelper.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

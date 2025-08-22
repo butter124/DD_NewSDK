@@ -84,10 +84,10 @@
     <ClInclude Include="includes\lua_engine.h">
       <Filter>Header Files\includes</Filter>
     </ClInclude>
-    <ClInclude Include="includes\player.h">
+    <ClInclude Include="includes\ent.h">
       <Filter>Header Files\includes</Filter>
     </ClInclude>
-    <ClInclude Include="includes\ent.h">
+    <ClInclude Include="includes\playerHelper.h">
       <Filter>Header Files\includes</Filter>
     </ClInclude>
   </ItemGroup>
@@ -143,10 +143,10 @@
     <ClCompile Include="src\lua_engine.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\player.cpp">
+    <ClCompile Include="src\ent.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\ent.cpp">
+    <ClCompile Include="src\playerHelper.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>

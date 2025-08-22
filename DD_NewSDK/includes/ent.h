@@ -2,12 +2,10 @@
 #include "SDK.hpp"
 #include <SDK/DD_UDKGame_classes.hpp>
 
-class Entity {
+class EntityHelper {
 public:
-  Entity();
-  Entity(Classes::AController *controller, Classes::ADunDefPawn *pawn);
-  Classes::AController *controller;
-  Classes::ADunDefPawn *pawn;
+  EntityHelper();
+  EntityHelper(Classes::AController *controller, Classes::ADunDefPawn *pawn);
 
   Classes::FVector getPos();
   void setPos(Classes::FVector pos);
@@ -17,8 +15,8 @@ public:
   bool moveTo(Classes::FVector &pos, float offset);
   float distanceToPoint(Classes::FVector &point);
 
-  Entity nextEntity(Classes::AController &controller,
-                    Classes::ADunDefPawn &pawn);
+  EntityHelper nextEntity(Classes::AController &controller,
+                          Classes::ADunDefPawn &pawn);
 
 private:
   bool bPathing = false;
