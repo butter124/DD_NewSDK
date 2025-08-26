@@ -43,7 +43,8 @@ bool Config::Init() {
 
 
   // TODO: register keybinds needs to be changed in a way that handles a single point of definition
-  RegisterKeybind("Toggle menu",Config::KeyBinds::ToggleKey,519,[this](){bShowMenu = !bShowMenu;});
+  RegisterKeybind("Toggle menu",Config::KeyBinds::ToggleKey,519,[this](){bShowMenu = !bShowMenu; 
+                                                                         bBlockInput = bShowMenu;});
   RegisterKeybind("End menu",Config::KeyBinds::EndKey,520,[this](){bEndMenu = true;});
   RegisterKeybind("Teleport players",Config::KeyBinds::TeleportPlayers,521,[this](){bTeleportPlayers = !bTeleportPlayers;});
   RegisterKeybind("Vacuum pos",Config::KeyBinds::UpdateVacuumPos,522,[this](){SetVacPos(GetPlayerPos());});
@@ -52,8 +53,8 @@ bool Config::Init() {
   bool invert = !bPlayerGodMode;
   RegisterBlockedFunction("Function DunDefPlayerController.Dead.BeginState", invert);
   RegisterBlockedFunction("Function UDKGame.DunDefPlayer.Dying.BeginState", invert);
-  RegisterBlockedFunction("Function UDKGame.DunDefPlayerController.JumpPressed", bShowMenu);
-  RegisterBlockedFunction("Function UDKGame.DunDefPlayerController.PlayerWalking.PlayerTick", bShowMenu);
+  RegisterBlockedFunction("Function UDKGame.DunDefPlayerController.JumpPressed", bBlockInput);
+  RegisterBlockedFunction("Function UDKGame.DunDefPlayerController.PlayerWalking.PlayerTick", bBlockInput);
 
   // clang-format on
 
