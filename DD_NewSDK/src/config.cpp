@@ -258,6 +258,7 @@ void Config::HandleThreadSafeLuaRequest() {
   }
 }
 void Config::DrawingOnScreen(PROCESS_EVENT_ARGS) {
+    return;
   auto canvas =
       ((Classes::UGameViewportClient_PostRender_Params *)(pParms))->Canvas;
 
@@ -275,6 +276,7 @@ void Config::DrawingOnScreen(PROCESS_EVENT_ARGS) {
   if (screenpoint2.Z > 0.0f && screenpoint2.Z < 1.0f)
     DrawTextCentered(canvas, L"ToPoint", screenpoint2.X, screenpoint2.Y,
                      {0, 255, 0, 255});
+
 
   GetADunDefPlayerController()->myHUD->Draw3DLine(
       GetPlayerPawn()->Location, pathfindNextPoint, {0, 0, 255, 255});

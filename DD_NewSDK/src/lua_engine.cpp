@@ -49,7 +49,7 @@ bool LUA_ENGINE::init() {
 
 void LUA_ENGINE::thread_main() {
     while (bRunning) {
-      log(std::format("coroutines: {}", coroutine_queue.size()));
+      //log(std::format("coroutines: {}", coroutine_queue.size()));
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
 

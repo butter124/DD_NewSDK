@@ -2404,6 +2404,29 @@ float UHeroEquipment::GetEquipmentStatValue(TEnumAsByte<EEquipmentStatType> equi
 }
 
 
+// Function UDKGame.HeroEquipment.GetBonusStatForEquipmentStacking
+// (Defined, Public)
+// Parameters:
+// TEnumAsByte<ELevelUpValueType> levelUpValue                   (Parm)
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UHeroEquipment::GetBonusStatForEquipmentStacking(TEnumAsByte<ELevelUpValueType> levelUpValue)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment.GetBonusStatForEquipmentStacking");
+
+	UHeroEquipment_GetBonusStatForEquipmentStacking_Params params;
+	params.levelUpValue = levelUpValue;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function UDKGame.HeroEquipment.GetEquipmentStatName
 // (Defined, Public)
 // Parameters:
@@ -50369,6 +50392,23 @@ unsigned long ADunDefPlayerAbility::CanAffordAbility()
 }
 
 
+// Function UDKGame.DunDefPlayerAbility.SpawnDeactivateBuffs
+// (Defined, Public)
+
+void ADunDefPlayerAbility::SpawnDeactivateBuffs()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerAbility.SpawnDeactivateBuffs");
+
+	ADunDefPlayerAbility_SpawnDeactivateBuffs_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function UDKGame.DunDefPlayerAbility.RemoveActiveBuffs
 // (Defined, Public)
 
@@ -57140,6 +57180,23 @@ void ADunDefPlayer::OnBuffAdded(class UObject* BuffAdded)
 
 	ADunDefPlayer_OnBuffAdded_Params params;
 	params.BuffAdded = BuffAdded;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefPlayer.UpdateStats
+// (Defined, Simulated, Public)
+
+void ADunDefPlayer::UpdateStats()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayer.UpdateStats");
+
+	ADunDefPlayer_UpdateStats_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -74773,6 +74830,117 @@ void ADunDefEnemy::ClientTakeDamage(int DamageAmount, class APawn* InstigatorPaw
 }
 
 
+// Function UDKGame.DunDefEnemy.UnSetFrozen
+// (Defined, Simulated, Public)
+
+void ADunDefEnemy::UnSetFrozen()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefEnemy.UnSetFrozen");
+
+	ADunDefEnemy_UnSetFrozen_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefEnemy.PlayFrozen
+// (Simulated, Public)
+
+void ADunDefEnemy::PlayFrozen()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefEnemy.PlayFrozen");
+
+	ADunDefEnemy_PlayFrozen_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefEnemy.SetFrozen
+// (Defined, Simulated, Public)
+// Parameters:
+// float                          Duration                       (Parm)
+
+void ADunDefEnemy::SetFrozen(float Duration)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefEnemy.SetFrozen");
+
+	ADunDefEnemy_SetFrozen_Params params;
+	params.Duration = Duration;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefEnemy.SetOilDebuffAmount
+// (Defined, Simulated, Public)
+// Parameters:
+// float                          DamageMult                     (Parm)
+
+void ADunDefEnemy::SetOilDebuffAmount(float DamageMult)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefEnemy.SetOilDebuffAmount");
+
+	ADunDefEnemy_SetOilDebuffAmount_Params params;
+	params.DamageMult = DamageMult;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefEnemy.UnSetOiled
+// (Defined, Simulated, Public)
+
+void ADunDefEnemy::UnSetOiled()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefEnemy.UnSetOiled");
+
+	ADunDefEnemy_UnSetOiled_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefEnemy.SetOiled
+// (Defined, Simulated, Public)
+// Parameters:
+// float                          Duration                       (Parm)
+
+void ADunDefEnemy::SetOiled(float Duration)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefEnemy.SetOiled");
+
+	ADunDefEnemy_SetOiled_Params params;
+	params.Duration = Duration;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function UDKGame.DunDefEnemy.SetGolded
 // (Defined, Public)
 
@@ -77770,6 +77938,29 @@ void UUI_ItemBox::AddToTrade()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.UI_ItemBox.CheckSpecialPrivilige
+// (Defined, Public, HasDefaults)
+// Parameters:
+// int                            privindex                      (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UUI_ItemBox::CheckSpecialPrivilige(int privindex)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.UI_ItemBox.CheckSpecialPrivilige");
+
+	UUI_ItemBox_CheckSpecialPrivilige_Params params;
+	params.privindex = privindex;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -88894,6 +89085,31 @@ void ADunDefManaToken::ReplicatedEvent(const struct FName& VarName)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefGasCloud.StaticGetCloudOilTime
+// (Defined, Static, Public)
+// Parameters:
+// float                          lifeSpanStatModifier           (Parm)
+// class ADunDefGasCloud*         gCloud                         (Parm)
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefGasCloud::STATIC_StaticGetCloudOilTime(float lifeSpanStatModifier, class ADunDefGasCloud* gCloud)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefGasCloud.StaticGetCloudOilTime");
+
+	ADunDefGasCloud_StaticGetCloudOilTime_Params params;
+	params.lifeSpanStatModifier = lifeSpanStatModifier;
+	params.gCloud = gCloud;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -104058,6 +104274,63 @@ void UDunDefMiniMapIconInterface::DrawMiniMapIcon(class UCanvas* Canvas, class A
 }
 
 
+// Function UDKGame.DunDefPracticeDummy.UnSetOiled
+// (Defined, Simulated, Public)
+
+void ADunDefPracticeDummy::UnSetOiled()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPracticeDummy.UnSetOiled");
+
+	ADunDefPracticeDummy_UnSetOiled_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefPracticeDummy.SetOiled
+// (Defined, Simulated, Public)
+// Parameters:
+// float                          Duration                       (Parm)
+
+void ADunDefPracticeDummy::SetOiled(float Duration)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPracticeDummy.SetOiled");
+
+	ADunDefPracticeDummy_SetOiled_Params params;
+	params.Duration = Duration;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefPracticeDummy.SetOilDebuffAmount
+// (Defined, Simulated, Public)
+// Parameters:
+// float                          DamageMult                     (Parm)
+
+void ADunDefPracticeDummy::SetOilDebuffAmount(float DamageMult)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPracticeDummy.SetOilDebuffAmount");
+
+	ADunDefPracticeDummy_SetOilDebuffAmount_Params params;
+	params.DamageMult = DamageMult;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function UDKGame.DunDefPracticeDummy.ReportPercentage
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
@@ -111715,6 +111988,80 @@ void ADunDefForestGolemController::PostBeginPlay()
 }
 
 
+// Function UDKGame.DunDefTower_OilTrap.GetOilDebuffAmount
+// (Defined, Simulated, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefTower_OilTrap::GetOilDebuffAmount()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefTower_OilTrap.GetOilDebuffAmount");
+
+	ADunDefTower_OilTrap_GetOilDebuffAmount_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefTower_OilTrap.ScaleForHeroModifiers
+// (Defined, Public)
+// Parameters:
+// unsigned long                  IsFirstTime                    (Parm)
+
+void ADunDefTower_OilTrap::ScaleForHeroModifiers(unsigned long IsFirstTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefTower_OilTrap.ScaleForHeroModifiers");
+
+	ADunDefTower_OilTrap_ScaleForHeroModifiers_Params params;
+	params.IsFirstTime = IsFirstTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefTower_OilTrap.DrawTowerToolTipStats
+// (Defined, Simulated, Public, HasOutParms)
+// Parameters:
+// class UCanvas*                 C                              (Parm)
+// float                          PosX                           (Parm, OutParm)
+// float                          PosY                           (Parm, OutParm)
+// float                          Opacity                        (Parm)
+// class ULocalPlayer*            ForPlayer                      (Parm)
+// float                          canvasScale                    (Parm)
+
+void ADunDefTower_OilTrap::DrawTowerToolTipStats(class UCanvas* C, float Opacity, class ULocalPlayer* ForPlayer, float canvasScale, float* PosX, float* PosY)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefTower_OilTrap.DrawTowerToolTipStats");
+
+	ADunDefTower_OilTrap_DrawTowerToolTipStats_Params params;
+	params.C = C;
+	params.Opacity = Opacity;
+	params.ForPlayer = ForPlayer;
+	params.canvasScale = canvasScale;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (PosX != nullptr)
+		*PosX = params.PosX;
+	if (PosY != nullptr)
+		*PosY = params.PosY;
+}
+
+
 // Function UDKGame.DunDefGoblin.PlayGoblinAttackAnimation
 // (Defined, Simulated, Public)
 // Parameters:
@@ -113817,6 +114164,28 @@ float ADunDefManaBomb::GetDamage()
 }
 
 
+// Function UDKGame.DunDefManaBomb.SetCustomScalar
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// float                          dmg                            (OptionalParm, Parm)
+// float                          Range                          (OptionalParm, Parm)
+
+void ADunDefManaBomb::SetCustomScalar(float dmg, float Range)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefManaBomb.SetCustomScalar");
+
+	ADunDefManaBomb_SetCustomScalar_Params params;
+	params.dmg = dmg;
+	params.Range = Range;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function UDKGame.DunDefManaBomb.DoDamage
 // (Defined, Public)
 
@@ -113825,6 +114194,23 @@ void ADunDefManaBomb::DoDamage()
 	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefManaBomb.DoDamage");
 
 	ADunDefManaBomb_DoDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefManaBomb.DrawScale
+// (Defined, Public)
+
+void ADunDefManaBomb::DrawScale()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefManaBomb.DrawScale");
+
+	ADunDefManaBomb_DrawScale_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -118926,6 +119312,265 @@ int ADunDefPlayerAbility_UpgradeTower::GetCostToActivate(unsigned long returnTru
 }
 
 
+// Function UDKGame.DunDefPlayerClone.SetHealth
+// (Defined, Simulated, Public)
+
+void ADunDefPlayerClone::SetHealth()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerClone.SetHealth");
+
+	ADunDefPlayerClone_SetHealth_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefPlayerClone.AnimNotify_ResetOffhandWeaponSwingDamage
+// (Event, Public)
+
+void ADunDefPlayerClone::AnimNotify_ResetOffhandWeaponSwingDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerClone.AnimNotify_ResetOffhandWeaponSwingDamage");
+
+	ADunDefPlayerClone_AnimNotify_ResetOffhandWeaponSwingDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefPlayerClone.DrawMiniMapIcon
+// (Defined, Simulated, Public, HasDefaults)
+// Parameters:
+// class UCanvas*                 Canvas                         (Parm)
+// class ADunDefMiniMap*          MiniMap                        (Parm)
+
+void ADunDefPlayerClone::DrawMiniMapIcon(class UCanvas* Canvas, class ADunDefMiniMap* MiniMap)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerClone.DrawMiniMapIcon");
+
+	ADunDefPlayerClone_DrawMiniMapIcon_Params params;
+	params.Canvas = Canvas;
+	params.MiniMap = MiniMap;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefPlayerClone.AnimNotify_StartOffhandWeaponSwingDamage
+// (Event, Public)
+
+void ADunDefPlayerClone::AnimNotify_StartOffhandWeaponSwingDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerClone.AnimNotify_StartOffhandWeaponSwingDamage");
+
+	ADunDefPlayerClone_AnimNotify_StartOffhandWeaponSwingDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefPlayerClone.AnimNotify_StopOffhandWeaponSwingDamage
+// (Event, Public)
+
+void ADunDefPlayerClone::AnimNotify_StopOffhandWeaponSwingDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerClone.AnimNotify_StopOffhandWeaponSwingDamage");
+
+	ADunDefPlayerClone_AnimNotify_StopOffhandWeaponSwingDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefPlayerClone.PostBeginPlay
+// (Defined, Simulated, Public)
+
+void ADunDefPlayerClone::PostBeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerClone.PostBeginPlay");
+
+	ADunDefPlayerClone_PostBeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefPlayerClone.Attack
+// (Defined, Simulated, HasOptionalParms, Public)
+// Parameters:
+// float                          damagemulti                    (OptionalParm, Parm)
+
+void ADunDefPlayerClone::Attack(float damagemulti)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerClone.Attack");
+
+	ADunDefPlayerClone_Attack_Params params;
+	params.damagemulti = damagemulti;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefPlayerClone.DealDamageToHurtList
+// (Defined, Simulated, HasOptionalParms, Public, HasDefaults)
+// Parameters:
+// class ADunDefWeapon*           InWeapon                       (Parm)
+// float                          damagemulti                    (OptionalParm, Parm)
+
+void ADunDefPlayerClone::DealDamageToHurtList(class ADunDefWeapon* InWeapon, float damagemulti)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerClone.DealDamageToHurtList");
+
+	ADunDefPlayerClone_DealDamageToHurtList_Params params;
+	params.InWeapon = InWeapon;
+	params.damagemulti = damagemulti;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefPlayerClone.PlayAttackAnimation
+// (Defined, Simulated, Public)
+// Parameters:
+// struct FName                   attackin                       (Parm)
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefPlayerClone::PlayAttackAnimation(const struct FName& attackin)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerClone.PlayAttackAnimation");
+
+	ADunDefPlayerClone_PlayAttackAnimation_Params params;
+	params.attackin = attackin;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefPlayerClone.PreBeginPlay
+// (Defined, Simulated, Public)
+
+void ADunDefPlayerClone::PreBeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerClone.PreBeginPlay");
+
+	ADunDefPlayerClone_PreBeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefPlayerClone.ExecReplicatedFunction
+// (Defined, Simulated, HasOptionalParms, Public)
+// Parameters:
+// struct FName                   FunctionName                   (Parm)
+// struct FName                   nameParam1                     (OptionalParm, Parm)
+// struct FName                   nameParam2                     (OptionalParm, Parm)
+// class AActor*                  actorParam1                    (OptionalParm, Parm)
+// class AActor*                  actorParam2                    (OptionalParm, Parm)
+// struct FVector                 vecParam1                      (OptionalParm, Parm)
+// struct FRotator                rotParam1                      (OptionalParm, Parm)
+// float                          floatParam1                    (OptionalParm, Parm)
+// float                          floatParam2                    (OptionalParm, Parm)
+// float                          floatParam3                    (OptionalParm, Parm)
+// float                          floatParam4                    (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
+// struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
+// class UObject*                 objectParam1                   (OptionalParm, Parm)
+
+void ADunDefPlayerClone::ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerClone.ExecReplicatedFunction");
+
+	ADunDefPlayerClone_ExecReplicatedFunction_Params params;
+	params.FunctionName = FunctionName;
+	params.nameParam1 = nameParam1;
+	params.nameParam2 = nameParam2;
+	params.actorParam1 = actorParam1;
+	params.actorParam2 = actorParam2;
+	params.vecParam1 = vecParam1;
+	params.rotParam1 = rotParam1;
+	params.floatParam1 = floatParam1;
+	params.floatParam2 = floatParam2;
+	params.floatParam3 = floatParam3;
+	params.floatParam4 = floatParam4;
+	params.boolParam1 = boolParam1;
+	params.boolParam2 = boolParam2;
+	params.boolParam3 = boolParam3;
+	params.stringParam1 = stringParam1;
+	params.objectParam1 = objectParam1;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefPlayerClone.ReplicatedEvent
+// (Defined, Simulated, Event, Public)
+// Parameters:
+// struct FName                   VarName                        (Parm)
+
+void ADunDefPlayerClone::ReplicatedEvent(const struct FName& VarName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerClone.ReplicatedEvent");
+
+	ADunDefPlayerClone_ReplicatedEvent_Params params;
+	params.VarName = VarName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function UDKGame.DunDefPlayerSelectUICharacter.AddDefaultOffHandWeaponAttachment
 // (Defined, Public)
 // Parameters:
@@ -121863,6 +122508,65 @@ void ADunDefTower_MultiProjectile::UpdateTarget()
 	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefTower_MultiProjectile.UpdateTarget");
 
 	ADunDefTower_MultiProjectile_UpdateTarget_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefTower_SliceNDice.GetWindRadius
+// (Defined, Simulated, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefTower_SliceNDice::GetWindRadius()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefTower_SliceNDice.GetWindRadius");
+
+	ADunDefTower_SliceNDice_GetWindRadius_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefTower_SliceNDice.GetWindSpeed
+// (Defined, Simulated, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefTower_SliceNDice::GetWindSpeed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefTower_SliceNDice.GetWindSpeed");
+
+	ADunDefTower_SliceNDice_GetWindSpeed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefTower_SliceNDice.Suction
+// (Defined, Simulated, Public, HasDefaults)
+
+void ADunDefTower_SliceNDice::Suction()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefTower_SliceNDice.Suction");
+
+	ADunDefTower_SliceNDice_Suction_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -124937,6 +125641,49 @@ struct FName UUI_EquipmentInfo_New::GetCloseAnimation()
 	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.UI_EquipmentInfo_New.GetCloseAnimation");
 
 	UUI_EquipmentInfo_New_GetCloseAnimation_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_EventHostCrown.TickedByPawn
+// (Defined, Public, HasDefaults)
+// Parameters:
+// class ADunDefPlayer*           PlayerOwner                    (Parm)
+// float                          DeltaTime                      (Parm)
+
+void UHeroEquipment_EventHostCrown::TickedByPawn(class ADunDefPlayer* PlayerOwner, float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_EventHostCrown.TickedByPawn");
+
+	UHeroEquipment_EventHostCrown_TickedByPawn_Params params;
+	params.PlayerOwner = PlayerOwner;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_EventHostCrown.GetDescription
+// (Defined, Public)
+// Parameters:
+// struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
+
+struct FString UHeroEquipment_EventHostCrown::GetDescription()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_EventHostCrown.GetDescription");
+
+	UHeroEquipment_EventHostCrown_GetDescription_Params params;
 
 	auto flags = fn->FunctionFlags;
 

@@ -35,6 +35,501 @@ struct UDunDefBuff_Harbinger_Initialize_Params
 {
 };
 
+// Function DunDefSpecial.DunDefDecoyTarget.DTGetEnemyTargetingDesirability
+struct ADunDefDecoyTarget_DTGetEnemyTargetingDesirability_Params
+{
+	class ADunDefEnemyController*                      forController;                                            // (Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.DrawMyHUD
+struct ADunDefDecoyTarget_DrawMyHUD_Params
+{
+	class ADunDefHUD*                                  H;                                                        // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.PlayDeath
+struct ADunDefDecoyTarget_PlayDeath_Params
+{
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.AllowHeroGUID
+struct ADunDefDecoyTarget_AllowHeroGUID_Params
+{
+	int                                                GUID1;                                                    // (Parm)
+	int                                                GUID2;                                                    // (Parm)
+	int                                                GUID3;                                                    // (Parm)
+	int                                                GUID4;                                                    // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.CanDetonate
+struct ADunDefDecoyTarget_CanDetonate_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.Detonate
+struct ADunDefDecoyTarget_Detonate_Params
+{
+	int                                                SetDetonationsNumber;                                     // (OptionalParm, Parm)
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.SelfDestruct
+struct ADunDefDecoyTarget_SelfDestruct_Params
+{
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.ScaleForHeroModifiers
+struct ADunDefDecoyTarget_ScaleForHeroModifiers_Params
+{
+	unsigned long                                      IsFirstTime;                                              // (Parm)
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.IsClassOnIgnoreList
+struct ADunDefDecoyTarget_IsClassOnIgnoreList_Params
+{
+	class UClass*                                      ActorClass;                                               // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.SetMaxNumberOfAttackers
+struct ADunDefDecoyTarget_SetMaxNumberOfAttackers_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.SetActiveTime
+struct ADunDefDecoyTarget_SetActiveTime_Params
+{
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.DoPoke
+struct ADunDefDecoyTarget_DoPoke_Params
+{
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.SetDesirability
+struct ADunDefDecoyTarget_SetDesirability_Params
+{
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.SetHealth
+struct ADunDefDecoyTarget_SetHealth_Params
+{
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.Tick
+struct ADunDefDecoyTarget_Tick_Params
+{
+	float                                              DeltaTime;                                                // (Parm)
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.DrawMiniMapIcon
+struct ADunDefDecoyTarget_DrawMiniMapIcon_Params
+{
+	class UCanvas*                                     Canvas;                                                   // (Parm)
+	class ADunDefMiniMap*                              MiniMap;                                                  // (Parm)
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.Destroyed
+struct ADunDefDecoyTarget_Destroyed_Params
+{
+};
+
+// Function DunDefSpecial.DunDefDecoyTarget.PostBeginPlay
+struct ADunDefDecoyTarget_PostBeginPlay_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.SetOwnerNoSee
+struct ADunDefPlayer_DualMelee_SetOwnerNoSee_Params
+{
+	unsigned long                                      ownerNoSee;                                               // (Parm)
+	unsigned long                                      ownerNoSeeWeapon;                                         // (OptionalParm, Parm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AutoActivateSecondaryWeapon
+struct ADunDefPlayer_DualMelee_AutoActivateSecondaryWeapon_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AllowNegativeStatusAffecting
+struct ADunDefPlayer_DualMelee_AllowNegativeStatusAffecting_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.GetAlternateStance
+struct ADunDefPlayer_DualMelee_GetAlternateStance_Params
+{
+	class ADunDefPlayerAbility_StanceBase*             askingStance;                                             // (Parm)
+	class ADunDefPlayerAbility_StanceBase*             ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.SetWeaponSpeedMultiplier
+struct ADunDefPlayer_DualMelee_SetWeaponSpeedMultiplier_Params
+{
+	float                                              newMult;                                                  // (Parm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.GetOverrideSocketName
+struct ADunDefPlayer_DualMelee_GetOverrideSocketName_Params
+{
+	class ADunDefWeapon*                               theWeapon;                                                // (Parm)
+	struct FName                                       ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.JumpOffPawn
+struct ADunDefPlayer_DualMelee_JumpOffPawn_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.ShouldPlayHurtAnimation
+struct ADunDefPlayer_DualMelee_ShouldPlayHurtAnimation_Params
+{
+	class AController*                                 InstigatedBy;                                             // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	int                                                Damage;                                                   // (Parm)
+	class UClass*                                      DamageType;                                               // (Parm)
+	int                                                Result;                                                   // (Parm, OutParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_ResetOffhandWeaponSwingDamage
+struct ADunDefPlayer_DualMelee_AnimNotify_ResetOffhandWeaponSwingDamage_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StopOffhandWeaponSwingDamage
+struct ADunDefPlayer_DualMelee_AnimNotify_StopOffhandWeaponSwingDamage_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StartOffhandWeaponSwingDamage
+struct ADunDefPlayer_DualMelee_AnimNotify_StartOffhandWeaponSwingDamage_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_ResetWeaponSwingDamage
+struct ADunDefPlayer_DualMelee_AnimNotify_ResetWeaponSwingDamage_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StopWeaponSwingDamage
+struct ADunDefPlayer_DualMelee_AnimNotify_StopWeaponSwingDamage_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StartWeaponSwingDamage
+struct ADunDefPlayer_DualMelee_AnimNotify_StartWeaponSwingDamage_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.Destroyed
+struct ADunDefPlayer_DualMelee_Destroyed_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AdjustDamage
+struct ADunDefPlayer_DualMelee_AdjustDamage_Params
+{
+	int                                                inDamage;                                                 // (Parm, OutParm)
+	struct FVector                                     Momentum;                                                 // (Parm, OutParm)
+	class AController*                                 InstigatedBy;                                             // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	class UClass*                                      DamageType;                                               // (Parm)
+	struct FTraceHitInfo                               HitInfo;                                                  // (OptionalParm, Parm)
+	class UObject*                                     WhatHitMe;                                                // (OptionalParm, Parm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.GivePlayerHitInfo
+struct ADunDefPlayer_DualMelee_GivePlayerHitInfo_Params
+{
+	class AActor*                                      HitActor;                                                 // (Parm)
+	int                                                dealtDamage;                                              // (Parm)
+	unsigned long                                      bAllowMomentumOverride;                                   // (Parm)
+	struct FVector                                     appliedMomentum;                                          // (Parm, OutParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.Tick
+struct ADunDefPlayer_DualMelee_Tick_Params
+{
+	float                                              DeltaTime;                                                // (Parm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_CurrentAbility_Off
+struct ADunDefPlayer_DualMelee_AnimNotify_CurrentAbility_Off_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_CurrentAbility_On
+struct ADunDefPlayer_DualMelee_AnimNotify_CurrentAbility_On_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceBlend
+struct ADunDefPlayer_DualMelee_DoStanceBlend_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.DeActivateStance
+struct ADunDefPlayer_DualMelee_DeActivateStance_Params
+{
+	class ADunDefPlayerAbility_StanceBase*             oldStance;                                                // (Parm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.ActivateStance
+struct ADunDefPlayer_DualMelee_ActivateStance_Params
+{
+	class ADunDefPlayerAbility_StanceBase*             newStance;                                                // (Parm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.GetMeleeSwingInfoOverride
+struct ADunDefPlayer_DualMelee_GetMeleeSwingInfoOverride_Params
+{
+	class ADunDefWeapon_MeleeSword*                    overrideForWeap;                                          // (Parm)
+	int                                                currentMeleeSwingIndex;                                   // (Parm, OutParm)
+	struct FMeleeSwingInfo                             OverrideInfo;                                             // (Parm, OutParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.OverrideMeleeSwingInfo
+struct ADunDefPlayer_DualMelee_OverrideMeleeSwingInfo_Params
+{
+	class ADunDefWeapon_MeleeSword*                    askingWeapon;                                             // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.CheckAllowMelee
+struct ADunDefPlayer_DualMelee_CheckAllowMelee_Params
+{
+	class ADunDefWeapon_MeleeSword*                    weaponCheck;                                              // (Parm)
+	unsigned long                                      checkAnimDuration;                                        // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.CheckPlayingCustomAnim
+struct ADunDefPlayer_DualMelee_CheckPlayingCustomAnim_Params
+{
+	struct FName                                       inAnim;                                                   // (Parm)
+	float                                              TimeFromEndToConsiderFinished;                            // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.StopFire
+struct ADunDefPlayer_DualMelee_StopFire_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.ServerStopFire
+struct ADunDefPlayer_DualMelee_ServerStopFire_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.SetComboInfo
+struct ADunDefPlayer_DualMelee_SetComboInfo_Params
+{
+	class ADunDefWeapon_MeleeSword*                    comboWeapon;                                              // (Parm)
+	unsigned long                                      bMainHand;                                                // (Parm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceCheck
+struct ADunDefPlayer_DualMelee_DoStanceCheck_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.StartFire
+struct ADunDefPlayer_DualMelee_StartFire_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.ServerStartFire
+struct ADunDefPlayer_DualMelee_ServerStartFire_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.GetOffHandSocketName
+struct ADunDefPlayer_DualMelee_GetOffHandSocketName_Params
+{
+	struct FName                                       ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AllowDualWeapon
+struct ADunDefPlayer_DualMelee_AllowDualWeapon_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.CreateContainedInventoryFromTemplate
+struct ADunDefPlayer_DualMelee_CreateContainedInventoryFromTemplate_Params
+{
+	class AActor*                                      InventoryActorTemplate;                                   // (Parm)
+	unsigned long                                      bDoNotActivate;                                           // (OptionalParm, Parm)
+	class AInventory*                                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.SetOffHandWeapon
+struct ADunDefPlayer_DualMelee_SetOffHandWeapon_Params
+{
+	class ADunDefWeapon_MeleeSword*                    newOffHandWeap;                                           // (Parm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.SwapOffHandWeaponFor
+struct ADunDefPlayer_DualMelee_SwapOffHandWeaponFor_Params
+{
+	class ADunDefWeapon*                               weaponTemplate;                                           // (Parm)
+	class UHeroEquipment*                              equipmentRef;                                             // (Parm)
+	class ADunDefWeapon*                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.SwapWeaponFor
+struct ADunDefPlayer_DualMelee_SwapWeaponFor_Params
+{
+	class ADunDefWeapon*                               weaponTemplate;                                           // (Parm)
+	class UHeroEquipment*                              equipmentRef;                                             // (Parm)
+	class ADunDefWeapon*                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.HasLightningStance
+struct ADunDefPlayer_DualMelee_HasLightningStance_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.PostBeginPlay
+struct ADunDefPlayer_DualMelee_PostBeginPlay_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowNegativeStatusAffecting
+struct ADunDefPlayerAbility_StanceBase_AllowNegativeStatusAffecting_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.ResetWeaponDamage
+struct ADunDefPlayerAbility_StanceBase_ResetWeaponDamage_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopOffHandWeaponDamage
+struct ADunDefPlayerAbility_StanceBase_StopOffHandWeaponDamage_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopWeaponDamage
+struct ADunDefPlayerAbility_StanceBase_StopWeaponDamage_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartOffHandWeaponDamage
+struct ADunDefPlayerAbility_StanceBase_StartOffHandWeaponDamage_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartWeaponDamage
+struct ADunDefPlayerAbility_StanceBase_StartWeaponDamage_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GivePlayerHitInfo
+struct ADunDefPlayerAbility_StanceBase_GivePlayerHitInfo_Params
+{
+	class AActor*                                      HitActor;                                                 // (Parm)
+	int                                                dealtDamage;                                              // (Parm)
+	unsigned long                                      bAllowMomentumOverride;                                   // (Parm)
+	struct FVector                                     appliedMomentum;                                          // (Parm, OutParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AnimNotify_CurrentAbility_Off
+struct ADunDefPlayerAbility_StanceBase_AnimNotify_CurrentAbility_Off_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AnimNotify_CurrentAbility_On
+struct ADunDefPlayerAbility_StanceBase_AnimNotify_CurrentAbility_On_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStanceCancel
+struct ADunDefPlayerAbility_StanceBase_AllowStanceCancel_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckDoStanceAttack
+struct ADunDefPlayerAbility_StanceBase_CheckDoStanceAttack_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetMultiplierValue
+struct ADunDefPlayerAbility_StanceBase_GetMultiplierValue_Params
+{
+	struct FStatMultipliers                            multiplierCheck;                                          // (Parm)
+	unsigned long                                      bDoLog;                                                   // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckStatus
+struct ADunDefPlayerAbility_StanceBase_CheckStatus_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetAbilityStatus
+struct ADunDefPlayerAbility_StanceBase_GetAbilityStatus_Params
+{
+	int                                                ExtraStatusFlag;                                          // (OptionalParm, Parm, OutParm)
+	TEnumAsByte<EPlayerAbilityStatus>                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.OnActivate
+struct ADunDefPlayerAbility_StanceBase_OnActivate_Params
+{
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStepTowards
+struct ADunDefPlayerAbility_StanceBase_AllowStepTowards_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerMomentumMultiplier
+struct ADunDefPlayerAbility_StanceBase_GetPlayerMomentumMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerAttackKnockbackMultiplier
+struct ADunDefPlayerAbility_StanceBase_GetPlayerAttackKnockbackMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerAttackSpeedMultiplier
+struct ADunDefPlayerAbility_StanceBase_GetPlayerAttackSpeedMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.PlayActivationAnimation
+struct ADunDefPlayerAbility_StanceBase_PlayActivationAnimation_Params
+{
+};
+
 // Function DunDefSpecial.DunDefTower_SummonEnemy.UpdateBuffValues
 struct ADunDefTower_SummonEnemy_UpdateBuffValues_Params
 {
@@ -2940,114 +3435,6 @@ struct ADunDefPlayer_Summoner_ReplicatedEvent_Params
 	struct FName                                       VarName;                                                  // (Parm)
 };
 
-// Function DunDefSpecial.DunDefDecoyTarget.DTGetEnemyTargetingDesirability
-struct ADunDefDecoyTarget_DTGetEnemyTargetingDesirability_Params
-{
-	class ADunDefEnemyController*                      forController;                                            // (Parm)
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.DrawMyHUD
-struct ADunDefDecoyTarget_DrawMyHUD_Params
-{
-	class ADunDefHUD*                                  H;                                                        // (Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.PlayDeath
-struct ADunDefDecoyTarget_PlayDeath_Params
-{
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.AllowHeroGUID
-struct ADunDefDecoyTarget_AllowHeroGUID_Params
-{
-	int                                                GUID1;                                                    // (Parm)
-	int                                                GUID2;                                                    // (Parm)
-	int                                                GUID3;                                                    // (Parm)
-	int                                                GUID4;                                                    // (Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.CanDetonate
-struct ADunDefDecoyTarget_CanDetonate_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.Detonate
-struct ADunDefDecoyTarget_Detonate_Params
-{
-	int                                                SetDetonationsNumber;                                     // (OptionalParm, Parm)
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.SelfDestruct
-struct ADunDefDecoyTarget_SelfDestruct_Params
-{
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.ScaleForHeroModifiers
-struct ADunDefDecoyTarget_ScaleForHeroModifiers_Params
-{
-	unsigned long                                      IsFirstTime;                                              // (Parm)
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.IsClassOnIgnoreList
-struct ADunDefDecoyTarget_IsClassOnIgnoreList_Params
-{
-	class UClass*                                      ActorClass;                                               // (Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.SetMaxNumberOfAttackers
-struct ADunDefDecoyTarget_SetMaxNumberOfAttackers_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.SetActiveTime
-struct ADunDefDecoyTarget_SetActiveTime_Params
-{
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.DoPoke
-struct ADunDefDecoyTarget_DoPoke_Params
-{
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.SetDesirability
-struct ADunDefDecoyTarget_SetDesirability_Params
-{
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.SetHealth
-struct ADunDefDecoyTarget_SetHealth_Params
-{
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.Tick
-struct ADunDefDecoyTarget_Tick_Params
-{
-	float                                              DeltaTime;                                                // (Parm)
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.DrawMiniMapIcon
-struct ADunDefDecoyTarget_DrawMiniMapIcon_Params
-{
-	class UCanvas*                                     Canvas;                                                   // (Parm)
-	class ADunDefMiniMap*                              MiniMap;                                                  // (Parm)
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.Destroyed
-struct ADunDefDecoyTarget_Destroyed_Params
-{
-};
-
-// Function DunDefSpecial.DunDefDecoyTarget.PostBeginPlay
-struct ADunDefDecoyTarget_PostBeginPlay_Params
-{
-};
-
 // Function DunDefSpecial.DunDefDropOffPoint.PreventTowerAtPoint
 struct ADunDefDropOffPoint_PreventTowerAtPoint_Params
 {
@@ -4516,393 +4903,6 @@ struct ADunDefPickupableSpawner_ReplicatedEvent_Params
 	struct FName                                       VarName;                                                  // (Parm)
 };
 
-// Function DunDefSpecial.DunDefPlayer_DualMelee.SetOwnerNoSee
-struct ADunDefPlayer_DualMelee_SetOwnerNoSee_Params
-{
-	unsigned long                                      ownerNoSee;                                               // (Parm)
-	unsigned long                                      ownerNoSeeWeapon;                                         // (OptionalParm, Parm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AutoActivateSecondaryWeapon
-struct ADunDefPlayer_DualMelee_AutoActivateSecondaryWeapon_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AllowNegativeStatusAffecting
-struct ADunDefPlayer_DualMelee_AllowNegativeStatusAffecting_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.GetAlternateStance
-struct ADunDefPlayer_DualMelee_GetAlternateStance_Params
-{
-	class ADunDefPlayerAbility_StanceBase*             askingStance;                                             // (Parm)
-	class ADunDefPlayerAbility_StanceBase*             ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.SetWeaponSpeedMultiplier
-struct ADunDefPlayer_DualMelee_SetWeaponSpeedMultiplier_Params
-{
-	float                                              newMult;                                                  // (Parm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.GetOverrideSocketName
-struct ADunDefPlayer_DualMelee_GetOverrideSocketName_Params
-{
-	class ADunDefWeapon*                               theWeapon;                                                // (Parm)
-	struct FName                                       ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.JumpOffPawn
-struct ADunDefPlayer_DualMelee_JumpOffPawn_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.ShouldPlayHurtAnimation
-struct ADunDefPlayer_DualMelee_ShouldPlayHurtAnimation_Params
-{
-	class AController*                                 InstigatedBy;                                             // (Parm)
-	struct FVector                                     HitLocation;                                              // (Parm)
-	int                                                Damage;                                                   // (Parm)
-	class UClass*                                      DamageType;                                               // (Parm)
-	int                                                Result;                                                   // (Parm, OutParm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_ResetOffhandWeaponSwingDamage
-struct ADunDefPlayer_DualMelee_AnimNotify_ResetOffhandWeaponSwingDamage_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StopOffhandWeaponSwingDamage
-struct ADunDefPlayer_DualMelee_AnimNotify_StopOffhandWeaponSwingDamage_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StartOffhandWeaponSwingDamage
-struct ADunDefPlayer_DualMelee_AnimNotify_StartOffhandWeaponSwingDamage_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_ResetWeaponSwingDamage
-struct ADunDefPlayer_DualMelee_AnimNotify_ResetWeaponSwingDamage_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StopWeaponSwingDamage
-struct ADunDefPlayer_DualMelee_AnimNotify_StopWeaponSwingDamage_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StartWeaponSwingDamage
-struct ADunDefPlayer_DualMelee_AnimNotify_StartWeaponSwingDamage_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.Destroyed
-struct ADunDefPlayer_DualMelee_Destroyed_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AdjustDamage
-struct ADunDefPlayer_DualMelee_AdjustDamage_Params
-{
-	int                                                inDamage;                                                 // (Parm, OutParm)
-	struct FVector                                     Momentum;                                                 // (Parm, OutParm)
-	class AController*                                 InstigatedBy;                                             // (Parm)
-	struct FVector                                     HitLocation;                                              // (Parm)
-	class UClass*                                      DamageType;                                               // (Parm)
-	struct FTraceHitInfo                               HitInfo;                                                  // (OptionalParm, Parm)
-	class UObject*                                     WhatHitMe;                                                // (OptionalParm, Parm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.GivePlayerHitInfo
-struct ADunDefPlayer_DualMelee_GivePlayerHitInfo_Params
-{
-	class AActor*                                      HitActor;                                                 // (Parm)
-	int                                                dealtDamage;                                              // (Parm)
-	unsigned long                                      bAllowMomentumOverride;                                   // (Parm)
-	struct FVector                                     appliedMomentum;                                          // (Parm, OutParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.Tick
-struct ADunDefPlayer_DualMelee_Tick_Params
-{
-	float                                              DeltaTime;                                                // (Parm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_CurrentAbility_Off
-struct ADunDefPlayer_DualMelee_AnimNotify_CurrentAbility_Off_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_CurrentAbility_On
-struct ADunDefPlayer_DualMelee_AnimNotify_CurrentAbility_On_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceBlend
-struct ADunDefPlayer_DualMelee_DoStanceBlend_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.DeActivateStance
-struct ADunDefPlayer_DualMelee_DeActivateStance_Params
-{
-	class ADunDefPlayerAbility_StanceBase*             oldStance;                                                // (Parm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.ActivateStance
-struct ADunDefPlayer_DualMelee_ActivateStance_Params
-{
-	class ADunDefPlayerAbility_StanceBase*             newStance;                                                // (Parm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.GetMeleeSwingInfoOverride
-struct ADunDefPlayer_DualMelee_GetMeleeSwingInfoOverride_Params
-{
-	class ADunDefWeapon_MeleeSword*                    overrideForWeap;                                          // (Parm)
-	int                                                currentMeleeSwingIndex;                                   // (Parm, OutParm)
-	struct FMeleeSwingInfo                             OverrideInfo;                                             // (Parm, OutParm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.OverrideMeleeSwingInfo
-struct ADunDefPlayer_DualMelee_OverrideMeleeSwingInfo_Params
-{
-	class ADunDefWeapon_MeleeSword*                    askingWeapon;                                             // (Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.CheckAllowMelee
-struct ADunDefPlayer_DualMelee_CheckAllowMelee_Params
-{
-	class ADunDefWeapon_MeleeSword*                    weaponCheck;                                              // (Parm)
-	unsigned long                                      checkAnimDuration;                                        // (OptionalParm, Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.CheckPlayingCustomAnim
-struct ADunDefPlayer_DualMelee_CheckPlayingCustomAnim_Params
-{
-	struct FName                                       inAnim;                                                   // (Parm)
-	float                                              TimeFromEndToConsiderFinished;                            // (OptionalParm, Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.StopFire
-struct ADunDefPlayer_DualMelee_StopFire_Params
-{
-	unsigned char                                      FireModeNum;                                              // (Parm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.ServerStopFire
-struct ADunDefPlayer_DualMelee_ServerStopFire_Params
-{
-	unsigned char                                      FireModeNum;                                              // (Parm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.SetComboInfo
-struct ADunDefPlayer_DualMelee_SetComboInfo_Params
-{
-	class ADunDefWeapon_MeleeSword*                    comboWeapon;                                              // (Parm)
-	unsigned long                                      bMainHand;                                                // (Parm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceCheck
-struct ADunDefPlayer_DualMelee_DoStanceCheck_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.StartFire
-struct ADunDefPlayer_DualMelee_StartFire_Params
-{
-	unsigned char                                      FireModeNum;                                              // (Parm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.ServerStartFire
-struct ADunDefPlayer_DualMelee_ServerStartFire_Params
-{
-	unsigned char                                      FireModeNum;                                              // (Parm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.GetOffHandSocketName
-struct ADunDefPlayer_DualMelee_GetOffHandSocketName_Params
-{
-	struct FName                                       ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AllowDualWeapon
-struct ADunDefPlayer_DualMelee_AllowDualWeapon_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.CreateContainedInventoryFromTemplate
-struct ADunDefPlayer_DualMelee_CreateContainedInventoryFromTemplate_Params
-{
-	class AActor*                                      InventoryActorTemplate;                                   // (Parm)
-	unsigned long                                      bDoNotActivate;                                           // (OptionalParm, Parm)
-	class AInventory*                                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.SetOffHandWeapon
-struct ADunDefPlayer_DualMelee_SetOffHandWeapon_Params
-{
-	class ADunDefWeapon_MeleeSword*                    newOffHandWeap;                                           // (Parm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.SwapOffHandWeaponFor
-struct ADunDefPlayer_DualMelee_SwapOffHandWeaponFor_Params
-{
-	class ADunDefWeapon*                               weaponTemplate;                                           // (Parm)
-	class UHeroEquipment*                              equipmentRef;                                             // (Parm)
-	class ADunDefWeapon*                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.SwapWeaponFor
-struct ADunDefPlayer_DualMelee_SwapWeaponFor_Params
-{
-	class ADunDefWeapon*                               weaponTemplate;                                           // (Parm)
-	class UHeroEquipment*                              equipmentRef;                                             // (Parm)
-	class ADunDefWeapon*                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.HasLightningStance
-struct ADunDefPlayer_DualMelee_HasLightningStance_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.PostBeginPlay
-struct ADunDefPlayer_DualMelee_PostBeginPlay_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowNegativeStatusAffecting
-struct ADunDefPlayerAbility_StanceBase_AllowNegativeStatusAffecting_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.ResetWeaponDamage
-struct ADunDefPlayerAbility_StanceBase_ResetWeaponDamage_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopOffHandWeaponDamage
-struct ADunDefPlayerAbility_StanceBase_StopOffHandWeaponDamage_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopWeaponDamage
-struct ADunDefPlayerAbility_StanceBase_StopWeaponDamage_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartOffHandWeaponDamage
-struct ADunDefPlayerAbility_StanceBase_StartOffHandWeaponDamage_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartWeaponDamage
-struct ADunDefPlayerAbility_StanceBase_StartWeaponDamage_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GivePlayerHitInfo
-struct ADunDefPlayerAbility_StanceBase_GivePlayerHitInfo_Params
-{
-	class AActor*                                      HitActor;                                                 // (Parm)
-	int                                                dealtDamage;                                              // (Parm)
-	unsigned long                                      bAllowMomentumOverride;                                   // (Parm)
-	struct FVector                                     appliedMomentum;                                          // (Parm, OutParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AnimNotify_CurrentAbility_Off
-struct ADunDefPlayerAbility_StanceBase_AnimNotify_CurrentAbility_Off_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AnimNotify_CurrentAbility_On
-struct ADunDefPlayerAbility_StanceBase_AnimNotify_CurrentAbility_On_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStanceCancel
-struct ADunDefPlayerAbility_StanceBase_AllowStanceCancel_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckDoStanceAttack
-struct ADunDefPlayerAbility_StanceBase_CheckDoStanceAttack_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetMultiplierValue
-struct ADunDefPlayerAbility_StanceBase_GetMultiplierValue_Params
-{
-	struct FStatMultipliers                            multiplierCheck;                                          // (Parm)
-	unsigned long                                      bDoLog;                                                   // (OptionalParm, Parm)
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckStatus
-struct ADunDefPlayerAbility_StanceBase_CheckStatus_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetAbilityStatus
-struct ADunDefPlayerAbility_StanceBase_GetAbilityStatus_Params
-{
-	int                                                ExtraStatusFlag;                                          // (OptionalParm, Parm, OutParm)
-	TEnumAsByte<EPlayerAbilityStatus>                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.OnActivate
-struct ADunDefPlayerAbility_StanceBase_OnActivate_Params
-{
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStepTowards
-struct ADunDefPlayerAbility_StanceBase_AllowStepTowards_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerMomentumMultiplier
-struct ADunDefPlayerAbility_StanceBase_GetPlayerMomentumMultiplier_Params
-{
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerAttackKnockbackMultiplier
-struct ADunDefPlayerAbility_StanceBase_GetPlayerAttackKnockbackMultiplier_Params
-{
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerAttackSpeedMultiplier
-struct ADunDefPlayerAbility_StanceBase_GetPlayerAttackSpeedMultiplier_Params
-{
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.PlayActivationAnimation
-struct ADunDefPlayerAbility_StanceBase_PlayActivationAnimation_Params
-{
-};
-
 // Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.OnActivate
 struct ADunDefPlayerAbility_LeapSlam_OnActivate_Params
 {
@@ -6042,6 +6042,12 @@ struct ADunDefPlayerAbility_InvisibilityAOE_GetAbilityStatus_Params
 {
 	int                                                ExtraStatusFlag;                                          // (OptionalParm, Parm, OutParm)
 	TEnumAsByte<EPlayerAbilityStatus>                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefPlayerAbility_InvisibilityAOE.GetSpeedMultiplier
+struct ADunDefPlayerAbility_InvisibilityAOE_GetSpeedMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_InvisibilityAOE.AddEffect

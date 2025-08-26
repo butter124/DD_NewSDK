@@ -319,7 +319,7 @@ public:
 
 
 // Class DunDefBuff.DunDefBuff_Shield
-// 0x0044 (0x0344 - 0x0300)
+// 0x0048 (0x0348 - 0x0300)
 class UDunDefBuff_Shield : public UDunDefBuff
 {
 public:
@@ -339,6 +339,7 @@ public:
 	float                                              lastShieldHitTime;                                        // 0x0338(0x0004) (Transient)
 	float                                              initialLifeSpan;                                          // 0x033C(0x0004) (Transient)
 	int                                                initialShieldHealth;                                      // 0x0340(0x0004) (Transient)
+	int                                                initialShieldHealthPercent;                               // 0x0344(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -372,6 +373,7 @@ public:
 	unsigned long                                      bDestroyExcessSpawns : 1;                                 // 0x0310(0x0004) (Edit)
 	unsigned long                                      bDestroyBuffOnSucessfulSpawn : 1;                         // 0x0310(0x0004) (Edit)
 	unsigned long                                      bIgnoreIntervalBetweenProcs : 1;                          // 0x0310(0x0004) (Edit)
+	unsigned long                                      bSpawnBuffOnAreaOfEffect : 1;                             // 0x0310(0x0004) (Edit)
 	int                                                SpawnCount;                                               // 0x0314(0x0004) (Edit)
 	int                                                SpawnLimit;                                               // 0x0318(0x0004) (Edit)
 	TArray<int>                                        TieredSpawnCountArray;                                    // 0x031C(0x000C) (Edit, NeedCtorLink)

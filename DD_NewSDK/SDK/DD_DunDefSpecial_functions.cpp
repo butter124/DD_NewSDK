@@ -83,6 +83,1653 @@ void UDunDefBuff_Harbinger::Initialize()
 }
 
 
+// Function DunDefSpecial.DunDefDecoyTarget.DTGetEnemyTargetingDesirability
+// (Defined, Public)
+// Parameters:
+// class ADunDefEnemyController*  forController                  (Parm)
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefDecoyTarget::DTGetEnemyTargetingDesirability(class ADunDefEnemyController* forController)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.DTGetEnemyTargetingDesirability");
+
+	ADunDefDecoyTarget_DTGetEnemyTargetingDesirability_Params params;
+	params.forController = forController;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.DrawMyHUD
+// (Defined, Simulated, Public)
+// Parameters:
+// class ADunDefHUD*              H                              (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefDecoyTarget::DrawMyHUD(class ADunDefHUD* H)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.DrawMyHUD");
+
+	ADunDefDecoyTarget_DrawMyHUD_Params params;
+	params.H = H;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.PlayDeath
+// (Defined, Simulated, Public)
+
+void ADunDefDecoyTarget::PlayDeath()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.PlayDeath");
+
+	ADunDefDecoyTarget_PlayDeath_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.AllowHeroGUID
+// (Public)
+// Parameters:
+// int                            GUID1                          (Parm)
+// int                            GUID2                          (Parm)
+// int                            GUID3                          (Parm)
+// int                            GUID4                          (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefDecoyTarget::AllowHeroGUID(int GUID1, int GUID2, int GUID3, int GUID4)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.AllowHeroGUID");
+
+	ADunDefDecoyTarget_AllowHeroGUID_Params params;
+	params.GUID1 = GUID1;
+	params.GUID2 = GUID2;
+	params.GUID3 = GUID3;
+	params.GUID4 = GUID4;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.CanDetonate
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefDecoyTarget::CanDetonate()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.CanDetonate");
+
+	ADunDefDecoyTarget_CanDetonate_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.Detonate
+// (Defined, Simulated, HasOptionalParms, Public)
+// Parameters:
+// int                            SetDetonationsNumber           (OptionalParm, Parm)
+
+void ADunDefDecoyTarget::Detonate(int SetDetonationsNumber)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.Detonate");
+
+	ADunDefDecoyTarget_Detonate_Params params;
+	params.SetDetonationsNumber = SetDetonationsNumber;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.SelfDestruct
+// (Defined, Public)
+
+void ADunDefDecoyTarget::SelfDestruct()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.SelfDestruct");
+
+	ADunDefDecoyTarget_SelfDestruct_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.ScaleForHeroModifiers
+// (Defined, Public)
+// Parameters:
+// unsigned long                  IsFirstTime                    (Parm)
+
+void ADunDefDecoyTarget::ScaleForHeroModifiers(unsigned long IsFirstTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.ScaleForHeroModifiers");
+
+	ADunDefDecoyTarget_ScaleForHeroModifiers_Params params;
+	params.IsFirstTime = IsFirstTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.IsClassOnIgnoreList
+// (Defined, Simulated, Public)
+// Parameters:
+// class UClass*                  ActorClass                     (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefDecoyTarget::IsClassOnIgnoreList(class UClass* ActorClass)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.IsClassOnIgnoreList");
+
+	ADunDefDecoyTarget_IsClassOnIgnoreList_Params params;
+	params.ActorClass = ActorClass;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.SetMaxNumberOfAttackers
+// (Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefDecoyTarget::SetMaxNumberOfAttackers()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.SetMaxNumberOfAttackers");
+
+	ADunDefDecoyTarget_SetMaxNumberOfAttackers_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.SetActiveTime
+// (Defined, Public)
+
+void ADunDefDecoyTarget::SetActiveTime()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.SetActiveTime");
+
+	ADunDefDecoyTarget_SetActiveTime_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.DoPoke
+// (Defined, Public)
+
+void ADunDefDecoyTarget::DoPoke()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.DoPoke");
+
+	ADunDefDecoyTarget_DoPoke_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.SetDesirability
+// (Defined, Simulated, Public)
+
+void ADunDefDecoyTarget::SetDesirability()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.SetDesirability");
+
+	ADunDefDecoyTarget_SetDesirability_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.SetHealth
+// (Defined, Simulated, Public)
+
+void ADunDefDecoyTarget::SetHealth()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.SetHealth");
+
+	ADunDefDecoyTarget_SetHealth_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.Tick
+// (Defined, Simulated, Event, Public)
+// Parameters:
+// float                          DeltaTime                      (Parm)
+
+void ADunDefDecoyTarget::Tick(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.Tick");
+
+	ADunDefDecoyTarget_Tick_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.DrawMiniMapIcon
+// (Defined, Simulated, Public, HasDefaults)
+// Parameters:
+// class UCanvas*                 Canvas                         (Parm)
+// class ADunDefMiniMap*          MiniMap                        (Parm)
+
+void ADunDefDecoyTarget::DrawMiniMapIcon(class UCanvas* Canvas, class ADunDefMiniMap* MiniMap)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.DrawMiniMapIcon");
+
+	ADunDefDecoyTarget_DrawMiniMapIcon_Params params;
+	params.Canvas = Canvas;
+	params.MiniMap = MiniMap;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.Destroyed
+// (Defined, Simulated, Event, Public)
+
+void ADunDefDecoyTarget::Destroyed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.Destroyed");
+
+	ADunDefDecoyTarget_Destroyed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefDecoyTarget.PostBeginPlay
+// (Defined, Simulated, Public)
+
+void ADunDefDecoyTarget::PostBeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.PostBeginPlay");
+
+	ADunDefDecoyTarget_PostBeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.SetOwnerNoSee
+// (Defined, Simulated, HasOptionalParms, Public)
+// Parameters:
+// unsigned long                  ownerNoSee                     (Parm)
+// unsigned long                  ownerNoSeeWeapon               (OptionalParm, Parm)
+
+void ADunDefPlayer_DualMelee::SetOwnerNoSee(unsigned long ownerNoSee, unsigned long ownerNoSeeWeapon)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.SetOwnerNoSee");
+
+	ADunDefPlayer_DualMelee_SetOwnerNoSee_Params params;
+	params.ownerNoSee = ownerNoSee;
+	params.ownerNoSeeWeapon = ownerNoSeeWeapon;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AutoActivateSecondaryWeapon
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayer_DualMelee::AutoActivateSecondaryWeapon()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AutoActivateSecondaryWeapon");
+
+	ADunDefPlayer_DualMelee_AutoActivateSecondaryWeapon_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AllowNegativeStatusAffecting
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayer_DualMelee::AllowNegativeStatusAffecting()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AllowNegativeStatusAffecting");
+
+	ADunDefPlayer_DualMelee_AllowNegativeStatusAffecting_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.GetAlternateStance
+// (Defined, Simulated, Public)
+// Parameters:
+// class ADunDefPlayerAbility_StanceBase* askingStance                   (Parm)
+// class ADunDefPlayerAbility_StanceBase* ReturnValue                    (Parm, OutParm, ReturnParm)
+
+class ADunDefPlayerAbility_StanceBase* ADunDefPlayer_DualMelee::GetAlternateStance(class ADunDefPlayerAbility_StanceBase* askingStance)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.GetAlternateStance");
+
+	ADunDefPlayer_DualMelee_GetAlternateStance_Params params;
+	params.askingStance = askingStance;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.SetWeaponSpeedMultiplier
+// (Defined, Public)
+// Parameters:
+// float                          newMult                        (Parm)
+
+void ADunDefPlayer_DualMelee::SetWeaponSpeedMultiplier(float newMult)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.SetWeaponSpeedMultiplier");
+
+	ADunDefPlayer_DualMelee_SetWeaponSpeedMultiplier_Params params;
+	params.newMult = newMult;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.GetOverrideSocketName
+// (Defined, Simulated, Public)
+// Parameters:
+// class ADunDefWeapon*           theWeapon                      (Parm)
+// struct FName                   ReturnValue                    (Parm, OutParm, ReturnParm)
+
+struct FName ADunDefPlayer_DualMelee::GetOverrideSocketName(class ADunDefWeapon* theWeapon)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.GetOverrideSocketName");
+
+	ADunDefPlayer_DualMelee_GetOverrideSocketName_Params params;
+	params.theWeapon = theWeapon;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.JumpOffPawn
+// (Defined, Public)
+
+void ADunDefPlayer_DualMelee::JumpOffPawn()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.JumpOffPawn");
+
+	ADunDefPlayer_DualMelee_JumpOffPawn_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.ShouldPlayHurtAnimation
+// (Defined, Public, HasOutParms)
+// Parameters:
+// class AController*             InstigatedBy                   (Parm)
+// struct FVector                 HitLocation                    (Parm)
+// int                            Damage                         (Parm)
+// class UClass*                  DamageType                     (Parm)
+// int                            Result                         (Parm, OutParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayer_DualMelee::ShouldPlayHurtAnimation(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, int* Result)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.ShouldPlayHurtAnimation");
+
+	ADunDefPlayer_DualMelee_ShouldPlayHurtAnimation_Params params;
+	params.InstigatedBy = InstigatedBy;
+	params.HitLocation = HitLocation;
+	params.Damage = Damage;
+	params.DamageType = DamageType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Result != nullptr)
+		*Result = params.Result;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_ResetOffhandWeaponSwingDamage
+// (Defined, Event, Public)
+
+void ADunDefPlayer_DualMelee::AnimNotify_ResetOffhandWeaponSwingDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_ResetOffhandWeaponSwingDamage");
+
+	ADunDefPlayer_DualMelee_AnimNotify_ResetOffhandWeaponSwingDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StopOffhandWeaponSwingDamage
+// (Defined, Event, Public)
+
+void ADunDefPlayer_DualMelee::AnimNotify_StopOffhandWeaponSwingDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StopOffhandWeaponSwingDamage");
+
+	ADunDefPlayer_DualMelee_AnimNotify_StopOffhandWeaponSwingDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StartOffhandWeaponSwingDamage
+// (Defined, Event, Public)
+
+void ADunDefPlayer_DualMelee::AnimNotify_StartOffhandWeaponSwingDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StartOffhandWeaponSwingDamage");
+
+	ADunDefPlayer_DualMelee_AnimNotify_StartOffhandWeaponSwingDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_ResetWeaponSwingDamage
+// (Defined, Event, Public)
+
+void ADunDefPlayer_DualMelee::AnimNotify_ResetWeaponSwingDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_ResetWeaponSwingDamage");
+
+	ADunDefPlayer_DualMelee_AnimNotify_ResetWeaponSwingDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StopWeaponSwingDamage
+// (Defined, Event, Public)
+
+void ADunDefPlayer_DualMelee::AnimNotify_StopWeaponSwingDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StopWeaponSwingDamage");
+
+	ADunDefPlayer_DualMelee_AnimNotify_StopWeaponSwingDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StartWeaponSwingDamage
+// (Defined, Event, Public)
+
+void ADunDefPlayer_DualMelee::AnimNotify_StartWeaponSwingDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StartWeaponSwingDamage");
+
+	ADunDefPlayer_DualMelee_AnimNotify_StartWeaponSwingDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.Destroyed
+// (Defined, Simulated, Event, Public)
+
+void ADunDefPlayer_DualMelee::Destroyed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.Destroyed");
+
+	ADunDefPlayer_DualMelee_Destroyed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AdjustDamage
+// (Defined, HasOptionalParms, Public, HasOutParms)
+// Parameters:
+// int                            inDamage                       (Parm, OutParm)
+// struct FVector                 Momentum                       (Parm, OutParm)
+// class AController*             InstigatedBy                   (Parm)
+// struct FVector                 HitLocation                    (Parm)
+// class UClass*                  DamageType                     (Parm)
+// struct FTraceHitInfo           HitInfo                        (OptionalParm, Parm)
+// class UObject*                 WhatHitMe                      (OptionalParm, Parm)
+
+void ADunDefPlayer_DualMelee::AdjustDamage(class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class UObject* WhatHitMe, int* inDamage, struct FVector* Momentum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AdjustDamage");
+
+	ADunDefPlayer_DualMelee_AdjustDamage_Params params;
+	params.InstigatedBy = InstigatedBy;
+	params.HitLocation = HitLocation;
+	params.DamageType = DamageType;
+	params.HitInfo = HitInfo;
+	params.WhatHitMe = WhatHitMe;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (inDamage != nullptr)
+		*inDamage = params.inDamage;
+	if (Momentum != nullptr)
+		*Momentum = params.Momentum;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.GivePlayerHitInfo
+// (Defined, Public, HasOutParms)
+// Parameters:
+// class AActor*                  HitActor                       (Parm)
+// int                            dealtDamage                    (Parm)
+// unsigned long                  bAllowMomentumOverride         (Parm)
+// struct FVector                 appliedMomentum                (Parm, OutParm)
+
+void ADunDefPlayer_DualMelee::GivePlayerHitInfo(class AActor* HitActor, int dealtDamage, unsigned long bAllowMomentumOverride, struct FVector* appliedMomentum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.GivePlayerHitInfo");
+
+	ADunDefPlayer_DualMelee_GivePlayerHitInfo_Params params;
+	params.HitActor = HitActor;
+	params.dealtDamage = dealtDamage;
+	params.bAllowMomentumOverride = bAllowMomentumOverride;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (appliedMomentum != nullptr)
+		*appliedMomentum = params.appliedMomentum;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.Tick
+// (Defined, Simulated, Event, Public)
+// Parameters:
+// float                          DeltaTime                      (Parm)
+
+void ADunDefPlayer_DualMelee::Tick(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.Tick");
+
+	ADunDefPlayer_DualMelee_Tick_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_CurrentAbility_Off
+// (Defined, Simulated, Public)
+
+void ADunDefPlayer_DualMelee::AnimNotify_CurrentAbility_Off()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_CurrentAbility_Off");
+
+	ADunDefPlayer_DualMelee_AnimNotify_CurrentAbility_Off_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_CurrentAbility_On
+// (Defined, Simulated, Public)
+
+void ADunDefPlayer_DualMelee::AnimNotify_CurrentAbility_On()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_CurrentAbility_On");
+
+	ADunDefPlayer_DualMelee_AnimNotify_CurrentAbility_On_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceBlend
+// (Defined, Simulated, Public)
+
+void ADunDefPlayer_DualMelee::DoStanceBlend()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceBlend");
+
+	ADunDefPlayer_DualMelee_DoStanceBlend_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.DeActivateStance
+// (Defined, Simulated, Public)
+// Parameters:
+// class ADunDefPlayerAbility_StanceBase* oldStance                      (Parm)
+
+void ADunDefPlayer_DualMelee::DeActivateStance(class ADunDefPlayerAbility_StanceBase* oldStance)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.DeActivateStance");
+
+	ADunDefPlayer_DualMelee_DeActivateStance_Params params;
+	params.oldStance = oldStance;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.ActivateStance
+// (Defined, Simulated, Public)
+// Parameters:
+// class ADunDefPlayerAbility_StanceBase* newStance                      (Parm)
+
+void ADunDefPlayer_DualMelee::ActivateStance(class ADunDefPlayerAbility_StanceBase* newStance)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.ActivateStance");
+
+	ADunDefPlayer_DualMelee_ActivateStance_Params params;
+	params.newStance = newStance;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.GetMeleeSwingInfoOverride
+// (Defined, Public, HasOutParms, HasDefaults)
+// Parameters:
+// class ADunDefWeapon_MeleeSword* overrideForWeap                (Parm)
+// int                            currentMeleeSwingIndex         (Parm, OutParm)
+// struct FMeleeSwingInfo         OverrideInfo                   (Parm, OutParm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayer_DualMelee::GetMeleeSwingInfoOverride(class ADunDefWeapon_MeleeSword* overrideForWeap, int* currentMeleeSwingIndex, struct FMeleeSwingInfo* OverrideInfo)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.GetMeleeSwingInfoOverride");
+
+	ADunDefPlayer_DualMelee_GetMeleeSwingInfoOverride_Params params;
+	params.overrideForWeap = overrideForWeap;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (currentMeleeSwingIndex != nullptr)
+		*currentMeleeSwingIndex = params.currentMeleeSwingIndex;
+	if (OverrideInfo != nullptr)
+		*OverrideInfo = params.OverrideInfo;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.OverrideMeleeSwingInfo
+// (Defined, Simulated, Public)
+// Parameters:
+// class ADunDefWeapon_MeleeSword* askingWeapon                   (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayer_DualMelee::OverrideMeleeSwingInfo(class ADunDefWeapon_MeleeSword* askingWeapon)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.OverrideMeleeSwingInfo");
+
+	ADunDefPlayer_DualMelee_OverrideMeleeSwingInfo_Params params;
+	params.askingWeapon = askingWeapon;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.CheckAllowMelee
+// (Defined, Simulated, HasOptionalParms, Public, HasDefaults)
+// Parameters:
+// class ADunDefWeapon_MeleeSword* weaponCheck                    (Parm)
+// unsigned long                  checkAnimDuration              (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayer_DualMelee::CheckAllowMelee(class ADunDefWeapon_MeleeSword* weaponCheck, unsigned long checkAnimDuration)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.CheckAllowMelee");
+
+	ADunDefPlayer_DualMelee_CheckAllowMelee_Params params;
+	params.weaponCheck = weaponCheck;
+	params.checkAnimDuration = checkAnimDuration;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.CheckPlayingCustomAnim
+// (Defined, Simulated, HasOptionalParms, Public)
+// Parameters:
+// struct FName                   inAnim                         (Parm)
+// float                          TimeFromEndToConsiderFinished  (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayer_DualMelee::CheckPlayingCustomAnim(const struct FName& inAnim, float TimeFromEndToConsiderFinished)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.CheckPlayingCustomAnim");
+
+	ADunDefPlayer_DualMelee_CheckPlayingCustomAnim_Params params;
+	params.inAnim = inAnim;
+	params.TimeFromEndToConsiderFinished = TimeFromEndToConsiderFinished;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.StopFire
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned char                  FireModeNum                    (Parm)
+
+void ADunDefPlayer_DualMelee::StopFire(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.StopFire");
+
+	ADunDefPlayer_DualMelee_StopFire_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.ServerStopFire
+// (Defined, Net, NetReliable, Public, NetServer)
+// Parameters:
+// unsigned char                  FireModeNum                    (Parm)
+
+void ADunDefPlayer_DualMelee::ServerStopFire(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.ServerStopFire");
+
+	ADunDefPlayer_DualMelee_ServerStopFire_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.SetComboInfo
+// (Defined, Simulated, Public, HasDefaults)
+// Parameters:
+// class ADunDefWeapon_MeleeSword* comboWeapon                    (Parm)
+// unsigned long                  bMainHand                      (Parm)
+
+void ADunDefPlayer_DualMelee::SetComboInfo(class ADunDefWeapon_MeleeSword* comboWeapon, unsigned long bMainHand)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.SetComboInfo");
+
+	ADunDefPlayer_DualMelee_SetComboInfo_Params params;
+	params.comboWeapon = comboWeapon;
+	params.bMainHand = bMainHand;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceCheck
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayer_DualMelee::DoStanceCheck()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceCheck");
+
+	ADunDefPlayer_DualMelee_DoStanceCheck_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.StartFire
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned char                  FireModeNum                    (Parm)
+
+void ADunDefPlayer_DualMelee::StartFire(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.StartFire");
+
+	ADunDefPlayer_DualMelee_StartFire_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.ServerStartFire
+// (Defined, Net, NetReliable, Public, NetServer)
+// Parameters:
+// unsigned char                  FireModeNum                    (Parm)
+
+void ADunDefPlayer_DualMelee::ServerStartFire(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.ServerStartFire");
+
+	ADunDefPlayer_DualMelee_ServerStartFire_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.GetOffHandSocketName
+// (Defined, Static, Public)
+// Parameters:
+// struct FName                   ReturnValue                    (Parm, OutParm, ReturnParm)
+
+struct FName ADunDefPlayer_DualMelee::STATIC_GetOffHandSocketName()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.GetOffHandSocketName");
+
+	ADunDefPlayer_DualMelee_GetOffHandSocketName_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.AllowDualWeapon
+// (Defined, Static, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayer_DualMelee::STATIC_AllowDualWeapon()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AllowDualWeapon");
+
+	ADunDefPlayer_DualMelee_AllowDualWeapon_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.CreateContainedInventoryFromTemplate
+// (Defined, Simulated, HasOptionalParms, Public)
+// Parameters:
+// class AActor*                  InventoryActorTemplate         (Parm)
+// unsigned long                  bDoNotActivate                 (OptionalParm, Parm)
+// class AInventory*              ReturnValue                    (Parm, OutParm, ReturnParm)
+
+class AInventory* ADunDefPlayer_DualMelee::CreateContainedInventoryFromTemplate(class AActor* InventoryActorTemplate, unsigned long bDoNotActivate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.CreateContainedInventoryFromTemplate");
+
+	ADunDefPlayer_DualMelee_CreateContainedInventoryFromTemplate_Params params;
+	params.InventoryActorTemplate = InventoryActorTemplate;
+	params.bDoNotActivate = bDoNotActivate;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.SetOffHandWeapon
+// (Defined, Simulated, Public)
+// Parameters:
+// class ADunDefWeapon_MeleeSword* newOffHandWeap                 (Parm)
+
+void ADunDefPlayer_DualMelee::SetOffHandWeapon(class ADunDefWeapon_MeleeSword* newOffHandWeap)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.SetOffHandWeapon");
+
+	ADunDefPlayer_DualMelee_SetOffHandWeapon_Params params;
+	params.newOffHandWeap = newOffHandWeap;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.SwapOffHandWeaponFor
+// (Defined, Public)
+// Parameters:
+// class ADunDefWeapon*           weaponTemplate                 (Parm)
+// class UHeroEquipment*          equipmentRef                   (Parm)
+// class ADunDefWeapon*           ReturnValue                    (Parm, OutParm, ReturnParm)
+
+class ADunDefWeapon* ADunDefPlayer_DualMelee::SwapOffHandWeaponFor(class ADunDefWeapon* weaponTemplate, class UHeroEquipment* equipmentRef)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.SwapOffHandWeaponFor");
+
+	ADunDefPlayer_DualMelee_SwapOffHandWeaponFor_Params params;
+	params.weaponTemplate = weaponTemplate;
+	params.equipmentRef = equipmentRef;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.SwapWeaponFor
+// (Defined, Public)
+// Parameters:
+// class ADunDefWeapon*           weaponTemplate                 (Parm)
+// class UHeroEquipment*          equipmentRef                   (Parm)
+// class ADunDefWeapon*           ReturnValue                    (Parm, OutParm, ReturnParm)
+
+class ADunDefWeapon* ADunDefPlayer_DualMelee::SwapWeaponFor(class ADunDefWeapon* weaponTemplate, class UHeroEquipment* equipmentRef)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.SwapWeaponFor");
+
+	ADunDefPlayer_DualMelee_SwapWeaponFor_Params params;
+	params.weaponTemplate = weaponTemplate;
+	params.equipmentRef = equipmentRef;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.HasLightningStance
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayer_DualMelee::HasLightningStance()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.HasLightningStance");
+
+	ADunDefPlayer_DualMelee_HasLightningStance_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayer_DualMelee.PostBeginPlay
+// (Defined, Simulated, Event, Public)
+
+void ADunDefPlayer_DualMelee::PostBeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.PostBeginPlay");
+
+	ADunDefPlayer_DualMelee_PostBeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowNegativeStatusAffecting
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayerAbility_StanceBase::AllowNegativeStatusAffecting()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowNegativeStatusAffecting");
+
+	ADunDefPlayerAbility_StanceBase_AllowNegativeStatusAffecting_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.ResetWeaponDamage
+// (Simulated, Public)
+
+void ADunDefPlayerAbility_StanceBase::ResetWeaponDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.ResetWeaponDamage");
+
+	ADunDefPlayerAbility_StanceBase_ResetWeaponDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopOffHandWeaponDamage
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayerAbility_StanceBase::StopOffHandWeaponDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopOffHandWeaponDamage");
+
+	ADunDefPlayerAbility_StanceBase_StopOffHandWeaponDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopWeaponDamage
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayerAbility_StanceBase::StopWeaponDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopWeaponDamage");
+
+	ADunDefPlayerAbility_StanceBase_StopWeaponDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartOffHandWeaponDamage
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayerAbility_StanceBase::StartOffHandWeaponDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartOffHandWeaponDamage");
+
+	ADunDefPlayerAbility_StanceBase_StartOffHandWeaponDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartWeaponDamage
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayerAbility_StanceBase::StartWeaponDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartWeaponDamage");
+
+	ADunDefPlayerAbility_StanceBase_StartWeaponDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GivePlayerHitInfo
+// (Simulated, Public, HasOutParms)
+// Parameters:
+// class AActor*                  HitActor                       (Parm)
+// int                            dealtDamage                    (Parm)
+// unsigned long                  bAllowMomentumOverride         (Parm)
+// struct FVector                 appliedMomentum                (Parm, OutParm)
+
+void ADunDefPlayerAbility_StanceBase::GivePlayerHitInfo(class AActor* HitActor, int dealtDamage, unsigned long bAllowMomentumOverride, struct FVector* appliedMomentum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GivePlayerHitInfo");
+
+	ADunDefPlayerAbility_StanceBase_GivePlayerHitInfo_Params params;
+	params.HitActor = HitActor;
+	params.dealtDamage = dealtDamage;
+	params.bAllowMomentumOverride = bAllowMomentumOverride;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (appliedMomentum != nullptr)
+		*appliedMomentum = params.appliedMomentum;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AnimNotify_CurrentAbility_Off
+// (Simulated, Public)
+
+void ADunDefPlayerAbility_StanceBase::AnimNotify_CurrentAbility_Off()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AnimNotify_CurrentAbility_Off");
+
+	ADunDefPlayerAbility_StanceBase_AnimNotify_CurrentAbility_Off_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AnimNotify_CurrentAbility_On
+// (Simulated, Public)
+
+void ADunDefPlayerAbility_StanceBase::AnimNotify_CurrentAbility_On()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AnimNotify_CurrentAbility_On");
+
+	ADunDefPlayerAbility_StanceBase_AnimNotify_CurrentAbility_On_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStanceCancel
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayerAbility_StanceBase::AllowStanceCancel()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStanceCancel");
+
+	ADunDefPlayerAbility_StanceBase_AllowStanceCancel_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckDoStanceAttack
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayerAbility_StanceBase::CheckDoStanceAttack()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckDoStanceAttack");
+
+	ADunDefPlayerAbility_StanceBase_CheckDoStanceAttack_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetMultiplierValue
+// (Defined, Simulated, HasOptionalParms, Public)
+// Parameters:
+// struct FStatMultipliers        multiplierCheck                (Parm)
+// unsigned long                  bDoLog                         (OptionalParm, Parm)
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefPlayerAbility_StanceBase::GetMultiplierValue(const struct FStatMultipliers& multiplierCheck, unsigned long bDoLog)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetMultiplierValue");
+
+	ADunDefPlayerAbility_StanceBase_GetMultiplierValue_Params params;
+	params.multiplierCheck = multiplierCheck;
+	params.bDoLog = bDoLog;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckStatus
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayerAbility_StanceBase::CheckStatus()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckStatus");
+
+	ADunDefPlayerAbility_StanceBase_CheckStatus_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetAbilityStatus
+// (Defined, Simulated, HasOptionalParms, Public, HasOutParms)
+// Parameters:
+// int                            ExtraStatusFlag                (OptionalParm, Parm, OutParm)
+// TEnumAsByte<EPlayerAbilityStatus> ReturnValue                    (Parm, OutParm, ReturnParm)
+
+TEnumAsByte<EPlayerAbilityStatus> ADunDefPlayerAbility_StanceBase::GetAbilityStatus(int* ExtraStatusFlag)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetAbilityStatus");
+
+	ADunDefPlayerAbility_StanceBase_GetAbilityStatus_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ExtraStatusFlag != nullptr)
+		*ExtraStatusFlag = params.ExtraStatusFlag;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.OnActivate
+// (Defined, Simulated, Public, HasDefaults)
+
+void ADunDefPlayerAbility_StanceBase::OnActivate()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.OnActivate");
+
+	ADunDefPlayerAbility_StanceBase_OnActivate_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStepTowards
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefPlayerAbility_StanceBase::AllowStepTowards()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStepTowards");
+
+	ADunDefPlayerAbility_StanceBase_AllowStepTowards_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerMomentumMultiplier
+// (Simulated, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefPlayerAbility_StanceBase::GetPlayerMomentumMultiplier()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerMomentumMultiplier");
+
+	ADunDefPlayerAbility_StanceBase_GetPlayerMomentumMultiplier_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerAttackKnockbackMultiplier
+// (Simulated, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefPlayerAbility_StanceBase::GetPlayerAttackKnockbackMultiplier()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerAttackKnockbackMultiplier");
+
+	ADunDefPlayerAbility_StanceBase_GetPlayerAttackKnockbackMultiplier_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerAttackSpeedMultiplier
+// (Simulated, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefPlayerAbility_StanceBase::GetPlayerAttackSpeedMultiplier()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerAttackSpeedMultiplier");
+
+	ADunDefPlayerAbility_StanceBase_GetPlayerAttackSpeedMultiplier_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.PlayActivationAnimation
+// (Simulated, Public)
+
+void ADunDefPlayerAbility_StanceBase::PlayActivationAnimation()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.PlayActivationAnimation");
+
+	ADunDefPlayerAbility_StanceBase_PlayActivationAnimation_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function DunDefSpecial.DunDefTower_SummonEnemy.UpdateBuffValues
 // (Defined, Simulated, Public)
 
@@ -9452,364 +11099,6 @@ void ADunDefPlayer_Summoner::ReplicatedEvent(const struct FName& VarName)
 }
 
 
-// Function DunDefSpecial.DunDefDecoyTarget.DTGetEnemyTargetingDesirability
-// (Defined, Public)
-// Parameters:
-// class ADunDefEnemyController*  forController                  (Parm)
-// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
-
-float ADunDefDecoyTarget::DTGetEnemyTargetingDesirability(class ADunDefEnemyController* forController)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.DTGetEnemyTargetingDesirability");
-
-	ADunDefDecoyTarget_DTGetEnemyTargetingDesirability_Params params;
-	params.forController = forController;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.DrawMyHUD
-// (Defined, Simulated, Public)
-// Parameters:
-// class ADunDefHUD*              H                              (Parm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefDecoyTarget::DrawMyHUD(class ADunDefHUD* H)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.DrawMyHUD");
-
-	ADunDefDecoyTarget_DrawMyHUD_Params params;
-	params.H = H;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.PlayDeath
-// (Defined, Simulated, Public)
-
-void ADunDefDecoyTarget::PlayDeath()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.PlayDeath");
-
-	ADunDefDecoyTarget_PlayDeath_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.AllowHeroGUID
-// (Public)
-// Parameters:
-// int                            GUID1                          (Parm)
-// int                            GUID2                          (Parm)
-// int                            GUID3                          (Parm)
-// int                            GUID4                          (Parm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefDecoyTarget::AllowHeroGUID(int GUID1, int GUID2, int GUID3, int GUID4)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.AllowHeroGUID");
-
-	ADunDefDecoyTarget_AllowHeroGUID_Params params;
-	params.GUID1 = GUID1;
-	params.GUID2 = GUID2;
-	params.GUID3 = GUID3;
-	params.GUID4 = GUID4;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.CanDetonate
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefDecoyTarget::CanDetonate()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.CanDetonate");
-
-	ADunDefDecoyTarget_CanDetonate_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.Detonate
-// (Defined, Simulated, HasOptionalParms, Public)
-// Parameters:
-// int                            SetDetonationsNumber           (OptionalParm, Parm)
-
-void ADunDefDecoyTarget::Detonate(int SetDetonationsNumber)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.Detonate");
-
-	ADunDefDecoyTarget_Detonate_Params params;
-	params.SetDetonationsNumber = SetDetonationsNumber;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.SelfDestruct
-// (Defined, Public)
-
-void ADunDefDecoyTarget::SelfDestruct()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.SelfDestruct");
-
-	ADunDefDecoyTarget_SelfDestruct_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.ScaleForHeroModifiers
-// (Defined, Public)
-// Parameters:
-// unsigned long                  IsFirstTime                    (Parm)
-
-void ADunDefDecoyTarget::ScaleForHeroModifiers(unsigned long IsFirstTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.ScaleForHeroModifiers");
-
-	ADunDefDecoyTarget_ScaleForHeroModifiers_Params params;
-	params.IsFirstTime = IsFirstTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.IsClassOnIgnoreList
-// (Defined, Simulated, Public)
-// Parameters:
-// class UClass*                  ActorClass                     (Parm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefDecoyTarget::IsClassOnIgnoreList(class UClass* ActorClass)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.IsClassOnIgnoreList");
-
-	ADunDefDecoyTarget_IsClassOnIgnoreList_Params params;
-	params.ActorClass = ActorClass;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.SetMaxNumberOfAttackers
-// (Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefDecoyTarget::SetMaxNumberOfAttackers()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.SetMaxNumberOfAttackers");
-
-	ADunDefDecoyTarget_SetMaxNumberOfAttackers_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.SetActiveTime
-// (Defined, Public)
-
-void ADunDefDecoyTarget::SetActiveTime()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.SetActiveTime");
-
-	ADunDefDecoyTarget_SetActiveTime_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.DoPoke
-// (Defined, Public)
-
-void ADunDefDecoyTarget::DoPoke()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.DoPoke");
-
-	ADunDefDecoyTarget_DoPoke_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.SetDesirability
-// (Defined, Simulated, Public)
-
-void ADunDefDecoyTarget::SetDesirability()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.SetDesirability");
-
-	ADunDefDecoyTarget_SetDesirability_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.SetHealth
-// (Defined, Simulated, Public)
-
-void ADunDefDecoyTarget::SetHealth()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.SetHealth");
-
-	ADunDefDecoyTarget_SetHealth_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.Tick
-// (Defined, Simulated, Event, Public)
-// Parameters:
-// float                          DeltaTime                      (Parm)
-
-void ADunDefDecoyTarget::Tick(float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.Tick");
-
-	ADunDefDecoyTarget_Tick_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.DrawMiniMapIcon
-// (Defined, Simulated, Public, HasDefaults)
-// Parameters:
-// class UCanvas*                 Canvas                         (Parm)
-// class ADunDefMiniMap*          MiniMap                        (Parm)
-
-void ADunDefDecoyTarget::DrawMiniMapIcon(class UCanvas* Canvas, class ADunDefMiniMap* MiniMap)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.DrawMiniMapIcon");
-
-	ADunDefDecoyTarget_DrawMiniMapIcon_Params params;
-	params.Canvas = Canvas;
-	params.MiniMap = MiniMap;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.Destroyed
-// (Defined, Simulated, Event, Public)
-
-void ADunDefDecoyTarget::Destroyed()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.Destroyed");
-
-	ADunDefDecoyTarget_Destroyed_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefDecoyTarget.PostBeginPlay
-// (Defined, Simulated, Public)
-
-void ADunDefDecoyTarget::PostBeginPlay()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefDecoyTarget.PostBeginPlay");
-
-	ADunDefDecoyTarget_PostBeginPlay_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function DunDefSpecial.DunDefDropOffPoint.PreventTowerAtPoint
 // (Defined, Simulated, Public)
 // Parameters:
@@ -14532,1295 +15821,6 @@ void ADunDefPickupableSpawner::ReplicatedEvent(const struct FName& VarName)
 }
 
 
-// Function DunDefSpecial.DunDefPlayer_DualMelee.SetOwnerNoSee
-// (Defined, Simulated, HasOptionalParms, Public)
-// Parameters:
-// unsigned long                  ownerNoSee                     (Parm)
-// unsigned long                  ownerNoSeeWeapon               (OptionalParm, Parm)
-
-void ADunDefPlayer_DualMelee::SetOwnerNoSee(unsigned long ownerNoSee, unsigned long ownerNoSeeWeapon)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.SetOwnerNoSee");
-
-	ADunDefPlayer_DualMelee_SetOwnerNoSee_Params params;
-	params.ownerNoSee = ownerNoSee;
-	params.ownerNoSeeWeapon = ownerNoSeeWeapon;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AutoActivateSecondaryWeapon
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayer_DualMelee::AutoActivateSecondaryWeapon()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AutoActivateSecondaryWeapon");
-
-	ADunDefPlayer_DualMelee_AutoActivateSecondaryWeapon_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AllowNegativeStatusAffecting
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayer_DualMelee::AllowNegativeStatusAffecting()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AllowNegativeStatusAffecting");
-
-	ADunDefPlayer_DualMelee_AllowNegativeStatusAffecting_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.GetAlternateStance
-// (Defined, Simulated, Public)
-// Parameters:
-// class ADunDefPlayerAbility_StanceBase* askingStance                   (Parm)
-// class ADunDefPlayerAbility_StanceBase* ReturnValue                    (Parm, OutParm, ReturnParm)
-
-class ADunDefPlayerAbility_StanceBase* ADunDefPlayer_DualMelee::GetAlternateStance(class ADunDefPlayerAbility_StanceBase* askingStance)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.GetAlternateStance");
-
-	ADunDefPlayer_DualMelee_GetAlternateStance_Params params;
-	params.askingStance = askingStance;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.SetWeaponSpeedMultiplier
-// (Defined, Public)
-// Parameters:
-// float                          newMult                        (Parm)
-
-void ADunDefPlayer_DualMelee::SetWeaponSpeedMultiplier(float newMult)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.SetWeaponSpeedMultiplier");
-
-	ADunDefPlayer_DualMelee_SetWeaponSpeedMultiplier_Params params;
-	params.newMult = newMult;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.GetOverrideSocketName
-// (Defined, Simulated, Public)
-// Parameters:
-// class ADunDefWeapon*           theWeapon                      (Parm)
-// struct FName                   ReturnValue                    (Parm, OutParm, ReturnParm)
-
-struct FName ADunDefPlayer_DualMelee::GetOverrideSocketName(class ADunDefWeapon* theWeapon)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.GetOverrideSocketName");
-
-	ADunDefPlayer_DualMelee_GetOverrideSocketName_Params params;
-	params.theWeapon = theWeapon;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.JumpOffPawn
-// (Defined, Public)
-
-void ADunDefPlayer_DualMelee::JumpOffPawn()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.JumpOffPawn");
-
-	ADunDefPlayer_DualMelee_JumpOffPawn_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.ShouldPlayHurtAnimation
-// (Defined, Public, HasOutParms)
-// Parameters:
-// class AController*             InstigatedBy                   (Parm)
-// struct FVector                 HitLocation                    (Parm)
-// int                            Damage                         (Parm)
-// class UClass*                  DamageType                     (Parm)
-// int                            Result                         (Parm, OutParm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayer_DualMelee::ShouldPlayHurtAnimation(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, int* Result)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.ShouldPlayHurtAnimation");
-
-	ADunDefPlayer_DualMelee_ShouldPlayHurtAnimation_Params params;
-	params.InstigatedBy = InstigatedBy;
-	params.HitLocation = HitLocation;
-	params.Damage = Damage;
-	params.DamageType = DamageType;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Result != nullptr)
-		*Result = params.Result;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_ResetOffhandWeaponSwingDamage
-// (Defined, Event, Public)
-
-void ADunDefPlayer_DualMelee::AnimNotify_ResetOffhandWeaponSwingDamage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_ResetOffhandWeaponSwingDamage");
-
-	ADunDefPlayer_DualMelee_AnimNotify_ResetOffhandWeaponSwingDamage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StopOffhandWeaponSwingDamage
-// (Defined, Event, Public)
-
-void ADunDefPlayer_DualMelee::AnimNotify_StopOffhandWeaponSwingDamage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StopOffhandWeaponSwingDamage");
-
-	ADunDefPlayer_DualMelee_AnimNotify_StopOffhandWeaponSwingDamage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StartOffhandWeaponSwingDamage
-// (Defined, Event, Public)
-
-void ADunDefPlayer_DualMelee::AnimNotify_StartOffhandWeaponSwingDamage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StartOffhandWeaponSwingDamage");
-
-	ADunDefPlayer_DualMelee_AnimNotify_StartOffhandWeaponSwingDamage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_ResetWeaponSwingDamage
-// (Defined, Event, Public)
-
-void ADunDefPlayer_DualMelee::AnimNotify_ResetWeaponSwingDamage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_ResetWeaponSwingDamage");
-
-	ADunDefPlayer_DualMelee_AnimNotify_ResetWeaponSwingDamage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StopWeaponSwingDamage
-// (Defined, Event, Public)
-
-void ADunDefPlayer_DualMelee::AnimNotify_StopWeaponSwingDamage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StopWeaponSwingDamage");
-
-	ADunDefPlayer_DualMelee_AnimNotify_StopWeaponSwingDamage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StartWeaponSwingDamage
-// (Defined, Event, Public)
-
-void ADunDefPlayer_DualMelee::AnimNotify_StartWeaponSwingDamage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_StartWeaponSwingDamage");
-
-	ADunDefPlayer_DualMelee_AnimNotify_StartWeaponSwingDamage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.Destroyed
-// (Defined, Simulated, Event, Public)
-
-void ADunDefPlayer_DualMelee::Destroyed()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.Destroyed");
-
-	ADunDefPlayer_DualMelee_Destroyed_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AdjustDamage
-// (Defined, HasOptionalParms, Public, HasOutParms)
-// Parameters:
-// int                            inDamage                       (Parm, OutParm)
-// struct FVector                 Momentum                       (Parm, OutParm)
-// class AController*             InstigatedBy                   (Parm)
-// struct FVector                 HitLocation                    (Parm)
-// class UClass*                  DamageType                     (Parm)
-// struct FTraceHitInfo           HitInfo                        (OptionalParm, Parm)
-// class UObject*                 WhatHitMe                      (OptionalParm, Parm)
-
-void ADunDefPlayer_DualMelee::AdjustDamage(class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class UObject* WhatHitMe, int* inDamage, struct FVector* Momentum)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AdjustDamage");
-
-	ADunDefPlayer_DualMelee_AdjustDamage_Params params;
-	params.InstigatedBy = InstigatedBy;
-	params.HitLocation = HitLocation;
-	params.DamageType = DamageType;
-	params.HitInfo = HitInfo;
-	params.WhatHitMe = WhatHitMe;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (inDamage != nullptr)
-		*inDamage = params.inDamage;
-	if (Momentum != nullptr)
-		*Momentum = params.Momentum;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.GivePlayerHitInfo
-// (Defined, Public, HasOutParms)
-// Parameters:
-// class AActor*                  HitActor                       (Parm)
-// int                            dealtDamage                    (Parm)
-// unsigned long                  bAllowMomentumOverride         (Parm)
-// struct FVector                 appliedMomentum                (Parm, OutParm)
-
-void ADunDefPlayer_DualMelee::GivePlayerHitInfo(class AActor* HitActor, int dealtDamage, unsigned long bAllowMomentumOverride, struct FVector* appliedMomentum)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.GivePlayerHitInfo");
-
-	ADunDefPlayer_DualMelee_GivePlayerHitInfo_Params params;
-	params.HitActor = HitActor;
-	params.dealtDamage = dealtDamage;
-	params.bAllowMomentumOverride = bAllowMomentumOverride;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (appliedMomentum != nullptr)
-		*appliedMomentum = params.appliedMomentum;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.Tick
-// (Defined, Simulated, Event, Public)
-// Parameters:
-// float                          DeltaTime                      (Parm)
-
-void ADunDefPlayer_DualMelee::Tick(float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.Tick");
-
-	ADunDefPlayer_DualMelee_Tick_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_CurrentAbility_Off
-// (Defined, Simulated, Public)
-
-void ADunDefPlayer_DualMelee::AnimNotify_CurrentAbility_Off()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_CurrentAbility_Off");
-
-	ADunDefPlayer_DualMelee_AnimNotify_CurrentAbility_Off_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_CurrentAbility_On
-// (Defined, Simulated, Public)
-
-void ADunDefPlayer_DualMelee::AnimNotify_CurrentAbility_On()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AnimNotify_CurrentAbility_On");
-
-	ADunDefPlayer_DualMelee_AnimNotify_CurrentAbility_On_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceBlend
-// (Defined, Simulated, Public)
-
-void ADunDefPlayer_DualMelee::DoStanceBlend()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceBlend");
-
-	ADunDefPlayer_DualMelee_DoStanceBlend_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.DeActivateStance
-// (Defined, Simulated, Public)
-// Parameters:
-// class ADunDefPlayerAbility_StanceBase* oldStance                      (Parm)
-
-void ADunDefPlayer_DualMelee::DeActivateStance(class ADunDefPlayerAbility_StanceBase* oldStance)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.DeActivateStance");
-
-	ADunDefPlayer_DualMelee_DeActivateStance_Params params;
-	params.oldStance = oldStance;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.ActivateStance
-// (Defined, Simulated, Public)
-// Parameters:
-// class ADunDefPlayerAbility_StanceBase* newStance                      (Parm)
-
-void ADunDefPlayer_DualMelee::ActivateStance(class ADunDefPlayerAbility_StanceBase* newStance)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.ActivateStance");
-
-	ADunDefPlayer_DualMelee_ActivateStance_Params params;
-	params.newStance = newStance;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.GetMeleeSwingInfoOverride
-// (Defined, Public, HasOutParms, HasDefaults)
-// Parameters:
-// class ADunDefWeapon_MeleeSword* overrideForWeap                (Parm)
-// int                            currentMeleeSwingIndex         (Parm, OutParm)
-// struct FMeleeSwingInfo         OverrideInfo                   (Parm, OutParm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayer_DualMelee::GetMeleeSwingInfoOverride(class ADunDefWeapon_MeleeSword* overrideForWeap, int* currentMeleeSwingIndex, struct FMeleeSwingInfo* OverrideInfo)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.GetMeleeSwingInfoOverride");
-
-	ADunDefPlayer_DualMelee_GetMeleeSwingInfoOverride_Params params;
-	params.overrideForWeap = overrideForWeap;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (currentMeleeSwingIndex != nullptr)
-		*currentMeleeSwingIndex = params.currentMeleeSwingIndex;
-	if (OverrideInfo != nullptr)
-		*OverrideInfo = params.OverrideInfo;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.OverrideMeleeSwingInfo
-// (Defined, Simulated, Public)
-// Parameters:
-// class ADunDefWeapon_MeleeSword* askingWeapon                   (Parm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayer_DualMelee::OverrideMeleeSwingInfo(class ADunDefWeapon_MeleeSword* askingWeapon)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.OverrideMeleeSwingInfo");
-
-	ADunDefPlayer_DualMelee_OverrideMeleeSwingInfo_Params params;
-	params.askingWeapon = askingWeapon;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.CheckAllowMelee
-// (Defined, Simulated, HasOptionalParms, Public, HasDefaults)
-// Parameters:
-// class ADunDefWeapon_MeleeSword* weaponCheck                    (Parm)
-// unsigned long                  checkAnimDuration              (OptionalParm, Parm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayer_DualMelee::CheckAllowMelee(class ADunDefWeapon_MeleeSword* weaponCheck, unsigned long checkAnimDuration)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.CheckAllowMelee");
-
-	ADunDefPlayer_DualMelee_CheckAllowMelee_Params params;
-	params.weaponCheck = weaponCheck;
-	params.checkAnimDuration = checkAnimDuration;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.CheckPlayingCustomAnim
-// (Defined, Simulated, HasOptionalParms, Public)
-// Parameters:
-// struct FName                   inAnim                         (Parm)
-// float                          TimeFromEndToConsiderFinished  (OptionalParm, Parm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayer_DualMelee::CheckPlayingCustomAnim(const struct FName& inAnim, float TimeFromEndToConsiderFinished)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.CheckPlayingCustomAnim");
-
-	ADunDefPlayer_DualMelee_CheckPlayingCustomAnim_Params params;
-	params.inAnim = inAnim;
-	params.TimeFromEndToConsiderFinished = TimeFromEndToConsiderFinished;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.StopFire
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned char                  FireModeNum                    (Parm)
-
-void ADunDefPlayer_DualMelee::StopFire(unsigned char FireModeNum)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.StopFire");
-
-	ADunDefPlayer_DualMelee_StopFire_Params params;
-	params.FireModeNum = FireModeNum;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.ServerStopFire
-// (Defined, Net, NetReliable, Public, NetServer)
-// Parameters:
-// unsigned char                  FireModeNum                    (Parm)
-
-void ADunDefPlayer_DualMelee::ServerStopFire(unsigned char FireModeNum)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.ServerStopFire");
-
-	ADunDefPlayer_DualMelee_ServerStopFire_Params params;
-	params.FireModeNum = FireModeNum;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.SetComboInfo
-// (Defined, Simulated, Public, HasDefaults)
-// Parameters:
-// class ADunDefWeapon_MeleeSword* comboWeapon                    (Parm)
-// unsigned long                  bMainHand                      (Parm)
-
-void ADunDefPlayer_DualMelee::SetComboInfo(class ADunDefWeapon_MeleeSword* comboWeapon, unsigned long bMainHand)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.SetComboInfo");
-
-	ADunDefPlayer_DualMelee_SetComboInfo_Params params;
-	params.comboWeapon = comboWeapon;
-	params.bMainHand = bMainHand;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceCheck
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayer_DualMelee::DoStanceCheck()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.DoStanceCheck");
-
-	ADunDefPlayer_DualMelee_DoStanceCheck_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.StartFire
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned char                  FireModeNum                    (Parm)
-
-void ADunDefPlayer_DualMelee::StartFire(unsigned char FireModeNum)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.StartFire");
-
-	ADunDefPlayer_DualMelee_StartFire_Params params;
-	params.FireModeNum = FireModeNum;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.ServerStartFire
-// (Defined, Net, NetReliable, Public, NetServer)
-// Parameters:
-// unsigned char                  FireModeNum                    (Parm)
-
-void ADunDefPlayer_DualMelee::ServerStartFire(unsigned char FireModeNum)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.ServerStartFire");
-
-	ADunDefPlayer_DualMelee_ServerStartFire_Params params;
-	params.FireModeNum = FireModeNum;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.GetOffHandSocketName
-// (Defined, Static, Public)
-// Parameters:
-// struct FName                   ReturnValue                    (Parm, OutParm, ReturnParm)
-
-struct FName ADunDefPlayer_DualMelee::STATIC_GetOffHandSocketName()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.GetOffHandSocketName");
-
-	ADunDefPlayer_DualMelee_GetOffHandSocketName_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.AllowDualWeapon
-// (Defined, Static, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayer_DualMelee::STATIC_AllowDualWeapon()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.AllowDualWeapon");
-
-	ADunDefPlayer_DualMelee_AllowDualWeapon_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.CreateContainedInventoryFromTemplate
-// (Defined, Simulated, HasOptionalParms, Public)
-// Parameters:
-// class AActor*                  InventoryActorTemplate         (Parm)
-// unsigned long                  bDoNotActivate                 (OptionalParm, Parm)
-// class AInventory*              ReturnValue                    (Parm, OutParm, ReturnParm)
-
-class AInventory* ADunDefPlayer_DualMelee::CreateContainedInventoryFromTemplate(class AActor* InventoryActorTemplate, unsigned long bDoNotActivate)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.CreateContainedInventoryFromTemplate");
-
-	ADunDefPlayer_DualMelee_CreateContainedInventoryFromTemplate_Params params;
-	params.InventoryActorTemplate = InventoryActorTemplate;
-	params.bDoNotActivate = bDoNotActivate;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.SetOffHandWeapon
-// (Defined, Simulated, Public)
-// Parameters:
-// class ADunDefWeapon_MeleeSword* newOffHandWeap                 (Parm)
-
-void ADunDefPlayer_DualMelee::SetOffHandWeapon(class ADunDefWeapon_MeleeSword* newOffHandWeap)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.SetOffHandWeapon");
-
-	ADunDefPlayer_DualMelee_SetOffHandWeapon_Params params;
-	params.newOffHandWeap = newOffHandWeap;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.SwapOffHandWeaponFor
-// (Defined, Public)
-// Parameters:
-// class ADunDefWeapon*           weaponTemplate                 (Parm)
-// class UHeroEquipment*          equipmentRef                   (Parm)
-// class ADunDefWeapon*           ReturnValue                    (Parm, OutParm, ReturnParm)
-
-class ADunDefWeapon* ADunDefPlayer_DualMelee::SwapOffHandWeaponFor(class ADunDefWeapon* weaponTemplate, class UHeroEquipment* equipmentRef)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.SwapOffHandWeaponFor");
-
-	ADunDefPlayer_DualMelee_SwapOffHandWeaponFor_Params params;
-	params.weaponTemplate = weaponTemplate;
-	params.equipmentRef = equipmentRef;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.SwapWeaponFor
-// (Defined, Public)
-// Parameters:
-// class ADunDefWeapon*           weaponTemplate                 (Parm)
-// class UHeroEquipment*          equipmentRef                   (Parm)
-// class ADunDefWeapon*           ReturnValue                    (Parm, OutParm, ReturnParm)
-
-class ADunDefWeapon* ADunDefPlayer_DualMelee::SwapWeaponFor(class ADunDefWeapon* weaponTemplate, class UHeroEquipment* equipmentRef)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.SwapWeaponFor");
-
-	ADunDefPlayer_DualMelee_SwapWeaponFor_Params params;
-	params.weaponTemplate = weaponTemplate;
-	params.equipmentRef = equipmentRef;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.HasLightningStance
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayer_DualMelee::HasLightningStance()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.HasLightningStance");
-
-	ADunDefPlayer_DualMelee_HasLightningStance_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayer_DualMelee.PostBeginPlay
-// (Defined, Simulated, Event, Public)
-
-void ADunDefPlayer_DualMelee::PostBeginPlay()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayer_DualMelee.PostBeginPlay");
-
-	ADunDefPlayer_DualMelee_PostBeginPlay_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowNegativeStatusAffecting
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayerAbility_StanceBase::AllowNegativeStatusAffecting()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowNegativeStatusAffecting");
-
-	ADunDefPlayerAbility_StanceBase_AllowNegativeStatusAffecting_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.ResetWeaponDamage
-// (Simulated, Public)
-
-void ADunDefPlayerAbility_StanceBase::ResetWeaponDamage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.ResetWeaponDamage");
-
-	ADunDefPlayerAbility_StanceBase_ResetWeaponDamage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopOffHandWeaponDamage
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayerAbility_StanceBase::StopOffHandWeaponDamage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopOffHandWeaponDamage");
-
-	ADunDefPlayerAbility_StanceBase_StopOffHandWeaponDamage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopWeaponDamage
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayerAbility_StanceBase::StopWeaponDamage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StopWeaponDamage");
-
-	ADunDefPlayerAbility_StanceBase_StopWeaponDamage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartOffHandWeaponDamage
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayerAbility_StanceBase::StartOffHandWeaponDamage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartOffHandWeaponDamage");
-
-	ADunDefPlayerAbility_StanceBase_StartOffHandWeaponDamage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartWeaponDamage
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayerAbility_StanceBase::StartWeaponDamage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.StartWeaponDamage");
-
-	ADunDefPlayerAbility_StanceBase_StartWeaponDamage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GivePlayerHitInfo
-// (Simulated, Public, HasOutParms)
-// Parameters:
-// class AActor*                  HitActor                       (Parm)
-// int                            dealtDamage                    (Parm)
-// unsigned long                  bAllowMomentumOverride         (Parm)
-// struct FVector                 appliedMomentum                (Parm, OutParm)
-
-void ADunDefPlayerAbility_StanceBase::GivePlayerHitInfo(class AActor* HitActor, int dealtDamage, unsigned long bAllowMomentumOverride, struct FVector* appliedMomentum)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GivePlayerHitInfo");
-
-	ADunDefPlayerAbility_StanceBase_GivePlayerHitInfo_Params params;
-	params.HitActor = HitActor;
-	params.dealtDamage = dealtDamage;
-	params.bAllowMomentumOverride = bAllowMomentumOverride;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (appliedMomentum != nullptr)
-		*appliedMomentum = params.appliedMomentum;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AnimNotify_CurrentAbility_Off
-// (Simulated, Public)
-
-void ADunDefPlayerAbility_StanceBase::AnimNotify_CurrentAbility_Off()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AnimNotify_CurrentAbility_Off");
-
-	ADunDefPlayerAbility_StanceBase_AnimNotify_CurrentAbility_Off_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AnimNotify_CurrentAbility_On
-// (Simulated, Public)
-
-void ADunDefPlayerAbility_StanceBase::AnimNotify_CurrentAbility_On()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AnimNotify_CurrentAbility_On");
-
-	ADunDefPlayerAbility_StanceBase_AnimNotify_CurrentAbility_On_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStanceCancel
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayerAbility_StanceBase::AllowStanceCancel()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStanceCancel");
-
-	ADunDefPlayerAbility_StanceBase_AllowStanceCancel_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckDoStanceAttack
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayerAbility_StanceBase::CheckDoStanceAttack()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckDoStanceAttack");
-
-	ADunDefPlayerAbility_StanceBase_CheckDoStanceAttack_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetMultiplierValue
-// (Defined, Simulated, HasOptionalParms, Public)
-// Parameters:
-// struct FStatMultipliers        multiplierCheck                (Parm)
-// unsigned long                  bDoLog                         (OptionalParm, Parm)
-// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
-
-float ADunDefPlayerAbility_StanceBase::GetMultiplierValue(const struct FStatMultipliers& multiplierCheck, unsigned long bDoLog)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetMultiplierValue");
-
-	ADunDefPlayerAbility_StanceBase_GetMultiplierValue_Params params;
-	params.multiplierCheck = multiplierCheck;
-	params.bDoLog = bDoLog;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckStatus
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayerAbility_StanceBase::CheckStatus()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.CheckStatus");
-
-	ADunDefPlayerAbility_StanceBase_CheckStatus_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetAbilityStatus
-// (Defined, Simulated, HasOptionalParms, Public, HasOutParms)
-// Parameters:
-// int                            ExtraStatusFlag                (OptionalParm, Parm, OutParm)
-// TEnumAsByte<EPlayerAbilityStatus> ReturnValue                    (Parm, OutParm, ReturnParm)
-
-TEnumAsByte<EPlayerAbilityStatus> ADunDefPlayerAbility_StanceBase::GetAbilityStatus(int* ExtraStatusFlag)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetAbilityStatus");
-
-	ADunDefPlayerAbility_StanceBase_GetAbilityStatus_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (ExtraStatusFlag != nullptr)
-		*ExtraStatusFlag = params.ExtraStatusFlag;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.OnActivate
-// (Defined, Simulated, Public, HasDefaults)
-
-void ADunDefPlayerAbility_StanceBase::OnActivate()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.OnActivate");
-
-	ADunDefPlayerAbility_StanceBase_OnActivate_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStepTowards
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefPlayerAbility_StanceBase::AllowStepTowards()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.AllowStepTowards");
-
-	ADunDefPlayerAbility_StanceBase_AllowStepTowards_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerMomentumMultiplier
-// (Simulated, Public)
-// Parameters:
-// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
-
-float ADunDefPlayerAbility_StanceBase::GetPlayerMomentumMultiplier()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerMomentumMultiplier");
-
-	ADunDefPlayerAbility_StanceBase_GetPlayerMomentumMultiplier_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerAttackKnockbackMultiplier
-// (Simulated, Public)
-// Parameters:
-// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
-
-float ADunDefPlayerAbility_StanceBase::GetPlayerAttackKnockbackMultiplier()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerAttackKnockbackMultiplier");
-
-	ADunDefPlayerAbility_StanceBase_GetPlayerAttackKnockbackMultiplier_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerAttackSpeedMultiplier
-// (Simulated, Public)
-// Parameters:
-// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
-
-float ADunDefPlayerAbility_StanceBase::GetPlayerAttackSpeedMultiplier()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.GetPlayerAttackSpeedMultiplier");
-
-	ADunDefPlayerAbility_StanceBase_GetPlayerAttackSpeedMultiplier_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefPlayerAbility_StanceBase.PlayActivationAnimation
-// (Simulated, Public)
-
-void ADunDefPlayerAbility_StanceBase::PlayActivationAnimation()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_StanceBase.PlayActivationAnimation");
-
-	ADunDefPlayerAbility_StanceBase_PlayActivationAnimation_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function DunDefSpecial.DunDefPlayerAbility_LeapSlam.OnActivate
 // (Defined, Simulated, Public)
 
@@ -19496,6 +19496,27 @@ TEnumAsByte<EPlayerAbilityStatus> ADunDefPlayerAbility_InvisibilityAOE::GetAbili
 
 	if (ExtraStatusFlag != nullptr)
 		*ExtraStatusFlag = params.ExtraStatusFlag;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefPlayerAbility_InvisibilityAOE.GetSpeedMultiplier
+// (Defined, Simulated, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefPlayerAbility_InvisibilityAOE::GetSpeedMultiplier()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_InvisibilityAOE.GetSpeedMultiplier");
+
+	ADunDefPlayerAbility_InvisibilityAOE_GetSpeedMultiplier_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
 }

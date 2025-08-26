@@ -66,6 +66,16 @@ enum class EGlyphs : uint8_t
 //Script Structs
 //---------------------------------------------------------------------------
 
+// ScriptStruct DunDefSpecial.DunDefPlayerAbility_StanceBase.StatMultipliers
+// 0x0010
+struct FStatMultipliers
+{
+	unsigned long                                      bInverseMult : 1;                                         // 0x0000(0x0004) (Edit)
+	float                                              theMultiplier;                                            // 0x0004(0x0004) (Edit)
+	float                                              HeroStatExponent;                                         // 0x0008(0x0004) (Edit)
+	unsigned long                                      bUseAsPrimary : 1;                                        // 0x000C(0x0004) (Edit)
+};
+
 // ScriptStruct DunDefSpecial.DunDefTower_SummonEnemy.SummonedBoosts
 // 0x0024
 struct FSummonedBoosts
@@ -143,16 +153,6 @@ struct FTimeLimitAddition
 {
 	int                                                Temp;                                                     // 0x0000(0x0004) (Transient)
 	TArray<float>                                      PlayerIndexTimeLimitAddition;                             // 0x0004(0x000C) (Edit, NeedCtorLink)
-};
-
-// ScriptStruct DunDefSpecial.DunDefPlayerAbility_StanceBase.StatMultipliers
-// 0x0010
-struct FStatMultipliers
-{
-	unsigned long                                      bInverseMult : 1;                                         // 0x0000(0x0004) (Edit)
-	float                                              theMultiplier;                                            // 0x0004(0x0004) (Edit)
-	float                                              HeroStatExponent;                                         // 0x0008(0x0004) (Edit)
-	unsigned long                                      bUseAsPrimary : 1;                                        // 0x000C(0x0004) (Edit)
 };
 
 // ScriptStruct DunDefSpecial.DunDefPlayerAbility_LeapSlam.HitTarget

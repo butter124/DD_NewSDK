@@ -742,6 +742,13 @@ struct UHeroEquipment_GetEquipmentStatValue_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.HeroEquipment.GetBonusStatForEquipmentStacking
+struct UHeroEquipment_GetBonusStatForEquipmentStacking_Params
+{
+	TEnumAsByte<ELevelUpValueType>                     levelUpValue;                                             // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.HeroEquipment.GetEquipmentStatName
 struct UHeroEquipment_GetEquipmentStatName_Params
 {
@@ -15526,6 +15533,11 @@ struct ADunDefPlayerAbility_CanAffordAbility_Params
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.DunDefPlayerAbility.SpawnDeactivateBuffs
+struct ADunDefPlayerAbility_SpawnDeactivateBuffs_Params
+{
+};
+
 // Function UDKGame.DunDefPlayerAbility.RemoveActiveBuffs
 struct ADunDefPlayerAbility_RemoveActiveBuffs_Params
 {
@@ -17610,6 +17622,11 @@ struct ADunDefPlayer_OnBuffRemoved_Params
 struct ADunDefPlayer_OnBuffAdded_Params
 {
 	class UObject*                                     BuffAdded;                                                // (Parm)
+};
+
+// Function UDKGame.DunDefPlayer.UpdateStats
+struct ADunDefPlayer_UpdateStats_Params
+{
 };
 
 // Function UDKGame.DunDefPlayer.StaticGetOverrideSocketName
@@ -23039,6 +23056,39 @@ struct ADunDefEnemy_ClientTakeDamage_Params
 	class UObject*                                     WhatHitMe;                                                // (OptionalParm, Parm)
 };
 
+// Function UDKGame.DunDefEnemy.UnSetFrozen
+struct ADunDefEnemy_UnSetFrozen_Params
+{
+};
+
+// Function UDKGame.DunDefEnemy.PlayFrozen
+struct ADunDefEnemy_PlayFrozen_Params
+{
+};
+
+// Function UDKGame.DunDefEnemy.SetFrozen
+struct ADunDefEnemy_SetFrozen_Params
+{
+	float                                              Duration;                                                 // (Parm)
+};
+
+// Function UDKGame.DunDefEnemy.SetOilDebuffAmount
+struct ADunDefEnemy_SetOilDebuffAmount_Params
+{
+	float                                              DamageMult;                                               // (Parm)
+};
+
+// Function UDKGame.DunDefEnemy.UnSetOiled
+struct ADunDefEnemy_UnSetOiled_Params
+{
+};
+
+// Function UDKGame.DunDefEnemy.SetOiled
+struct ADunDefEnemy_SetOiled_Params
+{
+	float                                              Duration;                                                 // (Parm)
+};
+
 // Function UDKGame.DunDefEnemy.SetGolded
 struct ADunDefEnemy_SetGolded_Params
 {
@@ -23954,6 +24004,13 @@ struct UUI_ItemBox_ToggleInTrade_Params
 // Function UDKGame.UI_ItemBox.AddToTrade
 struct UUI_ItemBox_AddToTrade_Params
 {
+};
+
+// Function UDKGame.UI_ItemBox.CheckSpecialPrivilige
+struct UUI_ItemBox_CheckSpecialPrivilige_Params
+{
+	int                                                privindex;                                                // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function UDKGame.UI_ItemBox.AllowOverlays
@@ -27394,6 +27451,14 @@ struct ADunDefManaToken_SetInitialAttractor_Params
 struct ADunDefManaToken_ReplicatedEvent_Params
 {
 	struct FName                                       VarName;                                                  // (Parm)
+};
+
+// Function UDKGame.DunDefGasCloud.StaticGetCloudOilTime
+struct ADunDefGasCloud_StaticGetCloudOilTime_Params
+{
+	float                                              lifeSpanStatModifier;                                     // (Parm)
+	class ADunDefGasCloud*                             gCloud;                                                   // (Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function UDKGame.DunDefGasCloud.AllowSpawn
@@ -32053,6 +32118,23 @@ struct UDunDefMiniMapIconInterface_DrawMiniMapIcon_Params
 	class ADunDefMiniMap*                              MiniMap;                                                  // (Parm)
 };
 
+// Function UDKGame.DunDefPracticeDummy.UnSetOiled
+struct ADunDefPracticeDummy_UnSetOiled_Params
+{
+};
+
+// Function UDKGame.DunDefPracticeDummy.SetOiled
+struct ADunDefPracticeDummy_SetOiled_Params
+{
+	float                                              Duration;                                                 // (Parm)
+};
+
+// Function UDKGame.DunDefPracticeDummy.SetOilDebuffAmount
+struct ADunDefPracticeDummy_SetOilDebuffAmount_Params
+{
+	float                                              DamageMult;                                               // (Parm)
+};
+
 // Function UDKGame.DunDefPracticeDummy.ReportPercentage
 struct ADunDefPracticeDummy_ReportPercentage_Params
 {
@@ -34421,6 +34503,29 @@ struct ADunDefForestGolemController_PostBeginPlay_Params
 {
 };
 
+// Function UDKGame.DunDefTower_OilTrap.GetOilDebuffAmount
+struct ADunDefTower_OilTrap_GetOilDebuffAmount_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefTower_OilTrap.ScaleForHeroModifiers
+struct ADunDefTower_OilTrap_ScaleForHeroModifiers_Params
+{
+	unsigned long                                      IsFirstTime;                                              // (Parm)
+};
+
+// Function UDKGame.DunDefTower_OilTrap.DrawTowerToolTipStats
+struct ADunDefTower_OilTrap_DrawTowerToolTipStats_Params
+{
+	class UCanvas*                                     C;                                                        // (Parm)
+	float                                              PosX;                                                     // (Parm, OutParm)
+	float                                              PosY;                                                     // (Parm, OutParm)
+	float                                              Opacity;                                                  // (Parm)
+	class ULocalPlayer*                                ForPlayer;                                                // (Parm)
+	float                                              canvasScale;                                              // (Parm)
+};
+
 // Function UDKGame.DunDefGoblin.PlayGoblinAttackAnimation
 struct ADunDefGoblin_PlayGoblinAttackAnimation_Params
 {
@@ -35086,8 +35191,20 @@ struct ADunDefManaBomb_GetDamage_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.DunDefManaBomb.SetCustomScalar
+struct ADunDefManaBomb_SetCustomScalar_Params
+{
+	float                                              dmg;                                                      // (OptionalParm, Parm)
+	float                                              Range;                                                    // (OptionalParm, Parm)
+};
+
 // Function UDKGame.DunDefManaBomb.DoDamage
 struct ADunDefManaBomb_DoDamage_Params
+{
+};
+
+// Function UDKGame.DunDefManaBomb.DrawScale
+struct ADunDefManaBomb_DrawScale_Params
 {
 };
 
@@ -36658,6 +36775,90 @@ struct ADunDefPlayerAbility_UpgradeTower_GetCostToActivate_Params
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.DunDefPlayerClone.SetHealth
+struct ADunDefPlayerClone_SetHealth_Params
+{
+};
+
+// Function UDKGame.DunDefPlayerClone.AnimNotify_ResetOffhandWeaponSwingDamage
+struct ADunDefPlayerClone_AnimNotify_ResetOffhandWeaponSwingDamage_Params
+{
+};
+
+// Function UDKGame.DunDefPlayerClone.DrawMiniMapIcon
+struct ADunDefPlayerClone_DrawMiniMapIcon_Params
+{
+	class UCanvas*                                     Canvas;                                                   // (Parm)
+	class ADunDefMiniMap*                              MiniMap;                                                  // (Parm)
+};
+
+// Function UDKGame.DunDefPlayerClone.AnimNotify_StartOffhandWeaponSwingDamage
+struct ADunDefPlayerClone_AnimNotify_StartOffhandWeaponSwingDamage_Params
+{
+};
+
+// Function UDKGame.DunDefPlayerClone.AnimNotify_StopOffhandWeaponSwingDamage
+struct ADunDefPlayerClone_AnimNotify_StopOffhandWeaponSwingDamage_Params
+{
+};
+
+// Function UDKGame.DunDefPlayerClone.PostBeginPlay
+struct ADunDefPlayerClone_PostBeginPlay_Params
+{
+};
+
+// Function UDKGame.DunDefPlayerClone.Attack
+struct ADunDefPlayerClone_Attack_Params
+{
+	float                                              damagemulti;                                              // (OptionalParm, Parm)
+};
+
+// Function UDKGame.DunDefPlayerClone.DealDamageToHurtList
+struct ADunDefPlayerClone_DealDamageToHurtList_Params
+{
+	class ADunDefWeapon*                               InWeapon;                                                 // (Parm)
+	float                                              damagemulti;                                              // (OptionalParm, Parm)
+};
+
+// Function UDKGame.DunDefPlayerClone.PlayAttackAnimation
+struct ADunDefPlayerClone_PlayAttackAnimation_Params
+{
+	struct FName                                       attackin;                                                 // (Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefPlayerClone.PreBeginPlay
+struct ADunDefPlayerClone_PreBeginPlay_Params
+{
+};
+
+// Function UDKGame.DunDefPlayerClone.ExecReplicatedFunction
+struct ADunDefPlayerClone_ExecReplicatedFunction_Params
+{
+	struct FName                                       FunctionName;                                             // (Parm)
+	struct FName                                       nameParam1;                                               // (OptionalParm, Parm)
+	struct FName                                       nameParam2;                                               // (OptionalParm, Parm)
+	class AActor*                                      actorParam1;                                              // (OptionalParm, Parm)
+	class AActor*                                      actorParam2;                                              // (OptionalParm, Parm)
+	struct FVector                                     vecParam1;                                                // (OptionalParm, Parm)
+	struct FRotator                                    rotParam1;                                                // (OptionalParm, Parm)
+	float                                              floatParam1;                                              // (OptionalParm, Parm)
+	float                                              floatParam2;                                              // (OptionalParm, Parm)
+	float                                              floatParam3;                                              // (OptionalParm, Parm)
+	float                                              floatParam4;                                              // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
+	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
+	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
+};
+
+// Function UDKGame.DunDefPlayerClone.ReplicatedEvent
+struct ADunDefPlayerClone_ReplicatedEvent_Params
+{
+	struct FName                                       VarName;                                                  // (Parm)
+};
+
 // Function UDKGame.DunDefPlayerSelectUICharacter.AddDefaultOffHandWeaponAttachment
 struct ADunDefPlayerSelectUICharacter_AddDefaultOffHandWeaponAttachment_Params
 {
@@ -37569,6 +37770,23 @@ struct ADunDefTower_MultiProjectile_ShootProjectile_Params
 
 // Function UDKGame.DunDefTower_MultiProjectile.UpdateTarget
 struct ADunDefTower_MultiProjectile_UpdateTarget_Params
+{
+};
+
+// Function UDKGame.DunDefTower_SliceNDice.GetWindRadius
+struct ADunDefTower_SliceNDice_GetWindRadius_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefTower_SliceNDice.GetWindSpeed
+struct ADunDefTower_SliceNDice_GetWindSpeed_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefTower_SliceNDice.Suction
+struct ADunDefTower_SliceNDice_Suction_Params
 {
 };
 
@@ -38512,6 +38730,19 @@ struct UUI_EquipmentInfo_New_Update_Params
 struct UUI_EquipmentInfo_New_GetCloseAnimation_Params
 {
 	struct FName                                       ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_EventHostCrown.TickedByPawn
+struct UHeroEquipment_EventHostCrown_TickedByPawn_Params
+{
+	class ADunDefPlayer*                               PlayerOwner;                                              // (Parm)
+	float                                              DeltaTime;                                                // (Parm)
+};
+
+// Function UDKGame.HeroEquipment_EventHostCrown.GetDescription
+struct UHeroEquipment_EventHostCrown_GetDescription_Params
+{
+	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
 };
 
 // Function UDKGame.HeroEquipment_Familiar_Buff_Spawner.TickedByPawn

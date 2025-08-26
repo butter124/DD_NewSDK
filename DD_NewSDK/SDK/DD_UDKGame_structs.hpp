@@ -2098,11 +2098,11 @@ struct FItemFolder
 };
 
 // ScriptStruct UDKGame._SpecialData.Storage
-// 0x01D0
+// 0x0200
 struct FStorage
 {
-	struct FString                                     IDs[0x1D];                                                // 0x0000(0x000C) (Edit, NeedCtorLink)
-	int                                                Slots[0x1D];                                              // 0x015C(0x0004) (Edit)
+	struct FString                                     IDs[0x20];                                                // 0x0000(0x000C) (Edit, NeedCtorLink)
+	int                                                Slots[0x20];                                              // 0x0180(0x0004) (Edit)
 };
 
 // ScriptStruct UDKGame.DunDefHeroManager.EquipmentDropEntry
@@ -2976,6 +2976,13 @@ struct FsBuffTarget
 {
 	TArray<class UDunDefBuff*>                         Buffs;                                                    // 0x0000(0x000C) (NeedCtorLink)
 	class AActor*                                      Target;                                                   // 0x000C(0x0004)
+};
+
+// ScriptStruct UDKGame._SpecialData.Trade
+// 0x003C
+struct FTrade
+{
+	struct FString                                     IDs[0x5];                                                 // 0x0000(0x000C) (Edit, NeedCtorLink)
 };
 
 // ScriptStruct UDKGame.DunDefMapInfo.MixEnemyDifficultyThreshold
@@ -4712,7 +4719,7 @@ struct FStatPanelProperties
 
 // ScriptStruct UDKGame.DunDefGasCloud.ActorTypeDamageMultiplier
 // 0x0008
-struct FActorTypeDamageMultiplier
+struct ADunDefGasCloud_FActorTypeDamageMultiplier
 {
 	class UClass*                                      ActorClass;                                               // 0x0000(0x0004) (Edit)
 	float                                              DamageMultiplier;                                         // 0x0004(0x0004) (Edit)

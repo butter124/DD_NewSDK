@@ -978,6 +978,109 @@ void UHeroEquipment_Familiar_Melee_TowerScaling::TickedByPawn(class ADunDefPlaye
 }
 
 
+// Function CDT7.UI_TBR.LaunchMap
+// (Defined, Simulated, HasOptionalParms, Public)
+// Parameters:
+// unsigned long                  bStartTrueBossRush             (OptionalParm, Parm)
+
+void UUI_TBR::LaunchMap(unsigned long bStartTrueBossRush)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function CDT7.UI_TBR.LaunchMap");
+
+	UUI_TBR_LaunchMap_Params params;
+	params.bStartTrueBossRush = bStartTrueBossRush;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function CDT7.UI_TBR.WasCheckPointButtonPressed
+// (Defined, Simulated, Public)
+// Parameters:
+// class UUIObject*               Widget                         (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UUI_TBR::WasCheckPointButtonPressed(class UUIObject* Widget)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function CDT7.UI_TBR.WasCheckPointButtonPressed");
+
+	UUI_TBR_WasCheckPointButtonPressed_Params params;
+	params.Widget = Widget;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function CDT7.UI_TBR.NotifyWidgetClicked
+// (Defined, Event, Public)
+// Parameters:
+// class UUIObject*               Widget                         (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UUI_TBR::NotifyWidgetClicked(class UUIObject* Widget)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function CDT7.UI_TBR.NotifyWidgetClicked");
+
+	UUI_TBR_NotifyWidgetClicked_Params params;
+	params.Widget = Widget;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function CDT7.UI_TBR.CheckProgress
+// (Defined, Simulated, Public)
+
+void UUI_TBR::CheckProgress()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function CDT7.UI_TBR.CheckProgress");
+
+	UUI_TBR_CheckProgress_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function CDT7.UI_TBR.SceneActivated
+// (Defined, Event, Public)
+// Parameters:
+// unsigned long                  bInitialActivation             (Parm)
+
+void UUI_TBR::SceneActivated(unsigned long bInitialActivation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function CDT7.UI_TBR.SceneActivated");
+
+	UUI_TBR_SceneActivated_Params params;
+	params.bInitialActivation = bInitialActivation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 }
 
 #ifdef _MSC_VER
