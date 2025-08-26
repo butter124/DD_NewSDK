@@ -2,16 +2,17 @@
 // clang-format off
 #include "pch.h"
 #include <SDK/DD_Core_structs.hpp>
+#include <algorithm>
 #include <mutex>
 #include <sol/forward.hpp>
 #include <sol/sol.hpp>
 #include <sol/state_view.hpp>
+#include <sol/types.hpp>
 #include <stdexcept>
 #include <thread>
 #include "includes/lua_engine.h"
 
 
-PlayerHelper& LUA_ENGINE::luaPlayerHelper = PlayerHelper::getInstance();
 std::mutex LUA_ENGINE::coroutine_mtx;
 bool LUA_ENGINE::bRunning;
 std::queue<sol::coroutine> LUA_ENGINE::coroutine_queue;
@@ -45,61 +46,61 @@ bool LUA_ENGINE::init() {
 };
 
 
-void LUA_ENGINE::thread_main(){
-  while(bRunning){
-    std::this_thread::sleep_for(std::chrono::milliseconds(1));
-    std::lock_guard<std::mutex> lock(coroutine_mtx);
 
-    size_t n = coroutine_queue.size();
-    for (int i = 0; i < n; i++) {
-      auto co = coroutine_queue.front();
-      coroutine_queue.pop();
+void LUA_ENGINE::thread_main() {
+    while (bRunning) {
+      log(std::format("coroutines: {}", coroutine_queue.size()));
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
+        std::queue<sol::coroutine> temp_queue;
+        {
+            std::lock_guard<std::mutex> lock(coroutine_mtx);
+            if (!coroutine_queue.empty()) {
+              temp_queue.swap(coroutine_queue);
+            }
+      }
+
+    while(!temp_queue.empty())
+    {
+      sol::coroutine co = temp_queue.front();
+      temp_queue.pop();
 
       if(co.valid()){
         sol::protected_function_result res = co();
-        if (!res.valid()) {
-            sol::error err = res;
-            log(std::string("Lua error: ") + err.what());
+        if(!res.valid()){
+          sol::error err = res;
+          std::cerr << "Error: " << err.what() << "\n";
         }
-        else if(res.status() == sol::call_status::yielded) {
-            coroutine_queue.push(co);
-        }
-        else if(co.valid()){
-
+        else if(res.status() == sol::call_status::yielded && co) {
+          std::lock_guard<std::mutex> lock(coroutine_mtx);
+          coroutine_queue.push(co);
         }
       }
     }
-  }
 }
 
+}
 void LUA_ENGINE::push_lua_task(sol::object lua_callable){
-  sol::state_view lua = lua_callable.lua_state();
-  sol::coroutine co;
 
-if (lua_callable.get_type() == sol::type::function) {
-    sol::function f = lua_callable;
-    sol::thread new_thread = sol::thread::create(lua);
-    sol::state_view thread_lua = new_thread.state();
+  if (lua_callable.get_type() == sol::type::function) {
+    sol::thread thread = sol::thread::create(LUA_ENGINE::get_instance().L);
 
-    // Assign function to thread's global space
-    thread_lua["entry"] = f;
+    sol::state_view thread_lua = thread.state();
 
-    // Create coroutine from thread context
-    co = sol::coroutine(thread_lua["entry"]);
-}
-  else if (lua_callable.get_type() == sol::type::thread)
-  {
-    co = sol::coroutine(lua_callable);
+    sol::coroutine co(thread_lua,lua_callable);
+    std::lock_guard<std::mutex> lock(coroutine_mtx);
+    coroutine_queue.push(co);
   }
+  // else if (lua_callable.get_type() == sol::type::thread)
+  // {
+  //   co = lua_callable.as<sol::coroutine>();
+  // }
   else
   {
     throw std::runtime_error("Not a callable or coroutine");
   }
 
-  if(co.valid()){
-    std::lock_guard<std::mutex> lock(coroutine_mtx);
-    coroutine_queue.push(co);
-  }
 }
 
 bool LUA_ENGINE::init_lua_classes() { 
@@ -143,12 +144,14 @@ bool LUA_ENGINE::init_lua_functions() {
   L.set_function("push_lua_task", push_lua_task);
   L.set_function("add_floating_text_in_world",add_floating_text_in_world);
   L.set_function("remove_floating_text_in_world",remove_floating_text_in_world);
+  L.set_function("distance_between", distance_between);
 
   L.set_function("set_player_health", set_player_health);
   L.set_function("get_player_health", get_player_health);
   L.set_function("set_player_location", set_player_location);
   L.set_function("get_player_location", get_player_location);
   L.set_function("player_move_to", player_move_to);
+  L.set_function("block_inputs", block_inputs);
 
 
   return true;
@@ -231,4 +234,7 @@ Classes::FVector LUA_ENGINE::get_player_location(int playerNum){
 
 void LUA_ENGINE::player_move_to(int playerNum, Classes::FVector pos){
   config->playerMoveTo(playerNum, pos);
+}
+void LUA_ENGINE::block_inputs(bool block){
+  config->bBlockInput = block;
 }

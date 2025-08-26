@@ -49,9 +49,9 @@ private:
 
   // API FUNCTION
   static PlayerHelper &luaPlayerHelper;
+  static void block_inputs(bool block);
 
   static float distance_between(Classes::FVector to, Classes::FVector from);
-
   static void add_floating_text_in_world(const std::string &s,
                                          Classes::FVector pos);
   static void remove_floating_text_in_world(const std::string &s);
