@@ -15,7 +15,7 @@
 
 std::mutex LUA_ENGINE::coroutine_mtx;
 bool LUA_ENGINE::bRunning;
-std::queue<sol::coroutine> LUA_ENGINE::coroutine_queue;
+std::queue<std::pair<sol::thread,sol::coroutine>> LUA_ENGINE::coroutine_queue;
 std::queue<std::function<void()>> LUA_ENGINE::threadsafe_lua_tasks;
 
 LUA_ENGINE::LUA_ENGINE()  {
@@ -53,7 +53,7 @@ void LUA_ENGINE::thread_main() {
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
-        std::queue<sol::coroutine> temp_queue;
+        std::queue<std::pair<sol::thread,sol::coroutine>> temp_queue;
         {
             std::lock_guard<std::mutex> lock(coroutine_mtx);
             if (!coroutine_queue.empty()) {
@@ -63,7 +63,8 @@ void LUA_ENGINE::thread_main() {
 
     while(!temp_queue.empty())
     {
-      sol::coroutine co = temp_queue.front();
+      sol::coroutine co = temp_queue.front().second;
+	  sol::thread th = temp_queue.front().first;
       temp_queue.pop();
 
       if(co.valid()){
@@ -74,7 +75,7 @@ void LUA_ENGINE::thread_main() {
         }
         else if(res.status() == sol::call_status::yielded && co) {
           std::lock_guard<std::mutex> lock(coroutine_mtx);
-          coroutine_queue.push(co);
+          coroutine_queue.push(std::pair(th,co));
         }
       }
     }
@@ -90,7 +91,7 @@ void LUA_ENGINE::push_lua_task(sol::object lua_callable){
 
     sol::coroutine co(thread_lua,lua_callable);
     std::lock_guard<std::mutex> lock(coroutine_mtx);
-    coroutine_queue.push(co);
+    coroutine_queue.push(std::pair(std::move(thread),std::move(co)));
   }
   // else if (lua_callable.get_type() == sol::type::thread)
   // {
@@ -132,7 +133,7 @@ bool LUA_ENGINE::cleanup() {
     return false;
   log("Cleaning up Lua engine");
   bRunning = false;
-  coroutine_queue = std::queue<sol::coroutine>();
+  coroutine_queue.empty();
   return true;
 };
 

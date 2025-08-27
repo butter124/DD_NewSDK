@@ -37,7 +37,7 @@ private:
 
   static void thread_main();
   static std::mutex coroutine_mtx;
-  static std::queue<sol::coroutine> coroutine_queue;
+  static std::queue<std::pair<sol::thread,sol::coroutine>> coroutine_queue;
   std::thread thread_worker;
   static bool bRunning;
   static void push_lua_task(sol::object lua_callable);
