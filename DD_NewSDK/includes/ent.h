@@ -3,21 +3,14 @@
 #include <SDK/DD_UDKGame_classes.hpp>
 
 class EntityHelper {
+  Classes::ADunDefPawn *pawn;
 public:
-  EntityHelper();
-  EntityHelper(Classes::AController *controller, Classes::ADunDefPawn *pawn);
+  EntityHelper(Classes::ADunDefPawn *ent = nullptr) : pawn(ent){}
 
-  Classes::FVector getPos();
+  void setEntity(Classes::ADunDefPawn *ent) { pawn = ent; }
+  const Classes::FVector getPos();
   void setPos(Classes::FVector pos);
-
-  int getHealth();
+  int getHealth(bool max) const;
   void setHealth(int i);
-  bool moveTo(Classes::FVector &pos, float offset);
-  float distanceToPoint(Classes::FVector &point);
-
-  EntityHelper nextEntity(Classes::AController &controller,
-                          Classes::ADunDefPawn &pawn);
-
-private:
-  bool bPathing = false;
+  void takeDamage(int damage);
 };
