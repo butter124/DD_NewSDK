@@ -64,7 +64,6 @@ bool Config::Init() {
   std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
   L = &LUA_ENGINE::get_instance();
-  AttachConsole();
   return true;
 }
 
