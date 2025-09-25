@@ -2098,11 +2098,11 @@ struct FItemFolder
 };
 
 // ScriptStruct UDKGame._SpecialData.Storage
-// 0x0200
+// 0x0230
 struct FStorage
 {
-	struct FString                                     IDs[0x20];                                                // 0x0000(0x000C) (Edit, NeedCtorLink)
-	int                                                Slots[0x20];                                              // 0x0180(0x0004) (Edit)
+	struct FString                                     IDs[0x23];                                                // 0x0000(0x000C) (Edit, NeedCtorLink)
+	int                                                Slots[0x23];                                              // 0x01A4(0x0004) (Edit)
 };
 
 // ScriptStruct UDKGame.DunDefHeroManager.EquipmentDropEntry

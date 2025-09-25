@@ -13,18 +13,18 @@ namespace Classes
 //---------------------------------------------------------------------------
 
 // Class CDT.DunDefHarbinger
-// 0x0034 (0x0D70 - 0x0D3C)
+// 0x0034 (0x0D88 - 0x0D54)
 class ADunDefHarbinger : public ADunDefEnemy
 {
 public:
-	struct FName                                       ShootFireAnimation;                                       // 0x0D3C(0x0008) (Edit)
-	struct FName                                       ChargeAnimationName;                                      // 0x0D44(0x0008) (Edit)
-	struct FName                                       ProjectileSpawnSocketNameLeft;                            // 0x0D4C(0x0008) (Edit)
-	struct FName                                       ProjectileSpawnSocketNameRight;                           // 0x0D54(0x0008) (Edit)
-	struct FName                                       GloveEffectSocketName;                                    // 0x0D5C(0x0008) (Edit)
-	class UParticleSystemComponent*                    FireGloveEffectComponent;                                 // 0x0D64(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    AuraEffectComponent;                                      // 0x0D68(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    FiringAuraEffect;                                         // 0x0D6C(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FName                                       ShootFireAnimation;                                       // 0x0D54(0x0008) (Edit)
+	struct FName                                       ChargeAnimationName;                                      // 0x0D5C(0x0008) (Edit)
+	struct FName                                       ProjectileSpawnSocketNameLeft;                            // 0x0D64(0x0008) (Edit)
+	struct FName                                       ProjectileSpawnSocketNameRight;                           // 0x0D6C(0x0008) (Edit)
+	struct FName                                       GloveEffectSocketName;                                    // 0x0D74(0x0008) (Edit)
+	class UParticleSystemComponent*                    FireGloveEffectComponent;                                 // 0x0D7C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    AuraEffectComponent;                                      // 0x0D80(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    FiringAuraEffect;                                         // 0x0D84(0x0004) (Edit, ExportObject, Component, EditInline)
 
 	static UClass* StaticClass()
 	{

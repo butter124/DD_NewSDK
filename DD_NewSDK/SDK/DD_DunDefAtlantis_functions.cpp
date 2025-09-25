@@ -4028,7 +4028,7 @@ float ADunDefSharkMan::PlaySharkManWindupAnimation()
 
 
 // Function DunDefAtlantis.DunDefSharkMan.Tick
-// (Defined, Event, Public)
+// (Defined, Simulated, Event, Public)
 // Parameters:
 // float                          DeltaTime                      (Parm)
 

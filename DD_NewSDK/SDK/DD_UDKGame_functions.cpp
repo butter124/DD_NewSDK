@@ -76103,7 +76103,7 @@ void ADunDefEnemy::StartedAttack()
 
 
 // Function UDKGame.DunDefEnemy.EndedAttack
-// (Simulated, Event, Public)
+// (Defined, Simulated, Event, Public)
 
 void ADunDefEnemy::EndedAttack()
 {
@@ -77025,6 +77025,23 @@ void ADunDefEnemy::DoDrawHealthBar(class ADunDefHUD* H, float Opacity)
 	ADunDefEnemy_DoDrawHealthBar_Params params;
 	params.H = H;
 	params.Opacity = Opacity;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefEnemy.CheckStuck
+// (Defined, Simulated, Public)
+
+void ADunDefEnemy::CheckStuck()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefEnemy.CheckStuck");
+
+	ADunDefEnemy_CheckStuck_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -125652,19 +125669,42 @@ struct FName UUI_EquipmentInfo_New::GetCloseAnimation()
 }
 
 
-// Function UDKGame.HeroEquipment_EventHostCrown.TickedByPawn
-// (Defined, Public, HasDefaults)
-// Parameters:
-// class ADunDefPlayer*           PlayerOwner                    (Parm)
-// float                          DeltaTime                      (Parm)
+// Function UDKGame.HeroEquipment_EventHostCrown.GetHeroOfTheCrown
+// (Defined, Public)
 
-void UHeroEquipment_EventHostCrown::TickedByPawn(class ADunDefPlayer* PlayerOwner, float DeltaTime)
+void UHeroEquipment_EventHostCrown::GetHeroOfTheCrown()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_EventHostCrown.TickedByPawn");
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_EventHostCrown.GetHeroOfTheCrown");
 
-	UHeroEquipment_EventHostCrown_TickedByPawn_Params params;
-	params.PlayerOwner = PlayerOwner;
-	params.DeltaTime = DeltaTime;
+	UHeroEquipment_EventHostCrown_GetHeroOfTheCrown_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_EventHostCrown.AddEquipmentAttachment
+// (Defined, HasOptionalParms, Public, HasDefaults)
+// Parameters:
+// class USkeletalMeshComponent*  thePlayerMesh                  (Parm, EditInline)
+// unsigned long                  attachWeapon                   (OptionalParm, Parm)
+// class AActor*                  AttachToActor                  (OptionalParm, Parm)
+// unsigned long                  bForce                         (OptionalParm, Parm)
+// unsigned long                  bIgnoreAttachFX                (OptionalParm, Parm)
+
+void UHeroEquipment_EventHostCrown::AddEquipmentAttachment(class USkeletalMeshComponent* thePlayerMesh, unsigned long attachWeapon, class AActor* AttachToActor, unsigned long bForce, unsigned long bIgnoreAttachFX)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_EventHostCrown.AddEquipmentAttachment");
+
+	UHeroEquipment_EventHostCrown_AddEquipmentAttachment_Params params;
+	params.thePlayerMesh = thePlayerMesh;
+	params.attachWeapon = attachWeapon;
+	params.AttachToActor = AttachToActor;
+	params.bForce = bForce;
+	params.bIgnoreAttachFX = bIgnoreAttachFX;
 
 	auto flags = fn->FunctionFlags;
 

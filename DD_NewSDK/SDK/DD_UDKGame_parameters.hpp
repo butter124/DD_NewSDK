@@ -23734,6 +23734,11 @@ struct ADunDefEnemy_DoDrawHealthBar_Params
 	float                                              Opacity;                                                  // (Parm)
 };
 
+// Function UDKGame.DunDefEnemy.CheckStuck
+struct ADunDefEnemy_CheckStuck_Params
+{
+};
+
 // Function UDKGame.DunDefEnemy.GetScoreSwitch
 struct ADunDefEnemy_GetScoreSwitch_Params
 {
@@ -38732,11 +38737,19 @@ struct UUI_EquipmentInfo_New_GetCloseAnimation_Params
 	struct FName                                       ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function UDKGame.HeroEquipment_EventHostCrown.TickedByPawn
-struct UHeroEquipment_EventHostCrown_TickedByPawn_Params
+// Function UDKGame.HeroEquipment_EventHostCrown.GetHeroOfTheCrown
+struct UHeroEquipment_EventHostCrown_GetHeroOfTheCrown_Params
 {
-	class ADunDefPlayer*                               PlayerOwner;                                              // (Parm)
-	float                                              DeltaTime;                                                // (Parm)
+};
+
+// Function UDKGame.HeroEquipment_EventHostCrown.AddEquipmentAttachment
+struct UHeroEquipment_EventHostCrown_AddEquipmentAttachment_Params
+{
+	class USkeletalMeshComponent*                      thePlayerMesh;                                            // (Parm, EditInline)
+	unsigned long                                      attachWeapon;                                             // (OptionalParm, Parm)
+	class AActor*                                      AttachToActor;                                            // (OptionalParm, Parm)
+	unsigned long                                      bForce;                                                   // (OptionalParm, Parm)
+	unsigned long                                      bIgnoreAttachFX;                                          // (OptionalParm, Parm)
 };
 
 // Function UDKGame.HeroEquipment_EventHostCrown.GetDescription

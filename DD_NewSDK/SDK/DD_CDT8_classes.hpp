@@ -35,6 +35,7 @@ public:
 	unsigned long                                      bdisableRateScaling : 1;                                  // 0x02DC(0x0004) (Edit)
 	unsigned long                                      bNotifyWeaponDidDamage : 1;                               // 0x02DC(0x0004) (Edit)
 	unsigned long                                      IsWeaponAttack : 1;                                       // 0x02DC(0x0004) (Edit)
+	unsigned long                                      bUseSelfAsDamageCauser : 1;                               // 0x02DC(0x0004) (Edit)
 	unsigned long                                      bDoRadialForce : 1;                                       // 0x02DC(0x0004) (Edit)
 	unsigned long                                      bOutwardPush : 1;                                         // 0x02DC(0x0004) (Edit)
 	unsigned long                                      bFalloff : 1;                                             // 0x02DC(0x0004) (Edit)
@@ -98,6 +99,7 @@ public:
 	float STATIC_StaticGetAttackRate(float attackRateStatModifier, class ADunDefEmitterRadialForce* gCloud);
 	void UpdateEffectInterval();
 	float GetDamageMult();
+	class AActor* GetDamageCauser();
 	void ScaleRadiusEffect();
 	void ScaleForHeroModifiers(unsigned long IsFirstTime);
 	unsigned long AllowHeroGUID(int GUID1, int GUID2, int GUID3, int GUID4);

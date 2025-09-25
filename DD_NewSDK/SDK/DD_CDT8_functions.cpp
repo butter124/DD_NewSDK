@@ -177,6 +177,27 @@ float ADunDefEmitterRadialForce::GetDamageMult()
 }
 
 
+// Function CDT8.DunDefEmitterRadialForce.GetDamageCauser
+// (Defined, Simulated, Public)
+// Parameters:
+// class AActor*                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+class AActor* ADunDefEmitterRadialForce::GetDamageCauser()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function CDT8.DunDefEmitterRadialForce.GetDamageCauser");
+
+	ADunDefEmitterRadialForce_GetDamageCauser_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function CDT8.DunDefEmitterRadialForce.ScaleRadiusEffect
 // (Defined, Simulated, Public, HasDefaults)
 

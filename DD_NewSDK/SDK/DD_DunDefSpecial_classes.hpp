@@ -1958,15 +1958,15 @@ public:
 
 
 // Class DunDefSpecial.DunDefMapInfo_Delivery
-// 0x003C (0x03AC - 0x0370)
+// 0x003C (0x03B0 - 0x0374)
 class UDunDefMapInfo_Delivery : public UDunDefMapInfo
 {
 public:
-	TArray<struct FTimes>                              DifficultyTimeLimits;                                     // 0x0370(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FPerDifficulty>                      NumPlayerTimeMultiplier;                                  // 0x037C(0x000C) (Edit, NeedCtorLink)
-	TArray<int>                                        DropPointsPerWave;                                        // 0x0388(0x000C) (Edit, NeedCtorLink)
-	TArray<int>                                        DUPerWave;                                                // 0x0394(0x000C) (Edit, NeedCtorLink)
-	TArray<int>                                        NumDropOffsPerPoints;                                     // 0x03A0(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FTimes>                              DifficultyTimeLimits;                                     // 0x0374(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FPerDifficulty>                      NumPlayerTimeMultiplier;                                  // 0x0380(0x000C) (Edit, NeedCtorLink)
+	TArray<int>                                        DropPointsPerWave;                                        // 0x038C(0x000C) (Edit, NeedCtorLink)
+	TArray<int>                                        DUPerWave;                                                // 0x0398(0x000C) (Edit, NeedCtorLink)
+	TArray<int>                                        NumDropOffsPerPoints;                                     // 0x03A4(0x000C) (Edit, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -2079,16 +2079,16 @@ public:
 
 
 // Class DunDefSpecial.DunDefMapInfo_KillEnemiesTimeLimit
-// 0x0040 (0x03B0 - 0x0370)
+// 0x0040 (0x03B4 - 0x0374)
 class UDunDefMapInfo_KillEnemiesTimeLimit : public UDunDefMapInfo
 {
 public:
-	TArray<float>                                      TimeLimits;                                               // 0x0370(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      TimeLimitMultipliers;                                     // 0x037C(0x000C) (Edit, NeedCtorLink)
-	TArray<float>                                      DifficultyTimeLimitAdditions;                             // 0x0388(0x000C) (Edit, NeedCtorLink)
-	TArray<struct FTimeLimitAddition>                  WavePlayerTimeLimitAdditions;                             // 0x0394(0x000C) (Edit, NeedCtorLink)
-	int                                                KillEnemiesTimeLimitWaveToStartAt;                        // 0x03A0(0x0004) (Edit)
-	TArray<int>                                        LivesPerDifficulty;                                       // 0x03A4(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      TimeLimits;                                               // 0x0374(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      TimeLimitMultipliers;                                     // 0x0380(0x000C) (Edit, NeedCtorLink)
+	TArray<float>                                      DifficultyTimeLimitAdditions;                             // 0x038C(0x000C) (Edit, NeedCtorLink)
+	TArray<struct FTimeLimitAddition>                  WavePlayerTimeLimitAdditions;                             // 0x0398(0x000C) (Edit, NeedCtorLink)
+	int                                                KillEnemiesTimeLimitWaveToStartAt;                        // 0x03A4(0x0004) (Edit)
+	TArray<int>                                        LivesPerDifficulty;                                       // 0x03A8(0x000C) (Edit, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -2253,18 +2253,18 @@ public:
 
 
 // Class DunDefSpecial.DunDefHarbinger_v2
-// 0x0034 (0x0D70 - 0x0D3C)
+// 0x0034 (0x0D88 - 0x0D54)
 class ADunDefHarbinger_v2 : public ADunDefEnemy
 {
 public:
-	struct FName                                       ShootFireAnimation;                                       // 0x0D3C(0x0008) (Edit)
-	struct FName                                       ChargeAnimationName;                                      // 0x0D44(0x0008) (Edit)
-	struct FName                                       ProjectileSpawnSocketNameLeft;                            // 0x0D4C(0x0008) (Edit)
-	struct FName                                       ProjectileSpawnSocketNameRight;                           // 0x0D54(0x0008) (Edit)
-	struct FName                                       GloveEffectSocketName;                                    // 0x0D5C(0x0008) (Edit)
-	class UParticleSystemComponent*                    FireGloveEffectComponent;                                 // 0x0D64(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    AuraEffectComponent;                                      // 0x0D68(0x0004) (Edit, ExportObject, Component, EditInline)
-	class UParticleSystemComponent*                    FiringAuraEffect;                                         // 0x0D6C(0x0004) (Edit, ExportObject, Component, EditInline)
+	struct FName                                       ShootFireAnimation;                                       // 0x0D54(0x0008) (Edit)
+	struct FName                                       ChargeAnimationName;                                      // 0x0D5C(0x0008) (Edit)
+	struct FName                                       ProjectileSpawnSocketNameLeft;                            // 0x0D64(0x0008) (Edit)
+	struct FName                                       ProjectileSpawnSocketNameRight;                           // 0x0D6C(0x0008) (Edit)
+	struct FName                                       GloveEffectSocketName;                                    // 0x0D74(0x0008) (Edit)
+	class UParticleSystemComponent*                    FireGloveEffectComponent;                                 // 0x0D7C(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    AuraEffectComponent;                                      // 0x0D80(0x0004) (Edit, ExportObject, Component, EditInline)
+	class UParticleSystemComponent*                    FiringAuraEffect;                                         // 0x0D84(0x0004) (Edit, ExportObject, Component, EditInline)
 
 	static UClass* StaticClass()
 	{
@@ -3986,13 +3986,13 @@ public:
 
 
 // Class DunDefSpecial.DunDefTurkey
-// 0x000C (0x0D48 - 0x0D3C)
+// 0x000C (0x0D60 - 0x0D54)
 class ADunDefTurkey : public ADunDefEnemy
 {
 public:
-	class ADunDefEmitterSpawnable*                     DeathEffect;                                              // 0x0D3C(0x0004) (Edit)
-	float                                              FleeSpeed;                                                // 0x0D40(0x0004) (Edit)
-	int                                                FleeSoundIndex;                                           // 0x0D44(0x0004) (Net)
+	class ADunDefEmitterSpawnable*                     DeathEffect;                                              // 0x0D54(0x0004) (Edit)
+	float                                              FleeSpeed;                                                // 0x0D58(0x0004) (Edit)
+	int                                                FleeSoundIndex;                                           // 0x0D5C(0x0004) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -4325,22 +4325,22 @@ public:
 
 
 // Class DunDefSpecial.SnowManBoss
-// 0x004C (0x0DE4 - 0x0D98)
+// 0x004C (0x0DFC - 0x0DB0)
 class ASnowManBoss : public ADunDefBoss
 {
 public:
-	struct FName                                       PeckAnim;                                                 // 0x0D98(0x0008) (Edit)
-	struct FName                                       PeckSocket;                                               // 0x0DA0(0x0008) (Edit)
-	struct FName                                       SnowShootAnim;                                            // 0x0DA8(0x0008) (Edit)
-	struct FName                                       SnowSpawnSocketLeft;                                      // 0x0DB0(0x0008) (Edit)
-	struct FName                                       SnowSpawnSocketRight;                                     // 0x0DB8(0x0008) (Edit)
-	class ADunDefEmitterSpawnable*                     SnowShootEffect;                                          // 0x0DC0(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     PeckHitEffect;                                            // 0x0DC4(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     StompEffect;                                              // 0x0DC8(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     DeathEffect;                                              // 0x0DCC(0x0004) (Edit)
-	struct FName                                       StompAnim;                                                // 0x0DD0(0x0008) (Edit)
-	float                                              StompEffectRadius;                                        // 0x0DD8(0x0004) (Edit)
-	struct FName                                       SpawnInAnim;                                              // 0x0DDC(0x0008) (Edit)
+	struct FName                                       PeckAnim;                                                 // 0x0DB0(0x0008) (Edit)
+	struct FName                                       PeckSocket;                                               // 0x0DB8(0x0008) (Edit)
+	struct FName                                       SnowShootAnim;                                            // 0x0DC0(0x0008) (Edit)
+	struct FName                                       SnowSpawnSocketLeft;                                      // 0x0DC8(0x0008) (Edit)
+	struct FName                                       SnowSpawnSocketRight;                                     // 0x0DD0(0x0008) (Edit)
+	class ADunDefEmitterSpawnable*                     SnowShootEffect;                                          // 0x0DD8(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     PeckHitEffect;                                            // 0x0DDC(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     StompEffect;                                              // 0x0DE0(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     DeathEffect;                                              // 0x0DE4(0x0004) (Edit)
+	struct FName                                       StompAnim;                                                // 0x0DE8(0x0008) (Edit)
+	float                                              StompEffectRadius;                                        // 0x0DF0(0x0004) (Edit)
+	struct FName                                       SpawnInAnim;                                              // 0x0DF4(0x0008) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -4421,20 +4421,20 @@ public:
 
 
 // Class DunDefSpecial.TurkeyBoss
-// 0x003C (0x0DD4 - 0x0D98)
+// 0x003C (0x0DEC - 0x0DB0)
 class ATurkeyBoss : public ADunDefBoss
 {
 public:
-	struct FName                                       PeckAnim;                                                 // 0x0D98(0x0008) (Edit)
-	struct FName                                       PeckSocket;                                               // 0x0DA0(0x0008) (Edit)
-	struct FName                                       EggShootAnim;                                             // 0x0DA8(0x0008) (Edit)
-	struct FName                                       EggSpawnSocket;                                           // 0x0DB0(0x0008) (Edit)
-	class ADunDefEmitterSpawnable*                     EggShootEffect;                                           // 0x0DB8(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     PeckHitEffect;                                            // 0x0DBC(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     StompEffect;                                              // 0x0DC0(0x0004) (Edit)
-	class ADunDefEmitterSpawnable*                     DeathEffect;                                              // 0x0DC4(0x0004) (Edit)
-	struct FName                                       StompAnim;                                                // 0x0DC8(0x0008) (Edit)
-	float                                              StompEffectRadius;                                        // 0x0DD0(0x0004) (Edit)
+	struct FName                                       PeckAnim;                                                 // 0x0DB0(0x0008) (Edit)
+	struct FName                                       PeckSocket;                                               // 0x0DB8(0x0008) (Edit)
+	struct FName                                       EggShootAnim;                                             // 0x0DC0(0x0008) (Edit)
+	struct FName                                       EggSpawnSocket;                                           // 0x0DC8(0x0008) (Edit)
+	class ADunDefEmitterSpawnable*                     EggShootEffect;                                           // 0x0DD0(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     PeckHitEffect;                                            // 0x0DD4(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     StompEffect;                                              // 0x0DD8(0x0004) (Edit)
+	class ADunDefEmitterSpawnable*                     DeathEffect;                                              // 0x0DDC(0x0004) (Edit)
+	struct FName                                       StompAnim;                                                // 0x0DE0(0x0008) (Edit)
+	float                                              StompEffectRadius;                                        // 0x0DE8(0x0004) (Edit)
 
 	static UClass* StaticClass()
 	{

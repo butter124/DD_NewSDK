@@ -66,6 +66,12 @@ struct ADunDefEmitterRadialForce_GetDamageMult_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function CDT8.DunDefEmitterRadialForce.GetDamageCauser
+struct ADunDefEmitterRadialForce_GetDamageCauser_Params
+{
+	class AActor*                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function CDT8.DunDefEmitterRadialForce.ScaleRadiusEffect
 struct ADunDefEmitterRadialForce_ScaleRadiusEffect_Params
 {
