@@ -1,10 +1,13 @@
 #pragma once
 #include "SDK.hpp"
-#include "includes/ent.h"
+#include "events.h"
 #include <SDK/DD_Engine_classes.hpp>
 #include <SDK/DD_UDKGame_classes.hpp>
+#include <memory>
+#include <vector>
 
 class Config;
+
 class PlayerHelper {
 
 public:
@@ -14,8 +17,14 @@ public:
   void setPlayerHealth(int playerNum, int value);
   Classes::FVector getPlayerLocation(int playerNum);
   void setPlayerLocation(int playerNum);
+  void setPlayerMovePoint(int playerNum, Classes::FVector pos);
+  void doEvents();
+
+  std::vector<std::unique_ptr<Event>> &getEvents();
 
 private:
+  std::vector<std::unique_ptr<Event>> events;
+  Config &config;
   PlayerHelper *Instance;
   PlayerHelper();
   PlayerHelper(const PlayerHelper &) = delete;            // no copy

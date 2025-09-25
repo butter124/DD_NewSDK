@@ -20,7 +20,6 @@ int EntityHelper::getHealth(bool max) const {
 void EntityHelper::setHealth(int i) {
   pawn->Health = i;
 }
-float EntityHelper::distanceToPoint(Classes::FVector &point) {return 0;}
 
 void EntityHelper::takeDamage(int damage){
   pawn->TakeDamage(damage, nullptr, {}, {}, nullptr, {}, nullptr,nullptr);

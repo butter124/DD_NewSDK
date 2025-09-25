@@ -164,6 +164,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="includes\config.h" />
     <ClInclude Include="includes\ent.h" />
+    <ClInclude Include="includes\events.h" />
     <ClInclude Include="includes\HelperFunctions.h" />
     <ClInclude Include="includes\Hooking.h" />
     <ClInclude Include="includes\ImGui\imconfig.h" />
@@ -200,6 +201,7 @@
     </ClCompile>
     <ClCompile Include="src\config.cpp" />
     <ClCompile Include="src\ent.cpp" />
+    <ClCompile Include="src\events.cpp" />
     <ClCompile Include="src\HelperFunctions.cpp" />
     <ClCompile Include="src\Hooking.cpp" />
     <ClCompile Include="src\logger.cpp" />
