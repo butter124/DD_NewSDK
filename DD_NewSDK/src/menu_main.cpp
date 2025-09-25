@@ -2104,7 +2104,7 @@ void MenuMain::Lua() {
     config->L->execute_lua_file(path);
   }
 
-  if (ImGui::Button("copy to clipboard", ImVec2(0, 0))) {
+  if (ImGui::Button("copy pos to clipboard", ImVec2(0, 0))) {
     char buf[128];
     snprintf(buf, sizeof(buf), "%.2f, %.2f, %.2f",
              config->GetPlayerPawn()->Location.X,
