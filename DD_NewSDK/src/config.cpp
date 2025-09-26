@@ -245,7 +245,8 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
   HandleAutoReady();
   HandleThreadSafeLuaRequest();
 
-  // lua
+  // lua events
+  L->handleThreadSafeContent();
 }
 
 void Config::HandleThreadSafeLuaRequest() {

@@ -1,6 +1,7 @@
 
 // clang-format off
 #include "pch.h"
+#include "playerHelper.h"
 #include <SDK/DD_Core_structs.hpp>
 #include <algorithm>
 #include <mutex>
@@ -18,8 +19,9 @@ bool LUA_ENGINE::bRunning;
 std::queue<std::pair<sol::thread,sol::coroutine>> LUA_ENGINE::coroutine_queue;
 std::queue<std::function<void()>> LUA_ENGINE::threadsafe_lua_tasks;
 
+PlayerHelper &luaPlayerHelper = PlayerHelper::getInstance();
+
 LUA_ENGINE::LUA_ENGINE()  {
-  // Init the lua state
 }
 
 bool LUA_ENGINE::init() {
@@ -238,4 +240,8 @@ void LUA_ENGINE::player_move_to(int playerNum, Classes::FVector pos){
 }
 void LUA_ENGINE::block_inputs(bool block){
   config->bBlockInput = block;
+}
+
+void LUA_ENGINE::handleThreadSafeContent(){
+  luaPlayerHelper.doEvents();
 }

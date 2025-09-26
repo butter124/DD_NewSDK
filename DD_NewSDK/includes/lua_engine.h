@@ -23,6 +23,8 @@ public:
   bool execute_lua_file(const std::string &filename);
   bool execute_lua_string(const std::string &str);
 
+  void handleThreadSafeContent();
+
   static Classes::FVector test();
   sol::state L;
 
