@@ -5,7 +5,7 @@
 
 class Event {
 public:
-  enum class Type : uint8_t { Move };
+  enum class Type : uint8_t { MoveTo, RotateToAngle, RotateToLocation };
   Event(int index) : playerIndex(index) {};
 
   int playerIndex;
@@ -13,15 +13,43 @@ public:
   virtual Type getType() const = 0;
 };
 
-class MovePlayerEvent : public Event {
+class MoveToPlayerEvent : public Event {
 public:
-  MovePlayerEvent(int index, Classes::FVector &pos)
+  MoveToPlayerEvent(int index, Classes::FVector &pos)
       : Event(index), moveLocation(pos) {};
 
   bool doEvent() override;
   void changeMove(Classes::FVector pos);
-  Type getType() const override { return Type::Move; };
+  Type getType() const override { return Type::MoveTo; };
 
 private:
   Classes::FVector moveLocation;
+};
+
+
+class RotateToAngleEvent : public Event {
+public:
+  RotateToAngleEvent(int index, Classes::FRotator &rot)
+      : Event(index), rotation(rot) {};
+
+  bool doEvent() override;
+  void changeRotation(Classes::FRotator& rot) {rotation = rot;};
+  Type getType() const override { return Type::RotateToAngle; };
+
+private:
+  Classes::FRotator rotation;
+};
+
+
+class RotateToLocationEvent : public Event {
+public:
+  RotateToLocationEvent(int index, Classes::FVector &pos)
+      : Event(index), location(pos) {};
+
+  bool doEvent() override;
+  void changeRotation(Classes::FVector& pos) {location = pos;};
+  Type getType() const override { return Type::RotateToAngle; };
+
+private:
+  Classes::FVector location;
 };
