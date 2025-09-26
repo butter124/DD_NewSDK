@@ -2236,9 +2236,12 @@ Classes::FVector Config::getPlayerLocation(int playerNum) {
   return player->Location;
 }
 
-void Config::playerMoveTo(int playerNum, Classes::FVector pos) {
+void Config::playerMoveTo(int playerNum, Classes::FVector pos, float distanceOffset) {
   auto player = GetPlayerPawnByIndex(playerNum);
   if (!player)
     return;
-  player->Controller->MoveToDirectNonPathPos(pos, nullptr, 20, 0);
+  player->Controller->MoveToDirectNonPathPos(pos, nullptr, distanceOffset, 0);
+
+  // does nothing
+  //player->Controller->MoveTo(pos,nullptr,distanceOffset, 0);
 }

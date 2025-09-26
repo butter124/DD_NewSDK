@@ -7,10 +7,18 @@ bool MovePlayerEvent::doEvent() {
   auto& config = Config::getInstance();
 
   config.playerMoveTo(playerIndex, moveLocation);
-  if(config.Distance(config.getPlayerLocation(playerIndex), moveLocation) > 20)
-    return false;
 
-  return true;
+  auto playerLocation = config.getPlayerLocation(playerIndex);
+  auto dist = config.Distance(playerLocation, moveLocation);
+
+  if (dist <= 100)
+  {
+	  config.GetPlayerPawnByIndex(playerIndex)->Velocity = Classes::FVector{ 0,0,0 };
+	  //config.playerMoveTo(playerIndex, moveLocation);
+	  return true;
+  }
+
+  return false;
 }
 
 void MovePlayerEvent::changeMove(Classes::FVector pos){

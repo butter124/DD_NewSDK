@@ -19,7 +19,7 @@ bool LUA_ENGINE::bRunning;
 std::queue<std::pair<sol::thread,sol::coroutine>> LUA_ENGINE::coroutine_queue;
 std::queue<std::function<void()>> LUA_ENGINE::threadsafe_lua_tasks;
 
-PlayerHelper &luaPlayerHelper = PlayerHelper::getInstance();
+PlayerHelper &LUA_ENGINE::playerHelper = PlayerHelper::getInstance();
 
 LUA_ENGINE::LUA_ENGINE()  {
 }
@@ -153,7 +153,7 @@ bool LUA_ENGINE::init_lua_functions() {
   L.set_function("get_player_health", get_player_health);
   L.set_function("set_player_location", set_player_location);
   L.set_function("get_player_location", get_player_location);
-  L.set_function("player_move_to", player_move_to);
+  L.set_function("player_move_to", player_move_to_event);
   L.set_function("block_inputs", block_inputs);
 
 
@@ -235,13 +235,17 @@ Classes::FVector LUA_ENGINE::get_player_location(int playerNum){
   return config->getPlayerLocation(playerNum);
 }
 
-void LUA_ENGINE::player_move_to(int playerNum, Classes::FVector pos){
-  config->playerMoveTo(playerNum, pos);
+void LUA_ENGINE::player_move_to_event(int playerNum, Classes::FVector pos){
+  playerHelper.setPlayerMovePoint(playerNum, pos);
 }
 void LUA_ENGINE::block_inputs(bool block){
   config->bBlockInput = block;
 }
 
 void LUA_ENGINE::handleThreadSafeContent(){
-  luaPlayerHelper.doEvents();
+  playerHelper.doEvents();
+}
+
+  int LUA_ENGINE::get_event_count() const{
+  return playerHelper.getEvents().size();
 }

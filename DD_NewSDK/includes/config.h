@@ -356,6 +356,6 @@ public:
   void setPlayerLocation(int playerNum, Classes::FVector pos);
   Classes::FVector getPlayerLocation(int playerNum);
 
-  void playerMoveTo(int playerNum, Classes::FVector pos);
+  void playerMoveTo(int playerNum, Classes::FVector pos, float distanceOffset = 20);
 };
 extern Config *config;

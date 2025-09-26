@@ -31,6 +31,7 @@ public:
   std::mutex threadsafe_lua_task_mtx;
   static std::queue<std::function<void()>> threadsafe_lua_tasks;
   void insert_thread_safe_request(std::function<void()> v);
+  int get_event_count() const;
 
 private:
   LUA_ENGINE();
@@ -50,7 +51,7 @@ private:
   static bool log(const std::string &s);
 
   // API FUNCTION
-  static PlayerHelper &luaPlayerHelper;
+  static PlayerHelper &playerHelper;
   static void block_inputs(bool block);
 
   static float distance_between(Classes::FVector to, Classes::FVector from);
@@ -63,5 +64,5 @@ private:
 
   static void set_player_location(int playerNum, Classes::FVector pos);
   static Classes::FVector get_player_location(int playerNum);
-  static void player_move_to(int playerNum, Classes::FVector pos);
+  static void player_move_to_event(int playerNum, Classes::FVector pos);
 };
