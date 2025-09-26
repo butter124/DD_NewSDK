@@ -188,7 +188,7 @@ void MenuMain::RenderUI() {
 }
 
 void MenuMain::Thread() {
-  // any thing in this function will be handled in proc events
+
 
   // handle keybinds
   for (auto &pair : config->keyBindsmap) {
