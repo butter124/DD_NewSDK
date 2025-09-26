@@ -15,6 +15,7 @@
 #include <string>
 #include <variant>
 #include <winuser.h>
+#include <algorithm>
 
 // clang-format on
 Config *config = &Config::getInstance();
@@ -1987,11 +1988,95 @@ bool Config::ContainsNumber(const std::string &str) {
   return std::regex_search(str, pattern);
 }
 
+float Config::DotProduct(const Classes::FVector& a, const Classes::FVector& b)
+{
+    return a.X * b.X + a.Y * b.Y + a.Z * b.Z;
+}
+
 float Config::Distance(const Classes::FVector &a, const Classes::FVector &b) {
   float dx = a.X - b.X;
   float dy = a.Y - b.Y;
   float dz = a.Z - b.Z;
   return sqrtf(dx * dx + dy * dy + dz * dz);
+}
+
+Classes::FVector Config::RotToVector(const Classes::FRotator &R){
+  constexpr float PI = 3.14159265f;
+  float cp = cosf(R.Pitch * PI / 32768.f); // Pitch in radians
+  float sp = sinf(R.Pitch * PI / 32768.f);
+  float cy = cosf(R.Yaw * PI / 32768.f);
+  float sy = sinf(R.Yaw * PI / 32768.f);
+
+  return Classes::FVector(cp * cy, cp * sy, sp);
+}
+
+float Config::AngleBetween(const Classes::FRotator &A, const Classes::FRotator &B){
+  constexpr float PI = 3.14159265f;
+  Classes::FVector v1 = RotToVector(A);
+  Classes::FVector v2 = RotToVector(B);
+
+  float dot = DotProduct(v1,v2);
+  dot = fmaxf(-1.0f, fminf(1.0f, dot));
+
+  return acosf(dot) * (180.0f / PI);
+}
+
+
+Classes::FRotator Config::LerpRot(const Classes::FRotator& From, const Classes::FRotator& To, float MaxStep)
+{
+    Classes::FRotator Out;
+
+    auto ClampAngle = [MaxStep](int from, int to) -> int {
+        float ffrom = static_cast<float>(from);
+        float fto   = static_cast<float>(to);
+
+        float delta = fto - ffrom;
+
+        // Wraparound short path
+        if (delta > 32768.f) delta -= 65536.f;
+        if (delta < -32768.f) delta += 65536.f;
+
+        // Clamp by MaxStep
+        if (delta > MaxStep) delta = MaxStep;
+        if (delta < -MaxStep) delta = -MaxStep;
+
+        return static_cast<int>(ffrom + delta);
+    };
+
+    Out.Pitch = ClampAngle(From.Pitch, To.Pitch);
+    Out.Yaw   = ClampAngle(From.Yaw,   To.Yaw);
+    Out.Roll  = ClampAngle(From.Roll,  To.Roll);
+
+    return Out;
+}
+
+Classes::FRotator Config::VectorToRot(const Classes::FVector& dir)
+{
+    Classes::FRotator rot;
+
+    // Compute yaw (around Z axis)
+    float yawRad = atan2f(dir.Y, dir.X); 
+    rot.Yaw = static_cast<int>(yawRad * 32768.f / 3.14159265f);
+
+    // Compute pitch (around Y axis)
+    float flatDist = sqrtf(dir.X*dir.X + dir.Y*dir.Y);
+    float pitchRad = atan2f(dir.Z, flatDist);
+    rot.Pitch = static_cast<int>(pitchRad * 32768.f / 3.14159265f);
+
+    // Roll = 0 by default
+    rot.Roll = 0;
+
+    return rot;
+}
+
+Classes::FVector Config::NormalizeVector(const Classes::FVector& v){
+    float len = sqrtf(v.X*v.X + v.Y*v.Y + v.Z*v.Z);
+    if(len > 0.f) return {v.X/len, v.Y/len, v.Z/len};
+    return {0.f,0.f,0.f};
+}
+
+Classes::FVector Config::VectorTo(const Classes::FVector& from,const Classes::FVector& to){
+  return {to.X - from.X, to.Y-from.Y,to.Z-from.Z};
 }
 
 static bool LastLineCheckPolySearch = 0;
@@ -2240,8 +2325,19 @@ void Config::playerMoveTo(int playerNum, Classes::FVector pos, float distanceOff
   auto player = GetPlayerPawnByIndex(playerNum);
   if (!player)
     return;
+  //working
   player->Controller->MoveToDirectNonPathPos(pos, nullptr, distanceOffset, 0);
+  //void MoveToDirectNonPathPos(const struct FVector& NewDestination, class AActor* ViewFocus, float DestinationOffset, unsigned long bShouldWalk);
 
   // does nothing
-  //player->Controller->MoveTo(pos,nullptr,distanceOffset, 0);
+  // void MoveTo(const struct FVector& NewDestination, class AActor* ViewFocus, float DestinationOffset, unsigned long bShouldWalk);
+  //pPlayerPawn->Controller->MoveTo(config->vacPos,nullptr,distanceOffset, 0);
+}
+
+void Config::playerRotateTo(int playerNum, const Classes::FRotator& rot){
+  GetPlayerPawnByIndex(playerNum)->Rotation = rot;
+}
+
+void Config::playerLookAt(int playerNum, const Classes::FVector& pos){
+  GetPlayerPawnByIndex(playerNum)->UpdateLookAtAngles(pos);
 }

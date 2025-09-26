@@ -342,7 +342,17 @@ public:
   void DrawTextCentered(Classes::UCanvas *canvas, Classes::FString _Text,
                         float _x, float _y, Classes::FColor _Color);
 
+  float DegreesToFRotatorUnits(float deg) { return deg * 65536.f / 360.f; }
+  float DotProduct(const Classes::FVector& a, const Classes::FVector& b);
   float Distance(const Classes::FVector &a, const Classes::FVector &b);
+  Classes::FVector RotToVector(const Classes::FRotator& R);
+  float AngleBetween(const Classes::FRotator& A, const Classes::FRotator& B);
+  Classes::FRotator LerpRot(const Classes::FRotator& From, const Classes::FRotator& To, float MaxStep);
+  Classes::FRotator VectorToRot(const Classes::FVector& dir);
+  Classes::FVector NormalizeVector(const Classes::FVector& in);
+  Classes::FVector VectorTo(const Classes::FVector& from,const Classes::FVector& to);
+
+
   float minDist = 200.0f;
 
   Classes::FVector GeneratePathToPoint(Classes::APawn *pPawn,
@@ -357,5 +367,7 @@ public:
   Classes::FVector getPlayerLocation(int playerNum);
 
   void playerMoveTo(int playerNum, Classes::FVector pos, float distanceOffset = 20);
+  void playerRotateTo(int playerNum, const Classes::FRotator& rot);
+  void playerLookAt(int playerNum, const Classes::FVector& pos);
 };
 extern Config *config;
