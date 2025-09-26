@@ -65,4 +65,7 @@ private:
   static void set_player_location(int playerNum, Classes::FVector pos);
   static Classes::FVector get_player_location(int playerNum);
   static void player_move_to_event(int playerNum, Classes::FVector pos);
+  static void player_rotate_to_rotation_event(int playerNum, Classes::FRotator rot);
+  static void player_rotate_to_location_event(int playerNum, Classes::FVector pos);
+//RotateToLocationEvent
 };

@@ -115,6 +115,12 @@ bool LUA_ENGINE::init_lua_classes() {
       "Y", &Classes::FVector::Y,
       "Z", &Classes::FVector::Z
   );
+  L.new_usertype<Classes::FRotator>("FRotator",
+      sol::constructors<Classes::FRotator(int, int, int)>(),
+      "Pitch", &Classes::FRotator::Pitch,
+      "Yaw", &Classes::FRotator::Yaw,
+      "Roll", &Classes::FRotator::Roll
+  );
 
   // Outdated exmaple of binding cpp to the lua engine
   // L.new_usertype<Entity>("Entity",
@@ -149,12 +155,14 @@ bool LUA_ENGINE::init_lua_functions() {
   L.set_function("remove_floating_text_in_world",remove_floating_text_in_world);
   L.set_function("distance_between", distance_between);
 
-  L.set_function("set_player_health", set_player_health);
-  L.set_function("get_player_health", get_player_health);
-  L.set_function("set_player_location", set_player_location);
-  L.set_function("get_player_location", get_player_location);
-  L.set_function("player_move_to", player_move_to_event);
-  L.set_function("block_inputs", block_inputs);
+  L.set_function("set_player_health"         , set_player_health);               // int playerNum , int health
+  L.set_function("player_get_health"         , get_player_health);               // int playerNum
+  L.set_function("player_set_location"       , set_player_location);             // int playerNum , Classes::FVector pos
+  L.set_function("player_get_location"       , get_player_location);             // int playerNum
+  L.set_function("player_move_to"            , player_move_to_event);            // int playerNum , FVector pos
+  L.set_function("player_rotate_to_rotation" , player_rotate_to_rotation_event); // int playerNum , FRotater rot
+  L.set_function("player_rotate_to_location" , player_rotate_to_location_event); // int playerNum , FVector pos
+  L.set_function("block_inputs"        , block_inputs);
 
 
   return true;
@@ -238,6 +246,15 @@ Classes::FVector LUA_ENGINE::get_player_location(int playerNum){
 void LUA_ENGINE::player_move_to_event(int playerNum, Classes::FVector pos){
   playerHelper.setPlayerMovePoint(playerNum, pos);
 }
+
+void LUA_ENGINE::player_rotate_to_rotation_event(int playerNum, Classes::FRotator rot){
+  playerHelper.setPlayerRotationPoint(playerNum, rot);
+}
+
+void LUA_ENGINE::player_rotate_to_location_event(int playerNum, Classes::FVector pos){
+  playerHelper.setPlayerRotationPoint(playerNum, pos);
+}
+
 void LUA_ENGINE::block_inputs(bool block){
   config->bBlockInput = block;
 }

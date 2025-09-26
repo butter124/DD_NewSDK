@@ -1,6 +1,7 @@
 #pragma once
 #include "SDK.hpp"
 #include "events.h"
+#include <SDK/DD_Core_structs.hpp>
 #include <SDK/DD_Engine_classes.hpp>
 #include <SDK/DD_UDKGame_classes.hpp>
 #include <memory>
@@ -18,6 +19,8 @@ public:
   Classes::FVector getPlayerLocation(int playerNum);
   void setPlayerLocation(int playerNum);
   void setPlayerMovePoint(int playerNum, Classes::FVector pos);
+  void setPlayerRotationPoint(int playerNum, Classes::FRotator rot);
+  void setPlayerRotationPoint(int playerNum, Classes::FVector pos);
   void doEvents();
 
   std::vector<std::unique_ptr<Event>> &getEvents();

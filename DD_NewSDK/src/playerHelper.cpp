@@ -43,11 +43,35 @@ void PlayerHelper::doEvents(){
 void PlayerHelper::setPlayerMovePoint(int playerNum, Classes::FVector pos){
   // check if a move event already exist for player and change the location
   for(auto& e : events){
-    if(e->getType() == Event::Type::Move && e->playerIndex == playerNum){
-      static_cast<MovePlayerEvent*>(e.get())->changeMove(pos);
+    if(e->getType() == Event::Type::MoveTo && e->playerIndex == playerNum){
+      static_cast<MoveToPlayerEvent*>(e.get())->changeMove(pos);
       return;
     }
   }
   // add a new event if it does not exist
-  events.push_back(std::make_unique<MovePlayerEvent>(playerNum,pos));
+  events.push_back(std::make_unique<MoveToPlayerEvent>(playerNum,pos));
+}
+
+void PlayerHelper::setPlayerRotationPoint(int playerNum, Classes::FRotator rot){
+  // check for existing event
+  for(auto& e : events){
+    if(e->getType() == Event::Type::RotateToAngle && e->playerIndex == playerNum){
+      static_cast<RotateToAngleEvent*>(e.get())->changeRotation(rot);
+      return;
+    }
+  }
+  // add a new event if it does not exist
+  events.push_back(std::make_unique<RotateToAngleEvent>(playerNum,rot));
+}
+
+void PlayerHelper::setPlayerRotationPoint(int playerNum, Classes::FVector pos){
+  // check for existing event
+  for(auto& e : events){
+    if(e->getType() == Event::Type::RotateToAngle && e->playerIndex == playerNum){
+      static_cast<RotateToLocationEvent*>(e.get())->changeRotation(pos);
+      return;
+    }
+  }
+  // add a new event if it does not exist
+  events.push_back(std::make_unique<RotateToLocationEvent>(playerNum,pos));
 }
