@@ -155,7 +155,7 @@ bool LUA_ENGINE::init_lua_functions() {
   L.set_function("remove_floating_text_in_world",remove_floating_text_in_world);
   L.set_function("distance_between", distance_between);
 
-  L.set_function("set_player_health"         , set_player_health);               // int playerNum , int health
+  L.set_function("player_set_health"         , set_player_health);               // int playerNum , int health
   L.set_function("player_get_health"         , get_player_health);               // int playerNum
   L.set_function("player_set_location"       , set_player_location);             // int playerNum , Classes::FVector pos
   L.set_function("player_get_location"       , get_player_location);             // int playerNum
