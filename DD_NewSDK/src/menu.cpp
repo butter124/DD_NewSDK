@@ -23,6 +23,7 @@ Hooking BeginSceneHook;
 
 Hooking ProcEventHook(nullptr, HookedPE, 5);
 Hooking ScoreHookObj(nullptr, ScoreHook, 8);
+Hooking DrawHook;
 
 WNDPROC oWndProc;
 
@@ -211,6 +212,7 @@ bool ScoreHookFunc() {
   return false;
 }
 
+
 void __declspec(naked) ScoreHook() {
   __asm {
     pushf
@@ -231,6 +233,22 @@ void __declspec(naked) ScoreHook() {
     jmp ScoreHookObj.HookAddr
   }
 }
+
+
+
+typedef float(__fastcall *DrawTextShadow)(void* thisptr, const Classes::FString& Text, unsigned long CR, float XScale, float YScale, unsigned long CenterY, Classes::UFont* FontToUse, unsigned long Wrap, const Classes::FLinearColor& gradientColor, float Left, float Right, float Top, float Bottom, unsigned long checkForLineBreaks, Classes::TArray<Classes::FTextEx>* TextBlock);
+extern DrawTextShadow oDrawTextCenteredShadowed;
+
+
+	float __fastcall hkDrawTextCenteredShadowed(void* thisptr, void* x,const  Classes::FString& Text, unsigned long CR, float XScale, float YScale, unsigned long CenterY, Classes::UFont* FontToUse, unsigned long Wrap, const Classes::FLinearColor& gradientColor, float Left, float Right, float Top, float Bottom, unsigned long checkForLineBreaks, Classes::TArray< Classes::FTextEx>* TextBlock){
+
+  std::cout << "hooked " << Text.ToString() << std::endl;
+
+
+  return ((DrawTextShadow)(DrawHook.HookAddr))(thisptr,Text, CR, XScale, YScale, CenterY, FontToUse, Wrap, gradientColor, Left, Right, Top, Bottom, checkForLineBreaks, TextBlock);
+}
+
+
 
 bool Menu::Init() {
 
@@ -273,6 +291,14 @@ bool Menu::Init() {
   ProcEventHook.UpdateHookAddr((void *)ProcessEventAddress);
   ProcEventHook.HookFunction();
   ScoreHookObj.HookFunction();
+
+
+  // DrawHook = Hooking((void *)NULL, hkDrawTextCenteredShadowed, 5);
+  // DWORD drawHook = (FindPattern(
+  //     (unsigned long)miGame.lpBaseOfDll, miGame.SizeOfImage,
+  //     (unsigned char *)"\x8D\x44\x24\x7C\x64\xA3\x00\x00\x00\x00\x89\x4C\x24\x40", (char *)"xxxxxx????xxxx"));
+  // DrawHook.UpdateHookAddr((void *)(drawHook - 0x1));
+  // DrawHook.HookFunction();
 
 #ifdef LOGGING // 1
   AttachConsole();
@@ -347,6 +373,8 @@ bool Menu::GetDevicePointer(void **pTable, size_t size) {
   pD3D->Release();
   return true;
 }
+
+
 
 void Menu::ImGuiMenu() {
   main.Thread();

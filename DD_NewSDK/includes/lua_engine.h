@@ -67,5 +67,6 @@ private:
   static void player_move_to_event(int playerNum, Classes::FVector pos);
   static void player_rotate_to_rotation_event(int playerNum, Classes::FRotator rot);
   static void player_rotate_to_location_event(int playerNum, Classes::FVector pos);
+  static void build_tower_event(int playerNum, int towerIndex, Classes::FVector pos, float rot);
 //RotateToLocationEvent
 };

@@ -189,7 +189,6 @@ void MenuMain::RenderUI() {
 
 void MenuMain::Thread() {
 
-
   // handle keybinds
   for (auto &pair : config->keyBindsmap) {
     if (ImGui::IsKeyPressed((ImGuiKey)pair.second.key, false) &&
@@ -1062,38 +1061,65 @@ void MenuMain::Debug() {
   if (!pPlayerPawn || !pController || !pEngine || !pAchievementManager)
     return;
 
-  ImGui::Checkbox("Pathfind", &config->bPathFind);
-  ImGui::SliderFloat("Min dist", &config->minDist, 0, 500);
-  ImGui::SliderFloat("pathfind treshold", &config->pathfindthreshhold, 0, 500);
+  // for(int i = 0; i < pController->myHero->HotKeys.Num(); i++) {
+  //
+  //   auto actionItem = pController->myHero->HotKeys[i];
+  //
+  //   ImGui::Text("ActionWheel Item %d:", i);
+  //
+  //   ImGui::Text("  Name: %ls",
+  //   actionItem.ActionWheelEntryObject->DescriptiveName.c_str());
+  //   ImGui::Text("  ToolTipDescription: %ls",
+  //   actionItem.ActionWheelEntryObject->ToolTipDescription.c_str());
+  //   ImGui::Text("  ADunDefPlayerAbility: %ls",
+  //   actionItem.ActionWheelEntryObject->EntryPlayerAbility->DescriptiveName.c_str());
+  //   if(actionItem.ActionWheelEntryObject->EntryParent)
+  //   ImGui::Text("  EntryParent->DescriptiveName.c_str()): %ls",
+  //   actionItem.ActionWheelEntryObject->EntryParent->DescriptiveName.c_str());
+  //   else
+  //   ImGui::Text("  EntryParent->DescriptiveName.c_str()): null");
+  //   ImGui::Separator();
+  // }
+  //
 
-  ImGui::InputFloat3("PointTo", &config->pathfindToPoint.X);
-  ImGui::InputFloat3("NextPoint", &config->pathfindNextPoint.X);
+  for (size_t i = 0; i < pController->PlayerAbilities.Num(); i++) {
+    if (!pController->PlayerAbilities.IsValidIndex(i))
+      continue;
+    auto ability = pController->PlayerAbilities[i];
 
-  // Get inital point
-  if (ImGui::Button("generate path")) {
-    config->pathfindNextPoint = config->GeneratePathToPoint(
-        pPlayerPawn, config->pathfindToPoint, config->minDist, 0);
+    ImGui::Text("%s", ability->GetName().c_str());
+    // pController->StartCastingAbility(ability);
+    ImGui::SameLine();
+    std::string label = "Activate##" + std::to_string(i);
+    if (ImGui::Button(label.c_str())) {
+      pController->ActivateHotKey(i);
+      // SetCursorPos(500,200);
+      auto ability2 = ((Classes::ADunDefPlayerAbility_BuildTower *)(pController->CurrentCastingAbility));
+      ability2->PlacementLocation = config->vacPos;
+      ability2->PlacementRotation = {0,0,0};
+      ability2->StartSummoningState();
+    }
 
-    pController->NavigationHandle->GetNextMoveLocation(
-        config->minDist, &config->pathfindNextPoint);
+
+    // unsigned long AllowTowerPlacementPosition(const struct FVector&
+    // placementPos, unsigned long bOnlyCheckVolumes, int*
+    // PlacementDeniedReason); void HandleCursorInput(const struct FVector&
+    // addDir); struct FVector CursorResetPosition; // 0x099C(0x000C)
+    // (Transient) struct FVector TargetingCursorPosition; // 0x0868(0x000C)
   }
-  // pathfind to next point
-  if (ImGui::Button("move path")) {
-    config->pathfindToPoint = pPlayerPawn->Location;
-  }
-  // ImGui::Checkbox("Show path", &config->bShowPath);
 
-  if (ImGui::Button("Show path")) {
-    config->GetADunDefPlayerController()->NavigationHandle->DrawPathCache(
-        {0, 1, 0}, 1, {255, 0, 0, 255});
-  }
-  if (ImGui::Button("Test"))
-    pController->MoveToDirectNonPathPos(config->vacPos,
-                                        pWorld->TargetableActors[0], 19, 0);
 
-  auto players = config->GetDunDefPlayers();
-  ImGui::Text("Player count: %i", players.Num());
-
+  ImGuiIO& io = ImGui::GetIO();
+  if(ImGui::IsKeyPressed(ImGuiKey_F))
+    if (pController->CurrentCastingAbility != nullptr) {
+      ImGui::Text("CurrentCastingAbility: %s", pController->CurrentCastingAbility->GetName().c_str());
+      auto ability = ((Classes::ADunDefPlayerAbility_BuildTower *)(pController->CurrentCastingAbility));
+      ability->PlacementLocation = config->vacPos;
+      ability->PlacementRotation = {0,0,0};
+      ability->StartSummoningState();
+      config->logger.log("Set tower placement pos to %f %f %f", config->vacPos.X,
+                         config->vacPos.Y, config->vacPos.Z);
+    }
   return;
 }
 

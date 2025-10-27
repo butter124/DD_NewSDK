@@ -1030,7 +1030,7 @@ bool Config::GiveItem(Classes::UHeroEquipment *_item) {
   newtemp.BaseForceRandomizationQuality = 0;
   newtemp.MaxRandomizationQuality = 0;
   newtemp.RandomizerMultiplierOverride = 0;
-  newtemp.bUseEquipmentArchetypeAsTemplate = 1;
+  newtemp.bUseEquipmentArchetypeAsTemplate = 0;
   newtemp.bRandomGlobalDontUseAdditionalItemEntries = 0;
   newtemp.ForceHeroArchetypeExactMatch = 0;
   newtemp.bDontIgnoreEquipmentMinUpgradeLevels = 0;
@@ -2340,4 +2340,13 @@ void Config::playerRotateTo(int playerNum, const Classes::FRotator& rot){
 
 void Config::playerLookAt(int playerNum, const Classes::FVector& pos){
   GetPlayerPawnByIndex(playerNum)->UpdateLookAtAngles(pos);
+}
+
+void Config::playerUseAbility(int playerNum, int abilityIndex){
+  auto player = GetADunDefPlayerControllerByIndex(playerNum);
+  if(!player) return;
+
+  auto ability = player->myHero->PlayerAbilityTemplates.GetByIndex(abilityIndex);
+
+  player->StartCastingAbility(ability);
 }

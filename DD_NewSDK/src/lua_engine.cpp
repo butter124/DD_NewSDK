@@ -162,6 +162,8 @@ bool LUA_ENGINE::init_lua_functions() {
   L.set_function("player_move_to"            , player_move_to_event);            // int playerNum , FVector pos
   L.set_function("player_rotate_to_rotation" , player_rotate_to_rotation_event); // int playerNum , FRotater rot
   L.set_function("player_rotate_to_location" , player_rotate_to_location_event); // int playerNum , FVector pos
+  L.set_function("player_build_tower"        , build_tower_event);               // int playerNum , int towerIndex, FVector pos , FRotator rot
+  //build_tower_event
   L.set_function("block_inputs"        , block_inputs);
 
 
@@ -255,6 +257,14 @@ void LUA_ENGINE::player_rotate_to_location_event(int playerNum, Classes::FVector
   playerHelper.setPlayerRotationPoint(playerNum, pos);
 }
 
+void LUA_ENGINE::build_tower_event(int playerNum, int towerIndex, Classes::FVector pos, float rot){
+  try {
+  playerHelper.buildPlayerTower(playerNum, towerIndex,  pos,  rot);
+  } catch (const std::exception& e) {
+    log("Tower index out of bounds");
+  }
+}
+
 void LUA_ENGINE::block_inputs(bool block){
   config->bBlockInput = block;
 }
@@ -263,6 +273,7 @@ void LUA_ENGINE::handleThreadSafeContent(){
   playerHelper.doEvents();
 }
 
-  int LUA_ENGINE::get_event_count() const{
+int LUA_ENGINE::get_event_count() const{
   return playerHelper.getEvents().size();
 }
+

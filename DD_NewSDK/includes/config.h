@@ -130,6 +130,7 @@ public:
   bool bSkipWave = false;
   bool bLockWave = false;
   int waveToSkipTo = 0;
+  bool bInfiniteTowerUnits = false;
   bool bLootShower = false;
   bool bAutoLoot = false;
   bool bAutoOpenChest = false;
@@ -369,5 +370,7 @@ public:
   void playerMoveTo(int playerNum, Classes::FVector pos, float distanceOffset = 20);
   void playerRotateTo(int playerNum, const Classes::FRotator& rot);
   void playerLookAt(int playerNum, const Classes::FVector& pos);
+
+  void playerUseAbility(int playerNum, int abilityIndex);
 };
 extern Config *config;
