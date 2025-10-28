@@ -1651,6 +1651,64 @@ void MenuMain::Config() {
       config->tAutoReadyAfterXSeconds = std::chrono::duration<double>(duration);
     }
 
+    ImGui::Separator();
+
+    static bool doOnce = false;
+
+    if (!doOnce) {
+      // initialize entity filter map
+      auto templates = config->GetEnemyClasses();
+      for (auto &temp : templates) {
+        if (config->entityFilterMap.find(temp) == config->entityFilterMap.end()) {
+          config->entityFilterMap[temp] = std::make_pair(temp->GetName(), false);
+        }
+      }
+      doOnce = true;
+    }
+    if(ImGui::Button("Reset Entity Filter")){
+      for (auto &[id, data] : config->entityFilterMap) {
+        data.second = false;
+      }
+    }
+    ImGui::SameLine();
+    if(ImGui::Button("Invert Entity Filter")){
+      for (auto &[id, data] : config->entityFilterMap) {
+        data.second = !data.second;
+      }
+    }
+    ImGui::SameLine();
+    if(ImGui::Button("Rescan Entity Classes")){
+      auto templates = config->GetEnemyClasses();
+      for (auto &temp : templates) {
+        if (config->entityFilterMap.find(temp) == config->entityFilterMap.end()) {
+          config->entityFilterMap[temp] = std::make_pair(temp->GetName(), false);
+        }
+      }
+    }
+
+    if (ImGui::TreeNode("Entity Kill Filter")) {
+      if (ImGui::BeginTable("Entity kill filter", 2,
+                            ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg)) {
+        // Setup headers
+        ImGui::TableSetupColumn("Name");
+        ImGui::TableSetupColumn("Filter");
+        ImGui::TableHeadersRow();
+
+        for (auto &[id, data] : config->entityFilterMap) {
+          ImGui::TableNextRow();
+
+          ImGui::TableNextColumn();
+          ImGui::TextUnformatted(data.first.c_str());
+
+          ImGui::TableNextColumn();
+          ImGui::Checkbox(("##" + data.first).c_str(), &data.second);
+        }
+
+        ImGui::EndTable();
+      }
+
+      ImGui::TreePop();
+    }
     ImGui::TreePop();
   }
 

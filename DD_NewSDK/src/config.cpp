@@ -238,11 +238,15 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
 
 
   // spawn enemys
+
+  if (config->bIsSpawnEnemyOpen)
+  {
   std::set<Classes::UObject *> templates = GetEnemyTemplates();
   for (size_t i = 0; i < qEnemysToSpawn.size(); i++) {
     auto front = qEnemysToSpawn.front();
     qEnemysToSpawn.pop();
     SpawnEnemyAt(front, vacPos);
+  }
   }
   HandleAutoReady();
   HandleThreadSafeLuaRequest();
@@ -811,8 +815,17 @@ void Config::PawnLoop(const std::function<void(Classes::ADunDefPawn *)> &func,
 void Config::KillPawn(Classes::ADunDefPawn *pawn) {
   Classes::FVector tempVec = Classes::FVector();
   Classes::FTraceHitInfo tempHit = Classes::FTraceHitInfo();
-  pawn->TakeDamage(pawn->HealthMax, NULL, tempVec, tempVec, NULL, tempHit, NULL,
-                   NULL);
+
+  if(entityFilterMap.find(pawn->Class) == entityFilterMap.end())
+  {
+    entityFilterMap[pawn->Class] = std::pair<std::string,bool>(pawn->GetName(),false);
+  }
+  // check if entity is filtered
+  if(entityFilterMap[pawn->Class].second == true)
+  {
+    return;
+  }
+  pawn->TakeDamage(pawn->HealthMax, NULL, tempVec, tempVec, NULL, tempHit, NULL, NULL);
 }
 
 void Config::KillPawn(Classes::ADunDefDamageableTarget *pawn) {
@@ -1435,15 +1448,23 @@ Classes::UDunDef_SeqAct_EnemyWaveSpawner *Config::GetWaveSpawner() {
   return obj;
 }
 
+std::set<Classes::UClass*> Config::GetEnemyClasses() {
+  static std::set<Classes::UClass*> rSet = {};
+  auto enemys = GetAllInstanceOf(Classes::ADunDefEnemy::StaticClass());
+
+  for(auto& e: enemys) {
+    Classes::UClass* enemyClass = e->Class;
+    rSet.insert(enemyClass);
+  }
+  return rSet;
+}
+
 std::set<Classes::UObject *> Config::GetEnemyTemplates() {
   // TODO: THERE IS A BETTER WAY TO DO THIS
   // This is dumb as fuck calling GetAllInstaceOf every frame causes way too
   // much lag. to fix this find a way to tell when switching levels
 
   static std::set<Classes::UObject *> rSet = {};
-
-  if (!config->bIsSpawnEnemyOpen)
-    return rSet;
 
   sEnemyTemplates.clear();
   auto enemys = GetAllInstanceOf(Classes::ADunDefEnemy::StaticClass());

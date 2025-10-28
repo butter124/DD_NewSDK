@@ -170,6 +170,9 @@ public:
       {"Size", -2.0f, 2.0f, false,
        STATFILTER_OFFSET(WeaponDrawScaleMultiplier)}};
 
+
+  std::unordered_map<Classes::UClass* , std::pair<std::string, bool>> entityFilterMap = {};
+
   int itemFilterQuality = 0;
   int itemFilterQualityULT = 0;
 
@@ -238,6 +241,7 @@ public:
   void SpawnEnemyAt(std::string &s, Classes::FVector pos);
   Classes::ADunDefEnemy *GetEnemyTemplate(std::string &s);
   std::set<Classes::UObject *> GetEnemyTemplates();
+  std::set<Classes::UClass*> GetEnemyClasses();
 
   // post render drawing
   std::vector<PointToRender> vPointsToDraw;
