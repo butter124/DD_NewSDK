@@ -277,3 +277,8 @@ int LUA_ENGINE::get_event_count() const{
   return playerHelper.getEvents().size();
 }
 
+void LUA_ENGINE::clearEvents(){
+  auto& events = playerHelper.getEvents();
+  events.clear();
+}
+

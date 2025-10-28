@@ -321,6 +321,7 @@ void MenuMain::BasicCheats() {
     ImGui::Checkbox("Unlimited mana for towers", &config->bUnlimitedManaTowers);
     ImGui::Checkbox("Unlimited mana for shop", &config->bUnlimitedManaShop);
 
+
     if (ImGui::Checkbox("NoClip", &config->bNoClip)) {
       auto pPlayerPawn = config->GetADunDefPlayerController();
       if (config->bNoClip) {
@@ -1061,65 +1062,13 @@ void MenuMain::Debug() {
   if (!pPlayerPawn || !pController || !pEngine || !pAchievementManager)
     return;
 
-  // for(int i = 0; i < pController->myHero->HotKeys.Num(); i++) {
-  //
-  //   auto actionItem = pController->myHero->HotKeys[i];
-  //
-  //   ImGui::Text("ActionWheel Item %d:", i);
-  //
-  //   ImGui::Text("  Name: %ls",
-  //   actionItem.ActionWheelEntryObject->DescriptiveName.c_str());
-  //   ImGui::Text("  ToolTipDescription: %ls",
-  //   actionItem.ActionWheelEntryObject->ToolTipDescription.c_str());
-  //   ImGui::Text("  ADunDefPlayerAbility: %ls",
-  //   actionItem.ActionWheelEntryObject->EntryPlayerAbility->DescriptiveName.c_str());
-  //   if(actionItem.ActionWheelEntryObject->EntryParent)
-  //   ImGui::Text("  EntryParent->DescriptiveName.c_str()): %ls",
-  //   actionItem.ActionWheelEntryObject->EntryParent->DescriptiveName.c_str());
-  //   else
-  //   ImGui::Text("  EntryParent->DescriptiveName.c_str()): null");
-  //   ImGui::Separator();
-  // }
-  //
-
-  for (size_t i = 0; i < pController->PlayerAbilities.Num(); i++) {
-    if (!pController->PlayerAbilities.IsValidIndex(i))
-      continue;
-    auto ability = pController->PlayerAbilities[i];
-
-    ImGui::Text("%s", ability->GetName().c_str());
-    // pController->StartCastingAbility(ability);
-    ImGui::SameLine();
-    std::string label = "Activate##" + std::to_string(i);
-    if (ImGui::Button(label.c_str())) {
-      pController->ActivateHotKey(i);
-      // SetCursorPos(500,200);
-      auto ability2 = ((Classes::ADunDefPlayerAbility_BuildTower *)(pController->CurrentCastingAbility));
-      ability2->PlacementLocation = config->vacPos;
-      ability2->PlacementRotation = {0,0,0};
-      ability2->StartSummoningState();
-    }
+  auto gri = config->GetGRI();
+  std::ostringstream oss;
+  oss << static_cast<const void *>(&gri->CurrentTowerUnits);
+  ImGui::Text("CurrentTowerUnits addr: 0x%p", (void *)&gri->CurrentTowerUnits);
+  // config->logger.log(std::string(oss.str()).c_str());
 
 
-    // unsigned long AllowTowerPlacementPosition(const struct FVector&
-    // placementPos, unsigned long bOnlyCheckVolumes, int*
-    // PlacementDeniedReason); void HandleCursorInput(const struct FVector&
-    // addDir); struct FVector CursorResetPosition; // 0x099C(0x000C)
-    // (Transient) struct FVector TargetingCursorPosition; // 0x0868(0x000C)
-  }
-
-
-  ImGuiIO& io = ImGui::GetIO();
-  if(ImGui::IsKeyPressed(ImGuiKey_F))
-    if (pController->CurrentCastingAbility != nullptr) {
-      ImGui::Text("CurrentCastingAbility: %s", pController->CurrentCastingAbility->GetName().c_str());
-      auto ability = ((Classes::ADunDefPlayerAbility_BuildTower *)(pController->CurrentCastingAbility));
-      ability->PlacementLocation = config->vacPos;
-      ability->PlacementRotation = {0,0,0};
-      ability->StartSummoningState();
-      config->logger.log("Set tower placement pos to %f %f %f", config->vacPos.X,
-                         config->vacPos.Y, config->vacPos.Z);
-    }
   return;
 }
 
@@ -2141,6 +2090,10 @@ void MenuMain::Lua() {
     ImGui::SetClipboardText(buf);
   }
 
+  ImGui::SameLine();
+  if (ImGui::Button("Clear events")) {
+    config->L->clearEvents();
+  }
   ImGui::SameLine();
 
   static char text[1024 * 16];

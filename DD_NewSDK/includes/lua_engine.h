@@ -32,6 +32,7 @@ public:
   static std::queue<std::function<void()>> threadsafe_lua_tasks;
   void insert_thread_safe_request(std::function<void()> v);
   int get_event_count() const;
+  void clearEvents();
 
 private:
   LUA_ENGINE();
