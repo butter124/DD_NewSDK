@@ -31,26 +31,26 @@ public:
 
 
 // Class DunDefAtlantis.DunDefGRI_RisingWater
-// 0x0070 (0x07A0 - 0x0730)
+// 0x0070 (0x07A4 - 0x0734)
 class ADunDefGRI_RisingWater : public ADunDefGameReplicationInfo
 {
 public:
-	class ADunDefPlayer*                               PuzzleSolver;                                             // 0x0730(0x0004)
-	struct FString                                     BecamePuzzleSolverString;                                 // 0x0734(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     NewPuzzleSolverString;                                    // 0x0740(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     YouSolvedThePuzzleString;                                 // 0x074C(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     TheySolvedThePuzzleString;                                // 0x0758(0x000C) (Localized, NeedCtorLink)
-	struct FColor                                      BecamePuzzleSolverMessageColor;                           // 0x0764(0x0004)
-	struct FColor                                      NewPuzzleSolverMessageColor;                              // 0x0768(0x0004)
-	class USoundCue*                                   NewPuzzleSolverSoundEffect;                               // 0x076C(0x0004)
-	class USoundCue*                                   PuzzleSolvedSound;                                        // 0x0770(0x0004)
-	class UTexture2D*                                  PuzzleIcon;                                               // 0x0774(0x0004)
-	struct FVector                                     PuzzleIconPositionOffset;                                 // 0x0778(0x000C)
-	float                                              PuzzleIconPositionHeightScale;                            // 0x0784(0x0004)
-	float                                              PuzzleIconSize;                                           // 0x0788(0x0004)
-	int                                                lastPRIIndex;                                             // 0x078C(0x0004)
-	TArray<class ADunDefPlayer*>                       PlayersInWater;                                           // 0x0790(0x000C) (NeedCtorLink)
-	float                                              WaterCastingMultiplier;                                   // 0x079C(0x0004) (Net)
+	class ADunDefPlayer*                               PuzzleSolver;                                             // 0x0734(0x0004)
+	struct FString                                     BecamePuzzleSolverString;                                 // 0x0738(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     NewPuzzleSolverString;                                    // 0x0744(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     YouSolvedThePuzzleString;                                 // 0x0750(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     TheySolvedThePuzzleString;                                // 0x075C(0x000C) (Localized, NeedCtorLink)
+	struct FColor                                      BecamePuzzleSolverMessageColor;                           // 0x0768(0x0004)
+	struct FColor                                      NewPuzzleSolverMessageColor;                              // 0x076C(0x0004)
+	class USoundCue*                                   NewPuzzleSolverSoundEffect;                               // 0x0770(0x0004)
+	class USoundCue*                                   PuzzleSolvedSound;                                        // 0x0774(0x0004)
+	class UTexture2D*                                  PuzzleIcon;                                               // 0x0778(0x0004)
+	struct FVector                                     PuzzleIconPositionOffset;                                 // 0x077C(0x000C)
+	float                                              PuzzleIconPositionHeightScale;                            // 0x0788(0x0004)
+	float                                              PuzzleIconSize;                                           // 0x078C(0x0004)
+	int                                                lastPRIIndex;                                             // 0x0790(0x0004)
+	TArray<class ADunDefPlayer*>                       PlayersInWater;                                           // 0x0794(0x000C) (NeedCtorLink)
+	float                                              WaterCastingMultiplier;                                   // 0x07A0(0x0004) (Net)
 
 	static UClass* StaticClass()
 	{

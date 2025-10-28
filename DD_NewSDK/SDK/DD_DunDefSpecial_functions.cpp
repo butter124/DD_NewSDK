@@ -2966,6 +2966,23 @@ void ADunDefEmitterDamage::DoDamage()
 }
 
 
+// Function DunDefSpecial.DunDefEmitterDamage.ScaleDamageForNumberOfPlayers
+// (Defined, Public)
+
+void ADunDefEmitterDamage::ScaleDamageForNumberOfPlayers()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefEmitterDamage.ScaleDamageForNumberOfPlayers");
+
+	ADunDefEmitterDamage_ScaleDamageForNumberOfPlayers_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function DunDefSpecial.DunDefEmitterDamage.InitDamageEmitter
 // (Defined, Simulated, HasOptionalParms, Public)
 // Parameters:
@@ -2987,6 +3004,31 @@ void ADunDefEmitterDamage::InitDamageEmitter(int BaseDamage, float BaseRange, co
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefEmitterDamage.GetRadiusDamage
+// (Defined, Simulated, Public)
+// Parameters:
+// float                          theBaseDamage                  (Parm)
+// class AActor*                  Victim                         (Parm)
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefEmitterDamage::GetRadiusDamage(float theBaseDamage, class AActor* Victim)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefEmitterDamage.GetRadiusDamage");
+
+	ADunDefEmitterDamage_GetRadiusDamage_Params params;
+	params.theBaseDamage = theBaseDamage;
+	params.Victim = Victim;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -18476,6 +18518,31 @@ unsigned long ADunDefPlayerAbility_BuilTripWire::AllowTowerPlacementPosition(con
 }
 
 
+// Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.GetAbilityStatus
+// (Defined, Simulated, HasOptionalParms, Public, HasOutParms)
+// Parameters:
+// int                            ExtraStatusFlag                (OptionalParm, Parm, OutParm)
+// TEnumAsByte<EPlayerAbilityStatus> ReturnValue                    (Parm, OutParm, ReturnParm)
+
+TEnumAsByte<EPlayerAbilityStatus> ADunDefPlayerAbility_BuilTripWire::GetAbilityStatus(int* ExtraStatusFlag)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.GetAbilityStatus");
+
+	ADunDefPlayerAbility_BuilTripWire_GetAbilityStatus_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ExtraStatusFlag != nullptr)
+		*ExtraStatusFlag = params.ExtraStatusFlag;
+
+	return params.ReturnValue;
+}
+
+
 // Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.GetCenterLocation
 // (Defined, Simulated, Public)
 // Parameters:
@@ -18825,6 +18892,171 @@ void ADunDefPlayerAbility_BuilTripWire::ExecReplicatedFunction(const struct FNam
 	params.boolParam3 = boolParam3;
 	params.stringParam1 = stringParam1;
 	params.objectParam1 = objectParam1;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefTower_ProjectileReflect.IsPhysicalTower
+// (Defined, Simulated, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefTower_ProjectileReflect::IsPhysicalTower()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.IsPhysicalTower");
+
+	ADunDefTower_ProjectileReflect_IsPhysicalTower_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefTower_ProjectileReflect.GetCostPerReflect
+// (Defined, Public)
+// Parameters:
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int ADunDefTower_ProjectileReflect::GetCostPerReflect()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.GetCostPerReflect");
+
+	ADunDefTower_ProjectileReflect_GetCostPerReflect_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefTower_ProjectileReflect.TakeDamage
+// (Defined, Event, HasOptionalParms, Public)
+// Parameters:
+// int                            DamageAmount                   (Parm)
+// class AController*             EventInstigator                (Parm)
+// struct FVector                 HitLocation                    (Parm)
+// struct FVector                 Momentum                       (Parm)
+// class UClass*                  DamageType                     (Parm)
+// struct FTraceHitInfo           HitInfo                        (OptionalParm, Parm)
+// class AActor*                  DamageCauser                   (OptionalParm, Parm)
+// class UObject*                 WhatHitMe                      (OptionalParm, Parm)
+
+void ADunDefTower_ProjectileReflect::TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.TakeDamage");
+
+	ADunDefTower_ProjectileReflect_TakeDamage_Params params;
+	params.DamageAmount = DamageAmount;
+	params.EventInstigator = EventInstigator;
+	params.HitLocation = HitLocation;
+	params.Momentum = Momentum;
+	params.DamageType = DamageType;
+	params.HitInfo = HitInfo;
+	params.DamageCauser = DamageCauser;
+	params.WhatHitMe = WhatHitMe;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefTower_ProjectileReflect.GetAttackDamage
+// (Defined, Simulated, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float ADunDefTower_ProjectileReflect::GetAttackDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.GetAttackDamage");
+
+	ADunDefTower_ProjectileReflect_GetAttackDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function DunDefSpecial.DunDefTower_ProjectileReflect.DoReflection
+// (Defined, Simulated, Public)
+// Parameters:
+// class ADunDefProjectile*       reflectedProj                  (Parm)
+// struct FVector                 NewDir                         (Parm)
+
+void ADunDefTower_ProjectileReflect::DoReflection(class ADunDefProjectile* reflectedProj, const struct FVector& NewDir)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.DoReflection");
+
+	ADunDefTower_ProjectileReflect_DoReflection_Params params;
+	params.reflectedProj = reflectedProj;
+	params.NewDir = NewDir;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefTower_ProjectileReflect.KilledTarget
+// (Defined, Public)
+// Parameters:
+// TScriptInterface<class UDunDefTargetableInterface> aTarget                        (Parm)
+
+void ADunDefTower_ProjectileReflect::KilledTarget(const TScriptInterface<class UDunDefTargetableInterface>& aTarget)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.KilledTarget");
+
+	ADunDefTower_ProjectileReflect_KilledTarget_Params params;
+	params.aTarget = aTarget;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DunDefSpecial.DunDefTower_ProjectileReflect.Touch
+// (Defined, Simulated, Event, Public, HasDefaults)
+// Parameters:
+// class AActor*                  Other                          (Parm)
+// class UPrimitiveComponent*     OtherComp                      (Parm, EditInline)
+// struct FVector                 HitLocation                    (Parm)
+// struct FVector                 HitNormal                      (Parm)
+
+void ADunDefTower_ProjectileReflect::Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.Touch");
+
+	ADunDefTower_ProjectileReflect_Touch_Params params;
+	params.Other = Other;
+	params.OtherComp = OtherComp;
+	params.HitLocation = HitLocation;
+	params.HitNormal = HitNormal;
 
 	auto flags = fn->FunctionFlags;
 
@@ -25074,171 +25306,6 @@ void ADunDefTower_Present::ChangedGamePhases(unsigned long IsCombatPhase)
 
 	ADunDefTower_Present_ChangedGamePhases_Params params;
 	params.IsCombatPhase = IsCombatPhase;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefTower_ProjectileReflect.IsPhysicalTower
-// (Defined, Simulated, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long ADunDefTower_ProjectileReflect::IsPhysicalTower()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.IsPhysicalTower");
-
-	ADunDefTower_ProjectileReflect_IsPhysicalTower_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefTower_ProjectileReflect.GetCostPerReflect
-// (Defined, Public)
-// Parameters:
-// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
-
-int ADunDefTower_ProjectileReflect::GetCostPerReflect()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.GetCostPerReflect");
-
-	ADunDefTower_ProjectileReflect_GetCostPerReflect_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefTower_ProjectileReflect.TakeDamage
-// (Defined, Event, HasOptionalParms, Public)
-// Parameters:
-// int                            DamageAmount                   (Parm)
-// class AController*             EventInstigator                (Parm)
-// struct FVector                 HitLocation                    (Parm)
-// struct FVector                 Momentum                       (Parm)
-// class UClass*                  DamageType                     (Parm)
-// struct FTraceHitInfo           HitInfo                        (OptionalParm, Parm)
-// class AActor*                  DamageCauser                   (OptionalParm, Parm)
-// class UObject*                 WhatHitMe                      (OptionalParm, Parm)
-
-void ADunDefTower_ProjectileReflect::TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.TakeDamage");
-
-	ADunDefTower_ProjectileReflect_TakeDamage_Params params;
-	params.DamageAmount = DamageAmount;
-	params.EventInstigator = EventInstigator;
-	params.HitLocation = HitLocation;
-	params.Momentum = Momentum;
-	params.DamageType = DamageType;
-	params.HitInfo = HitInfo;
-	params.DamageCauser = DamageCauser;
-	params.WhatHitMe = WhatHitMe;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefTower_ProjectileReflect.GetAttackDamage
-// (Defined, Simulated, Public)
-// Parameters:
-// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
-
-float ADunDefTower_ProjectileReflect::GetAttackDamage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.GetAttackDamage");
-
-	ADunDefTower_ProjectileReflect_GetAttackDamage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function DunDefSpecial.DunDefTower_ProjectileReflect.DoReflection
-// (Defined, Simulated, Public)
-// Parameters:
-// class ADunDefProjectile*       reflectedProj                  (Parm)
-// struct FVector                 NewDir                         (Parm)
-
-void ADunDefTower_ProjectileReflect::DoReflection(class ADunDefProjectile* reflectedProj, const struct FVector& NewDir)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.DoReflection");
-
-	ADunDefTower_ProjectileReflect_DoReflection_Params params;
-	params.reflectedProj = reflectedProj;
-	params.NewDir = NewDir;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefTower_ProjectileReflect.KilledTarget
-// (Defined, Public)
-// Parameters:
-// TScriptInterface<class UDunDefTargetableInterface> aTarget                        (Parm)
-
-void ADunDefTower_ProjectileReflect::KilledTarget(const TScriptInterface<class UDunDefTargetableInterface>& aTarget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.KilledTarget");
-
-	ADunDefTower_ProjectileReflect_KilledTarget_Params params;
-	params.aTarget = aTarget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function DunDefSpecial.DunDefTower_ProjectileReflect.Touch
-// (Defined, Simulated, Event, Public, HasDefaults)
-// Parameters:
-// class AActor*                  Other                          (Parm)
-// class UPrimitiveComponent*     OtherComp                      (Parm, EditInline)
-// struct FVector                 HitLocation                    (Parm)
-// struct FVector                 HitNormal                      (Parm)
-
-void ADunDefTower_ProjectileReflect::Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefSpecial.DunDefTower_ProjectileReflect.Touch");
-
-	ADunDefTower_ProjectileReflect_Touch_Params params;
-	params.Other = Other;
-	params.OtherComp = OtherComp;
-	params.HitLocation = HitLocation;
-	params.HitNormal = HitNormal;
 
 	auto flags = fn->FunctionFlags;
 

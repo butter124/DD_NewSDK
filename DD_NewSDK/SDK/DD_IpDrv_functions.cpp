@@ -4820,6 +4820,114 @@ void UIniLocPatcherMcp::Init()
 }
 
 
+// Function IpDrv.TimeClient.Closed
+// (Defined, Event, Public)
+
+void ATimeClient::Closed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TimeClient.Closed");
+
+	ATimeClient_Closed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.TimeClient.ReceivedText
+// (Defined, Event, Public)
+// Parameters:
+// struct FString                 Text                           (Parm, NeedCtorLink)
+
+void ATimeClient::ReceivedText(const struct FString& Text)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TimeClient.ReceivedText");
+
+	ATimeClient_ReceivedText_Params params;
+	params.Text = Text;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.TimeClient.Opened
+// (Defined, Event, Public)
+
+void ATimeClient::Opened()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TimeClient.Opened");
+
+	ATimeClient_Opened_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.TimeClient.ResolveFailed
+// (Defined, Event, Public)
+
+void ATimeClient::ResolveFailed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TimeClient.ResolveFailed");
+
+	ATimeClient_ResolveFailed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.TimeClient.Resolved
+// (Defined, Event, Public)
+// Parameters:
+// struct FIpAddr                 Addr                           (Parm)
+
+void ATimeClient::Resolved(const struct FIpAddr& Addr)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TimeClient.Resolved");
+
+	ATimeClient_Resolved_Params params;
+	params.Addr = Addr;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.TimeClient.GetTimeNow
+// (Defined, Public)
+
+void ATimeClient::GetTimeNow()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TimeClient.GetTimeNow");
+
+	ATimeClient_GetTimeNow_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function IpDrv.WebConnection.IsHanging
 // (Final, Defined, Public)
 // Parameters:

@@ -13,7 +13,7 @@ namespace Classes
 //---------------------------------------------------------------------------
 
 // Class CDT8.DunDefEmitterRadialForce
-// 0x00BC (0x0390 - 0x02D4)
+// 0x00C8 (0x039C - 0x02D4)
 class ADunDefEmitterRadialForce : public ADunDefEmitterSpawnable
 {
 public:
@@ -36,6 +36,7 @@ public:
 	unsigned long                                      bNotifyWeaponDidDamage : 1;                               // 0x02DC(0x0004) (Edit)
 	unsigned long                                      IsWeaponAttack : 1;                                       // 0x02DC(0x0004) (Edit)
 	unsigned long                                      bUseSelfAsDamageCauser : 1;                               // 0x02DC(0x0004) (Edit)
+	unsigned long                                      bScaleDamageForAmountOfPlayers : 1;                       // 0x02DC(0x0004) (Edit)
 	unsigned long                                      bDoRadialForce : 1;                                       // 0x02DC(0x0004) (Edit)
 	unsigned long                                      bOutwardPush : 1;                                         // 0x02DC(0x0004) (Edit)
 	unsigned long                                      bFalloff : 1;                                             // 0x02DC(0x0004) (Edit)
@@ -62,28 +63,29 @@ public:
 	unsigned char                                      UnknownData00[0x3];                                       // 0x0329(0x0003) MISSED OFFSET
 	float                                              MaxTargetDeltaPitch;                                      // 0x032C(0x0004) (Edit, Net)
 	float                                              MaxTargetDeltaYaw;                                        // 0x0330(0x0004) (Edit, Net)
-	float                                              InitialEffectDelay;                                       // 0x0334(0x0004) (Edit)
-	float                                              Strength;                                                 // 0x0338(0x0004) (Edit)
-	float                                              InAirMaxVelocity;                                         // 0x033C(0x0004) (Edit)
-	float                                              FalloffExponent;                                          // 0x0340(0x0004) (Edit)
-	float                                              MinimumFalloff;                                           // 0x0344(0x0004) (Edit)
-	float                                              MaximumFalloff;                                           // 0x0348(0x0004) (Edit)
-	float                                              CenterTouchRadius;                                        // 0x034C(0x0004) (Edit)
-	float                                              LifespanChange;                                           // 0x0350(0x0004) (Edit)
-	float                                              DamageToDeal;                                             // 0x0354(0x0004) (Edit)
-	class UDunDefBuff*                                 BuffToApply;                                              // 0x0358(0x0004) (Edit)
-	struct FName                                       KismetNotifyName;                                         // 0x035C(0x0008) (Edit)
-	int                                                MaxLifeSpanChangeCount;                                   // 0x0364(0x0004) (Edit)
-	class AActor*                                      ClosestTarget;                                            // 0x0368(0x0004) (Transient)
-	class ADunDefTower*                                SpawnerTower;                                             // 0x036C(0x0004) (Net, Transient)
-	float                                              lastTowerSpeed;                                           // 0x0370(0x0004) (Transient)
-	float                                              timeLastSpeedUpdate;                                      // 0x0374(0x0004) (Transient)
-	float                                              BaseSpeed;                                                // 0x0378(0x0004) (Transient)
-	float                                              lastTowerDamage;                                          // 0x037C(0x0004) (Transient)
-	float                                              timeLastDamageUpdate;                                     // 0x0380(0x0004) (Transient)
-	float                                              CloudEndTime;                                             // 0x0384(0x0004) (Transient)
-	float                                              lastCenterTouch;                                          // 0x0388(0x0004) (Transient)
-	int                                                TimerExtensions;                                          // 0x038C(0x0004) (Transient)
+	TArray<float>                                      AmountOfPlayersDamageMulti;                               // 0x0334(0x000C) (Edit, NeedCtorLink)
+	float                                              InitialEffectDelay;                                       // 0x0340(0x0004) (Edit)
+	float                                              Strength;                                                 // 0x0344(0x0004) (Edit)
+	float                                              InAirMaxVelocity;                                         // 0x0348(0x0004) (Edit)
+	float                                              FalloffExponent;                                          // 0x034C(0x0004) (Edit)
+	float                                              MinimumFalloff;                                           // 0x0350(0x0004) (Edit)
+	float                                              MaximumFalloff;                                           // 0x0354(0x0004) (Edit)
+	float                                              CenterTouchRadius;                                        // 0x0358(0x0004) (Edit)
+	float                                              LifespanChange;                                           // 0x035C(0x0004) (Edit)
+	float                                              DamageToDeal;                                             // 0x0360(0x0004) (Edit)
+	class UDunDefBuff*                                 BuffToApply;                                              // 0x0364(0x0004) (Edit)
+	struct FName                                       KismetNotifyName;                                         // 0x0368(0x0008) (Edit)
+	int                                                MaxLifeSpanChangeCount;                                   // 0x0370(0x0004) (Edit)
+	class AActor*                                      ClosestTarget;                                            // 0x0374(0x0004) (Transient)
+	class ADunDefTower*                                SpawnerTower;                                             // 0x0378(0x0004) (Net, Transient)
+	float                                              lastTowerSpeed;                                           // 0x037C(0x0004) (Transient)
+	float                                              timeLastSpeedUpdate;                                      // 0x0380(0x0004) (Transient)
+	float                                              BaseSpeed;                                                // 0x0384(0x0004) (Transient)
+	float                                              lastTowerDamage;                                          // 0x0388(0x0004) (Transient)
+	float                                              timeLastDamageUpdate;                                     // 0x038C(0x0004) (Transient)
+	float                                              CloudEndTime;                                             // 0x0390(0x0004) (Transient)
+	float                                              lastCenterTouch;                                          // 0x0394(0x0004) (Transient)
+	int                                                TimerExtensions;                                          // 0x0398(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -110,6 +112,7 @@ public:
 	float GetTargetDesirability(const TScriptInterface<class UDunDefTargetableInterface>& aTarget);
 	unsigned long CheckValidAngle(class AActor* Victim, const struct FVector& Origin);
 	void EffectTimer();
+	void ScaleDamageForNumberOfPlayers();
 	float GetRadiusDamage(float theBaseDamage, class AActor* Victim);
 	unsigned long HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, unsigned long bDoFullDamage);
 	void ApplyRadialForce(class AActor* Target);
@@ -178,22 +181,22 @@ public:
 
 
 // Class CDT8.DunDefWeapon_HoloSword
-// 0x0040 (0x0658 - 0x0618)
+// 0x0040 (0x0664 - 0x0624)
 class ADunDefWeapon_HoloSword : public ADunDefWeapon_MeleeSword
 {
 public:
-	float                                              HoloSpawnInterval;                                        // 0x0618(0x0004) (Edit)
-	float                                              TeleportCooldown;                                         // 0x061C(0x0004) (Edit)
-	float                                              HoloDuration;                                             // 0x0620(0x0004) (Edit)
-	class AActor*                                      ActorToSpawn;                                             // 0x0624(0x0004) (Edit)
-	class UMaterialInstance*                           HoloMaterial;                                             // 0x0628(0x0004) (Edit)
-	struct FName                                       Hawkanimationname;                                        // 0x062C(0x0008) (Edit)
-	float                                              LastHoloSpawnTime;                                        // 0x0634(0x0004)
-	float                                              LastTeleportTime;                                         // 0x0638(0x0004)
-	unsigned long                                      EnableSpawning : 1;                                       // 0x063C(0x0004)
-	struct FName                                       CopyName;                                                 // 0x0640(0x0008)
-	int                                                ActorIndex;                                               // 0x0648(0x0004)
-	TArray<class AActor*>                              spawnedActors;                                            // 0x064C(0x000C) (Transient, NeedCtorLink)
+	float                                              HoloSpawnInterval;                                        // 0x0624(0x0004) (Edit)
+	float                                              TeleportCooldown;                                         // 0x0628(0x0004) (Edit)
+	float                                              HoloDuration;                                             // 0x062C(0x0004) (Edit)
+	class AActor*                                      ActorToSpawn;                                             // 0x0630(0x0004) (Edit)
+	class UMaterialInstance*                           HoloMaterial;                                             // 0x0634(0x0004) (Edit)
+	struct FName                                       Hawkanimationname;                                        // 0x0638(0x0008) (Edit)
+	float                                              LastHoloSpawnTime;                                        // 0x0640(0x0004)
+	float                                              LastTeleportTime;                                         // 0x0644(0x0004)
+	unsigned long                                      EnableSpawning : 1;                                       // 0x0648(0x0004)
+	struct FName                                       CopyName;                                                 // 0x064C(0x0008)
+	int                                                ActorIndex;                                               // 0x0654(0x0004)
+	TArray<class AActor*>                              spawnedActors;                                            // 0x0658(0x000C) (Transient, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -215,17 +218,17 @@ public:
 
 
 // Class CDT8.DunDefWeapon_MagicStaff_Channeling
-// 0x0030 (0x0670 - 0x0640)
+// 0x0030 (0x0684 - 0x0654)
 class ADunDefWeapon_MagicStaff_Channeling : public ADunDefWeapon_MagicStaff
 {
 public:
-	class ADunDefProjectile*                           ChannelingProjectileTemplate;                             // 0x0640(0x0004) (Edit)
-	float                                              ChannelingProjectileFireSpeed;                            // 0x0644(0x0004) (Edit)
-	float                                              ChannelingProjectileDamageMultiplier;                     // 0x0648(0x0004) (Edit)
-	struct FVector                                     ChannelingProjectileLocationOffset;                       // 0x064C(0x000C) (Edit)
-	float                                              ChannelingRangeMultiplier;                                // 0x0658(0x0004) (Edit)
-	TScriptInterface<class UDunDefTargetableInterface> act;                                                      // 0x065C(0x0008) (Transient)
-	TArray<TScriptInterface<class UDunDefTargetableInterface>> Enemies;                                                  // 0x0664(0x000C) (Transient, NeedCtorLink)
+	class ADunDefProjectile*                           ChannelingProjectileTemplate;                             // 0x0654(0x0004) (Edit)
+	float                                              ChannelingProjectileFireSpeed;                            // 0x0658(0x0004) (Edit)
+	float                                              ChannelingProjectileDamageMultiplier;                     // 0x065C(0x0004) (Edit)
+	struct FVector                                     ChannelingProjectileLocationOffset;                       // 0x0660(0x000C) (Edit)
+	float                                              ChannelingRangeMultiplier;                                // 0x066C(0x0004) (Edit)
+	TScriptInterface<class UDunDefTargetableInterface> act;                                                      // 0x0670(0x0008) (Transient)
+	TArray<TScriptInterface<class UDunDefTargetableInterface>> Enemies;                                                  // 0x0678(0x000C) (Transient, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -237,30 +240,30 @@ public:
 
 
 // Class CDT8.DunDefWeapon_MagicStaff_CustomRightClick
-// 0x0038 (0x0678 - 0x0640)
+// 0x0038 (0x068C - 0x0654)
 class ADunDefWeapon_MagicStaff_CustomRightClick : public ADunDefWeapon_MagicStaff
 {
 public:
-	int                                                AbilityCooldown;                                          // 0x0640(0x0004) (Edit)
-	unsigned long                                      ApplyBuffs : 1;                                           // 0x0644(0x0004) (Edit)
-	unsigned long                                      PayManaPS : 1;                                            // 0x0644(0x0004) (Edit)
-	unsigned long                                      PayHPPS : 1;                                              // 0x0644(0x0004) (Edit)
-	unsigned long                                      ScaleCostWithTime : 1;                                    // 0x0644(0x0004) (Edit)
-	unsigned long                                      AbilityCharged : 1;                                       // 0x0644(0x0004)
-	unsigned long                                      UnderEffect : 1;                                          // 0x0644(0x0004)
-	unsigned long                                      BuffApplied : 1;                                          // 0x0644(0x0004)
-	float                                              ManaCost;                                                 // 0x0648(0x0004) (Edit)
-	float                                              HPCost;                                                   // 0x064C(0x0004) (Edit)
-	float                                              LinearCostIncrease;                                       // 0x0650(0x0004) (Edit)
-	int                                                buffUniqueID;                                             // 0x0654(0x0004) (Edit)
-	float                                              CostInterval;                                             // 0x0658(0x0004) (Edit)
-	class UDunDefBuff*                                 AbilityBuffTemplate;                                      // 0x065C(0x0004) (Edit)
-	int                                                LastActivedAbilityTime;                                   // 0x0660(0x0004)
-	int                                                LastCheckTime;                                            // 0x0664(0x0004)
-	int                                                AbilityUpKeepTime;                                        // 0x0668(0x0004)
-	int                                                CurrentCost;                                              // 0x066C(0x0004)
-	float                                              PaidHealth;                                               // 0x0670(0x0004) (Transient)
-	float                                              PaidMana;                                                 // 0x0674(0x0004) (Transient)
+	int                                                AbilityCooldown;                                          // 0x0654(0x0004) (Edit)
+	unsigned long                                      ApplyBuffs : 1;                                           // 0x0658(0x0004) (Edit)
+	unsigned long                                      PayManaPS : 1;                                            // 0x0658(0x0004) (Edit)
+	unsigned long                                      PayHPPS : 1;                                              // 0x0658(0x0004) (Edit)
+	unsigned long                                      ScaleCostWithTime : 1;                                    // 0x0658(0x0004) (Edit)
+	unsigned long                                      AbilityCharged : 1;                                       // 0x0658(0x0004)
+	unsigned long                                      UnderEffect : 1;                                          // 0x0658(0x0004)
+	unsigned long                                      BuffApplied : 1;                                          // 0x0658(0x0004)
+	float                                              ManaCost;                                                 // 0x065C(0x0004) (Edit)
+	float                                              HPCost;                                                   // 0x0660(0x0004) (Edit)
+	float                                              LinearCostIncrease;                                       // 0x0664(0x0004) (Edit)
+	int                                                buffUniqueID;                                             // 0x0668(0x0004) (Edit)
+	float                                              CostInterval;                                             // 0x066C(0x0004) (Edit)
+	class UDunDefBuff*                                 AbilityBuffTemplate;                                      // 0x0670(0x0004) (Edit)
+	int                                                LastActivedAbilityTime;                                   // 0x0674(0x0004)
+	int                                                LastCheckTime;                                            // 0x0678(0x0004)
+	int                                                AbilityUpKeepTime;                                        // 0x067C(0x0004)
+	int                                                CurrentCost;                                              // 0x0680(0x0004)
+	float                                              PaidHealth;                                               // 0x0684(0x0004) (Transient)
+	float                                              PaidMana;                                                 // 0x0688(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -276,16 +279,16 @@ public:
 
 
 // Class CDT8.DunDefWeapon_MagicStaff_WithOribitingEffect
-// 0x0024 (0x0664 - 0x0640)
+// 0x0024 (0x0678 - 0x0654)
 class ADunDefWeapon_MagicStaff_WithOribitingEffect : public ADunDefWeapon_MagicStaff
 {
 public:
-	unsigned long                                      ExplodeStacksWithRightClick : 1;                          // 0x0640(0x0004) (Edit)
-	int                                                buffUniqueID;                                             // 0x0644(0x0004) (Edit)
-	TArray<class UParticleSystemComponent*>            ParticleSystems;                                          // 0x0648(0x000C) (Edit, ExportObject, Component, NeedCtorLink, EditInline)
-	struct FName                                       SocketName;                                               // 0x0654(0x0008) (Edit)
-	class UParticleSystemComponent*                    CurrentParticleSystem;                                    // 0x065C(0x0004) (ExportObject, Component, EditInline)
-	int                                                CurrentStacks;                                            // 0x0660(0x0004) (Transient)
+	unsigned long                                      ExplodeStacksWithRightClick : 1;                          // 0x0654(0x0004) (Edit)
+	int                                                buffUniqueID;                                             // 0x0658(0x0004) (Edit)
+	TArray<class UParticleSystemComponent*>            ParticleSystems;                                          // 0x065C(0x000C) (Edit, ExportObject, Component, NeedCtorLink, EditInline)
+	struct FName                                       SocketName;                                               // 0x0668(0x0008) (Edit)
+	class UParticleSystemComponent*                    CurrentParticleSystem;                                    // 0x0670(0x0004) (ExportObject, Component, EditInline)
+	int                                                CurrentStacks;                                            // 0x0674(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{

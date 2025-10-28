@@ -921,12 +921,25 @@ struct ADunDefEmitterDamage_DoDamage_Params
 {
 };
 
+// Function DunDefSpecial.DunDefEmitterDamage.ScaleDamageForNumberOfPlayers
+struct ADunDefEmitterDamage_ScaleDamageForNumberOfPlayers_Params
+{
+};
+
 // Function DunDefSpecial.DunDefEmitterDamage.InitDamageEmitter
 struct ADunDefEmitterDamage_InitDamageEmitter_Params
 {
 	int                                                BaseDamage;                                               // (OptionalParm, Parm)
 	float                                              BaseRange;                                                // (OptionalParm, Parm)
 	TScriptInterface<class UIActorModifierInterface>   aActorStatModifier;                                       // (OptionalParm, Parm)
+};
+
+// Function DunDefSpecial.DunDefEmitterDamage.GetRadiusDamage
+struct ADunDefEmitterDamage_GetRadiusDamage_Params
+{
+	float                                              theBaseDamage;                                            // (Parm)
+	class AActor*                                      Victim;                                                   // (Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function DunDefSpecial.DunDefEmitterDamage.PostBeginPlay
@@ -5732,6 +5745,13 @@ struct ADunDefPlayerAbility_BuilTripWire_AllowTowerPlacementPosition_Params
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.GetAbilityStatus
+struct ADunDefPlayerAbility_BuilTripWire_GetAbilityStatus_Params
+{
+	int                                                ExtraStatusFlag;                                          // (OptionalParm, Parm, OutParm)
+	TEnumAsByte<EPlayerAbilityStatus>                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function DunDefSpecial.DunDefPlayerAbility_BuilTripWire.GetCenterLocation
 struct ADunDefPlayerAbility_BuilTripWire_GetCenterLocation_Params
 {
@@ -5845,6 +5865,59 @@ struct ADunDefPlayerAbility_BuilTripWire_ExecReplicatedFunction_Params
 	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
 	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
 	class UObject*                                     objectParam1;                                             // (OptionalParm, Parm)
+};
+
+// Function DunDefSpecial.DunDefTower_ProjectileReflect.IsPhysicalTower
+struct ADunDefTower_ProjectileReflect_IsPhysicalTower_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefTower_ProjectileReflect.GetCostPerReflect
+struct ADunDefTower_ProjectileReflect_GetCostPerReflect_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefTower_ProjectileReflect.TakeDamage
+struct ADunDefTower_ProjectileReflect_TakeDamage_Params
+{
+	int                                                DamageAmount;                                             // (Parm)
+	class AController*                                 EventInstigator;                                          // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     Momentum;                                                 // (Parm)
+	class UClass*                                      DamageType;                                               // (Parm)
+	struct FTraceHitInfo                               HitInfo;                                                  // (OptionalParm, Parm)
+	class AActor*                                      DamageCauser;                                             // (OptionalParm, Parm)
+	class UObject*                                     WhatHitMe;                                                // (OptionalParm, Parm)
+};
+
+// Function DunDefSpecial.DunDefTower_ProjectileReflect.GetAttackDamage
+struct ADunDefTower_ProjectileReflect_GetAttackDamage_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function DunDefSpecial.DunDefTower_ProjectileReflect.DoReflection
+struct ADunDefTower_ProjectileReflect_DoReflection_Params
+{
+	class ADunDefProjectile*                           reflectedProj;                                            // (Parm)
+	struct FVector                                     NewDir;                                                   // (Parm)
+};
+
+// Function DunDefSpecial.DunDefTower_ProjectileReflect.KilledTarget
+struct ADunDefTower_ProjectileReflect_KilledTarget_Params
+{
+	TScriptInterface<class UDunDefTargetableInterface> aTarget;                                                  // (Parm)
+};
+
+// Function DunDefSpecial.DunDefTower_ProjectileReflect.Touch
+struct ADunDefTower_ProjectileReflect_Touch_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+	class UPrimitiveComponent*                         OtherComp;                                                // (Parm, EditInline)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
 };
 
 // Function DunDefSpecial.DunDefPlayerAbility_DefenseBoost.GetAbilityStatus
@@ -7764,59 +7837,6 @@ struct ADunDefTower_Present_Died_Params
 struct ADunDefTower_Present_ChangedGamePhases_Params
 {
 	unsigned long                                      IsCombatPhase;                                            // (Parm)
-};
-
-// Function DunDefSpecial.DunDefTower_ProjectileReflect.IsPhysicalTower
-struct ADunDefTower_ProjectileReflect_IsPhysicalTower_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefTower_ProjectileReflect.GetCostPerReflect
-struct ADunDefTower_ProjectileReflect_GetCostPerReflect_Params
-{
-	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefTower_ProjectileReflect.TakeDamage
-struct ADunDefTower_ProjectileReflect_TakeDamage_Params
-{
-	int                                                DamageAmount;                                             // (Parm)
-	class AController*                                 EventInstigator;                                          // (Parm)
-	struct FVector                                     HitLocation;                                              // (Parm)
-	struct FVector                                     Momentum;                                                 // (Parm)
-	class UClass*                                      DamageType;                                               // (Parm)
-	struct FTraceHitInfo                               HitInfo;                                                  // (OptionalParm, Parm)
-	class AActor*                                      DamageCauser;                                             // (OptionalParm, Parm)
-	class UObject*                                     WhatHitMe;                                                // (OptionalParm, Parm)
-};
-
-// Function DunDefSpecial.DunDefTower_ProjectileReflect.GetAttackDamage
-struct ADunDefTower_ProjectileReflect_GetAttackDamage_Params
-{
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function DunDefSpecial.DunDefTower_ProjectileReflect.DoReflection
-struct ADunDefTower_ProjectileReflect_DoReflection_Params
-{
-	class ADunDefProjectile*                           reflectedProj;                                            // (Parm)
-	struct FVector                                     NewDir;                                                   // (Parm)
-};
-
-// Function DunDefSpecial.DunDefTower_ProjectileReflect.KilledTarget
-struct ADunDefTower_ProjectileReflect_KilledTarget_Params
-{
-	TScriptInterface<class UDunDefTargetableInterface> aTarget;                                                  // (Parm)
-};
-
-// Function DunDefSpecial.DunDefTower_ProjectileReflect.Touch
-struct ADunDefTower_ProjectileReflect_Touch_Params
-{
-	class AActor*                                      Other;                                                    // (Parm)
-	class UPrimitiveComponent*                         OtherComp;                                                // (Parm, EditInline)
-	struct FVector                                     HitLocation;                                              // (Parm)
-	struct FVector                                     HitNormal;                                                // (Parm)
 };
 
 // Function DunDefSpecial.DunDefTower_WebWall.ScaleForHeroModifiers

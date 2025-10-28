@@ -819,6 +819,32 @@ public:
 };
 
 
+// Class IpDrv.TimeClient
+// 0x0028 (0x0284 - 0x025C)
+class ATimeClient : public ATcpLink
+{
+public:
+	struct FString                                     CurrentDateTime;                                          // 0x025C(0x000C) (NeedCtorLink)
+	unsigned long                                      bTimeReady : 1;                                           // 0x0268(0x0004)
+	struct FString                                     PendingHost;                                              // 0x026C(0x000C) (NeedCtorLink)
+	struct FString                                     ResponseBuffer;                                           // 0x0278(0x000C) (NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class IpDrv.TimeClient");
+		return ptr;
+	}
+
+
+	void Closed();
+	void ReceivedText(const struct FString& Text);
+	void Opened();
+	void ResolveFailed();
+	void Resolved(const struct FIpAddr& Addr);
+	void GetTimeNow();
+};
+
+
 // Class IpDrv.WebConnection
 // 0x0030 (0x028C - 0x025C)
 class AWebConnection : public ATcpLink

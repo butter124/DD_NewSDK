@@ -13007,6 +13007,17 @@ struct ADunDefGameReplicationInfo_PostBeginPlay_Params
 {
 };
 
+// Function UDKGame.DunDefGameReplicationInfo.CheckForMapOfTheWeek
+struct ADunDefGameReplicationInfo_CheckForMapOfTheWeek_Params
+{
+};
+
+// Function UDKGame.DunDefGameReplicationInfo.GetCurrentWeekMapIdentifier
+struct ADunDefGameReplicationInfo_GetCurrentWeekMapIdentifier_Params
+{
+	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
 // Function UDKGame.DunDefGameReplicationInfo.ShopExpire
 struct ADunDefGameReplicationInfo_ShopExpire_Params
 {
@@ -22223,6 +22234,11 @@ struct UUI_GameSetup_GetImageInfoForTag_Params
 struct UUI_GameSetup_AutoSelectCampaignLevel_Params
 {
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.UI_GameSetup.CheckForMapOfTheWeek
+struct UUI_GameSetup_CheckForMapOfTheWeek_Params
+{
 };
 
 // Function UDKGame.DunDefGameSettings.ResetForOnlineHost
@@ -38324,6 +38340,11 @@ struct ADunDefWeapon_MagicStaff_CustomFire_Params
 	int                                                theFireMode;                                              // (Parm)
 };
 
+// Function UDKGame.DunDefWeapon_MagicStaff.FireLaser
+struct ADunDefWeapon_MagicStaff_FireLaser_Params
+{
+};
+
 // Function UDKGame.DunDefWeapon_MagicStaff.ShouldRefire
 struct ADunDefWeapon_MagicStaff_ShouldRefire_Params
 {
@@ -38894,6 +38915,23 @@ struct UHeroEquipment_Familiar_WithProjectileAI_GetProjectileSpeed_Params
 struct UHeroEquipment_Familiar_WithProjectileAI_GetNumProjectiles_Params
 {
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar_WithProjectileAI.PayHealthCost
+struct UHeroEquipment_Familiar_WithProjectileAI_PayHealthCost_Params
+{
+};
+
+// Function UDKGame.HeroEquipment_Familiar_WithProjectileAI.GetHealthCost
+struct UHeroEquipment_Familiar_WithProjectileAI_GetHealthCost_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar_WithProjectileAI.GetHealthCostBonusDamage
+struct UHeroEquipment_Familiar_WithProjectileAI_GetHealthCostBonusDamage_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function UDKGame.HeroEquipment_Familiar_WithProjectileAI.GetDesiredSphereRotationalPlacement

@@ -42282,6 +42282,44 @@ void ADunDefGameReplicationInfo::PostBeginPlay()
 }
 
 
+// Function UDKGame.DunDefGameReplicationInfo.CheckForMapOfTheWeek
+// (Defined, Public)
+
+void ADunDefGameReplicationInfo::CheckForMapOfTheWeek()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefGameReplicationInfo.CheckForMapOfTheWeek");
+
+	ADunDefGameReplicationInfo_CheckForMapOfTheWeek_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefGameReplicationInfo.GetCurrentWeekMapIdentifier
+// (Defined, Public, HasDefaults)
+// Parameters:
+// struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
+
+struct FString ADunDefGameReplicationInfo::GetCurrentWeekMapIdentifier()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefGameReplicationInfo.GetCurrentWeekMapIdentifier");
+
+	ADunDefGameReplicationInfo_GetCurrentWeekMapIdentifier_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function UDKGame.DunDefGameReplicationInfo.ShopExpire
 // (Defined, Public)
 
@@ -72119,6 +72157,23 @@ unsigned long UUI_GameSetup::AutoSelectCampaignLevel()
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function UDKGame.UI_GameSetup.CheckForMapOfTheWeek
+// (Defined, Public)
+
+void UUI_GameSetup::CheckForMapOfTheWeek()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.UI_GameSetup.CheckForMapOfTheWeek");
+
+	UUI_GameSetup_CheckForMapOfTheWeek_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -124313,6 +124368,23 @@ void ADunDefWeapon_MagicStaff::CustomFire(int theFireMode)
 }
 
 
+// Function UDKGame.DunDefWeapon_MagicStaff.FireLaser
+// (Defined, Simulated, Public, HasDefaults)
+
+void ADunDefWeapon_MagicStaff::FireLaser()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefWeapon_MagicStaff.FireLaser");
+
+	ADunDefWeapon_MagicStaff_FireLaser_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function UDKGame.DunDefWeapon_MagicStaff.ShouldRefire
 // (Defined, Simulated, Public)
 // Parameters:
@@ -126166,6 +126238,65 @@ int UHeroEquipment_Familiar_WithProjectileAI::GetNumProjectiles()
 	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar_WithProjectileAI.GetNumProjectiles");
 
 	UHeroEquipment_Familiar_WithProjectileAI_GetNumProjectiles_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar_WithProjectileAI.PayHealthCost
+// (Defined, Public)
+
+void UHeroEquipment_Familiar_WithProjectileAI::PayHealthCost()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar_WithProjectileAI.PayHealthCost");
+
+	UHeroEquipment_Familiar_WithProjectileAI_PayHealthCost_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar_WithProjectileAI.GetHealthCost
+// (Defined, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float UHeroEquipment_Familiar_WithProjectileAI::GetHealthCost()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar_WithProjectileAI.GetHealthCost");
+
+	UHeroEquipment_Familiar_WithProjectileAI_GetHealthCost_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar_WithProjectileAI.GetHealthCostBonusDamage
+// (Defined, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float UHeroEquipment_Familiar_WithProjectileAI::GetHealthCostBonusDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar_WithProjectileAI.GetHealthCostBonusDamage");
+
+	UHeroEquipment_Familiar_WithProjectileAI_GetHealthCostBonusDamage_Params params;
 
 	auto flags = fn->FunctionFlags;
 

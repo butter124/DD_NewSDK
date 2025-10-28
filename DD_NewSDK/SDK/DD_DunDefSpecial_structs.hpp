@@ -91,6 +91,14 @@ struct FSummonedBoosts
 	unsigned long                                      bDisplayToolTip : 1;                                      // 0x0020(0x0004) (Edit)
 };
 
+// ScriptStruct DunDefSpecial.DunDefEmitterDamage.ActorTypeDamageMultiplier
+// 0x0008
+struct ADunDefEmitterDamage_FActorTypeDamageMultiplier
+{
+	class UClass*                                      ActorClass;                                               // 0x0000(0x0004) (Edit)
+	float                                              DamageMultiplier;                                         // 0x0004(0x0004) (Edit)
+};
+
 // ScriptStruct DunDefSpecial.CTF_DDGRI.CTFTeamData
 // 0x0034
 struct FCTFTeamData

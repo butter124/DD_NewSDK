@@ -397,6 +397,23 @@ void ADunDefEmitterRadialForce::EffectTimer()
 }
 
 
+// Function CDT8.DunDefEmitterRadialForce.ScaleDamageForNumberOfPlayers
+// (Defined, Public)
+
+void ADunDefEmitterRadialForce::ScaleDamageForNumberOfPlayers()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function CDT8.DunDefEmitterRadialForce.ScaleDamageForNumberOfPlayers");
+
+	ADunDefEmitterRadialForce_ScaleDamageForNumberOfPlayers_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function CDT8.DunDefEmitterRadialForce.GetRadiusDamage
 // (Defined, Simulated, Public)
 // Parameters:

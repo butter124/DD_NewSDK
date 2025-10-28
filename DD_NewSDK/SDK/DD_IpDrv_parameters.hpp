@@ -1455,6 +1455,38 @@ struct UIniLocPatcherMcp_Init_Params
 {
 };
 
+// Function IpDrv.TimeClient.Closed
+struct ATimeClient_Closed_Params
+{
+};
+
+// Function IpDrv.TimeClient.ReceivedText
+struct ATimeClient_ReceivedText_Params
+{
+	struct FString                                     Text;                                                     // (Parm, NeedCtorLink)
+};
+
+// Function IpDrv.TimeClient.Opened
+struct ATimeClient_Opened_Params
+{
+};
+
+// Function IpDrv.TimeClient.ResolveFailed
+struct ATimeClient_ResolveFailed_Params
+{
+};
+
+// Function IpDrv.TimeClient.Resolved
+struct ATimeClient_Resolved_Params
+{
+	struct FIpAddr                                     Addr;                                                     // (Parm)
+};
+
+// Function IpDrv.TimeClient.GetTimeNow
+struct ATimeClient_GetTimeNow_Params
+{
+};
+
 // Function IpDrv.WebConnection.IsHanging
 struct AWebConnection_IsHanging_Params
 {

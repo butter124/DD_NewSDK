@@ -156,16 +156,16 @@ public:
 
 
 // Class DunDefSpider.DunDefGRI_PortalDefense
-// 0x0020 (0x0750 - 0x0730)
+// 0x0020 (0x0754 - 0x0734)
 class ADunDefGRI_PortalDefense : public ADunDefGameReplicationInfo
 {
 public:
-	int                                                PortalHitsRemaining;                                      // 0x0730(0x0004) (Net)
-	int                                                AllowedPortalHits;                                        // 0x0734(0x0004) (Net)
-	struct FColor                                      TextColor;                                                // 0x0738(0x0004)
-	struct FColor                                      InvincibleTextColor;                                      // 0x073C(0x0004)
-	struct FString                                     HUDRemainingTouchesString;                                // 0x0740(0x000C) (Net, NeedCtorLink)
-	unsigned long                                      bIsCoreInvincible : 1;                                    // 0x074C(0x0004) (Net)
+	int                                                PortalHitsRemaining;                                      // 0x0734(0x0004) (Net)
+	int                                                AllowedPortalHits;                                        // 0x0738(0x0004) (Net)
+	struct FColor                                      TextColor;                                                // 0x073C(0x0004)
+	struct FColor                                      InvincibleTextColor;                                      // 0x0740(0x0004)
+	struct FString                                     HUDRemainingTouchesString;                                // 0x0744(0x000C) (Net, NeedCtorLink)
+	unsigned long                                      bIsCoreInvincible : 1;                                    // 0x0750(0x0004) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -287,13 +287,13 @@ public:
 
 
 // Class DunDefSpider.DunDefGRI_VDay
-// 0x0024 (0x0754 - 0x0730)
+// 0x0024 (0x0758 - 0x0734)
 class ADunDefGRI_VDay : public ADunDefGameReplicationInfo
 {
 public:
-	struct FString                                     PairWasMatched;                                           // 0x0730(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     BoySpawned;                                               // 0x073C(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     GirlSpawned;                                              // 0x0748(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     PairWasMatched;                                           // 0x0734(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     BoySpawned;                                               // 0x0740(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     GirlSpawned;                                              // 0x074C(0x000C) (Localized, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{

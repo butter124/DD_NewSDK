@@ -78,12 +78,12 @@ public:
 
 
 // Class CDT4.HeroEquipment_Familiar_MiniQueen
-// 0x0008 (0x0CBC - 0x0CB4)
+// 0x0008 (0x0CC8 - 0x0CC0)
 class UHeroEquipment_Familiar_MiniQueen : public UHeroEquipment_Familiar_Melee
 {
 public:
-	float                                              WebOverrideRange;                                         // 0x0CB4(0x0004) (Edit)
-	unsigned long                                      bNextAttackRanged : 1;                                    // 0x0CB8(0x0004) (Transient)
+	float                                              WebOverrideRange;                                         // 0x0CC0(0x0004) (Edit)
+	unsigned long                                      bNextAttackRanged : 1;                                    // 0x0CC4(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{

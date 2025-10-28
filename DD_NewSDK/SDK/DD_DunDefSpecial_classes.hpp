@@ -354,7 +354,7 @@ public:
 
 
 // Class DunDefSpecial.DunDefEmitterDamage
-// 0x005C (0x0330 - 0x02D4)
+// 0x0078 (0x034C - 0x02D4)
 class ADunDefEmitterDamage : public ADunDefEmitterSpawnable
 {
 public:
@@ -376,12 +376,18 @@ public:
 	unsigned long                                      bUseOwnerAsInstigator : 1;                                // 0x0308(0x0004) (Edit)
 	unsigned long                                      bScaleDrawScale : 1;                                      // 0x0308(0x0004) (Edit)
 	unsigned long                                      bUseSelfAsDamageCauser : 1;                               // 0x0308(0x0004) (Edit)
+	unsigned long                                      bScaleDamageForAmountOfPlayers : 1;                       // 0x0308(0x0004) (Edit)
+	unsigned long                                      bUseActorTypeDamageMultipliers : 1;                       // 0x0308(0x0004) (Edit)
+	unsigned long                                      bUseAttackRate : 1;                                       // 0x0308(0x0004) (Edit)
 	float                                              MaxTargetDeltaPitch;                                      // 0x030C(0x0004) (Edit, Net)
 	float                                              MaxTargetDeltaYaw;                                        // 0x0310(0x0004) (Edit, Net)
 	TArray<class UDunDefBuff*>                         BuffsToApplyOnHit;                                        // 0x0314(0x000C) (Edit, NeedCtorLink)
 	class UDunDefBuff*                                 FirstTargetBuff;                                          // 0x0320(0x0004) (Edit)
-	TScriptInterface<class UIActorModifierInterface>   MyActorStatModifier;                                      // 0x0324(0x0008) (Transient)
-	float                                              PowerMult;                                                // 0x032C(0x0004) (Net)
+	TArray<float>                                      AmountOfPlayersDamageMulti;                               // 0x0324(0x000C) (Edit, NeedCtorLink)
+	TArray<struct ADunDefEmitterDamage_FActorTypeDamageMultiplier> ActorTypeDamageMultipliers;                               // 0x0330(0x000C) (Edit, NeedCtorLink)
+	float                                              AttackRate;                                               // 0x033C(0x0004) (Edit)
+	TScriptInterface<class UIActorModifierInterface>   MyActorStatModifier;                                      // 0x0340(0x0008) (Transient)
+	float                                              PowerMult;                                                // 0x0348(0x0004) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -398,7 +404,9 @@ public:
 	unsigned long STATIC_AllowSpawn(class AActor* theArchetype, const struct FVector& theLoc, const struct FRotator& theRot);
 	unsigned long HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, unsigned long bDoFullDamage);
 	void DoDamage();
+	void ScaleDamageForNumberOfPlayers();
 	void InitDamageEmitter(int BaseDamage, float BaseRange, const TScriptInterface<class UIActorModifierInterface>& aActorStatModifier);
+	float GetRadiusDamage(float theBaseDamage, class AActor* Victim);
 	void PostBeginPlay();
 };
 
@@ -578,31 +586,31 @@ public:
 
 
 // Class DunDefSpecial.CTF_DDGRI
-// 0x00EC (0x0924 - 0x0838)
+// 0x00EC (0x0928 - 0x083C)
 class ACTF_DDGRI : public ADDGRI_Competitive
 {
 public:
-	struct FCTFTeamData                                CTFTeamDatas[0x2];                                        // 0x0838(0x0034) (Net, NeedCtorLink)
-	struct FColor                                      NeutralColor;                                             // 0x08A0(0x0004)
-	class ACTF_PlayerAbility_PickupFlag*               CTFPickupFlagAbilityTemplate;                             // 0x08A4(0x0004)
-	class UTexture2D*                                  TeamIconTexture;                                          // 0x08A8(0x0004)
-	class UTexture2D*                                  FlagIcon;                                                 // 0x08AC(0x0004)
-	class ACTF_Flag*                                   TheFlag;                                                  // 0x08B0(0x0004) (Net)
-	class ACTF_Flag*                                   TheSecondFlag;                                            // 0x08B4(0x0004) (Net)
-	struct FString                                     FlagIconPath;                                             // 0x08B8(0x000C) (NeedCtorLink)
-	int                                                WinningTeam;                                              // 0x08C4(0x0004) (Net)
-	unsigned long                                      bAutoBalanceTeams : 1;                                    // 0x08C8(0x0004) (Net)
-	unsigned long                                      bIsGameReady : 1;                                         // 0x08C8(0x0004) (Net)
-	unsigned long                                      bUsePersonalTowerUnits : 1;                               // 0x08C8(0x0004)
-	unsigned long                                      bAllowCountDown : 1;                                      // 0x08C8(0x0004)
-	unsigned long                                      bPrintWinningPlayerMessage : 1;                           // 0x08C8(0x0004)
-	unsigned long                                      bDisplayPlayerScore : 1;                                  // 0x08C8(0x0004)
-	float                                              GameStartTime;                                            // 0x08CC(0x0004) (Net)
-	float                                              FlagHoldingGroundSpeed;                                   // 0x08D0(0x0004)
-	int                                                LastSentGameTime;                                         // 0x08D4(0x0004) (Transient)
-	struct FString                                     EndGameLabelString;                                       // 0x08D8(0x000C) (Localized, NeedCtorLink)
-	int                                                WinCTFManaBonus[0x8];                                     // 0x08E4(0x0004)
-	int                                                WinExpBonus[0x8];                                         // 0x0904(0x0004)
+	struct FCTFTeamData                                CTFTeamDatas[0x2];                                        // 0x083C(0x0034) (Net, NeedCtorLink)
+	struct FColor                                      NeutralColor;                                             // 0x08A4(0x0004)
+	class ACTF_PlayerAbility_PickupFlag*               CTFPickupFlagAbilityTemplate;                             // 0x08A8(0x0004)
+	class UTexture2D*                                  TeamIconTexture;                                          // 0x08AC(0x0004)
+	class UTexture2D*                                  FlagIcon;                                                 // 0x08B0(0x0004)
+	class ACTF_Flag*                                   TheFlag;                                                  // 0x08B4(0x0004) (Net)
+	class ACTF_Flag*                                   TheSecondFlag;                                            // 0x08B8(0x0004) (Net)
+	struct FString                                     FlagIconPath;                                             // 0x08BC(0x000C) (NeedCtorLink)
+	int                                                WinningTeam;                                              // 0x08C8(0x0004) (Net)
+	unsigned long                                      bAutoBalanceTeams : 1;                                    // 0x08CC(0x0004) (Net)
+	unsigned long                                      bIsGameReady : 1;                                         // 0x08CC(0x0004) (Net)
+	unsigned long                                      bUsePersonalTowerUnits : 1;                               // 0x08CC(0x0004)
+	unsigned long                                      bAllowCountDown : 1;                                      // 0x08CC(0x0004)
+	unsigned long                                      bPrintWinningPlayerMessage : 1;                           // 0x08CC(0x0004)
+	unsigned long                                      bDisplayPlayerScore : 1;                                  // 0x08CC(0x0004)
+	float                                              GameStartTime;                                            // 0x08D0(0x0004) (Net)
+	float                                              FlagHoldingGroundSpeed;                                   // 0x08D4(0x0004)
+	int                                                LastSentGameTime;                                         // 0x08D8(0x0004) (Transient)
+	struct FString                                     EndGameLabelString;                                       // 0x08DC(0x000C) (Localized, NeedCtorLink)
+	int                                                WinCTFManaBonus[0x8];                                     // 0x08E8(0x0004)
+	int                                                WinExpBonus[0x8];                                         // 0x0908(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -697,11 +705,11 @@ public:
 
 
 // Class DunDefSpecial.CTD_DDGRI
-// 0x000C (0x0930 - 0x0924)
+// 0x000C (0x0934 - 0x0928)
 class ACTD_DDGRI : public ACTF_DDGRI
 {
 public:
-	TArray<float>                                      MoveRepSizes;                                             // 0x0924(0x000C) (NeedCtorLink)
+	TArray<float>                                      MoveRepSizes;                                             // 0x0928(0x000C) (NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -892,7 +900,7 @@ public:
 
 
 // Class DunDefSpecial.CTFM_DDGRI
-// 0x0000 (0x0924 - 0x0924)
+// 0x0000 (0x0928 - 0x0928)
 class ACTFM_DDGRI : public ACTF_DDGRI
 {
 public:
@@ -1721,29 +1729,29 @@ public:
 
 
 // Class DunDefSpecial.DunDefGRI_Delivery
-// 0x0084 (0x07B4 - 0x0730)
+// 0x0084 (0x07B8 - 0x0734)
 class ADunDefGRI_Delivery : public ADunDefGameReplicationInfo
 {
 public:
-	TArray<class ADunDefDropOffPoint*>                 worldDropOffPts;                                          // 0x0730(0x000C) (NeedCtorLink)
-	TArray<class ADunDefDropOffPoint*>                 activeDropOffPoints;                                      // 0x073C(0x000C) (NeedCtorLink)
-	int                                                NumFullPoints;                                            // 0x0748(0x0004) (Net)
-	struct FColor                                      DeliveryTextColor;                                        // 0x074C(0x0004)
-	struct FColor                                      DeliveryStatusTextColor;                                  // 0x0750(0x0004)
-	class ADunDefPlayerAbility_PickUpItem*             PickupItemAbilityTemplate;                                // 0x0754(0x0004)
-	unsigned long                                      bDoneDoingDelivery : 1;                                   // 0x0758(0x0004) (Net)
-	unsigned long                                      bDisableTimer : 1;                                        // 0x0758(0x0004) (Net)
-	unsigned long                                      bDisableTimerBySpeedBuild : 1;                            // 0x0758(0x0004)
-	TArray<class ADunDefPlayer*>                       PackageHolders;                                           // 0x075C(0x000C) (NeedCtorLink)
-	float                                              PackageHoldingGroundSpeed;                                // 0x0768(0x0004)
-	float                                              DeliveryTimeLimit;                                        // 0x076C(0x0004) (Net)
-	struct FString                                     TimeLimitString;                                          // 0x0770(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     DeliveryLimitString;                                      // 0x077C(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     DeliveryString;                                           // 0x0788(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     DropOffString;                                            // 0x0794(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     PickUpString;                                             // 0x07A0(0x000C) (Localized, NeedCtorLink)
-	struct FColor                                      TimeLimitTextColor;                                       // 0x07AC(0x0004)
-	class ADunDefPickupableItem*                       currentDeliveryItem;                                      // 0x07B0(0x0004) (Net)
+	TArray<class ADunDefDropOffPoint*>                 worldDropOffPts;                                          // 0x0734(0x000C) (NeedCtorLink)
+	TArray<class ADunDefDropOffPoint*>                 activeDropOffPoints;                                      // 0x0740(0x000C) (NeedCtorLink)
+	int                                                NumFullPoints;                                            // 0x074C(0x0004) (Net)
+	struct FColor                                      DeliveryTextColor;                                        // 0x0750(0x0004)
+	struct FColor                                      DeliveryStatusTextColor;                                  // 0x0754(0x0004)
+	class ADunDefPlayerAbility_PickUpItem*             PickupItemAbilityTemplate;                                // 0x0758(0x0004)
+	unsigned long                                      bDoneDoingDelivery : 1;                                   // 0x075C(0x0004) (Net)
+	unsigned long                                      bDisableTimer : 1;                                        // 0x075C(0x0004) (Net)
+	unsigned long                                      bDisableTimerBySpeedBuild : 1;                            // 0x075C(0x0004)
+	TArray<class ADunDefPlayer*>                       PackageHolders;                                           // 0x0760(0x000C) (NeedCtorLink)
+	float                                              PackageHoldingGroundSpeed;                                // 0x076C(0x0004)
+	float                                              DeliveryTimeLimit;                                        // 0x0770(0x0004) (Net)
+	struct FString                                     TimeLimitString;                                          // 0x0774(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     DeliveryLimitString;                                      // 0x0780(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     DeliveryString;                                           // 0x078C(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     DropOffString;                                            // 0x0798(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     PickUpString;                                             // 0x07A4(0x000C) (Localized, NeedCtorLink)
+	struct FColor                                      TimeLimitTextColor;                                       // 0x07B0(0x0004)
+	class ADunDefPickupableItem*                       currentDeliveryItem;                                      // 0x07B4(0x0004) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -1836,24 +1844,24 @@ public:
 
 
 // Class DunDefSpecial.DunDefGRI_Assault
-// 0x0058 (0x0788 - 0x0730)
+// 0x0058 (0x078C - 0x0734)
 class ADunDefGRI_Assault : public ADunDefGameReplicationInfo
 {
 public:
-	int                                                LivesRemaining;                                           // 0x0730(0x0004) (Net)
-	struct FString                                     NumLivesString;                                           // 0x0734(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     NumCoresString;                                           // 0x0740(0x000C) (Localized, NeedCtorLink)
-	struct FColor                                      NumLivesStringColor;                                      // 0x074C(0x0004)
-	struct FColor                                      NumCoresStringColor;                                      // 0x0750(0x0004)
-	unsigned long                                      HadPositiveCores : 1;                                     // 0x0754(0x0004)
-	float                                              KillPhaseTimeLimit;                                       // 0x0758(0x0004) (Net)
-	float                                              NightmareGroundSpeedLerp;                                 // 0x075C(0x0004)
-	float                                              NightmareTimeLimitMultiplier;                             // 0x0760(0x0004)
-	struct FString                                     TimeLimitString;                                          // 0x0764(0x000C) (Localized, NeedCtorLink)
-	struct FColor                                      TimeLimitTextColor;                                       // 0x0770(0x0004)
-	struct FString                                     DestroyedEnemyCoreString;                                 // 0x0774(0x000C) (Localized, NeedCtorLink)
-	struct FColor                                      DestroyedEnemyCoreStringColor;                            // 0x0780(0x0004)
-	int                                                LastNumberOfCoresRemaining;                               // 0x0784(0x0004)
+	int                                                LivesRemaining;                                           // 0x0734(0x0004) (Net)
+	struct FString                                     NumLivesString;                                           // 0x0738(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     NumCoresString;                                           // 0x0744(0x000C) (Localized, NeedCtorLink)
+	struct FColor                                      NumLivesStringColor;                                      // 0x0750(0x0004)
+	struct FColor                                      NumCoresStringColor;                                      // 0x0754(0x0004)
+	unsigned long                                      HadPositiveCores : 1;                                     // 0x0758(0x0004)
+	float                                              KillPhaseTimeLimit;                                       // 0x075C(0x0004) (Net)
+	float                                              NightmareGroundSpeedLerp;                                 // 0x0760(0x0004)
+	float                                              NightmareTimeLimitMultiplier;                             // 0x0764(0x0004)
+	struct FString                                     TimeLimitString;                                          // 0x0768(0x000C) (Localized, NeedCtorLink)
+	struct FColor                                      TimeLimitTextColor;                                       // 0x0774(0x0004)
+	struct FString                                     DestroyedEnemyCoreString;                                 // 0x0778(0x000C) (Localized, NeedCtorLink)
+	struct FColor                                      DestroyedEnemyCoreStringColor;                            // 0x0784(0x0004)
+	int                                                LastNumberOfCoresRemaining;                               // 0x0788(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -1884,35 +1892,35 @@ public:
 
 
 // Class DunDefSpecial.DunDefGRI_Chicken
-// 0x0094 (0x07C4 - 0x0730)
+// 0x0094 (0x07C8 - 0x0734)
 class ADunDefGRI_Chicken : public ADunDefGameReplicationInfo
 {
 public:
-	int                                                LivesRemaining;                                           // 0x0730(0x0004) (Net)
-	struct FString                                     NumLivesString;                                           // 0x0734(0x000C) (Localized, NeedCtorLink)
-	struct FColor                                      NumLivesStringColor;                                      // 0x0740(0x0004)
-	class ADunDefPlayer*                               ChickenPlayer;                                            // 0x0744(0x0004) (Net)
-	struct FString                                     IsTheChickenString;                                       // 0x0748(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     MSG_YouAreTheChicken;                                     // 0x0754(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     SpectatorNoLivesWaitString;                               // 0x0760(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     MSG_WillBecomeChicken;                                    // 0x076C(0x000C) (Localized, NeedCtorLink)
-	struct FColor                                      ChickenMessageColor;                                      // 0x0778(0x0004)
-	struct FColor                                      ChickenMessageYouColor;                                   // 0x077C(0x0004)
-	class UTexture2D*                                  ChickenIcon;                                              // 0x0780(0x0004)
-	struct FVector                                     ChickenIconPositionOffset;                                // 0x0784(0x000C)
-	float                                              ChickenIconPositionHeightScale;                           // 0x0790(0x0004)
-	float                                              ChickenIconSize;                                          // 0x0794(0x0004)
-	class USoundCue*                                   ChickenSoundEffect;                                       // 0x0798(0x0004)
-	TArray<int>                                        LivesRemainings;                                          // 0x079C(0x000C) (NeedCtorLink)
-	unsigned long                                      bSentChickenChangeNotification : 1;                       // 0x07A8(0x0004) (Transient)
-	unsigned long                                      bWasAChicken : 1;                                         // 0x07A8(0x0004) (Transient)
-	unsigned long                                      bIsSinglePlayer : 1;                                      // 0x07A8(0x0004) (Transient)
-	float                                              LastChickenChangeTime;                                    // 0x07AC(0x0004) (Transient)
-	class ADunDefPlayer*                               NewChickenPlayer;                                         // 0x07B0(0x0004) (Transient)
-	float                                              ChickenChangeNotificationInterval;                        // 0x07B4(0x0004)
-	float                                              ChickenChangeInterval;                                    // 0x07B8(0x0004)
-	float                                              SinglePlayerChickenTimeout;                               // 0x07BC(0x0004) (Transient)
-	float                                              SinglePlayerCombatStartChickenInterval;                   // 0x07C0(0x0004) (Transient)
+	int                                                LivesRemaining;                                           // 0x0734(0x0004) (Net)
+	struct FString                                     NumLivesString;                                           // 0x0738(0x000C) (Localized, NeedCtorLink)
+	struct FColor                                      NumLivesStringColor;                                      // 0x0744(0x0004)
+	class ADunDefPlayer*                               ChickenPlayer;                                            // 0x0748(0x0004) (Net)
+	struct FString                                     IsTheChickenString;                                       // 0x074C(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     MSG_YouAreTheChicken;                                     // 0x0758(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     SpectatorNoLivesWaitString;                               // 0x0764(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     MSG_WillBecomeChicken;                                    // 0x0770(0x000C) (Localized, NeedCtorLink)
+	struct FColor                                      ChickenMessageColor;                                      // 0x077C(0x0004)
+	struct FColor                                      ChickenMessageYouColor;                                   // 0x0780(0x0004)
+	class UTexture2D*                                  ChickenIcon;                                              // 0x0784(0x0004)
+	struct FVector                                     ChickenIconPositionOffset;                                // 0x0788(0x000C)
+	float                                              ChickenIconPositionHeightScale;                           // 0x0794(0x0004)
+	float                                              ChickenIconSize;                                          // 0x0798(0x0004)
+	class USoundCue*                                   ChickenSoundEffect;                                       // 0x079C(0x0004)
+	TArray<int>                                        LivesRemainings;                                          // 0x07A0(0x000C) (NeedCtorLink)
+	unsigned long                                      bSentChickenChangeNotification : 1;                       // 0x07AC(0x0004) (Transient)
+	unsigned long                                      bWasAChicken : 1;                                         // 0x07AC(0x0004) (Transient)
+	unsigned long                                      bIsSinglePlayer : 1;                                      // 0x07AC(0x0004) (Transient)
+	float                                              LastChickenChangeTime;                                    // 0x07B0(0x0004) (Transient)
+	class ADunDefPlayer*                               NewChickenPlayer;                                         // 0x07B4(0x0004) (Transient)
+	float                                              ChickenChangeNotificationInterval;                        // 0x07B8(0x0004)
+	float                                              ChickenChangeInterval;                                    // 0x07BC(0x0004)
+	float                                              SinglePlayerChickenTimeout;                               // 0x07C0(0x0004) (Transient)
+	float                                              SinglePlayerCombatStartChickenInterval;                   // 0x07C4(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -2001,31 +2009,31 @@ public:
 
 
 // Class DunDefSpecial.DunDefGRI_GoldenTokens
-// 0x0074 (0x07A4 - 0x0730)
+// 0x0074 (0x07A8 - 0x0734)
 class ADunDefGRI_GoldenTokens : public ADunDefGameReplicationInfo
 {
 public:
-	class ADunDefEnemy*                                GoldenEnemy;                                              // 0x0730(0x0004) (Net)
-	class ADunDefEnemy*                                PreviousGoldenEnemy;                                      // 0x0734(0x0004)
-	class UParticleSystemComponent*                    PreviousGoldEffectComp;                                   // 0x0738(0x0004) (ExportObject, Component, EditInline)
-	class UParticleSystem*                             GoldParticleEffect;                                       // 0x073C(0x0004)
-	class ADunDefManaToken_Golden*                     GoldenManaTokenTemplate;                                  // 0x0740(0x0004)
-	struct FString                                     GoldenManaTokenCollectedString;                           // 0x0744(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     AllGoldenManaTokenCollectedString;                        // 0x0750(0x000C) (Localized, NeedCtorLink)
-	struct FString                                     GoldenManaTokensToCollectString;                          // 0x075C(0x000C) (Localized, NeedCtorLink)
-	struct FColor                                      GoldenManaTokenCollectedStringColor;                      // 0x0768(0x0004)
-	struct FColor                                      AllGoldenManaTokenCollectedStringColor;                   // 0x076C(0x0004)
-	class UMaterialInstanceConstant*                   GoldMaterialTemplate;                                     // 0x0770(0x0004)
-	int                                                NumSpawners;                                              // 0x0774(0x0004)
-	int                                                NumGoldenTokens;                                          // 0x0778(0x0004) (Net)
-	int                                                LastNumGoldenTokens;                                      // 0x077C(0x0004)
-	float                                              NextGoldenEnemyTimer;                                     // 0x0780(0x0004)
-	float                                              GoldenEnemyMinInterval;                                   // 0x0784(0x0004)
-	float                                              GoldenEnemyMaxInterval;                                   // 0x0788(0x0004)
-	float                                              MaxGoldenEnemyAge;                                        // 0x078C(0x0004)
-	float                                              GoldenTokenRequirementWaveMultiplier;                     // 0x0790(0x0004)
-	float                                              TokenEnemyDifficultyOffset;                               // 0x0794(0x0004)
-	TArray<class UDunDef_SeqAct_EnemyWaveSpawner*>     UsedSpawners;                                             // 0x0798(0x000C) (NeedCtorLink)
+	class ADunDefEnemy*                                GoldenEnemy;                                              // 0x0734(0x0004) (Net)
+	class ADunDefEnemy*                                PreviousGoldenEnemy;                                      // 0x0738(0x0004)
+	class UParticleSystemComponent*                    PreviousGoldEffectComp;                                   // 0x073C(0x0004) (ExportObject, Component, EditInline)
+	class UParticleSystem*                             GoldParticleEffect;                                       // 0x0740(0x0004)
+	class ADunDefManaToken_Golden*                     GoldenManaTokenTemplate;                                  // 0x0744(0x0004)
+	struct FString                                     GoldenManaTokenCollectedString;                           // 0x0748(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     AllGoldenManaTokenCollectedString;                        // 0x0754(0x000C) (Localized, NeedCtorLink)
+	struct FString                                     GoldenManaTokensToCollectString;                          // 0x0760(0x000C) (Localized, NeedCtorLink)
+	struct FColor                                      GoldenManaTokenCollectedStringColor;                      // 0x076C(0x0004)
+	struct FColor                                      AllGoldenManaTokenCollectedStringColor;                   // 0x0770(0x0004)
+	class UMaterialInstanceConstant*                   GoldMaterialTemplate;                                     // 0x0774(0x0004)
+	int                                                NumSpawners;                                              // 0x0778(0x0004)
+	int                                                NumGoldenTokens;                                          // 0x077C(0x0004) (Net)
+	int                                                LastNumGoldenTokens;                                      // 0x0780(0x0004)
+	float                                              NextGoldenEnemyTimer;                                     // 0x0784(0x0004)
+	float                                              GoldenEnemyMinInterval;                                   // 0x0788(0x0004)
+	float                                              GoldenEnemyMaxInterval;                                   // 0x078C(0x0004)
+	float                                              MaxGoldenEnemyAge;                                        // 0x0790(0x0004)
+	float                                              GoldenTokenRequirementWaveMultiplier;                     // 0x0794(0x0004)
+	float                                              TokenEnemyDifficultyOffset;                               // 0x0798(0x0004)
+	TArray<class UDunDef_SeqAct_EnemyWaveSpawner*>     UsedSpawners;                                             // 0x079C(0x000C) (NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -2046,18 +2054,18 @@ public:
 
 
 // Class DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit
-// 0x0028 (0x0758 - 0x0730)
+// 0x0028 (0x075C - 0x0734)
 class ADunDefGRI_KillEnemiesTimeLimit : public ADunDefGameReplicationInfo
 {
 public:
-	int                                                LivesRemaining;                                           // 0x0730(0x0004) (Net)
-	float                                              KillPhaseTimeLimit;                                       // 0x0734(0x0004) (Net)
-	struct FString                                     TimeLimitString;                                          // 0x0738(0x000C) (Localized, NeedCtorLink)
-	struct FColor                                      TimeLimitTextColor;                                       // 0x0744(0x0004)
-	TArray<int>                                        LivesRemainings;                                          // 0x0748(0x000C) (NeedCtorLink)
-	unsigned long                                      bDisableTimer : 1;                                        // 0x0754(0x0004) (Net)
-	unsigned long                                      bDisableTimerBySpeedBuild : 1;                            // 0x0754(0x0004)
-	unsigned long                                      bNightmareDontAllowRespawn : 1;                           // 0x0754(0x0004)
+	int                                                LivesRemaining;                                           // 0x0734(0x0004) (Net)
+	float                                              KillPhaseTimeLimit;                                       // 0x0738(0x0004) (Net)
+	struct FString                                     TimeLimitString;                                          // 0x073C(0x000C) (Localized, NeedCtorLink)
+	struct FColor                                      TimeLimitTextColor;                                       // 0x0748(0x0004)
+	TArray<int>                                        LivesRemainings;                                          // 0x074C(0x000C) (NeedCtorLink)
+	unsigned long                                      bDisableTimer : 1;                                        // 0x0758(0x0004) (Net)
+	unsigned long                                      bDisableTimerBySpeedBuild : 1;                            // 0x0758(0x0004)
+	unsigned long                                      bNightmareDontAllowRespawn : 1;                           // 0x0758(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -2128,13 +2136,13 @@ public:
 
 
 // Class DunDefSpecial.DunDefGRI_KillEnemiesTimeLimit_Uber
-// 0x001C (0x0774 - 0x0758)
+// 0x001C (0x0778 - 0x075C)
 class ADunDefGRI_KillEnemiesTimeLimit_Uber : public ADunDefGRI_KillEnemiesTimeLimit
 {
 public:
-	struct FColor                                      WinMsgColor;                                              // 0x0758(0x0004)
-	struct FString                                     mvpString;                                                // 0x075C(0x000C) (Localized, NeedCtorLink)
-	TArray<float>                                      MoveRepSizes;                                             // 0x0768(0x000C) (NeedCtorLink)
+	struct FColor                                      WinMsgColor;                                              // 0x075C(0x0004)
+	struct FString                                     mvpString;                                                // 0x0760(0x000C) (Localized, NeedCtorLink)
+	TArray<float>                                      MoveRepSizes;                                             // 0x076C(0x000C) (NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -2156,7 +2164,7 @@ public:
 
 
 // Class DunDefSpecial.DunDefGRI_OgreAlly
-// 0x0000 (0x0730 - 0x0730)
+// 0x0000 (0x0734 - 0x0734)
 class ADunDefGRI_OgreAlly : public ADunDefGameReplicationInfo
 {
 public:
@@ -2175,11 +2183,11 @@ public:
 
 
 // Class DunDefSpecial.DunDefGRI_UberAssault
-// 0x000C (0x0794 - 0x0788)
+// 0x000C (0x0798 - 0x078C)
 class ADunDefGRI_UberAssault : public ADunDefGRI_Assault
 {
 public:
-	TArray<float>                                      MoveRepSizes;                                             // 0x0788(0x000C) (NeedCtorLink)
+	TArray<float>                                      MoveRepSizes;                                             // 0x078C(0x000C) (NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -2193,11 +2201,11 @@ public:
 
 
 // Class DunDefSpecial.DunDefGRI_UberDefense
-// 0x000C (0x073C - 0x0730)
+// 0x000C (0x0740 - 0x0734)
 class ADunDefGRI_UberDefense : public ADunDefGameReplicationInfo
 {
 public:
-	TArray<float>                                      MoveRepSizes;                                             // 0x0730(0x000C) (NeedCtorLink)
+	TArray<float>                                      MoveRepSizes;                                             // 0x0734(0x000C) (NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -2211,14 +2219,14 @@ public:
 
 
 // Class DunDefSpecial.DunDefGRI_VDay2
-// 0x0020 (0x0750 - 0x0730)
+// 0x0020 (0x0754 - 0x0734)
 class ADunDefGRI_VDay2 : public ADunDefGameReplicationInfo
 {
 public:
-	TArray<int>                                        DefaultLivesRemainings;                                   // 0x0730(0x000C) (NeedCtorLink)
-	int                                                LivesRemaining;                                           // 0x073C(0x0004) (Net)
-	struct FColor                                      NumLivesStringColor;                                      // 0x0740(0x0004)
-	TArray<float>                                      MoveRepSizes;                                             // 0x0744(0x000C) (NeedCtorLink)
+	TArray<int>                                        DefaultLivesRemainings;                                   // 0x0734(0x000C) (NeedCtorLink)
+	int                                                LivesRemaining;                                           // 0x0740(0x0004) (Net)
+	struct FColor                                      NumLivesStringColor;                                      // 0x0744(0x0004)
+	TArray<float>                                      MoveRepSizes;                                             // 0x0748(0x000C) (NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -2238,7 +2246,7 @@ public:
 
 
 // Class DunDefSpecial.DunDefGRI_ZippyTerror
-// 0x0000 (0x0730 - 0x0730)
+// 0x0000 (0x0734 - 0x0734)
 class ADunDefGRI_ZippyTerror : public ADunDefGameReplicationInfo
 {
 public:
@@ -2796,6 +2804,7 @@ public:
 	void PostBeginPlay();
 	void CancelAbility();
 	unsigned long AllowTowerPlacementPosition(const struct FVector& placementPos, unsigned long bOnlyCheckVolumes, int* PlacementDeniedReason);
+	TEnumAsByte<EPlayerAbilityStatus> GetAbilityStatus(int* ExtraStatusFlag);
 	struct FVector GetCenterLocation();
 	unsigned long CanPlaceTowerUnitCost();
 	int GetDUCost(unsigned long bUseCustomEndLoc, const struct FVector& endLoc);
@@ -2812,6 +2821,36 @@ public:
 	void UpdateAltSummonTowerFX(float Percent);
 	void BeginAltSummonTowerFX(class ADunDefEmitterSpawnable* spellEffect, const struct FVector& thePlacementLocation, const struct FRotator& thePlacementRotation, float scaleMult, unsigned long bUsesDecal);
 	void ExecReplicatedFunction(const struct FName& FunctionName, const struct FName& nameParam1, const struct FName& nameParam2, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, float floatParam4, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1, class UObject* objectParam1);
+};
+
+
+// Class DunDefSpecial.DunDefTower_ProjectileReflect
+// 0x0016 (0x0AC2 - 0x0AAC)
+class ADunDefTower_ProjectileReflect : public ADunDefTower_TripPhysical
+{
+public:
+	float                                              costPerReflect;                                           // 0x0AAC(0x0004) (Edit)
+	float                                              ProjDmgScale;                                             // 0x0AB0(0x0004) (Edit)
+	float                                              ProjDmgExp;                                               // 0x0AB4(0x0004) (Edit)
+	float                                              ProjSecondDmgScale;                                       // 0x0AB8(0x0004) (Edit)
+	float                                              ProjSecondDmgExp;                                         // 0x0ABC(0x0004) (Edit)
+	TEnumAsByte<ELevelUpValueType>                     ProjDmgStatType;                                          // 0x0AC0(0x0001) (Edit)
+	TEnumAsByte<ELevelUpValueType>                     ProjSecondDmgStatType;                                    // 0x0AC1(0x0001) (Edit)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class DunDefSpecial.DunDefTower_ProjectileReflect");
+		return ptr;
+	}
+
+
+	unsigned long IsPhysicalTower();
+	int GetCostPerReflect();
+	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
+	float GetAttackDamage();
+	void DoReflection(class ADunDefProjectile* reflectedProj, const struct FVector& NewDir);
+	void KilledTarget(const TScriptInterface<class UDunDefTargetableInterface>& aTarget);
+	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
 };
 
 
@@ -3920,36 +3959,6 @@ public:
 	void PickSpawnGroup();
 	void Died(class AController* EventInstigator, const struct FVector& HitLocation, class UClass* DamageType, class AActor* DamageCauser);
 	void ChangedGamePhases(unsigned long IsCombatPhase);
-};
-
-
-// Class DunDefSpecial.DunDefTower_ProjectileReflect
-// 0x0016 (0x0AC2 - 0x0AAC)
-class ADunDefTower_ProjectileReflect : public ADunDefTower_TripPhysical
-{
-public:
-	float                                              costPerReflect;                                           // 0x0AAC(0x0004) (Edit)
-	float                                              ProjDmgScale;                                             // 0x0AB0(0x0004) (Edit)
-	float                                              ProjDmgExp;                                               // 0x0AB4(0x0004) (Edit)
-	float                                              ProjSecondDmgScale;                                       // 0x0AB8(0x0004) (Edit)
-	float                                              ProjSecondDmgExp;                                         // 0x0ABC(0x0004) (Edit)
-	TEnumAsByte<ELevelUpValueType>                     ProjDmgStatType;                                          // 0x0AC0(0x0001) (Edit)
-	TEnumAsByte<ELevelUpValueType>                     ProjSecondDmgStatType;                                    // 0x0AC1(0x0001) (Edit)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class DunDefSpecial.DunDefTower_ProjectileReflect");
-		return ptr;
-	}
-
-
-	unsigned long IsPhysicalTower();
-	int GetCostPerReflect();
-	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, class UObject* WhatHitMe);
-	float GetAttackDamage();
-	void DoReflection(class ADunDefProjectile* reflectedProj, const struct FVector& NewDir);
-	void KilledTarget(const TScriptInterface<class UDunDefTargetableInterface>& aTarget);
-	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
 };
 
 

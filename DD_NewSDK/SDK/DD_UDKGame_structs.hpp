@@ -1263,7 +1263,8 @@ enum class EAchievement : uint8_t
 	EA_RETAQUANOS                  = 158,
 	EA_RETSKYCITY                  = 159,
 	EA_RETCD                       = 160,
-	EA_MAX                         = 161
+	EA_SKYSPOOKTACULAR             = 161,
+	EA_MAX                         = 162
 };
 
 
@@ -2983,6 +2984,13 @@ struct FsBuffTarget
 struct FTrade
 {
 	struct FString                                     IDs[0x5];                                                 // 0x0000(0x000C) (Edit, NeedCtorLink)
+};
+
+// ScriptStruct UDKGame._SpecialData.MapOfTheWeek
+// 0x027C
+struct FMapOfTheWeek
+{
+	struct FString                                     map_ids[0x35];                                            // 0x0000(0x000C) (Edit, NeedCtorLink)
 };
 
 // ScriptStruct UDKGame.DunDefMapInfo.MixEnemyDifficultyThreshold

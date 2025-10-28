@@ -133,6 +133,11 @@ struct ADunDefEmitterRadialForce_EffectTimer_Params
 {
 };
 
+// Function CDT8.DunDefEmitterRadialForce.ScaleDamageForNumberOfPlayers
+struct ADunDefEmitterRadialForce_ScaleDamageForNumberOfPlayers_Params
+{
+};
+
 // Function CDT8.DunDefEmitterRadialForce.GetRadiusDamage
 struct ADunDefEmitterRadialForce_GetRadiusDamage_Params
 {
