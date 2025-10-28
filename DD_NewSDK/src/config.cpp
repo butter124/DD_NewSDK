@@ -236,6 +236,7 @@ void Config::PostRenderHookFunc(PROCESS_EVENT_ARGS) {
     pWorld->bPlayersAreInvincible = bPlayerGodMode;
   }
 
+
   // spawn enemys
   std::set<Classes::UObject *> templates = GetEnemyTemplates();
   for (size_t i = 0; i < qEnemysToSpawn.size(); i++) {
@@ -1596,6 +1597,8 @@ void Config::LogToFile(const std::string &s) {
 void Config::SetupFilter() {
   // clang-format off
   //vProcessEventFilter
+      vProcessEventFunctionFilter["Function Engine.WorldInfo.GetMapInfo"] = true;
+      vProcessEventFunctionFilter["Function UDKGame.DunDefViewportClient.GetViewportClient"] = true;
       vProcessEventFunctionFilter["Function Core.Object.EndState"] = true;
       vProcessEventFunctionFilter["Function DunDefArabia.DunDefDjinnManager.PostBeginPlay"] = true;
       vProcessEventFunctionFilter["Function Engine.Actor.AllowSpawn"] = true;

@@ -65,13 +65,44 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
 
   // anti cheat
   if (strcmp(funcName.c_str(), "Function UDKGame.Main.RunAntiCheat") == 0) {
-    // config->PrintToConsole("Blocked Function UDKGame.Main.RunAntiCheat");
+    config->PrintToConsole("Blocked Function UDKGame.Main.RunAntiCheat");
     return;
   }
   if (strcmp(funcName.c_str(), "Function UDKGame.Main.HandleCheater") == 0) {
-    // config->PrintToConsole("Blocked Function UDKGame.Main.HandleCheater");
+    config->PrintToConsole("Blocked Function UDKGame.Main.HandleCheater");
     return;
   }
+
+  if (strcmp(funcName.c_str(), "Function UDKGame.AntiCheat.DoAntiCheatChecks") == 0) {
+    config->PrintToConsole("Blocked Function UDKGame.AntiCheat.DoAntiCheatChecks");
+    return;
+  }
+
+  if (strcmp(funcName.c_str(), "Function UDKGame.AntiCheat.CheckGameInfo") == 0) {
+    config->PrintToConsole("Blocked Function UDKGame.AntiCheat.CheckGameInfo");
+    return;
+  }
+
+  if (strcmp(funcName.c_str(), "Function Engine.GameInfo.KickBan") == 0) {
+    config->PrintToConsole("Function Engine.GameInfo.KickBan");
+    return;
+  }
+
+  if (strcmp(funcName.c_str(), "Function Engine.GameInfo.Kick") == 0) {
+    config->PrintToConsole("Function Engine.GameInfo.Kick");
+    return;
+  }
+
+  if (strcmp(funcName.c_str(), "Function UDKGame.DunDefPlayerController.KickAllSplits") == 0) {
+    config->PrintToConsole("Function UDKGame.DunDefPlayerController.KickAllSplits");
+    return;
+  }
+
+  if (strcmp(funcName.c_str(), "Function UDKGame.AntiCheat.KickEveryone") == 0) {
+    config->PrintToConsole("Function UDKGame.AntiCheat.KickEveryone");
+    return;
+  }
+
   // hooked functions
   if (config->hookedFuncMap.find(funcName) != config->hookedFuncMap.end()) {
     //  config->PrintToConsole();
