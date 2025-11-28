@@ -23,6 +23,7 @@ Hooking BeginSceneHook;
 
 Hooking ProcEventHook(nullptr, HookedPE, 5);
 Hooking ScoreHookObj(nullptr, ScoreHook, 8);
+Hooking ProcessInternalHook(nullptr, HookedProcessInternal, 8);
 Hooking DrawHook;
 
 WNDPROC oWndProc;
@@ -128,6 +129,10 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
   //  Call Original PE
   ((tProcessEvent)(ProcEventHook.HookAddr))(pObject, pFunction, pParms,
                                             pResult);
+}
+
+void __fastcall HookedProcessInternal(Classes::UObject* pThis, void* EDX, FFrame* Stack, void* pResult){
+    config->HandleFunctions(pThis, EDX, Stack, pResult);
 }
 
 LRESULT __stdcall WndProc(const HWND hwnd, UINT uMsg, WPARAM wParam,
@@ -267,6 +272,8 @@ void __declspec(naked) ScoreHook() {
 
 
 
+
+
 typedef float(__fastcall *DrawTextShadow)(void* thisptr, const Classes::FString& Text, unsigned long CR, float XScale, float YScale, unsigned long CenterY, Classes::UFont* FontToUse, unsigned long Wrap, const Classes::FLinearColor& gradientColor, float Left, float Right, float Top, float Bottom, unsigned long checkForLineBreaks, Classes::TArray<Classes::FTextEx>* TextBlock);
 extern DrawTextShadow oDrawTextCenteredShadowed;
 
@@ -318,10 +325,22 @@ bool Menu::Init() {
       (FindPattern((unsigned long)miGame.lpBaseOfDll, miGame.SizeOfImage,
                    (unsigned char *)ScoreHook_Pattern, (char *)ScoreHook_Mask));
 
+  //Hook ProcessInternal
+  DWORD ProcessInternalAddr =
+      (FindPattern((unsigned long)miGame.lpBaseOfDll, miGame.SizeOfImage,
+          (unsigned char*)ProcessInternalHook_Pattern, (char*)ProcessInternalHook_Mask));
+
   ScoreHookObj.UpdateHookAddr((void *)(ScoreHookAddrOffset));
   ProcEventHook.UpdateHookAddr((void *)ProcessEventAddress);
   ProcEventHook.HookFunction();
   ScoreHookObj.HookFunction();
+  ProcessInternalHook.UpdateHookAddr((void*)(ProcessInternalAddr));
+  ProcessInternalHook.HookFunction();
+
+  config->RegisterProcessInternalHook("Function UDKGame.DunDefViewportClient.SetMousePosition", hkBlockedFuntions);
+  config->RegisterProcessInternalHook("Function Engine.UIInteraction.SetMousePosition", hkBlockedFuntions);
+
+  config->InitDefferedProcessInternalHook((tProcessInternal)ProcessInternalHook.HookAddr);
 
 
   // DrawHook = Hooking((void *)NULL, hkDrawTextCenteredShadowed, 5);
@@ -344,6 +363,10 @@ bool Menu::Init() {
   return true;
 }
 
+void hkBlockedFuntions(PROCESS_INTERNAL_ARGS) {
+    return;
+}
+
 bool Menu::Cleanup() {
 
   BeginSceneHook.UnHookFunction();
@@ -353,6 +376,7 @@ bool Menu::Cleanup() {
 
   ProcEventHook.UnHookFunction();
   ScoreHookObj.UnHookFunction();
+  ProcessInternalHook.UnHookFunction();
 
   L->cleanup();
 

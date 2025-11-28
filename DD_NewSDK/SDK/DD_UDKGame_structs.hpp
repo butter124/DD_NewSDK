@@ -12,15 +12,18 @@ namespace Classes
 //Constants
 //---------------------------------------------------------------------------
 
+#define CONST_DunDefGameReplicationInfo_CONTEXT_ACTIVE_MISSION   1
+#define CONST_DunDefHeroManagerNative_MAX_TUTORIAL_SETS          10
+#define CONST__DataTypes_MAX_FEATURE_SLOTS                       10
 #define CONST_LEVELUPTIME_PER_LEVEL_EXPONENT_FACTOR              0.35
 #define CONST__DataTypes_MAX_DAMAGEREDUCTIONS                    4
 #define CONST_Main_FILTER_DIFF_START                             0x10000056
 #define CONST_MAX_SHOP_EQUIPMENT_SET_AMOUNTS                     3
 #define CONST_DunDefGameSearchCommon_PROPS_PURE_STRATEGY         0x1000006F
 #define CONST_UI_TitleScreen_FILTER_SESSIONID_START              0x10000064
-#define CONST__DataTypes_MAX_BUFF_SLOTS                          3
-#define CONST_Main_PROPS_HEROLEVEL                               0x1000002A
+#define CONST__DataTypes_MAX_BUFF_SLOTS                          10
 #define CONST_UI_CharacterSelect_CONTEXT_GAME_MODE_COOP          0
+#define CONST_Main_PROPS_HEROLEVEL                               0x1000002A
 #define CONST_UI_TitleScreen_PROPS_START_AT_WAVE                 0x1000000F
 #define CONST_MANAPOWER_PER_LEVEL_LINEAR_FACTOR                  20.0
 #define CONST_DunDefOnlineGameSettingsConsole_GS_PASSWORD_MAXLENGTH 30
@@ -29,26 +32,28 @@ namespace Classes
 #define CONST_DunDefDataStore_GameSearch_PROPS_HERONAME          0x20000016
 #define CONST__DataTypes_MAX_BUFF_TIERS                          6
 #define CONST_DunDefPlayerController_GS_MESSAGE_MAXLENGTH        255
-#define CONST_DunDefHeroManagerNative_MAX_BUFF_SLOTS             3
+#define CONST_DunDefBuff_MAX_FEATURE_SLOTS                       10
+#define CONST_DunDefHeroManagerNative_MAX_BUFF_SLOTS             10
 #define CONST_UIScriptWidget_EquipmentIconButton_MAX_TUTORIAL_SETS 10
 #define CONST__DataTypes_MAX_LEVELUP_STATS                       11
 #define CONST_DunDefOnlineGameSettingsConsole_FILTER_SURVIVAL    0x1000005C
 #define CONST_MAX_HERO_NAME_LENGTH                               32
 #define CONST_DunDefGameReplicationInfo_STATS_VIEW_COLUMN_CLASS  2
 #define CONST_DunDefGameReplicationInfo_PROPS_MATCHCOMPLETE      0x10000076
-#define CONST_StatObject_MAX_BUFF_SLOTS                          3
+#define CONST_StatObject_MAX_BUFF_SLOTS                          10
 #define CONST__DataTypes_MAX_CORES                               40
 #define CONST__DataTypes_MAX_TUTORIAL_SETS                       10
-#define CONST_MAX_STAT_VALUE_SPEED_HERO                          100
-#define CONST_DunDefPlayerController_PRESENCE_MISSION            2
-#define CONST_UIScriptWidget_EquipmentIconButton_MAX_DAMAGEREDUCTIONS 4
-#define CONST_DunDefGameReplicationInfo_FILTER_LEVELINDEX        0x10000062
-#define CONST_DunDefPlayerController_FILTER_SESSIONID_COUNT      10
-#define CONST_DunDefHeroManagerNative_MAX_CORES                  40
-#define CONST_ANTI_CHEAT_INTERVAL                                10
 #define CONST_UI_NetworkMultiplayer_PROPS_COMPLETIONTIME         0x1000002C
 #define CONST_HERO_LEVEL_CAP                                     100
 #define CONST__DataTypes_MAX_ACHIEVEMENTS_TO_STORE               500
+#define CONST_UIScriptWidget_EquipmentIconButton_MAX_DAMAGEREDUCTIONS 4
+#define CONST_DunDefGameReplicationInfo_FILTER_LEVELINDEX        0x10000062
+#define CONST_DunDefPlayerController_FILTER_SESSIONID_COUNT      10
+#define CONST_DunDefAchievementManager_MAX_FEATURE_SLOTS         10
+#define CONST_DunDefHeroManagerNative_MAX_CORES                  40
+#define CONST_MAX_STAT_VALUE_SPEED_HERO                          100
+#define CONST_DunDefPlayerController_PRESENCE_MISSION            2
+#define CONST_ANTI_CHEAT_INTERVAL                                10
 #define CONST_DunDefPlayerController_FILTER_HEROLEVELSTART       0x1000005F
 #define CONST_DunDefGameSearchCommon_PROPS_GAME_DIFFICULTY       0x10000010
 #define CONST_SPEED_HACK_DETECTION_THRESHOLD                     3
@@ -58,9 +63,6 @@ namespace Classes
 #define CONST_Main_STATS_VIEW_COLUMN_CLASS                       2
 #define CONST_HeroEquipmentNative_MAX_ACHIEVEMENTS_TO_STORE      500
 #define CONST_DunDefPlayerController_PROPS_HEROCLASS             0x20000020
-#define CONST_UI_TitleScreen_PRESENCE_MAIN_MENU                  0
-#define CONST_DunDefAchievementManager_MAX_LEVELUP_STATS         11
-#define CONST_DunDefDataStore_GameSearch_FILTER_SESSIONID_COUNT  10
 #define CONST_HeroEquipmentNative_MAX_TUTORIAL_SETS              10
 #define CONST_DunDefPlayerController_PROPS_WAVECOUNT             0x1000002D
 #define CONST_MAX_STAT_VALUE_SPEED                               100
@@ -77,7 +79,9 @@ namespace Classes
 #define CONST_HeroEquipmentNative_MAX_LEVELUP_STATS              11
 #define CONST_HeroEquipmentNative_MAX_BUFF_TIERS                 6
 #define CONST_EQUIPMENT_STOCKY                                   3
-#define CONST_HeroEquipmentNative_MAX_BUFF_SLOTS                 3
+#define CONST_HeroEquipmentNative_MAX_BUFF_SLOTS                 10
+#define CONST_DunDefPlayerController_GS_PASSWORD_MAXLENGTH       30
+#define CONST_HeroEquipmentNative_MAX_FEATURE_SLOTS              10
 #define CONST_MAX_ITEM_BOX_EQUIPMENT_RUTHLESS                    1000
 #define CONST_UI_CharacterSelect_PROPS_START_AT_WAVE             0x1000000F
 #define CONST_DunDefOnlineGameSettingsConsole_FILTER_VERSIONNUMBER 0x10000075
@@ -86,8 +90,6 @@ namespace Classes
 #define CONST_MAX_SUBFOLDERS                                     6
 #define CONST_Main_PRESENCE_MISSION                              2
 #define CONST_EXP_PER_LEVEL_LINEAR_FACTOR_DOUBLEHIGH             900000
-#define CONST_DunDefGameReplicationInfo_CONTEXT_ACTIVE_MISSION   1
-#define CONST_DunDefHeroManagerNative_MAX_TUTORIAL_SETS          10
 #define CONST_LEVEL_FILE_EXTENSION                               ".udk"
 #define CONST_DunDefHeroManagerNative_MAX_DAMAGEREDUCTIONS       4
 #define CONST_DunDefPlayerController_PRESENCE_INACTIVE           4
@@ -97,25 +99,24 @@ namespace Classes
 #define CONST_Main_GS_PASSWORD_MAXLENGTH                         30
 #define CONST_PC_MUSIC_MULTIPLIER                                0.7
 #define CONST_DunDefHeroManagerNative_MAX_BUFF_TIERS             6
+#define CONST_MAX_HERO_EXPERIENCE                                3000000000
+#define CONST_DunDefPlayerController_FILTER_LEVEL_START          0x1000002E
+#define CONST_UI_MultiplayerMenu_PROPS_HOSTHEROCLASS             0x1000005E
+#define CONST_DunDefGameReplicationInfo_PROPS_HOSTHEROLEVEL      0x1000002A
+#define CONST_DunDefHeroManagerNative_MAX_FEATURE_SLOTS          10
 #define CONST_EXP_PER_LEVEL_LINEAR_FACTOR                        80.0
 #define CONST_UI_CharacterSelect_GS_PASSWORD_MAXLENGTH           30
 #define CONST_EXP_PER_LEVEL_EXPONENT_FACTOR                      2.5
 #define CONST_DunDefHeroManager_NUM_EQUIPMENT_TYPES              6
 #define CONST_MAX_PLAYERSHOP_ITEMS                               250
 #define CONST_EXP_PER_LEVEL_LINEAR_FACTOR_HIGH                   800000
-#define CONST_ENEMY_COLLECTIONGROUP                              8
-#define CONST_DunDefHeroManager_MAX_SUPPORTED_GAMEPADS           4
 #define CONST_UI_CharacterSelect_FILTER_MATCHCOMPLETE            0x10000077
 #define CONST_EXP_PER_LEVEL_EXPONENT_FACTOR_DOUBLEHIGH           2.2
-#define CONST_DunDefBuff_MAX_BUFF_SLOTS                          3
+#define CONST_DunDefBuff_MAX_BUFF_SLOTS                          10
 #define CONST_MAX_ITEM_BOX_EQUIPMENT_ULTIMATE                    600
 #define CONST_Main_FILTER_MATCHCOMPLETE                          0x10000077
 #define CONST_LEVELUPTIME_PER_LEVEL_LINEAR_FACTOR                6.0
 #define CONST_DunDefGameReplicationInfo_STATS_VIEW_COLUMN_TIME   5
-#define CONST_MAX_HERO_EXPERIENCE                                3000000000
-#define CONST_DunDefPlayerController_FILTER_LEVEL_START          0x1000002E
-#define CONST_UI_MultiplayerMenu_PROPS_HOSTHEROCLASS             0x1000005E
-#define CONST_DunDefGameReplicationInfo_PROPS_HOSTHEROLEVEL      0x1000002A
 #define CONST_Main_PROPS_INFINITE_WAVES                          0x1000000E
 #define CONST_PC_MOVIE_MULTIPLIER                                1.44
 #define CONST_HERO_LEVEL_CAP_DEMO                                10
@@ -138,7 +139,6 @@ namespace Classes
 #define CONST_DunDefPlayerController_FILTER_DIFF_START           0x10000056
 #define CONST_Main_FILTER_LEVELINDEX                             0x10000062
 #define CONST_DD_SIGNED_BYTE_MIN                                 -127.0
-#define CONST_DunDefAchievementManager_MAX_BUFF_SLOTS            3
 #define CONST_UI_MultiplayerMenu_PROPS_MATCHCOMPLETE             0x10000076
 #define CONST_UI_CharacterSelect_PROPS_PHASE_TYPE                0x10000071
 #define CONST_UI_CharacterSelect_PROPS_HOSTHEROCLASS             0x1000005E
@@ -146,9 +146,15 @@ namespace Classes
 #define CONST_Main_PROPS_ISCHALLENGE                             0x1000005A
 #define CONST_MAX_SHOP_EQUIPMENT_SETS                            3
 #define CONST_MAX_BANKED_MANA                                    600000000
+#define CONST_ENEMY_COLLECTIONGROUP                              8
+#define CONST_DunDefHeroManager_MAX_SUPPORTED_GAMEPADS           4
+#define CONST_DunDefAchievementManager_MAX_BUFF_SLOTS            10
 #define CONST_DunDefGameSearchCommon_FILTER_HEROLEVELSTART       0x1000005F
 #define CONST_UI_NetworkMultiplayer_FILTER_BUILD                 0x1000005B
 #define CONST_DunDefAchievementManager_MAX_BUFF_TIERS            6
+#define CONST_UI_TitleScreen_PRESENCE_MAIN_MENU                  0
+#define CONST_DunDefAchievementManager_MAX_LEVELUP_STATS         11
+#define CONST_DunDefDataStore_GameSearch_FILTER_SESSIONID_COUNT  10
 #define CONST_DunDefAchievementManager_MAX_DAMAGEREDUCTIONS      4
 #define CONST_DunDefGameReplicationInfo_PROPS_WAVECOUNT          0x1000002D
 #define CONST_DunDefDataStore_GameSearch_PROPS_HOSTHEROCLASS     0x1000005E
@@ -157,8 +163,8 @@ namespace Classes
 #define CONST_DunDefAchievementManager_MAX_TUTORIAL_SETS         10
 #define CONST_DunDefDataStore_GameSearch_FILTER_LEVELINDEX       0x10000062
 #define CONST_DunDefAchievementManager_MAX_ACHIEVEMENTS_TO_STORE 500
-#define CONST_PLAYER_COLLECTIONGROUP                             256
 #define CONST_UI_CharacterSelect_QUERY_COOP                      1
+#define CONST_PLAYER_COLLECTIONGROUP                             256
 #define CONST_DunDefGameReplicationInfo_GS_USERNAME_MAXLENGTH    15
 #define CONST_DunDefGameReplicationInfo_GS_PASSWORD_MAXLENGTH    30
 #define CONST_UI_TitleScreen_CONTEXT_GAME_MODE                   0x0000800B
@@ -247,6 +253,7 @@ namespace Classes
 #define CONST_DunDefGameReplicationInfo_PROPS_HEROLEVEL          0x1000002A
 #define CONST_PLAYERTARGETABLE_COLLECTIONGROUP                   8192
 #define CONST_DunDefGameReplicationInfo_PROPS_COMPLETIONTIME     0x1000002C
+#define CONST_DunDefGameStorage_MAX_FEATURE_SLOTS                10
 #define CONST_DunDefGameReplicationInfo_STATS_VIEW_COLUMN_NAME   1
 #define CONST_DunDefOnlineGameSettingsConsole_QUERY_FILTERED     2
 #define CONST_DunDefGameReplicationInfo_STATS_VIEW_COLUMN_LEVEL  3
@@ -282,7 +289,6 @@ namespace Classes
 #define CONST_MAX_WAVE_POINT_NUMBER                              12
 #define CONST_DEFAULT_MAX_GROUPS                                 15
 #define CONST_DunDefPlayerController_GS_USERNAME_MAXLENGTH       15
-#define CONST_DunDefPlayerController_GS_PASSWORD_MAXLENGTH       30
 #define CONST_DunDefPlayerController_GS_EMAIL_MAXLENGTH          50
 #define CONST_DunDefPlayerController_GS_CDKEY_PART_MAXLENGTH     4
 #define CONST_DunDefPlayerController_PROPS_VERSIONNUMBER         0x10000073
@@ -375,7 +381,9 @@ namespace Classes
 #define CONST_DunDefPlayerController_MAX_LEVELUP_STATS           11
 #define CONST_DunDefPlayerController_MAX_BUFF_TIERS              6
 #define CONST_DunDefOnlineGameSettingsConsole_PROPS_ISCHALLENGE  0x1000005A
-#define CONST_DunDefPlayerController_MAX_BUFF_SLOTS              3
+#define CONST_DunDefPlayerController_MAX_BUFF_SLOTS              10
+#define CONST_DunDefPlayerController_MAX_FEATURE_SLOTS           10
+#define CONST_DunDefGameSearchCommon_PROPS_HEROLEVEL             0x1000002A
 #define CONST_EQUIPMENT_TORN                                     1
 #define CONST_Main_STATS_VIEW_COLUMN_WAVE                        6
 #define CONST_DunDefDataStore_GameSearch_PROPS_HEROCLASS         0x20000020
@@ -457,7 +465,6 @@ namespace Classes
 #define CONST_DunDefDataStore_GameSearch_CONTEXT_GAME_MODE       0x0000800B
 #define CONST_DunDefDataStore_GameSearch_FILTER_STRATEGY         0x10000070
 #define CONST_DunDefDataStore_GameSearch_QUERY_FILTERED          2
-#define CONST_UI_CharacterSelect_GS_CDKEY_PART_MAXLENGTH         4
 #define CONST_DunDefDataStore_GameSearch_FILTER_LEVEL_START      0x1000002E
 #define CONST_DunDefDataStore_GameSearch_FILTER_SURVIVAL         0x1000005C
 #define CONST_DunDefDataStore_GameSearch_FILTER_HEROLEVELSTART   0x1000005F
@@ -495,8 +502,6 @@ namespace Classes
 #define CONST_DunDefDataStore_GameSearch_PROPS_PHASE_TYPE        0x10000071
 #define CONST_DunDefDataStore_GameSearch_PROPS_DEMOMODE          0x10000072
 #define CONST_DunDefDataStore_GameSearch_PROPS_VERSIONNUMBER     0x10000073
-#define CONST_UI_NetworkMultiplayer_QUERY_COOP                   1
-#define CONST_UI_CharacterSelect_GS_MESSAGE_MAXLENGTH            255
 #define CONST_DunDefDataStore_GameSearch_PROPS_MATCHCOMPLETE     0x10000076
 #define CONST_UI_CharacterSelect_PROPS_SCORE                     0x2000002B
 #define CONST_DunDefDataStore_GameSearch_PROPS_HEROLEVEL         0x1000002A
@@ -561,7 +566,6 @@ namespace Classes
 #define CONST_UI_CharacterSelect_GS_USERNAME_MAXLENGTH           15
 #define CONST_DunDefGameSearchCommon_PROPS_HEROCLASS             0x20000020
 #define CONST_DunDefGameSearchCommon_STATS_VIEW_COLUMN_LEVEL     3
-#define CONST_DunDefGameSearchCommon_PROPS_HEROLEVEL             0x1000002A
 #define CONST_DunDefGameSearchCommon_PROPS_SCORE                 0x2000002B
 #define CONST_DunDefGameSearchCommon_PROPS_COMPLETIONTIME        0x1000002C
 #define CONST_DunDefGameSearchCommon_STATS_VIEW_COLUMN_CLASS     2
@@ -572,14 +576,13 @@ namespace Classes
 #define CONST_DunDefGameStorage_MAX_DAMAGEREDUCTIONS             4
 #define CONST_DunDefGameStorage_MAX_LEVELUP_STATS                11
 #define CONST_DunDefGameStorage_MAX_BUFF_TIERS                   6
-#define CONST_DunDefGameStorage_MAX_BUFF_SLOTS                   3
+#define CONST_DunDefGameStorage_MAX_BUFF_SLOTS                   10
 #define CONST_UI_CharacterSelect_FILTER_HEROCLASS                0x10000060
 #define CONST_DEFAULT_NUM_DECIMALPLACES                          2
 #define CONST_DunDefOnlineGameSettingsConsole_FILTER_STRATEGY    0x10000070
 #define CONST_UI_TitleScreen_GS_CDKEY_PART_MAXLENGTH             4
 #define CONST_DunDefOnlineGameSettingsConsole_CONTEXT_GAME_MODE_COOP 0
 #define CONST_DunDefOnlineGameSettingsConsole_FILTER_HEROLEVELEND 0x10000061
-#define CONST_UI_CharacterSelect_GS_EMAIL_MAXLENGTH              50
 #define CONST_UI_TitleScreen_PROPS_PHASE_TYPE                    0x10000071
 #define CONST_DunDefOnlineGameSettingsConsole_FILTER_HEROCLASS   0x10000060
 #define CONST_DunDefOnlineGameSettingsConsole_STATS_VIEW_COLUMN_LEVEL 3
@@ -615,6 +618,11 @@ namespace Classes
 #define CONST_StatObject_MAX_ACHIEVEMENTS_TO_STORE               500
 #define CONST_StatObject_MAX_DAMAGEREDUCTIONS                    4
 #define CONST_StatObject_MAX_LEVELUP_STATS                       11
+#define CONST_StatObject_MAX_FEATURE_SLOTS                       10
+#define CONST_UI_NetworkMultiplayer_QUERY_COOP                   1
+#define CONST_UI_CharacterSelect_GS_MESSAGE_MAXLENGTH            255
+#define CONST_UI_CharacterSelect_GS_EMAIL_MAXLENGTH              50
+#define CONST_UI_CharacterSelect_GS_CDKEY_PART_MAXLENGTH         4
 #define CONST_UIScriptWidget_EquipmentIconButton_MAX_CORES       40
 #define CONST_UI_CharacterSelect_CONTEXT_GAME_MODE               0x0000800B
 #define CONST_UI_CharacterSelect_QUERY_FILTERED                  2
@@ -773,7 +781,8 @@ namespace Classes
 #define CONST_UI_TitleScreen_STATS_VIEW_COLUMN_WAVE              6
 #define CONST_UIScriptWidget_EquipmentIconButton_MAX_ACHIEVEMENTS_TO_STORE 500
 #define CONST_UIScriptWidget_EquipmentIconButton_MAX_BUFF_TIERS  6
-#define CONST_UIScriptWidget_EquipmentIconButton_MAX_BUFF_SLOTS  3
+#define CONST_UIScriptWidget_EquipmentIconButton_MAX_BUFF_SLOTS  10
+#define CONST_UIScriptWidget_EquipmentIconButton_MAX_FEATURE_SLOTS 10
 #define CONST_EQUIPMENT_CURSED                                   0
 #define CONST_EQUIPMENT_WORN                                     2
 #define CONST_EQUIPMENT_SHINING                                  7
@@ -1784,7 +1793,7 @@ struct FSearchFilterSettings
 };
 
 // ScriptStruct UDKGame.DunDefHeroManagerNative.EquipmentSaveInfo
-// 0x015C
+// 0x01CC
 struct FEquipmentSaveInfo
 {
 	unsigned long                                      IsInitialized : 1;                                        // 0x0000(0x0004)
@@ -1844,9 +1853,15 @@ struct FEquipmentSaveInfo
 	struct FString                                     EquipmentTimeStamp;                                       // 0x0120(0x000C) (AlwaysInit, NeedCtorLink)
 	int                                                FolderID;                                                 // 0x012C(0x0004)
 	unsigned long                                      bIsSecondary : 1;                                         // 0x0130(0x0004)
-	int                                                StatEquipmentIDs[0x3];                                    // 0x0134(0x0004)
-	int                                                StatEquipmentTiers[0x3];                                  // 0x0140(0x0004)
-	struct FLinearColor                                QualityBeamColorOverride;                                 // 0x014C(0x0010)
+	int                                                StatEquipmentIDs[0xA];                                    // 0x0134(0x0004)
+	int                                                StatEquipmentTiers[0xA];                                  // 0x015C(0x0004)
+	struct FLinearColor                                QualityBeamColorOverride;                                 // 0x0184(0x0010)
+	struct FString                                     EquipmentFeatureString;                                   // 0x0194(0x000C) (AlwaysInit, NeedCtorLink)
+	unsigned char                                      bHideQualityDescriptors;                                  // 0x01A0(0x0001)
+	unsigned char                                      bEquipmentFeatureByte1;                                   // 0x01A1(0x0001)
+	unsigned char                                      bEquipmentFeatureByte2;                                   // 0x01A2(0x0001)
+	unsigned char                                      UnknownData04[0x1];                                       // 0x01A3(0x0001) MISSED OFFSET
+	int                                                FeatureArray[0xA];                                        // 0x01A4(0x0004)
 };
 
 // ScriptStruct UDKGame.HeroEquipmentNative.DamageReduction
@@ -2022,7 +2037,7 @@ struct FNetDamageReduction
 };
 
 // ScriptStruct UDKGame.HeroEquipment.EquipmentNetInfo
-// 0x0120
+// 0x019C
 struct FEquipmentNetInfo
 {
 	struct FNetDamageReduction                         DamageReductions[0x4];                                    // 0x0000(0x0008)
@@ -2075,9 +2090,16 @@ struct FEquipmentNetInfo
 	struct FString                                     Description;                                              // 0x00E4(0x000C) (NeedCtorLink)
 	int                                                FolderID;                                                 // 0x00F0(0x0004)
 	unsigned long                                      bIsSecondary : 1;                                         // 0x00F4(0x0004)
-	int                                                StatEquipmentIDs[0x3];                                    // 0x00F8(0x0004)
-	int                                                StatEquipmentTiers[0x3];                                  // 0x0104(0x0004)
-	struct FLinearColor                                QualityBeamColorOverride;                                 // 0x0110(0x0010)
+	int                                                StatEquipmentIDs[0xA];                                    // 0x00F8(0x0004)
+	int                                                StatEquipmentTiers[0xA];                                  // 0x0120(0x0004)
+	struct FLinearColor                                QualityBeamColorOverride;                                 // 0x0148(0x0010)
+	struct FString                                     EquipmentTimeStamp;                                       // 0x0158(0x000C) (NeedCtorLink)
+	struct FString                                     EquipmentFeatureString;                                   // 0x0164(0x000C) (NeedCtorLink)
+	unsigned char                                      bHideQualityDescriptors;                                  // 0x0170(0x0001)
+	unsigned char                                      bEquipmentFeatureByte1;                                   // 0x0171(0x0001)
+	unsigned char                                      bEquipmentFeatureByte2;                                   // 0x0172(0x0001)
+	unsigned char                                      UnknownData04[0x1];                                       // 0x0173(0x0001) MISSED OFFSET
+	int                                                FeatureArray[0xA];                                        // 0x0174(0x0004)
 };
 
 // ScriptStruct UDKGame.DunDefHeroManager.DLCEquipmentEntry
@@ -2099,11 +2121,11 @@ struct FItemFolder
 };
 
 // ScriptStruct UDKGame._SpecialData.Storage
-// 0x0230
+// 0x0240
 struct FStorage
 {
-	struct FString                                     IDs[0x23];                                                // 0x0000(0x000C) (Edit, NeedCtorLink)
-	int                                                Slots[0x23];                                              // 0x01A4(0x0004) (Edit)
+	struct FString                                     IDs[0x24];                                                // 0x0000(0x000C) (Edit, NeedCtorLink)
+	int                                                Slots[0x24];                                              // 0x01B0(0x0004) (Edit)
 };
 
 // ScriptStruct UDKGame.DunDefHeroManager.EquipmentDropEntry
@@ -2295,11 +2317,11 @@ struct FHeroAndEquipment
 };
 
 // ScriptStruct UDKGame.DunDefHeroManager.PlayerShopEntrySaveInfo
-// 0x0160
+// 0x01D0
 struct FPlayerShopEntrySaveInfo
 {
-	struct FEquipmentSaveInfo                          EquipmentEntry;                                           // 0x0000(0x015C) (NeedCtorLink)
-	int                                                SellAmount;                                               // 0x015C(0x0004)
+	struct FEquipmentSaveInfo                          EquipmentEntry;                                           // 0x0000(0x01CC) (NeedCtorLink)
+	int                                                SellAmount;                                               // 0x01CC(0x0004)
 };
 
 // ScriptStruct UDKGame.DunDefHeroManagerNative.ItemBoxEntry
@@ -4413,6 +4435,13 @@ struct FHeroAndEquipment_48
 	TArray<struct FEquipmentSaveInfo_48>               Equipment;                                                // 0x0114(0x000C) (NeedCtorLink)
 };
 
+// ScriptStruct UDKGame.DunDefGameStorage.AchievementInfo_48
+// 0x01F4
+struct FAchievementInfo_48
+{
+	unsigned char                                      Achievements[0x1F4];                                      // 0x0000(0x0001)
+};
+
 // ScriptStruct UDKGame.DunDefGameStorage.ShopSetSaveInfo_48
 // 0x000C
 struct FShopSetSaveInfo_48
@@ -4434,7 +4463,7 @@ struct FGameStorage_48
 {
 	struct FOptionsInfo_48                             GameOptions;                                              // 0x0000(0x00FC) (NeedCtorLink)
 	TArray<struct FHeroAndEquipment_48>                Heroes;                                                   // 0x00FC(0x000C) (NeedCtorLink)
-	struct FAchievementInfo                            Achievements;                                             // 0x0108(0x01F4)
+	struct FAchievementInfo_48                         Achievements;                                             // 0x0108(0x01F4)
 	struct FCoreUnlockInfo                             Core_Info;                                                // 0x02FC(0x0028)
 	struct FCrystalCoreOptions                         Core_Options;                                             // 0x0324(0x0034)
 	TArray<struct FLevelProgressInfo>                  Beaten_Levels;                                            // 0x0358(0x000C) (NeedCtorLink)
@@ -4447,6 +4476,195 @@ struct FGameStorage_48
 	TArray<struct FPlayerShopEntrySaveInfo_48>         Player_Shop_Entries;                                      // 0x03B0(0x000C) (NeedCtorLink)
 	TArray<struct FItemFolder>                         ItemFolders;                                              // 0x03BC(0x000C) (NeedCtorLink)
 	TArray<struct FItemFolder>                         LocalShopItemFolders;                                     // 0x03C8(0x000C) (NeedCtorLink)
+};
+
+// ScriptStruct UDKGame.DunDefGameStorage.OptionsFixedStruct_49
+// 0x00A4
+struct FOptionsFixedStruct_49
+{
+	unsigned long                                      AutoShowLevelUp : 1;                                      // 0x0000(0x0004)
+	unsigned long                                      AllowFriendlyFire : 1;                                    // 0x0000(0x0004)
+	unsigned long                                      UseGamepad : 1;                                           // 0x0000(0x0004)
+	unsigned long                                      AutoAdjustCameraForPhase : 1;                             // 0x0000(0x0004)
+	unsigned long                                      ShowTutorials : 1;                                        // 0x0000(0x0004)
+	int                                                ShownTutorials[0xA];                                      // 0x0004(0x0004)
+	float                                              VolumeSFX;                                                // 0x002C(0x0004)
+	float                                              VolumeMusic;                                              // 0x0030(0x0004)
+	float                                              VoicePlayVolume;                                          // 0x0034(0x0004)
+	float                                              VoiceCaptureVolume;                                       // 0x0038(0x0004)
+	unsigned long                                      PushToTalk : 1;                                           // 0x003C(0x0004)
+	unsigned long                                      IncomingVoice : 1;                                        // 0x003C(0x0004)
+	unsigned long                                      OutgoingVoice : 1;                                        // 0x003C(0x0004)
+	float                                              Gamma;                                                    // 0x0040(0x0004)
+	float                                              SaturationIntensity;                                      // 0x0044(0x0004)
+	float                                              UIScalePercent;                                           // 0x0048(0x0004)
+	unsigned long                                      PostProcessing : 1;                                       // 0x004C(0x0004)
+	unsigned long                                      ShowFloatingDamageNumbers : 1;                            // 0x004C(0x0004)
+	unsigned long                                      bRightStickTurnsCameraScheme : 1;                         // 0x004C(0x0004)
+	unsigned long                                      bInvertCameraPitch : 1;                                   // 0x004C(0x0004)
+	unsigned long                                      bSwapTriggersAndButtons : 1;                              // 0x004C(0x0004)
+	unsigned long                                      FullScreen : 1;                                           // 0x004C(0x0004)
+	unsigned char                                      SplitScreenConfig;                                        // 0x0050(0x0001)
+	unsigned char                                      CurrentDifficulty;                                        // 0x0051(0x0001)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x0052(0x0002) MISSED OFFSET
+	unsigned long                                      LobbyItemLock : 1;                                        // 0x0054(0x0004)
+	unsigned long                                      bDefaultChaseCamera : 1;                                  // 0x0054(0x0004)
+	float                                              DefaultCameraTargetDistance;                              // 0x0058(0x0004)
+	float                                              DefaultPlacingTowerCameraDistance;                        // 0x005C(0x0004)
+	float                                              MouseCameraRotationSpeed;                                 // 0x0060(0x0004)
+	int                                                ItemQualityFilter;                                        // 0x0064(0x0004)
+	unsigned long                                      bHideAccessory : 1;                                       // 0x0068(0x0004)
+	unsigned long                                      EnableOutlineEffect : 1;                                  // 0x0068(0x0004)
+	unsigned char                                      GraphicsQuality;                                          // 0x006C(0x0001)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x006D(0x0003) MISSED OFFSET
+	float                                              FrameRateLimit;                                           // 0x0070(0x0004)
+	unsigned char                                      InventorySortingFilter;                                   // 0x0074(0x0001)
+	unsigned char                                      UnknownData02[0x3];                                       // 0x0075(0x0003) MISSED OFFSET
+	int                                                MinimumLevel;                                             // 0x0078(0x0004)
+	unsigned long                                      SavedLoginInfo : 1;                                       // 0x007C(0x0004)
+	TArray<unsigned char>                              CustomGameMetaFlags;                                      // 0x0080(0x000C) (NeedCtorLink)
+	TArray<int>                                        CustomeUnlocks;                                           // 0x008C(0x000C) (NeedCtorLink)
+	TArray<int>                                        HeroUnlocks;                                              // 0x0098(0x000C) (NeedCtorLink)
+};
+
+// ScriptStruct UDKGame.DunDefGameStorage.SearchFilterSettings_49
+// 0x0021
+struct FSearchFilterSettings_49
+{
+	TArray<int>                                        levelIndicesToFilter;                                     // 0x0000(0x000C) (NeedCtorLink)
+	TArray<int>                                        difficultiesToFilter;                                     // 0x000C(0x000C) (NeedCtorLink)
+	unsigned char                                      filterChallengeMissions;                                  // 0x0018(0x0001)
+	unsigned char                                      filterCampaignMissions;                                   // 0x0019(0x0001)
+	unsigned char                                      filterPureStrategy;                                       // 0x001A(0x0001)
+	unsigned char                                      filterInfiniteBuild;                                      // 0x001B(0x0001)
+	unsigned char                                      filterInfiniteWaves;                                      // 0x001C(0x0001)
+	unsigned char                                      filterHostClass;                                          // 0x001D(0x0001)
+	unsigned char                                      filterHostLevel;                                          // 0x001E(0x0001)
+	unsigned char                                      filterHostLevelStart;                                     // 0x001F(0x0001)
+	unsigned char                                      filterHostLevelEnd;                                       // 0x0020(0x0001)
+};
+
+// ScriptStruct UDKGame.DunDefGameStorage.OptionsInfo_49
+// 0x0104
+struct FOptionsInfo_49
+{
+	struct FOptionsFixedStruct_49                      fixedSizeOptions;                                         // 0x0000(0x00A4) (NeedCtorLink)
+	struct FString                                     Resolution;                                               // 0x00A4(0x000C) (AlwaysInit, NeedCtorLink)
+	struct FString                                     lastLevelTag;                                             // 0x00B0(0x000C) (AlwaysInit, NeedCtorLink)
+	struct FString                                     UserName;                                                 // 0x00BC(0x000C) (AlwaysInit, NeedCtorLink)
+	struct FString                                     Password;                                                 // 0x00C8(0x000C) (AlwaysInit, NeedCtorLink)
+	struct FSearchFilterSettings_49                    searchFilters;                                            // 0x00D4(0x0024) (NeedCtorLink)
+	TArray<int>                                        installedDLCEquipments;                                   // 0x00F8(0x000C) (NeedCtorLink)
+};
+
+// ScriptStruct UDKGame.DunDefGameStorage.EquipmentSaveInfo_49
+// 0x015C
+struct FEquipmentSaveInfo_49
+{
+	unsigned long                                      IsInitialized : 1;                                        // 0x0000(0x0004)
+	unsigned char                                      DamageReductionIndex[0x4];                                // 0x0004(0x0001)
+	unsigned char                                      DamageReductionPercentage[0x4];                           // 0x0008(0x0001)
+	int                                                StatModifiers[0xB];                                       // 0x000C(0x0004)
+	int                                                SpawnStatModifiers[0xB];                                  // 0x0038(0x0004)
+	int                                                WeaponDamageBonus;                                        // 0x0064(0x0004)
+	unsigned char                                      WeaponNumberOfProjectilesBonus;                           // 0x0068(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0069(0x0003) MISSED OFFSET
+	int                                                WeaponSpeedOfProjectilesBonus;                            // 0x006C(0x0004)
+	unsigned char                                      WeaponAdditionalDamageTypeIndex;                          // 0x0070(0x0001)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0071(0x0003) MISSED OFFSET
+	int                                                WeaponAdditionalDamageAmount;                             // 0x0074(0x0004)
+	float                                              WeaponDrawScaleMultiplier;                                // 0x0078(0x0004)
+	float                                              WeaponSwingSpeedMultiplier;                               // 0x007C(0x0004)
+	int                                                Level;                                                    // 0x0080(0x0004)
+	int                                                StoredMana;                                               // 0x0084(0x0004)
+	float                                              SpawnQuality;                                             // 0x0088(0x0004)
+	float                                              SpawnRandomizerMultiplier;                                // 0x008C(0x0004)
+	unsigned char                                      WeaponBlockingBonus;                                      // 0x0090(0x0001)
+	unsigned char                                      UnknownData02[0x3];                                       // 0x0091(0x0003) MISSED OFFSET
+	int                                                WeaponAltDamageBonus;                                     // 0x0094(0x0004)
+	int                                                WeaponClipAmmoBonus;                                      // 0x0098(0x0004)
+	unsigned char                                      WeaponReloadSpeedBonus;                                   // 0x009C(0x0001)
+	unsigned char                                      WeaponKnockbackBonus;                                     // 0x009D(0x0001)
+	unsigned char                                      WeaponChargeSpeedBonus;                                   // 0x009E(0x0001)
+	unsigned char                                      WeaponShotsPerSecondBonus;                                // 0x009F(0x0001)
+	unsigned char                                      NameIndex_Base;                                           // 0x00A0(0x0001)
+	unsigned char                                      NameIndex_DamageReduction;                                // 0x00A1(0x0001)
+	unsigned char                                      NameIndex_QualityDescriptor;                              // 0x00A2(0x0001)
+	unsigned char                                      PrimaryColorSet;                                          // 0x00A3(0x0001)
+	unsigned char                                      SecondaryColorSet;                                        // 0x00A4(0x0001)
+	unsigned char                                      UnknownData03[0x3];                                       // 0x00A5(0x0003) MISSED OFFSET
+	int                                                EquipmentID1;                                             // 0x00A8(0x0004)
+	int                                                EquipmentID2;                                             // 0x00AC(0x0004)
+	int                                                MinimumSellWorth;                                         // 0x00B0(0x0004)
+	int                                                MaximumSellWorth;                                         // 0x00B4(0x0004)
+	int                                                MaxEquipmentLevel;                                        // 0x00B8(0x0004)
+	int                                                DroppedLocationX;                                         // 0x00BC(0x0004)
+	int                                                DroppedLocationY;                                         // 0x00C0(0x0004)
+	int                                                DroppedLocationZ;                                         // 0x00C4(0x0004)
+	unsigned char                                      bCanBeUpgraded;                                           // 0x00C8(0x0001)
+	unsigned char                                      AllowRenamingAtMaxUpgrade;                                // 0x00C9(0x0001)
+	unsigned char                                      bCantBeDropped;                                           // 0x00CA(0x0001)
+	unsigned char                                      bCantBeSold;                                              // 0x00CB(0x0001)
+	unsigned char                                      bAutoLockInItemBox;                                       // 0x00CC(0x0001)
+	unsigned char                                      bDidOnetimeEffect;                                        // 0x00CD(0x0001)
+	unsigned char                                      bIsLocked;                                                // 0x00CE(0x0001)
+	unsigned char                                      ManualLR;                                                 // 0x00CF(0x0001)
+	struct FLinearColor                                PrimaryColorOverride;                                     // 0x00D0(0x0010)
+	struct FLinearColor                                SecondaryColorOverride;                                   // 0x00E0(0x0010)
+	struct FString                                     UserEquipmentName;                                        // 0x00F0(0x000C) (AlwaysInit, NeedCtorLink)
+	struct FString                                     UserForgerName;                                           // 0x00FC(0x000C) (AlwaysInit, NeedCtorLink)
+	struct FString                                     Description;                                              // 0x0108(0x000C) (AlwaysInit, NeedCtorLink)
+	struct FString                                     EquipmentTemplate;                                        // 0x0114(0x000C) (AlwaysInit, NeedCtorLink)
+	struct FString                                     EquipmentTimeStamp;                                       // 0x0120(0x000C) (AlwaysInit, NeedCtorLink)
+	int                                                FolderID;                                                 // 0x012C(0x0004)
+	unsigned long                                      bIsSecondary : 1;                                         // 0x0130(0x0004)
+	int                                                StatEquipmentIDs[0x3];                                    // 0x0134(0x0004)
+	int                                                StatEquipmentTiers[0x3];                                  // 0x0140(0x0004)
+	struct FLinearColor                                QualityBeamColorOverride;                                 // 0x014C(0x0010)
+};
+
+// ScriptStruct UDKGame.DunDefGameStorage.HeroAndEquipment_49
+// 0x0120
+struct FHeroAndEquipment_49
+{
+	struct FHeroSaveInfo                               HeroData;                                                 // 0x0000(0x0114) (NeedCtorLink)
+	TArray<struct FEquipmentSaveInfo_49>               Equipment;                                                // 0x0114(0x000C) (NeedCtorLink)
+};
+
+// ScriptStruct UDKGame.DunDefGameStorage.ShopSetSaveInfo_49
+// 0x000C
+struct FShopSetSaveInfo_49
+{
+	TArray<struct FEquipmentSaveInfo_49>               Shop_Equipment;                                           // 0x0000(0x000C) (NeedCtorLink)
+};
+
+// ScriptStruct UDKGame.DunDefGameStorage.PlayerShopEntrySaveInfo_49
+// 0x0160
+struct FPlayerShopEntrySaveInfo_49
+{
+	struct FEquipmentSaveInfo_49                       EquipmentEntry;                                           // 0x0000(0x015C) (NeedCtorLink)
+	int                                                SellAmount;                                               // 0x015C(0x0004)
+};
+
+// ScriptStruct UDKGame.DunDefGameStorage.GameStorage_49
+// 0x03DC
+struct FGameStorage_49
+{
+	struct FOptionsInfo_49                             GameOptions;                                              // 0x0000(0x0104) (NeedCtorLink)
+	TArray<struct FHeroAndEquipment_49>                Heroes;                                                   // 0x0104(0x000C) (NeedCtorLink)
+	struct FAchievementInfo_48                         Achievements;                                             // 0x0110(0x01F4)
+	struct FCoreUnlockInfo                             Core_Info;                                                // 0x0304(0x0028)
+	struct FCrystalCoreOptions                         Core_Options;                                             // 0x032C(0x0034)
+	TArray<struct FLevelProgressInfo>                  Beaten_Levels;                                            // 0x0360(0x000C) (NeedCtorLink)
+	TArray<struct FLevelProgressInfo>                  Unlocked_Levels;                                          // 0x036C(0x000C) (NeedCtorLink)
+	struct FItemBoxInfo                                Item_Box;                                                 // 0x0378(0x0010)
+	TArray<struct FEquipmentSaveInfo_49>               Equipment;                                                // 0x0388(0x000C) (NeedCtorLink)
+	TArray<struct FEquipmentSaveInfo_49>               Hero_Equipment;                                           // 0x0394(0x000C) (NeedCtorLink)
+	TArray<struct FEquipmentSaveInfo_49>               Lobby_Equipment;                                          // 0x03A0(0x000C) (NeedCtorLink)
+	TArray<struct FShopSetSaveInfo_49>                 Shop_Sets;                                                // 0x03AC(0x000C) (NeedCtorLink)
+	TArray<struct FPlayerShopEntrySaveInfo_49>         Player_Shop_Entries;                                      // 0x03B8(0x000C) (NeedCtorLink)
+	TArray<struct FItemFolder>                         ItemFolders;                                              // 0x03C4(0x000C) (NeedCtorLink)
+	TArray<struct FItemFolder>                         LocalShopItemFolders;                                     // 0x03D0(0x000C) (NeedCtorLink)
 };
 
 // ScriptStruct UDKGame.DunDefGameStorage.ShopSetSaveInfo

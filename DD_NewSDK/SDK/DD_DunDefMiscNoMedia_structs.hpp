@@ -12,13 +12,14 @@ namespace Classes
 //Constants
 //---------------------------------------------------------------------------
 
-#define CONST_DunDefGameStorageUpdates_MAX_BUFF_TIERS            6
-#define CONST_DunDefGameStorageUpdates_MAX_LEVELUP_STATS         11
-#define CONST_DunDefGameStorageUpdates_MAX_BUFF_SLOTS            3
+#define CONST_DunDefGameStorageUpdates_MAX_CORES                 40
+#define CONST_DunDefGameStorageUpdates_MAX_FEATURE_SLOTS         10
 #define CONST_DunDefGameStorageUpdates_MAX_TUTORIAL_SETS         10
 #define CONST_DunDefGameStorageUpdates_MAX_ACHIEVEMENTS_TO_STORE 500
-#define CONST_DunDefGameStorageUpdates_MAX_CORES                 40
 #define CONST_DunDefGameStorageUpdates_MAX_DAMAGEREDUCTIONS      4
+#define CONST_DunDefGameStorageUpdates_MAX_BUFF_SLOTS            10
+#define CONST_DunDefGameStorageUpdates_MAX_BUFF_TIERS            6
+#define CONST_DunDefGameStorageUpdates_MAX_LEVELUP_STATS         11
 
 //---------------------------------------------------------------------------
 //Script Structs

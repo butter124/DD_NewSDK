@@ -125,6 +125,33 @@ void Config::RegisterBlockedFunction(const std::string &key, bool &flag) {
   blockedFuncMap[key] = &flag;
 }
 
+void Config::RegisterProcessInternalHook(const std::string& FuncName, std::function<void(PROCESS_INTERNAL_ARGS)> HookFunc){
+    m_DefferedPIHooks.push_back({ FuncName, HookFunc });
+}
+
+void Config::InitDefferedProcessInternalHook(tProcessInternal oProcessInternal){
+    m_oProcessInternal = oProcessInternal;
+
+    for (auto& hook : m_DefferedPIHooks) {
+        void* pFunc = Classes::UObject::FindObject<Classes::UFunction>(hook.funcName.c_str());
+
+        if (m_PIHookMap.find(pFunc) == m_PIHookMap.end()) {
+            m_PIHookMap[pFunc] = hook.hookFunc;
+        }
+    }
+    m_DefferedPIHooks.clear();
+}
+
+void Config::HandleFunctions(PROCESS_INTERNAL_ARGS){
+    auto pFunc = (void*)Stack->Object;
+    auto hookFuncIter = m_PIHookMap.find(pFunc);
+    if (hookFuncIter == m_PIHookMap.end()) {
+        m_oProcessInternal(pThis, Stack, pResult);
+        return;
+    }
+    hookFuncIter->second(pThis, EDX, Stack, pResult);
+}
+
 void Config::RegisterKeybind(std::string name, Config::KeyBinds keyBindName,
                              int keyCode, std::function<void()> func) {
 

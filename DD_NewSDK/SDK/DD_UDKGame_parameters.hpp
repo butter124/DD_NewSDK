@@ -328,6 +328,12 @@ struct UHeroEquipment_AllowDroppedDestruction_Params
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.HeroEquipment.CanBeDroppedInspect
+struct UHeroEquipment_CanBeDroppedInspect_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.HeroEquipment.CanBeDropped
 struct UHeroEquipment_CanBeDropped_Params
 {
@@ -417,6 +423,18 @@ struct UHeroEquipment_AllowSaving_Params
 struct UHeroEquipment_GetRespawnTimeMultiplier_Params
 {
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment.HideQualityDescriptors
+struct UHeroEquipment_HideQualityDescriptors_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment.AllowSellingInspect
+struct UHeroEquipment_AllowSellingInspect_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function UDKGame.HeroEquipment.AllowSelling
@@ -3261,6 +3279,12 @@ struct UDunDefHeroManager_AddEquipmentFromSaveInfo_Params
 	struct FEquipmentSaveInfo                          saveInfo;                                                 // (Const, Parm, OutParm, NeedCtorLink)
 	class UDunDefHero*                                 forHero;                                                  // (Parm)
 	class UHeroEquipment*                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefHeroManager.renameEventItemsHack
+struct UDunDefHeroManager_renameEventItemsHack_Params
+{
+	class UHeroEquipment*                              Equipment;                                                // (Parm)
 };
 
 // Function UDKGame.DunDefHeroManager.GetActiveHero
@@ -9224,6 +9248,13 @@ struct ADunDefBasePlayerController_PostBeginPlay_Params
 // Function UDKGame.DunDefPlayerController.TestSafeIntOperators
 struct ADunDefPlayerController_TestSafeIntOperators_Params
 {
+};
+
+// Function UDKGame.DunDefPlayerController.SetTinyMapOffsets
+struct ADunDefPlayerController_SetTinyMapOffsets_Params
+{
+	float                                              LeftOffset;                                               // (Parm)
+	float                                              TopOffset;                                                // (Parm)
 };
 
 // Function UDKGame.DunDefPlayerController.PrintOwnerBuffs
