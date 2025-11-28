@@ -21,9 +21,26 @@
 #include <variant>
 #include <windows.h>
 
+struct FFrame
+{
+    void* VTable;
+    unsigned char   Padding[0x08];
+    FFrame* PreviousFrame;
+    Classes::UObject* Object;
+    Classes::UStruct* Node;
+    BYTE* Code;
+    BYTE* Locals;
+
+    // There are more members after this, but for many basic hooks,
+    // Node, Object, and Code are the most important.
+};
+
 #define PROCESS_EVENT_ARGS                                                     \
   Classes::UObject *obj, void *edx, Classes::UFunction *pFunction,             \
       void *pParms, void *pResult
+
+#define PROCESS_INTERNAL_ARGS \
+  Classes::UObject* pThis, void* EDX, FFrame* Stack, void* pResult
 
 #define REGISTER_HOOKED_FUNCTION(key, func)                                    \
   RegisterHookedFunction(key, [this](Classes::UObject *obj, void *edx,         \
@@ -85,6 +102,11 @@ struct KeybindsStruct {
   bool bShouldChange;
   std::function<void()> func;
   std::string name;
+};
+
+struct DefferedProcessInternalHook {
+    std::string funcName;
+    std::function<void(PROCESS_INTERNAL_ARGS)> hookFunc;
 };
 
 class LUA_ENGINE;
@@ -214,6 +236,16 @@ public:
   std::unordered_map<std::string, bool> vProcessEventFunctionFilter;
   std::unordered_map<std::string, bool> vProcessEventObjectFilter;
   void SetupFilter();
+
+  // register a function to be hooked in process internal
+  typedef void(__thiscall* tProcessInternal)(void* pThis, void* pFrame, void* pResult);
+
+  tProcessInternal m_oProcessInternal = nullptr;
+  std::vector<DefferedProcessInternalHook> m_DefferedPIHooks;
+  std::unordered_map<void*, std::function<void(PROCESS_INTERNAL_ARGS)>> m_PIHookMap;
+  void RegisterProcessInternalHook(const std::string& FuncName, std::function<void(PROCESS_INTERNAL_ARGS)> HookFunc);
+  void InitDefferedProcessInternalHook(tProcessInternal oProcessInternal);
+  void HandleFunctions(PROCESS_INTERNAL_ARGS);
 
   // item giving
   // handling item giving in process event stops a crash from happening

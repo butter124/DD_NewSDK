@@ -1042,6 +1042,27 @@ unsigned long UHeroEquipment::AllowDroppedDestruction()
 }
 
 
+// Function UDKGame.HeroEquipment.CanBeDroppedInspect
+// (Defined, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UHeroEquipment::CanBeDroppedInspect()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment.CanBeDroppedInspect");
+
+	UHeroEquipment_CanBeDroppedInspect_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function UDKGame.HeroEquipment.CanBeDropped
 // (Defined, Public)
 // Parameters:
@@ -1342,6 +1363,48 @@ float UHeroEquipment::GetRespawnTimeMultiplier()
 	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment.GetRespawnTimeMultiplier");
 
 	UHeroEquipment_GetRespawnTimeMultiplier_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment.HideQualityDescriptors
+// (Defined, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UHeroEquipment::HideQualityDescriptors()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment.HideQualityDescriptors");
+
+	UHeroEquipment_HideQualityDescriptors_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment.AllowSellingInspect
+// (Defined, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UHeroEquipment::AllowSellingInspect()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment.AllowSellingInspect");
+
+	UHeroEquipment_AllowSellingInspect_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10593,6 +10656,26 @@ class UHeroEquipment* UDunDefHeroManager::AddEquipmentFromSaveInfo(class UDunDef
 		*saveInfo = params.saveInfo;
 
 	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefHeroManager.renameEventItemsHack
+// (Defined, Public)
+// Parameters:
+// class UHeroEquipment*          Equipment                      (Parm)
+
+void UDunDefHeroManager::renameEventItemsHack(class UHeroEquipment* Equipment)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefHeroManager.renameEventItemsHack");
+
+	UDunDefHeroManager_renameEventItemsHack_Params params;
+	params.Equipment = Equipment;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -29863,6 +29946,28 @@ void ADunDefPlayerController::TestSafeIntOperators()
 	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerController.TestSafeIntOperators");
 
 	ADunDefPlayerController_TestSafeIntOperators_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefPlayerController.SetTinyMapOffsets
+// (Defined, Exec, Public)
+// Parameters:
+// float                          LeftOffset                     (Parm)
+// float                          TopOffset                      (Parm)
+
+void ADunDefPlayerController::SetTinyMapOffsets(float LeftOffset, float TopOffset)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerController.SetTinyMapOffsets");
+
+	ADunDefPlayerController_SetTinyMapOffsets_Params params;
+	params.LeftOffset = LeftOffset;
+	params.TopOffset = TopOffset;
 
 	auto flags = fn->FunctionFlags;
 

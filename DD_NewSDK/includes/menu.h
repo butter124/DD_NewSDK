@@ -8,6 +8,7 @@
 #include "includes/lua_engine.h"
 #include "includes/menu_main.h"
 
+
 typedef HRESULT(APIENTRY *tBeginScene)(LPDIRECT3DDEVICE9 pDevice);
 extern tBeginScene oScene;
 HRESULT APIENTRY hkBeginScene(LPDIRECT3DDEVICE9 pDevice);
@@ -39,8 +40,19 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
                          Classes::UFunction *pFunction, void *pParms,
                          void *pResult);
 
+typedef void(__thiscall* tProcessInternal)(void* pThis, void* pFrame, void* pResult);
+void __fastcall HookedProcessInternal(Classes::UObject* pThis, void* EDX, FFrame* Stack, void* pResult);
+
+void hkBlockedFuntions(PROCESS_INTERNAL_ARGS);
+
 #define ScoreHook_Pattern "\x01\x03\x8b\x1b\x8b\x4c\x24\x14"
 #define ScoreHook_Mask "xxxxxxxx"
+
+#define ProcessInternalHook_Pattern \
+  "\x83\xEC\x58\xA1\x00\x00\x00\x00\x33\xC4\x89\x44\x24\x54\x53\x8B\x5C\x24\x64"
+
+#define ProcessInternalHook_Mask    \
+  "xxxx????xxxxxxxxxxx"
 
 extern Hooking ProcEventHook;
 
