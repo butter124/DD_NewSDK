@@ -314,6 +314,352 @@ struct UHeroEquipment_Familiar_Melee_TowerScaling_TickedByPawn_Params
 	float                                              DeltaTime;                                                // (Parm)
 };
 
+// Function CDT7.UI_TBR.LaunchMap
+struct UUI_TBR_LaunchMap_Params
+{
+	unsigned long                                      bStartTrueBossRush;                                       // (OptionalParm, Parm)
+};
+
+// Function CDT7.UI_TBR.WasCheckPointButtonPressed
+struct UUI_TBR_WasCheckPointButtonPressed_Params
+{
+	class UUIObject*                                   Widget;                                                   // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UI_TBR.NotifyWidgetClicked
+struct UUI_TBR_NotifyWidgetClicked_Params
+{
+	class UUIObject*                                   Widget;                                                   // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UI_TBR.CheckProgress
+struct UUI_TBR_CheckProgress_Params
+{
+};
+
+// Function CDT7.UI_TBR.SceneActivated
+struct UUI_TBR_SceneActivated_Params
+{
+	unsigned long                                      bInitialActivation;                                       // (Parm)
+};
+
+// Function CDT7.UI_ShopBase.GetSelectedShopButton
+struct UUI_ShopBase_GetSelectedShopButton_Params
+{
+	class UUIButton_DataListEntry*                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UI_ShopBase.GetShopInfo
+struct UUI_ShopBase_GetShopInfo_Params
+{
+	struct FsShopInfo                                  ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function CDT7.UI_ShopBase.GetItemInfo
+struct UUI_ShopBase_GetItemInfo_Params
+{
+	class UUIButton_Shop*                              Button;                                                   // (Parm)
+	unsigned long                                      bGetValueFromFocusControl;                                // (Parm)
+	unsigned long                                      bGetValueFromLastSelectedButton;                          // (Parm)
+	struct FsShopItemInfo                              ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function CDT7.UI_ShopBase.GetShopName
+struct UUI_ShopBase_GetShopName_Params
+{
+	unsigned long                                      bGetDescription;                                          // (Parm)
+	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function CDT7.UI_ShopBase.AllowOverlays
+struct UUI_ShopBase_AllowOverlays_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UI_ShopBase.GetConsumedItemList
+struct UUI_ShopBase_GetConsumedItemList_Params
+{
+	struct FsShopItemInfo                              ShopItemInfo;                                             // (Parm, NeedCtorLink)
+	TArray<class UHeroEquipment*>                      ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function CDT7.UI_ShopBase.GetLastSelectedItem
+struct UUI_ShopBase_GetLastSelectedItem_Params
+{
+	class UUIButton_Shop*                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UI_ShopBase.GiveMana
+struct UUI_ShopBase_GiveMana_Params
+{
+	struct FsShopItemInfo                              ShopItemInfo;                                             // (Parm, NeedCtorLink)
+	class ADunDefPlayerController*                     PlayerController;                                         // (Parm)
+};
+
+// Function CDT7.UI_ShopBase.GenerateItem
+struct UUI_ShopBase_GenerateItem_Params
+{
+	struct FsShopItemInfo                              ShopItemInfo;                                             // (Parm, NeedCtorLink)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UI_ShopBase.PurchaseItem
+struct UUI_ShopBase_PurchaseItem_Params
+{
+	struct FsShopItemInfo                              ShopItemInfo;                                             // (Parm, NeedCtorLink)
+};
+
+// Function CDT7.UI_ShopBase.EntrySelected
+struct UUI_ShopBase_EntrySelected_Params
+{
+	class UUIButton_DataListEntry*                     Button;                                                   // (Parm)
+};
+
+// Function CDT7.UI_ShopBase.RefreshedList
+struct UUI_ShopBase_RefreshedList_Params
+{
+};
+
+// Function CDT7.UI_ShopBase.RefreshItemList
+struct UUI_ShopBase_RefreshItemList_Params
+{
+	int                                                Id;                                                       // (Parm)
+};
+
+// Function CDT7.UI_ShopBase.OnReceivedInputKey
+struct UUI_ShopBase_OnReceivedInputKey_Params
+{
+	struct FInputEventParameters                       EventParms;                                               // (Const, Parm, OutParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UI_ShopBase.CancelClicked
+struct UUI_ShopBase_CancelClicked_Params
+{
+};
+
+// Function CDT7.UI_ShopBase.ConfirmClicked
+struct UUI_ShopBase_ConfirmClicked_Params
+{
+};
+
+// Function CDT7.UI_ShopBase.OpenError
+struct UUI_ShopBase_OpenError_Params
+{
+	TEnumAsByte<EErrorCode>                            ErrorCode;                                                // (Parm)
+};
+
+// Function CDT7.UI_ShopBase.OpenConfirm
+struct UUI_ShopBase_OpenConfirm_Params
+{
+	struct FsShopItemInfo                              ItemInfo;                                                 // (Parm, NeedCtorLink)
+};
+
+// Function CDT7.UI_ShopBase.OnItemPurchased
+struct UUI_ShopBase_OnItemPurchased_Params
+{
+	class UUIObject*                                   CallerObject;                                             // (Parm)
+};
+
+// Function CDT7.UI_ShopBase.NotifyWidgetClicked
+struct UUI_ShopBase_NotifyWidgetClicked_Params
+{
+	class UUIObject*                                   Widget;                                                   // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UI_ShopBase.GetTotalCost
+struct UUI_ShopBase_GetTotalCost_Params
+{
+	struct FsShopItemInfo                              ShopItemInfo;                                             // (Parm, NeedCtorLink)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UI_ShopBase.UpdateUI
+struct UUI_ShopBase_UpdateUI_Params
+{
+};
+
+// Function CDT7.UI_ShopBase.CanPurchaseItem
+struct UUI_ShopBase_CanPurchaseItem_Params
+{
+	class UUIButton_Shop*                              Button;                                                   // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UI_ShopBase.ConsumeItems
+struct UUI_ShopBase_ConsumeItems_Params
+{
+	struct FsShopItemInfo                              ShopItemInfo;                                             // (Parm, NeedCtorLink)
+	TArray<class UHeroEquipment*>                      ItemsToConsume;                                           // (Parm, NeedCtorLink)
+	struct FString                                     ManaToConsume;                                            // (OptionalParm, Parm, NeedCtorLink)
+};
+
+// Function CDT7.UI_ShopBase.ClearCurrencyAmounts
+struct UUI_ShopBase_ClearCurrencyAmounts_Params
+{
+};
+
+// Function CDT7.UI_ShopBase.FormatManaString
+struct UUI_ShopBase_FormatManaString_Params
+{
+	struct FString                                     ManaStringin;                                             // (Parm, NeedCtorLink)
+	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function CDT7.UI_ShopBase.UpdateCurrencyAmounts
+struct UUI_ShopBase_UpdateCurrencyAmounts_Params
+{
+};
+
+// Function CDT7.UI_ShopBase.InitializeShop
+struct UUI_ShopBase_InitializeShop_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UI_ShopBase.PostInitialSceneUpdate
+struct UUI_ShopBase_PostInitialSceneUpdate_Params
+{
+};
+
+// Function CDT7.UI_ShopBase.SceneActivated
+struct UUI_ShopBase_SceneActivated_Params
+{
+	unsigned long                                      bInitialActivation;                                       // (Parm)
+};
+
+// Function CDT7.UI_ConfirmBox.OnReceivedInputKey
+struct UUI_ConfirmBox_OnReceivedInputKey_Params
+{
+	struct FInputEventParameters                       EventParms;                                               // (Const, Parm, OutParm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UI_ConfirmBox.PostInitialSceneUpdate
+struct UUI_ConfirmBox_PostInitialSceneUpdate_Params
+{
+};
+
+// Function CDT7.UI_ConfirmBox.OnButtonPressed
+struct UUI_ConfirmBox_OnButtonPressed_Params
+{
+	class UUIScreenObject*                             EventObject;                                              // (Parm)
+	int                                                PlayerIndex;                                              // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UI_ConfirmBox.InitalizeItemFromShop
+struct UUI_ConfirmBox_InitalizeItemFromShop_Params
+{
+	struct FsShopItemInfo                              ItemInfo;                                                 // (Parm, NeedCtorLink)
+	struct FsShopInfo                                  ShopInfo;                                                 // (Parm, NeedCtorLink)
+};
+
+// Function CDT7.UI_ConfirmBox.SceneActivated
+struct UUI_ConfirmBox_SceneActivated_Params
+{
+	unsigned long                                      bInitialActivation;                                       // (Parm)
+};
+
+// Function CDT7.UI_ConfirmBox.OnCancelClicked
+struct UUI_ConfirmBox_OnCancelClicked_Params
+{
+};
+
+// Function CDT7.UI_ConfirmBox.OnConfirmClicked
+struct UUI_ConfirmBox_OnConfirmClicked_Params
+{
+};
+
+// Function CDT7.UIButton_Shop.DrawToolTip
+struct UUIButton_Shop_DrawToolTip_Params
+{
+	class UCanvas*                                     C;                                                        // (Parm)
+	float                                              X1;                                                       // (Parm)
+	float                                              X2;                                                       // (Parm)
+	float                                              Y1;                                                       // (Parm)
+	float                                              Y2;                                                       // (Parm)
+	float                                              ScaleX;                                                   // (Parm)
+	float                                              ScaleY;                                                   // (Parm)
+};
+
+// Function CDT7.UIButton_Shop.RenderGame
+struct UUIButton_Shop_RenderGame_Params
+{
+	class UCanvas*                                     C;                                                        // (Parm)
+	float                                              X1;                                                       // (Parm)
+	float                                              X2;                                                       // (Parm)
+	float                                              Y1;                                                       // (Parm)
+	float                                              Y2;                                                       // (Parm)
+};
+
+// Function CDT7.UIButton_Shop.GetEquipment
+struct UUIButton_Shop_GetEquipment_Params
+{
+	class UHeroEquipment*                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UIButton_Shop.UpdateItemInfo
+struct UUIButton_Shop_UpdateItemInfo_Params
+{
+};
+
+// Function CDT7.UIButton_Shop.GetDataContainer
+struct UUIButton_Shop_GetDataContainer_Params
+{
+	class UUIDataContainer_Equipment*                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UIButton_Shop.GetToolTipString
+struct UUIButton_Shop_GetToolTipString_Params
+{
+	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function CDT7.UIButton_Shop.InitializeFromDataListEntry
+struct UUIButton_Shop_InitializeFromDataListEntry_Params
+{
+	class UUIPanel_DataList*                           DataList;                                                 // (Parm)
+	TScriptInterface<class UDataListEntryInterface>    Entry;                                                    // (Parm)
+};
+
+// Function CDT7.UIButton_Shop.GetShopInfo
+struct UUIButton_Shop_GetShopInfo_Params
+{
+	struct FsShopInfo                                  ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function CDT7.UIButton_Shop.GetShopItemInfo
+struct UUIButton_Shop_GetShopItemInfo_Params
+{
+	struct FsShopItemInfo                              ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function CDT7.UIButton_Shop.ButtonClicked
+struct UUIButton_Shop_ButtonClicked_Params
+{
+	class UUIScreenObject*                             Sender;                                                   // (Parm)
+	int                                                PlayerIndex;                                              // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.UIButton_Shop.NotifyWidgetClicked
+struct UUIButton_Shop_NotifyWidgetClicked_Params
+{
+	class UUIObject*                                   Widget;                                                   // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function CDT7.IShopHandler.OnItemPurchased
+struct UIShopHandler_OnItemPurchased_Params
+{
+	class UUIObject*                                   CallerObject;                                             // (Parm)
+};
+
 }
 
 #ifdef _MSC_VER

@@ -35,7 +35,7 @@ public:
 	unsigned long                                      bSpawnStartLamp : 1;                                      // 0x0270(0x0004) (Edit)
 	unsigned long                                      bActive : 1;                                              // 0x0270(0x0004)
 	class UMaterialInstanceConstant*                   myLampMaterialOverride;                                   // 0x0274(0x0004) (Edit)
-	class UMaterialInstanceConstant*                   myMIC;                                                    // 0x0278(0x0004) (Transient)
+	class UMaterialInstanceConstant*                   MyMIC;                                                    // 0x0278(0x0004) (Transient)
 	struct FName                                       myMICParam;                                               // 0x027C(0x0008) (Edit)
 	float                                              myMICParamInActiveValue;                                  // 0x0284(0x0004) (Edit)
 	float                                              myMICParamActiveValue;                                    // 0x0288(0x0004) (Edit)

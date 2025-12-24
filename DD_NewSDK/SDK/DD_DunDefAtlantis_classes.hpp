@@ -713,7 +713,7 @@ public:
 	float                                              LerpScalar;                                               // 0x02B8(0x0004)
 	class APuzzleRoomActor*                            MyPuzzleRoom;                                             // 0x02BC(0x0004)
 	class UParticleSystemComponent*                    StatusComponent;                                          // 0x02C0(0x0004) (ExportObject, Component, EditInline)
-	class UMaterialInstanceConstant*                   myMIC;                                                    // 0x02C4(0x0004)
+	class UMaterialInstanceConstant*                   MyMIC;                                                    // 0x02C4(0x0004)
 	unsigned long                                      bScaleBackToDefault : 1;                                  // 0x02C8(0x0004)
 
 	static UClass* StaticClass()

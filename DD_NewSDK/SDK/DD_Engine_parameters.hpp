@@ -2767,6 +2767,13 @@ struct AEmitter_SetExtColorParameter_Params
 	unsigned char                                      Alpha;                                                    // (Parm)
 };
 
+// Function Engine.Emitter.SetEventColorParameter
+struct AEmitter_SetEventColorParameter_Params
+{
+	struct FColor                                      Param;                                                    // (Parm, OutParm)
+	struct FLinearColor                                LinearParam;                                              // (Parm)
+};
+
 // Function Engine.Emitter.SetColorParameter
 struct AEmitter_SetColorParameter_Params
 {

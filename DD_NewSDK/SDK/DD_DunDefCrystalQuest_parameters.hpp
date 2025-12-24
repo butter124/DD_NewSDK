@@ -14,8 +14,8 @@ namespace Classes
 //Parameters
 //---------------------------------------------------------------------------
 
-// Function DunDefCrystalQuest.DunDef_SeqAct_TeleportPlayers.Activated
-struct UDunDef_SeqAct_TeleportPlayers_Activated_Params
+// Function DunDefCrystalQuest.DunDef_SeqAct_SkelMeshActorPlayAnim.Activated
+struct UDunDef_SeqAct_SkelMeshActorPlayAnim_Activated_Params
 {
 };
 

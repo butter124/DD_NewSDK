@@ -1042,6 +1042,27 @@ unsigned long UHeroEquipment::AllowDroppedDestruction()
 }
 
 
+// Function UDKGame.HeroEquipment.CanBeDroppedInspect
+// (Defined, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UHeroEquipment::CanBeDroppedInspect()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment.CanBeDroppedInspect");
+
+	UHeroEquipment_CanBeDroppedInspect_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function UDKGame.HeroEquipment.CanBeDropped
 // (Defined, Public)
 // Parameters:
@@ -1342,6 +1363,48 @@ float UHeroEquipment::GetRespawnTimeMultiplier()
 	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment.GetRespawnTimeMultiplier");
 
 	UHeroEquipment_GetRespawnTimeMultiplier_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment.HideQualityDescriptors
+// (Defined, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UHeroEquipment::HideQualityDescriptors()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment.HideQualityDescriptors");
+
+	UHeroEquipment_HideQualityDescriptors_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment.AllowSellingInspect
+// (Defined, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UHeroEquipment::AllowSellingInspect()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment.AllowSellingInspect");
+
+	UHeroEquipment_AllowSellingInspect_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2799,6 +2862,30 @@ void UHeroEquipment::AddEquipmentAttachment(class USkeletalMeshComponent* thePla
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment.SetEventColorParameter
+// (Defined, Simulated, Public, HasOutParms)
+// Parameters:
+// struct FColor                  Param                          (Parm, OutParm)
+// struct FLinearColor            LinearParam                    (Parm)
+
+void UHeroEquipment::SetEventColorParameter(const struct FLinearColor& LinearParam, struct FColor* Param)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment.SetEventColorParameter");
+
+	UHeroEquipment_SetEventColorParameter_Params params;
+	params.LinearParam = LinearParam;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Param != nullptr)
+		*Param = params.Param;
 }
 
 
@@ -10596,6 +10683,26 @@ class UHeroEquipment* UDunDefHeroManager::AddEquipmentFromSaveInfo(class UDunDef
 }
 
 
+// Function UDKGame.DunDefHeroManager.renameEventItemsHack
+// (Defined, Public)
+// Parameters:
+// class UHeroEquipment*          Equipment                      (Parm)
+
+void UDunDefHeroManager::renameEventItemsHack(class UHeroEquipment* Equipment)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefHeroManager.renameEventItemsHack");
+
+	UDunDefHeroManager_renameEventItemsHack_Params params;
+	params.Equipment = Equipment;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function UDKGame.DunDefHeroManager.GetActiveHero
 // (Defined, HasOptionalParms, Public)
 // Parameters:
@@ -13112,6 +13219,50 @@ void UDunDefHeroManager::getCachedSortedItems(int myUserID, int FolderID, TArray
 
 	if (altSet != nullptr)
 		*altSet = params.altSet;
+}
+
+
+// Function UDKGame.DunDefHeroManager.ClearShopEntries
+// (Defined, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UDunDefHeroManager::ClearShopEntries()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefHeroManager.ClearShopEntries");
+
+	UDunDefHeroManager_ClearShopEntries_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefHeroManager.GetShopInfoByID
+// (Defined, Public, HasDefaults)
+// Parameters:
+// int                            Id                             (Parm)
+// struct FsShopInfo              ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
+
+struct FsShopInfo UDunDefHeroManager::GetShopInfoByID(int Id)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefHeroManager.GetShopInfoByID");
+
+	UDunDefHeroManager_GetShopInfoByID_Params params;
+	params.Id = Id;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -19714,6 +19865,581 @@ void UUIScriptWidget_Button::RenderEditor(class UCanvas* C, float X1, float X2, 
 }
 
 
+// Function UDKGame.HeroEquipment_Familiar.AddRandomizeValues
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// float                          equipmentQuality               (Parm)
+// unsigned long                  doResetStatsToTemplate         (OptionalParm, Parm)
+// unsigned long                  bDontUseMissionRandomizerMultiplier (OptionalParm, Parm)
+// float                          RandomizerMultiplierOverride   (OptionalParm, Parm)
+// unsigned long                  bIsForShop                     (OptionalParm, Parm)
+// unsigned long                  bAllowTranscendentGear         (OptionalParm, Parm)
+
+void UHeroEquipment_Familiar::AddRandomizeValues(float equipmentQuality, unsigned long doResetStatsToTemplate, unsigned long bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, unsigned long bIsForShop, unsigned long bAllowTranscendentGear)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.AddRandomizeValues");
+
+	UHeroEquipment_Familiar_AddRandomizeValues_Params params;
+	params.equipmentQuality = equipmentQuality;
+	params.doResetStatsToTemplate = doResetStatsToTemplate;
+	params.bDontUseMissionRandomizerMultiplier = bDontUseMissionRandomizerMultiplier;
+	params.RandomizerMultiplierOverride = RandomizerMultiplierOverride;
+	params.bIsForShop = bIsForShop;
+	params.bAllowTranscendentGear = bAllowTranscendentGear;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.AttachedComponent
+// (Defined, Public)
+// Parameters:
+// class UPrimitiveComponent*     aComp                          (Parm, EditInline)
+
+void UHeroEquipment_Familiar::AttachedComponent(class UPrimitiveComponent* aComp)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.AttachedComponent");
+
+	UHeroEquipment_Familiar_AttachedComponent_Params params;
+	params.aComp = aComp;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.RemovedFromHero
+// (Defined, Public)
+
+void UHeroEquipment_Familiar::RemovedFromHero()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.RemovedFromHero");
+
+	UHeroEquipment_Familiar_RemovedFromHero_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.AddedToHero
+// (Defined, Public)
+
+void UHeroEquipment_Familiar::AddedToHero()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.AddedToHero");
+
+	UHeroEquipment_Familiar_AddedToHero_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.GetPetMaxDrawScale
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// unsigned long                  GetMaxLevel                    (OptionalParm, Parm)
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float UHeroEquipment_Familiar::GetPetMaxDrawScale(unsigned long GetMaxLevel)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetPetMaxDrawScale");
+
+	UHeroEquipment_Familiar_GetPetMaxDrawScale_Params params;
+	params.GetMaxLevel = GetMaxLevel;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.GetEquipmentDrawScale
+// (Defined, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float UHeroEquipment_Familiar::GetEquipmentDrawScale()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetEquipmentDrawScale");
+
+	UHeroEquipment_Familiar_GetEquipmentDrawScale_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.AddEquipmentAttachment
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// class USkeletalMeshComponent*  thePlayerMesh                  (Parm, EditInline)
+// unsigned long                  attachWeapon                   (OptionalParm, Parm)
+// class AActor*                  AttachToActor                  (OptionalParm, Parm)
+// unsigned long                  bForce                         (OptionalParm, Parm)
+// unsigned long                  bIgnoreAttachFX                (OptionalParm, Parm)
+
+void UHeroEquipment_Familiar::AddEquipmentAttachment(class USkeletalMeshComponent* thePlayerMesh, unsigned long attachWeapon, class AActor* AttachToActor, unsigned long bForce, unsigned long bIgnoreAttachFX)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.AddEquipmentAttachment");
+
+	UHeroEquipment_Familiar_AddEquipmentAttachment_Params params;
+	params.thePlayerMesh = thePlayerMesh;
+	params.attachWeapon = attachWeapon;
+	params.AttachToActor = AttachToActor;
+	params.bForce = bForce;
+	params.bIgnoreAttachFX = bIgnoreAttachFX;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_AnimNotifyAttachment
+// (Defined, Public)
+// Parameters:
+// int                            NotifyID                       (Parm)
+// class USkeletalMeshComponent*  equipmentSkelComp              (Parm, EditInline)
+
+void UHeroEquipment_Familiar::NotifyEquipment_AnimNotifyAttachment(int NotifyID, class USkeletalMeshComponent* equipmentSkelComp)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_AnimNotifyAttachment");
+
+	UHeroEquipment_Familiar_NotifyEquipment_AnimNotifyAttachment_Params params;
+	params.NotifyID = NotifyID;
+	params.equipmentSkelComp = equipmentSkelComp;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.GetStanceDamageReduction
+// (Defined, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float UHeroEquipment_Familiar::GetStanceDamageReduction()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetStanceDamageReduction");
+
+	UHeroEquipment_Familiar_GetStanceDamageReduction_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnDied
+// (Defined, Public)
+
+void UHeroEquipment_Familiar::NotifyEquipment_PawnDied()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnDied");
+
+	UHeroEquipment_Familiar_NotifyEquipment_PawnDied_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnJumped
+// (Defined, Public)
+
+void UHeroEquipment_Familiar::NotifyEquipment_PawnJumped()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnJumped");
+
+	UHeroEquipment_Familiar_NotifyEquipment_PawnJumped_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnTookDamage
+// (Defined, Public)
+// Parameters:
+// class AController*             InstigatedBy                   (Parm)
+// struct FVector                 HitLocation                    (Parm)
+// int                            Damage                         (Parm)
+// class UClass*                  DamageType                     (Parm)
+// struct FVector                 Momentum                       (Parm)
+// class AActor*                  DamageCauser                   (Parm)
+
+void UHeroEquipment_Familiar::NotifyEquipment_PawnTookDamage(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum, class AActor* DamageCauser)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnTookDamage");
+
+	UHeroEquipment_Familiar_NotifyEquipment_PawnTookDamage_Params params;
+	params.InstigatedBy = InstigatedBy;
+	params.HitLocation = HitLocation;
+	params.Damage = Damage;
+	params.DamageType = DamageType;
+	params.Momentum = Momentum;
+	params.DamageCauser = DamageCauser;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.ExecHeroEvent
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// struct FName                   EventName                      (Parm)
+// struct FName                   nameParam1                     (OptionalParm, Parm)
+// class AActor*                  actorParam1                    (OptionalParm, Parm)
+// class AActor*                  actorParam2                    (OptionalParm, Parm)
+// struct FVector                 vecParam1                      (OptionalParm, Parm)
+// struct FRotator                rotParam1                      (OptionalParm, Parm)
+// float                          floatParam1                    (OptionalParm, Parm)
+// float                          floatParam2                    (OptionalParm, Parm)
+// float                          floatParam3                    (OptionalParm, Parm)
+// unsigned long                  boolParam1                     (OptionalParm, Parm)
+// unsigned long                  boolParam2                     (OptionalParm, Parm)
+// unsigned long                  boolParam3                     (OptionalParm, Parm)
+// struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
+
+void UHeroEquipment_Familiar::ExecHeroEvent(const struct FName& EventName, const struct FName& nameParam1, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.ExecHeroEvent");
+
+	UHeroEquipment_Familiar_ExecHeroEvent_Params params;
+	params.EventName = EventName;
+	params.nameParam1 = nameParam1;
+	params.actorParam1 = actorParam1;
+	params.actorParam2 = actorParam2;
+	params.vecParam1 = vecParam1;
+	params.rotParam1 = rotParam1;
+	params.floatParam1 = floatParam1;
+	params.floatParam2 = floatParam2;
+	params.floatParam3 = floatParam3;
+	params.boolParam1 = boolParam1;
+	params.boolParam2 = boolParam2;
+	params.boolParam3 = boolParam3;
+	params.stringParam1 = stringParam1;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.IsPlayingCustomAnim
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// class USkeletalMeshComponent*  MeshComp                       (Parm, EditInline)
+// struct FName                   inAnim                         (Parm)
+// float                          TimeFromEndToConsiderFinished  (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UHeroEquipment_Familiar::IsPlayingCustomAnim(class USkeletalMeshComponent* MeshComp, const struct FName& inAnim, float TimeFromEndToConsiderFinished)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.IsPlayingCustomAnim");
+
+	UHeroEquipment_Familiar_IsPlayingCustomAnim_Params params;
+	params.MeshComp = MeshComp;
+	params.inAnim = inAnim;
+	params.TimeFromEndToConsiderFinished = TimeFromEndToConsiderFinished;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.GetMeshComponent
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// unsigned long                  bForceLookup                   (OptionalParm, Parm)
+// class USkeletalMeshComponent*  ReturnValue                    (Parm, OutParm, ReturnParm, EditInline)
+
+class USkeletalMeshComponent* UHeroEquipment_Familiar::GetMeshComponent(unsigned long bForceLookup)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetMeshComponent");
+
+	UHeroEquipment_Familiar_GetMeshComponent_Params params;
+	params.bForceLookup = bForceLookup;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.PlayAnimation
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// struct FName                   AnimName                       (Parm)
+// unsigned long                  bReplicate                     (OptionalParm, Parm)
+// float                          BlendInTime                    (OptionalParm, Parm)
+// float                          BlendOutTime                   (OptionalParm, Parm)
+// float                          PlayRate                       (OptionalParm, Parm)
+// unsigned long                  bLooping                       (OptionalParm, Parm)
+// unsigned long                  bOverride                      (OptionalParm, Parm)
+// unsigned long                  bForceLookup                   (OptionalParm, Parm)
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float UHeroEquipment_Familiar::PlayAnimation(const struct FName& AnimName, unsigned long bReplicate, float BlendInTime, float BlendOutTime, float PlayRate, unsigned long bLooping, unsigned long bOverride, unsigned long bForceLookup)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.PlayAnimation");
+
+	UHeroEquipment_Familiar_PlayAnimation_Params params;
+	params.AnimName = AnimName;
+	params.bReplicate = bReplicate;
+	params.BlendInTime = BlendInTime;
+	params.BlendOutTime = BlendOutTime;
+	params.PlayRate = PlayRate;
+	params.bLooping = bLooping;
+	params.bOverride = bOverride;
+	params.bForceLookup = bForceLookup;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.GetDesiredDirection
+// (Defined, Public)
+// Parameters:
+// class USkeletalMeshComponent*  myMeshComp                     (Parm, EditInline)
+// class ADunDefPlayer*           myPlayer                       (Parm)
+// struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
+
+struct FRotator UHeroEquipment_Familiar::GetDesiredDirection(class USkeletalMeshComponent* myMeshComp, class ADunDefPlayer* myPlayer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetDesiredDirection");
+
+	UHeroEquipment_Familiar_GetDesiredDirection_Params params;
+	params.myMeshComp = myMeshComp;
+	params.myPlayer = myPlayer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.GetDesiredSphereRotationalPlacement
+// (Defined, Public, HasOutParms)
+// Parameters:
+// class USkeletalMeshComponent*  myMeshComp                     (Parm, EditInline)
+// class ADunDefPlayer*           myPlayer                       (Parm)
+// unsigned char                  HasTarget                      (Parm, OutParm)
+// struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
+
+struct FRotator UHeroEquipment_Familiar::GetDesiredSphereRotationalPlacement(class USkeletalMeshComponent* myMeshComp, class ADunDefPlayer* myPlayer, unsigned char* HasTarget)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetDesiredSphereRotationalPlacement");
+
+	UHeroEquipment_Familiar_GetDesiredSphereRotationalPlacement_Params params;
+	params.myMeshComp = myMeshComp;
+	params.myPlayer = myPlayer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (HasTarget != nullptr)
+		*HasTarget = params.HasTarget;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.TickedByPawn
+// (Defined, Public, HasDefaults)
+// Parameters:
+// class ADunDefPlayer*           PlayerOwner                    (Parm)
+// float                          DeltaTime                      (Parm)
+
+void UHeroEquipment_Familiar::TickedByPawn(class ADunDefPlayer* PlayerOwner, float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.TickedByPawn");
+
+	UHeroEquipment_Familiar_TickedByPawn_Params params;
+	params.PlayerOwner = PlayerOwner;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.GetPetHealingAmount
+// (Defined, Public)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float UHeroEquipment_Familiar::GetPetHealingAmount()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetPetHealingAmount");
+
+	UHeroEquipment_Familiar_GetPetHealingAmount_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.LimitPetHealing
+// (Defined, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UHeroEquipment_Familiar::LimitPetHealing()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.LimitPetHealing");
+
+	UHeroEquipment_Familiar_LimitPetHealing_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.DoPetHealing
+// (Defined, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UHeroEquipment_Familiar::DoPetHealing()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.DoPetHealing");
+
+	UHeroEquipment_Familiar_DoPetHealing_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.DoFairyAbilities
+// (Defined, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UHeroEquipment_Familiar::DoFairyAbilities()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.DoFairyAbilities");
+
+	UHeroEquipment_Familiar_DoFairyAbilities_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar.DoFamiliarAbilities
+// (Defined, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UHeroEquipment_Familiar::DoFamiliarAbilities()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.DoFamiliarAbilities");
+
+	UHeroEquipment_Familiar_DoFamiliarAbilities_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function UDKGame.DunDefDamageableTarget.GetStatModifier
 // (Defined, Simulated, HasOptionalParms, Public, HasDefaults)
 // Parameters:
@@ -26163,581 +26889,6 @@ unsigned long ADunDefTower_Aura::SameTeamAs(const TScriptInterface<class UDunDef
 }
 
 
-// Function UDKGame.HeroEquipment_Familiar.AddRandomizeValues
-// (Defined, HasOptionalParms, Public)
-// Parameters:
-// float                          equipmentQuality               (Parm)
-// unsigned long                  doResetStatsToTemplate         (OptionalParm, Parm)
-// unsigned long                  bDontUseMissionRandomizerMultiplier (OptionalParm, Parm)
-// float                          RandomizerMultiplierOverride   (OptionalParm, Parm)
-// unsigned long                  bIsForShop                     (OptionalParm, Parm)
-// unsigned long                  bAllowTranscendentGear         (OptionalParm, Parm)
-
-void UHeroEquipment_Familiar::AddRandomizeValues(float equipmentQuality, unsigned long doResetStatsToTemplate, unsigned long bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, unsigned long bIsForShop, unsigned long bAllowTranscendentGear)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.AddRandomizeValues");
-
-	UHeroEquipment_Familiar_AddRandomizeValues_Params params;
-	params.equipmentQuality = equipmentQuality;
-	params.doResetStatsToTemplate = doResetStatsToTemplate;
-	params.bDontUseMissionRandomizerMultiplier = bDontUseMissionRandomizerMultiplier;
-	params.RandomizerMultiplierOverride = RandomizerMultiplierOverride;
-	params.bIsForShop = bIsForShop;
-	params.bAllowTranscendentGear = bAllowTranscendentGear;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.AttachedComponent
-// (Defined, Public)
-// Parameters:
-// class UPrimitiveComponent*     aComp                          (Parm, EditInline)
-
-void UHeroEquipment_Familiar::AttachedComponent(class UPrimitiveComponent* aComp)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.AttachedComponent");
-
-	UHeroEquipment_Familiar_AttachedComponent_Params params;
-	params.aComp = aComp;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.RemovedFromHero
-// (Defined, Public)
-
-void UHeroEquipment_Familiar::RemovedFromHero()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.RemovedFromHero");
-
-	UHeroEquipment_Familiar_RemovedFromHero_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.AddedToHero
-// (Defined, Public)
-
-void UHeroEquipment_Familiar::AddedToHero()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.AddedToHero");
-
-	UHeroEquipment_Familiar_AddedToHero_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.GetPetMaxDrawScale
-// (Defined, HasOptionalParms, Public)
-// Parameters:
-// unsigned long                  GetMaxLevel                    (OptionalParm, Parm)
-// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
-
-float UHeroEquipment_Familiar::GetPetMaxDrawScale(unsigned long GetMaxLevel)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetPetMaxDrawScale");
-
-	UHeroEquipment_Familiar_GetPetMaxDrawScale_Params params;
-	params.GetMaxLevel = GetMaxLevel;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.GetEquipmentDrawScale
-// (Defined, Public)
-// Parameters:
-// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
-
-float UHeroEquipment_Familiar::GetEquipmentDrawScale()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetEquipmentDrawScale");
-
-	UHeroEquipment_Familiar_GetEquipmentDrawScale_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.AddEquipmentAttachment
-// (Defined, HasOptionalParms, Public)
-// Parameters:
-// class USkeletalMeshComponent*  thePlayerMesh                  (Parm, EditInline)
-// unsigned long                  attachWeapon                   (OptionalParm, Parm)
-// class AActor*                  AttachToActor                  (OptionalParm, Parm)
-// unsigned long                  bForce                         (OptionalParm, Parm)
-// unsigned long                  bIgnoreAttachFX                (OptionalParm, Parm)
-
-void UHeroEquipment_Familiar::AddEquipmentAttachment(class USkeletalMeshComponent* thePlayerMesh, unsigned long attachWeapon, class AActor* AttachToActor, unsigned long bForce, unsigned long bIgnoreAttachFX)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.AddEquipmentAttachment");
-
-	UHeroEquipment_Familiar_AddEquipmentAttachment_Params params;
-	params.thePlayerMesh = thePlayerMesh;
-	params.attachWeapon = attachWeapon;
-	params.AttachToActor = AttachToActor;
-	params.bForce = bForce;
-	params.bIgnoreAttachFX = bIgnoreAttachFX;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_AnimNotifyAttachment
-// (Defined, Public)
-// Parameters:
-// int                            NotifyID                       (Parm)
-// class USkeletalMeshComponent*  equipmentSkelComp              (Parm, EditInline)
-
-void UHeroEquipment_Familiar::NotifyEquipment_AnimNotifyAttachment(int NotifyID, class USkeletalMeshComponent* equipmentSkelComp)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_AnimNotifyAttachment");
-
-	UHeroEquipment_Familiar_NotifyEquipment_AnimNotifyAttachment_Params params;
-	params.NotifyID = NotifyID;
-	params.equipmentSkelComp = equipmentSkelComp;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.GetStanceDamageReduction
-// (Defined, Public)
-// Parameters:
-// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
-
-float UHeroEquipment_Familiar::GetStanceDamageReduction()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetStanceDamageReduction");
-
-	UHeroEquipment_Familiar_GetStanceDamageReduction_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnDied
-// (Defined, Public)
-
-void UHeroEquipment_Familiar::NotifyEquipment_PawnDied()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnDied");
-
-	UHeroEquipment_Familiar_NotifyEquipment_PawnDied_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnJumped
-// (Defined, Public)
-
-void UHeroEquipment_Familiar::NotifyEquipment_PawnJumped()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnJumped");
-
-	UHeroEquipment_Familiar_NotifyEquipment_PawnJumped_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnTookDamage
-// (Defined, Public)
-// Parameters:
-// class AController*             InstigatedBy                   (Parm)
-// struct FVector                 HitLocation                    (Parm)
-// int                            Damage                         (Parm)
-// class UClass*                  DamageType                     (Parm)
-// struct FVector                 Momentum                       (Parm)
-// class AActor*                  DamageCauser                   (Parm)
-
-void UHeroEquipment_Familiar::NotifyEquipment_PawnTookDamage(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum, class AActor* DamageCauser)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnTookDamage");
-
-	UHeroEquipment_Familiar_NotifyEquipment_PawnTookDamage_Params params;
-	params.InstigatedBy = InstigatedBy;
-	params.HitLocation = HitLocation;
-	params.Damage = Damage;
-	params.DamageType = DamageType;
-	params.Momentum = Momentum;
-	params.DamageCauser = DamageCauser;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.ExecHeroEvent
-// (Defined, HasOptionalParms, Public)
-// Parameters:
-// struct FName                   EventName                      (Parm)
-// struct FName                   nameParam1                     (OptionalParm, Parm)
-// class AActor*                  actorParam1                    (OptionalParm, Parm)
-// class AActor*                  actorParam2                    (OptionalParm, Parm)
-// struct FVector                 vecParam1                      (OptionalParm, Parm)
-// struct FRotator                rotParam1                      (OptionalParm, Parm)
-// float                          floatParam1                    (OptionalParm, Parm)
-// float                          floatParam2                    (OptionalParm, Parm)
-// float                          floatParam3                    (OptionalParm, Parm)
-// unsigned long                  boolParam1                     (OptionalParm, Parm)
-// unsigned long                  boolParam2                     (OptionalParm, Parm)
-// unsigned long                  boolParam3                     (OptionalParm, Parm)
-// struct FString                 stringParam1                   (OptionalParm, Parm, NeedCtorLink)
-
-void UHeroEquipment_Familiar::ExecHeroEvent(const struct FName& EventName, const struct FName& nameParam1, class AActor* actorParam1, class AActor* actorParam2, const struct FVector& vecParam1, const struct FRotator& rotParam1, float floatParam1, float floatParam2, float floatParam3, unsigned long boolParam1, unsigned long boolParam2, unsigned long boolParam3, const struct FString& stringParam1)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.ExecHeroEvent");
-
-	UHeroEquipment_Familiar_ExecHeroEvent_Params params;
-	params.EventName = EventName;
-	params.nameParam1 = nameParam1;
-	params.actorParam1 = actorParam1;
-	params.actorParam2 = actorParam2;
-	params.vecParam1 = vecParam1;
-	params.rotParam1 = rotParam1;
-	params.floatParam1 = floatParam1;
-	params.floatParam2 = floatParam2;
-	params.floatParam3 = floatParam3;
-	params.boolParam1 = boolParam1;
-	params.boolParam2 = boolParam2;
-	params.boolParam3 = boolParam3;
-	params.stringParam1 = stringParam1;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.IsPlayingCustomAnim
-// (Defined, HasOptionalParms, Public)
-// Parameters:
-// class USkeletalMeshComponent*  MeshComp                       (Parm, EditInline)
-// struct FName                   inAnim                         (Parm)
-// float                          TimeFromEndToConsiderFinished  (OptionalParm, Parm)
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long UHeroEquipment_Familiar::IsPlayingCustomAnim(class USkeletalMeshComponent* MeshComp, const struct FName& inAnim, float TimeFromEndToConsiderFinished)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.IsPlayingCustomAnim");
-
-	UHeroEquipment_Familiar_IsPlayingCustomAnim_Params params;
-	params.MeshComp = MeshComp;
-	params.inAnim = inAnim;
-	params.TimeFromEndToConsiderFinished = TimeFromEndToConsiderFinished;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.GetMeshComponent
-// (Defined, HasOptionalParms, Public)
-// Parameters:
-// unsigned long                  bForceLookup                   (OptionalParm, Parm)
-// class USkeletalMeshComponent*  ReturnValue                    (Parm, OutParm, ReturnParm, EditInline)
-
-class USkeletalMeshComponent* UHeroEquipment_Familiar::GetMeshComponent(unsigned long bForceLookup)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetMeshComponent");
-
-	UHeroEquipment_Familiar_GetMeshComponent_Params params;
-	params.bForceLookup = bForceLookup;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.PlayAnimation
-// (Defined, HasOptionalParms, Public)
-// Parameters:
-// struct FName                   AnimName                       (Parm)
-// unsigned long                  bReplicate                     (OptionalParm, Parm)
-// float                          BlendInTime                    (OptionalParm, Parm)
-// float                          BlendOutTime                   (OptionalParm, Parm)
-// float                          PlayRate                       (OptionalParm, Parm)
-// unsigned long                  bLooping                       (OptionalParm, Parm)
-// unsigned long                  bOverride                      (OptionalParm, Parm)
-// unsigned long                  bForceLookup                   (OptionalParm, Parm)
-// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
-
-float UHeroEquipment_Familiar::PlayAnimation(const struct FName& AnimName, unsigned long bReplicate, float BlendInTime, float BlendOutTime, float PlayRate, unsigned long bLooping, unsigned long bOverride, unsigned long bForceLookup)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.PlayAnimation");
-
-	UHeroEquipment_Familiar_PlayAnimation_Params params;
-	params.AnimName = AnimName;
-	params.bReplicate = bReplicate;
-	params.BlendInTime = BlendInTime;
-	params.BlendOutTime = BlendOutTime;
-	params.PlayRate = PlayRate;
-	params.bLooping = bLooping;
-	params.bOverride = bOverride;
-	params.bForceLookup = bForceLookup;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.GetDesiredDirection
-// (Defined, Public)
-// Parameters:
-// class USkeletalMeshComponent*  myMeshComp                     (Parm, EditInline)
-// class ADunDefPlayer*           myPlayer                       (Parm)
-// struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
-
-struct FRotator UHeroEquipment_Familiar::GetDesiredDirection(class USkeletalMeshComponent* myMeshComp, class ADunDefPlayer* myPlayer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetDesiredDirection");
-
-	UHeroEquipment_Familiar_GetDesiredDirection_Params params;
-	params.myMeshComp = myMeshComp;
-	params.myPlayer = myPlayer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.GetDesiredSphereRotationalPlacement
-// (Defined, Public, HasOutParms)
-// Parameters:
-// class USkeletalMeshComponent*  myMeshComp                     (Parm, EditInline)
-// class ADunDefPlayer*           myPlayer                       (Parm)
-// unsigned char                  HasTarget                      (Parm, OutParm)
-// struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
-
-struct FRotator UHeroEquipment_Familiar::GetDesiredSphereRotationalPlacement(class USkeletalMeshComponent* myMeshComp, class ADunDefPlayer* myPlayer, unsigned char* HasTarget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetDesiredSphereRotationalPlacement");
-
-	UHeroEquipment_Familiar_GetDesiredSphereRotationalPlacement_Params params;
-	params.myMeshComp = myMeshComp;
-	params.myPlayer = myPlayer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (HasTarget != nullptr)
-		*HasTarget = params.HasTarget;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.TickedByPawn
-// (Defined, Public, HasDefaults)
-// Parameters:
-// class ADunDefPlayer*           PlayerOwner                    (Parm)
-// float                          DeltaTime                      (Parm)
-
-void UHeroEquipment_Familiar::TickedByPawn(class ADunDefPlayer* PlayerOwner, float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.TickedByPawn");
-
-	UHeroEquipment_Familiar_TickedByPawn_Params params;
-	params.PlayerOwner = PlayerOwner;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.GetPetHealingAmount
-// (Defined, Public)
-// Parameters:
-// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
-
-float UHeroEquipment_Familiar::GetPetHealingAmount()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.GetPetHealingAmount");
-
-	UHeroEquipment_Familiar_GetPetHealingAmount_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.LimitPetHealing
-// (Defined, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long UHeroEquipment_Familiar::LimitPetHealing()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.LimitPetHealing");
-
-	UHeroEquipment_Familiar_LimitPetHealing_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.DoPetHealing
-// (Defined, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long UHeroEquipment_Familiar::DoPetHealing()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.DoPetHealing");
-
-	UHeroEquipment_Familiar_DoPetHealing_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.DoFairyAbilities
-// (Defined, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long UHeroEquipment_Familiar::DoFairyAbilities()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.DoFairyAbilities");
-
-	UHeroEquipment_Familiar_DoFairyAbilities_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function UDKGame.HeroEquipment_Familiar.DoFamiliarAbilities
-// (Defined, Public)
-// Parameters:
-// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
-
-unsigned long UHeroEquipment_Familiar::DoFamiliarAbilities()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar.DoFamiliarAbilities");
-
-	UHeroEquipment_Familiar_DoFamiliarAbilities_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function UDKGame.DunDefBuff.GetStatModifierObject
 // (Defined, Simulated, Public)
 // Parameters:
@@ -29872,6 +30023,28 @@ void ADunDefPlayerController::TestSafeIntOperators()
 }
 
 
+// Function UDKGame.DunDefPlayerController.SetTinyMapOffsets
+// (Defined, Exec, Public)
+// Parameters:
+// float                          LeftOffset                     (Parm)
+// float                          TopOffset                      (Parm)
+
+void ADunDefPlayerController::SetTinyMapOffsets(float LeftOffset, float TopOffset)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerController.SetTinyMapOffsets");
+
+	ADunDefPlayerController_SetTinyMapOffsets_Params params;
+	params.LeftOffset = LeftOffset;
+	params.TopOffset = TopOffset;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function UDKGame.DunDefPlayerController.PrintOwnerBuffs
 // (Defined, Exec, Public)
 
@@ -32650,15 +32823,17 @@ void ADunDefPlayerController::NotifyBankMana()
 
 
 // Function UDKGame.DunDefPlayerController.GetBankedManaString
-// (Defined, Public, HasDefaults)
+// (Defined, HasOptionalParms, Public, HasDefaults)
 // Parameters:
+// int                            SigFig                         (OptionalParm, Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString ADunDefPlayerController::GetBankedManaString()
+struct FString ADunDefPlayerController::GetBankedManaString(int SigFig)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefPlayerController.GetBankedManaString");
 
 	ADunDefPlayerController_GetBankedManaString_Params params;
+	params.SigFig = SigFig;
 
 	auto flags = fn->FunctionFlags;
 
@@ -64742,6 +64917,26 @@ float UAntiCheat::STATIC_GetAntiCheatInterval()
 }
 
 
+// Function UDKGame.DunDefViewportClient.SetMapOfTheWeekBool
+// (Defined, Public)
+// Parameters:
+// unsigned long                  MapOfTheWeekBool               (Parm)
+
+void UDunDefViewportClient::SetMapOfTheWeekBool(unsigned long MapOfTheWeekBool)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefViewportClient.SetMapOfTheWeekBool");
+
+	UDunDefViewportClient_SetMapOfTheWeekBool_Params params;
+	params.MapOfTheWeekBool = MapOfTheWeekBool;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function UDKGame.DunDefViewportClient.SetLoadingScreenLimitFPS
 // (Defined, Public)
 // Parameters:
@@ -65433,6 +65628,36 @@ void UDunDefViewportClient::SetGraphicsQuality(TEnumAsByte<EGraphicsQuality> Gra
 
 	UDunDefViewportClient_SetGraphicsQuality_Params params;
 	params.Graphics = Graphics;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefViewportClient.DoUINotification
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// struct FString                 MessageToShow                  (Parm, NeedCtorLink)
+// unsigned long                  ReplicateMessage               (OptionalParm, Parm)
+// float                          TimeToShow                     (OptionalParm, Parm)
+// float                          YLocation                      (OptionalParm, Parm)
+// float                          FontSize                       (OptionalParm, Parm)
+// struct FColor                  ColorOverride                  (OptionalParm, Parm)
+
+void UDunDefViewportClient::DoUINotification(const struct FString& MessageToShow, unsigned long ReplicateMessage, float TimeToShow, float YLocation, float FontSize, const struct FColor& ColorOverride)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefViewportClient.DoUINotification");
+
+	UDunDefViewportClient_DoUINotification_Params params;
+	params.MessageToShow = MessageToShow;
+	params.ReplicateMessage = ReplicateMessage;
+	params.TimeToShow = TimeToShow;
+	params.YLocation = YLocation;
+	params.FontSize = FontSize;
+	params.ColorOverride = ColorOverride;
 
 	auto flags = fn->FunctionFlags;
 
@@ -68167,6 +68392,122 @@ void UDunDefViewportClient::PostRender(class UCanvas* Canvas)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.ShopItemEntryObject.IsRootEntry
+// (Defined, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UShopItemEntryObject::IsRootEntry()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ShopItemEntryObject.IsRootEntry");
+
+	UShopItemEntryObject_IsRootEntry_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.ShopItemEntryObject.GetFolderID
+// (Defined, Public)
+// Parameters:
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UShopItemEntryObject::GetFolderID()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ShopItemEntryObject.GetFolderID");
+
+	UShopItemEntryObject_GetFolderID_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.ShopItemEntryObject.GetDataProps
+// (HasOptionalParms, Public, HasOutParms)
+// Parameters:
+// struct FDataEntryProps         dProps                         (Parm, OutParm)
+// int                            dataSetType                    (OptionalParm, Parm)
+
+void UShopItemEntryObject::GetDataProps(int dataSetType, struct FDataEntryProps* dProps)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ShopItemEntryObject.GetDataProps");
+
+	UShopItemEntryObject_GetDataProps_Params params;
+	params.dataSetType = dataSetType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (dProps != nullptr)
+		*dProps = params.dProps;
+}
+
+
+// Function UDKGame.ShopItemEntryObject.GetDataString
+// (HasOptionalParms, Public)
+// Parameters:
+// int                            dataSetType                    (OptionalParm, Parm)
+// struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
+
+struct FString UShopItemEntryObject::GetDataString(int dataSetType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ShopItemEntryObject.GetDataString");
+
+	UShopItemEntryObject_GetDataString_Params params;
+	params.dataSetType = dataSetType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.ShopItemEntryObject.GetEntryEnabled
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// class UPlayer*                 ForPlayer                      (Parm)
+// int                            dataSetType                    (OptionalParm, Parm)
+// class UUIScreenObject*         relatedUIObject                (OptionalParm, Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UShopItemEntryObject::GetEntryEnabled(class UPlayer* ForPlayer, int dataSetType, class UUIScreenObject* relatedUIObject)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.ShopItemEntryObject.GetEntryEnabled");
+
+	UShopItemEntryObject_GetEntryEnabled_Params params;
+	params.ForPlayer = ForPlayer;
+	params.dataSetType = dataSetType;
+	params.relatedUIObject = relatedUIObject;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -96246,6 +96587,40 @@ void UDunDef_SeqAct_GetCurrentDuCount::Activated()
 }
 
 
+// Function UDKGame.DunDef_SeqAct_GetCurrentMapOfTheWeekName.Activated
+// (Defined, Event, Public)
+
+void UDunDef_SeqAct_GetCurrentMapOfTheWeekName::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_GetCurrentMapOfTheWeekName.Activated");
+
+	UDunDef_SeqAct_GetCurrentMapOfTheWeekName_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDef_SeqAct_GetCurrentMessegeOfTheDay.Activated
+// (Defined, Event, Public)
+
+void UDunDef_SeqAct_GetCurrentMessegeOfTheDay::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDef_SeqAct_GetCurrentMessegeOfTheDay.Activated");
+
+	UDunDef_SeqAct_GetCurrentMessegeOfTheDay_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function UDKGame.DunDef_SeqAct_GetGameInfo.Activated
 // (Defined, Event, Public)
 
@@ -120234,70 +120609,8 @@ void ADunDefProjectile_BowlingBall::Landed(const struct FVector& HitNormal, clas
 }
 
 
-// Function UDKGame.DunDefProjectile_Falling.Landed
-// (Defined, Simulated, Public)
-// Parameters:
-// struct FVector                 HitNormal                      (Parm)
-// class AActor*                  Floor                          (Parm)
-
-void ADunDefProjectile_Falling::Landed(const struct FVector& HitNormal, class AActor* Floor)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_Falling.Landed");
-
-	ADunDefProjectile_Falling_Landed_Params params;
-	params.HitNormal = HitNormal;
-	params.Floor = Floor;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.DunDefProjectile_Falling.SetGravZ
-// (Defined, Public)
-// Parameters:
-// float                          newZ                           (Parm)
-
-void ADunDefProjectile_Falling::SetGravZ(float newZ)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_Falling.SetGravZ");
-
-	ADunDefProjectile_Falling_SetGravZ_Params params;
-	params.newZ = newZ;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function UDKGame.DunDefProjectile_Falling.ReplicatedEvent
-// (Defined, Simulated, Event, Public)
-// Parameters:
-// struct FName                   VarName                        (Parm)
-
-void ADunDefProjectile_Falling::ReplicatedEvent(const struct FName& VarName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_Falling.ReplicatedEvent");
-
-	ADunDefProjectile_Falling_ReplicatedEvent_Params params;
-	params.VarName = VarName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function UDKGame.DunDefProjectile_MagicBolt.Explode
-// (Defined, Simulated, Public)
+// (Defined, Simulated, Public, HasDefaults)
 // Parameters:
 // struct FVector                 HitLocation                    (Parm)
 // struct FVector                 HitNormal                      (Parm)
@@ -120382,6 +120695,280 @@ void ADunDefProjectile_MagicBolt::ReplicatedEvent(const struct FName& VarName)
 	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_MagicBolt.ReplicatedEvent");
 
 	ADunDefProjectile_MagicBolt_ReplicatedEvent_Params params;
+	params.VarName = VarName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.Tick
+// (Defined, Simulated, Public)
+// Parameters:
+// float                          dt                             (Parm)
+
+void ADunDefProjectile_BowlingBolt::Tick(float dt)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_BowlingBolt.Tick");
+
+	ADunDefProjectile_BowlingBolt_Tick_Params params;
+	params.dt = dt;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.Explode
+// (Defined, Simulated, Public, HasDefaults)
+// Parameters:
+// struct FVector                 HitLocation                    (Parm)
+// struct FVector                 HitNormal                      (Parm)
+
+void ADunDefProjectile_BowlingBolt::Explode(const struct FVector& HitLocation, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_BowlingBolt.Explode");
+
+	ADunDefProjectile_BowlingBolt_Explode_Params params;
+	params.HitLocation = HitLocation;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.Destroyed
+// (Defined, Simulated, Event, Public)
+
+void ADunDefProjectile_BowlingBolt::Destroyed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_BowlingBolt.Destroyed");
+
+	ADunDefProjectile_BowlingBolt_Destroyed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.HitWall
+// (Defined, Simulated, Public, HasDefaults)
+// Parameters:
+// struct FVector                 HitNormal                      (Parm)
+// class AActor*                  Wall                           (Parm)
+// class UPrimitiveComponent*     WallComp                       (Parm, EditInline)
+
+void ADunDefProjectile_BowlingBolt::HitWall(const struct FVector& HitNormal, class AActor* Wall, class UPrimitiveComponent* WallComp)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_BowlingBolt.HitWall");
+
+	ADunDefProjectile_BowlingBolt_HitWall_Params params;
+	params.HitNormal = HitNormal;
+	params.Wall = Wall;
+	params.WallComp = WallComp;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.TimedExplosion
+// (Defined, Public)
+
+void ADunDefProjectile_BowlingBolt::TimedExplosion()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_BowlingBolt.TimedExplosion");
+
+	ADunDefProjectile_BowlingBolt_TimedExplosion_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.PostBeginPlay
+// (Defined, Simulated, Event, Public)
+
+void ADunDefProjectile_BowlingBolt::PostBeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_BowlingBolt.PostBeginPlay");
+
+	ADunDefProjectile_BowlingBolt_PostBeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.Touch
+// (Defined, Simulated, Event, Public)
+// Parameters:
+// class AActor*                  Other                          (Parm)
+// class UPrimitiveComponent*     OtherComp                      (Parm, EditInline)
+// struct FVector                 HitLocation                    (Parm)
+// struct FVector                 HitNormal                      (Parm)
+
+void ADunDefProjectile_BowlingBolt::Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_BowlingBolt.Touch");
+
+	ADunDefProjectile_BowlingBolt_Touch_Params params;
+	params.Other = Other;
+	params.OtherComp = OtherComp;
+	params.HitLocation = HitLocation;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.Landed
+// (Defined, Simulated, Public)
+// Parameters:
+// struct FVector                 HitNormal                      (Parm)
+// class AActor*                  Floor                          (Parm)
+
+void ADunDefProjectile_BowlingBolt::Landed(const struct FVector& HitNormal, class AActor* Floor)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_BowlingBolt.Landed");
+
+	ADunDefProjectile_BowlingBolt_Landed_Params params;
+	params.HitNormal = HitNormal;
+	params.Floor = Floor;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.ProcessTouch
+// (Defined, Simulated, Public)
+// Parameters:
+// class AActor*                  Other                          (Parm)
+// struct FVector                 HitLocation                    (Parm)
+// struct FVector                 HitNormal                      (Parm)
+
+void ADunDefProjectile_BowlingBolt::ProcessTouch(class AActor* Other, const struct FVector& HitLocation, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_BowlingBolt.ProcessTouch");
+
+	ADunDefProjectile_BowlingBolt_ProcessTouch_Params params;
+	params.Other = Other;
+	params.HitLocation = HitLocation;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.IsImpactAllowed
+// (Defined, Simulated, Public)
+// Parameters:
+// class AActor*                  Other                          (Parm)
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long ADunDefProjectile_BowlingBolt::IsImpactAllowed(class AActor* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_BowlingBolt.IsImpactAllowed");
+
+	ADunDefProjectile_BowlingBolt_IsImpactAllowed_Params params;
+	params.Other = Other;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.DunDefProjectile_Falling.Landed
+// (Defined, Simulated, Public)
+// Parameters:
+// struct FVector                 HitNormal                      (Parm)
+// class AActor*                  Floor                          (Parm)
+
+void ADunDefProjectile_Falling::Landed(const struct FVector& HitNormal, class AActor* Floor)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_Falling.Landed");
+
+	ADunDefProjectile_Falling_Landed_Params params;
+	params.HitNormal = HitNormal;
+	params.Floor = Floor;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefProjectile_Falling.SetGravZ
+// (Defined, Public)
+// Parameters:
+// float                          newZ                           (Parm)
+
+void ADunDefProjectile_Falling::SetGravZ(float newZ)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_Falling.SetGravZ");
+
+	ADunDefProjectile_Falling_SetGravZ_Params params;
+	params.newZ = newZ;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.DunDefProjectile_Falling.ReplicatedEvent
+// (Defined, Simulated, Event, Public)
+// Parameters:
+// struct FName                   VarName                        (Parm)
+
+void ADunDefProjectile_Falling::ReplicatedEvent(const struct FName& VarName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.DunDefProjectile_Falling.ReplicatedEvent");
+
+	ADunDefProjectile_Falling_ReplicatedEvent_Params params;
 	params.VarName = VarName;
 
 	auto flags = fn->FunctionFlags;
@@ -127726,6 +128313,238 @@ void UHeroEquipment_Familiar_PlayerHealer::AttachedComponent(class UPrimitiveCom
 
 	UHeroEquipment_Familiar_PlayerHealer_AttachedComponent_Params params;
 	params.aComp = aComp;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.GenerateRandomizerValue
+// (Final, Defined, Private, HasOutParms)
+// Parameters:
+// float                          equipmentQuality               (Parm)
+// struct FEG_StatRandomizer      randomizer                     (Const, Parm, OutParm)
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float UHeroEquipment_Familiar_TADPS::GenerateRandomizerValue(float equipmentQuality, struct FEG_StatRandomizer* randomizer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar_TADPS.GenerateRandomizerValue");
+
+	UHeroEquipment_Familiar_TADPS_GenerateRandomizerValue_Params params;
+	params.equipmentQuality = equipmentQuality;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (randomizer != nullptr)
+		*randomizer = params.randomizer;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.DoFamiliarAbilities
+// (Defined, Public)
+// Parameters:
+// unsigned long                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+unsigned long UHeroEquipment_Familiar_TADPS::DoFamiliarAbilities()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar_TADPS.DoFamiliarAbilities");
+
+	UHeroEquipment_Familiar_TADPS_DoFamiliarAbilities_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.AttachedComponent
+// (Defined, Public)
+// Parameters:
+// class UPrimitiveComponent*     aComp                          (Parm, EditInline)
+
+void UHeroEquipment_Familiar_TADPS::AttachedComponent(class UPrimitiveComponent* aComp)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar_TADPS.AttachedComponent");
+
+	UHeroEquipment_Familiar_TADPS_AttachedComponent_Params params;
+	params.aComp = aComp;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.AddEquipmentAttachment
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// class USkeletalMeshComponent*  thePlayerMesh                  (Parm, EditInline)
+// unsigned long                  attachWeapon                   (OptionalParm, Parm)
+// class AActor*                  AttachToActor                  (OptionalParm, Parm)
+// unsigned long                  bForce                         (OptionalParm, Parm)
+// unsigned long                  bIgnoreAttachFX                (OptionalParm, Parm)
+
+void UHeroEquipment_Familiar_TADPS::AddEquipmentAttachment(class USkeletalMeshComponent* thePlayerMesh, unsigned long attachWeapon, class AActor* AttachToActor, unsigned long bForce, unsigned long bIgnoreAttachFX)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar_TADPS.AddEquipmentAttachment");
+
+	UHeroEquipment_Familiar_TADPS_AddEquipmentAttachment_Params params;
+	params.thePlayerMesh = thePlayerMesh;
+	params.attachWeapon = attachWeapon;
+	params.AttachToActor = AttachToActor;
+	params.bForce = bForce;
+	params.bIgnoreAttachFX = bIgnoreAttachFX;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.GetEquipmentIcon
+// (Defined, Public, HasDefaults)
+// Parameters:
+// class USurface*                ReturnValue                    (Parm, OutParm, ReturnParm)
+
+class USurface* UHeroEquipment_Familiar_TADPS::GetEquipmentIcon()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar_TADPS.GetEquipmentIcon");
+
+	UHeroEquipment_Familiar_TADPS_GetEquipmentIcon_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.GetEquipmentStatValue
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// TEnumAsByte<EEquipmentStatType> equipmentStatType              (Parm)
+// unsigned long                  returnFinalAddedValue          (OptionalParm, Parm)
+// unsigned long                  includeStatLevelUp             (OptionalParm, Parm)
+// float                          ReturnValue                    (Parm, OutParm, ReturnParm)
+
+float UHeroEquipment_Familiar_TADPS::GetEquipmentStatValue(TEnumAsByte<EEquipmentStatType> equipmentStatType, unsigned long returnFinalAddedValue, unsigned long includeStatLevelUp)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar_TADPS.GetEquipmentStatValue");
+
+	UHeroEquipment_Familiar_TADPS_GetEquipmentStatValue_Params params;
+	params.equipmentStatType = equipmentStatType;
+	params.returnFinalAddedValue = returnFinalAddedValue;
+	params.includeStatLevelUp = includeStatLevelUp;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.AdditionalChanges
+// (Defined, Public)
+
+void UHeroEquipment_Familiar_TADPS::AdditionalChanges()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar_TADPS.AdditionalChanges");
+
+	UHeroEquipment_Familiar_TADPS_AdditionalChanges_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.setDPSstatus
+// (Defined, Public)
+// Parameters:
+// int                            Status                         (Parm)
+
+void UHeroEquipment_Familiar_TADPS::setDPSstatus(int Status)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar_TADPS.setDPSstatus");
+
+	UHeroEquipment_Familiar_TADPS_setDPSstatus_Params params;
+	params.Status = Status;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.GetDPSstatus
+// (Defined, Public)
+// Parameters:
+// int                            ReturnValue                    (Parm, OutParm, ReturnParm)
+
+int UHeroEquipment_Familiar_TADPS::GetDPSstatus()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar_TADPS.GetDPSstatus");
+
+	UHeroEquipment_Familiar_TADPS_GetDPSstatus_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.AddRandomizeValues
+// (Defined, HasOptionalParms, Public)
+// Parameters:
+// float                          equipmentQuality               (Parm)
+// unsigned long                  doResetStatsToTemplate         (OptionalParm, Parm)
+// unsigned long                  bDontUseMissionRandomizerMultiplier (OptionalParm, Parm)
+// float                          RandomizerMultiplierOverride   (OptionalParm, Parm)
+// unsigned long                  bIsForShop                     (OptionalParm, Parm)
+// unsigned long                  bAllowTranscendentGear         (OptionalParm, Parm)
+
+void UHeroEquipment_Familiar_TADPS::AddRandomizeValues(float equipmentQuality, unsigned long doResetStatsToTemplate, unsigned long bDontUseMissionRandomizerMultiplier, float RandomizerMultiplierOverride, unsigned long bIsForShop, unsigned long bAllowTranscendentGear)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function UDKGame.HeroEquipment_Familiar_TADPS.AddRandomizeValues");
+
+	UHeroEquipment_Familiar_TADPS_AddRandomizeValues_Params params;
+	params.equipmentQuality = equipmentQuality;
+	params.doResetStatsToTemplate = doResetStatsToTemplate;
+	params.bDontUseMissionRandomizerMultiplier = bDontUseMissionRandomizerMultiplier;
+	params.RandomizerMultiplierOverride = RandomizerMultiplierOverride;
+	params.bIsForShop = bIsForShop;
+	params.bAllowTranscendentGear = bAllowTranscendentGear;
 
 	auto flags = fn->FunctionFlags;
 

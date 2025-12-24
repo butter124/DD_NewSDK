@@ -1308,6 +1308,7 @@ public:
 	void OnSetParticleSysParam(class USeqAct_SetParticleSysParam* Action);
 	void SetActorParameter(const struct FName& ParameterName, class AActor* Param);
 	void SetExtColorParameter(const struct FName& ParameterName, unsigned char Red, unsigned char Green, unsigned char Blue, unsigned char Alpha);
+	void SetEventColorParameter(const struct FLinearColor& LinearParam, struct FColor* Param);
 	void SetColorParameter(const struct FName& ParameterName, const struct FColor& Param);
 	void SetVectorParameter(const struct FName& ParameterName, const struct FVector& Param);
 	void SetFloatParameter(const struct FName& ParameterName, float Param);

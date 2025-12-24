@@ -328,6 +328,12 @@ struct UHeroEquipment_AllowDroppedDestruction_Params
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.HeroEquipment.CanBeDroppedInspect
+struct UHeroEquipment_CanBeDroppedInspect_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.HeroEquipment.CanBeDropped
 struct UHeroEquipment_CanBeDropped_Params
 {
@@ -417,6 +423,18 @@ struct UHeroEquipment_AllowSaving_Params
 struct UHeroEquipment_GetRespawnTimeMultiplier_Params
 {
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment.HideQualityDescriptors
+struct UHeroEquipment_HideQualityDescriptors_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment.AllowSellingInspect
+struct UHeroEquipment_AllowSellingInspect_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function UDKGame.HeroEquipment.AllowSelling
@@ -862,6 +880,13 @@ struct UHeroEquipment_AddEquipmentAttachment_Params
 	class AActor*                                      AttachToActor;                                            // (OptionalParm, Parm)
 	unsigned long                                      bForce;                                                   // (OptionalParm, Parm)
 	unsigned long                                      bIgnoreAttachFX;                                          // (OptionalParm, Parm)
+};
+
+// Function UDKGame.HeroEquipment.SetEventColorParameter
+struct UHeroEquipment_SetEventColorParameter_Params
+{
+	struct FColor                                      Param;                                                    // (Parm, OutParm)
+	struct FLinearColor                                LinearParam;                                              // (Parm)
 };
 
 // Function UDKGame.HeroEquipment.AttachedComponent
@@ -3263,6 +3288,12 @@ struct UDunDefHeroManager_AddEquipmentFromSaveInfo_Params
 	class UHeroEquipment*                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.DunDefHeroManager.renameEventItemsHack
+struct UDunDefHeroManager_renameEventItemsHack_Params
+{
+	class UHeroEquipment*                              Equipment;                                                // (Parm)
+};
+
 // Function UDKGame.DunDefHeroManager.GetActiveHero
 struct UDunDefHeroManager_GetActiveHero_Params
 {
@@ -4042,6 +4073,19 @@ struct UDunDefHeroManager_getCachedSortedItems_Params
 	int                                                myUserID;                                                 // (Parm)
 	int                                                FolderID;                                                 // (Parm)
 	TArray<TScriptInterface<class UDataListEntryInterface>> altSet;                                                   // (Parm, OutParm, NeedCtorLink)
+};
+
+// Function UDKGame.DunDefHeroManager.ClearShopEntries
+struct UDunDefHeroManager_ClearShopEntries_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefHeroManager.GetShopInfoByID
+struct UDunDefHeroManager_GetShopInfoByID_Params
+{
+	int                                                Id;                                                       // (Parm)
+	struct FsShopInfo                                  ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
 };
 
 // Function UDKGame.DunDefHeroManager.GetDataListEntries
@@ -6062,6 +6106,192 @@ struct UUIScriptWidget_Button_RenderEditor_Params
 	float                                              Y2;                                                       // (Parm)
 };
 
+// Function UDKGame.HeroEquipment_Familiar.AddRandomizeValues
+struct UHeroEquipment_Familiar_AddRandomizeValues_Params
+{
+	float                                              equipmentQuality;                                         // (Parm)
+	unsigned long                                      doResetStatsToTemplate;                                   // (OptionalParm, Parm)
+	unsigned long                                      bDontUseMissionRandomizerMultiplier;                      // (OptionalParm, Parm)
+	float                                              RandomizerMultiplierOverride;                             // (OptionalParm, Parm)
+	unsigned long                                      bIsForShop;                                               // (OptionalParm, Parm)
+	unsigned long                                      bAllowTranscendentGear;                                   // (OptionalParm, Parm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.AttachedComponent
+struct UHeroEquipment_Familiar_AttachedComponent_Params
+{
+	class UPrimitiveComponent*                         aComp;                                                    // (Parm, EditInline)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.RemovedFromHero
+struct UHeroEquipment_Familiar_RemovedFromHero_Params
+{
+};
+
+// Function UDKGame.HeroEquipment_Familiar.AddedToHero
+struct UHeroEquipment_Familiar_AddedToHero_Params
+{
+};
+
+// Function UDKGame.HeroEquipment_Familiar.GetPetMaxDrawScale
+struct UHeroEquipment_Familiar_GetPetMaxDrawScale_Params
+{
+	unsigned long                                      GetMaxLevel;                                              // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.GetEquipmentDrawScale
+struct UHeroEquipment_Familiar_GetEquipmentDrawScale_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.AddEquipmentAttachment
+struct UHeroEquipment_Familiar_AddEquipmentAttachment_Params
+{
+	class USkeletalMeshComponent*                      thePlayerMesh;                                            // (Parm, EditInline)
+	unsigned long                                      attachWeapon;                                             // (OptionalParm, Parm)
+	class AActor*                                      AttachToActor;                                            // (OptionalParm, Parm)
+	unsigned long                                      bForce;                                                   // (OptionalParm, Parm)
+	unsigned long                                      bIgnoreAttachFX;                                          // (OptionalParm, Parm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_AnimNotifyAttachment
+struct UHeroEquipment_Familiar_NotifyEquipment_AnimNotifyAttachment_Params
+{
+	int                                                NotifyID;                                                 // (Parm)
+	class USkeletalMeshComponent*                      equipmentSkelComp;                                        // (Parm, EditInline)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.GetStanceDamageReduction
+struct UHeroEquipment_Familiar_GetStanceDamageReduction_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnDied
+struct UHeroEquipment_Familiar_NotifyEquipment_PawnDied_Params
+{
+};
+
+// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnJumped
+struct UHeroEquipment_Familiar_NotifyEquipment_PawnJumped_Params
+{
+};
+
+// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnTookDamage
+struct UHeroEquipment_Familiar_NotifyEquipment_PawnTookDamage_Params
+{
+	class AController*                                 InstigatedBy;                                             // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	int                                                Damage;                                                   // (Parm)
+	class UClass*                                      DamageType;                                               // (Parm)
+	struct FVector                                     Momentum;                                                 // (Parm)
+	class AActor*                                      DamageCauser;                                             // (Parm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.ExecHeroEvent
+struct UHeroEquipment_Familiar_ExecHeroEvent_Params
+{
+	struct FName                                       EventName;                                                // (Parm)
+	struct FName                                       nameParam1;                                               // (OptionalParm, Parm)
+	class AActor*                                      actorParam1;                                              // (OptionalParm, Parm)
+	class AActor*                                      actorParam2;                                              // (OptionalParm, Parm)
+	struct FVector                                     vecParam1;                                                // (OptionalParm, Parm)
+	struct FRotator                                    rotParam1;                                                // (OptionalParm, Parm)
+	float                                              floatParam1;                                              // (OptionalParm, Parm)
+	float                                              floatParam2;                                              // (OptionalParm, Parm)
+	float                                              floatParam3;                                              // (OptionalParm, Parm)
+	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
+	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
+	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.IsPlayingCustomAnim
+struct UHeroEquipment_Familiar_IsPlayingCustomAnim_Params
+{
+	class USkeletalMeshComponent*                      MeshComp;                                                 // (Parm, EditInline)
+	struct FName                                       inAnim;                                                   // (Parm)
+	float                                              TimeFromEndToConsiderFinished;                            // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.GetMeshComponent
+struct UHeroEquipment_Familiar_GetMeshComponent_Params
+{
+	unsigned long                                      bForceLookup;                                             // (OptionalParm, Parm)
+	class USkeletalMeshComponent*                      ReturnValue;                                              // (Parm, OutParm, ReturnParm, EditInline)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.PlayAnimation
+struct UHeroEquipment_Familiar_PlayAnimation_Params
+{
+	struct FName                                       AnimName;                                                 // (Parm)
+	unsigned long                                      bReplicate;                                               // (OptionalParm, Parm)
+	float                                              BlendInTime;                                              // (OptionalParm, Parm)
+	float                                              BlendOutTime;                                             // (OptionalParm, Parm)
+	float                                              PlayRate;                                                 // (OptionalParm, Parm)
+	unsigned long                                      bLooping;                                                 // (OptionalParm, Parm)
+	unsigned long                                      bOverride;                                                // (OptionalParm, Parm)
+	unsigned long                                      bForceLookup;                                             // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.GetDesiredDirection
+struct UHeroEquipment_Familiar_GetDesiredDirection_Params
+{
+	class USkeletalMeshComponent*                      myMeshComp;                                               // (Parm, EditInline)
+	class ADunDefPlayer*                               myPlayer;                                                 // (Parm)
+	struct FRotator                                    ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.GetDesiredSphereRotationalPlacement
+struct UHeroEquipment_Familiar_GetDesiredSphereRotationalPlacement_Params
+{
+	class USkeletalMeshComponent*                      myMeshComp;                                               // (Parm, EditInline)
+	class ADunDefPlayer*                               myPlayer;                                                 // (Parm)
+	unsigned char                                      HasTarget;                                                // (Parm, OutParm)
+	struct FRotator                                    ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.TickedByPawn
+struct UHeroEquipment_Familiar_TickedByPawn_Params
+{
+	class ADunDefPlayer*                               PlayerOwner;                                              // (Parm)
+	float                                              DeltaTime;                                                // (Parm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.GetPetHealingAmount
+struct UHeroEquipment_Familiar_GetPetHealingAmount_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.LimitPetHealing
+struct UHeroEquipment_Familiar_LimitPetHealing_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.DoPetHealing
+struct UHeroEquipment_Familiar_DoPetHealing_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.DoFairyAbilities
+struct UHeroEquipment_Familiar_DoFairyAbilities_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar.DoFamiliarAbilities
+struct UHeroEquipment_Familiar_DoFamiliarAbilities_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function UDKGame.DunDefDamageableTarget.GetStatModifier
 struct ADunDefDamageableTarget_GetStatModifier_Params
 {
@@ -8055,192 +8285,6 @@ struct ADunDefTower_Aura_SameTeamAs_Params
 	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function UDKGame.HeroEquipment_Familiar.AddRandomizeValues
-struct UHeroEquipment_Familiar_AddRandomizeValues_Params
-{
-	float                                              equipmentQuality;                                         // (Parm)
-	unsigned long                                      doResetStatsToTemplate;                                   // (OptionalParm, Parm)
-	unsigned long                                      bDontUseMissionRandomizerMultiplier;                      // (OptionalParm, Parm)
-	float                                              RandomizerMultiplierOverride;                             // (OptionalParm, Parm)
-	unsigned long                                      bIsForShop;                                               // (OptionalParm, Parm)
-	unsigned long                                      bAllowTranscendentGear;                                   // (OptionalParm, Parm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.AttachedComponent
-struct UHeroEquipment_Familiar_AttachedComponent_Params
-{
-	class UPrimitiveComponent*                         aComp;                                                    // (Parm, EditInline)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.RemovedFromHero
-struct UHeroEquipment_Familiar_RemovedFromHero_Params
-{
-};
-
-// Function UDKGame.HeroEquipment_Familiar.AddedToHero
-struct UHeroEquipment_Familiar_AddedToHero_Params
-{
-};
-
-// Function UDKGame.HeroEquipment_Familiar.GetPetMaxDrawScale
-struct UHeroEquipment_Familiar_GetPetMaxDrawScale_Params
-{
-	unsigned long                                      GetMaxLevel;                                              // (OptionalParm, Parm)
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.GetEquipmentDrawScale
-struct UHeroEquipment_Familiar_GetEquipmentDrawScale_Params
-{
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.AddEquipmentAttachment
-struct UHeroEquipment_Familiar_AddEquipmentAttachment_Params
-{
-	class USkeletalMeshComponent*                      thePlayerMesh;                                            // (Parm, EditInline)
-	unsigned long                                      attachWeapon;                                             // (OptionalParm, Parm)
-	class AActor*                                      AttachToActor;                                            // (OptionalParm, Parm)
-	unsigned long                                      bForce;                                                   // (OptionalParm, Parm)
-	unsigned long                                      bIgnoreAttachFX;                                          // (OptionalParm, Parm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_AnimNotifyAttachment
-struct UHeroEquipment_Familiar_NotifyEquipment_AnimNotifyAttachment_Params
-{
-	int                                                NotifyID;                                                 // (Parm)
-	class USkeletalMeshComponent*                      equipmentSkelComp;                                        // (Parm, EditInline)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.GetStanceDamageReduction
-struct UHeroEquipment_Familiar_GetStanceDamageReduction_Params
-{
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnDied
-struct UHeroEquipment_Familiar_NotifyEquipment_PawnDied_Params
-{
-};
-
-// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnJumped
-struct UHeroEquipment_Familiar_NotifyEquipment_PawnJumped_Params
-{
-};
-
-// Function UDKGame.HeroEquipment_Familiar.NotifyEquipment_PawnTookDamage
-struct UHeroEquipment_Familiar_NotifyEquipment_PawnTookDamage_Params
-{
-	class AController*                                 InstigatedBy;                                             // (Parm)
-	struct FVector                                     HitLocation;                                              // (Parm)
-	int                                                Damage;                                                   // (Parm)
-	class UClass*                                      DamageType;                                               // (Parm)
-	struct FVector                                     Momentum;                                                 // (Parm)
-	class AActor*                                      DamageCauser;                                             // (Parm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.ExecHeroEvent
-struct UHeroEquipment_Familiar_ExecHeroEvent_Params
-{
-	struct FName                                       EventName;                                                // (Parm)
-	struct FName                                       nameParam1;                                               // (OptionalParm, Parm)
-	class AActor*                                      actorParam1;                                              // (OptionalParm, Parm)
-	class AActor*                                      actorParam2;                                              // (OptionalParm, Parm)
-	struct FVector                                     vecParam1;                                                // (OptionalParm, Parm)
-	struct FRotator                                    rotParam1;                                                // (OptionalParm, Parm)
-	float                                              floatParam1;                                              // (OptionalParm, Parm)
-	float                                              floatParam2;                                              // (OptionalParm, Parm)
-	float                                              floatParam3;                                              // (OptionalParm, Parm)
-	unsigned long                                      boolParam1;                                               // (OptionalParm, Parm)
-	unsigned long                                      boolParam2;                                               // (OptionalParm, Parm)
-	unsigned long                                      boolParam3;                                               // (OptionalParm, Parm)
-	struct FString                                     stringParam1;                                             // (OptionalParm, Parm, NeedCtorLink)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.IsPlayingCustomAnim
-struct UHeroEquipment_Familiar_IsPlayingCustomAnim_Params
-{
-	class USkeletalMeshComponent*                      MeshComp;                                                 // (Parm, EditInline)
-	struct FName                                       inAnim;                                                   // (Parm)
-	float                                              TimeFromEndToConsiderFinished;                            // (OptionalParm, Parm)
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.GetMeshComponent
-struct UHeroEquipment_Familiar_GetMeshComponent_Params
-{
-	unsigned long                                      bForceLookup;                                             // (OptionalParm, Parm)
-	class USkeletalMeshComponent*                      ReturnValue;                                              // (Parm, OutParm, ReturnParm, EditInline)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.PlayAnimation
-struct UHeroEquipment_Familiar_PlayAnimation_Params
-{
-	struct FName                                       AnimName;                                                 // (Parm)
-	unsigned long                                      bReplicate;                                               // (OptionalParm, Parm)
-	float                                              BlendInTime;                                              // (OptionalParm, Parm)
-	float                                              BlendOutTime;                                             // (OptionalParm, Parm)
-	float                                              PlayRate;                                                 // (OptionalParm, Parm)
-	unsigned long                                      bLooping;                                                 // (OptionalParm, Parm)
-	unsigned long                                      bOverride;                                                // (OptionalParm, Parm)
-	unsigned long                                      bForceLookup;                                             // (OptionalParm, Parm)
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.GetDesiredDirection
-struct UHeroEquipment_Familiar_GetDesiredDirection_Params
-{
-	class USkeletalMeshComponent*                      myMeshComp;                                               // (Parm, EditInline)
-	class ADunDefPlayer*                               myPlayer;                                                 // (Parm)
-	struct FRotator                                    ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.GetDesiredSphereRotationalPlacement
-struct UHeroEquipment_Familiar_GetDesiredSphereRotationalPlacement_Params
-{
-	class USkeletalMeshComponent*                      myMeshComp;                                               // (Parm, EditInline)
-	class ADunDefPlayer*                               myPlayer;                                                 // (Parm)
-	unsigned char                                      HasTarget;                                                // (Parm, OutParm)
-	struct FRotator                                    ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.TickedByPawn
-struct UHeroEquipment_Familiar_TickedByPawn_Params
-{
-	class ADunDefPlayer*                               PlayerOwner;                                              // (Parm)
-	float                                              DeltaTime;                                                // (Parm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.GetPetHealingAmount
-struct UHeroEquipment_Familiar_GetPetHealingAmount_Params
-{
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.LimitPetHealing
-struct UHeroEquipment_Familiar_LimitPetHealing_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.DoPetHealing
-struct UHeroEquipment_Familiar_DoPetHealing_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.DoFairyAbilities
-struct UHeroEquipment_Familiar_DoFairyAbilities_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function UDKGame.HeroEquipment_Familiar.DoFamiliarAbilities
-struct UHeroEquipment_Familiar_DoFamiliarAbilities_Params
-{
-	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
 // Function UDKGame.DunDefBuff.GetStatModifierObject
 struct UDunDefBuff_GetStatModifierObject_Params
 {
@@ -9226,6 +9270,13 @@ struct ADunDefPlayerController_TestSafeIntOperators_Params
 {
 };
 
+// Function UDKGame.DunDefPlayerController.SetTinyMapOffsets
+struct ADunDefPlayerController_SetTinyMapOffsets_Params
+{
+	float                                              LeftOffset;                                               // (Parm)
+	float                                              TopOffset;                                                // (Parm)
+};
+
 // Function UDKGame.DunDefPlayerController.PrintOwnerBuffs
 struct ADunDefPlayerController_PrintOwnerBuffs_Params
 {
@@ -10073,6 +10124,7 @@ struct ADunDefPlayerController_NotifyBankMana_Params
 // Function UDKGame.DunDefPlayerController.GetBankedManaString
 struct ADunDefPlayerController_GetBankedManaString_Params
 {
+	int                                                SigFig;                                                   // (OptionalParm, Parm)
 	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
 };
 
@@ -19960,6 +20012,12 @@ struct UAntiCheat_GetAntiCheatInterval_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function UDKGame.DunDefViewportClient.SetMapOfTheWeekBool
+struct UDunDefViewportClient_SetMapOfTheWeekBool_Params
+{
+	unsigned long                                      MapOfTheWeekBool;                                         // (Parm)
+};
+
 // Function UDKGame.DunDefViewportClient.SetLoadingScreenLimitFPS
 struct UDunDefViewportClient_SetLoadingScreenLimitFPS_Params
 {
@@ -20165,6 +20223,17 @@ struct UDunDefViewportClient_SetFrameRateLimit_Params
 struct UDunDefViewportClient_SetGraphicsQuality_Params
 {
 	TEnumAsByte<EGraphicsQuality>                      Graphics;                                                 // (Parm)
+};
+
+// Function UDKGame.DunDefViewportClient.DoUINotification
+struct UDunDefViewportClient_DoUINotification_Params
+{
+	struct FString                                     MessageToShow;                                            // (Parm, NeedCtorLink)
+	unsigned long                                      ReplicateMessage;                                         // (OptionalParm, Parm)
+	float                                              TimeToShow;                                               // (OptionalParm, Parm)
+	float                                              YLocation;                                                // (OptionalParm, Parm)
+	float                                              FontSize;                                                 // (OptionalParm, Parm)
+	struct FColor                                      ColorOverride;                                            // (OptionalParm, Parm)
 };
 
 // Function UDKGame.DunDefViewportClient.RemoveSplitscreenPlayers
@@ -20994,6 +21063,41 @@ struct UDunDefViewportClient_HasAnyPawn_Params
 struct UDunDefViewportClient_PostRender_Params
 {
 	class UCanvas*                                     Canvas;                                                   // (Parm)
+};
+
+// Function UDKGame.ShopItemEntryObject.IsRootEntry
+struct UShopItemEntryObject_IsRootEntry_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.ShopItemEntryObject.GetFolderID
+struct UShopItemEntryObject_GetFolderID_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.ShopItemEntryObject.GetDataProps
+struct UShopItemEntryObject_GetDataProps_Params
+{
+	struct FDataEntryProps                             dProps;                                                   // (Parm, OutParm)
+	int                                                dataSetType;                                              // (OptionalParm, Parm)
+};
+
+// Function UDKGame.ShopItemEntryObject.GetDataString
+struct UShopItemEntryObject_GetDataString_Params
+{
+	int                                                dataSetType;                                              // (OptionalParm, Parm)
+	struct FString                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function UDKGame.ShopItemEntryObject.GetEntryEnabled
+struct UShopItemEntryObject_GetEntryEnabled_Params
+{
+	class UPlayer*                                     ForPlayer;                                                // (Parm)
+	int                                                dataSetType;                                              // (OptionalParm, Parm)
+	class UUIScreenObject*                             relatedUIObject;                                          // (OptionalParm, Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function UDKGame.ItemFolderStub.IsRootEntry
@@ -29663,6 +29767,16 @@ struct UDunDef_SeqAct_GetCurrentDuCount_Activated_Params
 {
 };
 
+// Function UDKGame.DunDef_SeqAct_GetCurrentMapOfTheWeekName.Activated
+struct UDunDef_SeqAct_GetCurrentMapOfTheWeekName_Activated_Params
+{
+};
+
+// Function UDKGame.DunDef_SeqAct_GetCurrentMessegeOfTheDay.Activated
+struct UDunDef_SeqAct_GetCurrentMessegeOfTheDay_Activated_Params
+{
+};
+
 // Function UDKGame.DunDef_SeqAct_GetGameInfo.Activated
 struct UDunDef_SeqAct_GetGameInfo_Activated_Params
 {
@@ -37065,25 +37179,6 @@ struct ADunDefProjectile_BowlingBall_Landed_Params
 	class AActor*                                      Floor;                                                    // (Parm)
 };
 
-// Function UDKGame.DunDefProjectile_Falling.Landed
-struct ADunDefProjectile_Falling_Landed_Params
-{
-	struct FVector                                     HitNormal;                                                // (Parm)
-	class AActor*                                      Floor;                                                    // (Parm)
-};
-
-// Function UDKGame.DunDefProjectile_Falling.SetGravZ
-struct ADunDefProjectile_Falling_SetGravZ_Params
-{
-	float                                              newZ;                                                     // (Parm)
-};
-
-// Function UDKGame.DunDefProjectile_Falling.ReplicatedEvent
-struct ADunDefProjectile_Falling_ReplicatedEvent_Params
-{
-	struct FName                                       VarName;                                                  // (Parm)
-};
-
 // Function UDKGame.DunDefProjectile_MagicBolt.Explode
 struct ADunDefProjectile_MagicBolt_Explode_Params
 {
@@ -37112,6 +37207,92 @@ struct ADunDefProjectile_MagicBolt_InitMagicBolt_Params
 
 // Function UDKGame.DunDefProjectile_MagicBolt.ReplicatedEvent
 struct ADunDefProjectile_MagicBolt_ReplicatedEvent_Params
+{
+	struct FName                                       VarName;                                                  // (Parm)
+};
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.Tick
+struct ADunDefProjectile_BowlingBolt_Tick_Params
+{
+	float                                              dt;                                                       // (Parm)
+};
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.Explode
+struct ADunDefProjectile_BowlingBolt_Explode_Params
+{
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.Destroyed
+struct ADunDefProjectile_BowlingBolt_Destroyed_Params
+{
+};
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.HitWall
+struct ADunDefProjectile_BowlingBolt_HitWall_Params
+{
+	struct FVector                                     HitNormal;                                                // (Parm)
+	class AActor*                                      Wall;                                                     // (Parm)
+	class UPrimitiveComponent*                         WallComp;                                                 // (Parm, EditInline)
+};
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.TimedExplosion
+struct ADunDefProjectile_BowlingBolt_TimedExplosion_Params
+{
+};
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.PostBeginPlay
+struct ADunDefProjectile_BowlingBolt_PostBeginPlay_Params
+{
+};
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.Touch
+struct ADunDefProjectile_BowlingBolt_Touch_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+	class UPrimitiveComponent*                         OtherComp;                                                // (Parm, EditInline)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.Landed
+struct ADunDefProjectile_BowlingBolt_Landed_Params
+{
+	struct FVector                                     HitNormal;                                                // (Parm)
+	class AActor*                                      Floor;                                                    // (Parm)
+};
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.ProcessTouch
+struct ADunDefProjectile_BowlingBolt_ProcessTouch_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function UDKGame.DunDefProjectile_BowlingBolt.IsImpactAllowed
+struct ADunDefProjectile_BowlingBolt_IsImpactAllowed_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.DunDefProjectile_Falling.Landed
+struct ADunDefProjectile_Falling_Landed_Params
+{
+	struct FVector                                     HitNormal;                                                // (Parm)
+	class AActor*                                      Floor;                                                    // (Parm)
+};
+
+// Function UDKGame.DunDefProjectile_Falling.SetGravZ
+struct ADunDefProjectile_Falling_SetGravZ_Params
+{
+	float                                              newZ;                                                     // (Parm)
+};
+
+// Function UDKGame.DunDefProjectile_Falling.ReplicatedEvent
+struct ADunDefProjectile_Falling_ReplicatedEvent_Params
 {
 	struct FName                                       VarName;                                                  // (Parm)
 };
@@ -39374,6 +39555,79 @@ struct UHeroEquipment_Familiar_PlayerHealer_GetBestTarget_Params
 struct UHeroEquipment_Familiar_PlayerHealer_AttachedComponent_Params
 {
 	class UPrimitiveComponent*                         aComp;                                                    // (Parm, EditInline)
+};
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.GenerateRandomizerValue
+struct UHeroEquipment_Familiar_TADPS_GenerateRandomizerValue_Params
+{
+	float                                              equipmentQuality;                                         // (Parm)
+	struct FEG_StatRandomizer                          randomizer;                                               // (Const, Parm, OutParm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.DoFamiliarAbilities
+struct UHeroEquipment_Familiar_TADPS_DoFamiliarAbilities_Params
+{
+	unsigned long                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.AttachedComponent
+struct UHeroEquipment_Familiar_TADPS_AttachedComponent_Params
+{
+	class UPrimitiveComponent*                         aComp;                                                    // (Parm, EditInline)
+};
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.AddEquipmentAttachment
+struct UHeroEquipment_Familiar_TADPS_AddEquipmentAttachment_Params
+{
+	class USkeletalMeshComponent*                      thePlayerMesh;                                            // (Parm, EditInline)
+	unsigned long                                      attachWeapon;                                             // (OptionalParm, Parm)
+	class AActor*                                      AttachToActor;                                            // (OptionalParm, Parm)
+	unsigned long                                      bForce;                                                   // (OptionalParm, Parm)
+	unsigned long                                      bIgnoreAttachFX;                                          // (OptionalParm, Parm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.GetEquipmentIcon
+struct UHeroEquipment_Familiar_TADPS_GetEquipmentIcon_Params
+{
+	class USurface*                                    ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.GetEquipmentStatValue
+struct UHeroEquipment_Familiar_TADPS_GetEquipmentStatValue_Params
+{
+	TEnumAsByte<EEquipmentStatType>                    equipmentStatType;                                        // (Parm)
+	unsigned long                                      returnFinalAddedValue;                                    // (OptionalParm, Parm)
+	unsigned long                                      includeStatLevelUp;                                       // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.AdditionalChanges
+struct UHeroEquipment_Familiar_TADPS_AdditionalChanges_Params
+{
+};
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.setDPSstatus
+struct UHeroEquipment_Familiar_TADPS_setDPSstatus_Params
+{
+	int                                                Status;                                                   // (Parm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.GetDPSstatus
+struct UHeroEquipment_Familiar_TADPS_GetDPSstatus_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function UDKGame.HeroEquipment_Familiar_TADPS.AddRandomizeValues
+struct UHeroEquipment_Familiar_TADPS_AddRandomizeValues_Params
+{
+	float                                              equipmentQuality;                                         // (Parm)
+	unsigned long                                      doResetStatsToTemplate;                                   // (OptionalParm, Parm)
+	unsigned long                                      bDontUseMissionRandomizerMultiplier;                      // (OptionalParm, Parm)
+	float                                              RandomizerMultiplierOverride;                             // (OptionalParm, Parm)
+	unsigned long                                      bIsForShop;                                               // (OptionalParm, Parm)
+	unsigned long                                      bAllowTranscendentGear;                                   // (OptionalParm, Parm)
 };
 
 // Function UDKGame.IActorEventHandler.AdjustDealtDamage

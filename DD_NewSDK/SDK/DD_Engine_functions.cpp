@@ -8951,6 +8951,30 @@ void AEmitter::SetExtColorParameter(const struct FName& ParameterName, unsigned 
 }
 
 
+// Function Engine.Emitter.SetEventColorParameter
+// (Defined, Simulated, Public, HasOutParms)
+// Parameters:
+// struct FColor                  Param                          (Parm, OutParm)
+// struct FLinearColor            LinearParam                    (Parm)
+
+void AEmitter::SetEventColorParameter(const struct FLinearColor& LinearParam, struct FColor* Param)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Emitter.SetEventColorParameter");
+
+	AEmitter_SetEventColorParameter_Params params;
+	params.LinearParam = LinearParam;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Param != nullptr)
+		*Param = params.Param;
+}
+
+
 // Function Engine.Emitter.SetColorParameter
 // (Defined, Simulated, Public)
 // Parameters:

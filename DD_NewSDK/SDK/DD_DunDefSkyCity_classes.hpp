@@ -521,7 +521,7 @@ public:
 	class ADunDefEmitterSpawnable*                     CrystalHurtEffectTemplate;                                // 0x0594(0x0004) (Edit)
 	int                                                currentDamageAmt;                                         // 0x0598(0x0004) (Transient)
 	class ADunDef_OldOne*                              myOldOne;                                                 // 0x059C(0x0004) (Net, Transient)
-	class UMaterialInstanceConstant*                   myMIC;                                                    // 0x05A0(0x0004) (Transient)
+	class UMaterialInstanceConstant*                   MyMIC;                                                    // 0x05A0(0x0004) (Transient)
 	float                                              ActivateStartTime;                                        // 0x05A4(0x0004) (Transient)
 	float                                              DissolveStartTime;                                        // 0x05A8(0x0004) (Transient)
 

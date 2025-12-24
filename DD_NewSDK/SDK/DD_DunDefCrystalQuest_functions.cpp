@@ -12,14 +12,14 @@ namespace Classes
 //Functions
 //---------------------------------------------------------------------------
 
-// Function DunDefCrystalQuest.DunDef_SeqAct_TeleportPlayers.Activated
+// Function DunDefCrystalQuest.DunDef_SeqAct_SkelMeshActorPlayAnim.Activated
 // (Defined, Event, Public)
 
-void UDunDef_SeqAct_TeleportPlayers::Activated()
+void UDunDef_SeqAct_SkelMeshActorPlayAnim::Activated()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function DunDefCrystalQuest.DunDef_SeqAct_TeleportPlayers.Activated");
+	static auto fn = UObject::FindObject<UFunction>("Function DunDefCrystalQuest.DunDef_SeqAct_SkelMeshActorPlayAnim.Activated");
 
-	UDunDef_SeqAct_TeleportPlayers_Activated_Params params;
+	UDunDef_SeqAct_SkelMeshActorPlayAnim_Activated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
