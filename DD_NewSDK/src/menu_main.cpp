@@ -18,6 +18,7 @@
 #include <string>
 #include <variant>
 #include <csignal>
+#include "includes/LoggedStats.h"
 // clang-format on
 
 Classes::FVector GeneratePathToPoint(Classes::APawn *pPawn,
@@ -136,6 +137,9 @@ void MenuMain::RenderUI() {
         "World", [this]() { selectedMenu = Menus::MenuWorld; },
         selectedMenu == Menus::MenuWorld);
     RenderMenuButton(
+        "Stats", [this]() { selectedMenu = Menus::MenuStats; },
+        selectedMenu == Menus::MenuStats);
+    RenderMenuButton(
         "Lua", [this]() { selectedMenu = Menus::MenuLua; },
         selectedMenu == Menus::MenuLua);
     RenderMenuButton(
@@ -175,6 +179,10 @@ void MenuMain::RenderUI() {
 
     case Menus::MenuLua:
       Lua();
+      break;
+
+    case Menus::MenuStats:
+      Stats();
       break;
 
     default:
@@ -2199,3 +2207,30 @@ std::string MenuMain::GetFilePath() {
   }
   return std::string(filePath);
 }
+
+void MenuMain::Stats(){
+  ImGui::Text("Stats");
+  ImGui::Separator();
+
+  auto pPawn = config->GetPlayerPawn();
+  if (!pPawn)
+    return;
+
+  LoggedStats& stats = LoggedStats::getInstance();
+
+  std::string playtime;
+  stats.getPlaytime(playtime);
+  ImGui::Text("Playtime: %s", playtime.c_str());
+  ImGui::Text("Total items dropped: %d", stats.getTotalItemsDropped());
+  ImGui::Text("Total kills: %d", stats.getTotalKills());
+
+  if(ImGui::TreeNode("Items dropped by quality"))
+  {
+    constexpr int arr[] = {12,11,10,9,8,7,6,5,4,3,2,1,0,13,14,15,16,17,18,19};
+    for(int i = 0; i < 20; ++i) {
+      ImGui::Text("%s dropped: %d", config->GetQualityStringFromEnum(arr[i]).c_str(), stats.DroppedItemsCount[arr[i]]);
+    }
+    ImGui::TreePop();
+  }
+}
+

@@ -9,6 +9,7 @@
 #include "includes/Hooking.h"
 #include "includes/config.h"
 #include "includes/menu.h"
+#include "includes/LoggedStats.h"
 #include <d3d9.h>
 #include <string.h>
 // clang-format on
@@ -102,6 +103,12 @@ void __fastcall HookedPE(Classes::UObject *pObject, void *edx,
     config->PrintToConsole("Function UDKGame.AntiCheat.KickEveryone");
     return;
   }
+
+  LoggedStats::getInstance().handleLogging(funcName, objectName,
+                                          pObject, edx, pFunction, pParms,
+                                          pResult);
+
+
 
   // hooked functions
   if (config->hookedFuncMap.find(funcName) != config->hookedFuncMap.end()) {

@@ -306,6 +306,7 @@ public:
   Classes::ADunDefForge *GetForge();
   Classes::UDunDefAchievementManager *GetAchievementManager();
   Classes::UDunDef_SeqAct_EnemyWaveSpawner *GetWaveSpawner();
+  std::string GetQualityStringFromEnum(int qualityEnum) ;
 
   void PawnLoop(const std::function<void(Classes::ADunDefPawn *)> &func,
                 bool applyToEnemy, bool applyToPlayer);

@@ -175,6 +175,7 @@
     <ClInclude Include="includes\ImGui\imstb_rectpack.h" />
     <ClInclude Include="includes\ImGui\imstb_textedit.h" />
     <ClInclude Include="includes\ImGui\imstb_truetype.h" />
+    <ClInclude Include="includes\LoggedStats.h" />
     <ClInclude Include="includes\logger.h" />
     <ClInclude Include="includes\lua_engine.h" />
     <ClInclude Include="includes\menu_main.h" />
@@ -204,6 +205,7 @@
     <ClCompile Include="src\events.cpp" />
     <ClCompile Include="src\HelperFunctions.cpp" />
     <ClCompile Include="src\Hooking.cpp" />
+    <ClCompile Include="src\LoggedStats.cpp" />
     <ClCompile Include="src\logger.cpp" />
     <ClCompile Include="src\lua_engine.cpp" />
     <ClCompile Include="src\menu_main.cpp" />

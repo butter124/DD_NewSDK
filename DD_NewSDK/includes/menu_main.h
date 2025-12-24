@@ -19,6 +19,7 @@ public:
     MenuConfig,
     MenuWorld,
     MenuLua,
+    MenuStats,
   };
   void Init() override;
   void OnBegin() override;
@@ -40,6 +41,7 @@ private:
 protected:
   void BasicCheats();
   void Lua();
+  void Stats();
   void Config();
   void PlayerCheats();
   void WorldCheats();

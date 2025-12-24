@@ -2374,3 +2374,30 @@ void Config::playerUseAbility(int playerNum, int abilityIndex){
 
   player->StartCastingAbility(ability);
 }
+
+
+std::string Config::GetQualityStringFromEnum(int qualityEnum) {
+  switch(qualityEnum){
+    case 0: return "Godly";
+    case 1: return "Legendary";
+    case 2: return "Epic";
+    case 3: return "Amazing";
+    case 4: return "Powerful";
+    case 5: return "Shining";
+    case 6: return "Polished";
+    case 7: return "Sturdy";
+    case 8: return "Solid";
+    case 9: return "Stocky";
+    case 10: return "Worn";
+    case 11: return "Torn";
+    case 12: return "Cursed";
+    case 13: return "Mythical";
+    case 14: return "Transcendent";
+    case 15: return "Supreme";
+    case 16: return "Ultimate";
+    case 17: return "Ultimate93";
+    case 18: return "Ultimate+";
+    case 19: return "Ultimate++";
+    default: return "Unknown";
+  }
+}
